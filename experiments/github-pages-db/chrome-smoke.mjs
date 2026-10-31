@@ -66,7 +66,7 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
   assert.ok(chromePath, "Chrome is unavailable");
   const types = { ".html": "text/html; charset=utf-8", ".mjs": "text/javascript; charset=utf-8",
     ".js": "text/javascript; charset=utf-8", ".json": "application/json; charset=utf-8",
-    ".css": "text/css; charset=utf-8" };
+    ".css": "text/css; charset=utf-8", ".gz": "application/gzip" };
   const server = http.createServer((req, res) => {
     const name = new URL(req.url, "http://127.0.0.1").pathname.replace(/^\//, "") || "index.html";
     if (name.split("/").some((part) => !/^[a-zA-Z0-9._-]+$/.test(part) || part === "." || part === "..")) {
@@ -114,7 +114,10 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
       "return {width:innerWidth,scrollWidth:document.documentElement.scrollWidth," +
       "qa:!!document.querySelector('a[href^=\"https://kaigo-rules.vercel.app/qa/\"]')," +
       "searchMs:Number(s.dataset.searchMs),readyMs:performance.now()," +
-      "heapBytes:performance.memory ? performance.memory.usedJSHeapSize : null}; })()";
+      "heapBytes:performance.memory ? performance.memory.usedJSHeapSize : null," +
+      "gzipSupported:typeof DecompressionStream==='function'," +
+      "gzipLoaded:performance.getEntriesByType('resource').some(e=>new URL(e.name).pathname.endsWith('/global.json.gz'))," +
+      "rawLoaded:performance.getEntriesByType('resource').some(e=>new URL(e.name).pathname.endsWith('/global.json'))}; })()";
     let result = null;
     const searchDeadline = Date.now() + 30000;
     while (!result && Date.now() < searchDeadline) {
@@ -125,6 +128,9 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
     assert.equal(result.width, requestedWidth, "Requested CSS viewport was not applied");
     assert.ok(result.scrollWidth <= result.width, "Page overflows horizontally");
     assert.ok(result.qa, "Q&A destination is absent");
+    if (result.gzipSupported) {
+      assert.ok(result.gzipLoaded && !result.rawLoaded, "Compressed global data did not load successfully");
+    }
     let legalHref = "";
     if (options.legalLocal) {
       legalHref = await value(client, "(() => [...document.querySelectorAll('#results a')].map(a=>a.href).find(h=>h.startsWith(" +
@@ -187,16 +193,19 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
     if (options.qaLocal) {
       assert.ok(qaResult.firstHref.startsWith(origin + base + "qa-details/"), "Q&A detail did not stay in the private pilot");
       await client.send("Page.navigate", { url: qaResult.firstHref });
-      let detail = false;
+      let detail = null;
       const deadline = Date.now() + 30000;
       while (!detail && Date.now() < deadline) {
         try {
-          detail = await value(client, "(() => {const a=document.querySelector('article.answer-page'); return document.readyState==='complete' && a ? a.textContent : '';})()");
+          detail = await value(client, "(() => {const a=document.querySelector('article.answer-page'); if(document.readyState!=='complete'||!a)return null; return {text:a.textContent,width:innerWidth,scroll:document.documentElement.scrollWidth,external:[...a.querySelectorAll('a[href^=\"https://\"]')].filter(x=>new URL(x.href).hostname!=='kaigo-rules.vercel.app').length};})()");
         } catch { /* navigation in progress */ }
         if (!detail) await pause(100);
       }
-      assert.ok(detail && detail.includes(qaResult.firstQuestion), "Local Q&A detail lost its question");
-      assert.ok(detail.includes("未確認") || detail.includes("確認してください"), "Q&A detail lost its currentness warning");
+      assert.ok(detail && detail.text.includes(qaResult.firstQuestion), "Local Q&A detail lost its question");
+      assert.ok(detail.text.includes("未確認") || detail.text.includes("確認してください"), "Q&A detail lost its currentness warning");
+      assert.ok(detail.external > 0, "Q&A detail lost its external source link");
+      assert.equal(detail.width, requestedWidth);
+      assert.ok(detail.scroll <= detail.width, "Q&A detail overflows horizontally");
       localQaDetail = true;
     }
     let localLegalDetail = false;
@@ -206,7 +215,7 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
       const deadline = Date.now() + 30000;
       while (!detail && Date.now() < deadline) {
         try {
-          detail = await value(client, "(() => {const a=document.querySelector('article.rules-page'); if(document.readyState!=='complete'||!a)return null; return {width:innerWidth,scroll:document.documentElement.scrollWidth,title:a.querySelector('h1')?.textContent,external:a.querySelectorAll('a[href^=\"https://\"]').length};})()");
+          detail = await value(client, "(() => {const a=document.querySelector('article.rules-page'); if(document.readyState!=='complete'||!a)return null; return {width:innerWidth,scroll:document.documentElement.scrollWidth,title:a.querySelector('h1')?.textContent,external:[...a.querySelectorAll('a[href^=\"https://\"]')].filter(x=>new URL(x.href).hostname!=='kaigo-rules.vercel.app').length};})()");
         } catch { /* navigation in progress */ }
         if (!detail) await pause(100);
       }
@@ -247,7 +256,7 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
       searchMs: result.searchMs, readyMs: result.readyMs, heapBytes: result.heapBytes,
       keyboard: true, keyboardSteps, touch: true, unitGroups, pinchScale, printed: true, qaRows: qaResult.rows, qaPage: qaResult.page,
       handbook: handbook ? { checkbox: true, printButton: true, printed: true } : null,
-      localQaDetail, localLegalDetail };
+      localQaDetail, localLegalDetail, gzipGlobal: result.gzipSupported && result.gzipLoaded && !result.rawLoaded };
   } finally {
     if (client) client.close();
     if (child?.pid) {

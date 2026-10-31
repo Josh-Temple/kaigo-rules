@@ -8,6 +8,7 @@ import net from "node:net";
 import path from "node:path";
 import { spawn, spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
+import { gzipSync, gunzipSync } from "node:zlib";
 import care from "../data/care-insurance-act-nodes.json" with { type: "json" };
 import ordinance from "../data/ordinance37-nodes.json" with { type: "json" };
 import qa from "../data/qa-corpus.json" with { type: "json" };
@@ -26,6 +27,7 @@ import {
 import { rankDatabaseSearch } from "../lib/database-search.ts";
 import { buildPilot } from "../experiments/github-pages-db/build.mjs";
 import { chromePath, chromeSmoke } from "../experiments/github-pages-db/chrome-smoke.mjs";
+import { loadJson } from "../experiments/github-pages-db/load-json.mjs";
 
 const pilot = buildPilot();
 console.log("Private DB pilot: " + pilot.bytes + " bytes / " + pilot.files.length +
@@ -156,6 +158,34 @@ test("category filtering and projection exclude internal metadata fields", () =>
   assert.equal(fs.existsSync(path.join(pilot.dir, "handbook-preview")), false);
   const relative = path.relative(fs.realpathSync(path.resolve(import.meta.dirname, "..")), fs.realpathSync(pilot.dir));
   assert.ok(relative === ".." || relative.startsWith(".." + path.sep) || path.isAbsolute(relative));
+});
+
+test("compressed global data is lossless and falls back when unsupported or invalid", async () => {
+  const raw = fs.readFileSync(path.join(pilot.dir, "global.json"));
+  const compressed = fs.readFileSync(path.join(pilot.dir, "global.json.gz"));
+  assert.deepEqual(gunzipSync(compressed), raw);
+  const payload = { qa: [{ id: "qa.example", question: "質問" }] };
+  const json = JSON.stringify(payload);
+  const packed = gzipSync(Buffer.from(json));
+  let calls = [];
+  const fetcher = async (url) => {
+    calls.push(url);
+    return new Response(url.endsWith(".gz") ? packed : json, { status: 200 });
+  };
+  assert.equal(typeof DecompressionStream, "function");
+  assert.deepEqual(await loadJson("./global.json", { fetcher }), payload);
+  assert.deepEqual(calls, ["./global.json.gz"]);
+  calls = [];
+  assert.deepEqual(await loadJson("./global.json", { fetcher, decompress: null }), payload);
+  assert.deepEqual(calls, ["./global.json"]);
+  calls = [];
+  const broken = async (url) => {
+    calls.push(url);
+    return new Response(url.endsWith(".gz") ? "invalid gzip" : json, { status: 200 });
+  };
+  assert.deepEqual(await loadJson("./global.json", { fetcher: broken }), payload);
+  assert.deepEqual(calls, ["./global.json.gz", "./global.json"]);
+  console.log("Global index: " + raw.length + " bytes; gzip=" + compressed.length + " bytes; lossless");
 });
 
 test("all Q&A entries preserve the current search, filters and pagination", { timeout: 120000 }, () => {

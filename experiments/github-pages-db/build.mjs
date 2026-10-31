@@ -6,6 +6,7 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { stripTypeScriptTypes } from "node:module";
+import { gzipSync } from "node:zlib";
 import care from "../../data/care-insurance-act-nodes.json" with { type: "json" };
 import ordinance from "../../data/ordinance37-nodes.json" with { type: "json" };
 import qa from "../../data/qa-corpus.json" with { type: "json" };
@@ -166,7 +167,9 @@ export function buildPilot() {
   global.notice = notices();
   global.qa = questions();
   validate(global);
-  fs.writeFileSync(path.join(dir, "global.json"), JSON.stringify(global));
+  const globalJson = Buffer.from(JSON.stringify(global));
+  fs.writeFileSync(path.join(dir, "global.json"), globalJson);
+  fs.writeFileSync(path.join(dir, "global.json.gz"), gzipSync(globalJson, { level: 9 }));
   const services = [];
   let delegatedUnsafe = 0;
   let checkedServiceNodes = 0;
@@ -209,7 +212,7 @@ export function buildPilot() {
   // so synonyms, normalisation, weights and tie-breaking stay in one source.
   const ranking = fs.readFileSync(path.join(root, "lib/database-search.ts"), "utf8");
   fs.writeFileSync(path.join(dir, "rank-core.mjs"), stripTypeScriptTypes(ranking, { mode: "strip" }));
-  for (const name of ["index.html", "app.mjs", "search.mjs", "style.css", "qa.html", "qa-app.mjs", "qa-projection.mjs"]) {
+  for (const name of ["index.html", "app.mjs", "search.mjs", "style.css", "qa.html", "qa-app.mjs", "qa-projection.mjs", "load-json.mjs"]) {
     fs.copyFileSync(path.join(root, "experiments/github-pages-db", name), path.join(dir, name));
   }
   fs.copyFileSync(path.join(root, "experiments/github-pages-qa/search-core.mjs"), path.join(dir, "qa-core.mjs"));

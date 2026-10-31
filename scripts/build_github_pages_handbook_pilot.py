@@ -32,7 +32,7 @@ STYLES = """
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;margin:0;line-height:1.75;color:#25332d;background:#f6f8f7}
 main{max-width:1050px;margin:0 auto;padding:16px 18px 80px;background:#fff}
 h1{font-size:clamp(1.6rem,4vw,2.1rem)}h2{font-size:1.35rem;margin-top:2rem}h3{font-size:1.16rem;margin-top:1.5rem}
-section,article,aside,blockquote{max-width:100%}p,li,td,th{overflow-wrap:anywhere}a{color:#005a47;text-underline-offset:3px}
+section,article,aside,blockquote{max-width:100%}p,li,td,th,dt,dd,code,pre{overflow-wrap:anywhere}pre{white-space:pre-wrap}a{color:#005a47;text-underline-offset:3px}
 a:focus-visible,summary:focus-visible{outline:3px solid #ba7000;outline-offset:2px}
 table{border-collapse:collapse;display:block;overflow-x:auto;width:100%;margin:16px 0}th,td{border:1px solid #c6d1cc;padding:7px 10px;text-align:left;min-width:75px}
 th{background:#f0f6f2}caption{text-align:left;font-weight:bold}.handbook-role,.dayservice-reading-topic,.section{margin:14px 0;padding:12px 0;border-bottom:1px solid #d9e3dd}
@@ -109,6 +109,12 @@ class ArticleSanitizer(HTMLParser):
             if tag in DROP_CONTENT:
                 self.drop_stack.append(tag)
             return
+        style = attrs_map.get("style") or ""
+        classes = set((attrs_map.get("class") or "").split())
+        if ("hidden" in attrs_map or "inert" in attrs_map or
+                classes.intersection({"hidden", "sr-only", "visually-hidden"}) or
+                re.search(r"(?:^|;)\s*(?:display\s*:\s*none|visibility\s*:\s*hidden)(?:\s*!important)?\s*(?:;|$)", style, re.I)):
+            raise RuntimeError("Hidden content requires review before static extraction")
         if tag in {"svg", "canvas", "iframe", "object", "img"}:
             raise RuntimeError(f"Unsupported interactive or graphical element: {tag}")
         if tag in DROP_CONTENT:

@@ -1,6 +1,7 @@
 """Independent static handbook extraction audit. No deployment."""
 import importlib.util
 import contextlib
+import gzip
 import io
 import json
 import os
@@ -51,7 +52,9 @@ class HandbookSanitizerTest(unittest.TestCase):
         self.assertNotIn("alert(1)", output)
 
     def test_unknown_controls_or_graphics_fail_closed(self):
-        for fragment in ('<button>送信</button>', '<input type="text">', '<svg></svg>'):
+        for fragment in ('<button>送信</button>', '<input type="text">', '<svg></svg>',
+                         '<span hidden>非表示</span>', '<div style="display:none">非表示</div>',
+                         '<span class="sr-only">非表示</span>'):
             parser = pilot.ArticleSanitizer()
             with self.assertRaises(RuntimeError, msg=fragment):
                 parser.feed('<article class="handbook-page">' + fragment + '</article>')
@@ -147,6 +150,7 @@ class HandbookSanitizerTest(unittest.TestCase):
             groups = {group: [] for group in integrated_pilot.GROUPS}
             for name in ["global.json", "service-dayservice.json"]:
                 (search / name).write_text(json.dumps(groups), encoding="utf-8")
+            (search / "global.json.gz").write_bytes(gzip.compress((search / "global.json").read_bytes(), mtime=0))
             (search / "secret.txt").write_text("not public", encoding="utf-8")
             with self.assertRaises(RuntimeError):
                 integrated_pilot.integrate(out, search)
@@ -157,9 +161,59 @@ class HandbookSanitizerTest(unittest.TestCase):
                 integrated_pilot.integrate(out, search)
             self.assertFalse((out / "databases").exists())
             (search / "index.html").write_text('<main><h1>検索</h1></main>', encoding="utf-8")
+            (search / "global.json.gz").write_bytes(gzip.compress(b'{}', mtime=0))
+            with self.assertRaisesRegex(RuntimeError, "does not match"):
+                integrated_pilot.integrate(out, search)
+            (search / "global.json.gz").write_bytes(gzip.compress((search / "global.json").read_bytes(), mtime=0))
             result = integrated_pilot.integrate(out, search)
             self.assertEqual(result["search_services"], 1)
             self.assertTrue((out / "databases/search/global.json").is_file())
+            self.assertGreater(check_local_links(self, out), 0)
+
+    def test_integration_accepts_only_complete_detail_manifests(self):
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            out, search = base / "handbook", base / "search"
+            (out / "handbook").mkdir(parents=True)
+            search.mkdir()
+            (out / "index.html").write_text('<article><h1>手引</h1></article>', encoding="utf-8")
+            for name in integrated_pilot.STATIC_FILES:
+                (search / name).write_text("", encoding="utf-8")
+            marker = '<meta name="kaigo-legal-local-details" content="true">'
+            (search / "index.html").write_text(marker + '<main><h1>検索</h1></main>', encoding="utf-8")
+            marker = '<meta name="kaigo-qa-local-details" content="true">'
+            (search / "qa.html").write_text(marker + '<main><h1>Q&A</h1></main>', encoding="utf-8")
+            (search / "services.json").write_text(
+                json.dumps([{"id": "dayservice", "label": "通所介護", "file": "service-dayservice.json"}]),
+                encoding="utf-8",
+            )
+            (search / "qa-options.json").write_text("[]", encoding="utf-8")
+            row = lambda identifier, href: {"id": identifier, "title": identifier, "href": href, "fields": []}
+            groups = {group: [] for group in integrated_pilot.GROUPS}
+            groups["qa"] = [row("qa.one", "/qa/qa.one")]
+            groups["law"] = [row("law.8", "/law/8")]
+            (search / "global.json").write_text(json.dumps(groups), encoding="utf-8")
+            (search / "global.json.gz").write_bytes(gzip.compress((search / "global.json").read_bytes(), mtime=0))
+            groups = {group: [] for group in integrated_pilot.GROUPS}
+            groups["ordinance"] = [row("rule.93", "/rules/93?service=dayservice")]
+            (search / "service-dayservice.json").write_text(json.dumps(groups), encoding="utf-8")
+            (search / "styles.css").write_text(pilot.STYLES + "\n.qa-answer-preline{white-space:pre-line}\n", encoding="utf-8")
+            (search / "print.js").write_text(pilot.PRINT_JS, encoding="utf-8")
+            for name in ["qa-details/qa.one/index.html", "qa-details/qa.one/reader.html",
+                         "legal/law/all/8.html", "legal/rules/dayservice/93.html"]:
+                page = search / name
+                page.parent.mkdir(parents=True, exist_ok=True)
+                page.write_text("<html><body>公開範囲を確認中</body></html>", encoding="utf-8")
+            extra = search / "qa-details/qa.one/unexpected.html"
+            extra.write_text("unexpected", encoding="utf-8")
+            with self.assertRaisesRegex(RuntimeError, "Missing or unexpected detail"):
+                integrated_pilot.integrate(out, search)
+            self.assertFalse((out / "databases").exists())
+            extra.unlink()
+            result = integrated_pilot.integrate(out, search)
+            self.assertEqual(result["search_services"], 1)
+            self.assertTrue((out / "databases/search/qa-details/qa.one/reader.html").is_file())
+            self.assertTrue((out / "databases/search/legal/rules/dayservice/93.html").is_file())
             self.assertGreater(check_local_links(self, out), 0)
 
 

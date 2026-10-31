@@ -15,6 +15,8 @@ GitHub Pagesの完全な出力でも、公開を許可されたデータセッ�
   一時ディレクトリに固定し、リポジトリ内やPagesの出力先には置かない。
 - 国Q&Aの全収載分は横断検索のデータを共有し、別の巨大なQ&A本文ファイルを
   作らずに、対象範囲・基準種別・30件単位のページ送りを試す。
+- 全体検索データはgzipの可逆圧縮版を優先し、非対応ブラウザや圧縮データの
+  読込失敗時は同一内容の非圧縮版へ戻す。統合時に展開結果の完全一致も検査する。
 - 既存のNext.jsをループバックで起動し、収載Q&Aの通常表示と読者向け表示を
   非公開の静的HTMLに変換する別試作。本文、原典を含むリンク、確認状態の文言を
   既存画面と比較し、許可されない画像や操作部品があれば停止する。
@@ -44,6 +46,13 @@ node --import ./experiments/github-pages-db/register.mjs experiments/github-page
 python scripts/build_github_pages_integrated_pilot.py
 ```
 
+Q&Aと法令・サービス別条文の詳細も含めた非公開の統合試作：
+
+```sh
+python scripts/build_github_pages_integrated_pilot.py --with-details
+KAIGO_RUN_STATIC_DETAILS=1 python -m unittest tests/test_github_pages_full_partial_pilot.py
+```
+
 既存ビルド後にQ&A詳細の独立した一時試作を生成・検査する場合：
 
 ```sh
@@ -69,8 +78,8 @@ KAIGO_RUN_STATIC_DETAILS=1 python -m unittest tests/test_github_pages_legal_deta
 - 全体検索用データには、現行サイトで検索できるQ&Aや通知を含む。
   Q&Aには取込後未レビューのものがあり、通知にも人手確認未実施のものがある。
   一括ダウンロード可能にすることの公開範囲と公開項目は未承認。
-- 統合試作には実際の詳細ページは含まれない。Q&A・法令詳細は別の非公開試作であり、
-  統合試作画面のリンクは現行Vercelサイトへ遷移する。
+- 標準の小さい統合試作には詳細ページは含まれない。より大きい統合試作でも、
+  通知・報酬等の詳細や一部のリンクは現行Vercelサイトに残る。
   現行の表示や地域区分のグループ表示との同等性も未達。
 - 全ページの静的化、公開候補の網羅的な情報漏えい監査、
   法令・原典リンクの照合、Android実機性能・操作、独立受入が未了。

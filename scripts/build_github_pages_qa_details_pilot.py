@@ -96,6 +96,8 @@ def safe_id(value):
 
 def rewrite_link(href, known_ids):
     parts = urlsplit(href)
+    if parts.path.startswith("/handbook-preview"):
+        raise RuntimeError("Preview routes are not allowed in the private pilot")
     if parts.netloc and not parts.scheme:
         return None
     if parts.netloc or parts.scheme:
@@ -176,12 +178,15 @@ def add_details(search_dir, base_url, corpus, direct, max_seconds=600):
         if time.monotonic() - start > max_seconds:
             raise TimeoutError("Q&A detail generation exceeded its time budget")
         suffix = "?reader=1" if reader else ""
-        with opener.open(base_url.rstrip("/") + "/qa/" + quote(identifier, safe="") + suffix, timeout=25) as response:
-            if response.status != 200:
-                raise RuntimeError("Local Q&A route failed")
-            source = response.read(3_000_001)
-            if len(source) > 3_000_000:
-                raise RuntimeError("Unexpectedly large Q&A response")
+        try:
+            with opener.open(base_url.rstrip("/") + "/qa/" + quote(identifier, safe="") + suffix, timeout=25) as response:
+                if response.status != 200:
+                    raise RuntimeError("Local Q&A route failed")
+                source = response.read(3_000_001)
+                if len(source) > 3_000_000:
+                    raise RuntimeError("Unexpectedly large Q&A response")
+        except (OSError, RuntimeError) as error:
+            raise RuntimeError("Q&A source fetch failed for " + identifier + " reader=" + str(reader)) from error
         try:
             rendered, links = render_detail(source.decode("utf-8"), by_id[identifier], identifier, reader, known_ids)
         except (UnicodeError, RuntimeError) as error:
@@ -193,10 +198,16 @@ def add_details(search_dir, base_url, corpus, direct, max_seconds=600):
 
     links = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-        for number, count in enumerate(pool.map(process, jobs), 1):
-            links += count
-            if number % 1000 == 0:
-                print("Private Q&A details checked: " + str(number) + " / " + str(len(jobs)), flush=True)
+        futures = [pool.submit(process, job) for job in jobs]
+        try:
+            for number, future in enumerate(futures, 1):
+                links += future.result()
+                if number % 1000 == 0:
+                    print("Private Q&A details checked: " + str(number) + " / " + str(len(jobs)), flush=True)
+        except BaseException:
+            for future in futures:
+                future.cancel()
+            raise
     (out / "styles.css").write_text(pilot.STYLES + "\n." + PRELINE + "{white-space:pre-line}\n", encoding="utf-8")
     (out / "print.js").write_text(pilot.PRINT_JS, encoding="utf-8")
     qa_page = out / "qa.html"

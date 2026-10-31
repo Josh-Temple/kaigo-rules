@@ -1,5 +1,6 @@
 import { searchQaEntries } from "./qa-core.mjs";
 import { qaFromSearchRow } from "./qa-projection.mjs";
+import { loadJson } from "./load-json.mjs";
 
 const form = document.querySelector("#qa-search");
 const query = document.querySelector("#qa-query");
@@ -83,9 +84,8 @@ next.addEventListener("click", () => { current.page += 1; render(); writeUrl(); 
 
 try {
   if (current.reader) document.querySelector("h1").textContent = "通所介護の関連Q&Aを探す";
-  const [dataResponse, optionsResponse] = await Promise.all([fetch("./global.json"), fetch("./qa-options.json")]);
-  if (!dataResponse.ok || !optionsResponse.ok) throw new Error("検索データを読み込めませんでした。");
-  const data = await dataResponse.json();
+  const [data, optionsResponse] = await Promise.all([loadJson("./global.json"), fetch("./qa-options.json")]);
+  if (!optionsResponse.ok) throw new Error("検索データを読み込めませんでした。");
   const options = await optionsResponse.json();
   entries = data.qa.map(qaFromSearchRow);
   options.sort(([a], [b]) => {

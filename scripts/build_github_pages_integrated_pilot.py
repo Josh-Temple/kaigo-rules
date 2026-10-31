@@ -7,6 +7,7 @@ currently published but not fully reviewed material; it must remain private.
 from __future__ import annotations
 
 import hashlib
+import gzip
 import json
 import re
 import shutil
@@ -17,11 +18,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_github_pages_handbook_all_pilot as handbook
+import build_github_pages_qa_details_pilot as qa_details
+import build_github_pages_legal_details_pilot as legal_details
 
 ROOT = Path(__file__).resolve().parents[1]
 STATIC_FILES = {
     "index.html", "app.mjs", "search.mjs", "rank-core.mjs", "style.css",
-    "services.json", "global.json", "qa.html", "qa-app.mjs", "qa-projection.mjs",
+    "services.json", "global.json", "global.json.gz", "load-json.mjs", "qa.html", "qa-app.mjs", "qa-projection.mjs",
     "qa-core.mjs", "qa-options.json",
 }
 GROUPS = {"law", "ordinance", "unitPrice", "delegated", "notice", "qa"}
@@ -57,9 +60,12 @@ def integrate(handbook_dir: Path, search_dir: Path) -> dict:
     if not (out / "index.html").is_file() or not (out / "handbook").is_dir():
         raise RuntimeError("Incomplete handbook experiment")
     entries = list(source.iterdir())
-    if any(p.is_symlink() or not p.is_file() or
-           (p.name not in STATIC_FILES and not re.fullmatch(r"service-[a-z0-9-]+\.json", p.name))
-           for p in entries):
+    detail_dirs = {p.name for p in entries if p.is_dir()}
+    if detail_dirs - {"qa-details", "legal"} or any(p.is_symlink() for p in source.rglob("*")):
+        raise RuntimeError("Unexpected file or link in search experiment")
+    if any(not p.is_dir() and (not p.is_file() or
+           (p.name not in STATIC_FILES and p.name not in {"styles.css", "print.js"}
+            and not re.fullmatch(r"service-[a-z0-9-]+\.json", p.name))) for p in entries):
         raise RuntimeError("Unexpected file or link in search experiment")
     services = json.loads((source / "services.json").read_text(encoding="utf-8"))
     if not isinstance(services, list) or not services:
@@ -78,14 +84,64 @@ def integrate(handbook_dir: Path, search_dir: Path) -> dict:
         not all(isinstance(value, str) for value in item) for item in qa_options
     ):
         raise RuntimeError("Invalid Q&A service options")
-    expected = STATIC_FILES | set(service_files)
-    actual = {p.name for p in entries}
+    expected = STATIC_FILES | set(service_files) | ({"styles.css", "print.js"} if detail_dirs else set())
+    actual = {p.name for p in entries if p.is_file()}
     if actual != expected:
         raise RuntimeError("Unexpected file or link in search experiment")
+    raw_global = (source / "global.json").read_bytes()
+    try:
+        with gzip.open(source / "global.json.gz", "rb") as stream:
+            inflated = stream.read(len(raw_global) + 1)
+    except (OSError, EOFError) as error:
+        raise RuntimeError("Invalid compressed search dataset") from error
+    if inflated != raw_global:
+        raise RuntimeError("Compressed search dataset does not match the scanned original")
+    nested_expected = set()
+    if "qa-details" in detail_dirs:
+        rows = json.loads((source / "global.json").read_text(encoding="utf-8"))["qa"]
+        ids = {qa_details.safe_id(row["id"]) for row in rows}
+        direct = json.loads((ROOT / "data/qa-direct-evidence.json").read_text(encoding="utf-8"))
+        for alias, item in direct.items():
+            if (item.get("corpus_id") or alias) in ids:
+                ids.add(qa_details.safe_id(alias))
+        for identifier in ids:
+            for name in ("index.html", "reader.html"):
+                nested_expected.add(f"qa-details/{identifier}/{name}")
+    if "legal" in detail_dirs:
+        routes, _ = legal_details.collect_routes(source)
+        nested_expected.update(legal_details.local_path(key) for key in routes)
+    nested_actual = {str(p.relative_to(source)) for name in detail_dirs
+                     for p in (source / name).rglob("*") if p.is_file()}
+    if nested_actual != nested_expected:
+        raise RuntimeError("Missing or unexpected detail page")
+    expected_dirs = set()
+    for name in nested_expected:
+        parent = Path(name).parent
+        while str(parent) != ".":
+            expected_dirs.add(str(parent))
+            parent = parent.parent
+    actual_dirs = {str(p.relative_to(source)) for p in source.rglob("*") if p.is_dir()}
+    if actual_dirs != expected_dirs:
+        raise RuntimeError("Unexpected detail directory")
+    for name, marker, directory in [
+        ("qa.html", "kaigo-qa-local-details", "qa-details"),
+        ("index.html", "kaigo-legal-local-details", "legal"),
+    ]:
+        count = (source / name).read_text(encoding="utf-8").count(marker)
+        if count != (1 if directory in detail_dirs else 0):
+            raise RuntimeError("Detail navigation does not match available pages")
+    if detail_dirs:
+        styles = (source / "styles.css").read_text(encoding="utf-8")
+        expected_styles = handbook.pilot.STYLES + "\n" + (
+            "." + qa_details.PRELINE + "{white-space:pre-line}\n" if "qa-details" in detail_dirs else ""
+        )
+        if styles != expected_styles or (source / "print.js").read_text(encoding="utf-8") != handbook.pilot.PRINT_JS:
+            raise RuntimeError("Unexpected detail styles or script")
     existing = list(out.rglob("*"))
     if any(p.is_symlink() for p in existing):
         raise RuntimeError("Symbolic link in handbook experiment")
-    scanned = [p for p in existing if p.is_file()] + entries
+    search_files = [source / name for name in expected] + [source / name for name in nested_expected]
+    scanned = [p for p in existing if p.is_file()] + search_files
     for file in scanned:
         data = file.read_bytes()
         if any(pattern.search(data) for pattern in SECRET_PATTERNS):
@@ -113,8 +169,10 @@ def integrate(handbook_dir: Path, search_dir: Path) -> dict:
     if target.exists():
         raise RuntimeError("Integrated search directory already exists")
     target.mkdir(parents=True)
-    for name in sorted(expected):
-        shutil.copyfile(source / name, target / name)
+    for name in sorted(expected | nested_expected):
+        destination = target / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source / name, destination)
     root_page = out / "index.html"
     text = root_page.read_text(encoding="utf-8")
     if text.count("</article>") != 1:
@@ -176,5 +234,53 @@ def build() -> dict:
             shutil.rmtree(search_dir, ignore_errors=True)
 
 
+def build_with_details() -> dict:
+    """Build a larger *private* partial site from the existing Next.js app."""
+    handbook_result = handbook.build()
+    search_dir = None
+    child = None
+    try:
+        run = subprocess.run(
+            ["node", "--import", "./experiments/github-pages-db/register.mjs",
+             "experiments/github-pages-db/build.mjs"],
+            cwd=ROOT, check=True, capture_output=True, text=True, timeout=180,
+        )
+        search_dir = Path(json.loads(run.stdout)["dir"])
+        corpus = json.loads((ROOT / "data/qa-corpus.json").read_text(encoding="utf-8"))
+        direct = json.loads((ROOT / "data/qa-direct-evidence.json").read_text(encoding="utf-8"))
+        child, base = qa_details.start_next()
+        qa_result = qa_details.add_details(search_dir, base, corpus, direct, max_seconds=480)
+        legal_result = legal_details.add_details(search_dir, base, max_seconds=360)
+        if child.poll() is None:
+            child.terminate()
+            try:
+                child.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                child.kill()
+                child.wait(timeout=5)
+        child = None
+        result = integrate(Path(handbook_result["directory"]), search_dir)
+        result.update({"handbook_services": handbook_result["services"],
+                       "handbook_chapters": handbook_result["chapters"],
+                       "qa_details": qa_result, "legal_details": legal_result})
+        return result
+    except BaseException:
+        shutil.rmtree(handbook_result["directory"], ignore_errors=True)
+        raise
+    finally:
+        if child and child.poll() is None:
+            child.terminate()
+            try:
+                child.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                child.kill()
+                child.wait(timeout=5)
+        if search_dir:
+            shutil.rmtree(search_dir, ignore_errors=True)
+
+
 if __name__ == "__main__":
-    print(json.dumps(build(), ensure_ascii=False))
+    if sys.argv[1:] not in ([], ["--with-details"]):
+        raise SystemExit("Use --with-details for the larger unpublished experiment")
+    result = build_with_details() if sys.argv[1:] else build()
+    print(json.dumps(result, ensure_ascii=False))

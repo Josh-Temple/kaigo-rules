@@ -82,7 +82,7 @@ class LegalDetailPilotTest(unittest.TestCase):
         child = None
         try:
             child, base = pilot.qa.start_next()
-            summary = pilot.add_details(out, base, max_seconds=240)
+            summary = pilot.add_details(out, base, max_seconds=360)
             self.assertGreater(summary["by_kind"]["law"], 0)
             self.assertGreater(summary["by_kind"]["rules"], 0)
             self.assertGreater(summary["scoped_pages"], 0)

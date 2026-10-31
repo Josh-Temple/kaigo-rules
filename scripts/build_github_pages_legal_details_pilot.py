@@ -46,6 +46,8 @@ def local_path(key):
 
 def route_link(href, current, known):
     parts = urlsplit(href)
+    if parts.path.startswith("/handbook-preview"):
+        raise RuntimeError("Preview routes are not allowed in the private pilot")
     if parts.netloc and not parts.scheme:
         return None
     if parts.netloc or parts.scheme:
@@ -100,19 +102,22 @@ def add_details(search_dir, base_url, max_seconds=480):
     opener = build_opener(qa.NoRedirect())
     start = time.monotonic()
 
-    def process(key):
+    def process(key, request_timeout=45):
         kind, number, service = key
         if time.monotonic() - start > max_seconds:
             raise TimeoutError("Legal detail generation exceeded its time budget")
         href = "/" + kind + "/" + quote(number, safe="")
         if service:
             href += "?service=" + quote(service, safe="")
-        with opener.open(base_url.rstrip("/") + href, timeout=25) as response:
-            if response.status != 200:
-                raise RuntimeError("Local legal route failed")
-            source = response.read(3_000_001)
-            if len(source) > 3_000_000:
-                raise RuntimeError("Unexpectedly large legal response")
+        try:
+            with opener.open(base_url.rstrip("/") + href, timeout=request_timeout) as response:
+                if response.status != 200:
+                    raise RuntimeError("Local legal route failed")
+                source = response.read(3_000_001)
+                if len(source) > 3_000_000:
+                    raise RuntimeError("Unexpectedly large legal response")
+        except (OSError, RuntimeError) as error:
+            raise RuntimeError("Legal source fetch failed for " + repr(key)) from error
         try:
             rendered, original = qa.render_article(
                 source.decode("utf-8"), routes[key], lambda link: route_link(link, key, known),
@@ -125,14 +130,43 @@ def add_details(search_dir, base_url, max_seconds=480):
         dest.write_text(rendered, encoding="utf-8")
         return len(original.links)
 
+    route_keys = list(routes)
+    # Warm the legal bundles and the first scoped route before parallel work.
+    warm_keys = []
+    for predicate in (lambda key: key[0] == "law", lambda key: key[0] == "rules" and not key[2],
+                      lambda key: key[0] == "rules" and bool(key[2])):
+        key = next((key for key in route_keys if predicate(key)), None)
+        if key is not None and key not in warm_keys:
+            warm_keys.append(key)
     links = 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-        for number, count in enumerate(pool.map(process, routes), 1):
-            links += count
-            if number % 500 == 0:
-                print("Private legal details checked: " + str(number) + " / " + str(len(routes)), flush=True)
-    (out / "styles.css").write_text(pilot.STYLES + "\n", encoding="utf-8")
-    (out / "print.js").write_text(pilot.PRINT_JS, encoding="utf-8")
+    for key in warm_keys:
+        warm_started = time.monotonic()
+        links += process(key, request_timeout=90)
+        print("Private legal warmup: " + repr(key) + " seconds=" +
+              str(round(time.monotonic() - warm_started, 2)), flush=True)
+    remaining = [key for key in route_keys if key not in warm_keys]
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        futures = [pool.submit(process, key) for key in remaining]
+        try:
+            for number, future in enumerate(futures, len(warm_keys) + 1):
+                links += future.result()
+                if number % 100 == 0:
+                    print("Private legal details checked: " + str(number) + " / " + str(len(routes)), flush=True)
+        except BaseException:
+            for future in futures:
+                future.cancel()
+            raise
+    styles = out / "styles.css"
+    if styles.exists():
+        allowed_styles = {pilot.STYLES + "\n", pilot.STYLES + "\n." + qa.PRELINE + "{white-space:pre-line}\n"}
+        if styles.read_text(encoding="utf-8") not in allowed_styles:
+            raise RuntimeError("Unexpected existing detail styles")
+    else:
+        styles.write_text(pilot.STYLES + "\n", encoding="utf-8")
+    script = out / "print.js"
+    if script.exists() and script.read_text(encoding="utf-8") != pilot.PRINT_JS:
+        raise RuntimeError("Unexpected existing detail script")
+    script.write_text(pilot.PRINT_JS, encoding="utf-8")
     index = out / "index.html"
     html = index.read_text(encoding="utf-8")
     if html.count("<head>") != 1 or "kaigo-legal-local-details" in html:

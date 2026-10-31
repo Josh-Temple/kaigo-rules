@@ -1,5 +1,6 @@
 import { runSearch, resultHref, GROUPS } from "./search.mjs";
 import { databaseSearchExcerpt } from "./rank-core.mjs";
+import { loadJson } from "./load-json.mjs";
 
 const labels = {
   law: "介護保険法", ordinance: "基準省令", unitPrice: "一単位単価・地域区分",
@@ -18,9 +19,7 @@ let latestSearch = 0;
 
 async function json(file) {
   if (!cache.has(file)) {
-    const response = await fetch("./" + file);
-    if (!response.ok) throw new Error("データを読み込めませんでした。");
-    cache.set(file, await response.json());
+    cache.set(file, await loadJson("./" + file));
   }
   return cache.get(file);
 }
