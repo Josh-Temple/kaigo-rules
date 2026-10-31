@@ -94,7 +94,9 @@ export function generateStaticParams() {
     // Deleted ordinance article ranges may be inaccessible as literal-colon
     // dynamic paths. Retain the original and offer a safe static alias.
     const params = [{ article }];
-    if (article.includes(":")) params.push({ article: article.replace(":", "__range__") });
+    if (typeof article === "string" && article.includes(":")) {
+      params.push({ article: article.replace(":", "__range__") });
+    }
     return params;
   });
 }
