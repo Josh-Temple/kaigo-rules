@@ -316,12 +316,19 @@ try {
         const last = row.querySelector('td:last-child').getBoundingClientRect();
         const caption = element.querySelector('caption span').getBoundingClientRect();
         const previousHeading = element.querySelector('thead th:nth-last-child(2)').getBoundingClientRect();
-        return { moved: element.scrollLeft > 0, labelVisible: label.left >= region.left - 2 && label.right < region.right,
+        return { scrollable: element.scrollWidth > element.clientWidth + 1, moved: element.scrollLeft > 0,
+          labelVisible: label.left >= region.left - 2 && label.right < region.right,
           lastValueVisible: last.left >= label.right && last.right <= region.right + 2,
           modelTitleVisible: caption.left >= region.left - 2 && caption.right <= region.right + 2,
           careLevelHeadingsVisible: previousHeading.left >= label.right - 2 && previousHeading.right <= region.right + 2 };
       });
-      report.interactions.push({ flow: `${width}px fee table → horizontal scroll keeps time and last care level visible`, status: Object.values(geometry).every(Boolean) ? 'PASS' : 'FAIL', geometry });
+      report.interactions.push({
+        flow: `${width}px fee table → key labels and last care level remain visible (scroll only if needed)`,
+        status: geometry.moved === geometry.scrollable &&
+          geometry.labelVisible && geometry.lastValueVisible &&
+          geometry.modelTitleVisible && geometry.careLevelHeadingsVisible ? 'PASS' : 'FAIL',
+        geometry,
+      });
       await page.screenshot({ path: path.join(output, `dayservice-fee-scroll-${width}.png`) });
     }
     await page.setViewportSize({ width: 390, height: 844 });
