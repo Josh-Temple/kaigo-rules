@@ -20,7 +20,12 @@ import {
   filterProgressivePublishedRules, filterProgressivePublishedRecords, getProgressiveSourceRecords,
   listProgressivePublicationServices, progressiveServicesForRule,
 } from "../lib/publication-policy.ts";
-import { privateStaticPilotServicesForRule } from "../lib/private-static-pilot-rule-index.ts";
+import {
+  privateStaticPilotFilterPublishedRules,
+  privateStaticPilotRulePublished,
+  privateStaticPilotServicesForRule,
+  privateStaticPilotSourceRecords,
+} from "../lib/private-static-pilot-rule-index.ts";
 import {
   DELEGATED_REMUNERATION_SOURCE_FAMILY as DELEGATED,
   GOVERNING_STANDARDS_SOURCE_FAMILY as STANDARDS,
@@ -198,7 +203,22 @@ test("private legal membership index matches the original publication policy", {
   for (const service of listProgressivePublicationServices()) {
     const records = getProgressiveSourceRecords(service.service_id);
     sourceRecords += records.length;
-    for (const record of records) allIds.add(record.id);
+    // The private static-only cache must preserve every original record and
+    // every allowlist decision, including child nodes, across all services.
+    const cached = privateStaticPilotSourceRecords(service.service_id);
+    assert.deepEqual(cached, records, "Static cached source differs: " + service.service_id);
+    assert.strictEqual(privateStaticPilotSourceRecords(service.service_id), cached,
+      "Static source index was recomputed: " + service.service_id);
+    const permitted = filterProgressivePublishedRules(service.service_id, records, (row) => row.id);
+    assert.deepEqual(privateStaticPilotFilterPublishedRules(service.service_id, records, (row) => row.id),
+      permitted, "Static cached publication gate differs: " + service.service_id);
+    const ids = new Set(permitted.map((row) => row.id));
+    for (const record of records) {
+      assert.equal(privateStaticPilotRulePublished(service.service_id, record.id),
+        ids.has(record.id), "Static cached publication decision differs: " + record.id);
+      allIds.add(record.id);
+    }
+    assert.equal(privateStaticPilotRulePublished(service.service_id, "not-a-published-record"), false);
     for (const record of filterProgressivePublishedRules(service.service_id, records, (row) => row.id)) {
       const matches = expectedById.get(record.id) || [];
       matches.push(service);

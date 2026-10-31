@@ -29,7 +29,12 @@ import {
   serviceApplicability,
 } from "../../../lib/service-scope";
 import { verifiedRelatedPrimarySources } from "../../../lib/verified-related-sources";
-import { privateStaticPilotServicesForRule } from "../../../lib/private-static-pilot-rule-index";
+import {
+  privateStaticPilotFilterPublishedRules,
+  privateStaticPilotRulePublished,
+  privateStaticPilotServicesForRule,
+  privateStaticPilotSourceRecords,
+} from "../../../lib/private-static-pilot-rule-index";
 
 type RuleNode = {
   id: string;
@@ -164,9 +169,14 @@ export default async function RuleArticlePage({
   const progressiveSelection = Boolean(
     selectedServiceId && isProgressiveRouteCell(selectedServiceId),
   );
+  // Never cache publication decisions in the normal Next.js application.
+  // The private static extractor repeatedly renders the same immutable corpus.
+  const privatePilot = process.env.KAIGO_PRIVATE_STATIC_PILOT === "1";
   const sourceNodes =
     progressiveSelection && selectedServiceId
-      ? (getProgressiveSourceRecords(selectedServiceId) as RuleNode[])
+      ? ((privatePilot
+          ? privateStaticPilotSourceRecords(selectedServiceId)
+          : getProgressiveSourceRecords(selectedServiceId)) as RuleNode[])
       : nodes;
 
   const articleNode = sourceNodes.find(
@@ -178,7 +188,9 @@ export default async function RuleArticlePage({
     selectedServiceId &&
     !(
       progressiveSelection
-        ? isProgressiveRulePublished(selectedServiceId, articleNode.id)
+        ? (privatePilot
+            ? privateStaticPilotRulePublished(selectedServiceId, articleNode.id)
+            : isProgressiveRulePublished(selectedServiceId, articleNode.id))
         : isRecordApplicableToService(
             selectedServiceId,
             "ordinance37",
@@ -195,11 +207,13 @@ export default async function RuleArticlePage({
   const children = (
     selectedServiceId
       ? progressiveSelection
-        ? filterProgressivePublishedRules(
-            selectedServiceId,
-            articleNodes,
-            (node) => node.id,
-          )
+        ? (privatePilot
+            ? privateStaticPilotFilterPublishedRules(
+                selectedServiceId, articleNodes, (node) => node.id,
+              )
+            : filterProgressivePublishedRules(
+                selectedServiceId, articleNodes, (node) => node.id,
+              ))
         : filterRecordsForService(
             selectedServiceId,
             "ordinance37",
@@ -215,7 +229,7 @@ export default async function RuleArticlePage({
   const publicMemberships = scope.memberships.filter((membership) =>
     publicFilterIds.has(membership.service_id),
   );
-  const progressiveMemberships = (process.env.KAIGO_PRIVATE_STATIC_PILOT === "1"
+  const progressiveMemberships = (privatePilot
     ? privateStaticPilotServicesForRule(articleNode.id)
     : progressiveServicesForRule(articleNode.id)).map(
     (service) => ({
