@@ -202,7 +202,7 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
               <span className="corpus-status">{reader ? "現在の取扱いは要確認" : "収載済み・現行性未確認"}</span>
             </div>
             {item.topic ? <p className="qa-topic">{item.topic}</p> : null}
-            <h2>{reader ? item.question : <Link href={`/qa/${encodeURIComponent(item.id)}`}>{item.question}</Link>}</h2>
+            <h2><Link href={`/qa/${encodeURIComponent(item.id)}${reader ? "?reader=1" : ""}`}>{item.question}</Link></h2>
             <p className="qa-answer">{item.answer}</p>
             <p className="meta">{[item.issued_source, item.number].filter(Boolean).join(" / ")}</p>
           </section>
