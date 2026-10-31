@@ -261,6 +261,8 @@ test("historical 2026 fee text is collapsed for readers and always omitted from 
   const css = readFileSync("app/reader.css", "utf8");
   assert.match(component, /topic\.regulatoryUpdate \? <details className="dayservice-historical-fee-details"/);
   assert.match(component, /改正後の照合が済んでいない掲載本文を見る/);
+  assert.match(component, /<div data-nosnippet="">\{basisExcerpts\}<\/div>/);
+  assert.match(component, /Exclude unverified historical figures from Google snippets/);
   assert.match(css, /\.dayservice-historical-fee-details\{display:none!important\}/);
   assert.ok(topics.find(row => row.id === "fee-treatment-improvement").regulatoryUpdate);
   assert.equal(topics.find(row => row.id === "fee-note-13").regulatoryUpdate, undefined);
