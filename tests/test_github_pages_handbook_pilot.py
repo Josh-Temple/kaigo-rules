@@ -51,6 +51,8 @@ class VisibleText(HTMLParser):
         return re.sub(r"\s+", "", "".join(self.words))
 
 
+@unittest.skipUnless((OUT / "measurement.json").is_file(),
+                     "Pilot output is generated after the normal prebuild checks")
 class HandbookStaticPilotTest(unittest.TestCase):
     def test_prerendered_articles_keep_visible_text_and_headings(self):
         report = json.loads((OUT / "measurement.json").read_text(encoding="utf-8"))
