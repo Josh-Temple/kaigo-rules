@@ -236,3 +236,14 @@ test("reader summaries preserve staffing thresholds and extension non-claim scen
   assert.match(byId("staffing-role-functional-training").readerSummary, /事業所ごとに1人以上/);
   assert.match(byId("staffing-role-manager").readerSummary, /常勤/);
 });
+
+test("2026 treatment improvement fee amendment is visibly flagged without overwriting historical sources", () => {
+  const item = topics.find(row => row.id === "fee-treatment-improvement");
+  assert.ok(item, "treatment improvement topic exists");
+  assert.ok(item.basis.some(ref => ref.id === "fee.dayservice.treatment-improvement"));
+  assert.match(item.regulatoryUpdate?.message || "", /令和8年厚生労働省告示第87号/);
+  assert.match(item.regulatoryUpdate?.message || "", /請求・届出/);
+  assert.equal(item.regulatoryUpdate?.officialUrl, "https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7");
+  assert.ok(nationalSourceUrl(item.regulatoryUpdate.officialUrl), "official link passes allowlist");
+  assert.equal(topics.find(row => row.id === "fee-note-6")?.regulatoryUpdate, undefined);
+});
