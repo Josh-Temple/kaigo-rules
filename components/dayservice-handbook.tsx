@@ -137,6 +137,7 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
   const BlockHeading = full ? "h3" : "h4";
   const isFee = topic.basis.some(reference => reference.family === "fee");
   const hasExample = ["staffing-role-life-counselor", "staffing-role-care-worker"].includes(topic.id);
+  const basisExcerpts = topic.basis.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={reference.family !== "fee" || topic.basis.length > 1} showCaution={reference.family !== "fee"} showSourceTitle={index === 0 || reference.family !== topic.basis[index - 1].family} />);
   const sections = [
     ...(topic.basis.length ? [{ id: `${topic.id}-basis`, title: isFee ? "報酬告示" : "基準" }] : []),
     ...(topic.criteria?.length ? [{ id: `${topic.id}-criteria`, title: "大臣基準" }] : []),
@@ -176,7 +177,13 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
       <p>上記は発出時点の回答の要点です。後続改正との適用関係は未確認です。算定前に最新の国の資料も確認してください。</p>
     </section> : null}
     {sections.length > 1 && (topic.criteria?.length || topic.qa?.length) ? <nav className="dayservice-source-navigation" aria-label={`${topic.title}の資料へ移動`}><ul>{sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav> : null}
-    {topic.basis.length ? <section className="dayservice-source-block" id={`${topic.id}-basis`}><BlockHeading>{isFee ? "報酬告示" : "基準"}</BlockHeading>{topic.basis.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={reference.family !== "fee" || topic.basis.length > 1} showCaution={reference.family !== "fee"} showSourceTitle={index === 0 || reference.family !== topic.basis[index - 1].family} />)}</section> : null}
+    {topic.basis.length ? <section className="dayservice-source-block" id={`${topic.id}-basis`}><BlockHeading>{isFee ? "報酬告示" : "基準"}</BlockHeading>
+      {topic.regulatoryUpdate ? <details className="dayservice-historical-fee-details">
+        <summary>改正後の照合が済んでいない掲載本文を見る（参考資料）</summary>
+        <p className="dayservice-source-caution">この掲載本文の加算率は現在の算定に使わないでください。算定月に対応する国の改正告示・通知を先に確認してください。</p>
+        {basisExcerpts}
+      </details> : basisExcerpts}
+    </section> : null}
     {topic.criteria?.length ? <section className="dayservice-source-block" id={`${topic.id}-criteria`}><BlockHeading>厚生労働大臣が定める基準・算定方法</BlockHeading>{topic.criteria.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={false} showCaution={index === 0} />)}</section> : null}
     {topic.interpretation?.length ? <section className="dayservice-source-block" id={`${topic.id}-interpretation`}><BlockHeading>国の解釈通知・留意事項</BlockHeading>{topic.interpretation.map((reference, index) => <Excerpt key={`${reference.id}-${reference.part || ""}`} reference={reference} showCaution={index === 0} />)}</section> : null}
     {hasExample ? <section className="dayservice-source-block" id={`${topic.id}-example`}><BlockHeading>勤務時間の計算例</BlockHeading>{topic.id === "staffing-role-life-counselor" ? <LifeCounselorExample /> : <CareWorkerExample />}</section> : null}
