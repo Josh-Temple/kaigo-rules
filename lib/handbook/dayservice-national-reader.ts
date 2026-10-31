@@ -21,6 +21,7 @@ export type ReaderTopic = {
   readerQuestions?: readonly string[]; qaSearchQuery?: string;
   readerSummary?: string; readerConditions?: readonly string[]; readerExceptions?: readonly string[];
   officialQaFurther?: { number: string; label: string; url: string; explanation?: string; issuedLabel?: string }[];
+  regulatoryUpdate?: { message: string; officialLabel: string; officialUrl: string };
 };
 export type ReaderGroup = { title: string; topics: ReaderTopic[] };
 export type ReaderExcerpt = {
@@ -289,6 +290,12 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
       { number: "59", label: "同じ日に宿泊サービスを利用", explanation: "通所介護と同じ日に宿泊サービスを受ける場合は、延長加算の算定は適当ではないとする回答です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
       { number: "5", issuedLabel: "平成27年度Q&A Vol.4", label: "宿泊時の口腔機能向上サービス（限定例）", explanation: "通所介護計画にあらかじめ位置付けた口腔機能向上サービスについて、通常の時間帯では終えられず、言語聴覚士・歯科衛生士等による延長時間帯の提供が不可欠な場合に、実際に延長して提供した範囲での算定を示しています。宿泊時の延長加算全般を認めるものではありません。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000093219.pdf#page=4" },
     ],
+  } : id === "treatment-improvement" ? {
+    regulatoryUpdate: {
+      message: "介護職員等処遇改善加算は、令和8年厚生労働省告示第87号で区分と加算率が改正されています。下に掲載した従来の告示本文が改正後の全文と一致するか、まだ照合できていません。掲載数値をそのまま現在の請求・届出に使用せず、改正告示と最新の届出要件を確認してください。",
+      officialLabel: "厚生労働省・令和8年告示第87号（通所介護費の改正）",
+      officialUrl: "https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7",
+    },
   } : {}),
 });
 
