@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
 import { DAY_SERVICE_QA_CODES, QA_PAGE_SIZE, searchQaEntries } from "../experiments/github-pages-qa/search-core.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -106,4 +107,20 @@ test("prototype is static, mobile-friendly and has safety notice", () => {
   assert.match(app, /textContent/);
   assert.match(app, /searchQaEntries/);
   assert.doesNotMatch(app, /innerHTML/);
+});
+
+test("private cross-database pilot matches the current server search", { timeout: 240000 }, () => {
+  // The parent itself runs under node:test. Without removing this internal
+  // marker a nested node --test silently skips all child files.
+  const childEnv = { ...process.env };
+  delete childEnv.NODE_TEST_CONTEXT;
+  const result = spawnSync(process.execPath, [
+    "--import", "./experiments/github-pages-db/register.mjs",
+    "--test", "tests/github-pages-db-pilot.test.mjs",
+  ], { cwd: root, env: childEnv, encoding: "utf8", timeout: 220000, maxBuffer: 4 * 1024 * 1024 });
+  if (result.stdout) process.stdout.write(result.stdout);
+  if (result.stderr) process.stderr.write(result.stderr);
+  assert.equal(result.error, undefined, result.error?.message);
+  assert.equal(result.status, 0, "Cross-database parity test failed");
+  assert.match(result.stdout, /DB parity scenarios: \d+ \/ \d+/);
 });

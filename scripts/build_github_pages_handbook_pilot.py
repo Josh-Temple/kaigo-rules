@@ -21,11 +21,13 @@ SOURCE = ROOT / ".next" / "server" / "app" / "handbook" / "dayservice"
 ALLOWED = set(("article nav section aside header footer main div span p h1 h2 h3 h4 h5 h6 "
                "a ul ol li dl dt dd strong b em i u blockquote table caption thead tbody tfoot "
                "tr th td figure figcaption details summary small time pre code br hr sup sub "
-               "label input").split())
+               "label input button").split())
 VOID = {"br", "hr", "input"}
 DROP_CONTENT = {"script", "style", "svg", "iframe", "noscript", "template", "canvas", "object"}
-ALLOWED_ATTRS = {"class", "id", "aria-label", "aria-current", "role", "scope", "colspan",
-                 "rowspan", "title", "tabindex", "open"}
+ALLOWED_ATTRS = {"class", "id", "aria-label", "aria-current", "aria-hidden", "aria-labelledby",
+                 "aria-describedby", "aria-controls", "aria-expanded", "role", "scope",
+                 "colspan", "rowspan", "title", "tabindex", "open", "for", "headers"}
+PRINT_JS = 'document.addEventListener("click",function(e){if(e.target.closest("[data-handbook-print]"))window.print()});\n'
 STYLES = """
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;margin:0;line-height:1.75;color:#25332d;background:#f6f8f7}
 main{max-width:1050px;margin:0 auto;padding:16px 18px 80px;background:#fff}
@@ -40,8 +42,16 @@ th{background:#f0f6f2}caption{text-align:left;font-weight:bold}.handbook-role,.d
 nav ul{display:flex;gap:6px 18px;flex-wrap:wrap;list-style:none;padding-left:0}
 nav li{margin:4px 0}.dayservice-source-block{margin:12px 0 22px}details{margin:10px 0;padding:8px;border:1px solid #d5dfd8;border-radius:6px}
 figure{max-width:100%;margin:18px 0}figcaption{font-weight:650}.meta,.eyebrow{font-size:.88rem;color:#54665b}
+.dayservice-service-timeline{display:grid;grid-template-columns:3fr 1fr 5fr;font-size:.9rem;line-height:1.6;margin-top:14px}
+.dayservice-service-period{display:grid;align-content:center;gap:4px;text-align:center;padding:10px 4px;background:#c7ded1;border:1px solid #597b6e}
+.dayservice-service-gap{border-block:1px dashed #8a978f;background:repeating-linear-gradient(135deg,transparent,transparent 5px,#dce4de 5px,#dce4de 7px)}
+.dayservice-counselor-comparison{display:grid;grid-template-columns:3fr 1fr 4fr 1fr;gap:2px;margin-top:10px;font-size:.78rem}
+.dayservice-counselor-comparison span{background:#dce9e0;border:1px solid #9baca2;padding:8px 4px;text-align:center;min-width:0;overflow-wrap:anywhere}
+.dayservice-counselor-comparison strong{display:block}.dayservice-counselor-comparison .dayservice-missing-hour{background:#faf0e8;border-color:#ac725a}
+input[type=checkbox]{width:1.2rem;height:1.2rem;margin-inline-end:.5rem}button{font:inherit;padding:.6rem;cursor:pointer}
+a:focus-visible,summary:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid #ba7000;outline-offset:2px}
 .pilot-banner{max-width:1050px;margin:0 auto;border-color:#6b756b}
-@media print{body,main{background:#fff}nav,.pilot-banner{display:none}details{display:block}}
+@media print{body,main{background:#fff}nav,.pilot-banner,button{display:none}details{display:block}}
 """.strip()
 
 
@@ -82,6 +92,7 @@ class ArticleSanitizer(HTMLParser):
         self.drop_stack: list[str] = []
         self.chunks: list[str] = []
         self.link_count = 0
+        self.button_text = None
 
     def handle_starttag(self, tag, attrs):
         if self.finished:
@@ -97,16 +108,26 @@ class ArticleSanitizer(HTMLParser):
             if tag in DROP_CONTENT:
                 self.drop_stack.append(tag)
             return
+        if tag in {"svg", "canvas", "iframe", "object"}:
+            raise RuntimeError(f"Unsupported interactive or graphical element: {tag}")
         if tag in DROP_CONTENT:
             self.drop_stack.append(tag)
             return
         if tag not in ALLOWED:
             return
-        safe = []
+        if tag == "input" and attrs_map.get("type") != "checkbox":
+            raise RuntimeError("Unsupported input in handbook article")
+        if tag == "button":
+            if self.button_text is not None:
+                raise RuntimeError("Nested buttons are unsupported")
+            self.button_text = []
+        safe = ['type="button"', 'data-handbook-print="true"'] if tag == "button" else []
         for key, value in attrs:
             if value is None:
                 if tag == "details" and key == "open":
                     safe.append("open")
+                if tag == "input" and key in {"checked", "disabled"}:
+                    safe.append(key)
                 continue
             if key == "href" and tag == "a":
                 target = link_target(value)
@@ -117,7 +138,9 @@ class ArticleSanitizer(HTMLParser):
             elif key in ALLOWED_ATTRS:
                 safe.append(f'{key}="{escape(value)}"')
             elif tag == "input" and key == "type" and value == "checkbox":
-                safe.extend(['type="checkbox"', "disabled"])
+                safe.append('type="checkbox"')
+            elif tag == "input" and key in {"checked", "disabled"}:
+                safe.append(key)
         self.chunks.append("<" + tag + (" " + " ".join(safe) if safe else "") + ">")
 
     def handle_startendtag(self, tag, attrs):
@@ -130,6 +153,12 @@ class ArticleSanitizer(HTMLParser):
             if tag == self.drop_stack[-1]:
                 self.drop_stack.pop()
             return
+        if tag == "button":
+            if self.button_text is None or "".join(self.button_text).strip() not in {
+                "この章のページを印刷・PDF保存", "この章を印刷・PDF保存",
+            }:
+                raise RuntimeError("Unknown handbook button; refusing to guess its behavior")
+            self.button_text = None
         if tag in ALLOWED and tag not in VOID:
             self.chunks.append("</" + tag + ">")
         if tag == "article":
@@ -140,6 +169,8 @@ class ArticleSanitizer(HTMLParser):
 
     def handle_data(self, data):
         if self.collecting and not self.drop_stack and not self.finished:
+            if self.button_text is not None:
+                self.button_text.append(data)
             self.chunks.append(html.escape(data, quote=False))
 
 
@@ -148,7 +179,8 @@ def html_page(title: str, body: str, css_path: str) -> str:
             f'<meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<meta name="robots" content="noindex,nofollow,noarchive">'
             f'<title>{escape(title)} — 静的移行検証</title>'
-            f'<link rel="stylesheet" href="{css_path}"></head><body>'
+            f'<link rel="stylesheet" href="{css_path}">'
+            f'<script defer src="{css_path.replace("styles.css", "print.js")}"></script></head><body>'
             '<div class="pilot-banner"><strong>静的移行の検証版（一般公開していません）</strong>'
             '<p>現在の本番とは別の試作品です。法令の現行性・適用条件・自治体の基準を必ず原典で確認してください。'
             'この試作品では印刷・対話操作やサイト内リンクの一部が本番と異なる場合があります。</p></div>'
@@ -167,6 +199,7 @@ def build() -> dict:
         raise RuntimeError("Next.js did not prerender public dayservice handbook routes")
     CHAPTERS.mkdir(parents=True, exist_ok=True)
     (OUT / "styles.css").write_text(STYLES + "\n", encoding="utf-8")
+    (OUT / "print.js").write_text(PRINT_JS, encoding="utf-8")
     output = []
     links = []
     for chapter in service["chapters"]:
@@ -215,7 +248,7 @@ def build() -> dict:
         "pages": output,
         "notes": [
             "This is an isolated static HTML snapshot of *existing public prerendered articles*, not a complete equivalent of the current site.",
-            "Only sanitized article HTML is copied: all React scripts, RSC hydration data and unknown tags/attributes are discarded.",
+            "Only sanitized article HTML is copied; React scripts and RSC hydration data are discarded. A fixed local script enables the original print action.",
             "Links outside this prototype point to the existing Vercel site.",
             "Interactive functions, visual parity, real browser tests, legal review and complete static export are not approved.",
             "No publishing or site domain changes."
@@ -229,7 +262,7 @@ def build() -> dict:
         f"- Static output: {site_bytes:,} bytes ({site_bytes / 1_000_000:.3f} MB) across {len(site_files)} files (plus local measurement files).",
         f"- Links in sanitized articles: {summary['article_link_count']}",
         "- Source: pre-rendered *public* handbook articles from existing validated Next.js build",
-        "- Excludes scripts, Next hydration state, preview and all other routes; source JSON never deployed.",
+        "- Excludes Next hydration state, preview and all other routes; only a fixed local print script is included.",
         "- Remaining: legal/content parity, presentation parity, mobile performance, complete routing/API and search.",
         "- Status: HOLD_NO_DEPLOY / NO_MERGE",
     ]
