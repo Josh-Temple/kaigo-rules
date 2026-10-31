@@ -159,6 +159,14 @@ const fullTimeQa = "qa.mhlw.09387a7f7b6c9726887a";
 export const dayserviceStaffingTopics: ReaderTopic[] = [
   { id: "staffing-role-life-counselor", title: "生活相談員", basis: [s("93.p.1.i.1", "提供日ごとの配置"), s("93.p.6", "常勤者の確保")],
     interpretation: [n("personnel.staffing", "④"), n("personnel.life-counselor")], qa: [fullTimeQa, "qa.mhlw.98bc1e237f7981f16869", "qa.mhlw.bed5148c4af01939c01d"],
+    readerQuestions: [
+      "提供日ごとのサービス提供時間数を確認したか？",
+      "生活相談員の勤務延時間数を勤務表と照合したか？",
+      "資格と常勤者の確保を、勤務時間数とは別に確認したか？",
+    ],
+    readerSummary: "生活相談員は、事業所がサービスを提供する日ごとに、提供時間数に応じた勤務延時間数を確保する必要があります。",
+    readerConditions: ["事業所のサービス提供時間数に対し、生活相談員の勤務延時間数の合計が必要な水準に達するか確認する。", "生活相談員又は介護職員のうち1人以上の常勤者を確保する。"],
+    readerExceptions: ["勤務時間の合計だけで、資格・専従・兼務の取扱いまで満たしたとは判断できません。"],
     local: "資格の認定範囲や実務経験の取扱い、必要書類は、事業所所在地を所管する指定権者の介護保険担当窓口に確認してください。" },
   { id: "staffing-role-nurse", title: "看護職員", basis: [s("93.p.1.i.2", "単位ごとの確保")],
     interpretation: [n("personnel.staffing", "⑥")], qa: ["qa.mhlw.d9a7f5b49c1ba8a9326e", "qa.mhlw.19ff5348270062de7154"],
@@ -186,9 +194,25 @@ export const dayserviceStaffingTopics: ReaderTopic[] = [
   },
   { id: "staffing-role-functional-training", title: "機能訓練指導員", basis: [s("93.p.1.i.4", "配置人数"), s("93.p.5", "能力と兼務")],
     interpretation: [n("personnel.function-training")], qa: ["qa.mhlw.012fdfa8b64a3b333d4e", "qa.mhlw.19ff5348270062de7154"],
+    readerQuestions: [
+      "事業所ごとに機能訓練指導員を1人以上配置しているか？",
+      "担当者が機能訓練に必要な能力を有しているか？",
+      "個別機能訓練加算を算定する場合、人員基準とは別の加算要件を確認したか？",
+    ],
+    readerSummary: "機能訓練指導員は、事業所ごとに1人以上必要です。人員基準の配置と、個別機能訓練加算の専従・配置条件は別に確認します。",
+    readerConditions: ["国の省令第93条の人数・能力と、解釈通知の兼務の取扱いを確認する。", "加算を算定する場合は、報酬告示・別告示・留意事項の追加条件を確認する。"],
+    readerExceptions: ["人員基準上の配置だけで、個別機能訓練加算の要件を満たすとは限りません。"],
     local: "資格・経験の確認書類や、併設施設との取扱いは、所在地の指定権者に確認してください。" },
   { id: "staffing-role-manager", title: "管理者", basis: [s("94.p.1", "常勤・専従と兼務"), s("52", "管理者の責務", true)],
     interpretation: [n("personnel.manager")], qa: ["qa.mhlw.a3ceb95affec100c3cc3"],
+    readerQuestions: [
+      "管理者が常勤で勤務し、管理業務に従事しているか？",
+      "ほかの職務や事業所と兼務する場合、管理に支障がないか？",
+      "兼務の実態を勤務表・連絡体制などで確認できるか？",
+    ],
+    readerSummary: "管理者は原則として常勤で、管理の職務に専ら従事します。管理に支障がない場合の兼務の取扱いがあります。",
+    readerConditions: ["国の省令第94条と管理者の責務に関する規定を確認する。", "兼務する場合は、管理に支障がないか実際の業務・勤務体制を確認する。"],
+    readerExceptions: ["兼務が認められるかは、職名だけでなく管理業務への支障の有無が重要です。"],
     local: "兼務する職務・事業所、勤務体制と緊急時の対応を示し、管理に支障がないか、所在地の指定権者に確認してください。" },
 ];
 
@@ -257,13 +281,13 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
     qaSearchQuery: "延長加算",
     readerSummary: "8時間以上9時間未満の通所介護と、その前後に連続して行う日常生活上の世話を合わせて9時間以上となる場合に、届出などの条件を確認する加算です。",
     readerConditions: ["通所介護の所要時間と、その前後に引き続き行った世話の時間を合計する。9時間以上10時間未満から13時間以上14時間未満まで区分がある。", "届出と、実際に提供したサービス・世話の内容を確認する。"],
-    readerExceptions: ["平成27年度国Q&A問59では、同一日に宿泊サービスを受けた場合の延長加算は適当ではないと説明されています。", "同Q&A問58では、自宅に戻らず別の宿泊場所へ行くまでの間に延長して介護を行った場合の算定を認めています。", "ただし平成27年度Q&A Vol.4問5には、計画に位置付けた口腔機能向上サービスを延長時間帯に行う必要がある場合の例外も示されています。", "これらの過去Q&Aについて、後続改正と現在の算定要件との適用関係は確認中です。"],
+    readerExceptions: ["平成27年度国Q&A問59では、同一日に宿泊サービスを受けた場合の延長加算は適当ではないと説明されています。", "同Q&A問58では、自宅に戻らず別の宿泊場所へ行くまでの間に延長して介護を行った場合の算定を認めています。", "平成27年度Q&A Vol.4問5では、事業所の設備を利用して宿泊する場合でも、通所介護計画に位置付けた口腔機能向上サービスが通常の時間帯では終わらず、延長時間帯での提供が不可欠な場合の限定的な取扱いが示されています。", "これらの過去Q&Aについて、後続改正と現在の算定要件との適用関係は確認中です。"],
     officialQaFurther: [
       { number: "56", label: "送迎と居宅内介助", explanation: "9時間の通所介護等の前後に送迎・居宅内介助を行う場合の取扱いを示しています。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
       { number: "57", label: "宿泊と延長に係る利用料", explanation: "宿泊サービスを提供する場合、延長に係る利用料の徴収は適当ではないとする回答です。延長加算そのものと混同しないでください。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
       { number: "58", label: "別の宿泊場所へ行くまで", explanation: "自宅に帰らず別の宿泊場所へ行くまで延長して介護を実施する事例です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
       { number: "59", label: "同じ日に宿泊サービスを利用", explanation: "通所介護と同じ日に宿泊サービスを受ける場合は、延長加算の算定は適当ではないとする回答です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
-      { number: "5", issuedLabel: "平成27年度Q&A Vol.4", label: "宿泊時でも必要な訓練を行う例外", explanation: "あらかじめ通所介護計画に位置付けた口腔機能向上サービスが、通常の提供時間だけでは完了できず、延長時間帯で不可欠な場合について、実際に延長して提供した範囲での算定を示した例外です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000093219.pdf#page=4" },
+      { number: "5", issuedLabel: "平成27年度Q&A Vol.4", label: "宿泊時の口腔機能向上サービス（限定例）", explanation: "通所介護計画にあらかじめ位置付けた口腔機能向上サービスについて、通常の時間帯では終えられず、言語聴覚士・歯科衛生士等による延長時間帯の提供が不可欠な場合に、実際に延長して提供した範囲での算定を示しています。宿泊時の延長加算全般を認めるものではありません。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000093219.pdf#page=4" },
     ],
   } : {}),
 });
