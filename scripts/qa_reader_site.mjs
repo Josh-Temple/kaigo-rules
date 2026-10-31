@@ -28,7 +28,7 @@ const data = JSON.parse(fs.readFileSync('data/handbook.generated.json', 'utf8'))
 const pilots = ['dayservice', 'dayrehab', 'homevisit'];
 const keyRoutes = ['/', '/services', ...pilots.flatMap(s => ['/services/' + s, '/handbook/' + s + '/staffing']),
   '/handbook/dayservice/equipment', '/handbook/dayservice/operations', '/handbook/dayservice/remuneration', '/handbook/dayservice/additions',
-  '/questions/nurse-staffing', '/qa?service=16&q=看護職員', '/sources', '/handbook-sources'];
+  '/questions/nurse-staffing', '/qa?service=16&q=看護職員', '/qa?reader=1&service=16&q=看護職員', '/sources', '/handbook-sources'];
 const report = { head: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   tree: execFileSync('git', ['write-tree'], { encoding: 'utf8' }).trim(),
   baseline, full, started: new Date().toISOString(), cases: [], interactions: [], screenshots: [] };
@@ -150,7 +150,7 @@ try {
           const rect = child.getBoundingClientRect();
           return rect.left >= 0 && rect.right <= innerWidth && child.scrollWidth <= child.clientWidth + 1;
         }));
-        const numbers = role === 'life-counselor' ? text.includes('3時間＋5時間＝8時間') && text.includes('合計8時間') && text.includes('12時〜13時はサービス提供なし')
+        const numbers = role === 'life-counselor' ? text.includes('3時間＋5時間＝8時間') && text.includes('合計8時間') && text.includes('12時〜13時はサービス提供なし') && text.includes('3時間＋4時間＝7時間') && text.includes('1時間足りません') && text.includes('17〜18時') && await example.locator('.dayservice-counselor-comparison .dayservice-missing-hour').count() === 1
           : text.includes('20人全員が5時間利用') && text.includes('10時間') && text.includes('常時1人以上');
         report.interactions.push({ flow: `${width}px staffing → ${role} calculation on screen`, status: firstStaffingTopic === 'staffing-unit' && fits && numbers ? 'PASS' : 'FAIL' });
         if (role === 'life-counselor') {
@@ -164,8 +164,68 @@ try {
           report.interactions.push({ flow: `${width}px counselor calculation → source caution on screen`, status: 'PASS' });
         }
       }
+      // Reader-first content added in PR #583: check the actual rendered chapter, not only the data table.
+      await page.goto(origin + '/handbook/dayservice/staffing');
+      const staffingRows = page.locator('.dayservice-staffing-overview tbody tr');
+      report.interactions.push({
+        flow: `${width}px staffing → five role summaries with in-page legal details`,
+        status: await staffingRows.count() === 5 &&
+          await staffingRows.filter({ hasText: '生活相談員' }).count() === 1 &&
+          await page.locator('.dayservice-staffing-overview tbody a[href="#staffing-role-manager"]').count() === 1 ? 'PASS' : 'FAIL',
+      });
+      for (const role of ['nurse', 'care-worker']) {
+        const item = page.locator(`#staffing-role-${role}`);
+        const checks = item.locator('.dayservice-reader-questions li');
+        const qaSearch = item.locator('.dayservice-qa-search-link a');
+        const href = await qaSearch.getAttribute('href');
+        report.interactions.push({
+          flow: `${width}px ${role} → three practical questions and related national Q&A search`,
+          status: await checks.count() === 3 && Boolean(href?.startsWith('/qa?reader=1&service=16&q=')) &&
+            (await item.locator('.dayservice-reader-questions > .dayservice-reader-question-note').innerText()).includes('国の基準') ? 'PASS' : 'FAIL',
+        });
+      }
       await page.goto(origin + '/handbook/dayservice/additions');
+      report.interactions.push({
+        flow: `${width}px additions → two priority topics linked before full source text`,
+        status: await page.locator('.dayservice-priority-additions a[href$="#fee-note-13"]').count() === 1 &&
+          await page.locator('.dayservice-priority-additions a[href$="#fee-note-6"]').count() === 1 ? 'PASS' : 'FAIL',
+      });
       const training = page.locator('#fee-note-13');
+      const trainingSummary = await training.locator('.dayservice-reader-overview').innerText();
+      const trainingDiagram = await training.locator('.dayservice-timing-example').innerText();
+      report.interactions.push({
+        flow: `${width}px training → summary, exceptions and overlapping hours diagram`,
+        status: trainingSummary.includes('外部機関') && trainingDiagram.includes('10〜12時') &&
+          trainingDiagram.includes('（Ⅰ）ロ') &&
+          await training.locator('.dayservice-reader-questions li').count() === 3 ? 'PASS' : 'FAIL',
+      });
+      const trainingQa = training.locator('.dayservice-official-qa-links li a');
+      const trainingLinks = await trainingQa.evaluateAll(nodes => nodes.map(node => node.getAttribute('href')));
+      const qaPages = [34, 34, 35];
+      report.interactions.push({
+        flow: `${width}px training addition → Q&A 55–57 official original pages`,
+        status: await training.locator('.dayservice-reader-questions li').count() === 3 &&
+          trainingLinks.length === 3 &&
+          trainingLinks.every((href, i) => href?.startsWith('https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=') &&
+            href.endsWith(`#page=${qaPages[i]}`)) &&
+          (await training.locator('.dayservice-official-qa-links > p').innerText()).includes('未確認') ? 'PASS' : 'FAIL',
+      });
+      const extension = page.locator('#fee-note-6');
+      const extensionText = await extension.innerText();
+      report.interactions.push({
+        flow: `${width}px extension → same-day overnight warning and 2015 questions`,
+        status: extensionText.includes('宿泊サービス') &&
+          extensionText.includes('問59') && extensionText.includes('問56') &&
+          extensionText.includes('9時間30分') &&
+          await extension.locator('.dayservice-official-qa-links li').count() === 5 &&
+          extensionText.includes('Q&A Vol.4・問5') ? 'PASS' : 'FAIL',
+      });
+      report.interactions.push({
+        flow: `${width}px extension addition → original fee and Q&A search`,
+        status: await extension.locator('.dayservice-reader-questions li').count() === 3 &&
+          (await extension.locator('.dayservice-reader-questions').innerText()).includes('8時間以上9時間未満') &&
+          (await extension.locator('.dayservice-qa-search-link a').getAttribute('href'))?.startsWith('/qa?reader=1&service=16&q=') ? 'PASS' : 'FAIL',
+      });
       await page.locator('#additions-topic-navigation a[href="#fee-note-13"]').click();
       await page.screenshot({ path: path.join(output, `dayservice-training-${width}.png`) });
       for (const suffix of ['criteria', 'qa']) {
@@ -178,6 +238,34 @@ try {
         }, targetId, { timeout: 5000 });
         report.interactions.push({ flow: `${width}px addition → ${suffix} on screen`, status: 'PASS' });
         if (suffix === 'criteria' && width === 390) await page.screenshot({ path: path.join(output, 'dayservice-training-criteria-390.png') });
+      }
+      await page.goto(origin + '/qa?reader=1&service=16&q=看護職員');
+      const qaReaderText = await page.locator('main').innerText();
+      report.interactions.push({
+        flow: `${width}px related Q&A search → reader-friendly page`,
+        status: (await page.locator('h1').innerText()).includes('関連Q&A') &&
+          !qaReaderText.includes('現在の収載範囲') &&
+          !qaReaderText.includes('「収載」と「現行性確認」') &&
+          !(await page.locator('main').innerText()).includes('2019年以降の分類') &&
+          await page.locator('.qa-list .qa-row').count() > 0 ? 'PASS' : 'FAIL',
+      });
+      const qaDetailLink = page.locator('.qa-list .qa-row h2 a').first();
+      const qaDetailHref = await qaDetailLink.getAttribute('href');
+      if (qaDetailHref?.includes('?reader=1')) {
+        await qaDetailLink.click();
+        await page.waitForURL(url => url.pathname.startsWith('/qa/') && url.searchParams.get('reader') === '1', { timeout: 15000 });
+        await page.locator('main a[href*="mhlw.go.jp"]').first().waitFor({ state: 'attached', timeout: 15000 });
+        const qaDetailText = await page.locator('main').innerText();
+        report.interactions.push({
+          flow: `${width}px related Q&A → individual answer and government source without editor data`,
+          status: qaDetailText.includes('質問') && qaDetailText.includes('回答') &&
+            !qaDetailText.includes('2019年以降のサービス分類') &&
+            !qaDetailText.includes('出典・参照先の確認日') &&
+            await page.locator('main a[href*="mhlw.go.jp"]').count() > 0 &&
+            await page.locator('main .qa-corpus-meta').count() === 0 ? 'PASS' : 'FAIL',
+        });
+      } else {
+        report.interactions.push({ flow: `${width}px reader Q&A individual detail link`, status: 'FAIL' });
       }
       await page.goto(origin + '/handbook/dayservice/remuneration#basic-fee');
       const tableRegion = page.locator('.dayservice-table-scroll').first();

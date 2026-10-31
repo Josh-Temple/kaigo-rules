@@ -31,6 +31,7 @@ type SearchParams = Promise<{
   service?: string;
   standard?: string;
   page?: string;
+  reader?: string;
 }>;
 
 const qaCorpus = qaCorpusData as QaItem[];
@@ -80,6 +81,7 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
   const q = (params.q || "").trim();
   const service = params.service || "";
   const standard = params.standard || "";
+  const reader = params.reader === "1";
   const requestedPage = Math.max(1, Number.parseInt(params.page || "1", 10) || 1);
 
   const standards = Array.from(
@@ -127,6 +129,7 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
     if (q) sp.set("q", q);
     if (service) sp.set("service", service);
     if (standard) sp.set("standard", standard);
+    if (reader) sp.set("reader", "1");
     sp.set("page", String(nextPage));
     return `/qa?${sp.toString()}`;
   };
@@ -134,7 +137,7 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
   return (
     <article className="answer-page wide-page qa-corpus-page">
       <p className="eyebrow">厚生労働省のQ&A</p>
-      <h1>国Q&Aを探す</h1>
+      <h1>{reader ? "通所介護の関連Q&Aを探す" : "国Q&Aを探す"}</h1>
       <p className="lead">
         サービスやキーワードから、厚生労働省の介護サービス関係Q&Aを探せます。
         現在 {qaMeta.rows_included?.toLocaleString("ja-JP")} 件を掲載しています。古い取扱いが含まれるため、発出日と修正資料も確認してください。
@@ -143,17 +146,19 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
       <div className="notice">
         <strong>掲載されているQ&Aが、現在も有効とは限りません。</strong>
         <br />
-        「収載」と「現行性確認」は別です。個々のQ&Aが現在の法令・通知でも有効かは
-        未確認のものを含み、回答ページの根拠として使うものは別途確認します。
+        {reader ? "古い回答や改正前の取扱いも含まれます。利用する前に発出日と最新の法令・Q&Aを確認してください。" : <>
+          「収載」と「現行性確認」は別です。個々のQ&Aが現在の法令・通知でも有効かは
+          未確認のものを含み、回答ページの根拠として使うものは別途確認します。</>}
       </div>
 
       {relatedServices.length ? <nav className="handbook-topic-navigation" aria-label="関連する手引">
         {relatedServices.map(item => <Link key={item.service_id} href={`/services/${item.service_id}#national_qa`}>{item.label}の手引に戻る</Link>)}
       </nav> : <p><Link href="/services">サービス別の手引を読む →</Link></p>}
 
-      <VerificationSummary layerId="qa-corpus" />
+      {!reader ? <VerificationSummary layerId="qa-corpus" /> : null}
 
       <form className="qa-search-form" method="get" action="/qa">
+        {reader ? <input type="hidden" name="reader" value="1" /> : null}
         <label className="qa-search-main">
           <span>キーワード</span>
           <input name="q" defaultValue={q} placeholder="例：看護職員、送迎、計画、署名" />
@@ -183,21 +188,21 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
             <p className="meta">関連語も検索：{appliedSynonyms.join(" / ")}</p>
           ) : null}
         </div>
-        {(q || service || standard) ? <Link href="/qa">条件をクリア</Link> : null}
+        {(q || service || standard) ? <Link href={reader ? "/qa?reader=1" : "/qa"}>条件をクリア</Link> : null}
       </div>
 
       <div className="qa-list">
         {visible.map((item) => (
           <section className="qa-row" key={item.id}>
             <div className="qa-row-head">
-              <p className="meta">
+              {reader ? <p className="meta">{item.standard_label || "介護サービスに関するQ&A"}</p> : <p className="meta">
                 {item.scope} ・ {item.standard_label || "基準種別なし"}
                 {item.current_service_scope ? ` / 2019年以降の分類：${item.current_service_scope}` : ""}
-              </p>
-              <span className="corpus-status">収載済み・現行性未確認</span>
+              </p>}
+              <span className="corpus-status">{reader ? "現在の取扱いは要確認" : "収載済み・現行性未確認"}</span>
             </div>
             {item.topic ? <p className="qa-topic">{item.topic}</p> : null}
-            <h2><Link href={`/qa/${encodeURIComponent(item.id)}`}>{item.question}</Link></h2>
+            <h2><Link href={`/qa/${encodeURIComponent(item.id)}${reader ? "?reader=1" : ""}`}>{item.question}</Link></h2>
             <p className="qa-answer">{item.answer}</p>
             <p className="meta">{[item.issued_source, item.number].filter(Boolean).join(" / ")}</p>
           </section>
@@ -218,7 +223,7 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
         </nav>
       ) : null}
 
-      <section className="section qa-corpus-meta">
+      {!reader ? <section className="section qa-corpus-meta">
         <h2>現在の収載範囲</h2>
         <p>
           厚生労働省の公式Q&A集でサービスに分類されている質問・回答を掲載しています。
@@ -232,7 +237,7 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
         {officialSource ? (
           <p><a href={officialSource.url} target="_blank" rel="noreferrer">厚生労働省の介護サービス関係Q&Aを確認</a></p>
         ) : null}
-      </section>
+      </section> : <section className="section"><p><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html" target="_blank" rel="noopener noreferrer">厚生労働省の介護サービス関係Q&A集を見る</a></p><p><Link href="/qa">Q&Aデータベースの詳細検索へ</Link></p></section>}
     </article>
   );
 }

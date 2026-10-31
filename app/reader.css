@@ -98,6 +98,53 @@
 .dayservice-example-result dd{margin:4px 0 0}
 .dayservice-example-result strong{white-space:nowrap}
 .dayservice-source-caution,.dayservice-read-across{font-size:.88rem;line-height:1.8;padding:12px 16px;margin:12px 0;background:#faf7ec;border-left:3px solid #a3843d}
+/* A compact reader-first comparison, with links back to each full legal section. */
+.dayservice-staffing-overview{margin:24px 0 32px}
+.dayservice-staffing-overview h3{margin:0 0 12px;font-size:1.2rem}
+.dayservice-staffing-overview>p{margin:0 0 12px;line-height:1.8}
+.dayservice-staffing-overview table{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.75}
+.dayservice-staffing-overview th,.dayservice-staffing-overview td{padding:10px 12px;text-align:left;vertical-align:top;border:1px solid #c7d3ca;overflow-wrap:anywhere}
+.dayservice-staffing-overview thead{background:#edf2ee}
+.dayservice-staffing-overview tbody th{width:26%;font-weight:700;background:#f6f7f4}
+.dayservice-staffing-overview a{display:inline-block;padding:4px 0;min-height:32px}
+.dayservice-priority-additions{padding:14px 18px;margin:16px 0 24px;border-left:3px solid #597b6e;background:#f6f7f4}
+.dayservice-priority-additions p{margin:0 0 10px}
+.dayservice-priority-additions ul{padding-left:1.3em;margin:4px 0 14px}
+.dayservice-priority-additions li{margin:8px 0}
+.dayservice-priority-additions a{display:inline-block;min-height:40px;padding:3px 0}
+.dayservice-reader-overview{margin:0 0 22px;padding:14px 18px;border-left:3px solid #597b6e;background:#f6f7f4}
+.dayservice-reader-overview>p:first-child,.dayservice-reader-overview section>p:first-child{margin:0 0 8px}
+.dayservice-reader-overview section{margin-top:12px}
+.dayservice-reader-overview ul{padding-left:1.4em;margin:0}
+.dayservice-reader-overview li{margin:4px 0;line-height:1.8}
+.dayservice-reader-overview>p:last-child{margin-top:14px}
+.dayservice-counselor-comparison{display:grid;grid-template-columns:3fr 1fr 4fr 1fr;gap:2px;margin-top:10px;font-size:.78rem}
+.dayservice-counselor-comparison span{background:#dce9e0;border:1px solid #9baca2;padding:8px 4px;text-align:center;min-width:0;overflow-wrap:anywhere}
+.dayservice-counselor-comparison strong{display:block}
+.dayservice-counselor-comparison .dayservice-missing-hour{background:#faf0e8;border-color:#ac725a}
+.dayservice-timing-example{margin:24px 0}
+.dayservice-timing-example figcaption{font-weight:700;margin-bottom:8px}
+.dayservice-time-example-scroll{overflow-x:auto}
+.dayservice-time-example-scroll:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
+.dayservice-timing-example table{border-collapse:collapse;width:100%;min-width:31rem;font-size:.87rem}
+.dayservice-timing-example th,.dayservice-timing-example td{padding:9px;border:1px solid #b9c9bf;text-align:center}
+.dayservice-timing-example th:first-child{position:sticky;left:0;background:var(--bg)}
+.dayservice-timing-example thead{background:#edf2ee}
+.dayservice-qa-print-url{display:none}
+.dayservice-reader-questions{border-left:3px solid #597b6e;background:#f6f7f4;padding:14px 18px;margin:0 0 24px}
+.dayservice-reader-questions>p:first-child{margin:0 0 8px}
+.dayservice-reader-questions ul{margin:0;padding-left:1.4em}
+.dayservice-reader-questions li{margin:4px 0;line-height:1.8}
+.dayservice-reader-question-note{color:var(--muted);font-size:.85rem;margin:10px 0 0}
+.dayservice-example-contrast{border-top:1px solid #9baca2;padding-top:12px;margin-top:16px}
+.dayservice-example-contrast p{margin:0 0 8px}
+.dayservice-official-qa-links{padding:0 0 8px}
+.dayservice-official-qa-links ul{padding-left:1.3em;margin:0 0 8px}
+.dayservice-official-qa-links li{padding:5px 0;line-height:1.7}
+.dayservice-official-qa-links p{font-size:.85rem;color:var(--muted);line-height:1.7}
+.dayservice-qa-search-link{display:grid;gap:6px;margin:20px 0 24px;font-size:.9rem}
+.dayservice-qa-search-link a{display:inline-flex;align-items:center;min-height:44px}
+.dayservice-qa-search-link span{color:var(--muted);font-size:.85rem;line-height:1.7}
 .dayservice-qa{padding:18px 20px;margin:0 0 20px;background:#f1f6f5;border:1px solid #c7d8d1;scroll-margin-top:24px}
 .dayservice-qa-citation{display:grid;gap:6px;font-size:.88rem;line-height:1.65;margin:0 0 18px}
 .dayservice-qa-citation strong{font-size:1rem}
@@ -120,6 +167,7 @@
   .dayservice-topic-navigation{padding:12px 14px}
   .dayservice-national-reader .dayservice-topic-navigation ul{grid-template-columns:1fr;gap:3px}
   .dayservice-qa{padding:16px 14px}
+  .dayservice-reader-questions{padding:12px 14px}
   .dayservice-fee-table{min-width:32rem}
   .dayservice-fee-table th,.dayservice-fee-table td{padding-inline:8px}
   .dayservice-national-reader .dayservice-reading-topic>h2,.dayservice-national-reader .dayservice-reading-topic>h3{font-size:1.3rem}
@@ -158,6 +206,19 @@
   .dayservice-fee-table th:first-child{position:static;box-shadow:none}
   .dayservice-fee-table caption span{position:static;max-width:none}
   .dayservice-original-details:not([open]){display:none}.dayservice-staffing-example{break-inside:avoid-page}
+  .dayservice-staffing-overview,.dayservice-priority-additions{break-inside:auto;background:transparent}
+  .dayservice-staffing-overview tr{break-inside:avoid-page}
+  .dayservice-staffing-overview th,.dayservice-staffing-overview td{padding:6pt 7pt}
+  .dayservice-staffing-overview tbody th{background:transparent}
+  .dayservice-reader-questions,.dayservice-reader-overview{background:transparent}
+  .dayservice-qa-search-link{display:grid;break-inside:avoid-page}
+  .dayservice-qa-search-link a,.dayservice-qa-search-link span:not(.dayservice-qa-print-url){display:none}
+  .dayservice-qa-print-url{display:block;font-size:9pt;overflow-wrap:anywhere}
+  .dayservice-time-example-scroll{overflow:visible}
+  .dayservice-timing-example table{min-width:0;font-size:8pt}
+  .dayservice-time-example-scroll th,.dayservice-time-example-scroll td{padding:5pt 3pt}
+  .dayservice-timing-example{break-inside:avoid-page}
+  .dayservice-counselor-comparison{font-size:8pt}
   .dayservice-qa{background:transparent;padding:10pt;border-color:#777;break-inside:avoid-page}
   .dayservice-excerpt-label,.dayservice-source-caution,.dayservice-read-across,.dayservice-qa-citation,.dayservice-qa-question>strong,.dayservice-qa-answer>strong{break-after:avoid-page}
   .dayservice-source-citation{break-before:avoid-page;break-inside:avoid-page}

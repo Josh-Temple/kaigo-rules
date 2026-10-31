@@ -186,3 +186,53 @@ test("criteria are complete references to already published national bodies, wit
     assert.match(readerExcerpt(ref).caution, /照合は未完了/u);
   }
 });
+
+test("reader prompts and Q&A searches cover four priority decisions without altering national source data", () => {
+  const roleIds = ["staffing-role-nurse", "staffing-role-care-worker"];
+  const feeIds = ["fee-note-13", "fee-note-6"];
+  for (const id of [...roleIds, ...feeIds]) {
+    const topic = topics.find(item => item.id === id);
+    assert.ok(topic, id);
+    assert.ok(topic.readerQuestions?.length >= 3, id);
+    assert.ok(topic.readerQuestions.every(question => question.endsWith("？")), id);
+    assert.ok(topic.qaSearchQuery, id);
+    assert.ok(!/横浜|scope|JSON|Research Mesh/u.test(JSON.stringify(topic.readerQuestions)), id);
+  }
+  assert.ok(topics.find(topic => topic.id === "fee-note-13")?.criteria?.length);
+  assert.ok(topics.find(topic => topic.id === "fee-note-6")?.basis?.length);
+  assert.ok(topics.find(topic => topic.id === "staffing-role-nurse")?.qa?.length);
+});
+
+test("individual training has government source page links for Q&A 55-57, distinct from unreviewed corpus", () => {
+  const item = topics.find(topic => topic.id === "fee-note-13");
+  assert.deepEqual(item.officialQaFurther.map(row => row.number), ["55", "56", "57"]);
+  for (const row of item.officialQaFurther) {
+    assert.ok(nationalSourceUrl(row.url));
+    assert.match(row.url, /001230308\.pdf#page=3[45]$/);
+    assert.ok(row.label);
+  }
+  assert.deepEqual(topics.find(topic => topic.id === "fee-note-6")?.officialQaFurther?.map(row => row.number), ["56", "57", "58", "59", "5"]);
+});
+
+test("reader summaries preserve staffing thresholds and extension non-claim scenarios", () => {
+  const byId = id => topics.find(item => item.id === id);
+  for (const id of ["staffing-role-life-counselor", "staffing-role-nurse", "staffing-role-care-worker", "staffing-role-functional-training", "staffing-role-manager", "fee-note-13", "fee-note-6"]) {
+    const item = byId(id);
+    assert.ok(item.readerSummary, id);
+    assert.ok(item.readerConditions?.length >= 2, id);
+    assert.ok(item.readerExceptions?.length, id);
+  }
+  assert.match(byId("staffing-role-care-worker").readerConditions.join(""), /15人/);
+  assert.match(byId("fee-note-6").readerExceptions.join(""), /宿泊サービス/);
+  assert.deepEqual(byId("fee-note-6").officialQaFurther.map(row => row.number), ["56", "57", "58", "59", "5"]);
+  assert.ok(byId("fee-note-6").officialQaFurther.every(row => nationalSourceUrl(row.url) && row.explanation));
+  assert.match(byId("fee-note-6").officialQaFurther.find(row => row.number === "5").url, /0000093219\.pdf#page=4$/);
+  assert.match(byId("fee-note-13").officialQaFurther.find(row=>row.number==="55").explanation, /事前/);
+  assert.match(byId("fee-note-13").officialQaFurther.find(row=>row.number==="56").explanation, /外部/);
+  assert.match(byId("fee-note-6").officialQaFurther.find(row => row.number === "5").label, /口腔機能向上サービス/);
+  assert.match(byId("fee-note-6").officialQaFurther.find(row => row.number === "5").explanation, /延長加算全般を認めるものではありません/);
+  assert.match(byId("fee-note-6").readerExceptions.join(""), /限定的な取扱い/);
+  assert.match(byId("staffing-role-life-counselor").readerSummary, /勤務延時間数/);
+  assert.match(byId("staffing-role-functional-training").readerSummary, /事業所ごとに1人以上/);
+  assert.match(byId("staffing-role-manager").readerSummary, /常勤/);
+});

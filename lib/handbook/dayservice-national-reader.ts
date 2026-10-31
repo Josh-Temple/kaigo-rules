@@ -18,6 +18,9 @@ export type ReaderReference = { family: "law" | "standard" | "notice" | "fee" | 
 export type ReaderTopic = {
   id: string; title: string; basis: ReaderReference[]; interpretation?: ReaderReference[];
   qa?: string[]; local?: string; note?: string; criteria?: ReaderReference[];
+  readerQuestions?: readonly string[]; qaSearchQuery?: string;
+  readerSummary?: string; readerConditions?: readonly string[]; readerExceptions?: readonly string[];
+  officialQaFurther?: { number: string; label: string; url: string; explanation?: string; issuedLabel?: string }[];
 };
 export type ReaderGroup = { title: string; topics: ReaderTopic[] };
 export type ReaderExcerpt = {
@@ -156,17 +159,60 @@ const fullTimeQa = "qa.mhlw.09387a7f7b6c9726887a";
 export const dayserviceStaffingTopics: ReaderTopic[] = [
   { id: "staffing-role-life-counselor", title: "生活相談員", basis: [s("93.p.1.i.1", "提供日ごとの配置"), s("93.p.6", "常勤者の確保")],
     interpretation: [n("personnel.staffing", "④"), n("personnel.life-counselor")], qa: [fullTimeQa, "qa.mhlw.98bc1e237f7981f16869", "qa.mhlw.bed5148c4af01939c01d"],
+    readerQuestions: [
+      "提供日ごとのサービス提供時間数を確認したか？",
+      "生活相談員の勤務延時間数を勤務表と照合したか？",
+      "資格と常勤者の確保を、勤務時間数とは別に確認したか？",
+    ],
+    readerSummary: "生活相談員は、事業所がサービスを提供する日ごとに、提供時間数に応じた勤務延時間数を確保する必要があります。",
+    readerConditions: ["事業所のサービス提供時間数に対し、生活相談員の勤務延時間数の合計が必要な水準に達するか確認する。", "生活相談員又は介護職員のうち1人以上の常勤者を確保する。"],
+    readerExceptions: ["勤務時間の合計だけで、資格・専従・兼務の取扱いまで満たしたとは判断できません。"],
     local: "資格の認定範囲や実務経験の取扱い、必要書類は、事業所所在地を所管する指定権者の介護保険担当窓口に確認してください。" },
   { id: "staffing-role-nurse", title: "看護職員", basis: [s("93.p.1.i.2", "単位ごとの確保")],
     interpretation: [n("personnel.staffing", "⑥")], qa: ["qa.mhlw.d9a7f5b49c1ba8a9326e", "qa.mhlw.19ff5348270062de7154"],
+    readerQuestions: [
+      "単位ごとの看護職員をどのように確保するか？",
+      "外部の病院・診療所・訪問看護ステーションと連携する場合、健康状態の確認・連絡体制はどうするか？",
+      "機能訓練指導員との兼務について、国Q&Aと配置条件を確認したか？",
+    ],
+    qaSearchQuery: "看護職員",
+    readerSummary: "看護職員は単位ごとに必要です。外部の病院・診療所・訪問看護ステーションと連携して確保する場合は、健康状態の確認などの体制が条件となります。",
+    readerConditions: ["各単位に看護師又は准看護師を確保する。", "外部連携の場合は、提供時間帯を通じた健康状態の確認や緊急時の連絡体制などを、国の省令とQ&A問59で確認する。"],
+    readerExceptions: ["個別機能訓練加算の専従機能訓練指導員を、看護職員の外部連携と同じ方法で代替できるわけではありません（令和6年度Q&A問56）。"],
     local: "外部連携を行う場合の契約・連絡体制や提出書類は、所在地の指定権者に確認してください。" },
   { id: "staffing-role-care-worker", title: "介護職員", basis: [s("93.p.1.i.3", "必要な勤務時間と利用者数"), s("93.p.2", "単位ごとの常時配置"), s("93.p.3", "他の単位との兼務"), s("93.p.6", "常勤者の確保")],
-    interpretation: [n("personnel.staffing", "⑤")], qa: [fullTimeQa, "qa.mhlw.98bc1e237f7981f16869"] },
+    interpretation: [n("personnel.staffing", "⑤")], qa: [fullTimeQa, "qa.mhlw.98bc1e237f7981f16869"],
+    readerQuestions: [
+      "利用者数と平均提供時間数から必要な勤務延時間数を確認したか？",
+      "各単位のサービス提供中、介護職員の常時配置を確認したか？",
+      "他の単位と兼務する場合、利用者の処遇に支障がないか確認したか？",
+    ],
+    qaSearchQuery: "介護職員",
+    readerSummary: "介護職員は利用者数と平均提供時間数に応じた勤務延時間数を確保し、サービス提供中は単位ごとに常時1人以上必要です。",
+    readerConditions: ["利用者15人までの部分を基礎に、15人を超える場合は5人ごとの割合を加え、平均提供時間数を用いて必要な勤務延時間数を計算する。", "生活相談員又は介護職員のうち1人以上の常勤者の確保も確認する。"],
+    readerExceptions: ["他の単位との兼務は、利用者の処遇に支障がない場合の取扱いです。時間数を満たすだけで常時配置・兼務条件を満たしたとは判断できません。"],
+  },
   { id: "staffing-role-functional-training", title: "機能訓練指導員", basis: [s("93.p.1.i.4", "配置人数"), s("93.p.5", "能力と兼務")],
     interpretation: [n("personnel.function-training")], qa: ["qa.mhlw.012fdfa8b64a3b333d4e", "qa.mhlw.19ff5348270062de7154"],
+    readerQuestions: [
+      "事業所ごとに機能訓練指導員を1人以上配置しているか？",
+      "担当者が機能訓練に必要な能力を有しているか？",
+      "個別機能訓練加算を算定する場合、人員基準とは別の加算要件を確認したか？",
+    ],
+    readerSummary: "機能訓練指導員は、事業所ごとに1人以上必要です。人員基準の配置と、個別機能訓練加算の専従・配置条件は別に確認します。",
+    readerConditions: ["国の省令第93条の人数・能力と、解釈通知の兼務の取扱いを確認する。", "加算を算定する場合は、報酬告示・別告示・留意事項の追加条件を確認する。"],
+    readerExceptions: ["人員基準上の配置だけで、個別機能訓練加算の要件を満たすとは限りません。"],
     local: "資格・経験の確認書類や、併設施設との取扱いは、所在地の指定権者に確認してください。" },
   { id: "staffing-role-manager", title: "管理者", basis: [s("94.p.1", "常勤・専従と兼務"), s("52", "管理者の責務", true)],
     interpretation: [n("personnel.manager")], qa: ["qa.mhlw.a3ceb95affec100c3cc3"],
+    readerQuestions: [
+      "管理者が常勤で勤務し、管理業務に従事しているか？",
+      "ほかの職務や事業所と兼務する場合、管理に支障がないか？",
+      "兼務の実態を勤務表・連絡体制などで確認できるか？",
+    ],
+    readerSummary: "管理者は原則として常勤で、管理の職務に専ら従事します。管理に支障がない場合の兼務の取扱いがあります。",
+    readerConditions: ["国の省令第94条と管理者の責務に関する規定を確認する。", "兼務する場合は、管理に支障がないか実際の業務・勤務体制を確認する。"],
+    readerExceptions: ["兼務が認められるかは、職名だけでなく管理業務への支障の有無が重要です。"],
     local: "兼務する職務・事業所、勤務体制と緊急時の対応を示し、管理に支障がないか、所在地の指定権者に確認してください。" },
 ];
 
@@ -211,6 +257,39 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
   id === "note.10" ? ["qa.mhlw.98d49d29f427379ec4b3", "qa.mhlw.5dcdd91060267fa2466d"] : id === "note.13" ? ["qa.mhlw.012fdfa8b64a3b333d4e"] : undefined),
   criteria: delegated.filter(row => (row.related_fee_ids.includes(`fee.dayservice.${id}`) ||
     ({ "note.8": "criteria95.dayservice.14-5", "note.19": "criteria95.dayservice.19-2", "note.20": "criteria95.dayservice.20" } as Record<string, string>)[id] === row.id) && row.id.startsWith("criteria95.dayservice.")).map(row => ({ family: "delegated" as const, id: row.id })),
+  ...(id === "note.13" ? {
+    readerQuestions: [
+      "算定を検討するのは個別機能訓練加算（Ⅰ）イ・（Ⅰ）ロ・（Ⅱ）のどれか？",
+      "配置・計画・届出など、該当する区分の条件を別告示と留意事項で確認したか？",
+      "人員基準としての配置と、加算の算定要件を区別して確認したか？",
+    ],
+    qaSearchQuery: "個別機能訓練加算",
+    readerSummary: "加算（Ⅰ）イ・（Ⅰ）ロは、機能訓練指導員の配置と利用者が訓練を受けた時間帯により、算定できる区分が異なります。加算（Ⅱ）も別に要件があります。",
+    readerConditions: ["届出、機能訓練計画、実施方法と配置人数を、国の報酬告示・別告示・留意事項ごとに確認する。", "看護職員の人員基準と、加算で求められる専従の機能訓練指導員の確保は区別する。"],
+    readerExceptions: ["外部機関との連携だけで加算の専従機能訓練指導員を確保することは認められないと、令和6年度Q&A問56は説明しています。"],
+    officialQaFurther: [
+      { number: "55", label: "配置が日によって異なる場合", explanation: "ロの配置が整わない日にイを算定する取扱いは認められます。ただし、営業日ごとの配置体制を利用者へ事前に説明しておく必要があります。", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=34" },
+      { number: "56", label: "外部連携では代替不可", explanation: "個別機能訓練加算（Ⅰ）イ・ロの専従機能訓練指導員は事業所内での配置が必要で、外部機関との連携だけでは確保できません。", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=34" },
+      { number: "57", label: "2人が重なる時間帯", explanation: "専従の機能訓練指導員2人が重なっている時間帯に訓練を受けた利用者が、ロの対象となる例です。重ならない時間帯はイの取扱いを確認します。", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=35" },
+    ],
+  } : id === "note.6" ? {
+    readerQuestions: [
+      "指定通所介護の所要時間は8時間以上9時間未満か？",
+      "通所介護の前後に引き続き日常生活上の世話を行ったか？",
+      "通所介護と前後の世話の時間の合計・届出・該当区分を確認したか？",
+    ],
+    qaSearchQuery: "延長加算",
+    readerSummary: "8時間以上9時間未満の通所介護と、その前後に連続して行う日常生活上の世話を合わせて9時間以上となる場合に、届出などの条件を確認する加算です。",
+    readerConditions: ["通所介護の所要時間と、その前後に引き続き行った世話の時間を合計する。9時間以上10時間未満から13時間以上14時間未満まで区分がある。", "届出と、実際に提供したサービス・世話の内容を確認する。"],
+    readerExceptions: ["平成27年度国Q&A問59では、同一日に宿泊サービスを受けた場合の延長加算は適当ではないと説明されています。", "同Q&A問58では、自宅に戻らず別の宿泊場所へ行くまでの間に延長して介護を行った場合の算定を認めています。", "平成27年度Q&A Vol.4問5では、事業所の設備を利用して宿泊する場合でも、通所介護計画に位置付けた口腔機能向上サービスが通常の時間帯では終わらず、延長時間帯での提供が不可欠な場合の限定的な取扱いが示されています。", "これらの過去Q&Aについて、後続改正と現在の算定要件との適用関係は確認中です。"],
+    officialQaFurther: [
+      { number: "56", label: "送迎と居宅内介助", explanation: "9時間の通所介護等の前後に送迎・居宅内介助を行う場合の取扱いを示しています。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
+      { number: "57", label: "宿泊と延長に係る利用料", explanation: "宿泊サービスを提供する場合、延長に係る利用料の徴収は適当ではないとする回答です。延長加算そのものと混同しないでください。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
+      { number: "58", label: "別の宿泊場所へ行くまで", explanation: "自宅に帰らず別の宿泊場所へ行くまで延長して介護を実施する事例です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
+      { number: "59", label: "同じ日に宿泊サービスを利用", explanation: "通所介護と同じ日に宿泊サービスを受ける場合は、延長加算の算定は適当ではないとする回答です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
+      { number: "5", issuedLabel: "平成27年度Q&A Vol.4", label: "宿泊時の口腔機能向上サービス（限定例）", explanation: "通所介護計画にあらかじめ位置付けた口腔機能向上サービスについて、通常の時間帯では終えられず、言語聴覚士・歯科衛生士等による延長時間帯の提供が不可欠な場合に、実際に延長して提供した範囲での算定を示しています。宿泊時の延長加算全般を認めるものではありません。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000093219.pdf#page=4" },
+    ],
+  } : {}),
 });
 
 export const dayserviceChapterGroups: Record<string, ReaderGroup[]> = {
