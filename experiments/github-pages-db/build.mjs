@@ -123,6 +123,16 @@ function validate(rows) {
           row.href.startsWith("//") || Object.keys(row).some((key) => !allowed.has(key))) {
         throw new Error("Invalid search projection: " + group + " / " + row.id);
       }
+      const internal = new URL(row.href, "https://kaigo-rules.vercel.app");
+      if (internal.origin !== "https://kaigo-rules.vercel.app") {
+        throw new Error("Invalid internal link: " + group + " / " + row.id);
+      }
+      if (row.sourceUrl) {
+        const source = new URL(row.sourceUrl);
+        if (!["https:", "http:"].includes(source.protocol) || source.username || source.password) {
+          throw new Error("Invalid source link: " + group + " / " + row.id);
+        }
+      }
       if (row.fields.some((field) => typeof field.value !== "string" || !Number.isFinite(field.weight))) {
         throw new Error("Invalid search field: " + group + " / " + row.id);
       }
@@ -131,7 +141,12 @@ function validate(rows) {
 }
 
 export function buildPilot() {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "kaigo-db-search-private-"));
+  const temporaryRoot = fs.realpathSync(os.tmpdir());
+  const sourceRoot = fs.realpathSync(root);
+  if (temporaryRoot === sourceRoot || temporaryRoot.startsWith(sourceRoot + path.sep)) {
+    throw new Error("Temporary output cannot be inside the source repository");
+  }
+  const dir = fs.mkdtempSync(path.join(temporaryRoot, "kaigo-db-search-private-"));
   const global = empty();
   global.law = articles(care);
   global.ordinance = articles(ordinance);

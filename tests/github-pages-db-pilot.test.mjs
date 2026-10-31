@@ -146,7 +146,19 @@ test("category filtering and projection exclude internal metadata fields", () =>
     assert.ok(row.href.startsWith("/") && !row.href.startsWith("//"));
   }
   assert.equal(fs.existsSync(path.join(pilot.dir, "handbook-preview")), false);
-  assert.ok(path.resolve(pilot.dir).startsWith(path.resolve(import.meta.dirname, "../../..")) === false);
+  const relative = path.relative(fs.realpathSync(path.resolve(import.meta.dirname, "..")), fs.realpathSync(pilot.dir));
+  assert.ok(relative === ".." || relative.startsWith(".." + path.sep) || path.isAbsolute(relative));
+});
+
+test("refuses to build temporary search data inside the repository", () => {
+  const previous = process.env.TMPDIR;
+  process.env.TMPDIR = path.resolve(import.meta.dirname, "..");
+  try {
+    assert.throws(() => buildPilot(), /Temporary output cannot be inside/);
+  } finally {
+    if (previous === undefined) delete process.env.TMPDIR;
+    else process.env.TMPDIR = previous;
+  }
 });
 
 test("headless Chrome can search without horizontal overflow", { timeout: 110000 }, async (t) => {
@@ -160,6 +172,9 @@ test("headless Chrome can search without horizontal overflow", { timeout: 110000
   for (const width of [360, 390]) {
     const result = await chromeSmoke(pilot.dir, width);
     console.log("Chrome viewport: requested=" + result.requestedWidth + " actual=" + result.actualWidth +
-      " scrollWidth=" + result.scrollWidth);
+      " scrollWidth=" + result.scrollWidth + " searchMs=" + result.searchMs +
+      " readyMs=" + result.readyMs + " heapBytes=" + result.heapBytes +
+      " keyboard=" + result.keyboard + " touch=" + result.touch + " pinchScale=" +
+      result.pinchScale + " printed=" + result.printed);
   }
 });

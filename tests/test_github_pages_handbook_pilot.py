@@ -4,11 +4,13 @@ import contextlib
 import io
 import json
 import re
+import shutil
 import tempfile
 import unittest
 from unittest.mock import patch
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / ".github-pages-handbook-pilot"
@@ -19,6 +21,11 @@ spec = importlib.util.spec_from_file_location(
 )
 pilot = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pilot)
+all_spec = importlib.util.spec_from_file_location(
+    "all_handbook_pilot", ROOT / "scripts/build_github_pages_handbook_all_pilot.py"
+)
+all_pilot = importlib.util.module_from_spec(all_spec)
+all_spec.loader.exec_module(all_pilot)
 
 
 class HandbookSanitizerTest(unittest.TestCase):
@@ -76,6 +83,44 @@ class HandbookSanitizerTest(unittest.TestCase):
             self.assertIn('<script defer src="../../print.js"></script>', page)
             self.assertEqual((out / "print.js").read_text(encoding="utf-8"), pilot.PRINT_JS)
 
+    def test_all_handbooks_build_and_link_from_public_manifest(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp) / "source"
+            (root / "data").mkdir(parents=True)
+            services = []
+            for sid in ["alpha", "beta"]:
+                chapters = []
+                source = root / ".next/server/app/handbook" / sid
+                source.mkdir(parents=True)
+                for number in range(1, 3):
+                    slug = f"chapter-{number}"
+                    title = f"{sid}の章{number}"
+                    chapters.append({"section_id": slug, "title": title, "number": number})
+                    (source / (slug + ".html")).write_text(
+                        '<article class="handbook-page"><h1>' + title + '</h1><span id="part"></span>'
+                        '<a href="/handbook/alpha/chapter-1#part">章へ</a>'
+                        '<a href="/services/beta#chapter-1">目次へ</a>'
+                        '<input type="checkbox"><button>この章のページを印刷・PDF保存</button>'
+                        '</article>', encoding="utf-8",
+                    )
+                services.append({"service_id": sid, "label": sid, "chapters": chapters})
+            (root / "data/handbook.generated.json").write_text(
+                json.dumps({"services": services}), encoding="utf-8",
+            )
+            result = all_pilot.build(root)
+            try:
+                self.assertEqual((result["services"], result["chapters"], result["files"]), (2, 4, 9))
+                out = Path(result["directory"])
+                page = (out / "handbook/beta/chapter-2.html").read_text(encoding="utf-8")
+                self.assertIn('../../handbook/alpha/chapter-1.html#part', page)
+                self.assertIn('../../services/beta/index.html#chapter-1', page)
+                self.assertIn('data-handbook-print="true"', page)
+                self.assertFalse((out / "data").exists())
+                self.assertFalse((out / "handbook-preview").exists())
+                self.assertGreater(check_local_links(self, out), 0)
+            finally:
+                shutil.rmtree(result["directory"], ignore_errors=True)
+
 
 class VisibleText(HTMLParser):
     def __init__(self, select_article=False):
@@ -89,6 +134,7 @@ class VisibleText(HTMLParser):
         self.disabled_checkboxes = 0
         self.button_count = 0
         self.aria_hidden_count = 0
+        self.link_count = 0
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -105,6 +151,8 @@ class VisibleText(HTMLParser):
                 self.disabled_checkboxes += int("disabled" in attrs)
             if tag == "button":
                 self.button_count += 1
+            if tag == "a" and "href" in attrs:
+                self.link_count += 1
             if attrs.get("aria-hidden") == "true":
                 self.aria_hidden_count += 1
         if tag in {"script", "style", "svg", "iframe", "noscript", "template", "canvas", "object"}:
@@ -127,6 +175,40 @@ class VisibleText(HTMLParser):
     @property
     def normalized(self):
         return re.sub(r"\s+", "", "".join(self.words))
+
+
+class LinkInventory(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.ids, self.links = set(), []
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if attrs.get("id"):
+            self.ids.add(attrs["id"])
+        if tag == "a" and attrs.get("href"):
+            self.links.append(attrs["href"])
+
+
+def check_local_links(testcase, root):
+    documents = {}
+    for page in root.rglob("*.html"):
+        parser = LinkInventory()
+        parser.feed(page.read_text(encoding="utf-8"))
+        documents[page.resolve()] = parser
+    checked = 0
+    for page, parser in documents.items():
+        for href in parser.links:
+            parts = urlsplit(href)
+            if parts.scheme or parts.netloc:
+                continue
+            target = (page.parent / unquote(parts.path)).resolve() if parts.path else page
+            testcase.assertTrue(target == root.resolve() or root.resolve() in target.parents, href)
+            testcase.assertIn(target, documents, href)
+            if parts.fragment:
+                testcase.assertIn(unquote(parts.fragment), documents[target].ids, (str(page), href))
+            checked += 1
+    return checked
 
 
 @unittest.skipUnless((OUT / "measurement.json").is_file(),
@@ -153,6 +235,7 @@ class HandbookStaticPilotTest(unittest.TestCase):
             self.assertEqual(output.disabled_checkboxes, original.disabled_checkboxes, slug)
             self.assertEqual(output.button_count, original.button_count, slug)
             self.assertEqual(output.aria_hidden_count, original.aria_hidden_count, slug)
+            self.assertEqual(output.link_count, original.link_count, slug)
             html = generated.read_text(encoding="utf-8")
             self.assertIn('name="robots" content="noindex', html)
             self.assertEqual(html.count("<script"), 1)
@@ -173,6 +256,31 @@ class HandbookStaticPilotTest(unittest.TestCase):
         for row in report["pages"]:
             self.assertLess(row["static_html_bytes"], row["source_html_bytes"])
             self.assertGreater(row["source_links"], 1)
+
+    def test_all_existing_prerendered_handbook_articles(self):
+        result = all_pilot.build()
+        try:
+            out = Path(result["directory"])
+            self.assertGreater(result["services"], 1)
+            self.assertEqual(result["files"], result["chapters"] + result["services"] + 3)
+            self.assertFalse((out / "data").exists())
+            self.assertFalse((out / "handbook-preview").exists())
+            for row in result["pages"]:
+                service, slug = row["service"], row["chapter"]
+                source = ROOT / ".next/server/app/handbook" / service / (slug + ".html")
+                generated = out / "handbook" / service / (slug + ".html")
+                original, output = VisibleText(select_article=True), VisibleText(select_article=True)
+                original.feed(source.read_text(encoding="utf-8"))
+                output.feed(generated.read_text(encoding="utf-8"))
+                self.assertTrue(original.normalized, (service, slug))
+                self.assertEqual(output.normalized, original.normalized, (service, slug))
+                for key in ("checkbox_count", "disabled_checkboxes", "button_count", "aria_hidden_count", "link_count"):
+                    self.assertEqual(getattr(output, key), getattr(original, key), (service, slug, key))
+            checked = check_local_links(self, out)
+            print(("ALL_HANDBOOK_PILOT: services={services} chapters={chapters} files={files} "
+                   "bytes={bytes} links={links} local_links_checked=" + str(checked)).format(**result))
+        finally:
+            shutil.rmtree(result["directory"], ignore_errors=True)
 
 
 if __name__ == "__main__":

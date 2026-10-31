@@ -84,7 +84,7 @@ def link_target(href: str) -> str | None:
 
 
 class ArticleSanitizer(HTMLParser):
-    def __init__(self) -> None:
+    def __init__(self, link_rewriter=link_target) -> None:
         super().__init__(convert_charrefs=True)
         self.collecting = False
         self.finished = False
@@ -93,6 +93,7 @@ class ArticleSanitizer(HTMLParser):
         self.chunks: list[str] = []
         self.link_count = 0
         self.button_text = None
+        self.link_rewriter = link_rewriter
 
     def handle_starttag(self, tag, attrs):
         if self.finished:
@@ -108,7 +109,7 @@ class ArticleSanitizer(HTMLParser):
             if tag in DROP_CONTENT:
                 self.drop_stack.append(tag)
             return
-        if tag in {"svg", "canvas", "iframe", "object"}:
+        if tag in {"svg", "canvas", "iframe", "object", "img"}:
             raise RuntimeError(f"Unsupported interactive or graphical element: {tag}")
         if tag in DROP_CONTENT:
             self.drop_stack.append(tag)
@@ -130,7 +131,7 @@ class ArticleSanitizer(HTMLParser):
                     safe.append(key)
                 continue
             if key == "href" and tag == "a":
-                target = link_target(value)
+                target = self.link_rewriter(value)
                 if target is None:
                     continue
                 safe.append(f'href="{escape(target)}"')
