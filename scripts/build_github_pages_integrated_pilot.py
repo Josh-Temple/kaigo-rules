@@ -180,6 +180,17 @@ def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = 
     information_report = information.add_pages(out) if with_information else {
         "pages": 0, "bytes": 0, "routes": [],
     }
+    # The information pages did not exist during the first source-data scan.
+    # Scan every newly generated page before reporting any private safety pass.
+    if with_information:
+        for name in information.PAGES:
+            added = out / name / "index.html"
+            if not added.is_file() or added.is_symlink():
+                raise RuntimeError("Missing or symbolic-link reader page")
+            data = added.read_bytes()
+            if any(pattern.search(data) for pattern in SECRET_PATTERNS):
+                raise RuntimeError("Secret-like material in reader information page")
+            scanned.append(added)
     root_page = out / "index.html"
     text = root_page.read_text(encoding="utf-8")
     if text.count("</article>") != 1:
