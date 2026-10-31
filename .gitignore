@@ -7,3 +7,9 @@ node_modules
 # Rebuilt from canonical corpora before dev/build
 /data/handbook.generated.json
 /data/legal-browser.generated.json
+
+# Private, temporary GitHub Pages feasibility outputs: never commit these.
+/.github-pages-qa-pilot/
+/.github-pages-handbook-pilot/
+/github-pages-feasibility.json
+/github-pages-feasibility.md

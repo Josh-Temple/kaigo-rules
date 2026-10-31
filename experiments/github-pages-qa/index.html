@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>通所介護関連Q&A検索・静的サイト検証用</title>
+  <style>
+    :root{color-scheme:light;font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;line-height:1.7;color:#24322d;background:#f5f7f5}
+    *{box-sizing:border-box}body{margin:0}main{max-width:840px;margin:auto;padding:24px 16px 72px}
+    h1{font-size:clamp(1.6rem,4vw,2.15rem);line-height:1.4}h2{font-size:1.07rem;line-height:1.5;margin:8px 0}
+    .note,.results article,form{background:#fff;border:1px solid #cdd9d0;border-radius:12px;padding:16px;margin:16px 0}
+    .warning{border-left:5px solid #967100;background:#fffcf1}
+    label{display:grid;gap:4px;font-weight:650}
+    input,select,button{font:inherit;padding:11px 12px;border:1px solid #71877b;border-radius:8px;min-width:0}
+    form{display:grid;gap:12px}button{background:#155f48;color:white;cursor:pointer;font-weight:650}
+    button:disabled{background:#aab6af;color:#333;cursor:default}
+    a{color:#005c45;text-underline-offset:3px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #bf6100;outline-offset:3px}
+    .meta{font-size:.88rem;color:#44574d;margin:5px 0}.results article p{white-space:pre-wrap;overflow-wrap:anywhere}
+    .paging{display:flex;align-items:center;gap:12px;justify-content:space-between;margin:24px 0}
+    .paging button{width:auto;min-height:44px}.lead{font-size:1rem}
+    @media(min-width:660px){form{grid-template-columns:2fr 1fr 1fr}form button{grid-column:1 / -1}}
+  </style>
+</head>
+<body><main>
+  <p class="meta">GitHub Pages移行検討・限定試作品（本番サイトではありません）</p>
+  <h1>通所介護に関連する国Q&Aを探す</h1>
+  <p class="lead">サービス共通・通所系共通・通所介護に関係するQ&Aから、用語や基準種別で検索できます。検索はブラウザ内で実行します。</p>
+  <div class="note warning" role="note"><strong>掲載時点のQ&Aが、現在も有効とは限りません。</strong> 改正前の取扱いも含みます。算定・人員配置の判断前に最新の国の法令・Q&Aを確認してください。この画面は検索移行の試験用です。</div>
+  <form id="search-form" role="search">
+    <label>キーワード<input name="q" type="search" autocomplete="off" placeholder="例：看護職員、送迎、署名"></label>
+    <label>対象範囲<select name="service"><option value="">すべて</option></select></label>
+    <label>基準種別<select name="standard"><option value="">すべて</option></select></label>
+    <button type="submit">検索する</button>
+  </form>
+  <p id="status" role="status" aria-live="polite">データを読み込んでいます…</p>
+  <section id="results" class="results" aria-label="検索結果"></section>
+  <nav class="paging" aria-label="検索結果ページ移動">
+    <button type="button" id="prev" disabled>前へ</button>
+    <span id="pagination"></span>
+    <button type="button" id="next" disabled>次へ</button>
+  </nav>
+  <div class="note"><strong>試作品の範囲</strong><p>現在の国Q&A検索と同じ検索条件・同義語・ページ送りを検証するための画面です。制度DB横断検索、手引全文の静的表示、未レビュー情報の公開管理は別途検証が必要です。</p><p><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html" target="_blank" rel="noopener noreferrer">厚生労働省のQ&A原資料</a></p></div>
+</main><script type="module" src="./app.mjs"></script></body></html>

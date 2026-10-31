@@ -29,6 +29,12 @@ import {
   serviceApplicability,
 } from "../../../lib/service-scope";
 import { verifiedRelatedPrimarySources } from "../../../lib/verified-related-sources";
+import {
+  privateStaticPilotFilterPublishedRules,
+  privateStaticPilotRulePublished,
+  privateStaticPilotServicesForRule,
+  privateStaticPilotSourceRecords,
+} from "../../../lib/private-static-pilot-rule-index";
 
 type RuleNode = {
   id: string;
@@ -89,7 +95,15 @@ export function generateStaticParams() {
       .filter((node) => node.node_type === "article")
       .map((node) => node.article_num),
   );
-  return [...publicArticleNumbers].map((article) => ({ article }));
+  return [...publicArticleNumbers].flatMap((article) => {
+    // Deleted ordinance article ranges may be inaccessible as literal-colon
+    // dynamic paths. Retain the original and offer a safe static alias.
+    const params = [{ article }];
+    if (typeof article === "string" && article.includes(":")) {
+      params.push({ article: article.replace(":", "__range__") });
+    }
+    return params;
+  });
 }
 
 const levelRank: Record<string, number> = {
@@ -142,7 +156,10 @@ export default async function RuleArticlePage({
   params: Promise<{ article: string }>;
   searchParams: Promise<{ service?: string }>;
 }) {
-  const { article } = await params;
+  const { article: requestedArticle } = await params;
+  const article = /^[0-9]+(?:-[0-9]+)*__range__[0-9]+(?:-[0-9]+)*$/.test(requestedArticle)
+    ? requestedArticle.replace("__range__", ":")
+    : requestedArticle;
   const { service = "" } = await searchParams;
 
   const selectedService = publicFilterServices.find(
@@ -152,9 +169,14 @@ export default async function RuleArticlePage({
   const progressiveSelection = Boolean(
     selectedServiceId && isProgressiveRouteCell(selectedServiceId),
   );
+  // Never cache publication decisions in the normal Next.js application.
+  // The private static extractor repeatedly renders the same immutable corpus.
+  const privatePilot = process.env.KAIGO_PRIVATE_STATIC_PILOT === "1";
   const sourceNodes =
     progressiveSelection && selectedServiceId
-      ? (getProgressiveSourceRecords(selectedServiceId) as RuleNode[])
+      ? ((privatePilot
+          ? privateStaticPilotSourceRecords(selectedServiceId)
+          : getProgressiveSourceRecords(selectedServiceId)) as RuleNode[])
       : nodes;
 
   const articleNode = sourceNodes.find(
@@ -166,7 +188,9 @@ export default async function RuleArticlePage({
     selectedServiceId &&
     !(
       progressiveSelection
-        ? isProgressiveRulePublished(selectedServiceId, articleNode.id)
+        ? (privatePilot
+            ? privateStaticPilotRulePublished(selectedServiceId, articleNode.id)
+            : isProgressiveRulePublished(selectedServiceId, articleNode.id))
         : isRecordApplicableToService(
             selectedServiceId,
             "ordinance37",
@@ -183,11 +207,13 @@ export default async function RuleArticlePage({
   const children = (
     selectedServiceId
       ? progressiveSelection
-        ? filterProgressivePublishedRules(
-            selectedServiceId,
-            articleNodes,
-            (node) => node.id,
-          )
+        ? (privatePilot
+            ? privateStaticPilotFilterPublishedRules(
+                selectedServiceId, articleNodes, (node) => node.id,
+              )
+            : filterProgressivePublishedRules(
+                selectedServiceId, articleNodes, (node) => node.id,
+              ))
         : filterRecordsForService(
             selectedServiceId,
             "ordinance37",
@@ -203,7 +229,9 @@ export default async function RuleArticlePage({
   const publicMemberships = scope.memberships.filter((membership) =>
     publicFilterIds.has(membership.service_id),
   );
-  const progressiveMemberships = progressiveServicesForRule(articleNode.id).map(
+  const progressiveMemberships = (privatePilot
+    ? privateStaticPilotServicesForRule(articleNode.id)
+    : progressiveServicesForRule(articleNode.id)).map(
     (service) => ({
       service_id: service.service_id,
       basis: "DIRECT_SCOPE" as const,

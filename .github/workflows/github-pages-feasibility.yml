@@ -1,0 +1,231 @@
+name: GitHub Pages feasibility audit (no deploy)
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/github-pages-feasibility.yml"
+      - "experiments/github-pages-qa/**"
+      - "experiments/github-pages-db/**"
+      - "app/databases/search/**"
+      - "app/qa/**"
+      - "app/law/**"
+      - "app/rules/**"
+      - "app/handbook/**"
+      - "components/verification-summary.tsx"
+      - "components/handbook-checklist.tsx"
+      - "components/dayservice-handbook.tsx"
+      - "lib/database-search.ts"
+      - "lib/notice-database.ts"
+      - "lib/service-catalog.ts"
+      - "lib/service-scope.ts"
+      - "lib/unit-price-discovery.ts"
+      - "lib/working-handbook.ts"
+      - "lib/handbook/**"
+      - "lib/publication-policy.ts"
+      - "lib/publication-runtime-adapters.ts"
+      - "lib/private-static-pilot-rule-index.ts"
+      - "data/qa-corpus*.json"
+      - "data/qa-direct-evidence.json"
+      - "data/care-insurance-act-*.json"
+      - "data/ordinance37-*.json"
+      - "data/handbook-content.json"
+      - "data/sources.json"
+      - "data/notice*.json"
+      - "data/remuneration-*.json"
+      - "data/fee-guidance-*.json"
+      - "data/qa-service-relations.generated.json"
+      - "data/bounded-publication-allowlist.json"
+      - "data/publication-readiness.generated.json"
+      - "data/verification/bounded-currentness-closure-worker-b.json"
+      - "data/verification/high-value-currentness-closure-worker-b.json"
+      - "data/shared/standards/**"
+      - "data/shared/remuneration-delegated/**"
+      - "data/shared/fee-guidance/**"
+      - "data/shared/standards-interpretation/**"
+      - "data/services/**"
+      - "data/unit-price-*.json"
+      - "docs/prototypes/data/dayservice-handbook-drafts.v1.json"
+      - "docs/prototypes/evidence-bridges/**"
+      - "scripts/build_handbook_site.py"
+      - "scripts/build_github_pages_handbook_all_pilot.py"
+      - "scripts/build_github_pages_integrated_pilot.py"
+      - "scripts/localize_github_pages_links_pilot.py"
+      - "tests/test_github_pages_internal_navigation_pilot.py"
+      - "scripts/build_github_pages_information_pilot.py"
+      - "tests/test_github_pages_information_pilot.py"
+      - "scripts/build_github_pages_fee_details_pilot.py"
+      - "tests/test_github_pages_fee_details_pilot.py"
+      - "scripts/test_github_pages_integrated_browser.mjs"
+      - "scripts/extract_database_search_snapshot.py"
+      - "scripts/extract_qa_search_snapshot.py"
+      - "scripts/build_github_pages_qa_details_pilot.py"
+      - "scripts/test_github_pages_qa_details_browser.mjs"
+      - "scripts/build_github_pages_legal_details_pilot.py"
+      - "scripts/test_github_pages_legal_details_browser.mjs"
+      - "scripts/test_github_pages_full_partial_browser.mjs"
+      - "tests/github-pages-db-pilot.test.mjs"
+      - "tests/test_database_search_snapshot.py"
+      - "tests/test_qa_search_snapshot.py"
+      - "tests/test_github_pages_qa_details_pilot.py"
+      - "tests/test_github_pages_legal_details_pilot.py"
+      - "tests/test_github_pages_full_partial_pilot.py"
+      - "scripts/build_github_pages_qa_pilot.mjs"
+      - "tests/github-pages-qa-pilot.test.mjs"
+      - "scripts/build_github_pages_handbook_pilot.py"
+      - "tests/test_github_pages_handbook_pilot.py"
+  workflow_dispatch:
+
+concurrency:
+  group: github-pages-feasibility-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  REVIEW_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+
+jobs:
+  measure:
+    name: Build and measure; never publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.REVIEW_SOURCE_SHA }}
+          persist-credentials: false
+      - name: Verify the reviewed source commit
+        run: test "$(git rev-parse HEAD)" = "$REVIEW_SOURCE_SHA"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test search snapshot parsers before the full build
+        run: |
+          python -m unittest tests/test_database_search_snapshot.py tests/test_qa_search_snapshot.py
+          python -m unittest tests/test_github_pages_internal_navigation_pilot.py tests/test_github_pages_information_pilot.py tests/test_github_pages_fee_details_pilot.py
+          python -m unittest \
+            tests.test_github_pages_qa_details_pilot.QaDetailPilotTest.test_cannot_use_production_as_source \
+            tests.test_github_pages_qa_details_pilot.QaDetailPilotTest.test_rejects_unknown_graphics_and_unsafe_links \
+            tests.test_github_pages_qa_details_pilot.QaDetailPilotTest.test_local_service_navigation_keeps_only_existing_anchors \
+            tests.test_github_pages_qa_details_pilot.QaDetailPilotTest.test_real_http_rendering_keeps_text_links_aliases_and_reader
+          python -m unittest \
+            tests.test_github_pages_legal_details_pilot.LegalDetailPilotTest.test_route_validation_and_range_number \
+            tests.test_github_pages_legal_details_pilot.LegalDetailPilotTest.test_local_rendering_preserves_conditions_links_and_scopes
+      - name: Install dependencies
+        run: npm ci
+      - name: Build existing application with full validation
+        run: npm run build
+      - name: Measure build footprints (not a GitHub Pages export)
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path.cwd()
+          def measure(path, suffix=None):
+              if not path.exists():
+                  return {"bytes": 0, "files": 0, "exists": False}
+              items = (p for p in path.rglob("*") if p.is_file() and not p.is_symlink())
+              if suffix is not None:
+                  items = (p for p in items if p.suffix == suffix)
+              files = list(items)
+              return {"bytes": sum(p.stat().st_size for p in files), "files": len(files), "exists": True}
+
+          paths = {
+              "next_build_all": measure(root / ".next"),
+              "next_static_assets": measure(root / ".next/static"),
+              "next_prerendered_html": measure(root / ".next/server/app", ".html"),
+              "next_rsc_payloads": measure(root / ".next/server/app", ".rsc"),
+              "source_data_all": measure(root / "data"),
+              "source_data_json": measure(root / "data", ".json"),
+              "source_public": measure(root / "public"),
+              "static_export_out": measure(root / "out"),
+          }
+          manifest_path = root / ".next/prerender-manifest.json"
+          prerender = {}
+          if manifest_path.exists():
+              manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+              prerender = {
+                  "route_count": len(manifest.get("routes", {})),
+                  "dynamic_route_count": len(manifest.get("dynamicRoutes", {})),
+              }
+          # The categories below are NOT the complete publishable site.
+          # Raw source JSON may contain nonpublic records and MUST NOT be published as-is.
+          # SSR/RSC runtime and route-specific generated assets might need further adaptation.
+          illustrative = sum(paths[k]["bytes"] for k in (
+              "next_static_assets", "next_prerendered_html", "source_public", "source_data_all"))
+          budget = 1_000_000_000
+          report = {
+              "source_commit": os.environ.get("REVIEW_SOURCE_SHA", ""),
+              "budget_bytes": budget,
+              "measured_categories": paths,
+              "prerender_manifest": prerender,
+              "illustrative_selected_sum_bytes_not_site_size": illustrative,
+              "illustrative_selected_sum_share_of_budget": round(illustrative / budget, 4),
+              "actual_github_pages_output_measured": paths["static_export_out"]["files"] > 0,
+              "result": "HOLD_NO_DEPLOY",
+              "caveat": "This is NOT a static export or certified Pages size. Do not publish raw data, unreviewed materials, generated previews, or any app output. The subsequent job steps test selected search cases and simulated browser widths; Android device testing remains outstanding.",
+          }
+          def fmt(n):
+              return f"{n / 1_000_000:,.2f} MB"
+          lines = [
+              "# GitHub Pages feasibility measurement (not a deploy)",
+              "",
+              "Existing Next.js application compiled with its original prebuild and validation.",
+              "This measures existing build categories; no static Pages export has succeeded.",
+              "",
+              "| Category | Size | Files |",
+              "| --- | ---: | ---: |",
+          ]
+          for name, row in paths.items():
+              lines.append(f"| {name} | {fmt(row['bytes'])} | {row['files']:,} |")
+          lines += [
+              "",
+              f"- Illustrative sum of selected categories (NOT actual published-site size): **{fmt(illustrative)}** / 1,000.00 MB.",
+              f"- Pre-render manifest: {prerender.get('route_count', 'unknown')} routes, {prerender.get('dynamic_route_count', 'unknown')} dynamic route patterns.",
+              "- The following steps run selected browser-side search comparisons and Chrome smoke checks; check the job outcome and logs.",
+              "- Security: source data may contain unreviewed/nonpublic records; exclude through publication policies before any static deployment.",
+              "- Verdict: **HOLD_NO_DEPLOY**. A successful static exporter, true output-size measurement, exact search-result comparison, and Android testing remain mandatory.",
+          ]
+          md = "\n".join(lines) + "\n"
+          Path("github-pages-feasibility.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          Path("github-pages-feasibility.md").write_text(md, encoding="utf-8")
+          print(md)
+          if os.environ.get("GITHUB_STEP_SUMMARY"):
+              with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+                  f.write(md)
+          PY
+      - name: Build unpublished static Q&A pilot and verify original search parity
+        run: |
+          node scripts/build_github_pages_qa_pilot.mjs
+          node --test tests/github-pages-qa-pilot.test.mjs
+          cat .github-pages-qa-pilot/measurement.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Build sanitized public dayservice handbook pilot; audit content
+        run: |
+          python scripts/build_github_pages_handbook_pilot.py
+          python -m unittest tests/test_github_pages_handbook_pilot.py
+          cat .github-pages-handbook-pilot/measurement.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Build and audit private combined detail experiment
+        env:
+          KAIGO_RUN_STATIC_DETAILS: "1"
+        run: python -m unittest tests/test_github_pages_full_partial_pilot.py
+      - name: Archive numerical summary only (no content release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages-feasibility-measurement
+          path: |
+            github-pages-feasibility.json
+            github-pages-feasibility.md
+            .github-pages-qa-pilot/measurement.json
+            .github-pages-qa-pilot/measurement.md
+            .github-pages-handbook-pilot/measurement.md
+            .github-pages-handbook-pilot/measurement.json
+          retention-days: 7
