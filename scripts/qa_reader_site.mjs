@@ -210,6 +210,15 @@ try {
             href.endsWith(`#page=${qaPages[i]}`)) &&
           (await training.locator('.dayservice-official-qa-links > p').innerText()).includes('未確認') ? 'PASS' : 'FAIL',
       });
+      const treatment = page.locator('#fee-treatment-improvement');
+      const amendment = treatment.locator('.dayservice-regulatory-update');
+      const amendmentText = await amendment.innerText();
+      report.interactions.push({
+        flow: `${width}px treatment improvement → 2026 amendment warning before historical fee source`,
+        status: amendmentText.includes('令和8年厚生労働省告示第87号') &&
+          amendmentText.includes('請求・届出') &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7"]').count() === 1 ? 'PASS' : 'FAIL',
+      });
       const extension = page.locator('#fee-note-6');
       const extensionText = await extension.innerText();
       report.interactions.push({
