@@ -21,7 +21,7 @@ export default async function QaDetail({params, searchParams}: {params: Promise<
     <h1>{evidence?.number || item.number || "問番号未収載"} {item.topic}</h1>
     <p>{item.issued_source}</p>
     {!reader ? <p className="scope-note">{evidence?.source_locator || "公式Q&A集 / " + item.scope + " / " + item.topic}</p> : null}
-    {evidence?.revised_by ? <div className="notice">修正後のQ&Aがあります。この回答だけを現在の取扱いとして使わないでください。<p><Link href={qaDetailHref(evidence.revised_by)}>令和6年問59の修正後資料へ →</Link></p></div> : <div className="notice">{reader ? "発出当時の回答です。改正後も適用できるかは未確認です。算定・配置の判断前に最新の国の資料を確認してください。" : "出典別のQ&A本文です。現在も有効かどうかは未確定で、担当者による確認も未実施です。"}</div>}
+    {evidence?.revised_by ? <div className="notice">修正後のQ&Aがあります。この回答だけを現在の取扱いとして使わないでください。<p><Link href={reader ? `${qaDetailHref(evidence.revised_by)}?reader=1` : qaDetailHref(evidence.revised_by)}>令和6年問59の修正後資料へ →</Link></p></div> : <div className="notice">{reader ? "発出当時の回答です。改正後も適用できるかは未確認です。算定・配置の判断前に最新の国の資料を確認してください。" : "出典別のQ&A本文です。現在も有効かどうかは未確定で、担当者による確認も未実施です。"}</div>}
     <nav className="handbook-topic-navigation" aria-label="関連する手引">
       {relatedServices.map(service => <Link key={service.service_id} href={`/services/${service.service_id}#national_qa`}>{service.label}の手引に戻る</Link>)}
       {!relatedServices.length ? <Link href="/services">サービス別の手引を選ぶ</Link> : null}
