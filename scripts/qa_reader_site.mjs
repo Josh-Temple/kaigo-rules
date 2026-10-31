@@ -253,6 +253,8 @@ try {
       const qaDetailHref = await qaDetailLink.getAttribute('href');
       if (qaDetailHref?.includes('?reader=1')) {
         await qaDetailLink.click();
+        await page.waitForURL(url => url.pathname.startsWith('/qa/') && url.searchParams.get('reader') === '1', { timeout: 15000 });
+        await page.locator('main a[href*="mhlw.go.jp"]').first().waitFor({ state: 'attached', timeout: 15000 });
         const qaDetailText = await page.locator('main').innerText();
         report.interactions.push({
           flow: `${width}px related Q&A → individual answer and government source without editor data`,
