@@ -248,7 +248,7 @@ def build_with_details() -> dict:
         search_dir = Path(json.loads(run.stdout)["dir"])
         corpus = json.loads((ROOT / "data/qa-corpus.json").read_text(encoding="utf-8"))
         direct = json.loads((ROOT / "data/qa-direct-evidence.json").read_text(encoding="utf-8"))
-        child, base = qa_details.start_next()
+        child, base = qa_details.start_next(pilot_optimized=True)
         qa_result = qa_details.add_details(search_dir, base, corpus, direct, max_seconds=480)
         legal_result = legal_details.add_details(search_dir, base, max_seconds=360)
         if child.poll() is None:

@@ -27,8 +27,10 @@ class LegalDetailPilotTest(unittest.TestCase):
         self.assertIsNone(pilot.route_link("//outside.example/rules/10", key, {key}))
 
     def test_local_rendering_preserves_conditions_links_and_scopes(self):
+        requested = []
         class Handler(BaseHTTPRequestHandler):
             def do_GET(self):
+                requested.append(self.path)
                 parts = urlsplit(self.path)
                 page = ('<html><body><article class="answer-page rules-page"><h1>条文</h1>'
                         '<p>原則・条件・例外</p><p>' + unquote(parts.path) + " " + parts.query + '</p>'
@@ -58,6 +60,7 @@ class LegalDetailPilotTest(unittest.TestCase):
                 }), encoding="utf-8")
                 result = pilot.add_details(out, "http://127.0.0.1:" + str(server.server_port))
                 self.assertEqual((result["detail_pages"], result["scoped_pages"]), (3, 1))
+                self.assertIn("/rules/156:173", requested)
                 page = (out / "legal/rules/dayservice/93.html").read_text(encoding="utf-8")
                 self.assertIn("原則・条件・例外", page)
                 self.assertIn("../../law/all/8.html", page)
@@ -81,7 +84,7 @@ class LegalDetailPilotTest(unittest.TestCase):
         out = Path(json.loads(result.stdout)["dir"])
         child = None
         try:
-            child, base = pilot.qa.start_next()
+            child, base = pilot.qa.start_next(pilot_optimized=True)
             summary = pilot.add_details(out, base, max_seconds=360)
             self.assertGreater(summary["by_kind"]["law"], 0)
             self.assertGreater(summary["by_kind"]["rules"], 0)

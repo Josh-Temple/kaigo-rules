@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import concurrent.futures
 import json
+import os
 import re
 import socket
 import subprocess
@@ -221,15 +222,20 @@ def add_details(search_dir, base_url, corpus, direct, max_seconds=600):
             "elapsed_seconds": round(time.monotonic() - start, 2)}
 
 
-def start_next():
+def start_next(pilot_optimized=False):
     binary = ROOT / "node_modules/next/dist/bin/next"
     if not binary.is_file() or not (ROOT / ".next/BUILD_ID").is_file():
         raise RuntimeError("A validated Next.js build is required")
     with socket.socket() as sock:
         sock.bind(("127.0.0.1", 0))
         port = sock.getsockname()[1]
+    environment = os.environ.copy()
+    if pilot_optimized:
+        environment["KAIGO_PRIVATE_STATIC_PILOT"] = "1"
+    else:
+        environment.pop("KAIGO_PRIVATE_STATIC_PILOT", None)
     child = subprocess.Popen(["node", str(binary), "start", "--hostname", "127.0.0.1", "--port", str(port)],
-                             cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                             cwd=ROOT, env=environment, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     base = "http://127.0.0.1:" + str(port)
     deadline = time.monotonic() + 30
     while time.monotonic() < deadline and child.poll() is None:

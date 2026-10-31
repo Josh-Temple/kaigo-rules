@@ -29,6 +29,7 @@ import {
   serviceApplicability,
 } from "../../../lib/service-scope";
 import { verifiedRelatedPrimarySources } from "../../../lib/verified-related-sources";
+import { privateStaticPilotServicesForRule } from "../../../lib/private-static-pilot-rule-index";
 
 type RuleNode = {
   id: string;
@@ -203,7 +204,9 @@ export default async function RuleArticlePage({
   const publicMemberships = scope.memberships.filter((membership) =>
     publicFilterIds.has(membership.service_id),
   );
-  const progressiveMemberships = progressiveServicesForRule(articleNode.id).map(
+  const progressiveMemberships = (process.env.KAIGO_PRIVATE_STATIC_PILOT === "1"
+    ? privateStaticPilotServicesForRule(articleNode.id)
+    : progressiveServicesForRule(articleNode.id)).map(
     (service) => ({
       service_id: service.service_id,
       basis: "DIRECT_SCOPE" as const,

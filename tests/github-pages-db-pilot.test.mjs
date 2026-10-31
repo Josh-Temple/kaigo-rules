@@ -18,7 +18,9 @@ import { listServices } from "../lib/service-catalog.ts";
 import { publicUnitPriceRows, unitPriceHref } from "../lib/unit-price-discovery.ts";
 import {
   filterProgressivePublishedRules, filterProgressivePublishedRecords, getProgressiveSourceRecords,
+  listProgressivePublicationServices, progressiveServicesForRule,
 } from "../lib/publication-policy.ts";
+import { privateStaticPilotServicesForRule } from "../lib/private-static-pilot-rule-index.ts";
 import {
   DELEGATED_REMUNERATION_SOURCE_FAMILY as DELEGATED,
   GOVERNING_STANDARDS_SOURCE_FAMILY as STANDARDS,
@@ -186,6 +188,43 @@ test("compressed global data is lossless and falls back when unsupported or inva
   assert.deepEqual(await loadJson("./global.json", { fetcher: broken }), payload);
   assert.deepEqual(calls, ["./global.json.gz", "./global.json"]);
   console.log("Global index: " + raw.length + " bytes; gzip=" + compressed.length + " bytes; lossless");
+});
+
+test("private legal membership index matches the original publication policy", { timeout: 300000 }, () => {
+  const byFamily = new Map();
+  const allIds = new Set();
+  const expectedById = new Map();
+  let sourceRecords = 0;
+  for (const service of listProgressivePublicationServices()) {
+    const records = getProgressiveSourceRecords(service.service_id);
+    sourceRecords += records.length;
+    for (const record of records) allIds.add(record.id);
+    for (const record of filterProgressivePublishedRules(service.service_id, records, (row) => row.id)) {
+      const matches = expectedById.get(record.id) || [];
+      matches.push(service);
+      expectedById.set(record.id, matches);
+    }
+    const record = records.find((row) => row.node_type === "article");
+    if (record) {
+      const family = record.id.split(".article.")[0];
+      if (!byFamily.has(family)) byFamily.set(family, record.id);
+    }
+  }
+  for (const id of allIds) {
+    assert.deepEqual(privateStaticPilotServicesForRule(id), expectedById.get(id) || [], "Publication index differs for " + id);
+  }
+  const ids = [...new Set([...byFamily.values(), "ordinance37.article.93",
+    "ordinance37.article.10", "standards35.article.46", "not-a-published-record"])];
+  for (const id of ids) {
+    assert.deepEqual(privateStaticPilotServicesForRule(id), progressiveServicesForRule(id), "Publication membership differs for " + id);
+  }
+  const original = privateStaticPilotServicesForRule(ids[0]);
+  const copy = privateStaticPilotServicesForRule(ids[0]);
+  if (copy[0]) copy[0].label = "mutated";
+  copy.length = 0;
+  assert.deepEqual(privateStaticPilotServicesForRule(ids[0]), original);
+  console.log("Private legal membership parity: " + ids.length + " / " + ids.length +
+    " representative records; " + sourceRecords + " service-record entries, " + allIds.size + " unique IDs");
 });
 
 test("all Q&A entries preserve the current search, filters and pagination", { timeout: 120000 }, () => {

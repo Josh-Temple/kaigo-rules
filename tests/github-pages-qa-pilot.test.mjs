@@ -109,7 +109,7 @@ test("prototype is static, mobile-friendly and has safety notice", () => {
   assert.doesNotMatch(app, /innerHTML/);
 });
 
-test("private cross-database pilot matches the current server search", { timeout: 240000 }, () => {
+test("private cross-database pilot matches the current server search", { timeout: 420000 }, () => {
   // The parent itself runs under node:test. Without removing this internal
   // marker a nested node --test silently skips all child files.
   const childEnv = { ...process.env };
@@ -117,13 +117,14 @@ test("private cross-database pilot matches the current server search", { timeout
   const result = spawnSync(process.execPath, [
     "--import", "./experiments/github-pages-db/register.mjs",
     "--test", "tests/github-pages-db-pilot.test.mjs",
-  ], { cwd: root, env: childEnv, encoding: "utf8", timeout: 220000, maxBuffer: 4 * 1024 * 1024 });
+  ], { cwd: root, env: childEnv, encoding: "utf8", timeout: 390000, maxBuffer: 4 * 1024 * 1024 });
   if (result.stdout) process.stdout.write(result.stdout);
   if (result.stderr) process.stderr.write(result.stderr);
   assert.equal(result.error, undefined, result.error?.message);
   assert.equal(result.status, 0, "Cross-database parity test failed");
   assert.match(result.stdout, /DB parity scenarios: \d+ \/ \d+/);
   assert.match(result.stdout, /Full QA parity scenarios: \d+ \/ \d+/);
+  assert.match(result.stdout, /Private legal membership parity: \d+ \/ \d+/);
   if (process.env.GITHUB_ACTIONS === "true") {
     assert.match(result.stdout, /Rendered Next\.js parity: \d+ \/ \d+/);
     assert.match(result.stdout, /Rendered Next Q&A parity: \d+ \/ \d+/);
