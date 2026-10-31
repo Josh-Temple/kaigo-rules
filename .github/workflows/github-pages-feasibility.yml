@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/github-pages-feasibility.yml"
+      - "experiments/github-pages-qa/**"
+      - "scripts/build_github_pages_qa_pilot.mjs"
+      - "tests/github-pages-qa-pilot.test.mjs"
   workflow_dispatch:
 
 permissions:
@@ -110,6 +113,11 @@ jobs:
               with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
                   f.write(md)
           PY
+      - name: Build unpublished static Q&A pilot and verify original search parity
+        run: |
+          node scripts/build_github_pages_qa_pilot.mjs
+          node --test tests/github-pages-qa-pilot.test.mjs
+          cat .github-pages-qa-pilot/measurement.md >> "$GITHUB_STEP_SUMMARY"
       - name: Archive numerical summary only (no content release)
         uses: actions/upload-artifact@v4
         with:
@@ -117,4 +125,6 @@ jobs:
           path: |
             github-pages-feasibility.json
             github-pages-feasibility.md
+            .github-pages-qa-pilot/measurement.json
+            .github-pages-qa-pilot/measurement.md
           retention-days: 7
