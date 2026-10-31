@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { handbookChapterHref, type HandbookChapter, type ServiceHandbookData } from "../lib/working-handbook";
-import { dayserviceChapterGroups, dayserviceChapterIntros, dayserviceQa, dayserviceQaIndex, nationalSourceUrl, readerExcerpt, type ReaderReference, type ReaderTopic } from "../lib/handbook/dayservice-national-reader";
+import { dayserviceChapterGroups, dayserviceChapterIntros, dayserviceStaffingTopics, dayserviceQa, dayserviceQaIndex, nationalSourceUrl, readerExcerpt, type ReaderReference, type ReaderTopic } from "../lib/handbook/dayservice-national-reader";
 import { sourceTextParagraphs } from "../lib/handbook/dayservice-reader-editorial";
 import { basicFeeTable, dayserviceAppliedText, type FeeTableRow } from "../lib/handbook/dayservice-source-layout";
 import HandbookChecklist from "./handbook-checklist";
@@ -158,14 +158,6 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
       <ul>{topic.readerQuestions.map(question => <li key={question}>{question}</li>)}</ul>
       <p className="dayservice-reader-question-note">確認の入口です。該当する国の基準・通知・Q&Aに続けて目を通してください。</p>
     </aside> : null}
-    {sections.length > 1 && (topic.criteria?.length || topic.qa?.length) ? <nav className="dayservice-source-navigation" aria-label={`${topic.title}の資料へ移動`}><ul>{sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav> : null}
-    {topic.basis.length ? <section className="dayservice-source-block" id={`${topic.id}-basis`}><BlockHeading>{isFee ? "報酬告示" : "基準"}</BlockHeading>{topic.basis.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={reference.family !== "fee" || topic.basis.length > 1} showCaution={reference.family !== "fee"} showSourceTitle={index === 0 || reference.family !== topic.basis[index - 1].family} />)}</section> : null}
-    {topic.criteria?.length ? <section className="dayservice-source-block" id={`${topic.id}-criteria`}><BlockHeading>厚生労働大臣が定める基準・算定方法</BlockHeading>{topic.criteria.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={false} showCaution={index === 0} />)}</section> : null}
-    {topic.interpretation?.length ? <section className="dayservice-source-block" id={`${topic.id}-interpretation`}><BlockHeading>国の解釈通知・留意事項</BlockHeading>{topic.interpretation.map((reference, index) => <Excerpt key={`${reference.id}-${reference.part || ""}`} reference={reference} showCaution={index === 0} />)}</section> : null}
-    {hasExample ? <section className="dayservice-source-block" id={`${topic.id}-example`}><BlockHeading>勤務時間の計算例</BlockHeading>{topic.id === "staffing-role-life-counselor" ? <LifeCounselorExample /> : <CareWorkerExample />}</section> : null}
-    {topic.qa?.length ? <section className="dayservice-source-block" id={`${topic.id}-qa`}><BlockHeading>国Q&A</BlockHeading>{topic.qa.map(id => <NationalQa key={id} id={id} anchorId={`${topic.id}-qa-${id}`} />)}</section> : null}
-    {topic.id === "fee-note-13" ? <TrainingOverlapExample /> : null}
-    {topic.id === "fee-note-6" ? <ExtensionTimingExample /> : null}
     {topic.officialQaFurther?.length ? <section className="dayservice-source-block dayservice-official-qa-links" aria-label="あわせて確認する国Q&A">
       <BlockHeading>国Q&Aと回答の要点（発出資料）</BlockHeading>
       <ul>{topic.officialQaFurther.map(item => <li key={item.number}>
@@ -175,6 +167,14 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
       </li>)}</ul>
       <p>上記は発出時点の回答の要点です。後続改正との適用関係は未確認です。算定前に最新の国の資料も確認してください。</p>
     </section> : null}
+    {sections.length > 1 && (topic.criteria?.length || topic.qa?.length) ? <nav className="dayservice-source-navigation" aria-label={`${topic.title}の資料へ移動`}><ul>{sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav> : null}
+    {topic.basis.length ? <section className="dayservice-source-block" id={`${topic.id}-basis`}><BlockHeading>{isFee ? "報酬告示" : "基準"}</BlockHeading>{topic.basis.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={reference.family !== "fee" || topic.basis.length > 1} showCaution={reference.family !== "fee"} showSourceTitle={index === 0 || reference.family !== topic.basis[index - 1].family} />)}</section> : null}
+    {topic.criteria?.length ? <section className="dayservice-source-block" id={`${topic.id}-criteria`}><BlockHeading>厚生労働大臣が定める基準・算定方法</BlockHeading>{topic.criteria.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={false} showCaution={index === 0} />)}</section> : null}
+    {topic.interpretation?.length ? <section className="dayservice-source-block" id={`${topic.id}-interpretation`}><BlockHeading>国の解釈通知・留意事項</BlockHeading>{topic.interpretation.map((reference, index) => <Excerpt key={`${reference.id}-${reference.part || ""}`} reference={reference} showCaution={index === 0} />)}</section> : null}
+    {hasExample ? <section className="dayservice-source-block" id={`${topic.id}-example`}><BlockHeading>勤務時間の計算例</BlockHeading>{topic.id === "staffing-role-life-counselor" ? <LifeCounselorExample /> : <CareWorkerExample />}</section> : null}
+    {topic.qa?.length ? <section className="dayservice-source-block" id={`${topic.id}-qa`}><BlockHeading>国Q&A</BlockHeading>{topic.qa.map(id => <NationalQa key={id} id={id} anchorId={`${topic.id}-qa-${id}`} />)}</section> : null}
+    {topic.id === "fee-note-13" ? <TrainingOverlapExample /> : null}
+    {topic.id === "fee-note-6" ? <ExtensionTimingExample /> : null}
     {topic.qaSearchQuery ? <p className="dayservice-qa-search-link">
       <Link href={`/qa?reader=1&service=16&q=${encodeURIComponent(topic.qaSearchQuery)}`}>「{topic.qaSearchQuery}」に関する国Q&Aをさらに探す</Link>
       <span>検索結果には過去の取扱いも含まれます。発出日と後続改正を確認してください。</span>
@@ -202,6 +202,20 @@ function SourceGuide() {
   </dl>;
 }
 
+function StaffingRoleOverview() {
+  return <section className="dayservice-staffing-overview" aria-label="職種別の配置基準の早見表">
+    <h3>職種別の配置基準を早見する</h3>
+    <p>職種を選ぶと、国の基準、条件・例外、勤務時間の計算例、関連Q&Aをまとめて確認できます。以下は概要です。原文・地域の条例も確認してください。</p>
+    <table>
+      <thead><tr><th scope="col">職種</th><th scope="col">まず確認すること</th></tr></thead>
+      <tbody>{dayserviceStaffingTopics.map(topic => <tr key={topic.id}>
+        <th scope="row"><a href={`#${topic.id}`}>{topic.title}</a></th>
+        <td>{topic.readerSummary || "国の人員基準と、勤務体制・兼務の条件を確認してください。"}</td>
+      </tr>)}</tbody>
+    </table>
+  </section>;
+}
+
 export default function DayserviceHandbookChapter({ chapter, full }: { service: ServiceHandbookData; chapter: HandbookChapter; full: boolean }) {
   const groups = dayserviceChapterGroups[chapter.section_id] || [];
   const isStaffing = chapter.section_id === "staffing";
@@ -214,6 +228,15 @@ export default function DayserviceHandbookChapter({ chapter, full }: { service: 
     <p className="dayservice-chapter-intro">{dayserviceChapterIntros[chapter.section_id]}</p>
     {full ? <p className="handbook-return-link"><Link href={`/services/dayservice#${chapter.section_id}`}>通所介護の手引に戻る</Link></p> : null}
     {isStaffing ? <div className="staffing-reading-guide"><p>国の基準、解釈通知の掲載資料、国Q&Aの順に読めます。解釈通知等には現行性を確認中の本文が含まれます。各資料の注意を併せて確認してください。</p></div> : null}
+    {isStaffing ? <StaffingRoleOverview /> : null}
+    {chapter.section_id === "additions" ? <aside className="dayservice-priority-additions" aria-label="まず確認したい加算">
+      <p><strong>まず確認したい加算</strong></p>
+      <ul>
+        <li><Link href={`${href}#fee-note-13`}>個別機能訓練加算：配置・時間帯・国Q&A</Link></li>
+        <li><Link href={`${href}#fee-note-6`}>延長加算：時間の条件・宿泊時の取扱い・国Q&A</Link></li>
+      </ul>
+      <p>この2項目は説明と図解を充実させています。算定前に告示・大臣基準・留意事項と、後続改正の有無を確認してください。</p>
+    </aside> : null}
     {full && ["remuneration", "additions", "deductions"].includes(chapter.section_id) ? <p className="handbook-role-warning">掲載する報酬本文の適用版・改正附則と、参照される大臣基準・留意事項の照合は未完了です。この章だけでは算定可否を確定できません。</p> : null}
     {groups.length ? <nav className={isStaffing ? "handbook-role-navigation dayservice-topic-navigation" : "dayservice-topic-navigation"} id={navigationId} aria-label={isStaffing ? "職種・適用区分から探す" : "この章の項目"}>
       {groups.map(group => <div key={group.title}><p><strong>{group.title}</strong></p><ul>{group.topics.map(topic => <li key={topic.id}>{expanded ? <a href={`#${topic.id}`}>{topic.title}</a> : <Link href={`${href}#${topic.id}`}>{topic.title}</Link>}</li>)}</ul></div>)}
