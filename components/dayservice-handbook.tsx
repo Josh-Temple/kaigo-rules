@@ -181,7 +181,8 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
       {topic.regulatoryUpdate ? <details className="dayservice-historical-fee-details">
         <summary>改正後の照合が済んでいない掲載本文を見る（参考資料）</summary>
         <p className="dayservice-source-caution">この掲載本文の加算率は現在の算定に使わないでください。算定月に対応する国の改正告示・通知を先に確認してください。</p>
-        {basisExcerpts}
+        {/* Exclude unverified historical figures from Google snippets without suppressing the entire handbook. */}
+        <div data-nosnippet="">{basisExcerpts}</div>
       </details> : basisExcerpts}
     </section> : null}
     {topic.criteria?.length ? <section className="dayservice-source-block" id={`${topic.id}-criteria`}><BlockHeading>厚生労働大臣が定める基準・算定方法</BlockHeading>{topic.criteria.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={false} showCaution={index === 0} />)}</section> : null}
