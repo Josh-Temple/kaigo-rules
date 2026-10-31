@@ -350,6 +350,22 @@ function ruleAdapter(args: {
     label,
   } = args;
 
+  // Publication data is bundled with the deployment and cannot change during
+  // a function instance's lifetime. Avoid rebuilding the allowed article set
+  // for every record in a large statutory source.
+  const publishedArticlesByPromotion = new WeakMap<
+    RuntimePromotion,
+    Set<string>
+  >();
+  const publishedArticlesFor = (promotion: RuntimePromotion) => {
+    let articles = publishedArticlesByPromotion.get(promotion);
+    if (!articles) {
+      articles = publishedRuleArticles(promotion, nodePrefix, scopeMode);
+      publishedArticlesByPromotion.set(promotion, articles);
+    }
+    return articles;
+  };
+
   const supportsPromotion = (
     promotion: RuntimePromotion,
   ) => {
@@ -394,13 +410,7 @@ function ruleAdapter(args: {
       return false;
     }
 
-    return (
-      publishedRuleArticles(
-        promotion,
-        nodePrefix,
-        scopeMode,
-      ).size > 0
-    );
+    return publishedArticlesFor(promotion).size > 0;
   };
 
   const recordIsPublished = (
@@ -415,12 +425,7 @@ function ruleAdapter(args: {
         nodePrefix,
       );
     return Boolean(
-      article &&
-        publishedRuleArticles(
-          promotion,
-          nodePrefix,
-          scopeMode,
-        ).has(String(article)),
+      article && publishedArticlesFor(promotion).has(String(article)),
     );
   };
 
