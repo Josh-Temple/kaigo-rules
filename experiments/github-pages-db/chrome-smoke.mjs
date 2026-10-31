@@ -125,6 +125,12 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
     assert.equal(result.width, requestedWidth, "Requested CSS viewport was not applied");
     assert.ok(result.scrollWidth <= result.width, "Page overflows horizontally");
     assert.ok(result.qa, "Q&A destination is absent");
+    let legalHref = "";
+    if (options.legalLocal) {
+      legalHref = await value(client, "(() => [...document.querySelectorAll('#results a')].map(a=>a.href).find(h=>h.startsWith(" +
+        JSON.stringify(origin + base + "legal/") + ")) || '')()");
+      assert.ok(legalHref, "Legal search results did not link into the private pilot");
+    }
 
     // Confirm actual keyboard focus progression and a touch-generated submit.
     // The integrated page has navigation links before the form. Verify that
@@ -193,6 +199,22 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
       assert.ok(detail.includes("未確認") || detail.includes("確認してください"), "Q&A detail lost its currentness warning");
       localQaDetail = true;
     }
+    let localLegalDetail = false;
+    if (options.legalLocal) {
+      await client.send("Page.navigate", { url: legalHref });
+      let detail = null;
+      const deadline = Date.now() + 30000;
+      while (!detail && Date.now() < deadline) {
+        try {
+          detail = await value(client, "(() => {const a=document.querySelector('article.rules-page'); if(document.readyState!=='complete'||!a)return null; return {width:innerWidth,scroll:document.documentElement.scrollWidth,title:a.querySelector('h1')?.textContent,external:a.querySelectorAll('a[href^=\"https://\"]').length};})()");
+        } catch { /* navigation in progress */ }
+        if (!detail) await pause(100);
+      }
+      assert.ok(detail && detail.title && detail.external > 0, "Legal detail lost its title or source links");
+      assert.equal(detail.width, requestedWidth);
+      assert.ok(detail.scroll <= detail.width, "Legal detail overflows horizontally");
+      localLegalDetail = true;
+    }
     let handbook = null;
     if (options.handbook) {
       if (!/^\/handbook\/[a-z0-9-]+\/[a-z0-9-]+\.html$/.test(options.handbook)) throw new Error("Invalid handbook path");
@@ -225,7 +247,7 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
       searchMs: result.searchMs, readyMs: result.readyMs, heapBytes: result.heapBytes,
       keyboard: true, keyboardSteps, touch: true, unitGroups, pinchScale, printed: true, qaRows: qaResult.rows, qaPage: qaResult.page,
       handbook: handbook ? { checkbox: true, printButton: true, printed: true } : null,
-      localQaDetail };
+      localQaDetail, localLegalDetail };
   } finally {
     if (client) client.close();
     if (child?.pid) {

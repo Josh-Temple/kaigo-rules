@@ -11,6 +11,7 @@ const service = document.querySelector("#service");
 const category = document.querySelector("#category");
 const status = document.querySelector("#status");
 const results = document.querySelector("#results");
+const localLegalDetails = document.querySelector('meta[name="kaigo-legal-local-details"]')?.content === "true";
 const cache = new Map();
 let services = [];
 let latestSearch = 0;
@@ -35,7 +36,17 @@ function internalLink(label, href) {
   const destination = new URL(href, "https://kaigo-rules.vercel.app");
   if (destination.origin !== "https://kaigo-rules.vercel.app") throw new Error("不正なリンクを検出しました。");
   const link = element("a", label);
-  link.href = destination.href;
+  const legal = destination.pathname.match(/^\/(law|rules)\/([0-9]+(?:-[0-9]+)*(?::[0-9]+(?:-[0-9]+)*)?)\/?$/);
+  const params = [...destination.searchParams.keys()];
+  const selectedService = destination.searchParams.get("service") || "";
+  if (localLegalDetails && legal && !destination.hash &&
+      params.every((key) => key === "service") && params.length <= 1 &&
+      (!selectedService || /^[a-z0-9-]+$/.test(selectedService))) {
+    link.href = "./legal/" + legal[1] + "/" + (selectedService || "all") + "/" +
+      legal[2].replace(":", "__range__") + ".html";
+  } else {
+    link.href = destination.href;
+  }
   return link;
 }
 

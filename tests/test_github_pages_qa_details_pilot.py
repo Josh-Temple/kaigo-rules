@@ -98,10 +98,10 @@ class QaDetailPilotTest(unittest.TestCase):
                 pilot.add_details(out, "http://127.0.0.1:1234", [], {})
 
     def test_full_existing_next_qa_details(self):
+        if os.environ.get("KAIGO_RUN_STATIC_DETAILS") != "1":
+            self.skipTest("Full rendered-page test runs in the dedicated post-build step")
         if not (ROOT / ".next/BUILD_ID").is_file() or not (ROOT / "node_modules/next/dist/bin/next").is_file():
-            if os.environ.get("GITHUB_ACTIONS") == "true":
-                self.fail("Validated Next.js application missing")
-            self.skipTest("Validated Next.js application is not available locally")
+            self.fail("Validated Next.js application missing")
         result = subprocess.run(
             ["node", "--import", "./experiments/github-pages-db/register.mjs", "experiments/github-pages-db/build.mjs"],
             cwd=ROOT, text=True, capture_output=True, timeout=180, check=True,

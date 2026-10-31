@@ -111,23 +111,28 @@ def rewrite_link(href, known_ids):
     return pilot.link_target(href)
 
 
-def render_detail(source_html, item, identifier, reader, known_ids):
+def render_article(source_html, title, link_rewriter, css_path="../../styles.css"):
     original = ArticleSnapshot()
     original.feed(source_html)
     if not original.done:
-        raise RuntimeError("Rendered Q&A article is missing")
-    link_rewriter = lambda href: rewrite_link(href, known_ids)
+        raise RuntimeError("Rendered article is missing")
     sanitized = QaSanitizer(link_rewriter=link_rewriter)
     sanitized.feed(source_html)
     if not sanitized.finished or sanitized.article_depth:
-        raise RuntimeError("Incomplete Q&A article")
+        raise RuntimeError("Incomplete article")
     body = "".join(sanitized.chunks)
-    rendered = pilot.html_page(item.get("topic") or identifier, body, "../../styles.css")
+    rendered = pilot.html_page(title, body, css_path)
     snapshot = ArticleSnapshot()
     snapshot.feed(rendered)
     expected_links = [link_rewriter(link) for link in original.links]
     if None in expected_links or "".join(original.text) != "".join(snapshot.text) or expected_links != snapshot.links:
-        raise RuntimeError("Q&A detail text or links differ from original rendering")
+        raise RuntimeError("Article text or links differ from original rendering")
+    return rendered, original
+
+
+def render_detail(source_html, item, identifier, reader, known_ids):
+    link_rewriter = lambda href: rewrite_link(href, known_ids)
+    rendered, original = render_article(source_html, item.get("topic") or identifier, link_rewriter)
     full_text = "".join(original.text)
     if item.get("question", "") not in full_text or item.get("answer", "") not in full_text:
         raise RuntimeError("Q&A detail omitted the original question or answer")
