@@ -12,8 +12,10 @@ import posixpath
 import re
 from collections import Counter
 from pathlib import Path
-from urllib.parse import parse_qs, unquote, urlsplit
+from urllib.parse import unquote, urlsplit
+import sys
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_github_pages_legal_details_pilot as legal
 import build_github_pages_qa_details_pilot as qa
 
