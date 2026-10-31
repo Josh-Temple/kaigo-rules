@@ -20,6 +20,12 @@ PAGES = {
     "start": "利用開始",
     "overview": "介護制度の全体像",
     "guide": "介護制度の使い方ガイド",
+    # These four paths are already prerendered by the validated Next.js build.
+    # Preserve original source/currentness warnings, not raw source databases.
+    "sources": "公式資料と出典",
+    "handbook-sources": "手引の出典",
+    "services/source-map": "サービス別の根拠資料",
+    "fees/guidance": "報酬に関する案内",
 }
 
 
@@ -46,7 +52,8 @@ def add_pages(root: Path) -> dict:
             raise RuntimeError("Missing or duplicate pre-rendered reader page: " + route)
         full_html = source.read_text(encoding="utf-8")
         rendered, original = qa.render_article(
-            full_html, label, preserve_original_link, "../styles.css",
+            full_html, label, preserve_original_link,
+            "../" * len(Path(route).parts) + "styles.css",
         )
         if not original.done or not "".join(original.text).strip() or "<script" in rendered.split("<main>", 1)[-1]:
             raise RuntimeError("Incomplete reader information extract: " + route)

@@ -46,7 +46,8 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
         kind, target, suffix = "search", root / "databases/search/index.html", ("?" + query if query else "")
     elif path == "/qa":
         kind, target, suffix = "qa-search", root / "databases/search/qa.html", ("?" + query if query else "")
-    elif path in {"/start", "/overview", "/guide"} and not query:
+    elif path in {"/start", "/overview", "/guide", "/sources", "/handbook-sources",
+                  "/services/source-map", "/fees/guidance"} and not query:
         kind, target = "information", root / path.lstrip("/") / "index.html"
     else:
         match = re.fullmatch(r"/services/([a-z0-9-]+)", path)

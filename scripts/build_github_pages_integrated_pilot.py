@@ -198,7 +198,11 @@ def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = 
     information_links = (
         '<p><a href="./start/index.html">はじめての方へ</a> / '
         '<a href="./overview/index.html">制度の全体像</a> / '
-        '<a href="./guide/index.html">使い方ガイド</a></p>'
+        '<a href="./guide/index.html">使い方ガイド</a> / '
+        '<a href="./sources/index.html">公式資料と出典</a> / '
+        '<a href="./handbook-sources/index.html">手引の出典</a> / '
+        '<a href="./services/source-map/index.html">サービス別根拠資料</a> / '
+        '<a href="./fees/guidance/index.html">報酬案内</a></p>'
         if with_information else ""
     )
     root_page.write_text(text.replace("</article>", '<p><a href="./databases/search/index.html">制度DB横断検索を試す</a> / <a href="./databases/search/qa.html">国Q&Aを探す</a></p>' + information_links + '</article>'), encoding="utf-8")
