@@ -131,6 +131,17 @@ export async function chromeSmoke(dir, requestedWidth) {
     await pause(300);
     assert.equal(await value(client, "window.__smokeSubmits"), 1, "Touch did not submit the form");
 
+    await value(client, "document.querySelector('#query').value='地域区分'");
+    await client.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [point] });
+    await client.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
+    let unitGroups = 0;
+    const groupDeadline = Date.now() + 10000;
+    while (!unitGroups && Date.now() < groupDeadline) {
+      unitGroups = await value(client, "document.querySelectorAll('a[href^=\"https://kaigo-rules.vercel.app/fees/unit-price?\"]').length");
+      if (!unitGroups) await pause(100);
+    }
+    assert.ok(unitGroups > 0 && unitGroups <= 20, "Unit prices were not grouped by service");
+
     await client.send("Emulation.setPageScaleFactor", { pageScaleFactor: 2 });
     const pinchScale = await value(client, "visualViewport.scale");
     assert.equal(pinchScale, 2, "200% pinch zoom was not applied");
@@ -138,7 +149,7 @@ export async function chromeSmoke(dir, requestedWidth) {
     assert.equal(Buffer.from(pdf.data, "base64").subarray(0, 5).toString(), "%PDF-", "Print did not produce a PDF");
     return { requestedWidth, actualWidth: result.width, scrollWidth: result.scrollWidth,
       searchMs: result.searchMs, readyMs: result.readyMs, heapBytes: result.heapBytes,
-      keyboard: true, touch: true, pinchScale, printed: true };
+      keyboard: true, touch: true, unitGroups, pinchScale, printed: true };
   } finally {
     if (client) client.close();
     if (child && child.exitCode === null) {

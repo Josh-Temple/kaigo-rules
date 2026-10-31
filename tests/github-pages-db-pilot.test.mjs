@@ -3,7 +3,10 @@
 import test, { after } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import http from "node:http";
+import net from "node:net";
 import path from "node:path";
+import { spawn, spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import care from "../data/care-insurance-act-nodes.json" with { type: "json" };
 import ordinance from "../data/ordinance37-nodes.json" with { type: "json" };
@@ -140,7 +143,8 @@ test("category filtering and projection exclude internal metadata fields", () =>
     assert.deepEqual(found[selected], all[selected]);
     for (const group of browser.GROUPS.filter((g) => g !== selected)) assert.equal(found[group].length, 0);
   }
-  const permitted = new Set(["id", "title", "href", "excerpt", "excerptField", "sourceUrl", "serviceId", "statusText", "fields"]);
+  const permitted = new Set(["id", "title", "href", "excerpt", "excerptField", "sourceUrl", "serviceId",
+    "serviceLabel", "regionClass", "unitPrice", "checkedAt", "statusText", "fields"]);
   for (const group of browser.GROUPS) for (const row of data[group]) {
     assert.ok(Object.keys(row).every((key) => permitted.has(key)));
     assert.ok(row.href.startsWith("/") && !row.href.startsWith("//"));
@@ -161,6 +165,80 @@ test("refuses to build temporary search data inside the repository", () => {
   }
 });
 
+test("rendered Next.js search agrees with the private browser index", { timeout: 180000 }, async (t) => {
+  const root = path.resolve(import.meta.dirname, "..");
+  const next = path.join(root, "node_modules/next/dist/bin/next");
+  if (!fs.existsSync(next) || !fs.existsSync(path.join(root, ".next/BUILD_ID"))) {
+    if (process.env.GITHUB_ACTIONS === "true") assert.fail("Built Next.js application is unavailable");
+    t.skip("Built Next.js application is unavailable locally");
+    return;
+  }
+  const reservation = net.createServer();
+  await new Promise((resolve, reject) => { reservation.once("error", reject); reservation.listen(0, "127.0.0.1", resolve); });
+  const port = reservation.address().port;
+  await new Promise((resolve) => reservation.close(resolve));
+  const child = spawn(process.execPath, [next, "start", "--hostname", "127.0.0.1", "--port", String(port)], {
+    cwd: root, stdio: "ignore",
+  });
+  child.on("error", () => {});
+  const get = (url) => new Promise((resolve, reject) => {
+    const request = http.get({ hostname: "127.0.0.1", port, path: url, timeout: 30000 }, (response) => {
+      const chunks = [];
+      response.on("data", (chunk) => chunks.push(chunk));
+      response.on("end", () => response.statusCode === 200
+        ? resolve(Buffer.concat(chunks).toString("utf8"))
+        : reject(new Error("Local Next.js returned " + response.statusCode)));
+    });
+    request.on("timeout", () => request.destroy(new Error("Local Next.js request timed out")));
+    request.on("error", reject);
+  });
+  try {
+    let ready = false;
+    const deadline = Date.now() + 30000;
+    while (!ready && Date.now() < deadline && child.exitCode === null) {
+      try { await get("/api/version"); ready = true; }
+      catch { await new Promise((resolve) => setTimeout(resolve, 200)); }
+    }
+    assert.ok(ready, "Local Next.js server did not start");
+    const cases = [
+      ["", "看護職員"], ["", "生活相談員"], ["", "常勤換算"],
+      ["", "個別機能訓練加算"], ["", "送迎"], ["", "業務継続計画"],
+      ["", "ＢＣＰ"], ["", "架空語ゼロ件xyz"],
+      ["dayservice", "看護職員"], ["homevisit", "常勤換算"],
+      ["dayrehab", "送迎"], ["nursing-small-scale-multifunctional", "業務継続計画"],
+    ];
+    for (const [serviceId, q] of cases) {
+      const query = new URLSearchParams({ q });
+      if (serviceId) query.set("service", serviceId);
+      const html = await get("/databases/search?" + query);
+      const extracted = spawnSync("python3", ["scripts/extract_database_search_snapshot.py"], {
+        cwd: root, input: html, encoding: "utf8", maxBuffer: 2 * 1024 * 1024,
+      });
+      assert.equal(extracted.status, 0, "Could not read rendered search groups: " + extracted.stderr);
+      const actual = JSON.parse(extracted.stdout);
+      const rows = readRows(serviceId ? "service-" + serviceId + ".json" : "global.json");
+      const ranked = browser.runSearch(rows, q);
+      for (const group of browser.GROUPS) {
+        let visible = ranked[group].slice(0, 10);
+        if (group === "unitPrice") {
+          const first = new Map();
+          for (const row of ranked[group]) if (!first.has(row.serviceId)) first.set(row.serviceId, row);
+          visible = [...first.values()].slice(0, 20);
+        }
+        const expected = { count: ranked[group].length, links: visible.map((row) => browser.resultHref(group, row, q)) };
+        assert.deepEqual(actual[group], expected, "Rendered Next.js mismatch: " + serviceId + " / " + q + " / " + group);
+      }
+    }
+    console.log("Rendered Next.js parity: " + cases.length + " / " + cases.length + " scenarios");
+  } finally {
+    if (child.exitCode === null) {
+      child.kill("SIGTERM");
+      await Promise.race([new Promise((resolve) => child.once("exit", resolve)), new Promise((resolve) => setTimeout(resolve, 3000))]);
+      if (child.exitCode === null) child.kill("SIGKILL");
+    }
+  }
+});
+
 test("headless Chrome can search without horizontal overflow", { timeout: 110000 }, async (t) => {
   if (!chromePath) {
     if (process.env.GITHUB_ACTIONS === "true") {
@@ -174,7 +252,7 @@ test("headless Chrome can search without horizontal overflow", { timeout: 110000
     console.log("Chrome viewport: requested=" + result.requestedWidth + " actual=" + result.actualWidth +
       " scrollWidth=" + result.scrollWidth + " searchMs=" + result.searchMs +
       " readyMs=" + result.readyMs + " heapBytes=" + result.heapBytes +
-      " keyboard=" + result.keyboard + " touch=" + result.touch + " pinchScale=" +
+      " keyboard=" + result.keyboard + " touch=" + result.touch + " unitGroups=" + result.unitGroups + " pinchScale=" +
       result.pinchScale + " printed=" + result.printed);
   }
 });

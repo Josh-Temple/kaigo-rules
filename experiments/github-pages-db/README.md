@@ -30,6 +30,17 @@ node --import ./experiments/github-pages-db/register.mjs --test tests/github-pag
 node --import ./experiments/github-pages-db/register.mjs experiments/github-pages-db/build.mjs
 ```
 
+通常のNext.jsビルドを済ませた後、39サービスの手引試作と検索試作を
+一つの一時ディレクトリにまとめる場合：
+
+```sh
+python scripts/build_github_pages_integrated_pilot.py
+```
+
+この統合出力は手引と横断検索だけの部分試作で、検索結果などのリンク先には
+現行サイトが残ります。公開ファイルの全量や、1 GB制限への正式な適合を
+示すものではありません。
+
 テストは終了時に一時出力を消す。手動生成した出力は自動削除されないため、
 検証終了後に表示された一時ディレクトリを削除する。
 

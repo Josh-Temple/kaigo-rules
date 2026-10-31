@@ -5,6 +5,7 @@ import io
 import json
 import re
 import shutil
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -26,6 +27,11 @@ all_spec = importlib.util.spec_from_file_location(
 )
 all_pilot = importlib.util.module_from_spec(all_spec)
 all_spec.loader.exec_module(all_pilot)
+integrated_spec = importlib.util.spec_from_file_location(
+    "integrated_handbook_search_pilot", ROOT / "scripts/build_github_pages_integrated_pilot.py"
+)
+integrated_pilot = importlib.util.module_from_spec(integrated_spec)
+integrated_spec.loader.exec_module(integrated_pilot)
 
 
 class HandbookSanitizerTest(unittest.TestCase):
@@ -120,6 +126,33 @@ class HandbookSanitizerTest(unittest.TestCase):
                 self.assertGreater(check_local_links(self, out), 0)
             finally:
                 shutil.rmtree(result["directory"], ignore_errors=True)
+
+    def test_integration_allows_only_expected_search_files(self):
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            out, search = base / "handbook", base / "search"
+            (out / "handbook").mkdir(parents=True)
+            search.mkdir()
+            (out / "index.html").write_text('<article><h1>手引</h1></article>', encoding="utf-8")
+            for name in integrated_pilot.STATIC_FILES:
+                (search / name).write_text("", encoding="utf-8")
+            (search / "index.html").write_text('<main><h1>検索</h1></main>', encoding="utf-8")
+            (search / "services.json").write_text(
+                json.dumps([{"id": "dayservice", "label": "通所介護", "file": "service-dayservice.json"}]),
+                encoding="utf-8",
+            )
+            groups = {group: [] for group in integrated_pilot.GROUPS}
+            for name in ["global.json", "service-dayservice.json"]:
+                (search / name).write_text(json.dumps(groups), encoding="utf-8")
+            (search / "secret.txt").write_text("not public", encoding="utf-8")
+            with self.assertRaises(RuntimeError):
+                integrated_pilot.integrate(out, search)
+            self.assertFalse((out / "databases").exists())
+            (search / "secret.txt").unlink()
+            result = integrated_pilot.integrate(out, search)
+            self.assertEqual(result["search_services"], 1)
+            self.assertTrue((out / "databases/search/global.json").is_file())
+            self.assertGreater(check_local_links(self, out), 0)
 
 
 class VisibleText(HTMLParser):
@@ -276,9 +309,28 @@ class HandbookStaticPilotTest(unittest.TestCase):
                 self.assertEqual(output.normalized, original.normalized, (service, slug))
                 for key in ("checkbox_count", "disabled_checkboxes", "button_count", "aria_hidden_count", "link_count"):
                     self.assertEqual(getattr(output, key), getattr(original, key), (service, slug, key))
-            checked = check_local_links(self, out)
             print(("ALL_HANDBOOK_PILOT: services={services} chapters={chapters} files={files} "
-                   "bytes={bytes} links={links} local_links_checked=" + str(checked)).format(**result))
+                   "bytes={bytes} links={links}").format(**result))
+            run = subprocess.run(
+                ["node", "--import", "./experiments/github-pages-db/register.mjs",
+                 "experiments/github-pages-db/build.mjs"],
+                cwd=ROOT, capture_output=True, text=True, check=True, timeout=180,
+            )
+            search_dir = Path(json.loads(run.stdout)["dir"])
+            try:
+                indexed_services = {
+                    item["id"] for item in json.loads((search_dir / "services.json").read_text(encoding="utf-8"))
+                }
+                integrated = integrated_pilot.integrate(out, search_dir)
+            finally:
+                shutil.rmtree(search_dir, ignore_errors=True)
+            checked = check_local_links(self, out)
+            self.assertTrue(indexed_services.issubset({row["service"] for row in result["pages"]}))
+            self.assertLess(integrated["bytes"], 1_000_000_000)
+            print("INTEGRATED_PARTIAL_PILOT: files={files} bytes={bytes} search_services={search_services} local_links_checked=".format(**integrated) + str(checked))
+            print("INTEGRATED_PARTIAL_BY_SUFFIX: " + json.dumps(integrated["by_suffix"], sort_keys=True))
+            print("INTEGRATED_PARTIAL_LARGEST: " + json.dumps(integrated["largest"], ensure_ascii=False))
+            print("INTEGRATED_PARTIAL_DUPLICATES: files={identical_duplicate_files} bytes={identical_duplicate_bytes}".format(**integrated))
         finally:
             shutil.rmtree(result["directory"], ignore_errors=True)
 

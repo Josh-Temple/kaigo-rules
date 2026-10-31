@@ -30,6 +30,27 @@ function element(tag, text) {
   return node;
 }
 
+function internalLink(label, href) {
+  if (!href.startsWith("/") || href.startsWith("//")) throw new Error("不正なリンクを検出しました。");
+  const destination = new URL(href, "https://kaigo-rules.vercel.app");
+  if (destination.origin !== "https://kaigo-rules.vercel.app") throw new Error("不正なリンクを検出しました。");
+  const link = element("a", label);
+  link.href = destination.href;
+  return link;
+}
+
+function appendSource(card, url) {
+  if (!url) return;
+  const source = new URL(url);
+  if (!["https:", "http:"].includes(source.protocol) || source.username || source.password) {
+    throw new Error("不正な原典リンクを検出しました。");
+  }
+  const original = element("a", "原典を見る");
+  original.href = source.href;
+  original.rel = "noopener noreferrer";
+  card.append(original);
+}
+
 async function display() {
   const searchNumber = ++latestSearch;
   const q = query.value.trim();
@@ -51,30 +72,43 @@ async function display() {
     const rows = found[group];
     count += rows.length;
     const section = document.createElement("section");
+    if (group === "unitPrice") {
+      const services = new Map();
+      for (const row of rows) {
+        const matches = services.get(row.serviceId) || [];
+        matches.push(row);
+        services.set(row.serviceId, matches);
+      }
+      section.append(element("h2", labels[group] + "（" + rows.length.toLocaleString("ja-JP") +
+        "件 / " + services.size.toLocaleString("ja-JP") + "サービス）"));
+      for (const matches of [...services.values()].slice(0, 20)) {
+        const first = matches[0];
+        const card = document.createElement("article"); card.className = "result";
+        card.append(internalLink(first.serviceLabel, resultHref(group, first, q)));
+        card.append(element("p", matches.length + "区分が検索条件に一致 / " +
+          matches.slice(0, 3).map((r) => r.regionClass + "：" + r.unitPrice.toFixed(2) + "円").join("、") +
+          (matches.length > 3 ? " ほか" : "")));
+        card.append(element("p", "現行性：公開条件を満たした現行資料" +
+          (first.checkedAt ? " / 公式表示確認日：" + first.checkedAt : "")));
+        appendSource(card, first.sourceUrl);
+        section.append(card);
+      }
+      if (!rows.length) section.append(element("p", "現在の公開範囲では一致なし"));
+      if (services.size > 20) section.append(element("p", "上位20サービスを表示しています。"));
+      results.append(section);
+      continue;
+    }
     section.append(element("h2", labels[group] + "（" + rows.length.toLocaleString("ja-JP") + "件）"));
     for (const row of rows.slice(0, 10)) {
       const card = document.createElement("article");
       card.className = "result";
-      const link = element("a", row.title);
       // This prototype does not include destination pages. Keep navigation on
       // the current site, and do not trust a row with an off-origin URL.
-      const href = resultHref(group, row, q);
-      if (!href.startsWith("/") || href.startsWith("//")) throw new Error("不正なリンクを検出しました。");
-      const destination = new URL(href, "https://kaigo-rules.vercel.app");
-      if (destination.origin !== "https://kaigo-rules.vercel.app") throw new Error("不正なリンクを検出しました。");
-      link.href = destination.href;
-      card.append(link);
+      card.append(internalLink(row.title, resultHref(group, row, q)));
       const excerpt = Number.isInteger(row.excerptField) ? row.fields[row.excerptField]?.value : row.excerpt;
       if (excerpt) card.append(element("p", databaseSearchExcerpt(excerpt, q)));
       if (row.statusText) card.append(element("p", row.statusText));
-      if (row.sourceUrl) {
-        const source = new URL(row.sourceUrl);
-        if (!["https:", "http:"].includes(source.protocol)) throw new Error("不正な原典リンクを検出しました。");
-        const original = element("a", "原典を見る");
-        original.href = source.href;
-        original.rel = "noopener noreferrer";
-        card.append(original);
-      }
+      appendSource(card, row.sourceUrl);
       section.append(card);
     }
     if (!rows.length) section.append(element("p", "現在の公開範囲では一致なし"));

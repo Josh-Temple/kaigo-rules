@@ -60,6 +60,8 @@ function unitRows(serviceId) {
     excerpt: r.region_class + "：" + r.unit_price_yen.toFixed(2) + "円",
     sourceUrl: r.source_url,
     serviceId: r.service_id,
+    serviceLabel: r.service_label, regionClass: r.region_class,
+    unitPrice: r.unit_price_yen, checkedAt: r.checked_at,
     fields: [
       { value: [r.region_class, r.service_label].join(" "), weight: 10 },
       { value: [r.ratio_text, String(r.unit_price_yen) + "円"].join(" "), weight: 8 },
@@ -116,7 +118,8 @@ function delegatedRows(records, serviceId) {
 function empty() { return Object.fromEntries(groups.map((key) => [key, []])); }
 
 function validate(rows) {
-  const allowed = new Set(["id", "title", "href", "excerpt", "excerptField", "sourceUrl", "serviceId", "statusText", "fields"]);
+  const allowed = new Set(["id", "title", "href", "excerpt", "excerptField", "sourceUrl", "serviceId",
+    "serviceLabel", "regionClass", "unitPrice", "checkedAt", "statusText", "fields"]);
   for (const group of groups) {
     for (const row of rows[group]) {
       if (!row.id || !row.title || typeof row.href !== "string" || !row.href.startsWith("/") ||
