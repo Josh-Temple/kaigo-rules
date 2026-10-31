@@ -54,7 +54,7 @@ def _outside_source(path: Path) -> Path:
     return resolved
 
 
-def integrate(handbook_dir: Path, search_dir: Path) -> dict:
+def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = False) -> dict:
     out = _outside_source(handbook_dir)
     source = _outside_source(search_dir)
     if out == source or out in source.parents or source in out.parents:
@@ -175,12 +175,22 @@ def integrate(handbook_dir: Path, search_dir: Path) -> dict:
         destination = target / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source / name, destination)
-    information_report = information.add_pages(out)
+    # The original prebuild tests exercise integrate() before .next exists.
+    # Only post-build pilots opt into extracting validated prerendered pages.
+    information_report = information.add_pages(out) if with_information else {
+        "pages": 0, "bytes": 0, "routes": [],
+    }
     root_page = out / "index.html"
     text = root_page.read_text(encoding="utf-8")
     if text.count("</article>") != 1:
         raise RuntimeError("Unexpected handbook index structure")
-    root_page.write_text(text.replace("</article>", '<p><a href="./databases/search/index.html">制度DB横断検索を試す</a> / <a href="./databases/search/qa.html">国Q&Aを探す</a></p><p><a href="./start/index.html">はじめての方へ</a> / <a href="./overview/index.html">制度の全体像</a> / <a href="./guide/index.html">使い方ガイド</a></p></article>'), encoding="utf-8")
+    information_links = (
+        '<p><a href="./start/index.html">はじめての方へ</a> / '
+        '<a href="./overview/index.html">制度の全体像</a> / '
+        '<a href="./guide/index.html">使い方ガイド</a></p>'
+        if with_information else ""
+    )
+    root_page.write_text(text.replace("</article>", '<p><a href="./databases/search/index.html">制度DB横断検索を試す</a> / <a href="./databases/search/qa.html">国Q&Aを探す</a></p>' + information_links + '</article>'), encoding="utf-8")
     search_page = target / "index.html"
     text = search_page.read_text(encoding="utf-8")
     if text.count("<h1>") != 1:
@@ -227,7 +237,7 @@ def build() -> dict:
             cwd=ROOT, check=True, capture_output=True, text=True, timeout=180,
         )
         search_dir = Path(json.loads(run.stdout)["dir"])
-        result = integrate(Path(handbook_result["directory"]), search_dir)
+        result = integrate(Path(handbook_result["directory"]), search_dir, with_information=True)
         result.update({"handbook_services": handbook_result["services"],
                        "handbook_chapters": handbook_result["chapters"]})
         return result
@@ -294,7 +304,7 @@ def build_with_details() -> dict:
                 child.kill()
                 child.wait(timeout=5)
         child = None
-        result = integrate(Path(handbook_result["directory"]), search_dir)
+        result = integrate(Path(handbook_result["directory"]), search_dir, with_information=True)
         result.update({"handbook_services": handbook_result["services"],
                        "handbook_chapters": handbook_result["chapters"],
                        "qa_details": qa_result, "legal_details": legal_result})

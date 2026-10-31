@@ -9,7 +9,9 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 from urllib.parse import urlsplit
+import sys
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_github_pages_qa_details_pilot as qa
 import build_github_pages_handbook_pilot as handbook
 
