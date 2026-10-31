@@ -330,17 +330,43 @@ export function listProgressivePublicationServicesAcrossFamilies() {
   }));
 }
 
+// Every publication cell is immutable for a given deployment. Index it once
+// per warm instance; large source projections must not be rebuilt per item.
+type PublishedCellIndex = {
+  promotion: RuntimePromotion;
+  records: RuntimeSourceRecord[];
+  publishedIds: Set<string>;
+};
+const publishedCellIndexes = new Map<string, PublishedCellIndex>();
+
+function publishedCellIndex(
+  serviceId: string,
+  sourceFamily: string,
+): PublishedCellIndex | null {
+  if (!isProgressiveRouteCell(serviceId, sourceFamily)) return null;
+  const key = cellKey(serviceId, sourceFamily);
+  const cached = publishedCellIndexes.get(key);
+  if (cached) return cached;
+
+  const promotion = promotionByKey.get(key);
+  if (!promotion) return null;
+  const records = runtimeRecordsForPromotion(promotion);
+  const publishedIds = new Set(
+    records
+      .filter((record) => isRuntimeRecordPublished(promotion, record))
+      .map((record) => record.id),
+  );
+  const index = { promotion, records, publishedIds };
+  publishedCellIndexes.set(key, index);
+  return index;
+}
+
 export function getProgressiveSourceRecords(
   serviceId: string,
   sourceFamily = PROGRESSIVE_SOURCE_FAMILY,
 ): RuntimeSourceRecord[] {
-  if (!isProgressiveRouteCell(serviceId, sourceFamily)) {
-    return [];
-  }
-  const promotion = promotionByKey.get(
-    cellKey(serviceId, sourceFamily),
-  );
-  return runtimeRecordsForPromotion(promotion);
+  // Return a separate array so callers can sort without mutating the index.
+  return publishedCellIndex(serviceId, sourceFamily)?.records.slice() || [];
 }
 
 export function isProgressiveRecordPublished(
@@ -348,18 +374,8 @@ export function isProgressiveRecordPublished(
   sourceFamily: string,
   recordId: string,
 ) {
-  if (!isProgressiveRouteCell(serviceId, sourceFamily)) {
-    return false;
-  }
-  const promotion = promotionByKey.get(
-    cellKey(serviceId, sourceFamily),
-  );
-  const records = runtimeRecordsForPromotion(promotion);
-  const record = records.find((item) => item.id === recordId);
-  return Boolean(
-    record &&
-      isRuntimeRecordPublished(promotion, record),
-  );
+  return publishedCellIndex(serviceId, sourceFamily)
+    ?.publishedIds.has(recordId) ?? false;
 }
 
 export function filterProgressivePublishedRecords<T>(
@@ -368,17 +384,9 @@ export function filterProgressivePublishedRecords<T>(
   records: readonly T[],
   recordId: (record: T) => string,
 ): T[] {
-  if (!isProgressiveRouteCell(serviceId, sourceFamily)) return [];
-  const promotion = promotionByKey.get(cellKey(serviceId, sourceFamily));
-  // Build the permitted ID set only once. Recomputing the full runtime
-  // projection for every candidate can block large service-specific searches.
-  // Apply the same adapter-level publication gate to each canonical record.
-  const publishedIds = new Set(
-    runtimeRecordsForPromotion(promotion)
-      .filter((record) => isRuntimeRecordPublished(promotion, record))
-      .map((record) => record.id),
-  );
-  return records.filter((record) => publishedIds.has(recordId(record)));
+  const index = publishedCellIndex(serviceId, sourceFamily);
+  if (!index) return [];
+  return records.filter((record) => index.publishedIds.has(recordId(record)));
 }
 
 export function isProgressiveRulePublished(
@@ -514,19 +522,13 @@ export function projectProgressiveRecords(
   sourceFamily: string,
   records: readonly RuntimeSourceRecord[],
 ) {
-  return filterProgressivePublishedRecords(
-    serviceId,
-    sourceFamily,
-    records,
-    (record) => record.id,
-  )
-    .map((record) =>
-      projectProgressiveRecord(
-        serviceId,
-        sourceFamily,
-        record,
-      ),
-    )
+  const index = publishedCellIndex(serviceId, sourceFamily);
+  if (!index) return [];
+  const trust = getProgressivePublicationTrust(serviceId, sourceFamily);
+  if (!trust) return [];
+  return records
+    .filter((record) => index.publishedIds.has(record.id))
+    .map((record) => projectRuntimeRecord(index.promotion, trust, record))
     .filter(Boolean);
 }
 
