@@ -245,5 +245,11 @@ test("2026 treatment improvement fee amendment is visibly flagged without overwr
   assert.match(item.regulatoryUpdate?.message || "", /請求・届出/);
   assert.equal(item.regulatoryUpdate?.officialUrl, "https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7");
   assert.ok(nationalSourceUrl(item.regulatoryUpdate.officialUrl), "official link passes allowlist");
+  assert.match(item.regulatoryUpdate.message, /4月・5月と6月以降/);
+  assert.deepEqual(item.regulatoryUpdate.relatedDocuments?.map(row => row.url), [
+    "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=3",
+    "https://www.mhlw.go.jp/content/12404000/001675711.pdf",
+  ]);
+  assert.ok(item.regulatoryUpdate.relatedDocuments.every(row => row.label && nationalSourceUrl(row.url)));
   assert.equal(topics.find(row => row.id === "fee-note-6")?.regulatoryUpdate, undefined);
 });
