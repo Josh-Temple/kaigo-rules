@@ -130,6 +130,10 @@
 .dayservice-timing-example th,.dayservice-timing-example td{padding:9px;border:1px solid #b9c9bf;text-align:center}
 .dayservice-timing-example th:first-child{position:sticky;left:0;background:var(--bg)}
 .dayservice-timing-example thead{background:#edf2ee}
+.dayservice-historical-fee-details{margin:14px 0 26px;border:1px solid var(--line);padding:6px 16px}
+.dayservice-historical-fee-details>summary{cursor:pointer;padding:12px 0;min-height:44px;color:var(--link);font-weight:600}
+.dayservice-historical-fee-details>summary:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
+.dayservice-historical-fee-details[open]>.dayservice-source-caution{margin-top:8px}
 .dayservice-qa-print-url{display:none}
 .dayservice-reader-questions{border-left:3px solid #597b6e;background:#f6f7f4;padding:14px 18px;margin:0 0 24px}
 .dayservice-reader-questions>p:first-child{margin:0 0 8px}
@@ -205,7 +209,9 @@
   .dayservice-fee-table th,.dayservice-fee-table td{padding:5pt 4pt}.dayservice-table-help{display:none}
   .dayservice-fee-table th:first-child{position:static;box-shadow:none}
   .dayservice-fee-table caption span{position:static;max-width:none}
-  .dayservice-original-details:not([open]){display:none}.dayservice-staffing-example{break-inside:avoid-page}
+  .dayservice-original-details:not([open]){display:none}
+  .dayservice-historical-fee-details{display:none!important}
+  .dayservice-staffing-example{break-inside:avoid-page}
   .dayservice-staffing-overview,.dayservice-priority-additions{break-inside:auto;background:transparent}
   .dayservice-staffing-overview tr{break-inside:avoid-page}
   .dayservice-staffing-overview th,.dayservice-staffing-overview td{padding:6pt 7pt}
