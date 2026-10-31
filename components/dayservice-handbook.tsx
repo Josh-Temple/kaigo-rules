@@ -151,6 +151,9 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
       <p><strong>改正資料の確認が必要です</strong></p>
       <p>{topic.regulatoryUpdate.message}</p>
       <p><OfficialLink url={topic.regulatoryUpdate.officialUrl}>{topic.regulatoryUpdate.officialLabel}</OfficialLink></p>
+      {topic.regulatoryUpdate.relatedDocuments?.length ? <ul>
+        {topic.regulatoryUpdate.relatedDocuments.map(document => <li key={document.url}><OfficialLink url={document.url}>{document.label}</OfficialLink></li>)}
+      </ul> : null}
     </aside> : null}
     {topic.readerSummary ? <div className="dayservice-reader-overview">
       <p><strong>必要な基準の要点</strong></p><p>{topic.readerSummary}</p>
