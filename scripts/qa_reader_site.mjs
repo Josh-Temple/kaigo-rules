@@ -217,7 +217,10 @@ try {
         flow: `${width}px treatment improvement → 2026 amendment warning before historical fee source`,
         status: amendmentText.includes('令和8年厚生労働省告示第87号') &&
           amendmentText.includes('請求・届出') &&
-          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7"]').count() === 1 ? 'PASS' : 'FAIL',
+          amendmentText.includes('4月・5月と6月以降') &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7"]').count() === 1 &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=3"]').count() === 1 &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675711.pdf"]').count() === 1 ? 'PASS' : 'FAIL',
       });
       const extension = page.locator('#fee-note-6');
       const extensionText = await extension.innerText();
