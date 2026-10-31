@@ -228,6 +228,8 @@ try {
       const oldFeeBody = oldFee.locator('.dayservice-excerpt');
       const oldFeeSummary = oldFee.locator('summary');
       const oldFeeInitiallyHidden = await oldFee.isVisible() && !(await oldFeeBody.isVisible());
+      const oldFeeSnippetSuppressed = await oldFee.locator('div[data-nosnippet]').count() === 1 &&
+        await amendment.locator('[data-nosnippet]').count() === 0;
       await oldFeeSummary.click();
       const oldFeeReadableOnDemand = await oldFeeBody.isVisible() &&
         (await oldFee.innerText()).includes('現在の算定に使わないでください');
@@ -238,7 +240,8 @@ try {
       await page.emulateMedia({ media: 'screen' });
       report.interactions.push({
         flow: `${width}px 2026 fee → old rates hidden by default, available on request, excluded from print`,
-        status: oldFeeInitiallyHidden && oldFeeReadableOnDemand && oldFeeSuppressedOnPaper ? 'PASS' : 'FAIL',
+        status: oldFeeInitiallyHidden && oldFeeReadableOnDemand &&
+          oldFeeSuppressedOnPaper && oldFeeSnippetSuppressed ? 'PASS' : 'FAIL',
       });
       const extension = page.locator('#fee-note-6');
       const extensionText = await extension.innerText();
