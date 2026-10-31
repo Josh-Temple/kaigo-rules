@@ -75,7 +75,7 @@ class FullPartialPilotTest(unittest.TestCase):
         try:
             self.assertGreater(summary["handbook_services"], 0)
             self.assertGreater(summary["handbook_chapters"], 0)
-            self.assertEqual(summary["information_pages"]["pages"], 3)
+            self.assertEqual(summary["information_pages"]["pages"], len(pilot.information.PAGES))
             self.assertEqual(summary["secret_scan_files"], summary["files"])
             self.assertEqual(summary["qa_details"]["detail_pages"],
                              2 * (summary["qa_details"]["records"] + summary["qa_details"]["aliases"]))
