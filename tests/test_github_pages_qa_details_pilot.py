@@ -19,6 +19,25 @@ spec.loader.exec_module(pilot)
 
 
 class QaDetailPilotTest(unittest.TestCase):
+    def test_local_service_navigation_keeps_only_existing_anchors(self):
+        manifest = {"dayservice": {"national_qa", "staffing"}}
+        self.assertEqual(
+            pilot.rewrite_link("/services/dayservice#national_qa", {"qa.one"}, manifest),
+            "../../../../services/dayservice/index.html#national_qa",
+        )
+        self.assertEqual(
+            pilot.rewrite_link("/services/dayservice#missing", {"qa.one"}, manifest),
+            "../../../../services/dayservice/index.html",
+        )
+        self.assertEqual(
+            pilot.rewrite_link("/services/nonexistent#national_qa", {"qa.one"}, manifest),
+            "https://kaigo-rules.vercel.app/services/nonexistent#national_qa",
+        )
+        self.assertEqual(
+            pilot.rewrite_link("/services/dayservice?preview=1", {"qa.one"}, manifest),
+            "https://kaigo-rules.vercel.app/services/dayservice?preview=1",
+        )
+
     def test_rejects_unknown_graphics_and_unsafe_links(self):
         item = {"question": "質問", "answer": "回答"}
         source = '<article class="answer-page"><h1>質問</h1><p style="white-space:pre-line">回答</p><img src="/x"></article>'

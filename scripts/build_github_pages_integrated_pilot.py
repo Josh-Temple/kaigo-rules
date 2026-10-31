@@ -248,8 +248,25 @@ def build_with_details() -> dict:
         search_dir = Path(json.loads(run.stdout)["dir"])
         corpus = json.loads((ROOT / "data/qa-corpus.json").read_text(encoding="utf-8"))
         direct = json.loads((ROOT / "data/qa-direct-evidence.json").read_text(encoding="utf-8"))
+        # QA's original related-handbook links must point to the actual
+        # generated service index rather than accidentally resolving to the
+        # database search index in the combined static directory.
+        service_anchors = {}
+        for page in (Path(handbook_result["directory"]) / "services").glob("*/index.html"):
+            service_id = page.parent.name
+            if not re.fullmatch(r"[a-z0-9-]+", service_id):
+                raise RuntimeError("Unsafe generated handbook service ID")
+            anchors = set(re.findall(r'\\bid="([A-Za-z0-9_-]+)"', page.read_text(encoding="utf-8")))
+            if not anchors:
+                raise RuntimeError("Missing generated handbook navigation anchors")
+            service_anchors[service_id] = anchors
+        if len(service_anchors) != handbook_result["services"]:
+            raise RuntimeError("Incomplete generated service index navigation")
         child, base = qa_details.start_next(pilot_optimized=True)
-        qa_result = qa_details.add_details(search_dir, base, corpus, direct, max_seconds=480)
+        qa_result = qa_details.add_details(
+            search_dir, base, corpus, direct, max_seconds=480,
+            local_service_anchors=service_anchors,
+        )
         # Serve legal routes from a fresh validated Next.js process. The shared
         # process had already rendered 7,392 Q&A variants before legal extraction
         # slowed down and hit its 360-second budget (run 41198085626).

@@ -95,7 +95,7 @@ def safe_id(value):
     return value
 
 
-def rewrite_link(href, known_ids):
+def rewrite_link(href, known_ids, local_service_anchors=None):
     parts = urlsplit(href)
     if parts.path.startswith("/handbook-preview"):
         raise RuntimeError("Preview routes are not allowed in the private pilot")
@@ -105,6 +105,15 @@ def rewrite_link(href, known_ids):
         return pilot.link_target(href)
     if parts.path.rstrip("/") == "/qa":
         return "../../qa.html" + (("?" + parts.query) if parts.query else "") + (("#" + parts.fragment) if parts.fragment else "")
+    service = re.fullmatch(r"/services/([a-z0-9-]+)/?", parts.path)
+    if service and not parts.query and local_service_anchors and service.group(1) in local_service_anchors:
+        # This is a link from databases/search/qa-details/<id>/reader.html
+        # into the independently generated handbook service index. Retain a
+        # fragment only when that local HTML actually defines the target ID.
+        service_id = service.group(1)
+        anchors = local_service_anchors[service_id]
+        fragment = parts.fragment if parts.fragment in anchors else ""
+        return "../../../../services/" + service_id + "/index.html" + (("#" + fragment) if fragment else "")
     match = QA_PATH.fullmatch(parts.path)
     if match and match.group(1) in known_ids:
         reader = parts.query == "reader=1"
@@ -133,8 +142,8 @@ def render_article(source_html, title, link_rewriter, css_path="../../styles.css
     return rendered, original
 
 
-def render_detail(source_html, item, identifier, reader, known_ids):
-    link_rewriter = lambda href: rewrite_link(href, known_ids)
+def render_detail(source_html, item, identifier, reader, known_ids, local_service_anchors=None):
+    link_rewriter = lambda href: rewrite_link(href, known_ids, local_service_anchors)
     rendered, original = render_article(source_html, item.get("topic") or identifier, link_rewriter)
     full_text = "".join(original.text)
     if item.get("question", "") not in full_text or item.get("answer", "") not in full_text:
@@ -144,7 +153,7 @@ def render_detail(source_html, item, identifier, reader, known_ids):
     return rendered, len(original.links)
 
 
-def add_details(search_dir, base_url, corpus, direct, max_seconds=600):
+def add_details(search_dir, base_url, corpus, direct, max_seconds=600, local_service_anchors=None):
     out = search_dir.resolve(strict=True)
     temp_root = Path(tempfile.gettempdir()).resolve()
     if out == ROOT or ROOT in out.parents or temp_root not in out.parents:
@@ -170,6 +179,11 @@ def add_details(search_dir, base_url, corpus, direct, max_seconds=600):
     if not by_id:
         raise RuntimeError("Empty Q&A corpus")
     known_ids = frozenset(by_id)
+    local_service_anchors = local_service_anchors or {}
+    if any(not re.fullmatch(r"[a-z0-9-]+", key) or not isinstance(ids, set) or
+           any(not re.fullmatch(r"[A-Za-z0-9_-]+", anchor) for anchor in ids)
+           for key, ids in local_service_anchors.items()):
+        raise RuntimeError("Unsafe local handbook service navigation manifest")
     jobs = [(key, mode) for key in by_id for mode in (False, True)]
     start = time.monotonic()
     opener = build_opener(NoRedirect())
@@ -189,7 +203,10 @@ def add_details(search_dir, base_url, corpus, direct, max_seconds=600):
         except (OSError, RuntimeError) as error:
             raise RuntimeError("Q&A source fetch failed for " + identifier + " reader=" + str(reader)) from error
         try:
-            rendered, links = render_detail(source.decode("utf-8"), by_id[identifier], identifier, reader, known_ids)
+            rendered, links = render_detail(
+                source.decode("utf-8"), by_id[identifier], identifier, reader,
+                known_ids, local_service_anchors,
+            )
         except (UnicodeError, RuntimeError) as error:
             raise RuntimeError("Q&A detail parity failed for " + identifier + " reader=" + str(reader)) from error
         dest = out / "qa-details" / identifier / ("reader.html" if reader else "index.html")
