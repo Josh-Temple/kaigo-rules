@@ -165,7 +165,8 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
     await client.send("Page.navigate", { url: origin + base + "qa.html?" + qaParams });
     const qaExpression = "(() => { const s=document.querySelector('#qa-status'); if(!s || !s.textContent.includes('件見つかりました')) return null;" +
       "const links=[...document.querySelectorAll('#qa-results a')]; return {rows:links.length,page:document.querySelector('#qa-page').textContent," +
-      "reader:links.every(a=>a.href.includes('reader=1')),width:innerWidth,scroll:document.documentElement.scrollWidth}; })()";
+      "reader:links.every(a=>a.href.includes('reader=1') || a.href.endsWith('/reader.html'))," +
+      "firstHref:links[0]?.href,firstQuestion:links[0]?.textContent,width:innerWidth,scroll:document.documentElement.scrollWidth}; })()";
     let qaResult = null;
     const qaDeadline = Date.now() + 30000;
     while (!qaResult && Date.now() < qaDeadline) {
@@ -176,6 +177,22 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
       "Full Q&A service filter or pagination did not work");
     assert.equal(qaResult.width, requestedWidth);
     assert.ok(qaResult.scroll <= qaResult.width, "Q&A page overflows horizontally");
+    let localQaDetail = false;
+    if (options.qaLocal) {
+      assert.ok(qaResult.firstHref.startsWith(origin + base + "qa-details/"), "Q&A detail did not stay in the private pilot");
+      await client.send("Page.navigate", { url: qaResult.firstHref });
+      let detail = false;
+      const deadline = Date.now() + 30000;
+      while (!detail && Date.now() < deadline) {
+        try {
+          detail = await value(client, "(() => {const a=document.querySelector('article.answer-page'); return document.readyState==='complete' && a ? a.textContent : '';})()");
+        } catch { /* navigation in progress */ }
+        if (!detail) await pause(100);
+      }
+      assert.ok(detail && detail.includes(qaResult.firstQuestion), "Local Q&A detail lost its question");
+      assert.ok(detail.includes("未確認") || detail.includes("確認してください"), "Q&A detail lost its currentness warning");
+      localQaDetail = true;
+    }
     let handbook = null;
     if (options.handbook) {
       if (!/^\/handbook\/[a-z0-9-]+\/[a-z0-9-]+\.html$/.test(options.handbook)) throw new Error("Invalid handbook path");
@@ -207,7 +224,8 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
     return { requestedWidth, actualWidth: result.width, scrollWidth: result.scrollWidth,
       searchMs: result.searchMs, readyMs: result.readyMs, heapBytes: result.heapBytes,
       keyboard: true, keyboardSteps, touch: true, unitGroups, pinchScale, printed: true, qaRows: qaResult.rows, qaPage: qaResult.page,
-      handbook: handbook ? { checkbox: true, printButton: true, printed: true } : null };
+      handbook: handbook ? { checkbox: true, printButton: true, printed: true } : null,
+      localQaDetail };
   } finally {
     if (client) client.close();
     if (child?.pid) {

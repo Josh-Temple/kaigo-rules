@@ -10,6 +10,7 @@ const results = document.querySelector("#qa-results");
 const pageLabel = document.querySelector("#qa-page");
 const prev = document.querySelector("#qa-prev");
 const next = document.querySelector("#qa-next");
+const localDetails = document.querySelector('meta[name="kaigo-qa-local-details"]')?.content === "true";
 const params = new URLSearchParams(location.search);
 let current = { q: params.get("q") || "", service: params.get("service") || "",
   standard: params.get("standard") || "", page: params.get("page") || "1",
@@ -62,8 +63,9 @@ function render() {
     if (item.topic) card.append(element("p", item.topic));
     const title = document.createElement("h2");
     const link = element("a", item.question);
-    link.href = "https://kaigo-rules.vercel.app/qa/" + encodeURIComponent(item.id) +
-      (current.reader ? "?reader=1" : "");
+    link.href = localDetails
+      ? "./qa-details/" + encodeURIComponent(item.id) + (current.reader ? "/reader.html" : "/index.html")
+      : "https://kaigo-rules.vercel.app/qa/" + encodeURIComponent(item.id) + (current.reader ? "?reader=1" : "");
     title.append(link); card.append(title);
     card.append(element("p", item.answer));
     card.append(element("p", [item.issued_source, item.number].filter(Boolean).join(" / ")));
