@@ -1,0 +1,120 @@
+name: GitHub Pages feasibility audit (no deploy)
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/github-pages-feasibility.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  measure:
+    name: Build and measure; never publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: npm ci
+      - name: Build existing application with full validation
+        run: npm run build
+      - name: Measure build footprints (not a GitHub Pages export)
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path.cwd()
+          def measure(path, suffix=None):
+              if not path.exists():
+                  return {"bytes": 0, "files": 0, "exists": False}
+              items = (p for p in path.rglob("*") if p.is_file() and not p.is_symlink())
+              if suffix is not None:
+                  items = (p for p in items if p.suffix == suffix)
+              files = list(items)
+              return {"bytes": sum(p.stat().st_size for p in files), "files": len(files), "exists": True}
+
+          paths = {
+              "next_build_all": measure(root / ".next"),
+              "next_static_assets": measure(root / ".next/static"),
+              "next_prerendered_html": measure(root / ".next/server/app", ".html"),
+              "next_rsc_payloads": measure(root / ".next/server/app", ".rsc"),
+              "source_data_all": measure(root / "data"),
+              "source_data_json": measure(root / "data", ".json"),
+              "source_public": measure(root / "public"),
+              "static_export_out": measure(root / "out"),
+          }
+          manifest_path = root / ".next/prerender-manifest.json"
+          prerender = {}
+          if manifest_path.exists():
+              manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+              prerender = {
+                  "route_count": len(manifest.get("routes", {})),
+                  "dynamic_route_count": len(manifest.get("dynamicRoutes", {})),
+              }
+          # The categories below are NOT the complete publishable site.
+          # Raw source JSON may contain nonpublic records and MUST NOT be published as-is.
+          # SSR/RSC runtime and route-specific generated assets might need further adaptation.
+          illustrative = sum(paths[k]["bytes"] for k in (
+              "next_static_assets", "next_prerendered_html", "source_public", "source_data_all"))
+          budget = 1_000_000_000
+          report = {
+              "source_commit": os.environ.get("GITHUB_SHA", ""),
+              "budget_bytes": budget,
+              "measured_categories": paths,
+              "prerender_manifest": prerender,
+              "illustrative_selected_sum_bytes_not_site_size": illustrative,
+              "illustrative_selected_sum_share_of_budget": round(illustrative / budget, 4),
+              "actual_github_pages_output_measured": paths["static_export_out"]["files"] > 0,
+              "result": "HOLD_NO_DEPLOY",
+              "caveat": "This is NOT a static export or certified Pages size. Do not publish raw data, unreviewed materials, generated previews, or any app output. Search parity and Android performance not yet tested.",
+          }
+          def fmt(n):
+              return f"{n / 1_000_000:,.2f} MB"
+          lines = [
+              "# GitHub Pages feasibility measurement (not a deploy)",
+              "",
+              "Existing Next.js application compiled with its original prebuild and validation.",
+              "This measures existing build categories; no static Pages export has succeeded.",
+              "",
+              "| Category | Size | Files |",
+              "| --- | ---: | ---: |",
+          ]
+          for name, row in paths.items():
+              lines.append(f"| {name} | {fmt(row['bytes'])} | {row['files']:,} |")
+          lines += [
+              "",
+              f"- Illustrative sum of selected categories (NOT actual published-site size): **{fmt(illustrative)}** / 1,000.00 MB.",
+              f"- Pre-render manifest: {prerender.get('route_count', 'unknown')} routes, {prerender.get('dynamic_route_count', 'unknown')} dynamic route patterns.",
+              "- Search regression coverage: included in original npm run build prebuild tests; actual browser-side search parity NOT tested.",
+              "- Security: source data may contain unreviewed/nonpublic records; exclude through publication policies before any static deployment.",
+              "- Verdict: **HOLD_NO_DEPLOY**. A successful static exporter, true output-size measurement, exact search-result comparison, and Android testing remain mandatory.",
+          ]
+          md = "\n".join(lines) + "\n"
+          Path("github-pages-feasibility.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          Path("github-pages-feasibility.md").write_text(md, encoding="utf-8")
+          print(md)
+          if os.environ.get("GITHUB_STEP_SUMMARY"):
+              with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+                  f.write(md)
+          PY
+      - name: Archive numerical summary only (no content release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages-feasibility-measurement
+          path: |
+            github-pages-feasibility.json
+            github-pages-feasibility.md
+          retention-days: 7
