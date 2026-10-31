@@ -256,7 +256,7 @@ def build_with_details() -> dict:
             service_id = page.parent.name
             if not re.fullmatch(r"[a-z0-9-]+", service_id):
                 raise RuntimeError("Unsafe generated handbook service ID")
-            anchors = set(re.findall(r'\\bid="([A-Za-z0-9_-]+)"', page.read_text(encoding="utf-8")))
+            anchors = set(re.findall(r'\bid="([A-Za-z0-9_-]+)"', page.read_text(encoding="utf-8")))
             if not anchors:
                 raise RuntimeError("Missing generated handbook navigation anchors")
             service_anchors[service_id] = anchors
