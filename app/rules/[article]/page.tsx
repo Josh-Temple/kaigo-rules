@@ -78,6 +78,10 @@ const serviceById = new Map(
   catalogServices.map((service) => [service.service_id, service]),
 );
 
+// Reject unknown article slugs before invoking the expensive dynamic page.
+// Every published article number is enumerated by generateStaticParams.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   const publicArticleNumbers = new Set(
     [
