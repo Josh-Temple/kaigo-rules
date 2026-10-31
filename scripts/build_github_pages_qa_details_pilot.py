@@ -106,7 +106,11 @@ def rewrite_link(href, known_ids, local_service_anchors=None):
     if parts.path.rstrip("/") == "/qa":
         return "../../qa.html" + (("?" + parts.query) if parts.query else "") + (("#" + parts.fragment) if parts.fragment else "")
     service = re.fullmatch(r"/services/([a-z0-9-]+)/?", parts.path)
-    if service and not parts.query and local_service_anchors and service.group(1) in local_service_anchors:
+    if service and parts.query:
+        # The legacy fallback silently discarded query parameters for
+        # /services/dayservice. Never turn an unknown query into a local link.
+        return pilot.link_target("https://kaigo-rules.vercel.app" + href)
+    if service and local_service_anchors and service.group(1) in local_service_anchors:
         # This is a link from databases/search/qa-details/<id>/reader.html
         # into the independently generated handbook service index. Retain a
         # fragment only when that local HTML actually defines the target ID.
