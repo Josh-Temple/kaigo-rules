@@ -11,6 +11,7 @@ import { pathToFileURL } from "node:url";
 import care from "../data/care-insurance-act-nodes.json" with { type: "json" };
 import ordinance from "../data/ordinance37-nodes.json" with { type: "json" };
 import qa from "../data/qa-corpus.json" with { type: "json" };
+import qaMeta from "../data/qa-corpus-meta.json" with { type: "json" };
 import { publicNoticeRecords } from "../lib/notice-database.ts";
 import { listServices } from "../lib/service-catalog.ts";
 import { publicUnitPriceRows, unitPriceHref } from "../lib/unit-price-discovery.ts";
@@ -32,6 +33,8 @@ console.log("Private DB pilot: " + pilot.bytes + " bytes / " + pilot.files.lengt
   " bytes; service nodes checked=" + pilot.checkedServiceNodes);
 after(() => fs.rmSync(pilot.dir, { recursive: true, force: true }));
 const browser = await import(pathToFileURL(path.join(pilot.dir, "search.mjs")));
+const qaBrowser = await import(pathToFileURL(path.join(pilot.dir, "qa-core.mjs")));
+const qaProjection = await import(pathToFileURL(path.join(pilot.dir, "qa-projection.mjs")));
 const services = listServices();
 const publicServices = services.filter((s) => publicSourceFamiliesForService(s.service_id).length);
 const readRows = (file) => JSON.parse(fs.readFileSync(path.join(pilot.dir, file), "utf8"));
@@ -144,7 +147,8 @@ test("category filtering and projection exclude internal metadata fields", () =>
     for (const group of browser.GROUPS.filter((g) => g !== selected)) assert.equal(found[group].length, 0);
   }
   const permitted = new Set(["id", "title", "href", "excerpt", "excerptField", "sourceUrl", "serviceId",
-    "serviceLabel", "regionClass", "unitPrice", "checkedAt", "statusText", "fields"]);
+    "serviceLabel", "regionClass", "unitPrice", "checkedAt", "statusText", "fields",
+    "serviceCode", "scope", "currentServiceScope", "issuedSource", "number"]);
   for (const group of browser.GROUPS) for (const row of data[group]) {
     assert.ok(Object.keys(row).every((key) => permitted.has(key)));
     assert.ok(row.href.startsWith("/") && !row.href.startsWith("//"));
@@ -152,6 +156,61 @@ test("category filtering and projection exclude internal metadata fields", () =>
   assert.equal(fs.existsSync(path.join(pilot.dir, "handbook-preview")), false);
   const relative = path.relative(fs.realpathSync(path.resolve(import.meta.dirname, "..")), fs.realpathSync(pilot.dir));
   assert.ok(relative === ".." || relative.startsWith(".." + path.sep) || path.isAbsolute(relative));
+});
+
+test("all Q&A entries preserve the current search, filters and pagination", { timeout: 120000 }, () => {
+  const projected = readRows("global.json").qa.map(qaProjection.qaFromSearchRow);
+  const keys = ["id", "service_code", "service_label", "scope", "current_service_scope",
+    "standard_label", "topic", "question", "answer", "issued_source", "number"];
+  assert.equal(projected.length, qa.length);
+  for (let i = 0; i < qa.length; i += 1) {
+    assert.deepEqual(projected[i], Object.fromEntries(keys.map((key) => [key, qa[i][key]])));
+  }
+  assert.deepEqual(Object.fromEntries(readRows("qa-options.json")), qaMeta.scope_by_code);
+  const synonyms = [
+    ["看護師", "看護職員", "准看護師"], ["生活相談員", "相談員"],
+    ["ハンコ", "判子", "押印", "捺印", "印鑑"], ["サイン", "署名", "自署"],
+    ["bcp", "業務継続計画"], ["デイサービス", "通所介護"],
+    ["計画書", "通所介護計画", "計画"], ["機能訓練室", "機能訓練"],
+    ["常勤換算", "常勤換算方法"],
+  ];
+  const norm = (value) => String(value || "").normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
+  function reference(params) {
+    const terms = norm(params.q || "").split(" ").filter(Boolean);
+    const groups = terms.map((term) => {
+      const group = synonyms.find((items) => items.some((item) => norm(item) === term));
+      return group ? group.map(norm) : [term];
+    });
+    const filtered = qa.filter((item) => {
+      if (params.service && item.service_code !== params.service) return false;
+      if (params.standard && item.standard_label !== params.standard) return false;
+      const haystack = norm([item.scope, item.service_label, item.current_service_scope,
+        item.standard_label, item.topic, item.question, item.answer, item.issued_source, item.number].join(" "));
+      return groups.every((group) => group.some((term) => haystack.includes(term)));
+    });
+    const totalPages = Math.max(1, Math.ceil(filtered.length / 30));
+    const page = Math.min(Math.max(1, Number.parseInt(String(params.page || "1"), 10) || 1), totalPages);
+    return { total: filtered.length, page, totalPages,
+      ids: filtered.slice((page - 1) * 30, page * 30).map((item) => item.id) };
+  }
+  const words = ["", "看護職員", "生活相談員", "常勤換算", "個別機能訓練加算",
+    "送迎", "業務継続計画", "ＢＣＰ", "署名", "看護師 施設", "存在しない語xyz"];
+  const cases = [];
+  for (const q of words) for (const page of [1, 2, 999]) cases.push({ q, page });
+  for (const service of Object.keys(qaMeta.scope_by_code)) {
+    for (const q of ["", "看護師", "送迎", "ＢＣＰ"]) cases.push({ q, service, page: 2 });
+  }
+  const standards = [...new Set(qa.map((item) => item.standard_label).filter(Boolean))].sort();
+  for (const standard of standards.slice(0, 10)) {
+    cases.push({ q: "", standard, page: 2 });
+    cases.push({ q: "看護職員", service: "16", standard, page: 1 });
+  }
+  for (const params of cases) {
+    const actual = qaBrowser.searchQaEntries(projected, params);
+    assert.deepEqual({ total: actual.total, page: actual.page, totalPages: actual.totalPages,
+      ids: actual.visible.map((item) => item.id) }, reference(params), "Full Q&A mismatch: " + JSON.stringify(params));
+  }
+  console.log("Full QA parity scenarios: " + cases.length + " / " + cases.length + " (records=" + qa.length + ")");
 });
 
 test("refuses to build temporary search data inside the repository", () => {
@@ -230,6 +289,26 @@ test("rendered Next.js search agrees with the private browser index", { timeout:
       }
     }
     console.log("Rendered Next.js parity: " + cases.length + " / " + cases.length + " scenarios");
+    const allQa = readRows("global.json").qa.map(qaProjection.qaFromSearchRow);
+    const qaCases = [
+      { q: "看護職員" }, { q: "ＢＣＰ" }, { q: "存在しない語xyz" },
+      { service: "16", page: "2", reader: "1" },
+      { service: "01", q: "送迎", page: "1" },
+      { standard: qa.find((item) => item.standard_label)?.standard_label || "", page: "2" },
+    ];
+    for (const params of qaCases) {
+      const html = await get("/qa?" + new URLSearchParams(params));
+      const extracted = spawnSync("python3", ["scripts/extract_qa_search_snapshot.py"], {
+        cwd: root, input: html, encoding: "utf8", maxBuffer: 2 * 1024 * 1024,
+      });
+      assert.equal(extracted.status, 0, "Could not read rendered Q&A search: " + extracted.stderr);
+      const actual = JSON.parse(extracted.stdout);
+      const found = qaBrowser.searchQaEntries(allQa, params);
+      const expected = { total: found.total, page: found.page, totalPages: found.totalPages,
+        links: found.visible.map((row) => "/qa/" + encodeURIComponent(row.id) + (params.reader === "1" ? "?reader=1" : "")) };
+      assert.deepEqual(actual, expected, "Rendered Q&A mismatch: " + JSON.stringify(params));
+    }
+    console.log("Rendered Next Q&A parity: " + qaCases.length + " / " + qaCases.length + " scenarios");
   } finally {
     if (child.exitCode === null) {
       child.kill("SIGTERM");
@@ -253,6 +332,6 @@ test("headless Chrome can search without horizontal overflow", { timeout: 110000
       " scrollWidth=" + result.scrollWidth + " searchMs=" + result.searchMs +
       " readyMs=" + result.readyMs + " heapBytes=" + result.heapBytes +
       " keyboard=" + result.keyboard + " touch=" + result.touch + " unitGroups=" + result.unitGroups + " pinchScale=" +
-      result.pinchScale + " printed=" + result.printed);
+      result.pinchScale + " printed=" + result.printed + " qaRows=" + result.qaRows + " qaPage=" + result.qaPage);
   }
 });

@@ -21,11 +21,20 @@ import build_github_pages_handbook_all_pilot as handbook
 ROOT = Path(__file__).resolve().parents[1]
 STATIC_FILES = {
     "index.html", "app.mjs", "search.mjs", "rank-core.mjs", "style.css",
-    "services.json", "global.json",
+    "services.json", "global.json", "qa.html", "qa-app.mjs", "qa-projection.mjs",
+    "qa-core.mjs", "qa-options.json",
 }
 GROUPS = {"law", "ordinance", "unitPrice", "delegated", "notice", "qa"}
 ROW_FIELDS = {"id", "title", "href", "excerpt", "excerptField", "sourceUrl", "serviceId",
-              "serviceLabel", "regionClass", "unitPrice", "checkedAt", "statusText", "fields"}
+              "serviceLabel", "regionClass", "unitPrice", "checkedAt", "statusText", "fields",
+              "serviceCode", "scope", "currentServiceScope", "issuedSource", "number"}
+SECRET_PATTERNS = [
+    re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
+    re.compile(rb"\b(?:ghp_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{40,})\b"),
+    re.compile(rb"\bsk-(?:proj-|live-)?[A-Za-z0-9_-]{30,}\b"),
+    re.compile(rb"\bAKIA[A-Z0-9]{16}\b"),
+    re.compile(rb"\bAIza[0-9A-Za-z_-]{35}\b"),
+]
 
 
 def _outside_source(path: Path) -> Path:
@@ -63,10 +72,24 @@ def integrate(handbook_dir: Path, search_dir: Path) -> dict:
         service_files.append(file)
     if len(set(service_files)) != len(service_files):
         raise RuntimeError("Duplicate search service files")
+    qa_options = json.loads((source / "qa-options.json").read_text(encoding="utf-8"))
+    if not isinstance(qa_options, list) or any(
+        not isinstance(item, list) or len(item) != 2 or
+        not all(isinstance(value, str) for value in item) for item in qa_options
+    ):
+        raise RuntimeError("Invalid Q&A service options")
     expected = STATIC_FILES | set(service_files)
     actual = {p.name for p in entries}
     if actual != expected:
         raise RuntimeError("Unexpected file or link in search experiment")
+    existing = list(out.rglob("*"))
+    if any(p.is_symlink() for p in existing):
+        raise RuntimeError("Symbolic link in handbook experiment")
+    scanned = [p for p in existing if p.is_file()] + entries
+    for file in scanned:
+        data = file.read_bytes()
+        if any(pattern.search(data) for pattern in SECRET_PATTERNS):
+            raise RuntimeError("Secret-like material detected in private pilot")
     for name in ["global.json", *service_files]:
         groups = json.loads((source / name).read_text(encoding="utf-8"))
         if not isinstance(groups, dict) or set(groups) != GROUPS:
@@ -96,12 +119,12 @@ def integrate(handbook_dir: Path, search_dir: Path) -> dict:
     text = root_page.read_text(encoding="utf-8")
     if text.count("</article>") != 1:
         raise RuntimeError("Unexpected handbook index structure")
-    root_page.write_text(text.replace("</article>", '<p><a href="./databases/search/index.html">制度DB横断検索を試す</a></p></article>'), encoding="utf-8")
+    root_page.write_text(text.replace("</article>", '<p><a href="./databases/search/index.html">制度DB横断検索を試す</a> / <a href="./databases/search/qa.html">国Q&Aを探す</a></p></article>'), encoding="utf-8")
     search_page = target / "index.html"
     text = search_page.read_text(encoding="utf-8")
     if text.count("<h1>") != 1:
         raise RuntimeError("Unexpected search index structure")
-    search_page.write_text(text.replace("<h1>", '<p><a href="../../index.html">サービス別手引へ</a></p><h1>'), encoding="utf-8")
+    search_page.write_text(text.replace("<h1>", '<p><a href="../../index.html">サービス別手引へ</a> / <a href="./qa.html">国Q&Aを探す</a></p><h1>'), encoding="utf-8")
     all_paths = list(out.rglob("*"))
     if any(p.is_symlink() for p in all_paths):
         raise RuntimeError("Symbolic link in integrated output")
@@ -128,7 +151,7 @@ def integrate(handbook_dir: Path, search_dir: Path) -> dict:
     return {"directory": str(out), "files": len(files), "bytes": sum(p.stat().st_size for p in files),
             "by_suffix": by_suffix, "largest": largest,
             "identical_duplicate_files": duplicate_files, "identical_duplicate_bytes": duplicate_bytes,
-            "search_services": len(service_files)}
+            "secret_scan_files": len(scanned), "search_services": len(service_files)}
 
 
 def build() -> dict:

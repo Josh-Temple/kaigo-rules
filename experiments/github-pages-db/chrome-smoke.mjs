@@ -62,13 +62,16 @@ async function value(client, expression) {
   return result.result.value;
 }
 
-export async function chromeSmoke(dir, requestedWidth) {
+export async function chromeSmoke(dir, requestedWidth, options = {}) {
   assert.ok(chromePath, "Chrome is unavailable");
   const types = { ".html": "text/html; charset=utf-8", ".mjs": "text/javascript; charset=utf-8",
-    ".json": "application/json; charset=utf-8", ".css": "text/css; charset=utf-8" };
+    ".js": "text/javascript; charset=utf-8", ".json": "application/json; charset=utf-8",
+    ".css": "text/css; charset=utf-8" };
   const server = http.createServer((req, res) => {
     const name = new URL(req.url, "http://127.0.0.1").pathname.replace(/^\//, "") || "index.html";
-    if (!/^[a-zA-Z0-9._-]+$/.test(name) || name.includes("..")) { res.writeHead(404).end(); return; }
+    if (name.split("/").some((part) => !/^[a-zA-Z0-9._-]+$/.test(part) || part === "." || part === "..")) {
+      res.writeHead(404).end(); return;
+    }
     try {
       const body = fs.readFileSync(path.join(dir, name));
       res.writeHead(200, { "Content-Type": types[path.extname(name)] || "application/octet-stream" });
@@ -85,7 +88,7 @@ export async function chromeSmoke(dir, requestedWidth) {
       "--enable-precise-memory-info", "--remote-debugging-address=127.0.0.1",
       "--remote-debugging-port=0", "--remote-allow-origins=*",
       "--user-data-dir=" + profile, "about:blank",
-    ], { stdio: "ignore" });
+    ], { stdio: "ignore", detached: process.platform !== "win32" });
     child.on("error", () => {});
     const activePort = path.join(profile, "DevToolsActivePort");
     const startupDeadline = Date.now() + 15000;
@@ -101,7 +104,10 @@ export async function chromeSmoke(dir, requestedWidth) {
     });
     await client.send("Emulation.setTouchEmulationEnabled", { enabled: true, maxTouchPoints: 1 });
     const params = new URLSearchParams({ q: "看護職員" });
-    const url = "http://127.0.0.1:" + server.address().port + "/?" + params;
+    const base = options.base || "/";
+    if (!/^\/(?:[a-z0-9-]+\/)*$/.test(base)) throw new Error("Invalid test base path");
+    const origin = "http://127.0.0.1:" + server.address().port;
+    const url = origin + base + "index.html?" + params;
     await client.send("Page.navigate", { url });
     const expression = "(() => { const s=document.querySelector('#status');" +
       "if(!s || !s.dataset.searchMs || !s.textContent.includes('件見つかりました')) return null;" +
@@ -147,17 +153,71 @@ export async function chromeSmoke(dir, requestedWidth) {
     assert.equal(pinchScale, 2, "200% pinch zoom was not applied");
     const pdf = await client.send("Page.printToPDF", { printBackground: true });
     assert.equal(Buffer.from(pdf.data, "base64").subarray(0, 5).toString(), "%PDF-", "Print did not produce a PDF");
+    await client.send("Emulation.setPageScaleFactor", { pageScaleFactor: 1 });
+    const qaParams = new URLSearchParams({ service: "16", page: "2", reader: "1" });
+    await client.send("Page.navigate", { url: origin + base + "qa.html?" + qaParams });
+    const qaExpression = "(() => { const s=document.querySelector('#qa-status'); if(!s || !s.textContent.includes('件見つかりました')) return null;" +
+      "const links=[...document.querySelectorAll('#qa-results a')]; return {rows:links.length,page:document.querySelector('#qa-page').textContent," +
+      "reader:links.every(a=>a.href.includes('reader=1')),width:innerWidth,scroll:document.documentElement.scrollWidth}; })()";
+    let qaResult = null;
+    const qaDeadline = Date.now() + 30000;
+    while (!qaResult && Date.now() < qaDeadline) {
+      try { qaResult = await value(client, qaExpression); } catch { /* navigation in progress */ }
+      if (!qaResult) await pause(100);
+    }
+    assert.ok(qaResult && qaResult.rows === 30 && qaResult.page.startsWith("2 /") && qaResult.reader,
+      "Full Q&A service filter or pagination did not work");
+    assert.equal(qaResult.width, requestedWidth);
+    assert.ok(qaResult.scroll <= qaResult.width, "Q&A page overflows horizontally");
+    let handbook = null;
+    if (options.handbook) {
+      if (!/^\/handbook\/[a-z0-9-]+\/[a-z0-9-]+\.html$/.test(options.handbook)) throw new Error("Invalid handbook path");
+      await client.send("Page.navigate", { url: origin + options.handbook });
+      const deadline = Date.now() + 30000;
+      while (!handbook && Date.now() < deadline) {
+        try {
+          handbook = await value(client, "(() => { const c=document.querySelector('input[type=checkbox]'); const b=document.querySelector('[data-handbook-print]'); if(document.readyState!=='complete'||!c||!b)return null; return {width:innerWidth,scroll:document.documentElement.scrollWidth}; })()");
+        } catch { /* navigation in progress */ }
+        if (!handbook) await pause(100);
+      }
+      assert.ok(handbook, "Handbook controls did not load");
+      assert.equal(handbook.width, requestedWidth);
+      assert.ok(handbook.scroll <= handbook.width, "Handbook page overflows horizontally");
+      const checkbox = await value(client, "(() => {const c=document.querySelector('input[type=checkbox]'); c.scrollIntoView({block:'center',behavior:'instant'}); const r=c.getBoundingClientRect(); return {x:r.left+r.width/2,y:r.top+r.height/2,initial:c.checked};})()");
+      await client.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x: checkbox.x, y: checkbox.y }] });
+      await client.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
+      await pause(100);
+      assert.notEqual(await value(client, "document.querySelector('input[type=checkbox]').checked"), checkbox.initial,
+        "Handbook checkbox did not respond to touch");
+      const printButton = await value(client, "(() => {window.__handbookPrint=false; window.print=()=>window.__handbookPrint=true; const b=document.querySelector('[data-handbook-print]'); b.scrollIntoView({block:'center',behavior:'instant'}); const r=b.getBoundingClientRect(); return {x:r.left+r.width/2,y:r.top+r.height/2};})()");
+      await client.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [printButton] });
+      await client.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
+      await pause(100);
+      assert.equal(await value(client, "window.__handbookPrint"), true, "Handbook print button did not respond to touch");
+      const handbookPdf = await client.send("Page.printToPDF", { printBackground: true });
+      assert.equal(Buffer.from(handbookPdf.data, "base64").subarray(0, 5).toString(), "%PDF-");
+    }
     return { requestedWidth, actualWidth: result.width, scrollWidth: result.scrollWidth,
       searchMs: result.searchMs, readyMs: result.readyMs, heapBytes: result.heapBytes,
-      keyboard: true, touch: true, unitGroups, pinchScale, printed: true };
+      keyboard: true, touch: true, unitGroups, pinchScale, printed: true, qaRows: qaResult.rows, qaPage: qaResult.page,
+      handbook: handbook ? { checkbox: true, printButton: true, printed: true } : null };
   } finally {
     if (client) client.close();
-    if (child && child.exitCode === null) {
-      child.kill("SIGTERM");
-      await Promise.race([new Promise((resolve) => child.once("exit", resolve)), pause(3000)]);
-      if (child.exitCode === null) child.kill("SIGKILL");
+    if (child?.pid) {
+      try {
+        if (process.platform === "win32") child.kill("SIGTERM");
+        else process.kill(-child.pid, "SIGTERM");
+      } catch { /* already exited */ }
+      if (child.exitCode === null) {
+        await Promise.race([new Promise((resolve) => child.once("exit", resolve)), pause(3000)]);
+      }
+      try {
+        if (process.platform === "win32") child.kill("SIGKILL");
+        else process.kill(-child.pid, "SIGKILL");
+      } catch { /* already exited */ }
+      await pause(200);
     }
     await new Promise((resolve) => server.close(resolve));
-    fs.rmSync(profile, { recursive: true, force: true });
+    fs.rmSync(profile, { recursive: true, force: true, maxRetries: 12, retryDelay: 250 });
   }
 }

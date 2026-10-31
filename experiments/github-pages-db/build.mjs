@@ -9,6 +9,7 @@ import { stripTypeScriptTypes } from "node:module";
 import care from "../../data/care-insurance-act-nodes.json" with { type: "json" };
 import ordinance from "../../data/ordinance37-nodes.json" with { type: "json" };
 import qa from "../../data/qa-corpus.json" with { type: "json" };
+import qaMeta from "../../data/qa-corpus-meta.json" with { type: "json" };
 import { publicNoticeRecords } from "../../lib/notice-database.ts";
 import { listServices } from "../../lib/service-catalog.ts";
 import { publicUnitPriceRows } from "../../lib/unit-price-discovery.ts";
@@ -92,6 +93,9 @@ function questions() {
     id: q.id, title: q.question,
     href: "/qa/" + encodeURIComponent(q.id),
     excerptField: 1, sourceUrl: "",
+    serviceCode: q.service_code || "", serviceLabel: q.service_label || "",
+    scope: q.scope || "", currentServiceScope: q.current_service_scope || "",
+    issuedSource: q.issued_source || "", number: q.number || "",
     fields: [
       { value: q.question || "", weight: 10 }, { value: q.answer || "", weight: 8 },
       { value: q.topic || "", weight: 6 },
@@ -119,7 +123,8 @@ function empty() { return Object.fromEntries(groups.map((key) => [key, []])); }
 
 function validate(rows) {
   const allowed = new Set(["id", "title", "href", "excerpt", "excerptField", "sourceUrl", "serviceId",
-    "serviceLabel", "regionClass", "unitPrice", "checkedAt", "statusText", "fields"]);
+    "serviceLabel", "regionClass", "unitPrice", "checkedAt", "statusText", "fields",
+    "serviceCode", "scope", "currentServiceScope", "issuedSource", "number"]);
   for (const group of groups) {
     for (const row of rows[group]) {
       if (!row.id || !row.title || typeof row.href !== "string" || !row.href.startsWith("/") ||
@@ -144,6 +149,10 @@ function validate(rows) {
 }
 
 export function buildPilot() {
+  if (!Array.isArray(qa) || qa.length !== qaMeta.rows_included ||
+      qaMeta.review_status !== "INGESTED_UNREVIEWED") {
+    throw new Error("Q&A corpus or review-status contract changed; reassess before producing a pilot");
+  }
   const temporaryRoot = fs.realpathSync(os.tmpdir());
   const sourceRoot = fs.realpathSync(root);
   if (temporaryRoot === sourceRoot || temporaryRoot.startsWith(sourceRoot + path.sep)) {
@@ -194,13 +203,16 @@ export function buildPilot() {
     services.push({ id: item.service_id, label: item.label, file });
   }
   fs.writeFileSync(path.join(dir, "services.json"), JSON.stringify(services));
+  const qaOptions = Object.entries(qaMeta.scope_by_code || {}).map(([code, label]) => [code, String(label)]);
+  fs.writeFileSync(path.join(dir, "qa-options.json"), JSON.stringify(qaOptions));
   // The browser receives a direct stripped-JS copy of the current ranking logic,
   // so synonyms, normalisation, weights and tie-breaking stay in one source.
   const ranking = fs.readFileSync(path.join(root, "lib/database-search.ts"), "utf8");
   fs.writeFileSync(path.join(dir, "rank-core.mjs"), stripTypeScriptTypes(ranking, { mode: "strip" }));
-  for (const name of ["index.html", "app.mjs", "search.mjs", "style.css"]) {
+  for (const name of ["index.html", "app.mjs", "search.mjs", "style.css", "qa.html", "qa-app.mjs", "qa-projection.mjs"]) {
     fs.copyFileSync(path.join(root, "experiments/github-pages-db", name), path.join(dir, name));
   }
+  fs.copyFileSync(path.join(root, "experiments/github-pages-qa/search-core.mjs"), path.join(dir, "qa-core.mjs"));
   const files = fs.readdirSync(dir).map((name) => ({ name, bytes: fs.statSync(path.join(dir, name)).size }));
   return { dir, files, bytes: files.reduce((a, b) => a + b.bytes, 0),
     services: services.length, globalCounts: Object.fromEntries(groups.map((k) => [k, global[k].length])),

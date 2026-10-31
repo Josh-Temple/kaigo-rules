@@ -3,6 +3,7 @@ import importlib.util
 import contextlib
 import io
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -141,6 +142,8 @@ class HandbookSanitizerTest(unittest.TestCase):
                 json.dumps([{"id": "dayservice", "label": "通所介護", "file": "service-dayservice.json"}]),
                 encoding="utf-8",
             )
+            (search / "qa-options.json").write_text("[]", encoding="utf-8")
+            (search / "qa.html").write_text('<main><h1>Q&A</h1></main>', encoding="utf-8")
             groups = {group: [] for group in integrated_pilot.GROUPS}
             for name in ["global.json", "service-dayservice.json"]:
                 (search / name).write_text(json.dumps(groups), encoding="utf-8")
@@ -149,6 +152,11 @@ class HandbookSanitizerTest(unittest.TestCase):
                 integrated_pilot.integrate(out, search)
             self.assertFalse((out / "databases").exists())
             (search / "secret.txt").unlink()
+            (search / "index.html").write_text('<main><h1>検索</h1>-----BEGIN PRIVATE KEY-----</main>', encoding="utf-8")
+            with self.assertRaisesRegex(RuntimeError, "Secret-like"):
+                integrated_pilot.integrate(out, search)
+            self.assertFalse((out / "databases").exists())
+            (search / "index.html").write_text('<main><h1>検索</h1></main>', encoding="utf-8")
             result = integrated_pilot.integrate(out, search)
             self.assertEqual(result["search_services"], 1)
             self.assertTrue((out / "databases/search/global.json").is_file())
@@ -331,6 +339,20 @@ class HandbookStaticPilotTest(unittest.TestCase):
             print("INTEGRATED_PARTIAL_BY_SUFFIX: " + json.dumps(integrated["by_suffix"], sort_keys=True))
             print("INTEGRATED_PARTIAL_LARGEST: " + json.dumps(integrated["largest"], ensure_ascii=False))
             print("INTEGRATED_PARTIAL_DUPLICATES: files={identical_duplicate_files} bytes={identical_duplicate_bytes}".format(**integrated))
+            print("INTEGRATED_PARTIAL_SECRET_SCAN: files={secret_scan_files} matches=0".format(**integrated))
+            chrome = shutil.which("google-chrome") or shutil.which("chromium") or shutil.which("chromium-browser")
+            if chrome:
+                browser = subprocess.run(
+                    ["node", "scripts/test_github_pages_integrated_browser.mjs", str(out)],
+                    cwd=ROOT, capture_output=True, text=True, timeout=200,
+                )
+                self.assertEqual(browser.returncode, 0, browser.stderr[-4000:])
+                self.assertEqual(browser.stdout.count("INTEGRATED_CHROME:"), 2)
+                print(browser.stdout)
+            elif os.environ.get("GITHUB_ACTIONS") == "true":
+                self.fail("Chrome is unavailable for the integrated partial pilot")
+            else:
+                print("INTEGRATED_CHROME: skipped; Chrome is unavailable locally")
         finally:
             shutil.rmtree(result["directory"], ignore_errors=True)
 

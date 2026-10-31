@@ -123,4 +123,9 @@ test("private cross-database pilot matches the current server search", { timeout
   assert.equal(result.error, undefined, result.error?.message);
   assert.equal(result.status, 0, "Cross-database parity test failed");
   assert.match(result.stdout, /DB parity scenarios: \d+ \/ \d+/);
+  assert.match(result.stdout, /Full QA parity scenarios: \d+ \/ \d+/);
+  if (process.env.GITHUB_ACTIONS === "true") {
+    assert.match(result.stdout, /Rendered Next\.js parity: \d+ \/ \d+/);
+    assert.match(result.stdout, /Rendered Next Q&A parity: \d+ \/ \d+/);
+  }
 });

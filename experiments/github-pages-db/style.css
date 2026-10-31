@@ -12,4 +12,8 @@ input, select, button { font: inherit; width: 100%; min-height: 2.8rem; padding:
 button { color: white; background: #0c6651; border: 0; border-radius: .3rem; margin-top: .5rem; cursor: pointer; }
 .result { border-bottom: 1px solid #d8e1dc; padding: .7rem 0; }
 .result p { margin: .3rem 0; overflow-wrap: anywhere; }
+#qa-results .result p { white-space: pre-wrap; }
+.qa-pagination { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin-top: 1rem; }
+.qa-pagination button { width: auto; min-width: 5rem; }
+.qa-pagination button:disabled { background: #abb9b2; color: #24362e; cursor: default; }
 @media print { form, .notice { display: none; } body, main { background: white; } }
