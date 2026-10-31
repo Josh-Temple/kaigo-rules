@@ -166,6 +166,13 @@ try {
       }
       // Reader-first content added in PR #583: check the actual rendered chapter, not only the data table.
       await page.goto(origin + '/handbook/dayservice/staffing');
+      const staffingRows = page.locator('.dayservice-staffing-overview tbody tr');
+      report.interactions.push({
+        flow: `${width}px staffing → five role summaries with in-page legal details`,
+        status: await staffingRows.count() === 5 &&
+          await staffingRows.filter({ hasText: '生活相談員' }).count() === 1 &&
+          await page.locator('.dayservice-staffing-overview tbody a[href="#staffing-role-manager"]').count() === 1 ? 'PASS' : 'FAIL',
+      });
       for (const role of ['nurse', 'care-worker']) {
         const item = page.locator(`#staffing-role-${role}`);
         const checks = item.locator('.dayservice-reader-questions li');
@@ -178,6 +185,11 @@ try {
         });
       }
       await page.goto(origin + '/handbook/dayservice/additions');
+      report.interactions.push({
+        flow: `${width}px additions → two priority topics linked before full source text`,
+        status: await page.locator('.dayservice-priority-additions a[href$="#fee-note-13"]').count() === 1 &&
+          await page.locator('.dayservice-priority-additions a[href$="#fee-note-6"]').count() === 1 ? 'PASS' : 'FAIL',
+      });
       const training = page.locator('#fee-note-13');
       const trainingSummary = await training.locator('.dayservice-reader-overview').innerText();
       const trainingDiagram = await training.locator('.dayservice-timing-example').innerText();
@@ -237,6 +249,22 @@ try {
           !(await page.locator('main').innerText()).includes('2019年以降の分類') &&
           await page.locator('.qa-list .qa-row').count() > 0 ? 'PASS' : 'FAIL',
       });
+      const qaDetailLink = page.locator('.qa-list .qa-row h2 a').first();
+      const qaDetailHref = await qaDetailLink.getAttribute('href');
+      if (qaDetailHref?.includes('?reader=1')) {
+        await qaDetailLink.click();
+        const qaDetailText = await page.locator('main').innerText();
+        report.interactions.push({
+          flow: `${width}px related Q&A → individual answer and government source without editor data`,
+          status: qaDetailText.includes('質問') && qaDetailText.includes('回答') &&
+            !qaDetailText.includes('2019年以降のサービス分類') &&
+            !qaDetailText.includes('出典・参照先の確認日') &&
+            await page.locator('main a[href*="mhlw.go.jp"]').count() > 0 &&
+            await page.locator('main .qa-corpus-meta').count() === 0 ? 'PASS' : 'FAIL',
+        });
+      } else {
+        report.interactions.push({ flow: `${width}px reader Q&A individual detail link`, status: 'FAIL' });
+      }
       await page.goto(origin + '/handbook/dayservice/remuneration#basic-fee');
       const tableRegion = page.locator('.dayservice-table-scroll').first();
       await tableRegion.evaluate(element => { element.scrollLeft = element.scrollWidth - element.clientWidth; });
