@@ -255,3 +255,13 @@ test("2026 treatment improvement fee amendment is visibly flagged without overwr
   assert.ok(item.regulatoryUpdate.relatedDocuments.every(row => row.label && nationalSourceUrl(row.url)));
   assert.equal(topics.find(row => row.id === "fee-note-6")?.regulatoryUpdate, undefined);
 });
+
+test("historical 2026 fee text is collapsed for readers and always omitted from print while official warning remains", () => {
+  const component = readFileSync("components/dayservice-handbook.tsx", "utf8");
+  const css = readFileSync("app/reader.css", "utf8");
+  assert.match(component, /topic\.regulatoryUpdate \? <details className="dayservice-historical-fee-details"/);
+  assert.match(component, /改正後の照合が済んでいない掲載本文を見る/);
+  assert.match(css, /\.dayservice-historical-fee-details\{display:none!important\}/);
+  assert.ok(topics.find(row => row.id === "fee-treatment-improvement").regulatoryUpdate);
+  assert.equal(topics.find(row => row.id === "fee-note-13").regulatoryUpdate, undefined);
+});
