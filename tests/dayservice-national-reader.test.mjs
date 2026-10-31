@@ -216,7 +216,7 @@ test("individual training has government source page links for Q&A 55-57, distin
 
 test("reader summaries preserve staffing thresholds and extension non-claim scenarios", () => {
   const byId = id => topics.find(item => item.id === id);
-  for (const id of ["staffing-role-nurse", "staffing-role-care-worker", "fee-note-13", "fee-note-6"]) {
+  for (const id of ["staffing-role-life-counselor", "staffing-role-nurse", "staffing-role-care-worker", "staffing-role-functional-training", "staffing-role-manager", "fee-note-13", "fee-note-6"]) {
     const item = byId(id);
     assert.ok(item.readerSummary, id);
     assert.ok(item.readerConditions?.length >= 2, id);
@@ -229,4 +229,10 @@ test("reader summaries preserve staffing thresholds and extension non-claim scen
   assert.match(byId("fee-note-6").officialQaFurther.find(row => row.number === "5").url, /0000093219\.pdf#page=4$/);
   assert.match(byId("fee-note-13").officialQaFurther.find(row=>row.number==="55").explanation, /事前/);
   assert.match(byId("fee-note-13").officialQaFurther.find(row=>row.number==="56").explanation, /外部/);
+  assert.match(byId("fee-note-6").officialQaFurther.find(row => row.number === "5").label, /口腔機能向上サービス/);
+  assert.match(byId("fee-note-6").officialQaFurther.find(row => row.number === "5").explanation, /延長加算全般を認めるものではありません/);
+  assert.match(byId("fee-note-6").readerExceptions.join(""), /限定的な取扱い/);
+  assert.match(byId("staffing-role-life-counselor").readerSummary, /勤務延時間数/);
+  assert.match(byId("staffing-role-functional-training").readerSummary, /事業所ごとに1人以上/);
+  assert.match(byId("staffing-role-manager").readerSummary, /常勤/);
 });
