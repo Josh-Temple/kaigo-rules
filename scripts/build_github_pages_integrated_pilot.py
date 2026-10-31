@@ -250,6 +250,19 @@ def build_with_details() -> dict:
         direct = json.loads((ROOT / "data/qa-direct-evidence.json").read_text(encoding="utf-8"))
         child, base = qa_details.start_next(pilot_optimized=True)
         qa_result = qa_details.add_details(search_dir, base, corpus, direct, max_seconds=480)
+        # Serve legal routes from a fresh validated Next.js process. The shared
+        # process had already rendered 7,392 Q&A variants before legal extraction
+        # slowed down and hit its 360-second budget (run 41198085626).
+        if child.poll() is None:
+            child.terminate()
+            try:
+                child.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                child.kill()
+                child.wait(timeout=5)
+        child = None
+        child, base = qa_details.start_next(pilot_optimized=True)
+        print("Private legal extraction: fresh local Next.js process started", flush=True)
         legal_result = legal_details.add_details(search_dir, base, max_seconds=360)
         if child.poll() is None:
             child.terminate()

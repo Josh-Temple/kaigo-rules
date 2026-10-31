@@ -105,11 +105,13 @@ def add_details(search_dir, base_url, max_seconds=480):
     def process(key, request_timeout=45):
         kind, number, service = key
         if time.monotonic() - start > max_seconds:
-            raise TimeoutError("Legal detail generation exceeded its time budget")
+            raise TimeoutError("Legal detail generation exceeded its " + str(max_seconds) +
+                               "-second time budget; last key=" + repr(key))
         # Preserve the original search key, but render deleted ordinance
         # ranges through the explicit Next.js-safe alias.
         render_number = number.replace(":", "__range__") if kind == "rules" else number
         href = "/" + kind + "/" + quote(render_number, safe="")
+        request_started = time.monotonic()
         if service:
             href += "?service=" + quote(service, safe="")
         try:
@@ -131,6 +133,10 @@ def add_details(search_dir, base_url, max_seconds=480):
         dest = out / local_path(key)
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(rendered, encoding="utf-8")
+        elapsed = time.monotonic() - request_started
+        if elapsed > 8:
+            print("Private legal slow route: " + repr(key) + " seconds=" +
+                  str(round(elapsed, 2)), flush=True)
         return len(original.links)
 
     route_keys = list(routes)
