@@ -236,3 +236,32 @@ test("reader summaries preserve staffing thresholds and extension non-claim scen
   assert.match(byId("staffing-role-functional-training").readerSummary, /事業所ごとに1人以上/);
   assert.match(byId("staffing-role-manager").readerSummary, /常勤/);
 });
+
+test("2026 treatment improvement fee amendment is visibly flagged without overwriting historical sources", () => {
+  const item = topics.find(row => row.id === "fee-treatment-improvement");
+  assert.ok(item, "treatment improvement topic exists");
+  assert.ok(item.basis.some(ref => ref.id === "fee.dayservice.treatment-improvement"));
+  assert.match(item.regulatoryUpdate?.message || "", /令和8年厚生労働省告示第87号/);
+  assert.match(item.regulatoryUpdate?.message || "", /請求・届出/);
+  assert.equal(item.regulatoryUpdate?.officialUrl, "https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7");
+  assert.ok(nationalSourceUrl(item.regulatoryUpdate.officialUrl), "official link passes allowlist");
+  assert.match(item.regulatoryUpdate.message, /4月・5月と6月以降/);
+  assert.deepEqual(item.regulatoryUpdate.relatedDocuments?.map(row => row.url), [
+    "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=3",
+    "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=18",
+    "https://www.mhlw.go.jp/content/12404000/001675711.pdf",
+    "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+  ]);
+  assert.ok(item.regulatoryUpdate.relatedDocuments.every(row => row.label && nationalSourceUrl(row.url)));
+  assert.equal(topics.find(row => row.id === "fee-note-6")?.regulatoryUpdate, undefined);
+});
+
+test("historical 2026 fee text is collapsed for readers and always omitted from print while official warning remains", () => {
+  const component = readFileSync("components/dayservice-handbook.tsx", "utf8");
+  const css = readFileSync("app/reader.css", "utf8");
+  assert.match(component, /topic\.regulatoryUpdate \? <details className="dayservice-historical-fee-details"/);
+  assert.match(component, /改正後の照合が済んでいない掲載本文を見る/);
+  assert.match(css, /\.dayservice-historical-fee-details\{display:none!important\}/);
+  assert.ok(topics.find(row => row.id === "fee-treatment-improvement").regulatoryUpdate);
+  assert.equal(topics.find(row => row.id === "fee-note-13").regulatoryUpdate, undefined);
+});

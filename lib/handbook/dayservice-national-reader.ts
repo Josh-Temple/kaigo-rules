@@ -21,6 +21,7 @@ export type ReaderTopic = {
   readerQuestions?: readonly string[]; qaSearchQuery?: string;
   readerSummary?: string; readerConditions?: readonly string[]; readerExceptions?: readonly string[];
   officialQaFurther?: { number: string; label: string; url: string; explanation?: string; issuedLabel?: string }[];
+  regulatoryUpdate?: { message: string; officialLabel: string; officialUrl: string; relatedDocuments?: readonly { label: string; url: string }[] };
 };
 export type ReaderGroup = { title: string; topics: ReaderTopic[] };
 export type ReaderExcerpt = {
@@ -289,6 +290,18 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
       { number: "59", label: "同じ日に宿泊サービスを利用", explanation: "通所介護と同じ日に宿泊サービスを受ける場合は、延長加算の算定は適当ではないとする回答です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
       { number: "5", issuedLabel: "平成27年度Q&A Vol.4", label: "宿泊時の口腔機能向上サービス（限定例）", explanation: "通所介護計画にあらかじめ位置付けた口腔機能向上サービスについて、通常の時間帯では終えられず、言語聴覚士・歯科衛生士等による延長時間帯の提供が不可欠な場合に、実際に延長して提供した範囲での算定を示しています。宿泊時の延長加算全般を認めるものではありません。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000093219.pdf#page=4" },
     ],
+  } : id === "treatment-improvement" ? {
+    regulatoryUpdate: {
+      message: "介護職員等処遇改善加算は、令和8年厚生労働省告示第87号で区分と加算率が改正されています。令和8年4月・5月と6月以降は、国の通知で参照する加算率表が異なります。下に掲載した従来の告示本文が改正後の全文と一致するか、まだ照合できていません。掲載数値をそのまま請求・届出に使用せず、算定する月に対応した改正告示・通知・Q&Aと指定権者の届出案内を確認してください。",
+      officialLabel: "厚生労働省・令和8年告示第87号（通所介護費の改正）",
+      officialUrl: "https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7",
+      relatedDocuments: [
+        { label: "令和8年度処遇改善加算の通知（算定月ごとの扱い・届出手順）", url: "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=3" },
+        { label: "通所介護の加算率表（4・5月と6月以降を比較）", url: "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=18" },
+        { label: "令和8年度処遇改善加算Q&A（第1版）", url: "https://www.mhlw.go.jp/content/12404000/001675711.pdf" },
+        { label: "厚生労働省の令和8年度介護報酬改定資料一覧（差替え・追加の確認）", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html" },
+      ],
+    },
   } : {}),
 });
 

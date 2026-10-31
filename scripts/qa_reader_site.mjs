@@ -210,6 +210,36 @@ try {
             href.endsWith(`#page=${qaPages[i]}`)) &&
           (await training.locator('.dayservice-official-qa-links > p').innerText()).includes('未確認') ? 'PASS' : 'FAIL',
       });
+      const treatment = page.locator('#fee-treatment-improvement');
+      const amendment = treatment.locator('.dayservice-regulatory-update');
+      const amendmentText = await amendment.innerText();
+      report.interactions.push({
+        flow: `${width}px treatment improvement → 2026 amendment warning before historical fee source`,
+        status: amendmentText.includes('令和8年厚生労働省告示第87号') &&
+          amendmentText.includes('請求・届出') &&
+          amendmentText.includes('4月・5月と6月以降') &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7"]').count() === 1 &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=3"]').count() === 1 &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=18"]').count() === 1 &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675711.pdf"]').count() === 1 &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html"]').count() === 1 ? 'PASS' : 'FAIL',
+      });
+      const oldFee = treatment.locator('.dayservice-historical-fee-details');
+      const oldFeeBody = oldFee.locator('.dayservice-excerpt');
+      const oldFeeSummary = oldFee.locator('summary');
+      const oldFeeInitiallyHidden = await oldFee.isVisible() && !(await oldFeeBody.isVisible());
+      await oldFeeSummary.click();
+      const oldFeeReadableOnDemand = await oldFeeBody.isVisible() &&
+        (await oldFee.innerText()).includes('現在の算定に使わないでください');
+      await oldFeeSummary.click();
+      await page.emulateMedia({ media: 'print' });
+      const oldFeeSuppressedOnPaper = !(await oldFee.isVisible()) &&
+        await amendment.isVisible();
+      await page.emulateMedia({ media: 'screen' });
+      report.interactions.push({
+        flow: `${width}px 2026 fee → old rates hidden by default, available on request, excluded from print`,
+        status: oldFeeInitiallyHidden && oldFeeReadableOnDemand && oldFeeSuppressedOnPaper ? 'PASS' : 'FAIL',
+      });
       const extension = page.locator('#fee-note-6');
       const extensionText = await extension.innerText();
       report.interactions.push({
