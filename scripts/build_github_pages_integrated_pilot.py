@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_github_pages_handbook_all_pilot as handbook
 import build_github_pages_qa_details_pilot as qa_details
 import build_github_pages_legal_details_pilot as legal_details
+import localize_github_pages_links_pilot as navigation
 
 ROOT = Path(__file__).resolve().parents[1]
 STATIC_FILES = {
@@ -183,6 +184,7 @@ def integrate(handbook_dir: Path, search_dir: Path) -> dict:
     if text.count("<h1>") != 1:
         raise RuntimeError("Unexpected search index structure")
     search_page.write_text(text.replace("<h1>", '<p><a href="../../index.html">サービス別手引へ</a> / <a href="./qa.html">国Q&Aを探す</a></p><h1>'), encoding="utf-8")
+    navigation_report = navigation.localize(out)
     all_paths = list(out.rglob("*"))
     if any(p.is_symlink() for p in all_paths):
         raise RuntimeError("Symbolic link in integrated output")
@@ -207,6 +209,7 @@ def integrate(handbook_dir: Path, search_dir: Path) -> dict:
         key=lambda item: item["bytes"], reverse=True,
     )[:10]
     return {"directory": str(out), "files": len(files), "bytes": sum(p.stat().st_size for p in files),
+            "navigation": navigation_report,
             "by_suffix": by_suffix, "largest": largest,
             "identical_duplicate_files": duplicate_files, "identical_duplicate_bytes": duplicate_bytes,
             "secret_scan_files": len(scanned), "search_services": len(service_files)}
