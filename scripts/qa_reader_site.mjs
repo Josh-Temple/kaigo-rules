@@ -133,7 +133,7 @@ try {
   }));
   if (!baseline) {
     const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
-    for (const width of [360, 390]) {
+    for (const width of [360, 390, 1280]) {
       await page.setViewportSize({ width, height: 844 });
       await page.goto(origin + '/handbook/dayservice/staffing');
       const firstStaffingTopic = await page.locator('.dayservice-reading-topic').first().getAttribute('id');
@@ -234,6 +234,11 @@ try {
       const oldFeeReadableOnDemand = await oldFeeBody.isVisible() &&
         (await oldFee.innerText()).includes('現在の算定に使わないでください');
       await oldFeeSummary.click();
+      await oldFeeSummary.focus();
+      await page.keyboard.press('Enter');
+      const oldFeeKeyboardExpanded = await oldFeeBody.isVisible();
+      await page.keyboard.press('Enter');
+      const oldFeeKeyboardCollapsed = !(await oldFeeBody.isVisible());
       await page.emulateMedia({ media: 'print' });
       const oldFeeSuppressedOnPaper = !(await oldFee.isVisible()) &&
         await amendment.isVisible();
@@ -241,7 +246,8 @@ try {
       report.interactions.push({
         flow: `${width}px 2026 fee → old rates hidden by default, available on request, excluded from print`,
         status: oldFeeInitiallyHidden && oldFeeReadableOnDemand &&
-          oldFeeSuppressedOnPaper && oldFeeSnippetSuppressed ? 'PASS' : 'FAIL',
+          oldFeeSuppressedOnPaper && oldFeeSnippetSuppressed &&
+          oldFeeKeyboardExpanded && oldFeeKeyboardCollapsed ? 'PASS' : 'FAIL',
       });
       const extension = page.locator('#fee-note-6');
       const extensionText = await extension.innerText();
