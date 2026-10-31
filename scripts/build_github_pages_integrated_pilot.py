@@ -21,6 +21,7 @@ import build_github_pages_handbook_all_pilot as handbook
 import build_github_pages_qa_details_pilot as qa_details
 import build_github_pages_legal_details_pilot as legal_details
 import localize_github_pages_links_pilot as navigation
+import build_github_pages_information_pilot as information
 
 ROOT = Path(__file__).resolve().parents[1]
 STATIC_FILES = {
@@ -174,11 +175,12 @@ def integrate(handbook_dir: Path, search_dir: Path) -> dict:
         destination = target / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source / name, destination)
+    information_report = information.add_pages(out)
     root_page = out / "index.html"
     text = root_page.read_text(encoding="utf-8")
     if text.count("</article>") != 1:
         raise RuntimeError("Unexpected handbook index structure")
-    root_page.write_text(text.replace("</article>", '<p><a href="./databases/search/index.html">制度DB横断検索を試す</a> / <a href="./databases/search/qa.html">国Q&Aを探す</a></p></article>'), encoding="utf-8")
+    root_page.write_text(text.replace("</article>", '<p><a href="./databases/search/index.html">制度DB横断検索を試す</a> / <a href="./databases/search/qa.html">国Q&Aを探す</a></p><p><a href="./start/index.html">はじめての方へ</a> / <a href="./overview/index.html">制度の全体像</a> / <a href="./guide/index.html">使い方ガイド</a></p></article>'), encoding="utf-8")
     search_page = target / "index.html"
     text = search_page.read_text(encoding="utf-8")
     if text.count("<h1>") != 1:
@@ -209,7 +211,7 @@ def integrate(handbook_dir: Path, search_dir: Path) -> dict:
         key=lambda item: item["bytes"], reverse=True,
     )[:10]
     return {"directory": str(out), "files": len(files), "bytes": sum(p.stat().st_size for p in files),
-            "navigation": navigation_report,
+            "navigation": navigation_report, "information_pages": information_report,
             "by_suffix": by_suffix, "largest": largest,
             "identical_duplicate_files": duplicate_files, "identical_duplicate_bytes": duplicate_bytes,
             "secret_scan_files": len(scanned), "search_services": len(service_files)}
