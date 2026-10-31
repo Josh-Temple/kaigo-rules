@@ -24,7 +24,8 @@ PAGES = {
     # Preserve original source/currentness warnings, not raw source databases.
     "sources": "公式資料と出典",
     "handbook-sources": "手引の出典",
-    "services/source-map": "サービス別の根拠資料",
+    # /services/source-map has interactive query and select controls.
+    # It requires a fully functioning client implementation, not an HTML snapshot.
     "fees/guidance": "報酬に関する案内",
 }
 
@@ -51,10 +52,13 @@ def add_pages(root: Path) -> dict:
         if not source.is_file() or source.is_symlink() or dest.exists():
             raise RuntimeError("Missing or duplicate pre-rendered reader page: " + route)
         full_html = source.read_text(encoding="utf-8")
-        rendered, original = qa.render_article(
-            full_html, label, preserve_original_link,
-            "../" * len(Path(route).parts) + "styles.css",
-        )
+        try:
+            rendered, original = qa.render_article(
+                full_html, label, preserve_original_link,
+                "../" * len(Path(route).parts) + "styles.css",
+            )
+        except RuntimeError as error:
+            raise RuntimeError("Reader page extraction rejected " + route + ": " + str(error)) from error
         if not original.done or not "".join(original.text).strip() or "<script" in rendered.split("<main>", 1)[-1]:
             raise RuntimeError("Incomplete reader information extract: " + route)
         dest.parent.mkdir(parents=True, exist_ok=False)

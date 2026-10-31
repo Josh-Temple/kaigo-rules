@@ -15,9 +15,10 @@ class InformationPilotTest(unittest.TestCase):
     def test_only_explicit_reader_pages_and_no_preview(self):
         self.assertEqual(set(module.PAGES), {
             "start", "overview", "guide", "sources", "handbook-sources",
-            "services/source-map", "fees/guidance",
+            "fees/guidance",
         })
         self.assertEqual("../" * len(Path("fees/guidance").parts) + "styles.css", "../../styles.css")
+        self.assertNotIn("services/source-map", module.PAGES)  # Interactive filtering is not a static snapshot.
         self.assertEqual(module.preserve_original_link("/rules/93?service=dayservice"),
                          "https://kaigo-rules.vercel.app/rules/93?service=dayservice")
         self.assertEqual(module.preserve_original_link("#section"), "#section")
