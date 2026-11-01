@@ -93,7 +93,7 @@ def inspect(root: Path) -> dict:
                 refs["root_relative"] += 1
                 continue
             raw_path = unquote(parts.path)
-            if "\" in raw_path or "\x00" in raw_path:
+            if chr(92) in raw_path or chr(0) in raw_path:
                 refs["unsafe_local"] += 1
                 continue
             if not raw_path:
