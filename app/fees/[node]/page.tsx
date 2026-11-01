@@ -1,4 +1,5 @@
 import VerificationSummary from "../../../components/verification-summary";
+import DayserviceTreatmentImprovement2026 from "../../../components/dayservice-treatment-improvement-2026";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import nodesData from "../../../data/remuneration-current-skeleton.json";
@@ -53,6 +54,7 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
     : sources.find((item) => item.id === node.source_id);
   const linkedRelations = relations.filter((item) => item.from_fee_id === feeId);
   const isOutOfCore = node.verification_status === "OUT_OF_CORE_SCOPE";
+  const isTreatmentImprovement = feeId === "fee.dayservice.treatment-improvement";
   const delegatedTargets = delegatedRelations
     .filter((item) => item.from_id === feeId)
     .map((item) => delegated.find((target) => target.id === item.to_id))
@@ -69,7 +71,12 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
       <h1>{node.title}</h1>
       <p className="meta">{node.number_path.join(" / ")} / {node.id}</p>
 
-      {isOutOfCore ? (
+      {isTreatmentImprovement ? (
+        <div className="notice" role="note">
+          <strong>令和8年度処遇改善加算：算定月によって区分・率が異なります。</strong><br/>
+          4月・5月には6月以降の率を使えません。掲載本文は6月以降の率と一致する機械抽出データですが、全文・算定要件・附則・後続訂正は未照合です。数値だけで算定・届出を判断しないでください。
+        </div>
+      ) : isOutOfCore ? (
         <div className="notice">
           <strong>この項目は指定通所介護のコア範囲外です。</strong><br/>
           共生型通所介護に固有の取扱いとして保持しています。通常の指定通所介護と混同しないでください。
@@ -86,12 +93,18 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
         </div>
       )}
 
+      {isTreatmentImprovement ? <DayserviceTreatmentImprovement2026 headingLevel={2} /> : null}
       <VerificationSummary layerId="remuneration-notices" />
 
       <section className="section">
-        <h2>現行公式本文</h2>
+        <h2>{isTreatmentImprovement ? "令和8年6月以降の率を含む抽出本文（全文未照合）" : "現行公式本文"}</h2>
         {currentText ? (
-          <>
+          isTreatmentImprovement ? <details className="dayservice-historical-fee-details">
+            <summary>6月以降の率を含む収載本文を見る（全文・要件は未照合）</summary>
+            <p className="dayservice-source-caution">4月・5月には下記の率を使えません。6月以降も、この本文だけで算定・届出を判断しないでください。</p>
+            <div data-nosnippet=""><div className="fee-official-text">{currentText.official_text}</div></div>
+            <p className="meta">取込状態：{currentText.import_status}</p>
+          </details> : <>
             <div className="fee-official-text">{currentText.official_text}</div>
             <p className="meta">取込状態：{currentText.import_status}</p>
           </>
