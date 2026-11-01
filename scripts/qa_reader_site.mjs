@@ -340,6 +340,11 @@ try {
       const mayRates = await detailTables.nth(0).innerText();
       const juneRates = await detailTables.nth(1).innerText();
       const detailInitiallyCollapsed = await detailSource.isVisible() && !(await detailExtract.isVisible());
+      const eligibility = await detailRate.locator('.dayservice-treatment-eligibility').innerText();
+      const eligibilityReadable = eligibility.includes('Ⅰロ・Ⅱロ') &&
+        eligibility.includes('特例要件⑧') &&
+        eligibility.includes('1か月の総単位数') &&
+        await detailRate.locator('a[href="https://www.mhlw.go.jp/shogu-kaizen/apply.html"]').count() === 1;
       const monthSpecific = detailWarning.includes('4月・5月には6月以降の率を使えません') &&
         mayRates.includes('9.2%') && mayRates.includes('9.0%') &&
         juneRates.includes('11.1%') && juneRates.includes('12.0%') &&
@@ -368,7 +373,7 @@ try {
       await page.emulateMedia({ media: 'screen' });
       report.interactions.push({
         flow: `${width}px direct fee detail → 4–5/6+ rates, source-vintage caution and safe print`,
-        status: monthSpecific && detailInitiallyCollapsed && detailExpanded && detailPrintSafe ? 'PASS' : 'FAIL',
+        status: monthSpecific && eligibilityReadable && detailInitiallyCollapsed && detailExpanded && detailPrintSafe ? 'PASS' : 'FAIL',
       });
       await page.goto(origin + '/fees');
       report.interactions.push({
