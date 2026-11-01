@@ -67,9 +67,9 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
 
   return (
     <article className="answer-page rules-page fee-detail-page">
-      <p className="eyebrow">{node.service_scope}</p>
+      <p className="eyebrow">通所介護の報酬</p>
       <h1>{node.title}</h1>
-      <p className="meta">{node.number_path.join(" / ")} / {node.id}</p>
+      <p className="meta">{node.number_path.join(" / ")}</p>
 
       {isTreatmentImprovement ? (
         <div className="notice" role="note">
@@ -96,17 +96,17 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
       {isTreatmentImprovement ? <DayserviceTreatmentImprovement2026 headingLevel={2} /> : null}
       <VerificationSummary layerId="remuneration-notices" />
 
-      <section className="section">
+      <section className={isTreatmentImprovement ? "section dayservice-historical-fee-section" : "section"}>
         <h2>{isTreatmentImprovement ? "令和8年6月以降の率を含む抽出本文（全文未照合）" : "現行公式本文"}</h2>
         {currentText ? (
           isTreatmentImprovement ? <details className="dayservice-historical-fee-details">
             <summary>6月以降の率を含む収載本文を見る（全文・要件は未照合）</summary>
             <p className="dayservice-source-caution">4月・5月には下記の率を使えません。6月以降も、この本文だけで算定・届出を判断しないでください。</p>
             <div data-nosnippet=""><div className="fee-official-text">{currentText.official_text}</div></div>
-            <p className="meta">取込状態：{currentText.import_status}</p>
+            
           </details> : <>
             <div className="fee-official-text">{currentText.official_text}</div>
-            <p className="meta">取込状態：{currentText.import_status}</p>
+            
           </>
         ) : (
           <p className="notice-hole">現行本文の機械取込がありません。</p>
@@ -120,7 +120,7 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
           <div className="relation-list">
             {delegatedTargets.map((target:any) => (
               <div className="relation-row" key={target.id}>
-                <span className="meta">{target.source_id}</span>
+                <span className="meta">関連する大臣基準</span>
                 <div>
                   <Link href={`/fees/criteria#${encodeURIComponent(target.id)}`}>{target.heading}</Link>
                   <p className="meta">取込済み・人手確認待ち</p>
@@ -137,7 +137,7 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
           <div className="relation-list">
             {linkedRelations.map((relation, index) => (
               <div className="relation-row" key={`${relation.relation}-${index}`}>
-                <span className="meta">{relationLabel[relation.relation] || relation.relation}</span>
+                <span className="meta">{relationLabel[relation.relation] || "関連資料"}</span>
                 <div>
                   {relation.to_id ? (
                     <Link href={ordinanceHref(relation.to_id)}>
@@ -147,9 +147,9 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
                     const linkedSource = sources.find((item) => item.id === relation.to_source_id);
                     return linkedSource
                       ? <a href={linkedSource.url} target="_blank" rel="noreferrer">{linkedSource.title}</a>
-                      : <span>{relation.to_source_id}</span>;
+                      : <span>関連資料の原典を確認してください</span>;
                   })() : null}
-                  <p className="meta">{relation.status}</p>
+                  
                 </div>
               </div>
             ))}
@@ -166,8 +166,8 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
               <p key={index}>
                 {evidenceSource
                   ? <a href={evidenceSource.url} target="_blank" rel="noreferrer">{evidenceSource.title}</a>
-                  : evidence.source_id}
-                <br/><span className="meta">{evidence.locator} / {evidence.evidence_type}</span>
+                  : "関連する根拠資料"}
+                
               </p>
             );
           })}
@@ -175,12 +175,12 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
       ) : null}
 
       <section className="section">
-        <h2>取得証跡</h2>
+        <h2>根拠資料と確認状況</h2>
         <dl className="rule-meta">
-          <div><dt>取得元</dt><dd>{source?.title || currentText?.source_id || node.source_id}</dd></div>
+          <div><dt>取得元</dt><dd>{source?.title || "原典を確認してください"}</dd></div>
           <div><dt>最新改正</dt><dd>{textMeta.current_amendment || "—"}</dd></div>
           <div><dt>施行日</dt><dd>{textMeta.current_amendment_effective_from || "—"}</dd></div>
-          <div><dt>本文SHA-256</dt><dd className="hash">{currentText?.text_sha256 || "—"}</dd></div>
+          
           <div><dt>人手確認</dt><dd>{reviewed ? "確認済み" : "未確認"}</dd></div>
         </dl>
         {source ? <p><a href={source.url} target="_blank" rel="noreferrer">厚生労働省の原文を確認</a></p> : null}
