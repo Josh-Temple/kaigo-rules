@@ -79,14 +79,16 @@ def inspect(root: Path) -> dict:
             except ValueError:
                 refs["invalid_url"] += 1
                 continue
+            if href.startswith("//"):
+                refs["scheme_relative"] += 1
+                continue
             if parts.netloc or parts.scheme:
-                if parts.scheme in {"http", "https"} and parts.hostname == PRODUCTION_HOST:
+                if parts.scheme not in {"http", "https"} or not parts.netloc or parts.username or parts.password:
+                    refs["invalid_url"] += 1
+                elif parts.hostname == PRODUCTION_HOST:
                     fallbacks[destination_category(href)] += 1
                 else:
                     refs["other_external"] += 1
-                continue
-            if href.startswith("//"):
-                refs["scheme_relative"] += 1
                 continue
             if parts.path.startswith("/"):
                 # Project Pages is hosted under /kaigo-rules/, not domain root.
