@@ -315,4 +315,8 @@ test("direct fee detail and index show monthly treatment periods and guard unver
   assert.match(component, /届出・加算区分の要件/);
   assert.match(component, /令和8年6月以降の加算算定用/);
   assert.match(component, /dayserviceTreatment2026\.updateIndexUrl/);
+  assert.match(component, /Ⅰロ・Ⅱロ/);
+  assert.match(component, /特例要件⑧/);
+  assert.match(component, /1か月の総単位数/);
+  assert.match(component, /shogu-kaizen\/apply\.html/);
 });
