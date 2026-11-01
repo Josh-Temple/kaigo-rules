@@ -23,6 +23,8 @@ test("reader fee detail and print omit internal audit identifiers and unverified
   assert.match(css, /@media print\{\.dayservice-historical-fee-section\{display:none!important\}\}/);
   assert.match(page, /令和8年度処遇改善加算/);
   assert.match(page, /厚生労働省の原文を確認/);
+  assert.match(page, /fee-print-source-url/);
+  assert.match(css, /@media print\{\.fee-print-source-url\{display:block/);
 });
 
 test("all displayed national references resolve and retain the complete registered source text", () => {
