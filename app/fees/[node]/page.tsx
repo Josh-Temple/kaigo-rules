@@ -184,6 +184,7 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
           <div><dt>人手確認</dt><dd>{reviewed ? "確認済み" : "未確認"}</dd></div>
         </dl>
         {source ? <p><a href={source.url} target="_blank" rel="noreferrer">厚生労働省の原文を確認</a></p> : null}
+        {source ? <p className="fee-print-source-url">印刷用の原典URL：{source.url}</p> : null}
       </section>
 
       <p><Link href="/fees">報酬DB一覧へ戻る</Link></p>
