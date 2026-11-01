@@ -5,6 +5,7 @@ import { sourceTextParagraphs } from "../lib/handbook/dayservice-reader-editoria
 import { basicFeeTable, dayserviceAppliedText, type FeeTableRow } from "../lib/handbook/dayservice-source-layout";
 import HandbookChecklist from "./handbook-checklist";
 import HandbookPrint from "./handbook-print";
+import DayserviceTreatmentImprovement2026 from "./dayservice-treatment-improvement-2026";
 
 function OriginalText({ text }: { text: string }) {
   return <div className="dayservice-original">{sourceTextParagraphs(text).map((paragraph, index) => paragraph.trim() ? <p key={index} className={/^[\s]*[・※①-⑳一二三四五六七八九十イロハニホヘトア-オ（(]/u.test(paragraph) ? "dayservice-source-item" : undefined}>{paragraph}</p> : null)}</div>;
@@ -156,6 +157,7 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
         {topic.regulatoryUpdate.relatedDocuments.map(document => <li key={document.url}><OfficialLink url={document.url}>{document.label}</OfficialLink></li>)}
       </ul> : null}
     </aside> : null}
+    {topic.id === "fee-treatment-improvement" ? <DayserviceTreatmentImprovement2026 /> : null}
     {topic.readerSummary ? <div className="dayservice-reader-overview">
       <p><strong>必要な基準の要点</strong></p><p>{topic.readerSummary}</p>
       {topic.readerConditions?.length ? <section aria-label="主な条件"><p><strong>主な条件</strong></p><ul>{topic.readerConditions.map(value => <li key={value}>{value}</li>)}</ul></section> : null}
@@ -179,8 +181,8 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
     {sections.length > 1 && (topic.criteria?.length || topic.qa?.length) ? <nav className="dayservice-source-navigation" aria-label={`${topic.title}の資料へ移動`}><ul>{sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav> : null}
     {topic.basis.length ? <section className="dayservice-source-block" id={`${topic.id}-basis`}><BlockHeading>{isFee ? "報酬告示" : "基準"}</BlockHeading>
       {topic.regulatoryUpdate ? <details className="dayservice-historical-fee-details">
-        <summary>改正後の照合が済んでいない掲載本文を見る（参考資料）</summary>
-        <p className="dayservice-source-caution">この掲載本文の加算率は現在の算定に使わないでください。算定月に対応する国の改正告示・通知を先に確認してください。</p>
+        <summary>6月以降の率を含む収載本文を見る（全文・要件は未照合）</summary>
+        <p className="dayservice-source-caution">収載本文中の率は6月以降の改正後欄と一致していますが、全文・算定要件は未照合です。4月・5月の算定には使わず、6月以降も国の告示・通知・指定権者の案内を確認してください。</p>
         {/* Exclude unverified historical figures from Google snippets without suppressing the entire handbook. */}
         <div data-nosnippet="">{basisExcerpts}</div>
       </details> : basisExcerpts}
