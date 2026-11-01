@@ -232,3 +232,13 @@
   .dayservice-checks{break-inside:avoid-page}
   .dayservice-source-caution,.dayservice-read-across,.dayservice-local{background:transparent;border-color:#555}
 }
+
+/* Month-specific treatment improvement fee notice, shared by handbook and direct fee detail. */
+.dayservice-treatment-periods{margin:18px 0 28px;padding:18px;border:1px solid var(--line)}
+.dayservice-treatment-periods>h2,.dayservice-treatment-periods>h3{margin:0 0 12px}
+.dayservice-treatment-period-tables{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;margin:16px 0}
+.dayservice-treatment-period-tables table{width:100%;border-collapse:collapse}
+.dayservice-treatment-period-tables caption{text-align:left;font-weight:700;padding:8px 0}
+.dayservice-treatment-period-tables th,.dayservice-treatment-period-tables td{padding:8px 10px;border:1px solid var(--line);text-align:left}
+.dayservice-treatment-periods .dayservice-source-caution{margin-top:16px}
+@media print{.dayservice-treatment-periods{break-inside:auto}.dayservice-treatment-period-tables tr{break-inside:avoid-page}}
