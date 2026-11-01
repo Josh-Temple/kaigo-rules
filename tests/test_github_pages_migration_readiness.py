@@ -59,6 +59,19 @@ class MigrationReadinessTest(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "Symlink"):
                 readiness.inspect(root)
 
+    def test_rejects_unsafe_external_schemes_and_scheme_relative_urls(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            index = self.fixture(root)
+            index.write_text(
+                '<a href="javascript:alert(1)">unsafe</a>'
+                '<a href="//example.org/tracker">scheme-relative</a>'
+                '<a href="data:text/html,unsafe">unsafe data</a>',
+                encoding="utf-8",
+            )
+            report = readiness.inspect(root)
+            self.assertEqual(report["blockers"]["unsafe_or_invalid_links"], 3)
+
     def test_limits_site_size_and_requires_valid_manifest(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
