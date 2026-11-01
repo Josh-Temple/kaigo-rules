@@ -1,0 +1,42 @@
+name: Independent D audit 587
+on:
+  push:
+    branches: [audit/20261102-pr587-independent-d]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ccbefed87a8f3933f64c04913d5f27071a6d0f88
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run build
+      - run: npm install --no-save --ignore-scripts playwright
+      - run: npx playwright install --with-deps chromium
+      - run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk poppler-utils
+      - run: npm start > /tmp/site.log 2>&1 & 
+      - run: |
+          for i in $(seq 1 120); do curl -fsS http://127.0.0.1:3000/ >/dev/null && exit 0; sleep 2; done
+          cat /tmp/site.log; exit 1
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/20261102-pr587-independent-d
+          path: audit
+          persist-credentials: false
+      - run: node audit/audit/d587.mjs
+      - if: always()
+        run: cp /tmp/site.log evidence-site.log || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: d587-evidence
+          path: |
+            evidence/
+            evidence-site.log
