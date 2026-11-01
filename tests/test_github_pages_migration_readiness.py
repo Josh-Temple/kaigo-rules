@@ -39,10 +39,23 @@ class MigrationReadinessTest(unittest.TestCase):
                 "production_fallback_links": 1, "root_relative_links": 1,
                 "missing_local_links": 1, "unsafe_or_invalid_links": 0,
                 "javascript_references_to_production": 1,
+                "private_preview_pages": 0, "noindex_pages": 0,
             })
             self.assertEqual(report["local_links_resolved"], 2)
             self.assertEqual(report["global_search_rows_by_group"]["law"], 1)
             self.assertEqual(report["production_fallback_by_section"], {"notices": 1})
+
+    def test_refuses_private_or_noindex_preview_markers_in_release_gate(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            index = self.fixture(root)
+            index.write_text(
+                '<meta name="robots" content="noindex,nofollow,noarchive">'
+                '<p>静的移行の検証版（一般公開していません）</p>', encoding="utf-8"
+            )
+            blockers = readiness.inspect(root)["blockers"]
+            self.assertEqual(blockers["private_preview_pages"], 1)
+            self.assertEqual(blockers["noindex_pages"], 1)
 
     def test_refuses_symlink_and_raw_private_files(self):
         with tempfile.TemporaryDirectory() as temp:
