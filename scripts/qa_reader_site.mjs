@@ -360,6 +360,14 @@ try {
         status: await page.locator('a[href="/fees/treatment-improvement"]').count() >= 1 &&
           (await page.locator('main').innerText()).includes('令和8年4月・5月と6月以降') ? 'PASS' : 'FAIL',
       });
+      await page.goto(origin + '/search?q=' + encodeURIComponent('処遇改善加算'));
+      const feeSearchRow = page.locator('.fee-list .fee-row').filter({ hasText: '介護職員等処遇改善加算' }).first();
+      report.interactions.push({
+        flow: `${width}px search → month-specific notice before treatment improvement fee detail`,
+        status: await feeSearchRow.count() === 1 &&
+          (await feeSearchRow.innerText()).includes('令和8年4月・5月と6月以降') &&
+          (await feeSearchRow.innerText()).includes('全文・算定要件は未照合') ? 'PASS' : 'FAIL',
+      });
     }
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(origin + '/services/dayservice');
