@@ -351,6 +351,20 @@ try {
       const detailExpanded = await detailExtract.isVisible();
       await page.emulateMedia({ media: 'print' });
       const detailPrintSafe = !(await detailSource.isVisible()) && await detailRate.isVisible();
+      if (width === 390) {
+        const pdfPath = path.join(output, 'dayservice-treatment-improvement-a4.pdf');
+        const pdfBytes = await page.pdf({ path: pdfPath, format: 'A4', printBackground: true });
+        const pdfText = execFileSync('pdftotext', ['-layout', pdfPath, '-'], { encoding: 'utf8' }).replace(/\\s+/g, '');
+        const required = ['令和8年4月・5月', '令和8年6月以降', '9.2%', '11.1%', '6月以降の加算算定用'];
+        const pdfRateVisible = required.every(term => pdfText.includes(term.replace(/\\s+/g, '')));
+        const pdfExtractHidden = !pdfText.includes('1000分の111に相当する単位数') &&
+          !pdfText.includes('1000分の120に相当する単位数');
+        report.interactions.push({
+          flow: '390px A4 actual PDF → period rate tables visible, unverified extracted legal body omitted',
+          status: pdfBytes.length > 3000 && pdfRateVisible && pdfExtractHidden ? 'PASS' : 'FAIL',
+          pdfBytes: pdfBytes.length, missing: required.filter(term => !pdfText.includes(term.replace(/\\s+/g, ''))),
+        });
+      }
       await page.emulateMedia({ media: 'screen' });
       report.interactions.push({
         flow: `${width}px direct fee detail → 4–5/6+ rates, source-vintage caution and safe print`,
