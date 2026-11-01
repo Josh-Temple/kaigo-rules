@@ -290,8 +290,9 @@ test("national 2026 month-scoped treatment rate tables match imported June rates
   assert.equal(provenance.current_amendment, t.amendment);
   assert.ok(imported, "treatment fee imported");
   for (const row of t.june.rows) {
-    const category = row.category.replace("Ⅰ", "Ⅰ").replace("Ⅱ", "Ⅱ");
-    const pattern = new RegExp("処遇改善加算\\(" + category.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&") + "\\).*?1000分の" + row.perThousand + "に相当", "s");
+    // The notice writes "(Ⅰ)イ", not "(Ⅰイ)"; both variants must be tested as printed.
+    const [roman, ...suffix] = [...row.category];
+    const pattern = new RegExp("処遇改善加算\\(" + roman + "\\)" + suffix.join("") + "[\\s\\S]*?1000分の" + row.perThousand + "に相当");
     assert.match(imported.official_text, pattern, `imported June rate ${row.category} from notice table`);
   }
   assert.doesNotMatch(imported.official_text, /1000分の92に相当/, "April-May Ⅰ rate must not be mistaken for imported June text");
