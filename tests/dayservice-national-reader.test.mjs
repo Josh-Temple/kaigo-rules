@@ -237,7 +237,7 @@ test("reader summaries preserve staffing thresholds and extension non-claim scen
   assert.match(byId("staffing-role-manager").readerSummary, /常勤/);
 });
 
-test("2026 treatment improvement fee amendment is visibly flagged without overwriting historical sources", () => {
+test("2026 treatment improvement fee amendment is flagged with actual source vintage", () => {
   const item = topics.find(row => row.id === "fee-treatment-improvement");
   assert.ok(item, "treatment improvement topic exists");
   assert.ok(item.basis.some(ref => ref.id === "fee.dayservice.treatment-improvement"));
@@ -246,6 +246,8 @@ test("2026 treatment improvement fee amendment is visibly flagged without overwr
   assert.equal(item.regulatoryUpdate?.officialUrl, "https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7");
   assert.ok(nationalSourceUrl(item.regulatoryUpdate.officialUrl), "official link passes allowlist");
   assert.match(item.regulatoryUpdate.message, /4月・5月と6月以降/);
+  assert.match(item.regulatoryUpdate.message, /6月以降の改正後欄/);
+  assert.doesNotMatch(item.regulatoryUpdate.message, /従来の告示本文/);
   assert.deepEqual(item.regulatoryUpdate.relatedDocuments?.map(row => row.url), [
     "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=3",
     "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=18",
@@ -256,14 +258,54 @@ test("2026 treatment improvement fee amendment is visibly flagged without overwr
   assert.equal(topics.find(row => row.id === "fee-note-6")?.regulatoryUpdate, undefined);
 });
 
-test("historical 2026 fee text is collapsed for readers and always omitted from print while official warning remains", () => {
+test("unverified June 2026 extracted text remains collapsible and excluded from print", () => {
   const component = readFileSync("components/dayservice-handbook.tsx", "utf8");
   const css = readFileSync("app/reader.css", "utf8");
   assert.match(component, /topic\.regulatoryUpdate \? <details className="dayservice-historical-fee-details"/);
-  assert.match(component, /改正後の照合が済んでいない掲載本文を見る/);
+  assert.match(component, /6月以降の率を含む収載本文を見る/);
+  assert.match(component, /DayserviceTreatmentImprovement2026/);
   assert.match(component, /<div data-nosnippet="">\{basisExcerpts\}<\/div>/);
   assert.match(component, /Exclude unverified historical figures from Google snippets/);
   assert.match(css, /\.dayservice-historical-fee-details\{display:none!important\}/);
   assert.ok(topics.find(row => row.id === "fee-treatment-improvement").regulatoryUpdate);
   assert.equal(topics.find(row => row.id === "fee-note-13").regulatoryUpdate, undefined);
+});
+
+test("national 2026 month-scoped treatment rate tables match imported June rates and official period sources", async () => {
+  const { dayserviceTreatment2026: t, percentOf } = await import("../lib/handbook/dayservice-treatment-improvement-2026.ts");
+  const expectedMay = [["Ⅰ", 92], ["Ⅱ", 90], ["Ⅲ", 80], ["Ⅳ", 64]];
+  const expectedJune = [["Ⅰイ", 111], ["Ⅰロ", 120], ["Ⅱイ", 109], ["Ⅱロ", 118], ["Ⅲ", 99], ["Ⅳ", 83]];
+  assert.deepEqual(t.may.rows.map(row => [row.category, row.perThousand]), expectedMay, "2026 Apr-May: notice table 1-1, daycare");
+  assert.deepEqual(t.june.rows.map(row => [row.category, row.perThousand]), expectedJune, "2026 June onward: notice table 1-2, daycare");
+  assert.match(t.may.label, /4月・5月/);
+  assert.match(t.june.label, /6月以降/);
+  assert.equal(t.may.sourceTable, "別紙1 表1-1");
+  assert.equal(t.june.sourceTable, "別紙1 表1-2");
+  assert.equal(t.ratesUrl, "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=18");
+  assert.equal(percentOf(92), "9.2%");
+  assert.equal(percentOf(111), "11.1%");
+  const imported = read("data/remuneration-current-text.json").find(row => row.fee_id === "fee.dayservice.treatment-improvement");
+  const provenance = read("data/remuneration-current-text-meta.json");
+  assert.equal(provenance.current_amendment_effective_from, "2026-06-01");
+  assert.equal(provenance.current_amendment, t.amendment);
+  assert.ok(imported, "treatment fee imported");
+  for (const row of t.june.rows) {
+    const category = row.category.replace("Ⅰ", "Ⅰ").replace("Ⅱ", "Ⅱ");
+    const pattern = new RegExp("処遇改善加算\\(" + category.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&") + "\\).*?1000分の" + row.perThousand + "に相当", "s");
+    assert.match(imported.official_text, pattern, `imported June rate ${row.category} from notice table`);
+  }
+  assert.doesNotMatch(imported.official_text, /1000分の92に相当/, "April-May Ⅰ rate must not be mistaken for imported June text");
+});
+
+test("direct fee detail and index show monthly treatment periods and guard unverified text", () => {
+  const detail = readFileSync("app/fees/[node]/page.tsx", "utf8");
+  const index = readFileSync("app/fees/page.tsx", "utf8");
+  const component = readFileSync("components/dayservice-treatment-improvement-2026.tsx", "utf8");
+  assert.match(detail, /isTreatmentImprovement = feeId === "fee.dayservice.treatment-improvement"/);
+  assert.match(detail, /DayserviceTreatmentImprovement2026 headingLevel=\{2\}/);
+  assert.match(detail, /<div data-nosnippet="">/);
+  assert.match(detail, /4月・5月には6月以降の率を使えません/);
+  assert.match(index, /href="\/fees\/treatment-improvement"/);
+  assert.match(component, /dayserviceTreatment2026\.may, dayserviceTreatment2026\.june/);
+  assert.match(component, /届出・加算区分の要件/);
 });
