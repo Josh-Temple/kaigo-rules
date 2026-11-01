@@ -12,6 +12,19 @@ const corpus = read("data/qa-corpus.json");
 const topics = Object.values(dayserviceChapterGroups).flatMap(groups => groups.flatMap(group => group.topics));
 const references = topics.flatMap(topic => [...topic.basis, ...topic.interpretation || [], ...topic.criteria || []]);
 
+test("reader fee detail and print omit internal audit identifiers and unverified raw extract", () => {
+  const page = readFileSync("app/fees/[node]/page.tsx", "utf8");
+  const css = readFileSync("app/globals.css", "utf8");
+  for (const internal of [
+    "本文SHA-256", "{currentText.import_status}", "{relation.status}",
+    "{target.source_id}", "{evidence.evidence_type}", "{node.id}</p>",
+  ]) assert.ok(!page.includes(internal), "reader output still contains " + internal);
+  assert.match(page, /dayservice-historical-fee-section/);
+  assert.match(css, /@media print\{\.dayservice-historical-fee-section\{display:none!important\}\}/);
+  assert.match(page, /令和8年度処遇改善加算/);
+  assert.match(page, /厚生労働省の原文を確認/);
+});
+
 test("all displayed national references resolve and retain the complete registered source text", () => {
   for (const ref of references) {
     const excerpt = readerExcerpt(ref);
