@@ -214,7 +214,7 @@ try {
       const amendment = treatment.locator('.dayservice-regulatory-update');
       const amendmentText = await amendment.innerText();
       report.interactions.push({
-        flow: `${width}px treatment improvement → 2026 amendment warning before historical fee source`,
+        flow: `${width}px treatment improvement → 2026 monthly applicability warning before extracted fee source`,
         status: amendmentText.includes('令和8年厚生労働省告示第87号') &&
           amendmentText.includes('請求・届出') &&
           amendmentText.includes('4月・5月と6月以降') &&
@@ -232,7 +232,7 @@ try {
         await amendment.locator('[data-nosnippet]').count() === 0;
       await oldFeeSummary.click();
       const oldFeeReadableOnDemand = await oldFeeBody.isVisible() &&
-        (await oldFee.innerText()).includes('現在の算定に使わないでください');
+        (await oldFee.innerText()).includes('全文・算定要件は未照合');
       await oldFeeSummary.click();
       await oldFeeSummary.focus();
       await page.keyboard.press('Enter');
@@ -244,7 +244,7 @@ try {
         await amendment.isVisible();
       await page.emulateMedia({ media: 'screen' });
       report.interactions.push({
-        flow: `${width}px 2026 fee → old rates hidden by default, available on request, excluded from print`,
+        flow: `${width}px 2026 fee → unverified June source collapsed, open on demand and excluded from print`,
         status: oldFeeInitiallyHidden && oldFeeReadableOnDemand &&
           oldFeeSuppressedOnPaper && oldFeeSnippetSuppressed &&
           oldFeeKeyboardExpanded && oldFeeKeyboardCollapsed ? 'PASS' : 'FAIL',
@@ -330,6 +330,36 @@ try {
         geometry,
       });
       await page.screenshot({ path: path.join(output, `dayservice-fee-scroll-${width}.png`) });
+      // The direct remuneration URL must carry the same service-month warning as the handbook.
+      await page.goto(origin + '/fees/treatment-improvement');
+      const detailRate = page.locator('.dayservice-treatment-periods');
+      const detailTables = detailRate.locator('table');
+      const detailWarning = await page.locator('.fee-detail-page > .notice').first().innerText();
+      const detailSource = page.locator('.fee-detail-page .dayservice-historical-fee-details');
+      const detailExtract = detailSource.locator('.fee-official-text');
+      const mayRates = await detailTables.nth(0).innerText();
+      const juneRates = await detailTables.nth(1).innerText();
+      const detailInitiallyCollapsed = await detailSource.isVisible() && !(await detailExtract.isVisible());
+      const monthSpecific = detailWarning.includes('4月・5月には6月以降の率を使えません') &&
+        mayRates.includes('9.2%') && mayRates.includes('9.0%') &&
+        juneRates.includes('11.1%') && juneRates.includes('12.0%') &&
+        await detailSource.locator('div[data-nosnippet]').count() === 1 &&
+        await detailRate.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=18"]').count() === 1;
+      await detailSource.locator('summary').click();
+      const detailExpanded = await detailExtract.isVisible();
+      await page.emulateMedia({ media: 'print' });
+      const detailPrintSafe = !(await detailSource.isVisible()) && await detailRate.isVisible();
+      await page.emulateMedia({ media: 'screen' });
+      report.interactions.push({
+        flow: `${width}px direct fee detail → 4–5/6+ rates, source-vintage caution and safe print`,
+        status: monthSpecific && detailInitiallyCollapsed && detailExpanded && detailPrintSafe ? 'PASS' : 'FAIL',
+      });
+      await page.goto(origin + '/fees');
+      report.interactions.push({
+        flow: `${width}px fee index → monthly treatment fee detail navigation`,
+        status: await page.locator('a[href="/fees/treatment-improvement"]').count() >= 1 &&
+          (await page.locator('main').innerText()).includes('令和8年4月・5月と6月以降') ? 'PASS' : 'FAIL',
+      });
     }
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(origin + '/services/dayservice');
