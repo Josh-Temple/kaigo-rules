@@ -242,3 +242,9 @@
 .dayservice-treatment-period-tables th,.dayservice-treatment-period-tables td{padding:8px 10px;border:1px solid var(--line);text-align:left}
 .dayservice-treatment-periods .dayservice-source-caution{margin-top:16px}
 @media print{.dayservice-treatment-periods{break-inside:auto}.dayservice-treatment-period-tables tr{break-inside:avoid-page}}
+
+.dayservice-treatment-eligibility{margin:16px 0;padding:12px 16px;background:var(--surface);border-left:3px solid var(--line)}
+.dayservice-treatment-eligibility p{margin:0 0 8px}
+.dayservice-treatment-eligibility ul{padding-left:1.4rem;margin:8px 0 14px}
+.dayservice-treatment-eligibility li{margin:8px 0;line-height:1.7}
+@media print{.dayservice-treatment-eligibility{break-inside:avoid-page}}
