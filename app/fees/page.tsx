@@ -51,6 +51,10 @@ export default function FeesPage() {
         個々の単位数・加算率は、原文照合が終わるまで「確認済み」とは表示しません。
       </div>
 
+      <p className="notice"><strong>令和8年度の処遇改善加算は算定月で率が変わります。</strong>
+        通所介護の令和8年4月・5月と6月以降では、参照する区分・率表が異なります。
+        <Link href="/fees/treatment-improvement">月別の率と出典・未照合の注意を確認する</Link>。
+      </p>
       <VerificationSummary layerId="remuneration-notices" />
 
       <section className="rules-stats fee-stats">
