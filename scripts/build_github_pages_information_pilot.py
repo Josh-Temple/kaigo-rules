@@ -62,7 +62,9 @@ def add_pages(root: Path) -> dict:
             raise RuntimeError("Reader page extraction rejected " + route + ": " + str(error)) from error
         if not original.done or not "".join(original.text).strip() or "<script" in rendered.split("<main>", 1)[-1]:
             raise RuntimeError("Incomplete reader information extract: " + route)
-        dest.parent.mkdir(parents=True, exist_ok=False)
+        # /fees/guidance is generated before /fees; its parent already exists.
+        # The exact output file must still be new (checked above).
+        dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(rendered, encoding="utf-8")
         output.append({
             "route": route, "bytes": dest.stat().st_size,
