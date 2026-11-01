@@ -1,8 +1,9 @@
 import { dayserviceTreatment2026, percentOf } from "../lib/handbook/dayservice-treatment-improvement-2026";
 
-export default function DayserviceTreatmentImprovement2026() {
+export default function DayserviceTreatmentImprovement2026({ headingLevel = 3 }: { headingLevel?: 2 | 3 }) {
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   return <section className="dayservice-treatment-periods" aria-label="令和8年度の通所介護・処遇改善加算の適用月">
-    <h3>令和8年度の加算率：算定する月を確認</h3>
+    <Heading>令和8年度の加算率：算定する月を確認</Heading>
     <p>通所介護の介護職員等処遇改善加算は、<strong>4月・5月</strong>と<strong>6月以降</strong>で区分・率が異なります。下記は国の通知の率表から通所介護の行だけを抜き出した参考表示です。</p>
     <div className="dayservice-treatment-period-tables">
       {[dayserviceTreatment2026.may, dayserviceTreatment2026.june].map(period =>
