@@ -22,5 +22,6 @@ export default function DayserviceTreatmentImprovement2026({ headingLevel = 3 }:
       <a href={dayserviceTreatment2026.ratesUrl} target="_blank" rel="noreferrer">厚生労働省の加算率表</a>、
       <a href={dayserviceTreatment2026.noticeUrl} target="_blank" rel="noreferrer">通知・届出手順</a>と所在地の指定権者の案内を確認してください。
     </p>
+    <p className="dayservice-source-caution">なお、厚生労働省の改定資料一覧にある「介護給付費算定に係る体制等に関する届出」の別紙様式は、<strong>令和8年6月以降の加算算定用</strong>と案内されています。4月・5月分の届出にそのまま流用せず、<a href={dayserviceTreatment2026.updateIndexUrl} target="_blank" rel="noreferrer">厚生労働省の資料一覧</a>と指定権者の案内で対象月を確認してください。</p>
   </section>;
 }
