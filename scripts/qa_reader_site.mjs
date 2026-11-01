@@ -344,7 +344,9 @@ try {
         mayRates.includes('9.2%') && mayRates.includes('9.0%') &&
         juneRates.includes('11.1%') && juneRates.includes('12.0%') &&
         await detailSource.locator('div[data-nosnippet]').count() === 1 &&
-        await detailRate.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=18"]').count() === 1;
+        await detailRate.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=18"]').count() === 1 &&
+        (await detailRate.innerText()).includes('令和8年6月以降の加算算定用') &&
+        await detailRate.locator('a[href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html"]').count() === 1;
       await detailSource.locator('summary').click();
       const detailExpanded = await detailExtract.isVisible();
       await page.emulateMedia({ media: 'print' });
