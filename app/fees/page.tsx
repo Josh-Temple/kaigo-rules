@@ -98,7 +98,7 @@ export default function FeesPage() {
               <div>
                 <p className="meta">{node.number_path.join(" / ")}</p>
                 <h3>{node.title}</h3>
-                <p className="meta">{imported ? "現行公式本文を取込済み" : "本文未取込"}</p>
+                <p className="meta">{node.id === "fee.dayservice.treatment-improvement" ? "令和8年6月以降の率を含む収載本文（全文未照合）" : imported ? "現行公式本文を取込済み" : "本文未取込"}</p>
               </div>
               <span className={node.verification_status==="OUT_OF_CORE_SCOPE"?"fee-status fee-out":isReviewed?"fee-status fee-reviewed":"fee-status"}>
                 {isReviewed ? "人手確認済み" : labels[node.verification_status] || "確認中"}
