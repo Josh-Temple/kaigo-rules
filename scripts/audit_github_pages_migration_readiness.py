@@ -68,8 +68,13 @@ def inspect(root: Path) -> dict:
     fallbacks = Counter()
     missing_local = Counter()
     for page in (p for p in files if p.suffix.lower() == ".html"):
+        source = page.read_text(encoding="utf-8")
+        if "静的移行の検証版（一般公開していません）" in source:
+            refs["private_preview_pages"] += 1
+        if 'name="robots" content="noindex' in source:
+            refs["noindex_pages"] += 1
         parser = HtmlReferences()
-        parser.feed(page.read_text(encoding="utf-8"))
+        parser.feed(source)
         for href in parser.refs:
             refs["total"] += 1
             if not href or href.startswith("#"):
@@ -123,6 +128,8 @@ def inspect(root: Path) -> dict:
         "missing_local_links": sum(missing_local.values()),
         "unsafe_or_invalid_links": refs["invalid_url"] + refs["scheme_relative"] + refs["unsafe_local"],
         "javascript_references_to_production": js_fallback_files,
+        "private_preview_pages": refs["private_preview_pages"],
+        "noindex_pages": refs["noindex_pages"],
     }
     return {
         "status": "HOLD_NO_DEPLOY",
