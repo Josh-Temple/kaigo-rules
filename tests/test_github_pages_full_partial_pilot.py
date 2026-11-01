@@ -16,6 +16,12 @@ spec = importlib.util.spec_from_file_location("full_partial_pilot", ROOT / "scri
 pilot = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pilot)
 
+audit_spec = importlib.util.spec_from_file_location(
+    "github_pages_readiness", ROOT / "scripts/audit_github_pages_migration_readiness.py"
+)
+readiness = importlib.util.module_from_spec(audit_spec)
+audit_spec.loader.exec_module(readiness)
+
 
 class FullPartialPilotTest(unittest.TestCase):
     def capture_rules(self, optimized, routes):
@@ -82,6 +88,11 @@ class FullPartialPilotTest(unittest.TestCase):
                              2 * (summary["qa_details"]["records"] + summary["qa_details"]["aliases"]))
             self.assertGreater(summary["legal_details"]["scoped_pages"], 0)
             self.assertFalse((out / "handbook-preview").exists())
+            audit = readiness.inspect(out)
+            self.assertEqual(audit["status"], "HOLD_NO_DEPLOY")
+            self.assertEqual(audit["total_bytes"], summary["bytes"])
+            self.assertEqual(audit["file_count"], summary["files"])
+            print("PAGES_MIGRATION_READINESS: " + json.dumps(audit, ensure_ascii=False), flush=True)
             checked = check_local_links(self, out)
             self.assertGreater(checked, 0)
             report = {key: value for key, value in summary.items() if key != "directory"}
