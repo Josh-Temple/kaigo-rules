@@ -192,3 +192,7 @@
 
 /* Never print the unverified raw treatment-improvement fee extract or its empty heading. */
 @media print{.dayservice-historical-fee-section{display:none!important}}
+
+/* Keep long government source URLs readable when a reader prints the fee detail. */
+.fee-print-source-url{display:none}
+@media print{.fee-print-source-url{display:block;overflow-wrap:anywhere;word-break:break-all;font-size:.82rem}}
