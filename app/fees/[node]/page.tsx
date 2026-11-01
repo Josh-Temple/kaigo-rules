@@ -103,10 +103,10 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
             <summary>6月以降の率を含む収載本文を見る（全文・要件は未照合）</summary>
             <p className="dayservice-source-caution">4月・5月には下記の率を使えません。6月以降も、この本文だけで算定・届出を判断しないでください。</p>
             <div data-nosnippet=""><div className="fee-official-text">{currentText.official_text}</div></div>
-            
+
           </details> : <>
             <div className="fee-official-text">{currentText.official_text}</div>
-            
+
           </>
         ) : (
           <p className="notice-hole">現行本文の機械取込がありません。</p>
@@ -133,7 +133,7 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
 
       {linkedRelations.length ? (
         <section className="section">
-          <h2>関連する制度ノード</h2>
+          <h2>関連する基準・資料</h2>
           <div className="relation-list">
             {linkedRelations.map((relation, index) => (
               <div className="relation-row" key={`${relation.relation}-${index}`}>
@@ -149,7 +149,7 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
                       ? <a href={linkedSource.url} target="_blank" rel="noreferrer">{linkedSource.title}</a>
                       : <span>関連資料の原典を確認してください</span>;
                   })() : null}
-                  
+
                 </div>
               </div>
             ))}
@@ -159,7 +159,7 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
 
       {node.latest_amendment_evidence?.length ? (
         <section className="section">
-          <h2>最新改定の証跡</h2>
+          <h2>改定に関する原典</h2>
           {node.latest_amendment_evidence.map((evidence:any, index:number) => {
             const evidenceSource = sources.find((item) => item.id === evidence.source_id);
             return (
@@ -167,7 +167,7 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
                 {evidenceSource
                   ? <a href={evidenceSource.url} target="_blank" rel="noreferrer">{evidenceSource.title}</a>
                   : "関連する根拠資料"}
-                
+
               </p>
             );
           })}
@@ -180,7 +180,7 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
           <div><dt>取得元</dt><dd>{source?.title || "原典を確認してください"}</dd></div>
           <div><dt>最新改正</dt><dd>{textMeta.current_amendment || "—"}</dd></div>
           <div><dt>施行日</dt><dd>{textMeta.current_amendment_effective_from || "—"}</dd></div>
-          
+
           <div><dt>人手確認</dt><dd>{reviewed ? "確認済み" : "未確認"}</dd></div>
         </dl>
         {source ? <p><a href={source.url} target="_blank" rel="noreferrer">厚生労働省の原文を確認</a></p> : null}
