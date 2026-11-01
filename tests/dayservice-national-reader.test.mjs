@@ -307,6 +307,10 @@ test("direct fee detail and index show monthly treatment periods and guard unver
   assert.match(detail, /<div data-nosnippet="">/);
   assert.match(detail, /4月・5月には6月以降の率を使えません/);
   assert.match(index, /href="\/fees\/treatment-improvement"/);
+  const search = readFileSync("app/search/page.tsx", "utf8");
+  assert.match(search, /node\.id === "fee\.dayservice\.treatment-improvement"/);
+  assert.match(search, /収載本文は6月以降の改正後の率を含みます/);
+
   assert.match(component, /dayserviceTreatment2026\.may, dayserviceTreatment2026\.june/);
   assert.match(component, /届出・加算区分の要件/);
 });
