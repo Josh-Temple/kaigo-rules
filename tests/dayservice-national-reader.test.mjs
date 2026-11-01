@@ -313,4 +313,6 @@ test("direct fee detail and index show monthly treatment periods and guard unver
 
   assert.match(component, /dayserviceTreatment2026\.may, dayserviceTreatment2026\.june/);
   assert.match(component, /届出・加算区分の要件/);
+  assert.match(component, /令和8年6月以降の加算算定用/);
+  assert.match(component, /dayserviceTreatment2026\.updateIndexUrl/);
 });
