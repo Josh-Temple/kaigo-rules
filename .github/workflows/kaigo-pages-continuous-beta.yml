@@ -32,12 +32,34 @@ on:
 permissions:
   contents: read
 
+# Obsolete PR checks are cancelled; main Pages deployments remain serialized.
 concurrency:
-  group: kaigo-rules-pages-publication
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('kaigo-pages-beta-pr-{0}', github.event.pull_request.number) || 'kaigo-rules-pages-publication' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  # Fast feedback on every candidate change. Full legal/site rebuilds are
+  # performed on accepted main commits and before independent release approval.
+  verify:
+    name: PR safety unit tests (no full site build)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate beta warnings, link handling and source compilation
+        run: |
+          set -euo pipefail
+          python -m unittest tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py
+          python -m py_compile scripts/build_github_pages_integrated_pilot.py scripts/prepare_github_pages_beta.py scripts/audit_github_pages_migration_readiness.py
+
   preflight:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     outputs:
       enabled: ${{ steps.mode.outputs.enabled }}
@@ -62,9 +84,9 @@ jobs:
   package:
     name: Independently validate and package merge-eligible beta
     needs: preflight
-    if: github.event_name == 'pull_request' || needs.preflight.outputs.enabled == 'true'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.preflight.outputs.enabled == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
