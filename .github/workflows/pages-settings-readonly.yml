@@ -107,3 +107,9 @@ jobs:
             echo "PUBLIC_BETA_ASSET_HTTP: $asset $code"
             test "$code" = 200
           done
+
+      - name: Exercise live site search, handheld, QA, legislation and print in Chrome
+        run: |
+          set -euo pipefail
+          npm install --no-save --ignore-scripts playwright
+          node audit/check_pages_live_beta.mjs
