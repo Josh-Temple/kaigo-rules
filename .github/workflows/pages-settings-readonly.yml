@@ -81,3 +81,29 @@ jobs:
           print("PAGES_ENV_ALLOWED_BRANCHES:",[r.get("name") for r in item.get("branch_policies",[])])
           PY
           fi
+
+      - name: Independently verify deployed public beta HTML and disclaimers
+        run: |
+          set -euo pipefail
+          origin="https://josh-temple.github.io/kaigo-rules"
+          for route in index.html services/dayservice/index.html handbook/dayservice/staffing.html databases/search/index.html databases/search/qa.html legislation/index.html fees/index.html; do
+            ok=0
+            for attempt in 1 2 3 4 5 6; do
+              code=$(curl --silent --show-error --location --max-time 25 --output "$RUNNER_TEMP/beta-check.html" --write-out '%{http_code}' "$origin/$route" || true)
+              if [ "$code" = 200 ]; then ok=1; break; fi
+              sleep 2
+            done
+            echo "PUBLIC_BETA_HTTP: $route $code"
+            if [ "$ok" != 1 ]; then exit 1; fi
+            if ! grep -Fq "Kaigo Rules 試験公開版" "$RUNNER_TEMP/beta-check.html"; then
+              echo "BETA_BANNER_NOT_VISIBLE: $route"; exit 1
+            fi
+            if ! grep -Fq 'name="robots" content="noindex' "$RUNNER_TEMP/beta-check.html"; then
+              echo "BETA_NOINDEX_MISSING: $route"; exit 1
+            fi
+          done
+          for asset in databases/search/app.mjs databases/search/global.json legislation/records.json; do
+            code=$(curl --silent --show-error --location --max-time 25 --output /dev/null --write-out '%{http_code}' "$origin/$asset" || true)
+            echo "PUBLIC_BETA_ASSET_HTTP: $asset $code"
+            test "$code" = 200
+          done
