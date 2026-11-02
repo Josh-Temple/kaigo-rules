@@ -49,16 +49,19 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
     if not isinstance(docs, list) or not isinstance(records, list) or not records:
         raise RuntimeError("Missing legal browser records")
     document_map = {}
+    document_category = {}
     for item in docs:
         if not isinstance(item, dict) or not isinstance(item.get("id"), str) or not isinstance(item.get("title"), str):
             raise RuntimeError("Invalid public document")
         if item["id"] in document_map:
             raise RuntimeError("Duplicate legal document ID")
         document_map[item["id"]] = item["title"]
+        document_category[item["id"]] = item.get("category", "")
     dest = out / "legislation" / "record"
     if dest.exists():
         raise RuntimeError("Static legislation already generated")
     dest.mkdir(parents=True)
+    manifest = {}
     for row in records:
         if not isinstance(row, dict) or not ALLOWED_FIELDS.issubset(row):
             raise RuntimeError("Missing public legal record fields")
@@ -71,6 +74,7 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
             raise RuntimeError("Invalid legal services")
         if len(row["text"]) > 1_000_000:
             raise RuntimeError("Unbounded legal text")
+        manifest[record_id] = {"document": row["document_id"], "category": document_category[row["document_id"]], "services": row["service_ids"]}
         target = dest / (record_id + ".html")
         if target.exists():
             raise RuntimeError("Duplicate legal record")
@@ -94,6 +98,7 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
             source_link + '</article></main></body></html>'
         )
         target.write_text(page, encoding="utf-8")
+    (out / "legislation" / "record-index.json").write_text(json.dumps(manifest, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return {"records": len(records), "bytes": sum(p.stat().st_size for p in dest.glob("*.html"))}
 
 
