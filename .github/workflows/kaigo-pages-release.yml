@@ -7,6 +7,10 @@ on:
         description: "Exact 40-character main commit SHA approved by independent reviewer"
         required: true
         type: string
+      acceptance_commit:
+        description: "40-character SHA of separate reviewed approval evidence commit (not in main)"
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -32,6 +36,19 @@ jobs:
         run: |
           test "$APPROVED_SHA" = "$MAIN_SHA"
           test "$(git rev-parse HEAD)" = "$MAIN_SHA"
+      - name: Checkout separately approved acceptance evidence
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.acceptance_commit }}
+          path: release-acceptance
+          persist-credentials: false
+      - name: Verify exact acceptance evidence revision
+        env:
+          ACCEPTANCE_SHA: ${{ inputs.acceptance_commit }}
+        run: |
+          [[ "$ACCEPTANCE_SHA" =~ ^[a-f0-9]{40}$ ]]
+          test "$(git -C release-acceptance rev-parse HEAD)" = "$ACCEPTANCE_SHA"
+          test -f release-acceptance/docs/pages-release-acceptance.json
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
@@ -77,7 +94,7 @@ jobs:
           python scripts/audit_github_pages_migration_readiness.py "$CANDIDATE" > "$RUNNER_TEMP/kaigo-pages-private-audit.json"
           python scripts/check_github_pages_release_gate.py \
             "$RUNNER_TEMP/kaigo-pages-private-audit.json" \
-            docs/pages-release-acceptance.json \
+            release-acceptance/docs/pages-release-acceptance.json \
             "$SOURCE_SHA" --private-preview
       - name: Generate publicly readable presentation without changing legal cautions
         env:
@@ -92,7 +109,7 @@ jobs:
           python scripts/audit_github_pages_migration_readiness.py "$CANDIDATE" > "$RUNNER_TEMP/kaigo-pages-public-audit.json"
           python scripts/check_github_pages_release_gate.py \
             "$RUNNER_TEMP/kaigo-pages-public-audit.json" \
-            docs/pages-release-acceptance.json \
+            release-acceptance/docs/pages-release-acceptance.json \
             "$SOURCE_SHA"
       - name: Configure Pages only after the release gates pass
         uses: actions/configure-pages@v5
