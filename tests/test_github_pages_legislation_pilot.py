@@ -72,7 +72,7 @@ class StaticLegislationTest(unittest.TestCase):
             out = root / "out"
             out.mkdir()
             with self.assertRaisesRegex(RuntimeError, "Unsafe legal record ID"):
-                legislation.build(out, self.dataset(root, "illegal\\x00id"))
+                legislation.build(out, self.dataset(root, "illegal" + chr(0) + "id"))
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             out = root / "out"
