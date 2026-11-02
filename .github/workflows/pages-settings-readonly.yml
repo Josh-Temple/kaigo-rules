@@ -47,3 +47,22 @@ jobs:
             status=$(curl -L --silent --output /dev/null --max-time 20 --write-out '%{http_code}' "https://josh-temple.github.io/kaigo-rules/$route" || true)
             echo "PAGES_ROUTE_HTTP: $route $status"
           done
+
+          for env_name in github-pages; do
+            env_code=$(curl --silent --show-error --location --output "$RUNNER_TEMP/environment.json" --write-out '%{http_code}' \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/$REPOSITORY/environments/$env_name")
+            echo "PAGES_ENV_POLICY_HTTP: $env_code"
+            if [ "$env_code" = "200" ]; then
+              python - <<'PY'
+          import json, os
+          from pathlib import Path
+          item=json.loads((Path(os.environ["RUNNER_TEMP"])/"environment.json").read_text())
+          print("PAGES_ENV_NAME:",item.get("name"))
+          print("PAGES_ENV_BRANCH_POLICY:",item.get("deployment_branch_policy"))
+          print("PAGES_ENV_RULE_TYPES:",[x.get("type") for x in item.get("protection_rules",[])])
+          PY
+            fi
+          done
