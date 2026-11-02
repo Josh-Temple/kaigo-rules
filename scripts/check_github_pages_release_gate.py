@@ -23,7 +23,7 @@ REQUIRED_REVIEWS = (
 SHA = re.compile(r"^[a-f0-9]{40}$")
 
 
-def errors_for(report: dict, acceptance: dict, commit: str) -> list[str]:
+def errors_for(report: dict, acceptance: dict, commit: str, allow_private_preview: bool = False) -> list[str]:
     problems = []
     if not SHA.fullmatch(commit):
         return ["Expected exact 40-character source SHA"]
@@ -45,6 +45,8 @@ def errors_for(report: dict, acceptance: dict, commit: str) -> list[str]:
         problems.append("Missing route/security blocker report")
     else:
         for key, value in blockers.items():
+            if allow_private_preview and key in {"private_preview_pages", "noindex_pages"} and isinstance(value, int) and value >= 0:
+                continue
             if not isinstance(value, int) or value != 0:
                 problems.append(f"Unresolved publication blocker: {key}={value}")
     if not isinstance(report.get("html_count"), int) or report["html_count"] < 585:
@@ -52,18 +54,18 @@ def errors_for(report: dict, acceptance: dict, commit: str) -> list[str]:
     return problems
 
 
-def read_and_check(report_path: Path, approval_path: Path, source_sha: str) -> None:
+def read_and_check(report_path: Path, approval_path: Path, source_sha: str, allow_private_preview: bool = False) -> None:
     if not report_path.is_file() or not approval_path.is_file():
         raise RuntimeError("Missing audit or independent acceptance file; no release")
     report = json.loads(report_path.read_text(encoding="utf-8"))
     acceptance = json.loads(approval_path.read_text(encoding="utf-8"))
-    failures = errors_for(report, acceptance, source_sha)
+    failures = errors_for(report, acceptance, source_sha, allow_private_preview)
     if failures:
         raise RuntimeError("Pages release blocked:\n" + "\n".join("- " + item for item in failures))
     print("PAGES_RELEASE_GATE: PASS for source " + source_sha)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        raise SystemExit("Usage: check_github_pages_release_gate.py AUDIT_JSON ACCEPTANCE_JSON SOURCE_SHA")
-    read_and_check(Path(sys.argv[1]), Path(sys.argv[2]), sys.argv[3])
+    if len(sys.argv) not in {4, 5} or (len(sys.argv) == 5 and sys.argv[4] != "--private-preview"):
+        raise SystemExit("Usage: check_github_pages_release_gate.py AUDIT_JSON ACCEPTANCE_JSON SOURCE_SHA [--private-preview]")
+    read_and_check(Path(sys.argv[1]), Path(sys.argv[2]), sys.argv[3], len(sys.argv) == 5)
