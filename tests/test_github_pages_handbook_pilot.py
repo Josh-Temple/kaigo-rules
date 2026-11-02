@@ -180,7 +180,7 @@ class HandbookSanitizerTest(unittest.TestCase):
             for name in integrated_pilot.STATIC_FILES:
                 (search / name).write_text("", encoding="utf-8")
             marker = '<meta name="kaigo-legal-local-details" content="true">'
-            (search / "index.html").write_text(marker + '<main><h1>検索</h1></main>', encoding="utf-8")
+            (search / "index.html").write_text('<head>' + marker + '</head><main><h1>検索</h1></main>', encoding="utf-8")
             marker = '<meta name="kaigo-qa-local-details" content="true">'
             (search / "qa.html").write_text(marker + '<main><h1>Q&A</h1></main>', encoding="utf-8")
             (search / "services.json").write_text(
@@ -213,6 +213,7 @@ class HandbookSanitizerTest(unittest.TestCase):
             result = integrated_pilot.integrate(out, search)
             self.assertEqual(result["search_services"], 1)
             self.assertTrue((out / "databases/search/qa-details/qa.one/reader.html").is_file())
+            self.assertIn("kaigo-qa-local-details", (out / "databases/search/index.html").read_text(encoding="utf-8"))
             self.assertTrue((out / "databases/search/legal/rules/dayservice/93.html").is_file())
             self.assertGreater(check_local_links(self, out), 0)
 
