@@ -1,5 +1,6 @@
 """Private static legislation extraction and exact-link mapping checks."""
 import importlib.util
+import hashlib
 import json
 import tempfile
 import unittest
@@ -39,7 +40,7 @@ class StaticLegislationTest(unittest.TestCase):
             out.mkdir()
             result = legislation.build(out, self.dataset(root))
             self.assertEqual(result["records"], 1)
-            page = out / "legislation/record/legal.article.12.html"
+            page = out / "legislation/record" / (hashlib.sha256("legal.article.12".encode()).hexdigest() + ".html")
             text = page.read_text(encoding="utf-8")
             self.assertIn("原文\n&lt;確認対象&gt;", text)
             self.assertIn("https://www.mhlw.go.jp/test.pdf", text)
@@ -51,13 +52,27 @@ class StaticLegislationTest(unittest.TestCase):
             self.assertIsNone(nav.destination(out, "https://kaigo-rules.vercel.app/legislation?record=legal.article.12&q=ignore"))
             self.assertIsNone(nav.destination(out, "https://kaigo-rules.vercel.app/legislation?record=legal.article.12&record=x"))
 
+    def test_canonical_ids_with_colons_and_japanese_use_hashed_paths(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            out = root / "out"
+            out.mkdir()
+            record_id = "notice:令和8年/介護・第1条"
+            legislation.build(out, self.dataset(root, record_id))
+            encoded = hashlib.sha256(record_id.encode("utf-8")).hexdigest() + ".html"
+            page = out / "legislation/record" / encoded
+            self.assertTrue(page.is_file())
+            from urllib.parse import urlencode
+            url = "https://kaigo-rules.vercel.app/legislation?" + urlencode({"record":record_id,"service":"dayservice"})
+            self.assertEqual(nav.destination(out, url)[1], page)
+
     def test_invalid_record_id_or_untrusted_source_refused(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             out = root / "out"
             out.mkdir()
             with self.assertRaisesRegex(RuntimeError, "Unsafe legal record ID"):
-                legislation.build(out, self.dataset(root, "../escape"))
+                legislation.build(out, self.dataset(root, "illegal\\x00id"))
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             out = root / "out"
