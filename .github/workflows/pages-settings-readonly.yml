@@ -108,6 +108,9 @@ jobs:
             test "$code" = 200
           done
 
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Exercise live site search, handheld, QA, legislation and print in Chrome
         run: |
           set -euo pipefail
