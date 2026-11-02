@@ -2,7 +2,23 @@ name: Verify publication readiness integration
 
 on:
   pull_request:
+    # Publication readiness depends on legal/publication datasets and
+    # generators, not visual-only edits, unrelated documentation or CSS.
+    paths:
+      - ".github/workflows/verify-publication-readiness-integration.yml"
+      - "data/**"
+      - "scripts/**"
+      - "tests/test_relation_human_review_expansion.py"
+      - "tests/test_publication_requirement_scoping.py"
+      - "tests/test_publication_readiness.py"
+      - "tests/test_bounded_publication_allowlist.py"
+      - "tests/test_human_review_bounded_publication_integration.py"
   workflow_dispatch:
+
+# Cancel outdated runs for the same PR, but never replace manual audits.
+concurrency:
+  group: publication-readiness-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
