@@ -42,3 +42,7 @@ jobs:
             echo "PAGES_STATUS: API returned HTTP $code"
           fi
           echo "PAGES_HOME_HTTP: $(curl -L --silent --output /dev/null --max-time 20 --write-out '%{http_code}' 'https://josh-temple.github.io/kaigo-rules/' || true)"
+          for route in services/dayservice/index.html handbook/dayservice/staffing.html databases/search/index.html; do
+            status=$(curl -L --silent --output /dev/null --max-time 20 --write-out '%{http_code}' "https://josh-temple.github.io/kaigo-rules/$route" || true)
+            echo "PAGES_ROUTE_HTTP: $route $status"
+          done
