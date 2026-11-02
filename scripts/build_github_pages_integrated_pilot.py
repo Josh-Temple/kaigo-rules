@@ -220,6 +220,10 @@ def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = 
     root_page.write_text(text.replace("</article>", '<p><a href="./databases/search/index.html">制度DB横断検索を試す</a> / <a href="./databases/search/qa.html">国Q&Aを探す</a></p>' + information_links + '</article>'), encoding="utf-8")
     search_page = target / "index.html"
     text = search_page.read_text(encoding="utf-8")
+    if "qa-details" in detail_dirs:
+        if text.count("<head>") != 1:
+            raise RuntimeError("Cannot mark local Q&A availability in integrated search")
+        text = text.replace("<head>", '<head><meta name="kaigo-qa-local-details" content="true">')
     if text.count("<h1>") != 1:
         raise RuntimeError("Unexpected search index structure")
     search_page.write_text(text.replace("<h1>", '<p><a href="../../index.html">サービス別手引へ</a> / <a href="./qa.html">国Q&Aを探す</a></p><h1>'), encoding="utf-8")
