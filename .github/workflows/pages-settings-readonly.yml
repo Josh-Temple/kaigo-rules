@@ -41,3 +41,4 @@ jobs:
           else
             echo "PAGES_STATUS: API returned HTTP $code"
           fi
+          echo "PAGES_HOME_HTTP: $(curl -L --silent --output /dev/null --max-time 20 --write-out '%{http_code}' 'https://josh-temple.github.io/kaigo-rules/' || true)"
