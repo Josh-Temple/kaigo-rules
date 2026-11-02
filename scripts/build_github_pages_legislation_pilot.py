@@ -9,21 +9,26 @@ from __future__ import annotations
 
 import html
 import json
-import re
+import hashlib
 import sys
 from pathlib import Path
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,180}$")
 ALLOWED_FIELDS = {"id", "document_id", "label", "title", "text", "locator",
                   "state", "url", "service_ids"}
 
 
 def clean_id(value):
-    if not isinstance(value, str) or not SAFE_ID.fullmatch(value) or value in {".", ".."}:
+    """Preserve existing canonical IDs while using a safe opaque filename."""
+    if (not isinstance(value, str) or not 1 <= len(value) <= 2048
+            or any(ord(char) < 32 or ord(char) == 127 for char in value)):
         raise RuntimeError("Unsafe legal record ID")
     return value
+
+
+def filename(record_id: str) -> str:
+    return hashlib.sha256(record_id.encode("utf-8")).hexdigest() + ".html"
 
 
 def official_url(url):
@@ -74,8 +79,10 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
             raise RuntimeError("Invalid legal services")
         if len(row["text"]) > 1_000_000:
             raise RuntimeError("Unbounded legal text")
+        if record_id in manifest:
+            raise RuntimeError("Duplicate legal record")
         manifest[record_id] = {"document": row["document_id"], "category": document_category[row["document_id"]], "services": row["service_ids"]}
-        target = dest / (record_id + ".html")
+        target = dest / filename(record_id)
         if target.exists():
             raise RuntimeError("Duplicate legal record")
         source = official_url(row["url"])
