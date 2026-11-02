@@ -7,6 +7,7 @@ content from the production website. Unknown destinations stay on production.
 from __future__ import annotations
 
 import html
+import hashlib
 import json
 import posixpath
 import re
@@ -49,7 +50,7 @@ def _legislation_record(root: Path, query: str):
     if any(len(values) != 1 for values in params.values()):
         return None
     identifier = params["record"][0]
-    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,180}", identifier):
+    if not 1 <= len(identifier) <= 2048 or any(ord(ch) < 32 or ord(ch) == 127 for ch in identifier):
         return None
     record_index = _legislation_index(str(root / "legislation" / "record-index.json"))
     entry = record_index.get(identifier)
@@ -60,7 +61,7 @@ def _legislation_record(root: Path, query: str):
         return None
     if params.get("service") and params["service"][0] not in entry["services"]:
         return None
-    return root / "legislation" / "record" / (identifier + ".html")
+    return root / "legislation" / "record" / (hashlib.sha256(identifier.encode("utf-8")).hexdigest() + ".html")
 
 
 def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
