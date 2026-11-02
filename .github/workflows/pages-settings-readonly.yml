@@ -28,6 +28,7 @@ jobs:
           obj=json.loads((Path(os.environ["RUNNER_TEMP"])/"pages-config.json").read_text())
           print("PAGES_STATUS: enabled")
           print("PAGES_BUILD_TYPE:", obj.get("build_type", "unknown"))
+          print("PAGES_BUILD_SOURCE:", obj.get("source", {}))
           print("PAGES_SOURCE_BRANCH:", (obj.get("source") or {}).get("branch", "unknown"))
           print("PAGES_SOURCE_PATH:", (obj.get("source") or {}).get("path", "unknown"))
           print("PAGES_PUBLISH_STATUS:", obj.get("status", "unknown"))
