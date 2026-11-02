@@ -13,6 +13,7 @@ const category = document.querySelector("#category");
 const status = document.querySelector("#status");
 const results = document.querySelector("#results");
 const localLegalDetails = document.querySelector('meta[name="kaigo-legal-local-details"]')?.content === "true";
+const localQaDetails = document.querySelector('meta[name="kaigo-qa-local-details"]')?.content === "true";
 const cache = new Map();
 let services = [];
 let latestSearch = 0;
@@ -38,7 +39,13 @@ function internalLink(label, href) {
   const legal = destination.pathname.match(/^\/(law|rules)\/([0-9]+(?:-[0-9]+)*(?::[0-9]+(?:-[0-9]+)*)?)\/?$/);
   const params = [...destination.searchParams.keys()];
   const selectedService = destination.searchParams.get("service") || "";
-  if (localLegalDetails && legal && !destination.hash &&
+  const qa = destination.pathname.match(/^\/qa\/([A-Za-z0-9][A-Za-z0-9._-]{0,120})\/?$/);
+  if (localQaDetails && qa && !destination.hash &&
+      params.every((key) => key === "reader") && params.length <= 1 &&
+      (!destination.searchParams.has("reader") || destination.searchParams.get("reader") === "1")) {
+    link.href = "./qa-details/" + encodeURIComponent(qa[1]) +
+      (destination.searchParams.get("reader") === "1" ? "/reader.html" : "/index.html");
+  } else if (localLegalDetails && legal && !destination.hash &&
       params.every((key) => key === "service") && params.length <= 1 &&
       (!selectedService || /^[a-z0-9-]+$/.test(selectedService))) {
     link.href = "./legal/" + legal[1] + "/" + (selectedService || "all") + "/" +
