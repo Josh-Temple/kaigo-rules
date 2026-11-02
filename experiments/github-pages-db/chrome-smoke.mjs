@@ -112,7 +112,7 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
     const expression = "(() => { const s=document.querySelector('#status');" +
       "if(!s || !s.dataset.searchMs || !s.textContent.includes('件見つかりました')) return null;" +
       "return {width:innerWidth,scrollWidth:document.documentElement.scrollWidth," +
-      "qa:!!document.querySelector('a[href^=\"https://kaigo-rules.vercel.app/qa/\"]')," +
+      "qa:!!document.querySelector('a[href^=\"https://kaigo-rules.vercel.app/qa/\"],a[href^=\"./qa-details/\"]')," +
       "searchMs:Number(s.dataset.searchMs),readyMs:performance.now()," +
       "heapBytes:performance.memory ? performance.memory.usedJSHeapSize : null," +
       "gzipSupported:typeof DecompressionStream==='function'," +
