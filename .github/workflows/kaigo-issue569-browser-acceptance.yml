@@ -19,6 +19,13 @@ on:
       - scripts/qa_reader_site.mjs
       - tests/issue569-work-reader.test.mjs
   workflow_dispatch:
+
+# Only the latest commit in a given PR needs the costly real-browser run.
+# Explicitly launched acceptance runs are never cancelled by this policy.
+concurrency:
+  group: issue569-browser-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 permissions:
   contents: read
 env:
