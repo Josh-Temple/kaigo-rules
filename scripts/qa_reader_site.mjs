@@ -133,7 +133,7 @@ try {
   }));
   if (!baseline) {
     const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
-    for (const width of [360, 390]) {
+    for (const width of [360, 390, 1280]) {
       await page.setViewportSize({ width, height: 844 });
       await page.goto(origin + '/handbook/dayservice/staffing');
       const firstStaffingTopic = await page.locator('.dayservice-reading-topic').first().getAttribute('id');
@@ -210,6 +210,45 @@ try {
             href.endsWith(`#page=${qaPages[i]}`)) &&
           (await training.locator('.dayservice-official-qa-links > p').innerText()).includes('未確認') ? 'PASS' : 'FAIL',
       });
+      const treatment = page.locator('#fee-treatment-improvement');
+      const amendment = treatment.locator('.dayservice-regulatory-update');
+      const amendmentText = await amendment.innerText();
+      report.interactions.push({
+        flow: `${width}px treatment improvement → 2026 monthly applicability warning before extracted fee source`,
+        status: amendmentText.includes('令和8年厚生労働省告示第87号') &&
+          amendmentText.includes('請求・届出') &&
+          amendmentText.includes('4月・5月と6月以降') &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7"]').count() === 1 &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=3"]').count() === 1 &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=18"]').count() === 1 &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675711.pdf"]').count() === 1 &&
+          await amendment.locator('a[href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html"]').count() === 1 ? 'PASS' : 'FAIL',
+      });
+      const oldFee = treatment.locator('.dayservice-historical-fee-details');
+      const oldFeeBody = oldFee.locator('.dayservice-excerpt');
+      const oldFeeSummary = oldFee.locator('summary');
+      const oldFeeInitiallyHidden = await oldFee.isVisible() && !(await oldFeeBody.isVisible());
+      const oldFeeSnippetSuppressed = await oldFee.locator('div[data-nosnippet]').count() === 1 &&
+        await amendment.locator('[data-nosnippet]').count() === 0;
+      await oldFeeSummary.click();
+      const oldFeeReadableOnDemand = await oldFeeBody.isVisible() &&
+        (await oldFee.innerText()).includes('全文・算定要件は未照合');
+      await oldFeeSummary.click();
+      await oldFeeSummary.focus();
+      await page.keyboard.press('Enter');
+      const oldFeeKeyboardExpanded = await oldFeeBody.isVisible();
+      await page.keyboard.press('Enter');
+      const oldFeeKeyboardCollapsed = !(await oldFeeBody.isVisible());
+      await page.emulateMedia({ media: 'print' });
+      const oldFeeSuppressedOnPaper = !(await oldFee.isVisible()) &&
+        await amendment.isVisible();
+      await page.emulateMedia({ media: 'screen' });
+      report.interactions.push({
+        flow: `${width}px 2026 fee → unverified June source collapsed, open on demand and excluded from print`,
+        status: oldFeeInitiallyHidden && oldFeeReadableOnDemand &&
+          oldFeeSuppressedOnPaper && oldFeeSnippetSuppressed &&
+          oldFeeKeyboardExpanded && oldFeeKeyboardCollapsed ? 'PASS' : 'FAIL',
+      });
       const extension = page.locator('#fee-note-6');
       const extensionText = await extension.innerText();
       report.interactions.push({
@@ -277,13 +316,79 @@ try {
         const last = row.querySelector('td:last-child').getBoundingClientRect();
         const caption = element.querySelector('caption span').getBoundingClientRect();
         const previousHeading = element.querySelector('thead th:nth-last-child(2)').getBoundingClientRect();
-        return { moved: element.scrollLeft > 0, labelVisible: label.left >= region.left - 2 && label.right < region.right,
+        return { scrollable: element.scrollWidth > element.clientWidth + 1, moved: element.scrollLeft > 0,
+          labelVisible: label.left >= region.left - 2 && label.right < region.right,
           lastValueVisible: last.left >= label.right && last.right <= region.right + 2,
           modelTitleVisible: caption.left >= region.left - 2 && caption.right <= region.right + 2,
           careLevelHeadingsVisible: previousHeading.left >= label.right - 2 && previousHeading.right <= region.right + 2 };
       });
-      report.interactions.push({ flow: `${width}px fee table → horizontal scroll keeps time and last care level visible`, status: Object.values(geometry).every(Boolean) ? 'PASS' : 'FAIL', geometry });
+      report.interactions.push({
+        flow: `${width}px fee table → key labels and last care level remain visible (scroll only if needed)`,
+        status: geometry.moved === geometry.scrollable &&
+          geometry.labelVisible && geometry.lastValueVisible &&
+          geometry.modelTitleVisible && geometry.careLevelHeadingsVisible ? 'PASS' : 'FAIL',
+        geometry,
+      });
       await page.screenshot({ path: path.join(output, `dayservice-fee-scroll-${width}.png`) });
+      // The direct remuneration URL must carry the same service-month warning as the handbook.
+      await page.goto(origin + '/fees/treatment-improvement');
+      const detailRate = page.locator('.dayservice-treatment-periods');
+      const detailTables = detailRate.locator('table');
+      const detailWarning = await page.locator('.fee-detail-page > .notice').first().innerText();
+      const detailSource = page.locator('.fee-detail-page .dayservice-historical-fee-details');
+      const detailExtract = detailSource.locator('.fee-official-text');
+      const mayRates = await detailTables.nth(0).innerText();
+      const juneRates = await detailTables.nth(1).innerText();
+      const detailInitiallyCollapsed = await detailSource.isVisible() && !(await detailExtract.isVisible());
+      const eligibility = await detailRate.locator('.dayservice-treatment-eligibility').innerText();
+      const eligibilityReadable = eligibility.includes('Ⅰロ・Ⅱロ') &&
+        eligibility.includes('特例要件⑧') &&
+        eligibility.includes('1か月の総単位数') &&
+        await detailRate.locator('a[href="https://www.mhlw.go.jp/shogu-kaizen/apply.html"]').count() === 1;
+      const monthSpecific = detailWarning.includes('4月・5月には6月以降の率を使えません') &&
+        mayRates.includes('9.2%') && mayRates.includes('9.0%') &&
+        juneRates.includes('11.1%') && juneRates.includes('12.0%') &&
+        await detailSource.locator('div[data-nosnippet]').count() === 1 &&
+        await detailRate.locator('a[href="https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=18"]').count() === 1 &&
+        (await detailRate.innerText()).includes('令和8年6月以降の加算算定用') &&
+        await detailRate.locator('a[href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html"]').count() === 1;
+      await detailSource.locator('summary').click();
+      const detailExpanded = await detailExtract.isVisible();
+      await page.emulateMedia({ media: 'print' });
+      const detailPrintSafe = !(await detailSource.isVisible()) && await detailRate.isVisible();
+      if (width === 390) {
+        const pdfPath = path.join(output, 'dayservice-treatment-improvement-a4.pdf');
+        const pdfBytes = await page.pdf({ path: pdfPath, format: 'A4', printBackground: true });
+        const pdfText = execFileSync('pdftotext', ['-layout', pdfPath, '-'], { encoding: 'utf8' }).replace(/\s+/g, '');
+        const required = ['令和8年4月・5月', '令和8年6月以降', '9.2%', '11.1%', '6月以降の加算算定用'];
+        const pdfRateVisible = required.every(term => pdfText.includes(term.replace(/\s+/g, '')));
+        const pdfExtractHidden = !pdfText.includes('1000分の111に相当する単位数') &&
+          !pdfText.includes('1000分の120に相当する単位数');
+        report.interactions.push({
+          flow: '390px A4 actual PDF → period rate tables visible, unverified extracted legal body omitted',
+          status: pdfBytes.length > 3000 && pdfRateVisible && pdfExtractHidden ? 'PASS' : 'FAIL',
+          pdfBytes: pdfBytes.length, missing: required.filter(term => !pdfText.includes(term.replace(/\s+/g, ''))),
+        });
+      }
+      await page.emulateMedia({ media: 'screen' });
+      report.interactions.push({
+        flow: `${width}px direct fee detail → 4–5/6+ rates, source-vintage caution and safe print`,
+        status: monthSpecific && eligibilityReadable && detailInitiallyCollapsed && detailExpanded && detailPrintSafe ? 'PASS' : 'FAIL',
+      });
+      await page.goto(origin + '/fees');
+      report.interactions.push({
+        flow: `${width}px fee index → monthly treatment fee detail navigation`,
+        status: await page.locator('a[href="/fees/treatment-improvement"]').count() >= 1 &&
+          (await page.locator('main').innerText()).includes('令和8年4月・5月と6月以降') ? 'PASS' : 'FAIL',
+      });
+      await page.goto(origin + '/search?q=' + encodeURIComponent('処遇改善加算'));
+      const feeSearchRow = page.locator('.fee-list .fee-row').filter({ hasText: '介護職員等処遇改善加算' }).first();
+      report.interactions.push({
+        flow: `${width}px search → month-specific notice before treatment improvement fee detail`,
+        status: await feeSearchRow.count() === 1 &&
+          (await feeSearchRow.innerText()).includes('令和8年4月・5月と6月以降') &&
+          (await feeSearchRow.innerText()).includes('全文・算定要件は未照合') ? 'PASS' : 'FAIL',
+      });
     }
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(origin + '/services/dayservice');
@@ -332,5 +437,5 @@ try {
   fs.writeFileSync(path.join(output, 'report.json'), JSON.stringify(report, null, 2));
 }
 console.log(JSON.stringify({ head: report.head, browser: report.browser, cases: report.cases.length,
-  failures: report.failures.length, failedCases: report.failures.slice(0, 10), interactions: report.interactions, output }));
+  failures: report.failures.length, interactions: report.interactions, output }));
 if (!baseline && (report.failures.length || report.interactions.some(x => x.status !== 'PASS'))) process.exitCode = 1;
