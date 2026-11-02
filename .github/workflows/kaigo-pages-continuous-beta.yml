@@ -1,0 +1,168 @@
+name: Kaigo Rules automatic noindex beta updates
+# Pull requests only validate. After merge, an explicit beta-mode file
+# permits publishing a visibly labeled, noindex beta from that main commit.
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/kaigo-pages-continuous-beta.yml"
+      - ".github/pages-beta-mode.txt"
+      - "app/**"
+      - "components/**"
+      - "data/**"
+      - "lib/**"
+      - "scripts/**"
+      - "tests/**"
+      - "package.json"
+      - "package-lock.json"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/kaigo-pages-continuous-beta.yml"
+      - ".github/pages-beta-mode.txt"
+      - "app/**"
+      - "components/**"
+      - "data/**"
+      - "lib/**"
+      - "scripts/**"
+      - "tests/**"
+      - "package.json"
+      - "package-lock.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kaigo-rules-pages-publication
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    outputs:
+      enabled: ${{ steps.mode.outputs.enabled }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Require explicit beta mode or disable automatic publication
+        id: mode
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! -e .github/pages-beta-mode.txt ]]; then
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          elif [[ "$(cat .github/pages-beta-mode.txt)" == "beta" ]]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Unexpected beta mode; only beta or absent is permitted"
+            exit 1
+          fi
+
+  package:
+    name: Independently validate and package merge-eligible beta
+    needs: preflight
+    if: github.event_name == 'pull_request' || needs.preflight.outputs.enabled == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify source and beta disclaimer tests
+        run: |
+          set -euo pipefail
+          python -m unittest tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py
+      - name: Verify original application build
+        run: |
+          set -euo pipefail
+          npm ci
+          npm run build
+      - name: Build all generated handbook, Q&A and legislation pages
+        env:
+          KAIGO_RUN_STATIC_DETAILS: "1"
+        run: |
+          set -euo pipefail
+          python scripts/build_github_pages_integrated_pilot.py --with-details > "$RUNNER_TEMP/pages-beta-build.log"
+      - name: Audit the exact candidate against measured safe bounds
+        id: site
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          from scripts.audit_github_pages_migration_readiness import inspect
+          summary=json.loads((Path(os.environ["RUNNER_TEMP"])/"pages-beta-build.log").read_text(encoding="utf-8").splitlines()[-1])
+          root=Path(summary["directory"]).resolve(strict=True)
+          if root.is_symlink() or not (root/"index.html").is_file():
+              raise RuntimeError("Unsafe output path")
+          if summary.get("handbook_services", 0) < 39 or summary.get("handbook_chapters", 0) < 585:
+              raise RuntimeError("Missing service handbook chapters")
+          if summary.get("qa_details",{}).get("detail_pages", 0) < 7392:
+              raise RuntimeError("Missing QA details")
+          if summary.get("legal_details",{}).get("detail_pages", 0) < 1552:
+              raise RuntimeError("Missing legal source details")
+          pre=inspect(root)
+          problems=pre["blockers"]
+          for item in ("missing_local_links","root_relative_links","unsafe_or_invalid_links"):
+              if problems[item]!=0:
+                  raise RuntimeError("Unsafe static route blocker: "+item)
+          if not 0 <= problems["production_fallback_links"] <= 2500:
+              raise RuntimeError("Unexpected legacy link regression")
+          if problems["javascript_references_to_production"] > 2:
+              raise RuntimeError("Unexpected production URL usage in JS")
+          if pre["total_bytes"] >= 1_000_000_000 or pre["html_count"] < 13000:
+              raise RuntimeError("Unexpected Pages size/content")
+          outcome=subprocess.run(["python","scripts/prepare_github_pages_beta.py",str(root)],
+              capture_output=True,text=True,check=True)
+          print("BETA_PREPARATION:",outcome.stdout.strip())
+          post=inspect(root)
+          for item in ("missing_local_links","root_relative_links","unsafe_or_invalid_links","private_preview_pages"):
+              if post["blockers"][item]!=0:
+                  raise RuntimeError("Final beta safety check failed: "+item)
+          if post["blockers"]["noindex_pages"] != post["html_count"]:
+              raise RuntimeError("Beta pages not consistently noindex")
+          (root/".nojekyll").touch()
+          with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as out:
+              out.write("path="+str(root)+"\n")
+          print("BETA_RELEASE_PRECHECK:",json.dumps({
+            "sha":os.environ["SOURCE_SHA"],
+            "html_count":post["html_count"],"total_bytes":post["total_bytes"],
+            "remaining_legacy_links":post["blockers"]["production_fallback_links"],
+            "noindex_pages":post["blockers"]["noindex_pages"],
+            "local_links":post["local_links_resolved"]
+          },ensure_ascii=False))
+          PY
+      - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
+      - name: Upload approved public-beta artifact
+        uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
+        with:
+          path: ${{ steps.site.outputs.path }}
+
+  deploy:
+    name: Deploy visibly labeled noindex beta
+    needs: [preflight, package]
+    if: github.event_name != 'pull_request' && needs.preflight.outputs.enabled == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy generated beta
+        uses: actions/deploy-pages@v4
+        id: deploy
