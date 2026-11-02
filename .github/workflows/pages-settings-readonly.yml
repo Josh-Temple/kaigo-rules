@@ -1,0 +1,40 @@
+name: Read-only Pages hosting configuration check
+on:
+  push:
+    branches: ["audit/20261102-pages-hosting-settings"]
+permissions:
+  contents: read
+  pages: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Inspect GitHub Pages settings without making changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          code=$(curl --silent --show-error --location --output "$RUNNER_TEMP/pages-config.json" --write-out '%{http_code}' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/$REPOSITORY/pages")
+          if [ "$code" = 200 ]; then
+            python - <<'PY'
+          import json, os
+          from pathlib import Path
+          obj=json.loads((Path(os.environ["RUNNER_TEMP"])/"pages-config.json").read_text())
+          print("PAGES_STATUS: enabled")
+          print("PAGES_BUILD_TYPE:", obj.get("build_type", "unknown"))
+          print("PAGES_HTTPS_ENFORCED:", bool(obj.get("https_enforced", False)))
+          print("PAGES_URL:", obj.get("html_url", "not-returned"))
+          PY
+          elif [ "$code" = 404 ]; then
+            echo "PAGES_STATUS: not-enabled-or-not-visible-to-connection"
+          elif [ "$code" = 403 ]; then
+            echo "PAGES_STATUS: permissions-insufficient-to-check"
+          else
+            echo "PAGES_STATUS: API returned HTTP $code"
+          fi
