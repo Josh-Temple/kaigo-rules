@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ccbefed87a8f3933f64c04913d5f27071a6d0f88
+          ref: efe48d154555d50c9aa079e4559f97f8b0f6a8a1
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
@@ -27,7 +27,7 @@ jobs:
           cat /tmp/site.log; exit 1
       - uses: actions/checkout@v4
         with:
-          ref: audit/20261102-pr587-independent-d
+          ref: 76772aa1f0ff5bf7b3389bde226a48754ea5982b
           path: audit
           persist-credentials: false
       - run: node audit/audit/d587.mjs
