@@ -64,6 +64,32 @@ def _legislation_record(root: Path, query: str):
     return root / "legislation" / "record" / (hashlib.sha256(identifier.encode("utf-8")).hexdigest() + ".html")
 
 
+def _legislation_browse(root: Path, query: str):
+    if not query:
+        return root / "legislation" / "index.html"
+    try:
+        params = parse_qs(query, strict_parsing=True, keep_blank_values=True, max_num_fields=8)
+    except ValueError:
+        return None
+    if not params or set(params) - {"service", "category", "document", "q", "page"}:
+        return None
+    if any(len(values) != 1 or len(values[0]) > 300 for values in params.values()):
+        return None
+    if "page" in params and (not params["page"][0].isdigit() or not 1 <= int(params["page"][0]) <= 10000):
+        return None
+    if "service" in params and params["service"][0] and not SAFE_SERVICE.fullmatch(params["service"][0]):
+        return None
+    if "category" in params and params["category"][0] not in {
+        "law", "standards", "notices", "remuneration", "guidance", "criteria", ""
+    }:
+        return None
+    if "document" in params and params["document"][0] and not re.fullmatch(
+        r"[A-Za-z0-9][A-Za-z0-9._:-]{0,180}", params["document"][0]
+    ):
+        return None
+    return root / "legislation" / "index.html"
+
+
 def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
     parts = urlsplit(href)
     if (parts.scheme != "https" or parts.netloc != ORIGIN or parts.username
@@ -85,7 +111,12 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
     elif path == "/qa":
         kind, target, suffix = "qa-search", root / "databases/search/qa.html", ("?" + query if query else "")
     elif path == "/legislation":
-        kind, target = "legislation-record", _legislation_record(root, query)
+        if "record=" in query:
+            kind, target = "legislation-record", _legislation_record(root, query)
+        else:
+            kind, target = "legislation-browse", _legislation_browse(root, query)
+            if target is not None and query:
+                suffix = "?" + query
     elif path in {"/start", "/overview", "/guide", "/sources", "/handbook-sources",
                   "/fees/guidance", "/fees"} and not query:
         kind, target = "information", root / path.lstrip("/") / "index.html"
