@@ -23,6 +23,7 @@ import build_github_pages_legal_details_pilot as legal_details
 import localize_github_pages_links_pilot as navigation
 import build_github_pages_information_pilot as information
 import build_github_pages_fee_details_pilot as fee_details
+import build_github_pages_legislation_pilot as legislation
 
 ROOT = Path(__file__).resolve().parents[1]
 STATIC_FILES = {
@@ -331,10 +332,12 @@ def build_with_details() -> dict:
                 child.kill()
                 child.wait(timeout=5)
         child = None
+        legal_browser_result = legislation.build(Path(handbook_result["directory"]))
         result = integrate(Path(handbook_result["directory"]), search_dir, with_information=True)
         result.update({"handbook_services": handbook_result["services"],
                        "handbook_chapters": handbook_result["chapters"],
-                       "qa_details": qa_result, "legal_details": legal_result})
+                       "qa_details": qa_result, "legal_details": legal_result,
+                       "legislation_records": legal_browser_result})
         return result
     except BaseException:
         shutil.rmtree(handbook_result["directory"], ignore_errors=True)
