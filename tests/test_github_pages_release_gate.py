@@ -34,6 +34,15 @@ class ReleaseGateTest(unittest.TestCase):
         report, acceptance = self.good()
         self.assertEqual(gate.errors_for(report, acceptance, SHA), [])
 
+    def test_private_preview_allowed_only_before_public_conversion(self):
+        report, approval = self.good()
+        report["blockers"]["private_preview_pages"] = 9607
+        report["blockers"]["noindex_pages"] = 9607
+        self.assertEqual(gate.errors_for(report, approval, SHA, allow_private_preview=True), [])
+        self.assertTrue(gate.errors_for(report, approval, SHA))
+        report["blockers"]["production_fallback_links"] = 13119
+        self.assertTrue(gate.errors_for(report, approval, SHA, allow_private_preview=True))
+
     def test_rejects_missing_acceptance_and_unreviewed_data(self):
         report, acceptance = self.good()
         report["blockers"]["production_fallback_links"] = 13119
