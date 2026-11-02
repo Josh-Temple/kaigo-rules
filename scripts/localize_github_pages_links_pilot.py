@@ -12,7 +12,8 @@ import posixpath
 import re
 from collections import Counter
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+from urllib.parse import unquote, urlsplit, parse_qs
+from functools import lru_cache
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -24,6 +25,42 @@ ATTR = re.compile(r'(\bhref=")([^"]+)(")')
 SAFE_SERVICE = re.compile(r"^[a-z0-9-]+$")
 SAFE_CHAPTER = SAFE_SERVICE
 SAFE_FRAGMENT = re.compile(r"^[A-Za-z0-9_.:-]+$")
+
+
+@lru_cache(maxsize=4)
+def _legislation_index(path: str):
+    """Only a bounded publishable record-id and applicability manifest."""
+    file = Path(path)
+    if not file.is_file() or file.is_symlink():
+        return {}
+    data = json.loads(file.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or len(data) > 100000:
+        raise RuntimeError("Invalid static legislation record manifest")
+    return data
+
+
+def _legislation_record(root: Path, query: str):
+    try:
+        params = parse_qs(query, strict_parsing=True, keep_blank_values=True, max_num_fields=8)
+    except ValueError:
+        return None
+    if not params or "record" not in params or set(params) - {"record", "service", "category", "document"}:
+        return None
+    if any(len(values) != 1 for values in params.values()):
+        return None
+    identifier = params["record"][0]
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,180}", identifier):
+        return None
+    record_index = _legislation_index(str(root / "legislation" / "record-index.json"))
+    entry = record_index.get(identifier)
+    if not isinstance(entry, dict) or set(entry) != {"document", "category", "services"}:
+        return None
+    if any(params.get(key, [entry[prop]])[0] != entry[prop]
+           for key, prop in (("document", "document"), ("category", "category"))):
+        return None
+    if params.get("service") and params["service"][0] not in entry["services"]:
+        return None
+    return root / "legislation" / "record" / (identifier + ".html")
 
 
 def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
@@ -46,6 +83,8 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
         kind, target, suffix = "search", root / "databases/search/index.html", ("?" + query if query else "")
     elif path == "/qa":
         kind, target, suffix = "qa-search", root / "databases/search/qa.html", ("?" + query if query else "")
+    elif path == "/legislation":
+        kind, target = "legislation-record", _legislation_record(root, query)
     elif path in {"/start", "/overview", "/guide", "/sources", "/handbook-sources",
                   "/fees/guidance", "/fees"} and not query:
         kind, target = "information", root / path.lstrip("/") / "index.html"
