@@ -106,6 +106,7 @@ class ScopeGateSafetyTests(unittest.TestCase):
         (self.root / "databases/search/global.json.gz").write_bytes(gzip.compress(raw))
         self.refresh_hashes()
         self.assert_blocked("SEARCH_ALLOWLIST_MISMATCH")
+        self.assertEqual(self.run_check()["scope_id_difference_counts"]["search_unapproved"], 1)
 
     def test_duplicate_id_is_rejected_even_with_matching_byte_hashes(self):
         data = json.loads((self.root / "legislation/records.json").read_text())
