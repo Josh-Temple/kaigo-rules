@@ -8,6 +8,8 @@ on:
       - ".github/workflows/verify-publication-readiness-integration.yml"
       - "data/**"
       - "scripts/**"
+      # Beta HTML presentation does not change publication eligibility inputs.
+      - "!scripts/prepare_github_pages_beta.py"
       - "tests/test_relation_human_review_expansion.py"
       - "tests/test_publication_requirement_scoping.py"
       - "tests/test_publication_readiness.py"
@@ -26,6 +28,7 @@ permissions:
 jobs:
   publication-readiness:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
