@@ -15,7 +15,8 @@ import json
 import re
 import tempfile
 from pathlib import Path
-from urllib.parse import urlsplit
+from html.parser import HTMLParser
+from urllib.parse import unquote, urlsplit
 
 SCHEMA = "kaigo-reviewed-scope-v1"
 APPROVED = "APPROVED_FOR_SCOPED_REVIEW"
@@ -97,7 +98,7 @@ def build(manifest_path: Path, legal_path: Path, qa_path: Path, qa_meta_path: Pa
         if not isinstance(entry, dict) or entry.get("kind") not in {"legal", "qa"}:
             fail("Unknown approval kind")
         kind, key = entry["kind"], entry.get("id")
-        if not isinstance(key, str) or not (ID.fullmatch(key) if kind == "qa" else 1 <= len(key) <= 2048 and not any(ord(c) < 32 or ord(c) == 127 for c in key)) or (kind, key) in seen:
+        if not isinstance(key, str) or not (ID.fullmatch(key) if kind == "qa" else 1 <= len(key) <= 2048 and not any(ord(c) < 32 or ord(c) == 127 for c in key)) or (kind, key) in seen or any(x[1] == key for x in seen):
             fail("Invalid or duplicate approval ID")
         seen.add((kind, key))
         if entry.get("state") != APPROVED or entry.get("publish_approved") is not True:
@@ -173,16 +174,57 @@ def build(manifest_path: Path, legal_path: Path, qa_path: Path, qa_meta_path: Pa
     expected = generated | {"index.html", "style.css", "search/index.html", "search/app.mjs", "search/rows.json", "search/rows.json.gz"}
     if files != expected or len(rows) != len(seen) or gzip.decompress((search / "rows.json.gz").read_bytes()) != packed:
         fail("Candidate files, approved IDs or compressed search do not match")
-    for file in output.rglob("*.html"):
-        rendered = file.read_text(encoding="utf-8")
+    class References(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.links = []
+        def handle_starttag(self, tag, attrs):
+            values = dict(attrs)
+            key = "src" if tag in {"script", "img"} else "href" if tag in {"a", "link"} else None
+            if key and values.get(key):
+                self.links.append(values[key])
+    legacy = 0
+    local_checked = 0
+    for file in output.rglob("*"):
+        if not file.is_file():
+            continue
+        contents = gzip.decompress(file.read_bytes()) if file.name.endswith(".gz") else file.read_bytes()
+        legacy += contents.count(b"kaigo-rules.vercel.app")
+        if b"-----BEGIN PRIVATE KEY-----" in contents:
+            fail("Secret-like content in candidate")
+        if file.suffix == ".css" and b"url(" in contents:
+            fail("Unverified CSS URL")
+        if file.suffix != ".html":
+            continue
+        rendered = contents.decode("utf-8")
         if 'name="robots" content="noindex' not in rendered or WARNING not in rendered:
             fail("Missing noindex or review warning")
+        parser = References()
+        parser.feed(rendered)
+        for link in parser.links:
+            parts = urlsplit(link)
+            if parts.scheme or parts.netloc:
+                if source_url(link) != link:
+                    fail("Invalid external link")
+                continue
+            if not parts.path or parts.path.startswith("/") or "\\" in parts.path:
+                fail("Unexpected root-relative or empty local link")
+            target = (file.parent / unquote(parts.path)).resolve()
+            local_checked += 1
+            if not target.is_relative_to(output.resolve()) or not target.is_file():
+                fail("Missing local static link")
+    for row in rows:
+        target = (search / row["href"]).resolve()
+        if not target.is_relative_to(output.resolve()) or not target.is_file():
+            fail("Search JSON links to a missing or unapproved detail")
+    if legacy:
+        fail("Legacy production links in candidate")
     return {"status": "PRIVATE_REVIEW_CANDIDATE_NOT_RELEASED", "records": len(rows),
             "legal": sum(k == "legal" for k, *_ in approved), "qa": sum(k == "qa" for k, *_ in approved),
             "files": len(files), "html": len(generated) + 2,
             "bytes": sum(p.stat().st_size for p in output.rglob("*") if p.is_file()),
             "approved_ids_sha256": hashlib.sha256(json.dumps(sorted(seen)).encode()).hexdigest(),
-            "legacy_vercel_urls": 0, "deploy_approved": False}
+            "legacy_vercel_urls": legacy, "local_links_checked": local_checked, "deploy_approved": False}
 
 
 def main():
