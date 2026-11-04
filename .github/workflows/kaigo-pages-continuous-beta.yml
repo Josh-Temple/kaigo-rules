@@ -57,7 +57,7 @@ jobs:
       - name: Validate beta warnings, link handling and source compilation
         run: |
           set -euo pipefail
-          python -m unittest tests/test_github_pages_actions_safety.py tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py
+          python -m unittest tests/test_github_pages_actions_safety.py tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py tests/test_github_pages_scope_gate.py
           python -m py_compile scripts/build_github_pages_integrated_pilot.py scripts/prepare_github_pages_beta.py scripts/audit_github_pages_migration_readiness.py
 
   preflight:
@@ -81,7 +81,13 @@ jobs:
           if [[ ! -e .github/pages-beta-mode.txt ]]; then
             echo "enabled=false" >> "$GITHUB_OUTPUT"
           elif [[ "$(cat .github/pages-beta-mode.txt)" == "beta" ]]; then
-            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            # An independent, exact-byte scope receipt is mandatory BEFORE build.
+            # Absent by default: skip costly generation and keep Pages unchanged.
+            if [[ -s .github/pages-beta-approved-scope.json ]]; then
+              echo "enabled=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "enabled=false" >> "$GITHUB_OUTPUT"
+            fi
           else
             echo "::error::Unexpected beta mode; only beta or absent is permitted"
             exit 1
@@ -160,6 +166,12 @@ jobs:
                   raise RuntimeError("Final beta safety check failed: "+item)
           if post["blockers"]["noindex_pages"] != post["html_count"]:
               raise RuntimeError("Beta pages not consistently noindex")
+          from scripts.audit_github_pages_scope_gate import inspect as scope_inspect
+          approval=json.loads(Path('.github/pages-beta-approved-scope.json').read_text(encoding='utf-8'))
+          scope_report,_=scope_inspect(root,source_sha=os.environ['SOURCE_SHA'],approval=approval,mode='beta')
+          if scope_report['status'] != 'PASS_SCOPED_BYTES_ONLY':
+              raise RuntimeError('Independent scope/byte gate HOLD: '+str(scope_report['error_codes']))
+          print('SCOPE_GATE:',json.dumps({k:scope_report[k] for k in ('source_sha','file_count','html_count','distribution_tree_sha256')},sort_keys=True))
           (root/".nojekyll").touch()
           with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as out:
               out.write("path="+str(root)+"\n")
