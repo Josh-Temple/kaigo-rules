@@ -168,11 +168,11 @@ jobs:
               raise RuntimeError("Beta pages not consistently noindex")
           from scripts.audit_github_pages_scope_gate import inspect as scope_inspect
           approval=json.loads(Path('.github/pages-beta-approved-scope.json').read_text(encoding='utf-8'))
+          (root/".nojekyll").touch()  # exact uploaded bytes must be audited
           scope_report,_=scope_inspect(root,source_sha=os.environ['SOURCE_SHA'],approval=approval,mode='beta')
           if scope_report['status'] != 'PASS_SCOPED_BYTES_ONLY':
               raise RuntimeError('Independent scope/byte gate HOLD: '+str(scope_report['error_codes']))
           print('SCOPE_GATE:',json.dumps({k:scope_report[k] for k in ('source_sha','file_count','html_count','distribution_tree_sha256')},sort_keys=True))
-          (root/".nojekyll").touch()
           with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as out:
               out.write("path="+str(root)+"\n")
           print("BETA_RELEASE_PRECHECK:",json.dumps({
