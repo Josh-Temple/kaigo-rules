@@ -117,7 +117,8 @@ def _scope(root, approval, errors):
         service_files = []
         for service in services:
             if (not isinstance(service, dict)
-                    or not re.fullmatch(r"[a-z0-9-]+", str(service.get("id", "")))
+                    or not isinstance(service.get("id"), str)
+                    or not re.fullmatch(r"[a-z0-9-]+", service["id"])
                     or service.get("file") != "service-" + service["id"] + ".json"):
                 errors.append("INVALID_SERVICE_DATASET")
                 continue
@@ -170,11 +171,12 @@ def inspect(root: Path, *, source_sha: str, approval=None, mode="beta"):
     if not root.is_dir() or root.is_symlink():
         raise ValueError("Missing or symlinked candidate")
     root = root.resolve(strict=True)
-    paths = sorted(p for p in root.rglob("*") if p.is_file())
+    entries = list(root.rglob("*"))
+    paths = sorted(p for p in entries if p.is_file() and not p.is_symlink())
     errors = []
     if not paths:
         errors.append("EMPTY_SITE")
-    if any(p.is_symlink() for p in root.rglob("*")):
+    if any(p.is_symlink() for p in entries):
         errors.append("SYMLINK_IN_DISTRIBUTION")
     if any(FORBIDDEN_DIRS.intersection(p.relative_to(root).parts)
            or p.name.startswith(".env") for p in paths):
