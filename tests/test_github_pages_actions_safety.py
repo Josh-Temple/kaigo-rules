@@ -57,6 +57,25 @@ class PagesActionsSafetyTests(unittest.TestCase):
         self.assertIn("build_publication_readiness.py", text)
         self.assertIn("cancel-in-progress: ${{ github.event_name == 'pull_request' }}", text)
 
+    def test_scope_gate_is_mandatory_before_pages_upload(self):
+        beta = workflow("kaigo-pages-continuous-beta.yml")
+        self.assertIn("if [[ -s .github/pages-beta-approved-scope.json ]]; then", beta)
+        self.assertIn("scope_inspect(root", beta)
+        self.assertIn("PASS_SCOPED_BYTES_ONLY", beta)
+        self.assertLess(beta.index("scope_inspect(root"), beta.index("actions/upload-pages-artifact@v4"))
+        release = workflow("kaigo-pages-release.yml")
+        self.assertIn("pages-distribution-approval.json", release)
+        self.assertIn("pages-public-distribution-approval.json", release)
+        self.assertLess(release.index("--mode private"), release.index("prepare_github_pages_public_candidate.py"))
+        self.assertLess(release.index("--mode public"), release.index("actions/upload-pages-artifact@v4"))
+
+    def test_scope_regressions_stay_on_lightweight_pr_checks(self):
+        beta = workflow("kaigo-pages-continuous-beta.yml")
+        feasibility = workflow("github-pages-feasibility.yml")
+        self.assertIn("tests/test_github_pages_scope_gate.py", beta)
+        self.assertIn("tests/test_github_pages_scope_gate.py", feasibility)
+        self.assertRegex(feasibility, r"(?m)^  measure:\\n(?:.*\\n){0,6}    if: github.event_name == 'workflow_dispatch'")
+
     def test_formal_release_keeps_independent_approval(self):
         text = workflow("kaigo-pages-release.yml")
         self.assertIn("acceptance_commit:", text)
