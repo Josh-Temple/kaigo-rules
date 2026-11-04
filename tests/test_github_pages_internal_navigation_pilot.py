@@ -49,15 +49,19 @@ class PrivateNavigationTest(unittest.TestCase):
                     "https://kaigo-rules.vercel.app/qa/qa.example?preview=1",
                     "https://kaigo-rules.vercel.app/handbook/dayservice/missing",
                 ])
+            before += ("<a href='https://kaigo-rules.vercel.app/guide#guide'>単引用符</a>"
+                       '<span data-href="https://kaigo-rules.vercel.app/guide#guide">属性データ</span>')
             source.write_text(before, encoding="utf-8")
             report = module.localize(out)
-            self.assertEqual(report["links_localized"], 8)
+            self.assertEqual(report["links_localized"], 9)
             updated = source.read_text(encoding="utf-8")
             self.assertIn('../../services/dayservice/index.html#national_qa', updated)
             self.assertIn('../../databases/search/legal/rules/dayservice/93.html#rule', updated)
             self.assertIn('../../databases/search/qa-details/qa.example/reader.html', updated)
             self.assertIn('../../databases/search/index.html?q=%E7%9C%8B%E8%AD%B7', updated)
             self.assertIn('../../guide/index.html#guide', updated)
+            self.assertIn("href='../../guide/index.html#guide'", updated)
+            self.assertIn('data-href="https://kaigo-rules.vercel.app/guide#guide"', updated)
             self.assertIn('../../fees/guidance/index.html#fees', updated)
             self.assertIn('../../fees/note.1/index.html#fee', updated)
             self.assertIn('../../fees/index.html', updated)
