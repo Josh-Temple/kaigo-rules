@@ -22,7 +22,9 @@ import build_github_pages_legal_details_pilot as legal
 import build_github_pages_qa_details_pilot as qa
 
 ORIGIN = "kaigo-rules.vercel.app"
-ATTR = re.compile(r'(\bhref=")([^"]+)(")')
+# Match only actual href attribute names, using either HTML quote style.
+# Do not rewrite data-href or use an unpublished destination.
+ATTR = re.compile(r'''(?P<prefix>(?<![\w:-])href\s*=\s*)(?P<quote>["'])(?P<url>.*?)(?P=quote)''', re.I | re.S)
 SAFE_SERVICE = re.compile(r"^[a-z0-9-]+$")
 SAFE_CHAPTER = SAFE_SERVICE
 SAFE_FRAGMENT = re.compile(r"^[A-Za-z0-9_.:-]+$")
@@ -172,7 +174,7 @@ def localize(root: Path) -> dict:
 
         def replace(match):
             nonlocal links
-            current = html.unescape(match[2])
+            current = html.unescape(match["url"])
             if not current.startswith("https://" + ORIGIN + "/"):
                 return match[0]
             found = destination(root, current)
@@ -184,7 +186,7 @@ def localize(root: Path) -> dict:
             links += 1
             counts[kind] += 1
             new_href = html.escape(relative + suffix, quote=True)
-            return match[1] + new_href + match[3]
+            return match["prefix"] + match["quote"] + new_href + match["quote"]
 
         updated = ATTR.sub(replace, content)
         if updated != content:
