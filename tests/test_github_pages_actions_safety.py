@@ -4,7 +4,6 @@ These tests are intentionally dependency-free and inspect workflow source.
 They do not replace GitHub Actions event dispatch tests or release acceptance.
 """
 from pathlib import Path
-import re
 import unittest
 
 
@@ -41,6 +40,14 @@ class PagesActionsSafetyTests(unittest.TestCase):
         self.assertIn("npm run build", text)
         self.assertIn("test_github_pages_release_gate.py", text)
         self.assertIn("cancel-in-progress: ${{ github.event_name == 'pull_request' }}", text)
+
+    def test_validate_build_does_not_cancel_manual_audits(self):
+        text = workflow("validate-build.yml")
+        self.assertIn("format('validate-build-pr-{0}'", text)
+        self.assertIn("format('validate-build-push-{0}'", text)
+        self.assertIn("format('validate-build-manual-{0}', github.run_id)", text)
+        self.assertIn("cancel-in-progress: ${{ github.event_name != 'workflow_dispatch' }}", text)
+        self.assertIn("npm run build", text)
 
     def test_publication_readiness_stays_on_for_data_and_legal_changes(self):
         text = workflow("verify-publication-readiness-integration.yml")
