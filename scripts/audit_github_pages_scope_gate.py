@@ -74,7 +74,7 @@ def _json(root, relative, errors):
         return None
 
 
-def _scope(root, approval, errors):
+def _scope(root, approval, errors, differences):
     records = approval.get("records", {}) if isinstance(approval, dict) else {}
     if not isinstance(records, dict):
         errors.append("INVALID_APPROVAL_RECORDS")
@@ -90,6 +90,10 @@ def _scope(root, approval, errors):
     if isinstance(leg, dict):
         actual = _ids(leg.get("records"), "LEGAL", errors)
         observed_docs = _ids(leg.get("docs"), "DOCUMENTS", errors)
+        differences["legal_unapproved"] += len(actual - legal)
+        differences["legal_approved_missing"] += len(legal - actual)
+        differences["documents_unapproved"] += len(observed_docs - docs)
+        differences["documents_approved_missing"] += len(docs - observed_docs)
         if actual != legal or observed_docs != docs:
             errors.append("LEGAL_ALLOWLIST_MISMATCH")
         for row in leg.get("records", []):
@@ -104,6 +108,8 @@ def _scope(root, approval, errors):
         errors.append("LEGAL_INDEX_MISMATCH")
     observed_legal_paths = {p.relative_to(root).as_posix()
         for p in (root / "legislation/record").glob("*.html")}
+    differences["legal_direct_url_unapproved"] += len(observed_legal_paths - expected_legal_paths)
+    differences["legal_direct_url_missing"] += len(expected_legal_paths - observed_legal_paths)
     if observed_legal_paths != expected_legal_paths:
         errors.append("LEGAL_DIRECT_URL_MISMATCH")
 
@@ -145,18 +151,25 @@ def _scope(root, approval, errors):
             observed_search.add(key)
             actual = _ids(rows, "SEARCH", errors)
             expected = _reviewed_ids(search.get(key), "SEARCH", errors)
+            differences["search_unapproved"] += len(actual - expected)
+            differences["search_approved_missing"] += len(expected - actual)
             if actual != expected:
                 errors.append("SEARCH_ALLOWLIST_MISMATCH")
             if dataset == "global.json" and group == "qa":
                 all_qa_search_ids = actual
+    differences["search_group_unapproved"] += len(observed_search - set(search))
+    differences["search_group_approved_missing"] += len(set(search) - observed_search)
     if observed_search != set(search):
         errors.append("SEARCH_DATASET_ALLOWLIST_MISMATCH")
+    differences["qa_search_unapproved"] += len(all_qa_search_ids - qa)
     if not all_qa_search_ids or not all_qa_search_ids.issubset(qa):
         errors.append("QA_SEARCH_ALLOWLIST_MISMATCH")
     details_root = base / "qa-details"
     actual_qa_paths = {p.relative_to(root).as_posix() for p in details_root.rglob("*.html")}
     approved_qa_paths = {"databases/search/qa-details/" + identifier + "/" + name
         for identifier in qa for name in ("index.html", "reader.html")}
+    differences["qa_direct_url_unapproved"] += len(actual_qa_paths - approved_qa_paths)
+    differences["qa_direct_url_missing"] += len(approved_qa_paths - actual_qa_paths)
     if actual_qa_paths != approved_qa_paths:
         errors.append("QA_DIRECT_URL_MISMATCH")
     return {"legal": len(legal), "documents": len(docs), "qa": len(qa),
@@ -241,6 +254,7 @@ def inspect(root: Path, *, source_sha: str, approval=None, mode="beta"):
         if "kaigo-rules.vercel.app" in content:
             legacy[p.suffix.lower()] += content.count("kaigo-rules.vercel.app")
     record_count = {}
+    differences = Counter()
     if approval is None:
         errors.append("NO_INDEPENDENT_APPROVAL")
     elif not isinstance(approval, dict):
@@ -258,7 +272,7 @@ def inspect(root: Path, *, source_sha: str, approval=None, mode="beta"):
                      for v in expected_hashes.values())
               or hashes != expected_hashes):
             errors.append("DISTRIBUTION_BYTES_NOT_APPROVED")
-        record_count = _scope(root, approval, errors)
+        record_count = _scope(root, approval, errors, differences)
     tree_hash = hashlib.sha256(
         "".join(path + "\0" + hashes[path] + "\n" for path in sorted(hashes)).encode()
     ).hexdigest()
@@ -271,6 +285,7 @@ def inspect(root: Path, *, source_sha: str, approval=None, mode="beta"):
         "extension_counts": dict(sorted(counts.items())),
         "legacy_text_occurrences_by_type": dict(sorted(legacy.items())),
         "approved_scope_counts": record_count,
+        "scope_id_difference_counts": dict(sorted(differences.items())),
         "error_codes": dict(sorted(Counter(errors).items())),
         # Hash inventory deliberately excluded from stdout. It is only returned
         # internally, for separately protected reviewer evidence.
