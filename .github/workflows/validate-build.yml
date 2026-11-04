@@ -11,9 +11,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Cancel superseded PRs and pushes, but never cancel explicit manual audits.
 concurrency:
-  group: validate-build-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.event_name == 'pull_request' && format('validate-build-pr-{0}', github.event.pull_request.number) || github.event_name == 'push' && format('validate-build-push-{0}', github.ref) || format('validate-build-manual-{0}', github.run_id) }}
+  cancel-in-progress: ${{ github.event_name != 'workflow_dispatch' }}
 
 permissions:
   contents: read
