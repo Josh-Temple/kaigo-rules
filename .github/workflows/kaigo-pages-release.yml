@@ -49,6 +49,9 @@ jobs:
           [[ "$ACCEPTANCE_SHA" =~ ^[a-f0-9]{40}$ ]]
           test "$(git -C release-acceptance rev-parse HEAD)" = "$ACCEPTANCE_SHA"
           test -f release-acceptance/docs/pages-release-acceptance.json
+          # A separate reviewed exact-byte approval must pre-exist the expensive build.
+          test -s release-acceptance/docs/pages-distribution-approval.json
+          test -s release-acceptance/docs/pages-public-distribution-approval.json
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
@@ -58,7 +61,7 @@ jobs:
           python-version: "3.12"
       - name: Run release-gate unit tests before the build
         run: |
-          python -m unittest tests/test_github_pages_migration_readiness.py tests/test_github_pages_release_gate.py tests/test_github_pages_public_candidate.py tests/test_github_pages_legislation_pilot.py
+          python -m unittest tests/test_github_pages_migration_readiness.py tests/test_github_pages_release_gate.py tests/test_github_pages_public_candidate.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_scope_gate.py
       - name: Validate all existing legislation, publication and user-facing checks
         run: |
           npm ci
@@ -96,11 +99,33 @@ jobs:
             "$RUNNER_TEMP/kaigo-pages-private-audit.json" \
             release-acceptance/docs/pages-release-acceptance.json \
             "$SOURCE_SHA" --private-preview
+      - name: Require independently approved exact distribution before any artifact upload
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          CANDIDATE: ${{ steps.candidate.outputs.site }}
+        run: |
+          python scripts/audit_github_pages_scope_gate.py "$CANDIDATE" \
+            --source-sha "$SOURCE_SHA" \
+            --approval release-acceptance/docs/pages-distribution-approval.json \
+            --mode private
       - name: Generate publicly readable presentation without changing legal cautions
         env:
           CANDIDATE: ${{ steps.candidate.outputs.site }}
         run: |
           python scripts/prepare_github_pages_public_candidate.py "$CANDIDATE"
+      - name: Finalize static package markers before exact byte approval
+        env:
+          CANDIDATE: ${{ steps.candidate.outputs.site }}
+        run: touch "$CANDIDATE/.nojekyll"
+      - name: Verify final public bytes were separately accepted
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          CANDIDATE: ${{ steps.candidate.outputs.site }}
+        run: |
+          python scripts/audit_github_pages_scope_gate.py "$CANDIDATE" \
+            --source-sha "$SOURCE_SHA" \
+            --approval release-acceptance/docs/pages-public-distribution-approval.json \
+            --mode public
       - name: Reaudit final public output and require zero outstanding blockers
         env:
           SOURCE_SHA: ${{ github.sha }}
