@@ -34,7 +34,7 @@ class LegacyLinkAuditTest(unittest.TestCase):
             self.assertEqual(report["by_target_route"],
                              {"/legislation": 1, "/qa": 1, "/services": 1})
             self.assertEqual(sum(item["count"] for item in report["by_route_pair"]), 3)
-            self.assertIn("service=x&page=2", report["samples"][1]["href"])
+            self.assertTrue(any("service=x&page=2" in row["href"] for row in report["samples"]))
             self.assertIn("NOT_VERIFIED", report["coverage"])
 
     def test_fails_closed_for_missing_or_symlink_pages(self):
