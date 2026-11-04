@@ -16,4 +16,19 @@ button { color: white; background: #0c6651; border: 0; border-radius: .3rem; mar
 .qa-pagination { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin-top: 1rem; }
 .qa-pagination button { width: auto; min-width: 5rem; }
 .qa-pagination button:disabled { background: #abb9b2; color: #24362e; cursor: default; }
-@media print { form, .notice { display: none; } body, main { background: white; } }
+@media (max-width: 480px) {
+  main { padding: .85rem; }
+  .qa-pagination { gap: .5rem; }
+  .qa-pagination button { min-width: 4.5rem; }
+  #qa-page { text-align: center; overflow-wrap: anywhere; }
+}
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body, main { background: white; color: #111; }
+  main { max-width: none; min-height: auto; padding: 0; }
+  form, .qa-pagination button, .more-results { display: none; }
+  /* The unverified-currentness warning must also appear on printed copies. */
+  .notice { background: white; color: #111; border: 1px solid #444; break-inside: avoid; }
+  .result { break-inside: avoid; }
+  a { color: #111; text-decoration: underline; }
+}

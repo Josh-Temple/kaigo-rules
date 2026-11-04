@@ -56,6 +56,27 @@ function internalLink(label, href) {
   return link;
 }
 
+// Reveal ranked results in small batches instead of silently hiding all but
+// the first ten. Keep original search order and avoid huge initial DOM trees.
+function appendProgressively(section, items, batchSize, makeCard, unit = "件") {
+  const list = document.createElement("div");
+  section.append(list);
+  let shown = 0;
+  const more = element("button", "");
+  more.type = "button";
+  more.className = "more-results";
+  function addNext() {
+    const end = Math.min(shown + batchSize, items.length);
+    for (; shown < end; shown++) list.append(makeCard(items[shown]));
+    more.hidden = shown >= items.length;
+    more.textContent = "さらに表示（" + shown.toLocaleString("ja-JP") +
+      " / " + items.length.toLocaleString("ja-JP") + unit + "）";
+  }
+  more.addEventListener("click", addNext);
+  addNext();
+  if (items.length > batchSize) section.append(more);
+}
+
 function appendSource(card, url) {
   if (!url) return;
   const source = new URL(url);
@@ -98,7 +119,7 @@ async function display() {
       }
       section.append(element("h2", labels[group] + "（" + rows.length.toLocaleString("ja-JP") +
         "件 / " + services.size.toLocaleString("ja-JP") + "サービス）"));
-      for (const matches of [...services.values()].slice(0, 20)) {
+      appendProgressively(section, [...services.values()], 20, (matches) => {
         const first = matches[0];
         const card = document.createElement("article"); card.className = "result";
         card.append(internalLink(first.serviceLabel, resultHref(group, first, q)));
@@ -108,28 +129,24 @@ async function display() {
         card.append(element("p", "現行性：公開条件を満たした現行資料" +
           (first.checkedAt ? " / 公式表示確認日：" + first.checkedAt : "")));
         appendSource(card, first.sourceUrl);
-        section.append(card);
-      }
+        return card;
+      }, "サービス");
       if (!rows.length) section.append(element("p", "現在の公開範囲では一致なし"));
-      if (services.size > 20) section.append(element("p", "上位20サービスを表示しています。"));
       results.append(section);
       continue;
     }
     section.append(element("h2", labels[group] + "（" + rows.length.toLocaleString("ja-JP") + "件）"));
-    for (const row of rows.slice(0, 10)) {
+    appendProgressively(section, rows, 10, (row) => {
       const card = document.createElement("article");
       card.className = "result";
-      // This prototype does not include destination pages. Keep navigation on
-      // the current site, and do not trust a row with an off-origin URL.
       card.append(internalLink(row.title, resultHref(group, row, q)));
       const excerpt = Number.isInteger(row.excerptField) ? row.fields[row.excerptField]?.value : row.excerpt;
       if (excerpt) card.append(element("p", databaseSearchExcerpt(excerpt, q)));
       if (row.statusText) card.append(element("p", row.statusText));
       appendSource(card, row.sourceUrl);
-      section.append(card);
-    }
+      return card;
+    });
     if (!rows.length) section.append(element("p", "現在の公開範囲では一致なし"));
-    if (rows.length > 10) section.append(element("p", "上位10件を表示しています。"));
     results.append(section);
   }
   status.textContent = count.toLocaleString("ja-JP") + "件見つかりました。";

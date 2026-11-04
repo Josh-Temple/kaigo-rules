@@ -12,10 +12,13 @@ const pageLabel = document.querySelector("#qa-page");
 const prev = document.querySelector("#qa-prev");
 const next = document.querySelector("#qa-next");
 const localDetails = document.querySelector('meta[name="kaigo-qa-local-details"]')?.content === "true";
-const params = new URLSearchParams(location.search);
-let current = { q: params.get("q") || "", service: params.get("service") || "",
-  standard: params.get("standard") || "", page: params.get("page") || "1",
-  reader: params.get("reader") === "1" };
+function stateFromUrl() {
+  const params = new URLSearchParams(location.search);
+  return { q: params.get("q") || "", service: params.get("service") || "",
+    standard: params.get("standard") || "", page: params.get("page") || "1",
+    reader: params.get("reader") === "1" };
+}
+let current = stateFromUrl();
 let entries = [];
 
 function element(tag, text) {
@@ -41,9 +44,12 @@ function writeUrl() {
   if (current.standard) nextParams.set("standard", current.standard);
   if (current.reader) nextParams.set("reader", "1");
   if (current.page > 1) nextParams.set("page", String(current.page));
-  history.replaceState(null, "", location.pathname + (nextParams.size ? "?" + nextParams : ""));
+  const target = location.pathname + (nextParams.size ? "?" + nextParams : "");
+  if (target !== location.pathname + location.search) history.pushState(null, "", target);
 }
 function render() {
+  document.querySelector("h1").textContent = current.reader
+    ? "通所介護の関連Q&Aを探す" : "国Q&Aを探す";
   const found = searchQaEntries(entries, current);
   current.page = found.page;
   status.textContent = found.total.toLocaleString("ja-JP") + "件見つかりました。";
@@ -81,9 +87,16 @@ form.addEventListener("submit", (event) => {
 });
 prev.addEventListener("click", () => { current.page -= 1; render(); writeUrl(); });
 next.addEventListener("click", () => { current.page += 1; render(); writeUrl(); });
+window.addEventListener("popstate", () => {
+  // Restore the URL's original filters and page on browser Back/Forward.
+  current = stateFromUrl();
+  query.value = current.q;
+  retainUnknown(service, current.service);
+  retainUnknown(standard, current.standard);
+  if (entries.length) render();
+});
 
 try {
-  if (current.reader) document.querySelector("h1").textContent = "通所介護の関連Q&Aを探す";
   const [data, optionsResponse] = await Promise.all([loadJson("./global.json"), fetch("./qa-options.json")]);
   if (!optionsResponse.ok) throw new Error("検索データを読み込めませんでした。");
   const options = await optionsResponse.json();
