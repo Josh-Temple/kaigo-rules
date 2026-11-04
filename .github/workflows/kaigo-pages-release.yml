@@ -113,6 +113,10 @@ jobs:
           CANDIDATE: ${{ steps.candidate.outputs.site }}
         run: |
           python scripts/prepare_github_pages_public_candidate.py "$CANDIDATE"
+      - name: Finalize static package markers before exact byte approval
+        env:
+          CANDIDATE: ${{ steps.candidate.outputs.site }}
+        run: touch "$CANDIDATE/.nojekyll"
       - name: Verify final public bytes were separately accepted
         env:
           SOURCE_SHA: ${{ github.sha }}
