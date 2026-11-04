@@ -28,6 +28,7 @@ TEXT_SUFFIXES = {".html", ".json", ".js", ".mjs", ".css", ".txt", ".svg", ".xml"
 FORBIDDEN_DIRS = {".git", ".github", ".next", "node_modules", "private",
                   "handbook-preview", "__pycache__"}
 BETA_LABEL = "Kaigo Rules 試験公開版"
+PUBLIC_LABEL = "介護制度資料の参考閲覧版"
 PRIVATE_LABEL = "静的移行の検証版（一般公開していません）"
 
 
@@ -166,7 +167,7 @@ def _scope(root, approval, errors):
 def inspect(root: Path, *, source_sha: str, approval=None, mode="beta"):
     if not SHA.fullmatch(source_sha):
         raise ValueError("Expected exact 40-character source SHA")
-    if mode not in {"beta", "private"}:
+    if mode not in {"beta", "private", "public"}:
         raise ValueError("Invalid mode")
     if not root.is_dir() or root.is_symlink():
         raise ValueError("Missing or symlinked candidate")
@@ -219,20 +220,24 @@ def inspect(root: Path, *, source_sha: str, approval=None, mode="beta"):
         except UnicodeDecodeError:
             errors.append("INVALID_UTF8_TEXT")
             continue
-        if PRIVATE_LABEL in content and mode == "beta":
-            errors.append("PRIVATE_PREVIEW_LABEL_IN_BETA")
+        if PRIVATE_LABEL in content and mode in {"beta", "public"}:
+            errors.append("PRIVATE_PREVIEW_LABEL_IN_DISTRIBUTION")
         if "handbook-preview" in content:
             errors.append("PRIVATE_PREVIEW_ROUTE_REFERENCE")
         if p.suffix.lower() == ".html":
             html_count += 1
             if re.search(r'<meta\s+name=["\']robots["\']\s+content=["\'][^"\']*noindex', content, re.I):
                 noindex_count += 1
-            else:
+            elif mode != "public":
                 errors.append("HTML_NOINDEX_MISSING")
+            if mode == "public" and "noindex" in content.lower():
+                errors.append("PUBLIC_HTML_NOINDEX_REMAINING")
             if BETA_LABEL in content:
                 beta_count += 1
             elif mode == "beta":
                 errors.append("BETA_BANNER_MISSING")
+            if mode == "public" and BETA_LABEL in content:
+                errors.append("BETA_LABEL_IN_PUBLIC_RELEASE")
         if "kaigo-rules.vercel.app" in content:
             legacy[p.suffix.lower()] += content.count("kaigo-rules.vercel.app")
     record_count = {}
@@ -277,7 +282,7 @@ def main():
     parser.add_argument("site", type=Path)
     parser.add_argument("--source-sha", required=True)
     parser.add_argument("--approval", type=Path, help="Private, independently reviewed exact-byte approval JSON")
-    parser.add_argument("--mode", choices=["private", "beta"], default="beta")
+    parser.add_argument("--mode", choices=["private", "beta", "public"], default="beta")
     parser.add_argument("--hash-inventory", type=Path,
                         help="Optional PRIVATE local evidence destination outside distribution")
     args = parser.parse_args()
