@@ -133,6 +133,8 @@ def build(manifest_path: Path, legal_path: Path, qa_path: Path, qa_meta_path: Pa
                 fail("Q&A service or official workbook mismatch")
             if not isinstance(row.get("issued_source"), str) or not row["issued_source"].strip():
                 fail("Q&A original issue reference absent")
+            if not isinstance(row.get("question"), str) or not row["question"].strip() or not isinstance(row.get("answer"), str) or not row["answer"].strip():
+                fail("Q&A question or answer absent")
             title = row.get("question")
             content = "問：" + str(row.get("question", "")) + "\n\n答：" + str(row.get("answer", ""))
         if not isinstance(content, str) or not content.strip() or not isinstance(title, str) or not title.strip():
