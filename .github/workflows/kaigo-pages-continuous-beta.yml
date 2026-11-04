@@ -1,6 +1,8 @@
 name: Kaigo Rules automatic noindex beta updates
 # Pull requests only validate. After merge, an explicit beta-mode file
 # permits publishing a visibly labeled, noindex beta from that main commit.
+# A separate owner-controlled Actions variable KAIGO_PAGES_BETA_APPROVED=true
+# is also required; the file alone must not enable publishing on unprotected main.
 on:
   pull_request:
     paths:
@@ -55,12 +57,16 @@ jobs:
       - name: Validate beta warnings, link handling and source compilation
         run: |
           set -euo pipefail
-          python -m unittest tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py
+          python -m unittest tests/test_github_pages_actions_safety.py tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py
           python -m py_compile scripts/build_github_pages_integrated_pilot.py scripts/prepare_github_pages_beta.py scripts/audit_github_pages_migration_readiness.py
 
   preflight:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    # Job-level guard: when the owner has not enabled the repository variable,
+    # no runner is allocated for routine main changes. Mode file is checked
+    # independently inside this job (two explicit opt-ins).
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.KAIGO_PAGES_BETA_APPROVED == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     outputs:
       enabled: ${{ steps.mode.outputs.enabled }}
     steps:
@@ -102,7 +108,7 @@ jobs:
       - name: Verify source and beta disclaimer tests
         run: |
           set -euo pipefail
-          python -m unittest tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py
+          python -m unittest tests/test_github_pages_actions_safety.py tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py
       - name: Verify original application build
         run: |
           set -euo pipefail
@@ -184,6 +190,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
+    timeout-minutes: 10
     steps:
       - name: Deploy generated beta
         uses: actions/deploy-pages@v4

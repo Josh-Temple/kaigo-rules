@@ -62,7 +62,8 @@ function updateUrl() {
   for (const [name, value] of [["service", service.value], ["category", category.value],
     ["document", documentSelect.value], ["q", q.value.trim()]]) if (value) params.set(name, value);
   if (page > 1) params.set("page", String(page));
-  history.replaceState(null, "", location.pathname + (params.size ? "?" + params : ""));
+  const target = location.pathname + (params.size ? "?" + params : "");
+  if (target !== location.pathname + location.search) history.pushState(null, "", target);
 }
 function render() {
   const matches = matched();
@@ -100,14 +101,19 @@ function render() {
 }
 function loadQuery() {
   const params = new URLSearchParams(location.search);
-  for (const [control, name] of [[service,"service"],[category,"category"],
-    [documentSelect,"document"],[q,"q"]]) {
+  // The document choices depend on category: rebuild them before restoring
+  // the document parameter, including during browser Back/Forward.
+  for (const [control, name] of [[service, "service"], [category, "category"]]) {
     const value = params.get(name) || "";
-    if (control === q || [...control.options].some(x => x.value === value))
-      control.value = value;
+    control.value = [...control.options].some(x => x.value === value) ? value : "";
   }
+  refreshDocuments();
+  const documentId = params.get("document") || "";
+  documentSelect.value = [...documentSelect.options].some(x => x.value === documentId)
+    ? documentId : "";
+  q.value = params.get("q") || "";
   const requested = Number(params.get("page"));
-  page = Number.isInteger(requested) && requested > 0 ? requested : 1;
+  page = Number.isSafeInteger(requested) && requested > 0 ? requested : 1;
 }
 try {
   const response = await fetch("./records.json", {cache: "no-store"});
@@ -116,7 +122,7 @@ try {
   if (!Array.isArray(data.docs) || !Array.isArray(data.records) || !Array.isArray(data.services))
     throw new Error("法令データの形式を確認できませんでした。");
   docs = data.docs; records = data.records; services = data.services;
-  populate(); loadQuery(); refreshDocuments(); render();
+  populate(); loadQuery(); render();
   form.addEventListener("submit", event => { event.preventDefault(); page=1; render(); updateUrl(); });
   category.addEventListener("change", () => {documentSelect.value=""; refreshDocuments();});
   window.addEventListener("popstate", () => { loadQuery(); render(); });
