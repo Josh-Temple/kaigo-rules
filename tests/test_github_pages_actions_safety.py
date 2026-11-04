@@ -74,7 +74,7 @@ class PagesActionsSafetyTests(unittest.TestCase):
         feasibility = workflow("github-pages-feasibility.yml")
         self.assertIn("tests/test_github_pages_scope_gate.py", beta)
         self.assertIn("tests/test_github_pages_scope_gate.py", feasibility)
-        self.assertRegex(feasibility, r"(?m)^  measure:\\n(?:.*\\n){0,6}    if: github.event_name == 'workflow_dispatch'")
+        self.assertRegex(feasibility, r"(?m)^  measure:\n(?:.*\n){0,6}    if: github.event_name == 'workflow_dispatch'")
 
     def test_formal_release_keeps_independent_approval(self):
         text = workflow("kaigo-pages-release.yml")
