@@ -189,15 +189,12 @@ class SignedScopeBoundary(unittest.TestCase):
             self.preflight()
         self.assertFalse(self.output.exists())
 
-    def test_qa_meta_unreviewed_rejected_by_private_generator(self):
+    def test_qa_meta_unreviewed_rejected_before_generation(self):
         self.meta["review_status"] = "INGESTED_UNREVIEWED"
         self.write_inputs()
         self.sign()
-        self.preflight()  # signature only establishes provenance, not currentness
-        with self.assertRaisesRegex(RuntimeError, "currentness unreviewed"):
-            scoped.build(self.inputs["approvals"], self.inputs["legal"], self.inputs["qa"],
-                         self.inputs["qa_meta"], self.output, target_month=self.month,
-                         target_service=self.legal_id, target_qa_service=self.qa_code)
+        with self.assertRaisesRegex(RuntimeError, "unreviewed Q&A"):
+            self.preflight()
         self.assertFalse(self.output.exists())
 
     def test_invalid_json_denied(self):
