@@ -71,7 +71,17 @@ def read(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def build(manifest_path: Path, legal_path: Path, qa_path: Path, qa_meta_path: Path, output: Path) -> dict:
+def build(manifest_path: Path, legal_path: Path, qa_path: Path, qa_meta_path: Path,
+          output: Path, *, target_month: str | None = None,
+          target_service: str | None = None) -> dict:
+    # The private synthetic fixture builder remains usable without a period.
+    # Any distribution-facing caller MUST provide both selectors.
+    if target_month is not None and (not isinstance(target_month, str) or not MONTH.fullmatch(target_month)):
+        fail("Invalid target month")
+    if target_service is not None and (not isinstance(target_service, str) or not ID.fullmatch(target_service)):
+        fail("Invalid target service")
+    if (target_month is None) != (target_service is None):
+        fail("Target month and service must be specified together")
     manifest, legal, qa, qa_meta = [read(p) for p in (manifest_path, legal_path, qa_path, qa_meta_path)]
     if not isinstance(manifest, dict) or manifest.get("schema") != SCHEMA or manifest.get("purpose") != "PRIVATE_ACCEPTANCE_ONLY":
         fail("Invalid or unapproved manifest schema")
@@ -116,6 +126,13 @@ def build(manifest_path: Path, legal_path: Path, qa_path: Path, qa_meta_path: Pa
             fail("Missing or changed source row")
         if row.get("period_start") != start or row.get("period_end") != end:
             fail("Source and approval period mismatch or source period unknown")
+        if target_month is not None and not (start <= target_month <= end):
+            fail("Approval does not cover target month")
+        if target_service is not None:
+            if kind == "legal" and target_service not in entry.get("service_ids", []):
+                fail("Approval does not cover target legal service")
+            if kind == "qa" and entry.get("service_code") != target_service:
+                fail("Approval does not cover target Q&A service")
         url = source_url(entry.get("source_url"))
         if kind == "legal":
             if row.get("state") != "REVIEWED_CURRENT" or row.get("document_id") not in docs:
