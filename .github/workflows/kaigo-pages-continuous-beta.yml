@@ -65,7 +65,7 @@ jobs:
     # Job-level guard: when the owner has not enabled the repository variable,
     # no runner is allocated for routine main changes. Mode file is checked
     # independently inside this job (two explicit opt-ins).
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.KAIGO_PAGES_BETA_APPROVED == 'true' && vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && vars.KAIGO_PAGES_BETA_APPROVED == 'true' && vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 3
     outputs:
@@ -97,7 +97,7 @@ jobs:
   package:
     name: Independently validate and package merge-eligible beta
     needs: preflight
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.preflight.outputs.enabled == 'true' && vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && needs.preflight.outputs.enabled == 'true' && vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -128,19 +128,36 @@ jobs:
               or not m['approvals']):
               raise SystemExit('HOLD: missing independently reviewed record IDs')
           PY
-      - name: Generate bounded scope only, never the legacy all-record builder
+      - name: Signed, scope-bound preflight and generation (B; no fallback)
         env:
           SOURCE_SHA: ${{ github.sha }}
+          TARGET_MONTH: ${{ vars.KAIGO_SCOPE_TARGET_MONTH }}
+          SERVICE_ID: ${{ vars.KAIGO_SCOPE_SERVICE_ID }}
+          QA_SERVICE_CODE: ${{ vars.KAIGO_SCOPE_QA_SERVICE_CODE }}
+          TRUSTED_KEY_SHA256: ${{ secrets.KAIGO_REVIEWER_SIGNING_KEY_SHA256 }}
         shell: bash
         run: |
           set -euo pipefail
-          # The private legal-source input must be provisioned by a separate
-          # trusted workflow in RUNNER_TEMP. There is intentionally no fallback.
-          test -s "$RUNNER_TEMP/kaigo-verified-legal-records.json"
-          python scripts/build_github_pages_reviewed_scope.py \
-            --approvals .github/pages-beta-approved-scope.json \
-            --legal "$RUNNER_TEMP/kaigo-verified-legal-records.json" \
-            --qa data/qa-corpus.json --qa-meta data/qa-corpus-meta.json \
+          test -n "$TARGET_MONTH" && test -n "$SERVICE_ID" && test -n "$QA_SERVICE_CODE"
+          test -n "$TRUSTED_KEY_SHA256"
+          for name in kaigo-verified-legal-records.json kaigo-independent-record-receipt.json kaigo-independent-record-signature.bin kaigo-reviewer-trusted.pub; do
+            test -s "$RUNNER_TEMP/$name"
+          done
+          args=(
+            --source-sha "$SOURCE_SHA"
+            --target-month "$TARGET_MONTH"
+            --service-id "$SERVICE_ID"
+            --qa-service-code "$QA_SERVICE_CODE"
+            --approvals .github/pages-beta-approved-scope.json
+            --legal "$RUNNER_TEMP/kaigo-verified-legal-records.json"
+            --qa data/qa-corpus.json --qa-meta data/qa-corpus-meta.json
+            --receipt "$RUNNER_TEMP/kaigo-independent-record-receipt.json"
+            --signature "$RUNNER_TEMP/kaigo-independent-record-signature.bin"
+            --trusted-key "$RUNNER_TEMP/kaigo-reviewer-trusted.pub"
+            --trusted-key-sha256 "$TRUSTED_KEY_SHA256"
+          )
+          python scripts/build_github_pages_scoped_candidate.py "${args[@]}" --preflight-only
+          python scripts/build_github_pages_scoped_candidate.py "${args[@]}" \
             --private-output "$RUNNER_TEMP/kaigo-scoped-beta"
       - name: Final marker and independent final-byte check (fails private-only builder)
         id: site
@@ -161,17 +178,17 @@ jobs:
           # deliberately never reaches this output pending another review Wave.
           echo "path=$RUNNER_TEMP/kaigo-scoped-beta" >> "$GITHUB_OUTPUT"
       - uses: actions/configure-pages@v5
-        if: github.event_name != 'pull_request'
+        if: github.event_name == 'workflow_dispatch'
       - name: Upload approved public-beta artifact
         uses: actions/upload-pages-artifact@v4
-        if: github.event_name != 'pull_request'
+        if: github.event_name == 'workflow_dispatch'
         with:
           path: ${{ steps.site.outputs.path }}
 
   deploy:
     name: Deploy visibly labeled noindex beta
     needs: [preflight, package]
-    if: github.event_name != 'pull_request' && needs.preflight.outputs.enabled == 'true' && vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'
+    if: github.event_name == 'workflow_dispatch' && needs.preflight.outputs.enabled == 'true' && vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'
     runs-on: ubuntu-latest
     permissions:
       pages: write
