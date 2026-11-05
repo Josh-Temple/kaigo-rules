@@ -73,15 +73,18 @@ def read(path: Path):
 
 def build(manifest_path: Path, legal_path: Path, qa_path: Path, qa_meta_path: Path,
           output: Path, *, target_month: str | None = None,
-          target_service: str | None = None) -> dict:
+          target_service: str | None = None,
+          target_qa_service: str | None = None) -> dict:
     # The private synthetic fixture builder remains usable without a period.
     # Any distribution-facing caller MUST provide both selectors.
     if target_month is not None and (not isinstance(target_month, str) or not MONTH.fullmatch(target_month)):
         fail("Invalid target month")
     if target_service is not None and (not isinstance(target_service, str) or not ID.fullmatch(target_service)):
         fail("Invalid target service")
-    if (target_month is None) != (target_service is None):
-        fail("Target month and service must be specified together")
+    if target_qa_service is not None and (not isinstance(target_qa_service, str) or not ID.fullmatch(target_qa_service)):
+        fail("Invalid target Q&A service")
+    if (target_month is None) != (target_service is None) or (target_month is None) != (target_qa_service is None):
+        fail("Target month and both service IDs must be specified together")
     manifest, legal, qa, qa_meta = [read(p) for p in (manifest_path, legal_path, qa_path, qa_meta_path)]
     if not isinstance(manifest, dict) or manifest.get("schema") != SCHEMA or manifest.get("purpose") != "PRIVATE_ACCEPTANCE_ONLY":
         fail("Invalid or unapproved manifest schema")
@@ -131,7 +134,7 @@ def build(manifest_path: Path, legal_path: Path, qa_path: Path, qa_meta_path: Pa
         if target_service is not None:
             if kind == "legal" and target_service not in entry.get("service_ids", []):
                 fail("Approval does not cover target legal service")
-            if kind == "qa" and entry.get("service_code") != target_service:
+            if kind == "qa" and entry.get("service_code") != target_qa_service:
                 fail("Approval does not cover target Q&A service")
         url = source_url(entry.get("source_url"))
         if kind == "legal":
