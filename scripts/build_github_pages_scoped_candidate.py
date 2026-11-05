@@ -48,7 +48,7 @@ def check_month(value: str) -> str:
 
 
 def approve_preflight(*, source_sha: str, target_month: str,
-                      service_id: str, inputs: dict[str, Path],
+                      service_id: str, qa_service_code: str, inputs: dict[str, Path],
                       receipt_file: Path, signature_file: Path,
                       trusted_key_file: Path, trusted_key_sha256: str) -> dict:
     """Verify the out-of-repository trust anchor and exact records before build.
@@ -60,7 +60,9 @@ def approve_preflight(*, source_sha: str, target_month: str,
         reject("invalid source commit")
     check_month(target_month)
     if not isinstance(service_id, str) or not re.fullmatch(r"[a-z0-9-]{2,80}", service_id):
-        reject("invalid service identifier")
+        reject("invalid legal service identifier")
+    if not isinstance(qa_service_code, str) or not re.fullmatch(r"[A-Za-z0-9_-]{2,40}", qa_service_code):
+        reject("invalid Q&A service code")
     if not isinstance(trusted_key_sha256, str) or not HASH.fullmatch(trusted_key_sha256):
         reject("independently pinned key fingerprint absent")
     if set(inputs) != set(INPUTS):
@@ -94,7 +96,7 @@ def approve_preflight(*, source_sha: str, target_month: str,
         if entry["kind"] == "legal":
             if service_id not in entry.get("service_ids", []):
                 reject("legal service mismatch")
-        elif entry.get("service_code") != service_id:
+        elif entry.get("service_code") != qa_service_code:
             reject("Q&A service mismatch")
         if not isinstance(entry.get("row_sha256"), str) or not HASH.fullmatch(entry["row_sha256"]):
             reject("source row hash missing")
@@ -123,6 +125,7 @@ def approve_preflight(*, source_sha: str, target_month: str,
             or receipt.get("source_sha") != source_sha
             or receipt.get("target_month") != target_month
             or receipt.get("service_id") != service_id
+            or receipt.get("qa_service_code") != qa_service_code
             or receipt.get("source_sha256") != observed
             or receipt.get("approved_ids_sha256") != sha256(json.dumps(
                 sorted(ids), ensure_ascii=False, separators=(",", ":")).encode("utf-8"))):
@@ -162,7 +165,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--source-sha", required=True)
     p.add_argument("--target-month", required=True)
-    p.add_argument("--service-id", required=True)
+    p.add_argument("--service-id", required=True, help="Legal service slug")
+    p.add_argument("--qa-service-code", required=True, help="Official Q&A classification code")
     p.add_argument("--approvals", required=True, type=Path)
     p.add_argument("--legal", required=True, type=Path)
     p.add_argument("--qa", required=True, type=Path)
@@ -188,7 +192,7 @@ def main():
               "qa": args.qa, "qa_meta": args.qa_meta}
     report = approve_preflight(
         source_sha=args.source_sha, target_month=args.target_month,
-        service_id=args.service_id, inputs=inputs,
+        service_id=args.service_id, qa_service_code=args.qa_service_code, inputs=inputs,
         receipt_file=args.receipt, signature_file=args.signature,
         trusted_key_file=args.trusted_key,
         trusted_key_sha256=args.trusted_key_sha256)
@@ -201,7 +205,8 @@ def main():
         result = scoped.build(args.approvals, args.legal, args.qa,
                               args.qa_meta, args.private_output,
                               target_month=args.target_month,
-                              target_service=args.service_id)
+                              target_service=args.service_id,
+                              target_qa_service=args.qa_service_code)
         report.update({"candidate": "PRIVATE_SCOPE_CANDIDATE_ONLY",
                        "files": result["files"], "html": result["html"],
                        "bytes": result["bytes"], "deploy_approved": False})
