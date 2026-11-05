@@ -15,9 +15,14 @@ from collections import Counter
 from pathlib import Path
 from urllib.parse import unquote
 
-from scripts.audit_github_pages_scope_gate import (
-    _References, _check_local_reference, HASH, SENSITIVE, INTERNAL,
-)
+try:
+    from scripts.audit_github_pages_scope_gate import (
+        _References, _check_local_reference, HASH, SENSITIVE, INTERNAL,
+    )
+except ModuleNotFoundError:  # executable as python scripts/audit_...py
+    from audit_github_pages_scope_gate import (
+        _References, _check_local_reference, HASH, SENSITIVE, INTERNAL,
+    )
 
 SHA = re.compile(r"^[0-9a-f]{40}$")
 QA_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,120}$")
