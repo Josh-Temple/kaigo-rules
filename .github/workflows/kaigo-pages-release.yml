@@ -78,17 +78,38 @@ jobs:
               or not isinstance(m.get('approvals'),list) or not m['approvals']):
               raise SystemExit('HOLD: unsupported approval scope')
           PY
-      - name: Build only the reviewed-ID scope into a new runner-temporary tree
+      - name: Signed ID-scope preflight, then B's private scoped generator
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          TARGET_MONTH: ${{ vars.KAIGO_SCOPE_TARGET_MONTH }}
+          SERVICE_ID: ${{ vars.KAIGO_SCOPE_SERVICE_ID }}
+          QA_SERVICE_CODE: ${{ vars.KAIGO_SCOPE_QA_SERVICE_CODE }}
+          TRUSTED_KEY_SHA256: ${{ secrets.KAIGO_REVIEWER_SIGNING_KEY_SHA256 }}
         shell: bash
         run: |
           set -euo pipefail
-          # No private corpus is checked in or pulled from Actions artifacts.
-          # A separately trusted, prechecked source must be provisioned first.
-          test -s "$RUNNER_TEMP/kaigo-verified-legal-records.json"
-          python scripts/build_github_pages_reviewed_scope.py \
-            --approvals release-acceptance/docs/pages-reviewed-id-approval.json \
-            --legal "$RUNNER_TEMP/kaigo-verified-legal-records.json" \
-            --qa data/qa-corpus.json --qa-meta data/qa-corpus-meta.json \
+          test -n "$TARGET_MONTH" && test -n "$SERVICE_ID" && test -n "$QA_SERVICE_CODE"
+          test -n "$TRUSTED_KEY_SHA256"
+          # These independently provided inputs are intentionally not generated
+          # from the public repository or downloaded from an Actions artifact.
+          for name in kaigo-verified-legal-records.json kaigo-independent-record-receipt.json kaigo-independent-record-signature.bin kaigo-reviewer-trusted.pub; do
+            test -s "$RUNNER_TEMP/$name"
+          done
+          args=(
+            --source-sha "$SOURCE_SHA"
+            --target-month "$TARGET_MONTH"
+            --service-id "$SERVICE_ID"
+            --qa-service-code "$QA_SERVICE_CODE"
+            --approvals release-acceptance/docs/pages-reviewed-id-approval.json
+            --legal "$RUNNER_TEMP/kaigo-verified-legal-records.json"
+            --qa data/qa-corpus.json --qa-meta data/qa-corpus-meta.json
+            --receipt "$RUNNER_TEMP/kaigo-independent-record-receipt.json"
+            --signature "$RUNNER_TEMP/kaigo-independent-record-signature.bin"
+            --trusted-key "$RUNNER_TEMP/kaigo-reviewer-trusted.pub"
+            --trusted-key-sha256 "$TRUSTED_KEY_SHA256"
+          )
+          python scripts/build_github_pages_scoped_candidate.py "${args[@]}" --preflight-only
+          python scripts/build_github_pages_scoped_candidate.py "${args[@]}" \
             --private-output "$RUNNER_TEMP/kaigo-reviewed-public"
       - name: Audit bounded PRIVATE candidate (not a release verdict)
         env:
