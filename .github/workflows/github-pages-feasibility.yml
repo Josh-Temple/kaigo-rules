@@ -12,6 +12,8 @@ on:
       - "tests/test_github_pages_migration_readiness.py"
       - "scripts/audit_github_pages_scope_gate.py"
       - "tests/test_github_pages_scope_gate.py"
+      - "scripts/audit_github_pages_reviewed_candidate.py"
+      - "tests/test_github_pages_reviewed_candidate_audit.py"
       - "tests/test_github_pages_release_gate.py"
       - "experiments/github-pages-qa/**"
       - "experiments/github-pages-db/**"
@@ -123,6 +125,7 @@ jobs:
             tests/test_qa_search_snapshot.py \
             tests/test_github_pages_migration_readiness.py \
             tests/test_github_pages_scope_gate.py \
+            tests/test_github_pages_reviewed_candidate_audit.py \
             tests/test_github_pages_release_gate.py \
             tests/test_github_pages_legislation_pilot.py \
             tests/test_github_pages_public_candidate.py \
