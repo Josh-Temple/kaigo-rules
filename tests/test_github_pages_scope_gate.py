@@ -129,7 +129,8 @@ class ScopeGateSafetyTests(unittest.TestCase):
         self._write("index.html", "<html><body>Unlabeled site</body></html>")
         self.refresh_hashes()
         self.assert_blocked("HTML_NOINDEX_MISSING")
-        self.assertIn("BETA_BANNER_MISSING", self.run_check()["error_codes"])
+        beta_result, _ = audit.inspect(self.root, source_sha=SHA, approval=self.approval, mode="beta")
+        self.assertIn("BETA_BANNER_MISSING", beta_result["error_codes"])
 
     def test_secret_is_detected_without_leaking_value(self):
         self._write("bundle.js", 'const token="ghp_' + "A" * 36 + '";')
