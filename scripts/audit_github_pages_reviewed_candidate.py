@@ -77,7 +77,7 @@ def _paths_from_scope(scope: object, errors: list[str]):
                       "evidence_reference", "period_start", "period_end"):
             if not isinstance(item.get(field), str) or not item[field]:
                 errors.append("MISSING_SCOPE_FIELD")
-        if not HASH.fullmatch(item.get("row_sha256", "")):
+        if not isinstance(item.get("row_sha256"), str) or not HASH.fullmatch(item["row_sha256"]):
             errors.append("INVALID_SOURCE_ROW_HASH")
         if kind == "qa":
             path = "qa/" + record_id + "/index.html"
@@ -99,6 +99,9 @@ def inspect(root: Path, *, source_sha: str, scope: object,
     root = root.resolve(strict=True)
     errors = []
     expected, approved_pairs = _paths_from_scope(scope, errors)
+    if mode in {"beta", "public"} and (
+            not isinstance(scope, dict) or scope.get("source_sha") != source_sha):
+        errors.append("REVIEWED_SCOPE_SOURCE_SHA_NOT_VERIFIED")
     entries = list(root.rglob("*"))
     if any(p.is_symlink() for p in entries):
         errors.append("SYMLINK_IN_DISTRIBUTION")
