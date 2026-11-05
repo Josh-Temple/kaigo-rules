@@ -13,7 +13,9 @@ import hashlib
 import json
 import re
 from collections import Counter
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 SHA = re.compile(r"^[0-9a-f]{40}$")
 HASH = re.compile(r"^[0-9a-f]{64}$")
@@ -23,7 +25,11 @@ SENSITIVE = re.compile(
     rb"sk-proj-[A-Za-z0-9_-]{16,}|AKIA[0-9A-Z]{16}|"
     rb"xox[baprs]-[A-Za-z0-9-]{15,}"
 )
-INTERNAL = (b"INGESTED_UNREVIEWED", b"source_file", b"BEGIN PRIVATE KEY")
+INTERNAL = (
+    b"INGESTED_UNREVIEWED", b"NOT_REVIEWED", b"IMPORTED_NEEDS_HUMAN_CHECK",
+    b"source_file", b"BEGIN PRIVATE KEY", b'"row_sha256"',
+    b'"publish_approved"', b'"approval_reference"',
+)
 TEXT_SUFFIXES = {".html", ".json", ".js", ".mjs", ".css", ".txt", ".svg", ".xml"}
 FORBIDDEN_DIRS = {".git", ".github", ".next", "node_modules", "private",
                   "handbook-preview", "__pycache__"}
@@ -177,7 +183,53 @@ def _scope(root, approval, errors, differences):
             "search_rows": sum(len(v) for v in search.values() if isinstance(v, list))}
 
 
-def inspect(root: Path, *, source_sha: str, approval=None, mode="beta"):
+
+class _References(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.references = []
+
+    def handle_starttag(self, tag, attrs):
+        attributes = dict(attrs)
+        for field in ("href", "src", "action"):
+            if attributes.get(field):
+                self.references.append(attributes[field])
+        if attributes.get("srcset"):
+            self.references.append("UNSUPPORTED_SRCSET")
+
+
+def _check_local_reference(root: Path, page: Path, value: str, errors):
+    if value == "UNSUPPORTED_SRCSET":
+        errors.append("UNSUPPORTED_SRCSET")
+        return
+    if any(ord(c) < 32 or ord(c) == 127 for c in value) or "\\" in value:
+        errors.append("UNSAFE_LOCAL_URL")
+        return
+    parts = urlsplit(value)
+    if parts.scheme or parts.netloc:
+        if parts.scheme not in {"https", "mailto"} or (
+            parts.scheme == "https" and parts.hostname == "kaigo-rules.vercel.app"
+        ):
+            errors.append("UNSAFE_EXTERNAL_REFERENCE")
+        return
+    if not parts.path or parts.path.startswith("#"):
+        return
+    decoded = unquote(parts.path)
+    if (unquote(decoded) != decoded
+            or "\\" in decoded or decoded.startswith("//")
+            or any(ord(c) < 32 for c in decoded)):
+        errors.append("UNSAFE_LOCAL_URL")
+        return
+    candidate = (root / decoded.lstrip("/") if decoded.startswith("/")
+                 else page.parent / decoded).resolve()
+    if not candidate.is_relative_to(root) or (
+        not candidate.is_file() and not (candidate / "index.html").is_file()
+    ):
+        errors.append("MISSING_LOCAL_REFERENCE")
+
+
+def inspect(root: Path, *, source_sha: str, approval=None, mode="private",
+            trusted_approval_sha256=None, approval_byte_sha256=None):
     if not SHA.fullmatch(source_sha):
         raise ValueError("Expected exact 40-character source SHA")
     if mode not in {"beta", "private", "public"}:
@@ -197,6 +249,12 @@ def inspect(root: Path, *, source_sha: str, approval=None, mode="beta"):
         errors.append("FORBIDDEN_FILE_OR_DIRECTORY")
     if not (root / "index.html").is_file():
         errors.append("MISSING_INDEX")
+    if mode in {"beta", "public"}:
+        if (not isinstance(trusted_approval_sha256, str)
+                or not HASH.fullmatch(trusted_approval_sha256)
+                or not isinstance(approval_byte_sha256, str)
+                or approval_byte_sha256 != trusted_approval_sha256):
+            errors.append("INDEPENDENT_APPROVAL_BYTES_NOT_VERIFIED")
     bytes_total = sum(p.stat().st_size for p in paths)
     if bytes_total >= 1_000_000_000:
         errors.append("PAGES_SIZE_BUDGET")
@@ -238,6 +296,10 @@ def inspect(root: Path, *, source_sha: str, approval=None, mode="beta"):
         if "handbook-preview" in content:
             errors.append("PRIVATE_PREVIEW_ROUTE_REFERENCE")
         if p.suffix.lower() == ".html":
+            parser = _References()
+            parser.feed(content)
+            for ref in parser.references:
+                _check_local_reference(root, p, ref, errors)
             html_count += 1
             if re.search(r'<meta\s+name=["\']robots["\']\s+content=["\'][^"\']*noindex', content, re.I):
                 noindex_count += 1
@@ -264,6 +326,22 @@ def inspect(root: Path, *, source_sha: str, approval=None, mode="beta"):
                 or approval.get("source_sha") != source_sha
                 or approval.get("decision") != "D_ACCEPTED_SCOPED"):
             errors.append("INVALID_APPROVAL_STATE_OR_SHA")
+        if mode in {"beta", "public"}:
+            provenance = approval.get("provenance")
+            if (not isinstance(provenance, dict)
+                    or provenance.get("independent_reviewer_verified") is not True
+                    or provenance.get("source_sha") != source_sha
+                    or not all(isinstance(provenance.get(k), str)
+                               and len(provenance[k].strip()) >= 8
+                               for k in ("reviewer_id", "authority_evidence",
+                                         "independent_review_reference",
+                                         "immutable_receipt_reference"))):
+                errors.append("APPROVAL_PROVENANCE_NOT_VERIFIED")
+        approved_tree = approval.get("distribution_tree_sha256")
+        if mode in {"beta", "public"} and (
+                not isinstance(approved_tree, str)
+                or not HASH.fullmatch(approved_tree)):
+            errors.append("MISSING_APPROVED_DISTRIBUTION_TREE_HASH")
         expected_hashes = approval.get("file_sha256")
         if not isinstance(expected_hashes, dict) or not expected_hashes:
             errors.append("NO_APPROVED_FILE_HASHES")
@@ -276,9 +354,16 @@ def inspect(root: Path, *, source_sha: str, approval=None, mode="beta"):
     tree_hash = hashlib.sha256(
         "".join(path + "\0" + hashes[path] + "\n" for path in sorted(hashes)).encode()
     ).hexdigest()
+    if isinstance(approval, dict) and mode in {"beta", "public"}:
+        if approval.get("distribution_tree_sha256") != tree_hash:
+            errors.append("DISTRIBUTION_TREE_HASH_NOT_APPROVED")
     return {
         "status": "PASS_SCOPED_BYTES_ONLY" if not errors else "HOLD_NO_DEPLOY",
         "source_sha": source_sha, "mode": mode,
+        "independent_approval_digest_verified": bool(
+            mode in {"beta", "public"} and HASH.fullmatch(trusted_approval_sha256 or "")
+            and trusted_approval_sha256 == approval_byte_sha256),
+        "reviewer_authority_independently_proven": False,
         "file_count": len(paths), "html_count": html_count, "total_bytes": bytes_total,
         "noindex_html_count": noindex_count, "beta_banner_html_count": beta_count,
         "distribution_tree_sha256": tree_hash,
@@ -297,18 +382,26 @@ def main():
     parser.add_argument("site", type=Path)
     parser.add_argument("--source-sha", required=True)
     parser.add_argument("--approval", type=Path, help="Private, independently reviewed exact-byte approval JSON")
-    parser.add_argument("--mode", choices=["private", "beta", "public"], default="beta")
+    parser.add_argument("--mode", choices=["private", "beta", "public"], default="private")
+    parser.add_argument("--trusted-approval-sha256",
+                        help="Out-of-repository digest supplied by authorized independent reviewer")
     parser.add_argument("--hash-inventory", type=Path,
                         help="Optional PRIVATE local evidence destination outside distribution")
     args = parser.parse_args()
     root = args.site.resolve(strict=True)
     approval = None
+    approval_byte_sha256 = None
     if args.approval:
         auth = args.approval.resolve(strict=True)
         if auth == root or root in auth.parents:
             raise SystemExit("Approval must be outside the distribution directory")
-        approval = json.loads(auth.read_text(encoding="utf-8"))
-    report, hashes = inspect(root, source_sha=args.source_sha, approval=approval, mode=args.mode)
+        raw_approval = auth.read_bytes()
+        approval_byte_sha256 = hashlib.sha256(raw_approval).hexdigest()
+        approval = json.loads(raw_approval.decode("utf-8"))
+    report, hashes = inspect(
+        root, source_sha=args.source_sha, approval=approval, mode=args.mode,
+        trusted_approval_sha256=args.trusted_approval_sha256,
+        approval_byte_sha256=approval_byte_sha256)
     if args.hash_inventory:
         target = args.hash_inventory.resolve()
         if target == root or root in target.parents:

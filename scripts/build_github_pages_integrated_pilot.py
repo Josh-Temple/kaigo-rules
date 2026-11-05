@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import gzip
+import os
 import json
 import re
 import shutil
@@ -283,6 +284,10 @@ def build() -> dict:
 
 def build_with_details() -> dict:
     """Build a larger *private* partial site from the existing Next.js app."""
+    # Guard the function itself, not merely its CLI, so importing the module
+    # cannot bypass the public-runner prohibition.
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        raise RuntimeError("PRIVATE_FULL_BUILD_FORBIDDEN_IN_PUBLIC_ACTIONS")
     handbook_result = handbook.build()
     search_dir = None
     child = None
@@ -360,6 +365,12 @@ def build_with_details() -> dict:
 
 if __name__ == "__main__":
     if sys.argv[1:] not in ([], ["--with-details"]):
-        raise SystemExit("Use --with-details for the larger unpublished experiment")
+        raise SystemExit("Use --with-details for the larger PRIVATE unpublished experiment")
+    # The historical --with-details emits all unreviewed Q&A, legislation and
+    # handbook data. Refuse it in every GitHub Actions runner, including the
+    # existing beta/release workflow, BEFORE any expensive build is started.
+    # Private full audits must run in a separate non-public local environment.
+    if sys.argv[1:] == ["--with-details"] and os.environ.get("GITHUB_ACTIONS") == "true":
+        raise SystemExit("PRIVATE_FULL_BUILD_FORBIDDEN_IN_PUBLIC_ACTIONS")
     result = build_with_details() if sys.argv[1:] else build()
     print(json.dumps(result, ensure_ascii=False))
