@@ -28,10 +28,10 @@ class PagesActionsSafetyTests(unittest.TestCase):
     def test_beta_pr_cannot_package_or_deploy(self):
         text = workflow("kaigo-pages-continuous-beta.yml")
         self.assertRegex(text, r"(?m)^  verify:\n    name: PR safety unit tests")
-        self.assertRegex(text, r"(?m)^  package:\n(?:.*\n){0,5}    if: github.event_name != 'pull_request'")
-        self.assertRegex(text, r"(?m)^  deploy:\n(?:.*\n){0,5}    if: github.event_name != 'pull_request'")
+        self.assertRegex(text, r"(?m)^  package:\n(?:.*\n){0,5}    if: github.event_name == 'workflow_dispatch'")
+        self.assertRegex(text, r"(?m)^  deploy:\n(?:.*\n){0,5}    if: github.event_name == 'workflow_dispatch'")
         self.assertIn("KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY", text)
-        self.assertIn("build_github_pages_reviewed_scope.py", text)
+        self.assertIn("build_github_pages_scoped_candidate.py", text)
         self.assertIn("audit_github_pages_reviewed_candidate.py", text)
 
     def test_heavy_feasibility_is_manual_and_pr_still_checks_safety(self):
@@ -84,7 +84,7 @@ class PagesActionsSafetyTests(unittest.TestCase):
                 text = workflow(name)
                 self.assertNotIn("python scripts/build_github_pages_integrated_pilot.py --with-details", text)
                 self.assertNotIn("--with-details", text)
-                self.assertIn("build_github_pages_reviewed_scope.py", text)
+                self.assertIn("build_github_pages_scoped_candidate.py", text)
                 self.assertIn("audit_github_pages_reviewed_candidate.py", text)
                 self.assertIn("vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'", text)
                 self.assertLess(text.index("audit_github_pages_reviewed_candidate.py"),
