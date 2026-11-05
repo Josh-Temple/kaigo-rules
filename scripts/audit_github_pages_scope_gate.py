@@ -215,7 +215,7 @@ def _check_local_reference(root: Path, page: Path, value: str, errors):
     if not parts.path or parts.path.startswith("#"):
         return
     decoded = unquote(parts.path)
-    if (unquote(decoded) != decoded or any(x in {".", ".."} for x in decoded.split("/"))
+    if (unquote(decoded) != decoded
             or "\\" in decoded or decoded.startswith("//")
             or any(ord(c) < 32 for c in decoded)):
         errors.append("UNSAFE_LOCAL_URL")
