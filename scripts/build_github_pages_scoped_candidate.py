@@ -67,16 +67,31 @@ def approve_preflight(*, source_sha: str, target_month: str,
         reject("independently pinned key fingerprint absent")
     if set(inputs) != set(INPUTS):
         reject("incomplete source inputs")
-    manifest = None
+    decoded = {}
     observed = {}
     for name in INPUTS:
         raw = safe_file(inputs[name])
         observed[name] = sha256(raw)
-        if name == "approvals":
-            try:
-                manifest = json.loads(raw)
-            except (ValueError, UnicodeError):
-                reject("invalid approval JSON")
+        try:
+            decoded[name] = json.loads(raw)
+        except (ValueError, UnicodeError):
+            reject("invalid " + name + " JSON")
+    manifest = decoded["approvals"]
+    legal, qa, meta = decoded["legal"], decoded["qa"], decoded["qa_meta"]
+    if (not isinstance(legal, dict) or not isinstance(legal.get("documents"), list)
+            or not isinstance(legal.get("records"), list) or not isinstance(qa, list)
+            or not isinstance(meta, dict)):
+        reject("invalid source structure")
+    def unique_index(rows, label):
+        index = {}
+        for row in rows:
+            if not isinstance(row, dict) or not isinstance(row.get("id"), str) or not row["id"] or row["id"] in index:
+                reject("invalid or duplicate source identifier in " + label)
+            index[row["id"]] = row
+        return index
+    docs = unique_index(legal["documents"], "documents")
+    legal_rows = unique_index(legal["records"], "legal")
+    qa_rows = unique_index(qa, "qa")
     if (not isinstance(manifest, dict) or manifest.get("schema") != scoped.SCHEMA
             or manifest.get("purpose") != "PRIVATE_ACCEPTANCE_ONLY"):
         reject("invalid approval manifest")
@@ -98,8 +113,28 @@ def approve_preflight(*, source_sha: str, target_month: str,
                 reject("legal service mismatch")
         elif entry.get("service_code") != qa_service_code:
             reject("Q&A service mismatch")
-        if not isinstance(entry.get("row_sha256"), str) or not HASH.fullmatch(entry["row_sha256"]):
-            reject("source row hash missing")
+        row = (legal_rows if entry["kind"] == "legal" else qa_rows).get(entry["id"])
+        if row is None or not isinstance(entry.get("row_sha256"), str) or entry["row_sha256"] != scoped.digest(row):
+            reject("source row hash or ID mismatch")
+        if row.get("period_start") != entry.get("period_start") or row.get("period_end") != entry.get("period_end"):
+            reject("source row applicability period mismatch")
+        if entry["kind"] == "legal":
+            doc = docs.get(row.get("document_id"))
+            if (doc is None or entry.get("document_id") != row.get("document_id")
+                    or row.get("state") != "REVIEWED_CURRENT"
+                    or sorted(row.get("service_ids", [])) != sorted(entry.get("service_ids", []))):
+                reject("legal source, document or currentness mismatch")
+            if (scoped.source_url(row.get("url")) != entry.get("source_url")
+                    or not isinstance(doc.get("title"), str) or not doc["title"].strip()):
+                reject("missing legal document or official source")
+        else:
+            if (meta.get("review_status") != "REVIEWED_SCOPE_ONLY"
+                    or row.get("review_state") != "REVIEWED_CURRENT"
+                    or row.get("service_code") != entry.get("service_code")
+                    or not isinstance(row.get("issued_source"), str)
+                    or not row["issued_source"].strip()
+                    or scoped.source_url(meta.get("source_workbook")) != entry.get("source_url")):
+                reject("unreviewed Q&A or missing official issuance")
         ids.append((entry["kind"], entry["id"]))
     if len(ids) != len(set(ids)):
         reject("duplicate approved IDs")
