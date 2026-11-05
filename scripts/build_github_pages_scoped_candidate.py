@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 from datetime import date
@@ -106,7 +107,10 @@ def approve_preflight(*, source_sha: str, target_month: str,
                 or entry.get("publish_approved") is not True
                 or entry.get("state") != scoped.APPROVED):
             reject("unapproved or unknown record")
-        if not (entry.get("period_start", "") <= target_month <= entry.get("period_end", "")):
+        start, end = entry.get("period_start"), entry.get("period_end")
+        if (not isinstance(start, str) or not isinstance(end, str)
+                or not MONTH.fullmatch(start) or not MONTH.fullmatch(end)
+                or start > target_month or end < target_month or start > end):
             reject("approval period mismatch")
         if entry["kind"] == "legal":
             if service_id not in entry.get("service_ids", []):
@@ -120,9 +124,12 @@ def approve_preflight(*, source_sha: str, target_month: str,
             reject("source row applicability period mismatch")
         if entry["kind"] == "legal":
             doc = docs.get(row.get("document_id"))
+            services, signed_services = row.get("service_ids"), entry.get("service_ids")
             if (doc is None or entry.get("document_id") != row.get("document_id")
                     or row.get("state") != "REVIEWED_CURRENT"
-                    or sorted(row.get("service_ids", [])) != sorted(entry.get("service_ids", []))):
+                    or not isinstance(services, list) or not isinstance(signed_services, list)
+                    or not all(isinstance(s, str) for s in services + signed_services)
+                    or sorted(services) != sorted(signed_services)):
                 reject("legal source, document or currentness mismatch")
             if (scoped.source_url(row.get("url")) != entry.get("source_url")
                     or not isinstance(doc.get("title"), str) or not doc["title"].strip()):
@@ -214,6 +221,9 @@ def main():
                    help="New temporary directory for a candidate; omitted for preflight-only")
     p.add_argument("--preflight-only", action="store_true")
     args = p.parse_args()
+    if (os.environ.get("GITHUB_ACTIONS") == "true"
+            and os.environ.get("GITHUB_EVENT_NAME") != "workflow_dispatch"):
+        reject("publication candidate must not be built by PR or automatic push jobs")
     # Reject unknown checkout / branch bait; this is not a source-SHA assertion
     # that can be satisfied merely by passing a command-line value.
     try:
