@@ -149,6 +149,32 @@ class ScopeGateSafetyTests(unittest.TestCase):
         self.approval["decision"] = "CANDIDATE_SOURCE_MATCH"
         self.assert_blocked("INVALID_APPROVAL_STATE_OR_SHA")
 
+    def test_json_decision_alone_never_authorizes_beta_or_release(self):
+        result, _ = audit.inspect(self.root, source_sha=SHA,
+                                  approval=self.approval, mode="beta")
+        self.assertEqual(result["status"], "HOLD_NO_DEPLOY")
+        self.assertIn("INDEPENDENT_APPROVAL_BYTES_NOT_VERIFIED", result["error_codes"])
+        self.assertIn("APPROVAL_PROVENANCE_NOT_VERIFIED", result["error_codes"])
+        self.assertIn("MISSING_APPROVED_DISTRIBUTION_TREE_HASH", result["error_codes"])
+        self.assertFalse(result["reviewer_authority_independently_proven"])
+
+    def test_forged_digest_cannot_hide_missing_authority(self):
+        result, _ = audit.inspect(self.root, source_sha=SHA, approval=self.approval,
+                                  mode="beta", trusted_approval_sha256="0" * 64,
+                                  approval_byte_sha256="0" * 64)
+        self.assertIn("APPROVAL_PROVENANCE_NOT_VERIFIED", result["error_codes"])
+
+    def test_unsafe_encoded_html_link_is_rejected(self):
+        self._write("index.html", HTML.replace("</body>",
+                    '<a href="%252e%252e/private.json">unknown</a></body>'))
+        self.refresh_hashes()
+        self.assert_blocked("UNSAFE_LOCAL_URL")
+
+    def test_unreviewed_state_hidden_in_javascript_is_rejected(self):
+        self._write("search/app.js", 'window.status="INGESTED_UNREVIEWED";')
+        self.refresh_hashes()
+        self.assert_blocked("INTERNAL_SOURCE_MARKER")
+
     def test_symlink_is_rejected(self):
         (self.root / "linked").symlink_to(self.root / "index.html")
         self.assert_blocked("SYMLINK_IN_DISTRIBUTION")
