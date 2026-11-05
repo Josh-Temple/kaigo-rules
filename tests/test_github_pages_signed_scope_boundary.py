@@ -185,7 +185,7 @@ class SignedScopeBoundary(unittest.TestCase):
     def test_changed_source_rejected_even_with_genuine_old_signature(self):
         self.legal["records"][0]["text"] = "TAMPERED_ROW"
         self.write_inputs()
-        with self.assertRaisesRegex(RuntimeError, "exact source"):
+        with self.assertRaisesRegex(RuntimeError, "source row hash or ID mismatch"):
             self.preflight()
         self.assertFalse(self.output.exists())
 
@@ -199,7 +199,7 @@ class SignedScopeBoundary(unittest.TestCase):
 
     def test_invalid_json_denied(self):
         self.inputs["approvals"].write_text("{bad-json", encoding="utf-8")
-        with self.assertRaisesRegex(RuntimeError, "invalid approval JSON"):
+        with self.assertRaisesRegex(RuntimeError, "invalid approvals JSON"):
             self.preflight()
         self.assertFalse(self.output.exists())
 
