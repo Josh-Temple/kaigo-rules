@@ -65,7 +65,7 @@ jobs:
     # Job-level guard: when the owner has not enabled the repository variable,
     # no runner is allocated for routine main changes. Mode file is checked
     # independently inside this job (two explicit opt-ins).
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.KAIGO_PAGES_BETA_APPROVED == 'true'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.KAIGO_PAGES_BETA_APPROVED == 'true' && vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 3
     outputs:
@@ -97,7 +97,7 @@ jobs:
   package:
     name: Independently validate and package merge-eligible beta
     needs: preflight
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.preflight.outputs.enabled == 'true'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.preflight.outputs.enabled == 'true' && vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -105,85 +105,61 @@ jobs:
         with:
           ref: ${{ github.sha }}
           persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-          cache: npm
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Verify source and beta disclaimer tests
-        run: |
-          set -euo pipefail
-          python -m unittest tests/test_github_pages_actions_safety.py tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py
-      - name: Verify original application build
-        run: |
-          set -euo pipefail
-          npm ci
-          npm run build
-      - name: Build all generated handbook, Q&A and legislation pages
+      - name: Require authenticated ID-scope digest BEFORE any generation
         env:
-          KAIGO_RUN_STATIC_DETAILS: "1"
+          REVIEWED_SCOPE_DIGEST: ${{ secrets.KAIGO_BETA_REVIEWED_SCOPE_SHA256 }}
+        shell: bash
         run: |
           set -euo pipefail
-          python scripts/build_github_pages_integrated_pilot.py --with-details > "$RUNNER_TEMP/pages-beta-build.log"
-      - name: Audit the exact candidate against measured safe bounds
+          test -n "$REVIEWED_SCOPE_DIGEST"
+          test -s .github/pages-beta-approved-scope.json
+          echo "$REVIEWED_SCOPE_DIGEST" | grep -Eq '^[0-9a-f]{64}$'
+          test "$(sha256sum .github/pages-beta-approved-scope.json | cut -d' ' -f1)" = "$REVIEWED_SCOPE_DIGEST"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('.github/pages-beta-approved-scope.json').read_text(encoding='utf-8'))
+          if (m.get('schema')!='kaigo-reviewed-scope-v1'
+              or m.get('purpose')!='PRIVATE_ACCEPTANCE_ONLY'
+              or not isinstance(m.get('approvals'),list)
+              or not m['approvals']):
+              raise SystemExit('HOLD: missing independently reviewed record IDs')
+          PY
+      - name: Generate bounded scope only, never the legacy all-record builder
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # The private legal-source input must be provisioned by a separate
+          # trusted workflow in RUNNER_TEMP. There is intentionally no fallback.
+          test -s "$RUNNER_TEMP/kaigo-verified-legal-records.json"
+          python scripts/build_github_pages_reviewed_scope.py \
+            --approvals .github/pages-beta-approved-scope.json \
+            --legal "$RUNNER_TEMP/kaigo-verified-legal-records.json" \
+            --qa data/qa-corpus.json --qa-meta data/qa-corpus-meta.json \
+            --private-output "$RUNNER_TEMP/kaigo-scoped-beta"
+      - name: Final marker and independent final-byte check (fails private-only builder)
         id: site
         env:
           SOURCE_SHA: ${{ github.sha }}
+          TRUSTED_RECEIPT_SHA256: ${{ secrets.KAIGO_BETA_DISTRIBUTION_RECEIPT_SHA256 }}
+        shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
-          import json,os,subprocess
-          from pathlib import Path
-          from scripts.audit_github_pages_migration_readiness import inspect
-          summary=json.loads((Path(os.environ["RUNNER_TEMP"])/"pages-beta-build.log").read_text(encoding="utf-8").splitlines()[-1])
-          root=Path(summary["directory"]).resolve(strict=True)
-          if root.is_symlink() or not (root/"index.html").is_file():
-              raise RuntimeError("Unsafe output path")
-          if summary.get("handbook_services", 0) < 39 or summary.get("handbook_chapters", 0) < 585:
-              raise RuntimeError("Missing service handbook chapters")
-          if summary.get("qa_details",{}).get("detail_pages", 0) < 7392:
-              raise RuntimeError("Missing QA details")
-          if summary.get("legal_details",{}).get("detail_pages", 0) < 1552:
-              raise RuntimeError("Missing legal source details")
-          pre=inspect(root)
-          problems=pre["blockers"]
-          for item in ("missing_local_links","root_relative_links","unsafe_or_invalid_links"):
-              if problems[item]!=0:
-                  raise RuntimeError("Unsafe static route blocker: "+item)
-          if not 0 <= problems["production_fallback_links"] <= 2500:
-              raise RuntimeError("Unexpected legacy link regression")
-          if problems["javascript_references_to_production"] > 2:
-              raise RuntimeError("Unexpected production URL usage in JS")
-          if pre["total_bytes"] >= 1_000_000_000 or pre["html_count"] < 13000:
-              raise RuntimeError("Unexpected Pages size/content")
-          outcome=subprocess.run(["python","scripts/prepare_github_pages_beta.py",str(root)],
-              capture_output=True,text=True,check=True)
-          print("BETA_PREPARATION:",outcome.stdout.strip())
-          post=inspect(root)
-          for item in ("missing_local_links","root_relative_links","unsafe_or_invalid_links","private_preview_pages"):
-              if post["blockers"][item]!=0:
-                  raise RuntimeError("Final beta safety check failed: "+item)
-          if post["blockers"]["noindex_pages"] != post["html_count"]:
-              raise RuntimeError("Beta pages not consistently noindex")
-          from scripts.audit_github_pages_scope_gate import inspect as scope_inspect
-          approval=json.loads(Path('.github/pages-beta-approved-scope.json').read_text(encoding='utf-8'))
-          (root/".nojekyll").touch()  # exact uploaded bytes must be audited
-          scope_report,_=scope_inspect(root,source_sha=os.environ['SOURCE_SHA'],approval=approval,mode='beta')
-          if scope_report['status'] != 'PASS_SCOPED_BYTES_ONLY':
-              raise RuntimeError('Independent scope/byte gate HOLD: '+str(scope_report['error_codes']))
-          print('SCOPE_GATE:',json.dumps({k:scope_report[k] for k in ('source_sha','file_count','html_count','distribution_tree_sha256')},sort_keys=True))
-          with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as out:
-              out.write("path="+str(root)+"\n")
-          print("BETA_RELEASE_PRECHECK:",json.dumps({
-            "sha":os.environ["SOURCE_SHA"],
-            "html_count":post["html_count"],"total_bytes":post["total_bytes"],
-            "remaining_legacy_links":post["blockers"]["production_fallback_links"],
-            "noindex_pages":post["blockers"]["noindex_pages"],
-            "local_links":post["local_links_resolved"]
-          },ensure_ascii=False))
-          PY
+          test -s "$RUNNER_TEMP/kaigo-independent-beta-receipt.json"
+          touch "$RUNNER_TEMP/kaigo-scoped-beta/.nojekyll"
+          python scripts/audit_github_pages_reviewed_candidate.py \
+            "$RUNNER_TEMP/kaigo-scoped-beta" --source-sha "$SOURCE_SHA" \
+            --manifest .github/pages-beta-approved-scope.json \
+            --receipt "$RUNNER_TEMP/kaigo-independent-beta-receipt.json" \
+            --trusted-receipt-sha256 "$TRUSTED_RECEIPT_SHA256" --mode beta
+          # B's current builder is PRIVATE_ACCEPTANCE_ONLY, so the audit
+          # deliberately never reaches this output pending another review Wave.
+          echo "path=$RUNNER_TEMP/kaigo-scoped-beta" >> "$GITHUB_OUTPUT"
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'
       - name: Upload approved public-beta artifact
@@ -195,7 +171,7 @@ jobs:
   deploy:
     name: Deploy visibly labeled noindex beta
     needs: [preflight, package]
-    if: github.event_name != 'pull_request' && needs.preflight.outputs.enabled == 'true'
+    if: github.event_name != 'pull_request' && needs.preflight.outputs.enabled == 'true' && vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'
     runs-on: ubuntu-latest
     permissions:
       pages: write
