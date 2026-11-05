@@ -29,7 +29,8 @@ class FinalByteAuditTests(unittest.TestCase):
         self.site = self.base / "reviewed-output"
 
     def check(self, **kwargs):
-        return auditor.inspect(self.site, source_sha=SHA, scope=self.scope, **kwargs)[0]
+        scope = kwargs.pop("scope", self.scope)
+        return auditor.inspect(self.site, source_sha=SHA, scope=scope, **kwargs)[0]
 
     def assert_hold(self, code, **kwargs):
         result = self.check(**kwargs)
