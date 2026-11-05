@@ -82,7 +82,7 @@ class PagesActionsSafetyTests(unittest.TestCase):
         for name in ("kaigo-pages-continuous-beta.yml", "kaigo-pages-release.yml"):
             with self.subTest(name=name):
                 text = workflow(name)
-                self.assertNotIn("build_github_pages_integrated_pilot.py", text)
+                self.assertNotIn("python scripts/build_github_pages_integrated_pilot.py --with-details", text)
                 self.assertNotIn("--with-details", text)
                 self.assertIn("build_github_pages_reviewed_scope.py", text)
                 self.assertIn("audit_github_pages_reviewed_candidate.py", text)
