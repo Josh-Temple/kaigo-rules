@@ -284,6 +284,10 @@ def build() -> dict:
 
 def build_with_details() -> dict:
     """Build a larger *private* partial site from the existing Next.js app."""
+    # Guard the function itself, not merely its CLI, so importing the module
+    # cannot bypass the public-runner prohibition.
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        raise RuntimeError("PRIVATE_FULL_BUILD_FORBIDDEN_IN_PUBLIC_ACTIONS")
     handbook_result = handbook.build()
     search_dir = None
     child = None
