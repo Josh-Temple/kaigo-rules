@@ -22,7 +22,7 @@ concurrency:
 jobs:
   package:
     name: Independently gated static publication package
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -52,101 +52,95 @@ jobs:
           # A separate reviewed exact-byte approval must pre-exist the expensive build.
           test -s release-acceptance/docs/pages-distribution-approval.json
           test -s release-acceptance/docs/pages-public-distribution-approval.json
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-          cache: npm
+          test -s release-acceptance/docs/pages-reviewed-id-approval.json
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Run release-gate unit tests before the build
+      - name: Run small fail-closed regression tests (before generation)
         run: |
-          python -m unittest tests/test_github_pages_migration_readiness.py tests/test_github_pages_release_gate.py tests/test_github_pages_public_candidate.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_scope_gate.py
-      - name: Validate all existing legislation, publication and user-facing checks
-        run: |
-          npm ci
-          npm run build
-      - name: Rebuild the exact private static candidate without publishing it
+          set -euo pipefail
+          python -m unittest tests/test_github_pages_scope_gate.py tests/test_github_pages_reviewed_scope.py tests/test_github_pages_reviewed_candidate_audit.py tests/test_github_pages_actions_safety.py
+      - name: Verify separately supplied record IDs, without trusting JSON words
         env:
-          KAIGO_RUN_STATIC_DETAILS: "1"
-        run: |
-          python scripts/build_github_pages_integrated_pilot.py --with-details > "$RUNNER_TEMP/kaigo-pages-build.log"
-      - name: Verify candidate and prepare numeric audit
-        id: candidate
+          REVIEWED_SCOPE_DIGEST: ${{ secrets.KAIGO_RELEASE_REVIEWED_SCOPE_SHA256 }}
         shell: bash
         run: |
+          set -euo pipefail
+          test -n "$REVIEWED_SCOPE_DIGEST"
+          echo "$REVIEWED_SCOPE_DIGEST" | grep -Eq '^[0-9a-f]{64}$'
+          test "$(sha256sum release-acceptance/docs/pages-reviewed-id-approval.json | cut -d' ' -f1)" = "$REVIEWED_SCOPE_DIGEST"
           python - <<'PY'
           import json
-          import os
           from pathlib import Path
-          log = Path(os.environ["RUNNER_TEMP"]) / "kaigo-pages-build.log"
-          summary = json.loads(log.read_text(encoding="utf-8").splitlines()[-1])
-          site = Path(summary["directory"]).resolve(strict=True)
-          if site.is_symlink() or not (site / "index.html").is_file():
-              raise RuntimeError("Missing or unsafe candidate")
-          if summary.get("files", 0) < 9000 or summary.get("handbook_services") != 39 or summary.get("handbook_chapters") != 585:
-              raise RuntimeError("Static site missing required sections")
-          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
-              out.write("site=" + str(site) + "\n")
+          m=json.loads(Path('release-acceptance/docs/pages-reviewed-id-approval.json').read_text(encoding='utf-8'))
+          if (m.get('schema')!='kaigo-reviewed-scope-v1'
+              or m.get('purpose')!='PRIVATE_ACCEPTANCE_ONLY'
+              or not isinstance(m.get('approvals'),list) or not m['approvals']):
+              raise SystemExit('HOLD: unsupported approval scope')
           PY
-      - name: Require independent acceptance before changing private presentation
+      - name: Signed ID-scope preflight, then B's private scoped generator
         env:
           SOURCE_SHA: ${{ github.sha }}
-          CANDIDATE: ${{ steps.candidate.outputs.site }}
+          TARGET_MONTH: ${{ vars.KAIGO_SCOPE_TARGET_MONTH }}
+          SERVICE_ID: ${{ vars.KAIGO_SCOPE_SERVICE_ID }}
+          QA_SERVICE_CODE: ${{ vars.KAIGO_SCOPE_QA_SERVICE_CODE }}
+          TRUSTED_KEY_SHA256: ${{ secrets.KAIGO_REVIEWER_SIGNING_KEY_SHA256 }}
+        shell: bash
         run: |
-          python scripts/audit_github_pages_migration_readiness.py "$CANDIDATE" > "$RUNNER_TEMP/kaigo-pages-private-audit.json"
-          python scripts/check_github_pages_release_gate.py \
-            "$RUNNER_TEMP/kaigo-pages-private-audit.json" \
-            release-acceptance/docs/pages-release-acceptance.json \
-            "$SOURCE_SHA" --private-preview
-      - name: Require independently approved exact distribution before any artifact upload
+          set -euo pipefail
+          test -n "$TARGET_MONTH" && test -n "$SERVICE_ID" && test -n "$QA_SERVICE_CODE"
+          test -n "$TRUSTED_KEY_SHA256"
+          # These independently provided inputs are intentionally not generated
+          # from the public repository or downloaded from an Actions artifact.
+          for name in kaigo-verified-legal-records.json kaigo-independent-record-receipt.json kaigo-independent-record-signature.bin kaigo-reviewer-trusted.pub; do
+            test -s "$RUNNER_TEMP/$name"
+          done
+          args=(
+            --source-sha "$SOURCE_SHA"
+            --target-month "$TARGET_MONTH"
+            --service-id "$SERVICE_ID"
+            --qa-service-code "$QA_SERVICE_CODE"
+            --approvals release-acceptance/docs/pages-reviewed-id-approval.json
+            --legal "$RUNNER_TEMP/kaigo-verified-legal-records.json"
+            --qa data/qa-corpus.json --qa-meta data/qa-corpus-meta.json
+            --receipt "$RUNNER_TEMP/kaigo-independent-record-receipt.json"
+            --signature "$RUNNER_TEMP/kaigo-independent-record-signature.bin"
+            --trusted-key "$RUNNER_TEMP/kaigo-reviewer-trusted.pub"
+            --trusted-key-sha256 "$TRUSTED_KEY_SHA256"
+          )
+          python scripts/build_github_pages_scoped_candidate.py "${args[@]}" --preflight-only
+          python scripts/build_github_pages_scoped_candidate.py "${args[@]}" \
+            --private-output "$RUNNER_TEMP/kaigo-reviewed-public"
+      - name: Audit bounded PRIVATE candidate (not a release verdict)
         env:
           SOURCE_SHA: ${{ github.sha }}
-          CANDIDATE: ${{ steps.candidate.outputs.site }}
         run: |
-          python scripts/audit_github_pages_scope_gate.py "$CANDIDATE" \
-            --source-sha "$SOURCE_SHA" \
-            --approval release-acceptance/docs/pages-distribution-approval.json \
+          set -euo pipefail
+          python scripts/audit_github_pages_reviewed_candidate.py \
+            "$RUNNER_TEMP/kaigo-reviewed-public" --source-sha "$SOURCE_SHA" \
+            --manifest release-acceptance/docs/pages-reviewed-id-approval.json \
             --mode private
-      - name: Generate publicly readable presentation without changing legal cautions
-        env:
-          CANDIDATE: ${{ steps.candidate.outputs.site }}
-        run: |
-          python scripts/prepare_github_pages_public_candidate.py "$CANDIDATE"
-      - name: Finalize static package markers before exact byte approval
-        env:
-          CANDIDATE: ${{ steps.candidate.outputs.site }}
-        run: touch "$CANDIDATE/.nojekyll"
-      - name: Verify final public bytes were separately accepted
+      - name: Finalize marker, then independently check exact upload bytes
         env:
           SOURCE_SHA: ${{ github.sha }}
-          CANDIDATE: ${{ steps.candidate.outputs.site }}
+          TRUSTED_RECEIPT_SHA256: ${{ secrets.KAIGO_PUBLIC_DISTRIBUTION_RECEIPT_SHA256 }}
         run: |
-          python scripts/audit_github_pages_scope_gate.py "$CANDIDATE" \
-            --source-sha "$SOURCE_SHA" \
-            --approval release-acceptance/docs/pages-public-distribution-approval.json \
-            --mode public
-      - name: Reaudit final public output and require zero outstanding blockers
-        env:
-          SOURCE_SHA: ${{ github.sha }}
-          CANDIDATE: ${{ steps.candidate.outputs.site }}
-        run: |
-          python scripts/audit_github_pages_migration_readiness.py "$CANDIDATE" > "$RUNNER_TEMP/kaigo-pages-public-audit.json"
-          python scripts/check_github_pages_release_gate.py \
-            "$RUNNER_TEMP/kaigo-pages-public-audit.json" \
-            release-acceptance/docs/pages-release-acceptance.json \
-            "$SOURCE_SHA"
-      - name: Configure Pages only after the release gates pass
+          set -euo pipefail
+          test -n "$TRUSTED_RECEIPT_SHA256"
+          touch "$RUNNER_TEMP/kaigo-reviewed-public/.nojekyll"
+          python scripts/audit_github_pages_reviewed_candidate.py \
+            "$RUNNER_TEMP/kaigo-reviewed-public" --source-sha "$SOURCE_SHA" \
+            --manifest release-acceptance/docs/pages-reviewed-id-approval.json \
+            --receipt release-acceptance/docs/pages-public-distribution-approval.json \
+            --trusted-receipt-sha256 "$TRUSTED_RECEIPT_SHA256" --mode public
+          # Current B output is PRIVATE_ACCEPTANCE_ONLY. This always HOLDs
+          # until independent publication-ready generator/code is accepted.
+      - name: Configure Pages only after all gates
         uses: actions/configure-pages@v5
-      - name: Package the approved static output only
-        env:
-          CANDIDATE: ${{ steps.candidate.outputs.site }}
-        run: |
-          touch "$CANDIDATE/.nojekyll"
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ${{ steps.candidate.outputs.site }}
+          path: ${{ runner.temp }}/kaigo-reviewed-public
 
   deploy:
     name: Publish independently approved candidate to GitHub Pages

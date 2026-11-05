@@ -28,10 +28,11 @@ class PagesActionsSafetyTests(unittest.TestCase):
     def test_beta_pr_cannot_package_or_deploy(self):
         text = workflow("kaigo-pages-continuous-beta.yml")
         self.assertRegex(text, r"(?m)^  verify:\n    name: PR safety unit tests")
-        self.assertRegex(text, r"(?m)^  package:\n(?:.*\n){0,5}    if: github.event_name != 'pull_request'")
-        self.assertRegex(text, r"(?m)^  deploy:\n(?:.*\n){0,5}    if: github.event_name != 'pull_request'")
-        self.assertIn("noindex_pages", text)
-        self.assertIn("prepare_github_pages_beta.py", text)
+        self.assertRegex(text, r"(?m)^  package:\n(?:.*\n){0,5}    if: github.event_name == 'workflow_dispatch'")
+        self.assertRegex(text, r"(?m)^  deploy:\n(?:.*\n){0,5}    if: github.event_name == 'workflow_dispatch'")
+        self.assertIn("KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY", text)
+        self.assertIn("build_github_pages_scoped_candidate.py", text)
+        self.assertIn("audit_github_pages_reviewed_candidate.py", text)
 
     def test_heavy_feasibility_is_manual_and_pr_still_checks_safety(self):
         text = workflow("github-pages-feasibility.yml")
@@ -60,13 +61,13 @@ class PagesActionsSafetyTests(unittest.TestCase):
     def test_scope_gate_is_mandatory_before_pages_upload(self):
         beta = workflow("kaigo-pages-continuous-beta.yml")
         self.assertIn("if [[ -s .github/pages-beta-approved-scope.json ]]; then", beta)
-        self.assertIn("scope_inspect(root", beta)
-        self.assertIn("PASS_SCOPED_BYTES_ONLY", beta)
-        self.assertLess(beta.index("scope_inspect(root"), beta.index("actions/upload-pages-artifact@v4"))
+        self.assertIn("audit_github_pages_reviewed_candidate.py", beta)
+        self.assertIn("KAIGO_BETA_DISTRIBUTION_RECEIPT_SHA256", beta)
+        self.assertLess(beta.index("audit_github_pages_reviewed_candidate.py"), beta.index("actions/upload-pages-artifact@v4"))
         release = workflow("kaigo-pages-release.yml")
         self.assertIn("pages-distribution-approval.json", release)
         self.assertIn("pages-public-distribution-approval.json", release)
-        self.assertLess(release.index("--mode private"), release.index("prepare_github_pages_public_candidate.py"))
+        self.assertLess(release.index("--mode private"), release.index("--mode public"))
         self.assertLess(release.index("--mode public"), release.index("actions/upload-pages-artifact@v4"))
 
     def test_scope_regressions_stay_on_lightweight_pr_checks(self):
@@ -74,12 +75,26 @@ class PagesActionsSafetyTests(unittest.TestCase):
         feasibility = workflow("github-pages-feasibility.yml")
         self.assertIn("tests/test_github_pages_scope_gate.py", beta)
         self.assertIn("tests/test_github_pages_scope_gate.py", feasibility)
+        self.assertIn("tests/test_github_pages_reviewed_candidate_audit.py", beta)
         self.assertRegex(feasibility, r"(?m)^  measure:\n(?:.*\n){0,6}    if: github.event_name == 'workflow_dispatch'")
+
+    def test_old_full_builder_cannot_reach_either_public_upload_job(self):
+        for name in ("kaigo-pages-continuous-beta.yml", "kaigo-pages-release.yml"):
+            with self.subTest(name=name):
+                text = workflow(name)
+                self.assertNotIn("python scripts/build_github_pages_integrated_pilot.py --with-details", text)
+                self.assertNotIn("--with-details", text)
+                self.assertIn("build_github_pages_scoped_candidate.py", text)
+                self.assertIn("audit_github_pages_reviewed_candidate.py", text)
+                self.assertIn("vars.KAIGO_REVIEWED_SCOPE_DISTRIBUTION_READY == 'true'", text)
+                self.assertLess(text.index("audit_github_pages_reviewed_candidate.py"),
+                                text.index("actions/upload-pages-artifact@v4"))
 
     def test_formal_release_keeps_independent_approval(self):
         text = workflow("kaigo-pages-release.yml")
         self.assertIn("acceptance_commit:", text)
-        self.assertIn("check_github_pages_release_gate.py", text)
+        self.assertIn("pages-reviewed-id-approval.json", text)
+        self.assertIn("KAIGO_RELEASE_REVIEWED_SCOPE_SHA256", text)
         self.assertIn("github.ref == 'refs/heads/main'", text)
         self.assertIn("cancel-in-progress: false", text)
 
