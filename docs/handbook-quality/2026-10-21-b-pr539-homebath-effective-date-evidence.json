@@ -1,0 +1,123 @@
+{
+  "role": "B",
+  "wave": "2026-10-21_kaigo_pr539_postrelease_live_http_browser_recovery_currentness_scoped_accuracy",
+  "base_main_sha": "74a9ef67b2c7edcfe54e847ceb2ff4e6d36ed2ea",
+  "source_blobs": {
+    "handbook_before": "d782ae8f447ca24a7d226741eec381e38ebdc59c"
+  },
+  "changed_chapters": [
+    "homebath/deductions"
+  ],
+  "nonchanged_chapters_value_equal": 584,
+  "A_facility_changed": 0,
+  "added_paragraphs": 2,
+  "added_checkpoints": 2,
+  "metrics_before": {
+    "services": 39,
+    "chapters": 585,
+    "paragraphs": 1384,
+    "checkpoints": 2012,
+    "paragraph_duplicate_excess": 24,
+    "checkpoint_duplicate_excess": 241
+  },
+  "metrics_after": {
+    "services": 39,
+    "chapters": 585,
+    "paragraphs": 1386,
+    "checkpoints": 2014,
+    "paragraph_duplicate_excess": 24,
+    "checkpoint_duplicate_excess": 241
+  },
+  "primary_text": [
+    {
+      "service_id": "homebath",
+      "chapter_id": "deductions",
+      "issuer": "厚生省",
+      "instrument": "平成12年厚生省告示第19号",
+      "scope": "別表 2 訪問入浴介護費 イ 注1〜6（職員配置、清拭／部分浴、同一建物、虐待・BCP減算）",
+      "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+      "original_date": "2000-02-10",
+      "status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "scope_checked_at_jst": "2026-10-21",
+      "source_page_kind": "MHLW HTML original text",
+      "full_2026_amendment_chain": "NOT_VERIFIED"
+    },
+    {
+      "service_id": "homebath",
+      "chapter_id": "deductions",
+      "issuer": "厚生労働省",
+      "instrument": "令和6年厚生労働省告示第86号",
+      "scope": "附則第2条（訪問入浴介護費イ注3の業務継続計画未策定減算に係る2025-03-31までの経過措置）",
+      "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7865&dataType=0&pageNo=1",
+      "original_date": "2024-03-15",
+      "effective_start": "2024-04-01",
+      "transitional_deadline": "2025-03-31",
+      "status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "full_2026_amendment_chain": "NOT_VERIFIED"
+    }
+  ],
+  "evidence_comparison": {
+    "records": "訪問入浴提供日別記録・利用者希望・主治医意見・看護/介護職員勤務実績・対象建物月別利用者数・BCP策定履歴・体制届・請求明細",
+    "separation": "運営/配置事実・法定基準・算定条件・実施日・体制届・請求対象月を区別"
+  },
+  "reviewed_candidates": [
+    {
+      "id": "homebath/deductions",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "decision": "REVISED"
+    },
+    {
+      "id": "homevisit/remuneration",
+      "source_status": "SOURCE_CANDIDATE_ONLY",
+      "decision": "HOLD: correct current remuneration and combined service calculation not fully checked"
+    },
+    {
+      "id": "dayservice/notifications",
+      "source_status": "SOURCE_CANDIDATE_ONLY",
+      "decision": "HOLD: 2026 forms index seen; notice body/local authority procedure not independently reconciled"
+    },
+    {
+      "id": "preventive-welfare-equipment-rental/designation",
+      "source_status": "EVIDENCE_GAP",
+      "decision": "HOLD: 35 ordinance, 2026 amendments and designated-authority details need primary full text"
+    },
+    {
+      "id": "welfare-equipment-rental/records",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED_PREVIOUS_WAVE",
+      "decision": "NO_DUPLICATE"
+    },
+    {
+      "id": "care-management/records",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED_PREVIOUS_WAVE",
+      "decision": "NO_DUPLICATE"
+    },
+    {
+      "id": "dayservice/records",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED_PREVIOUS_WAVE",
+      "decision": "NO_DUPLICATE"
+    },
+    {
+      "id": "community-dayservice/staffing",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED_PREVIOUS_WAVE",
+      "decision": "NO_DUPLICATE"
+    }
+  ],
+  "as_of_date_jst": "2026-10-21",
+  "legal_status": "DRAFT_UNREVIEWED",
+  "full_2026_currentness": "NOT_ESTABLISHED",
+  "designating_authority_ordinances": "NOT_VERIFIED",
+  "individual_applicability": "NOT_ESTABLISHED",
+  "human_legal_review": "NOT_REVIEWED",
+  "other_roles_and_http_dom_android": "NOT_RUN_BY_B",
+  "validations": {
+    "schema_version": 1,
+    "chapter_order_and_keys_identical": true,
+    "nonchanged_exact": 584,
+    "old_target_paragraphs_prefix": true,
+    "old_target_checkpoints_prefix": true,
+    "normalized_method": "remove whitespace, normalize data/*.json path and 指定/介護予防/地域密着型",
+    "runtime_tests": "NOT_RUN_PENDING_CI"
+  },
+  "handbook_data_commit": "1fc4c40a3985ee69377fd6d552940cda1ea4c5b9",
+  "handbook_data_blob_sha": "70552685e9ee418db44bc2f4c0f38783dd5e1f35"
+}
