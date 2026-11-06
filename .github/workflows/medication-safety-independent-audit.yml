@@ -1,0 +1,86 @@
+name: Independent medication safety dynamic audit
+
+on:
+  pull_request:
+    paths:
+      - "docs/kaigo-ops/safety/medication-safety-independent.spec.mjs"
+      - "docs/kaigo-ops/safety/medication-safety-test-results.md"
+      - "docs/kaigo-ops/safety/medication-safety-review-checklist.md"
+      - "docs/kaigo-ops/safety/medication-safety-expert-review-pack.md"
+      - ".github/workflows/medication-safety-independent-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  independent-enabled:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CI: "true"
+      MEDICATION_SAFETY_PREVIEW: enabled
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: audit
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: 7ec2fe8c644d0526af1650e857a7da397488a0ad
+          path: source
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+      - name: Install preview dependencies and Chromium
+        working-directory: source/ops-site
+        run: |
+          npm ci --no-audit --no-fund
+          npm install --no-save --package-lock=false @playwright/test@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Install independent audit without changing pinned C source
+        run: cp audit/docs/kaigo-ops/safety/medication-safety-independent.spec.mjs source/ops-site/tests/browser/medication-safety-independent.spec.mjs
+      - name: Build isolated local preview and run D-only browser checks
+        working-directory: source/ops-site
+        run: |
+          npm run build
+          npx playwright test tests/browser/medication-safety-independent.spec.mjs
+
+  independent-disabled:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CI: "true"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: 7ec2fe8c644d0526af1650e857a7da397488a0ad
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+      - name: Isolated disabled-flag route regression
+        working-directory: ops-site
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+          for flag in absent invalid; do
+            if [ "$flag" = invalid ]; then
+              MEDICATION_SAFETY_PREVIEW=not-enabled npm run start -- -p 3105 -H 127.0.0.1 > /tmp/medication-audit.log 2>&1 &
+            else
+              env -u MEDICATION_SAFETY_PREVIEW npm run start -- -p 3105 -H 127.0.0.1 > /tmp/medication-audit.log 2>&1 &
+            fi
+            pid=$!
+            ready=0
+            for i in $(seq 1 30); do
+              if curl --fail --silent http://127.0.0.1:3105/ > /dev/null; then ready=1; break; fi
+              sleep 1
+            done
+            if [ "$ready" != 1 ]; then cat /tmp/medication-audit.log; exit 1; fi
+            status=$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:3105/tools/medication-safety-preview)
+            if [ "$status" != 404 ]; then echo "FAIL: $flag flag preview HTTP $status"; exit 1; fi
+            npm run verify:routes -- http://127.0.0.1:3105
+            kill "$pid" 2>/dev/null || true
+            wait "$pid" 2>/dev/null || true
+            sleep 2
+          done
