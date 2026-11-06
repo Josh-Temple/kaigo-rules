@@ -332,5 +332,5 @@ try {
   fs.writeFileSync(path.join(output, 'report.json'), JSON.stringify(report, null, 2));
 }
 console.log(JSON.stringify({ head: report.head, browser: report.browser, cases: report.cases.length,
-  failures: report.failures.length, interactions: report.interactions, output }));
+  failures: report.failures.length, failedCases: report.failures.slice(0, 10), interactions: report.interactions, output }));
 if (!baseline && (report.failures.length || report.interactions.some(x => x.status !== 'PASS'))) process.exitCode = 1;

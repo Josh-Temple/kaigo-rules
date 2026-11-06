@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>国Q&A検索・非公開の移行検証</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main>
+  <div class="notice">
+    <strong>国Q&A検索の移行検証用・公開不可</strong>
+    <p>発出当時の回答を含みます。現在の取扱いは未確認のものがあるため、判断前に最新の国の資料を確認してください。</p>
+  </div>
+  <p><a href="./index.html">制度DB横断検索へ</a></p>
+  <h1>国Q&Aを探す</h1>
+  <form id="qa-search">
+    <label for="qa-query">キーワード</label>
+    <input id="qa-query" name="q" placeholder="例：看護職員、送迎、署名" autocomplete="off">
+    <label for="qa-service">対象範囲</label>
+    <select id="qa-service" name="service"><option value="">すべて</option></select>
+    <label for="qa-standard">基準種別</label>
+    <select id="qa-standard" name="standard"><option value="">すべて</option></select>
+    <button type="submit">検索する</button>
+  </form>
+  <p id="qa-status" role="status" aria-live="polite">検索データを準備しています。</p>
+  <div id="qa-results"></div>
+  <nav aria-label="Q&Aのページ移動" class="qa-pagination">
+    <button id="qa-prev" type="button">前へ</button>
+    <span id="qa-page"></span>
+    <button id="qa-next" type="button">次へ</button>
+  </nav>
+  <p><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html" rel="noopener noreferrer">厚生労働省の介護サービス関係Q&A集を見る</a></p>
+</main>
+<script type="module" src="./qa-app.mjs"></script>
+</body>
+</html>
