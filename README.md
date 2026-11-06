@@ -2,7 +2,9 @@
 
 ## はじめて見る方へ
 
-**[公開DBを開く](https://kaigo-rules.vercel.app/databases)** → 制度資料を選ぶ → 原典・確認状態を確認する、という順で見られます。
+**[Kaigo Rules 本番サイト（GitHub Pages）](https://josh-temple.github.io/kaigo-rules/)** → サービス別手引や制度DBから資料を選ぶ → 原典・確認状態を確かめる、という順で利用できます。
+
+GitHub Pagesが現在の主たる公開先です。未確認の制度情報も含むため、各項目の確認状態を参照し、実務判断では国の原典と指定権者の情報を確認してください。検索エンジンへの登録は独立した出典審査が整うまで `noindex` を維持しています。
 
 分散した法令・省令・通知・Q&Aを、出典と適用範囲を保持して接続する個人プロジェクトです。制度情報の構造化、データモデル設計、Web実装、検証・品質管理のEvidenceとして、`data/`、`scripts/`、`.github/workflows/`を確認できます。
 
@@ -39,7 +41,7 @@
 - AI/Jev: 使用しない
 - DB: 使用しない
 - 正本: GitHub
-- 公開先: Vercel
+- 現在の公開先: GitHub Pages（旧Vercel公開とは別運用）
 
 
 ## Current verification status

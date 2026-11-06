@@ -1,4 +1,4 @@
-name: Kaigo Rules public beta deployment from main (pinned candidate)
+name: Kaigo Rules GitHub Pages site deployment (pinned snapshot)
 on:
   push:
     branches:
@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   package:
-    name: Verify and package clearly marked public beta
+    name: Verify and package the public site with source warnings
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Verify source and beta disclaimer tests
+      - name: Verify static-source and disclaimer safety tests
         run: |
           set -euo pipefail
           python -m unittest tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py
@@ -44,7 +44,7 @@ jobs:
           KAIGO_RUN_STATIC_DETAILS: "1"
         run: |
           set -euo pipefail
-          python scripts/build_github_pages_integrated_pilot.py --with-details > "$RUNNER_TEMP/pages-beta-build.log"
+          python scripts/build_github_pages_integrated_pilot.py --with-details > "$RUNNER_TEMP/pages-site-build.log"
       - name: Audit the exact candidate against measured safe bounds
         id: site
         env:
@@ -55,7 +55,7 @@ jobs:
           import json,os,subprocess
           from pathlib import Path
           from scripts.audit_github_pages_migration_readiness import inspect
-          summary=json.loads((Path(os.environ["RUNNER_TEMP"])/"pages-beta-build.log").read_text(encoding="utf-8").splitlines()[-1])
+          summary=json.loads((Path(os.environ["RUNNER_TEMP"])/"pages-site-build.log").read_text(encoding="utf-8").splitlines()[-1])
           root=Path(summary["directory"]).resolve(strict=True)
           if root.is_symlink() or not (root/"index.html").is_file():
               raise RuntimeError("Unsafe output path")
@@ -78,7 +78,31 @@ jobs:
               raise RuntimeError("Unexpected Pages size/content")
           outcome=subprocess.run(["python","scripts/prepare_github_pages_beta.py",str(root)],
               capture_output=True,text=True,check=True)
-          print("BETA_PREPARATION:",outcome.stdout.strip())
+          print("SOURCE_SAFETY_PREPARATION:",outcome.stdout.strip())
+          # The already-public, pinned snapshot is now the operational site.
+          # Remove only the public-beta wording. Keep unverified-source warnings,
+          # the original content, and noindex pending independent legal review.
+          previous_label="Kaigo Rules 試験公開版"
+          previous_notice="試験公開版です。未確認の法令情報や旧サイトへのリンクが含まれます。"
+          current_notice=("制度情報の確認状況は項目ごとに異なり、"
+                          "未確認の情報や旧サイトへのリンクも含まれます。")
+          required_caution="制度の現行性・適用条件は必ず国の原典と指定権者に確認してください。"
+          updated=0
+          for page in root.rglob("*.html"):
+            if page.is_symlink():
+              raise RuntimeError("Unsafe symbolic link in published site")
+            old=page.read_text(encoding="utf-8")
+            if previous_label not in old or previous_notice not in old or required_caution not in old:
+              raise RuntimeError("Missing safety banner or expected published page: "+str(page))
+            new=old.replace(previous_label,"Kaigo Rules").replace(previous_notice,current_notice)
+            if "試験公開版" in new or "一般公開していません" in new or required_caution not in new:
+              raise RuntimeError("Inconsistent public site branding or caution: "+str(page))
+            if new!=old:
+              page.write_text(new,encoding="utf-8")
+              updated+=1
+          if updated!=pre["html_count"]:
+            raise RuntimeError("Incomplete production-label update")
+          print("PUBLIC_SITE_BRANDING:",json.dumps({"updated_html_pages":updated,"noindex_retained":True},ensure_ascii=False))
           post=inspect(root)
           for item in ("missing_local_links","root_relative_links","unsafe_or_invalid_links","private_preview_pages"):
               if post["blockers"][item]!=0:
@@ -88,7 +112,7 @@ jobs:
           (root/".nojekyll").touch()
           with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as out:
               out.write("path="+str(root)+"\n")
-          print("BETA_RELEASE_PRECHECK:",json.dumps({
+          print("PUBLIC_SITE_PRECHECK:",json.dumps({
             "sha":os.environ["SOURCE_SHA"],
             "html_count":post["html_count"],"total_bytes":post["total_bytes"],
             "remaining_legacy_links":post["blockers"]["production_fallback_links"],
@@ -97,13 +121,13 @@ jobs:
           },ensure_ascii=False))
           PY
       - uses: actions/configure-pages@v5
-      - name: Upload approved public-beta artifact
+      - name: Upload verified public site (noindex remains)
         uses: actions/upload-pages-artifact@v4
         with:
           path: ${{ steps.site.outputs.path }}
 
   deploy:
-    name: Deploy visibly labeled noindex beta
+    name: Deploy primary GitHub Pages site (noindex remains)
     needs: package
     runs-on: ubuntu-latest
     permissions:
@@ -113,6 +137,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - name: Deploy generated beta
+      - name: Deploy generated site
         uses: actions/deploy-pages@v4
         id: deploy
