@@ -1,0 +1,139 @@
+name: Kaigo Rules GitHub Pages release (independent approval required)
+
+on:
+  workflow_dispatch:
+    inputs:
+      approved_sha:
+        description: "Exact 40-character main commit SHA approved by independent reviewer"
+        required: true
+        type: string
+      acceptance_commit:
+        description: "40-character SHA of separate reviewed approval evidence commit (not in main)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kaigo-rules-pages-publication
+  cancel-in-progress: false
+
+jobs:
+  package:
+    name: Independently gated static publication package
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Require approval tied to exactly this main commit
+        env:
+          APPROVED_SHA: ${{ inputs.approved_sha }}
+          MAIN_SHA: ${{ github.sha }}
+        run: |
+          test "$APPROVED_SHA" = "$MAIN_SHA"
+          test "$(git rev-parse HEAD)" = "$MAIN_SHA"
+      - name: Checkout separately approved acceptance evidence
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.acceptance_commit }}
+          path: release-acceptance
+          persist-credentials: false
+      - name: Verify exact acceptance evidence revision
+        env:
+          ACCEPTANCE_SHA: ${{ inputs.acceptance_commit }}
+        run: |
+          [[ "$ACCEPTANCE_SHA" =~ ^[a-f0-9]{40}$ ]]
+          test "$(git -C release-acceptance rev-parse HEAD)" = "$ACCEPTANCE_SHA"
+          test -f release-acceptance/docs/pages-release-acceptance.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run release-gate unit tests before the build
+        run: |
+          python -m unittest tests/test_github_pages_migration_readiness.py tests/test_github_pages_release_gate.py tests/test_github_pages_public_candidate.py tests/test_github_pages_legislation_pilot.py
+      - name: Validate all existing legislation, publication and user-facing checks
+        run: |
+          npm ci
+          npm run build
+      - name: Rebuild the exact private static candidate without publishing it
+        env:
+          KAIGO_RUN_STATIC_DETAILS: "1"
+        run: |
+          python scripts/build_github_pages_integrated_pilot.py --with-details > "$RUNNER_TEMP/kaigo-pages-build.log"
+      - name: Verify candidate and prepare numeric audit
+        id: candidate
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          log = Path(os.environ["RUNNER_TEMP"]) / "kaigo-pages-build.log"
+          summary = json.loads(log.read_text(encoding="utf-8").splitlines()[-1])
+          site = Path(summary["directory"]).resolve(strict=True)
+          if site.is_symlink() or not (site / "index.html").is_file():
+              raise RuntimeError("Missing or unsafe candidate")
+          if summary.get("files", 0) < 9000 or summary.get("handbook_services") != 39 or summary.get("handbook_chapters") != 585:
+              raise RuntimeError("Static site missing required sections")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write("site=" + str(site) + "\n")
+          PY
+      - name: Require independent acceptance before changing private presentation
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          CANDIDATE: ${{ steps.candidate.outputs.site }}
+        run: |
+          python scripts/audit_github_pages_migration_readiness.py "$CANDIDATE" > "$RUNNER_TEMP/kaigo-pages-private-audit.json"
+          python scripts/check_github_pages_release_gate.py \
+            "$RUNNER_TEMP/kaigo-pages-private-audit.json" \
+            release-acceptance/docs/pages-release-acceptance.json \
+            "$SOURCE_SHA" --private-preview
+      - name: Generate publicly readable presentation without changing legal cautions
+        env:
+          CANDIDATE: ${{ steps.candidate.outputs.site }}
+        run: |
+          python scripts/prepare_github_pages_public_candidate.py "$CANDIDATE"
+      - name: Reaudit final public output and require zero outstanding blockers
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          CANDIDATE: ${{ steps.candidate.outputs.site }}
+        run: |
+          python scripts/audit_github_pages_migration_readiness.py "$CANDIDATE" > "$RUNNER_TEMP/kaigo-pages-public-audit.json"
+          python scripts/check_github_pages_release_gate.py \
+            "$RUNNER_TEMP/kaigo-pages-public-audit.json" \
+            release-acceptance/docs/pages-release-acceptance.json \
+            "$SOURCE_SHA"
+      - name: Configure Pages only after the release gates pass
+        uses: actions/configure-pages@v5
+      - name: Package the approved static output only
+        env:
+          CANDIDATE: ${{ steps.candidate.outputs.site }}
+        run: |
+          touch "$CANDIDATE/.nojekyll"
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ steps.candidate.outputs.site }}
+
+  deploy:
+    name: Publish independently approved candidate to GitHub Pages
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy approved artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

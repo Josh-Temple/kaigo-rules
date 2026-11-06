@@ -130,6 +130,10 @@
 .dayservice-timing-example th,.dayservice-timing-example td{padding:9px;border:1px solid #b9c9bf;text-align:center}
 .dayservice-timing-example th:first-child{position:sticky;left:0;background:var(--bg)}
 .dayservice-timing-example thead{background:#edf2ee}
+.dayservice-historical-fee-details{margin:14px 0 26px;border:1px solid var(--line);padding:6px 16px}
+.dayservice-historical-fee-details>summary{cursor:pointer;padding:12px 0;min-height:44px;color:var(--link);font-weight:600}
+.dayservice-historical-fee-details>summary:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
+.dayservice-historical-fee-details[open]>.dayservice-source-caution{margin-top:8px}
 .dayservice-qa-print-url{display:none}
 .dayservice-reader-questions{border-left:3px solid #597b6e;background:#f6f7f4;padding:14px 18px;margin:0 0 24px}
 .dayservice-reader-questions>p:first-child{margin:0 0 8px}
@@ -205,7 +209,9 @@
   .dayservice-fee-table th,.dayservice-fee-table td{padding:5pt 4pt}.dayservice-table-help{display:none}
   .dayservice-fee-table th:first-child{position:static;box-shadow:none}
   .dayservice-fee-table caption span{position:static;max-width:none}
-  .dayservice-original-details:not([open]){display:none}.dayservice-staffing-example{break-inside:avoid-page}
+  .dayservice-original-details:not([open]){display:none}
+  .dayservice-historical-fee-details{display:none!important}
+  .dayservice-staffing-example{break-inside:avoid-page}
   .dayservice-staffing-overview,.dayservice-priority-additions{break-inside:auto;background:transparent}
   .dayservice-staffing-overview tr{break-inside:avoid-page}
   .dayservice-staffing-overview th,.dayservice-staffing-overview td{padding:6pt 7pt}
@@ -226,3 +232,19 @@
   .dayservice-checks{break-inside:avoid-page}
   .dayservice-source-caution,.dayservice-read-across,.dayservice-local{background:transparent;border-color:#555}
 }
+
+/* Month-specific treatment improvement fee notice, shared by handbook and direct fee detail. */
+.dayservice-treatment-periods{margin:18px 0 28px;padding:18px;border:1px solid var(--line)}
+.dayservice-treatment-periods>h2,.dayservice-treatment-periods>h3{margin:0 0 12px}
+.dayservice-treatment-period-tables{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;margin:16px 0}
+.dayservice-treatment-period-tables table{width:100%;border-collapse:collapse}
+.dayservice-treatment-period-tables caption{text-align:left;font-weight:700;padding:8px 0}
+.dayservice-treatment-period-tables th,.dayservice-treatment-period-tables td{padding:8px 10px;border:1px solid var(--line);text-align:left}
+.dayservice-treatment-periods .dayservice-source-caution{margin-top:16px}
+@media print{.dayservice-treatment-periods{break-inside:auto}.dayservice-treatment-period-tables tr{break-inside:avoid-page}}
+
+.dayservice-treatment-eligibility{margin:16px 0;padding:12px 16px;background:var(--surface);border-left:3px solid var(--line)}
+.dayservice-treatment-eligibility p{margin:0 0 8px}
+.dayservice-treatment-eligibility ul{padding-left:1.4rem;margin:8px 0 14px}
+.dayservice-treatment-eligibility li{margin:8px 0;line-height:1.7}
+@media print{.dayservice-treatment-eligibility{break-inside:avoid-page}}
