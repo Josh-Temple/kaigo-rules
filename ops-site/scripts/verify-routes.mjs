@@ -32,6 +32,41 @@ for (const sourceUrl of [
 assert.ok(!medicationGuideHtml.includes('服薬業務の安全点検シートを開く'), 'unapproved interactive preview remains isolated');
 console.log('PASS /guides/medication-incident-sources');
 
+const fallGuidePath = '/guides/fall-prevention-sources';
+assert.ok(homeText.includes(`href="${fallGuidePath}"`), 'fall guide must have a homepage entry');
+const fallGuide = await fetch(`${base}${fallGuidePath}`);
+assert.equal(fallGuide.status, 200, 'static fall source guide route');
+const fallHtml = await fallGuide.text();
+for (const text of [
+  '転倒・転落の予防を、公的資料から考える',
+  '事故が現に起きている場合',
+  '身体拘束',
+  '第1報',
+  'このページはそれらを個別に判定しません',
+  '原文を読む',
+  'https://www.mhlw.go.jp/content/001591418.pdf#page=33',
+  'https://www.mhlw.go.jp/content/001591418.pdf#page=35',
+  'https://www.mhlw.go.jp/content/001574219.pdf#page=3',
+  'https://www.mhlw.go.jp/content/001574219.pdf#page=4',
+]) {
+  assert.ok(fallHtml.includes(text), `fall guide: ${text}`);
+}
+for (const banned of ['<form', '<input', '<textarea', 'href="/tools/medication-safety-preview"']) {
+  assert.ok(!fallHtml.includes(banned), `fall guide must not contain ${banned}`);
+}
+const heldPreview = await fetch(`${base}/tools/medication-safety-preview`);
+assert.equal(heldPreview.status, 404, 'unapproved interactive medication preview stays 404');
+const sitemapResponse = await fetch(`${base}/sitemap.xml`);
+assert.equal(sitemapResponse.status, 200, 'sitemap');
+const sitemapBody = await sitemapResponse.text();
+assert.ok(sitemapBody.includes('/guides/medication-incident-sources'), 'sitemap medication');
+assert.ok(sitemapBody.includes('/guides/fall-prevention-sources'), 'sitemap fall');
+assert.ok(!sitemapBody.includes('/tools/medication-safety-preview'), 'sitemap held prototype');
+const robotsResponse = await fetch(`${base}/robots.txt`);
+assert.equal(robotsResponse.status, 200, 'robots');
+console.log('PASS /guides/fall-prevention-sources and held preview 404 / sitemap / robots');
+
+
 for (const issue of issueRegistry) {
   assert.ok(homeText.includes(`href="${issue.href}"`), `${issue.href}: homepage link`);
   const response = await fetch(`${base}${issue.href}`);
