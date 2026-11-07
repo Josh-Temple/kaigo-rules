@@ -51,6 +51,14 @@ class HandbookSanitizerTest(unittest.TestCase):
         self.assertNotIn("<script", output)
         self.assertNotIn("alert(1)", output)
 
+    def test_print_script_and_mobile_styles_contract(self):
+        self.assertIn("beforeprint", pilot.PRINT_JS)
+        self.assertIn("afterprint", pilot.PRINT_JS)
+        self.assertIn("openClosedDetails", pilot.PRINT_JS)
+        self.assertIn("@media (max-width:600px)", pilot.STYLES)
+        self.assertIn("@media print", pilot.STYLES)
+        self.assertIn(".dayservice-counselor-comparison{grid-template-columns:1fr 1fr", pilot.STYLES)
+
     def test_unknown_controls_or_graphics_fail_closed(self):
         for fragment in ('<button>送信</button>', '<input type="text">', '<svg></svg>',
                          '<span hidden>非表示</span>', '<div style="display:none">非表示</div>',

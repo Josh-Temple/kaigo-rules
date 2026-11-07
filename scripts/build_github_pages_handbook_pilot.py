@@ -27,7 +27,32 @@ DROP_CONTENT = {"script", "style", "svg", "iframe", "noscript", "template", "can
 ALLOWED_ATTRS = {"class", "id", "aria-label", "aria-current", "aria-hidden", "aria-labelledby",
                  "aria-describedby", "aria-controls", "aria-expanded", "role", "scope",
                  "colspan", "rowspan", "title", "tabindex", "open", "for", "headers"}
-PRINT_JS = 'document.addEventListener("click",function(e){if(e.target.closest("[data-handbook-print]"))window.print()});\n'
+PRINT_JS = (
+    '(function(){\n'
+    '  function openClosedDetails(){\n'
+    '    var list=document.querySelectorAll("details:not([open])");\n'
+    '    for(var i=0;i<list.length;i++){\n'
+    '      list[i].setAttribute("data-handbook-was-closed","true");\n'
+    '      list[i].open=true;\n'
+    '    }\n'
+    '  }\n'
+    '  function restoreClosedDetails(){\n'
+    '    var list=document.querySelectorAll("details[data-handbook-was-closed=\\"true\\"]");\n'
+    '    for(var i=0;i<list.length;i++){\n'
+    '      list[i].open=false;\n'
+    '      list[i].removeAttribute("data-handbook-was-closed");\n'
+    '    }\n'
+    '  }\n'
+    '  window.addEventListener("beforeprint",openClosedDetails);\n'
+    '  window.addEventListener("afterprint",restoreClosedDetails);\n'
+    '  document.addEventListener("click",function(e){\n'
+    '    if(e.target.closest("[data-handbook-print]")){\n'
+    '      openClosedDetails();\n'
+    '      window.print();\n'
+    '    }\n'
+    '  });\n'
+    '})();\n'
+)
 STYLES = """
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;margin:0;line-height:1.75;color:#25332d;background:#f6f8f7}
 main{max-width:1050px;margin:0 auto;padding:16px 18px 80px;background:#fff}
@@ -51,7 +76,8 @@ figure{max-width:100%;margin:18px 0}figcaption{font-weight:650}.meta,.eyebrow{fo
 input[type=checkbox]{width:1.2rem;height:1.2rem;margin-inline-end:.5rem}button{font:inherit;padding:.6rem;cursor:pointer}
 a:focus-visible,summary:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid #ba7000;outline-offset:2px}
 .pilot-banner{max-width:1050px;margin:0 auto;border-color:#6b756b}
-@media print{body,main{background:#fff}nav,.pilot-banner,button{display:none}details{display:block}}
+@media print{body,main{background:#fff;color:#000}nav,.pilot-banner,button{display:none}details{display:block}.handbook-working-note,.handbook-role-warning,.dayservice-source-caution,.notice{border-left:4px solid #333;background:#f9f9f9;color:#000}}
+@media (max-width:600px){main{padding:12px 14px 60px}.dayservice-service-timeline{grid-template-columns:1fr;gap:4px}.dayservice-counselor-comparison{grid-template-columns:1fr 1fr;gap:4px;font-size:.82rem}.dayservice-counselor-comparison span{padding:8px 6px}}
 """.strip()
 
 
