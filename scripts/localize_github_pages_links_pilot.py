@@ -117,6 +117,30 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
             kind, target = "legislation-browse", _legislation_browse(root, query)
             if target is not None and query:
                 suffix = "?" + query
+    elif path == "/rules":
+        sid = ""
+        try:
+            params = parse_qs(query, strict_parsing=False, keep_blank_values=False, max_num_fields=4)
+            if "service" in params and SAFE_SERVICE.fullmatch(params["service"][0]):
+                sid = params["service"][0]
+        except Exception:
+            pass
+        q = f"service={sid}&category=standards" if sid else "category=standards"
+        kind, target, suffix = "legislation-browse", _legislation_browse(root, q), "?" + q
+    elif path == "/notices":
+        sid = ""
+        try:
+            params = parse_qs(query, strict_parsing=False, keep_blank_values=False, max_num_fields=4)
+            if "service" in params and SAFE_SERVICE.fullmatch(params["service"][0]):
+                sid = params["service"][0]
+        except Exception:
+            pass
+        q = f"service={sid}&category=notices" if sid else "category=notices"
+        kind, target, suffix = "legislation-browse", _legislation_browse(root, q), "?" + q
+    elif path == "/fees/criteria":
+        kind, target, suffix = "legislation-browse", _legislation_browse(root, "category=criteria"), "?category=criteria"
+    elif path == "/fees/unit-price":
+        kind, target, suffix = "search", root / "databases/search/index.html", "?q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
     elif path in {"/start", "/overview", "/guide", "/sources", "/handbook-sources",
                   "/fees/guidance", "/fees"} and not query:
         kind, target = "information", root / path.lstrip("/") / "index.html"
@@ -124,6 +148,20 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
         match = re.fullmatch(r"/services/([a-z0-9-]+)", path)
         if match and not query:
             kind, target = "services", root / "services" / match[1] / "index.html"
+        match = re.fullmatch(r"/services/([a-z0-9-]+)/remuneration", path)
+        if match and not query:
+            kind, target = "handbook", root / "handbook" / match[1] / "remuneration.html"
+        match = re.fullmatch(r"/services/([a-z0-9-]+)/remuneration/guidance", path)
+        if match and not query:
+            kind, target = "information", root / "fees/guidance/index.html"
+        match = re.fullmatch(r"/services/([a-z0-9-]+)/rules", path)
+        if match and not query:
+            q = f"service={match[1]}&category=standards"
+            kind, target, suffix = "legislation-browse", _legislation_browse(root, q), "?" + q
+        match = re.fullmatch(r"/services/([a-z0-9-]+)/notices", path)
+        if match and not query:
+            q = f"service={match[1]}&category=notices"
+            kind, target, suffix = "legislation-browse", _legislation_browse(root, q), "?" + q
         match = re.fullmatch(r"/handbook/([a-z0-9-]+)/([a-z0-9-]+)", path)
         if match and not query:
             kind, target = "handbook", root / "handbook" / match[1] / (match[2] + ".html")

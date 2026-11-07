@@ -65,13 +65,24 @@ function StaffingRoles({ service, chapter, full }: {
   const ruleChapters = ["equipment", "operations", "records", "safeguarding", "incident_and_infection", "business_continuity", "notifications"];
   const allowed = staffing ? staffingServices.includes(service.service_id)
     : service.service_id === "community-elderly-facility" && ruleChapters.includes(chapter.section_id);
-  if (!allowed || !roles?.length) return null;
-  const detailHref = handbookChapterHref(service.service_id, chapter.section_id);
   const chapterPage = full && service.service_id === "dayservice";
   const GroupHeading = chapterPage ? "h2" : "h3";
   const RoleHeading = chapterPage ? "h3" : "h4";
   const RequirementHeading = chapterPage ? "h4" : "h5";
   const DetailHeading = chapterPage ? "h5" : "h6";
+  if (!allowed || !roles?.length) {
+    if (staffing && full) {
+      return <section className="handbook-roles handbook-roles-pending" aria-label={groupHeading}>
+        <GroupHeading>{groupHeading}</GroupHeading>
+        <p className="handbook-working-note">
+          このサービス（{service.label || "当サービス"}）の職種別要件は、法令員数・兼務解釈の独立確認を進めています。
+          現時点の基準・確認項目は、本章の「人員基準の確認ポイント」「確認すること」および関連する省令・解釈通知をご確認ください。
+        </p>
+      </section>;
+    }
+    return null;
+  }
+  const detailHref = handbookChapterHref(service.service_id, chapter.section_id);
   // The three pilot services show actual role requirements in their service guide.
   // Other services retain a direct link to the full staffing chapter.
   const inlineStaffing = staffing && !full && ["dayservice", "dayrehab", "homevisit"].includes(service.service_id);

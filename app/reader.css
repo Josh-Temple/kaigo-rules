@@ -183,10 +183,14 @@
   .handbook-dayservice .handbook-role-navigation a{min-height:48px}
   .handbook-dayservice .handbook-calculation-example{padding:14px}
   .handbook-dayservice .handbook-supplement,.handbook-dayservice .handbook-source-list{padding-inline:10px}
+  .dayservice-counselor-comparison{grid-template-columns:1fr 1fr;gap:4px;font-size:.82rem}
+  .dayservice-counselor-comparison span{padding:8px 6px}
+  .dayservice-service-timeline{grid-template-columns:1fr;gap:4px}
 }
 @media print{
   @page{size:A4;margin:16mm 14mm}
   .handbook-topic-navigation,.handbook-breadcrumb,.service-group-navigation,.handbook-role-navigation,.handbook-inline-links,.handbook-toc{display:none}
+  .handbook-roles-pending,.handbook-working-note{background:transparent!important;border:1px solid #333!important;color:#000!important}
   .handbook-page{font-size:10.5pt;line-height:1.65}
   .handbook-chapter,.handbook-role{content-visibility:visible;contain-intrinsic-size:none}
   .handbook-page h2,.handbook-page h3,.handbook-page h4,.handbook-page h5,.handbook-page h6{break-after:avoid-page}

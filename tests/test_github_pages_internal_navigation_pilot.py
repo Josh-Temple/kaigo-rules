@@ -75,3 +75,42 @@ class PrivateNavigationTest(unittest.TestCase):
                          "https://kaigo-rules.vercel.app@evil.example/qa",
                          "http://kaigo-rules.vercel.app/qa"):
                 self.assertIsNone(module.destination(root, link))
+
+    def test_localizes_rules_notices_and_fees_cross_links(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "legislation").mkdir(parents=True, exist_ok=True)
+            (root / "databases/search").mkdir(parents=True, exist_ok=True)
+            (root / "fees").mkdir(parents=True, exist_ok=True)
+            (root / "legislation/index.html").write_text("<html><body>法令一覧</body></html>", encoding="utf-8")
+            (root / "databases/search/index.html").write_text("<html><body>検索</body></html>", encoding="utf-8")
+            (root / "fees/guidance").mkdir(parents=True, exist_ok=True)
+            (root / "fees/guidance/index.html").write_text("<html><body>報酬案内</body></html>", encoding="utf-8")
+            (root / "handbook/dayservice").mkdir(parents=True, exist_ok=True)
+            (root / "handbook/dayservice/remuneration.html").write_text("<html><body>通所介護報酬</body></html>", encoding="utf-8")
+            (root / "fees/index.html").write_text(
+                '<html><body>'
+                '<a href="https://kaigo-rules.vercel.app/rules?service=dayservice">基準DB</a>'
+                '<a href="https://kaigo-rules.vercel.app/notices?service=dayservice">通知DB</a>'
+                '<a href="https://kaigo-rules.vercel.app/fees/criteria">告示27号・95号</a>'
+                '<a href="https://kaigo-rules.vercel.app/fees/unit-price">単価・地域区分</a>'
+                '<a href="https://kaigo-rules.vercel.app/services/dayservice/remuneration">報酬基準</a>'
+                '<a href="https://kaigo-rules.vercel.app/services/dayservice/remuneration/guidance">留意事項</a>'
+                '<a href="https://kaigo-rules.vercel.app/services/dayrehab/rules">通リハ基準</a>'
+                '<a href="https://kaigo-rules.vercel.app/services/dayrehab/notices">通リハ通知</a>'
+                '</body></html>',
+                encoding="utf-8"
+            )
+            report = module.localize(root)
+            self.assertEqual(report["links_localized"], 8)
+            updated = (root / "fees/index.html").read_text(encoding="utf-8")
+            self.assertIn('../legislation/index.html?service=dayservice&amp;category=standards', updated)
+            self.assertIn('../legislation/index.html?service=dayservice&amp;category=notices', updated)
+            self.assertIn('../legislation/index.html?category=criteria', updated)
+            self.assertIn('../databases/search/index.html?q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86', updated)
+            self.assertIn('../handbook/dayservice/remuneration.html', updated)
+            self.assertIn('guidance/index.html', updated)
+            self.assertIn('../legislation/index.html?service=dayrehab&amp;category=standards', updated)
+            self.assertIn('../legislation/index.html?service=dayrehab&amp;category=notices', updated)
+            self.assertNotIn('kaigo-rules.vercel.app', updated)
+
