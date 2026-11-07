@@ -148,6 +148,20 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
         match = re.fullmatch(r"/services/([a-z0-9-]+)", path)
         if match and not query:
             kind, target = "services", root / "services" / match[1] / "index.html"
+        match = re.fullmatch(r"/services/([a-z0-9-]+)/remuneration", path)
+        if match and not query:
+            kind, target = "handbook", root / "handbook" / match[1] / "remuneration.html"
+        match = re.fullmatch(r"/services/([a-z0-9-]+)/remuneration/guidance", path)
+        if match and not query:
+            kind, target = "information", root / "fees/guidance/index.html"
+        match = re.fullmatch(r"/services/([a-z0-9-]+)/rules", path)
+        if match and not query:
+            q = f"service={match[1]}&category=standards"
+            kind, target, suffix = "legislation-browse", _legislation_browse(root, q), "?" + q
+        match = re.fullmatch(r"/services/([a-z0-9-]+)/notices", path)
+        if match and not query:
+            q = f"service={match[1]}&category=notices"
+            kind, target, suffix = "legislation-browse", _legislation_browse(root, q), "?" + q
         match = re.fullmatch(r"/handbook/([a-z0-9-]+)/([a-z0-9-]+)", path)
         if match and not query:
             kind, target = "handbook", root / "handbook" / match[1] / (match[2] + ".html")

@@ -75,7 +75,7 @@ function StaffingRoles({ service, chapter, full }: {
       return <section className="handbook-roles handbook-roles-pending" aria-label={groupHeading}>
         <GroupHeading>{groupHeading}</GroupHeading>
         <p className="handbook-working-note">
-          このサービス（{service.title || "当サービス"}）の職種別要件は、法令員数・兼務解釈の独立確認を進めています。
+          このサービス（{service.label || "当サービス"}）の職種別要件は、法令員数・兼務解釈の独立確認を進めています。
           現時点の基準・確認項目は、本章の「人員基準の確認ポイント」「確認すること」および関連する省令・解釈通知をご確認ください。
         </p>
       </section>;
