@@ -114,3 +114,29 @@ class PrivateNavigationTest(unittest.TestCase):
             self.assertIn('../legislation/index.html?service=dayrehab&amp;category=notices', updated)
             self.assertNotIn('kaigo-rules.vercel.app', updated)
 
+
+
+    def test_guidance_links_keep_service_scope(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "fees/guidance").mkdir(parents=True)
+            (root / "fees/guidance/index.html").write_text("通所介護限定の留意事項", encoding="utf-8")
+            (root / "legislation").mkdir(parents=True)
+            (root / "legislation/index.html").write_text("サービス別出典検索", encoding="utf-8")
+            (root / "handbook/dayrehab").mkdir(parents=True)
+            (root / "handbook/dayrehab/remuneration.html").write_text("通所リハの報酬", encoding="utf-8")
+            dayservice = module.destination(
+                root, "https://kaigo-rules.vercel.app/services/dayservice/remuneration/guidance")
+            self.assertIsNotNone(dayservice)
+            self.assertEqual(dayservice[1], root / "fees/guidance/index.html")
+            dayrehab = module.destination(
+                root, "https://kaigo-rules.vercel.app/services/dayrehab/remuneration/guidance")
+            self.assertIsNotNone(dayrehab)
+            self.assertEqual(dayrehab[1], root / "legislation/index.html")
+            self.assertEqual(dayrehab[2], "?service=dayrehab&category=guidance")
+            self.assertNotEqual(dayrehab[1], dayservice[1])
+            self.assertIsNone(module.destination(
+                root, "https://kaigo-rules.vercel.app/services/not-a-published-service/remuneration/guidance"))
+            (root / "legislation/index.html").unlink()
+            self.assertIsNone(module.destination(
+                root, "https://kaigo-rules.vercel.app/services/dayrehab/remuneration/guidance"))
