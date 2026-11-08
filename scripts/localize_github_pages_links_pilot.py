@@ -26,6 +26,15 @@ ATTR = re.compile(r'(\bhref=")([^"]+)(")')
 SAFE_SERVICE = re.compile(r"^[a-z0-9-]+$")
 SAFE_CHAPTER = SAFE_SERVICE
 SAFE_FRAGMENT = re.compile(r"^[A-Za-z0-9_.:-]+$")
+# Only the known legacy fee-unit-price link is turned into a clearly labelled
+# static search fallback. The static search does not provide a unit-price table.
+UNIT_PRICE_LINK = re.compile(
+    r'(?P<open><a\b[^>]*\bhref="https://kaigo-rules\.vercel\.app/fees/unit-price"[^>]*>)'
+    r'(?P<body>(?:(?!</a>).){0,800})</a>',
+    re.DOTALL,
+)
+UNIT_PRICE_FALLBACK_LABEL = "地域区分の関連資料を検索（一単位単価表ではありません）"
+
 
 
 @lru_cache(maxsize=4)
@@ -215,10 +224,34 @@ def localize(root: Path) -> dict:
     for source in pages:
         content = source.read_text(encoding="utf-8")
 
+        def replace_unit_price_anchor(match):
+            nonlocal links
+            current = "https://" + ORIGIN + "/fees/unit-price"
+            found = destination(root, current)
+            if not found:
+                return match[0]
+            kind, target, suffix = found
+            relative = posixpath.relpath(target.relative_to(root).as_posix(),
+                                       source.parent.relative_to(root).as_posix() or ".")
+            new_href = html.escape(relative + suffix, quote=True)
+            opening = match["open"].replace(
+                'href="' + current + '"', 'href="' + new_href + '"', 1)
+            if opening == match["open"]:
+                raise RuntimeError("Unit-price fallback link could not be rewritten")
+            links += 1
+            counts[kind] += 1
+            return opening + UNIT_PRICE_FALLBACK_LABEL + "</a>"
+
+        # A search fallback must never retain a label claiming to show a price table.
+        content = UNIT_PRICE_LINK.sub(replace_unit_price_anchor, content)
+
         def replace(match):
             nonlocal links
             current = html.unescape(match[2])
             if not current.startswith("https://" + ORIGIN + "/"):
+                return match[0]
+            # Unknown anchor shapes must not be relabelled as price tables.
+            if current == "https://" + ORIGIN + "/fees/unit-price":
                 return match[0]
             found = destination(root, current)
             if not found:
