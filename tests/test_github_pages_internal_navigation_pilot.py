@@ -108,6 +108,8 @@ class PrivateNavigationTest(unittest.TestCase):
             self.assertIn('../legislation/index.html?service=dayservice&amp;category=notices', updated)
             self.assertIn('../legislation/index.html?category=criteria', updated)
             self.assertIn('../databases/search/index.html?q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86', updated)
+            self.assertIn("地域区分の関連資料を検索（一単位単価表ではありません）", updated)
+            self.assertNotIn("単価・地域区分</a>", updated)
             self.assertIn('../handbook/dayservice/remuneration.html', updated)
             self.assertIn('guidance/index.html', updated)
             self.assertIn('../legislation/index.html?service=dayrehab&amp;category=standards', updated)
@@ -140,3 +142,35 @@ class PrivateNavigationTest(unittest.TestCase):
             (root / "legislation/index.html").unlink()
             self.assertIsNone(module.destination(
                 root, "https://kaigo-rules.vercel.app/services/dayrehab/remuneration/guidance"))
+
+
+    def test_unit_price_fallback_does_not_pretend_to_show_prices(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "databases/search").mkdir(parents=True)
+            (root / "databases/search/index.html").write_text("検索資料", encoding="utf-8")
+            (root / "fees").mkdir(parents=True)
+            source = root / "fees/index.html"
+            source.write_text(
+                '<a href="https://kaigo-rules.vercel.app/fees/unit-price">'
+                '通所介護の一単位単価を見る →</a>'
+                '<a class="x" href="https://kaigo-rules.vercel.app/fees/unit-price">'
+                '<span>単価・地域区分</span></a>'
+                '<a href="https://kaigo-rules.vercel.app/fees/criteria">別告示</a>',
+                encoding="utf-8",
+            )
+            result = module.localize(root)
+            self.assertEqual(result["links_localized"], 2)
+            rendered = source.read_text(encoding="utf-8")
+            self.assertEqual(rendered.count(module.UNIT_PRICE_FALLBACK_LABEL), 2)
+            self.assertNotIn("通所介護の一単位単価を見る", rendered)
+            self.assertNotIn("単価・地域区分</span>", rendered)
+            self.assertNotIn("kaigo-rules.vercel.app/fees/unit-price", rendered)
+            self.assertEqual(module.localize(root)["links_localized"], 0)
+            (root / "databases/search/index.html").unlink()
+            source.write_text(
+                '<a href="https://kaigo-rules.vercel.app/fees/unit-price">'
+                '通所介護の一単位単価を見る →</a>', encoding="utf-8")
+            self.assertEqual(module.localize(root)["links_localized"], 0)
+            self.assertIn("kaigo-rules.vercel.app/fees/unit-price",
+                          source.read_text(encoding="utf-8"))
