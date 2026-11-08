@@ -148,7 +148,8 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
         kind, target, suffix = "legislation-browse", _legislation_browse(root, q), "?" + q
     elif path == "/fees/criteria":
         kind, target, suffix = "legislation-browse", _legislation_browse(root, "category=criteria"), "?category=criteria"
-    elif path == "/fees/unit-price":
+    elif path == "/fees/unit-price" and not query:
+        # Preserve unknown service/period parameters rather than silently dropping scope.
         kind, target, suffix = "search", root / "databases/search/index.html", "?q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
     elif path in {"/start", "/overview", "/guide", "/sources", "/handbook-sources",
                   "/fees/guidance", "/fees"} and not query:
