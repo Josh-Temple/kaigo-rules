@@ -161,6 +161,11 @@ class PrivateNavigationTest(unittest.TestCase):
             )
             result = module.localize(root)
             self.assertEqual(result["links_localized"], 2)
+            self.assertEqual(result["pages_changed"], 1)
+            self.assertIsNone(module.destination(
+                root, "https://kaigo-rules.vercel.app/fees/unit-price?service=dayrehab"))
+            self.assertIsNone(module.destination(
+                root, "https://kaigo-rules.vercel.app/fees/unit-price?q=%E6%A8%AA%E6%B5%9C%E5%B8%82"))
             rendered = source.read_text(encoding="utf-8")
             self.assertEqual(rendered.count(module.UNIT_PRICE_FALLBACK_LABEL), 2)
             self.assertNotIn("通所介護の一単位単価を見る", rendered)
