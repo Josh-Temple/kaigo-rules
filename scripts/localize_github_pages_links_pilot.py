@@ -223,6 +223,7 @@ def localize(root: Path) -> dict:
     links = 0
     for source in pages:
         content = source.read_text(encoding="utf-8")
+        original_content = content
 
         def replace_unit_price_anchor(match):
             nonlocal links
@@ -265,7 +266,7 @@ def localize(root: Path) -> dict:
             return match[1] + new_href + match[3]
 
         updated = ATTR.sub(replace, content)
-        if updated != content:
+        if updated != original_content:
             source.write_text(updated, encoding="utf-8")
             changed += 1
     return {"pages_scanned": len(pages), "pages_changed": changed,
