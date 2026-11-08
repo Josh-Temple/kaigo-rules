@@ -228,7 +228,8 @@
   .dayservice-timing-example table{min-width:0;font-size:8pt}
   .dayservice-time-example-scroll th,.dayservice-time-example-scroll td{padding:5pt 3pt}
   .dayservice-timing-example{break-inside:avoid-page}
-  .dayservice-counselor-comparison{font-size:8pt}
+  .dayservice-counselor-comparison{font-size:8pt;grid-template-columns:1fr 1fr;gap:4px}
+  .dayservice-service-timeline{grid-template-columns:1fr;gap:4px}
   .dayservice-qa{background:transparent;padding:10pt;border-color:#777;break-inside:avoid-page}
   .dayservice-excerpt-label,.dayservice-source-caution,.dayservice-read-across,.dayservice-qa-citation,.dayservice-qa-question>strong,.dayservice-qa-answer>strong{break-after:avoid-page}
   .dayservice-source-citation{break-before:avoid-page;break-inside:avoid-page}
