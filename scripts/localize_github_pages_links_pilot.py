@@ -26,6 +26,15 @@ ATTR = re.compile(r'(\bhref=")([^"]+)(")')
 SAFE_SERVICE = re.compile(r"^[a-z0-9-]+$")
 SAFE_CHAPTER = SAFE_SERVICE
 SAFE_FRAGMENT = re.compile(r"^[A-Za-z0-9_.:-]+$")
+# Only the known legacy fee-unit-price link is turned into a clearly labelled
+# static search fallback. The static search does not provide a unit-price table.
+UNIT_PRICE_LINK = re.compile(
+    r'(?P<open><a\b[^>]*\bhref="https://kaigo-rules\.vercel\.app/fees/unit-price"[^>]*>)'
+    r'(?P<body>(?:(?!</a>).){0,800})</a>',
+    re.DOTALL,
+)
+UNIT_PRICE_FALLBACK_LABEL = "地域区分の関連資料を検索（一単位単価表ではありません）"
+
 
 
 @lru_cache(maxsize=4)
@@ -139,7 +148,8 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
         kind, target, suffix = "legislation-browse", _legislation_browse(root, q), "?" + q
     elif path == "/fees/criteria":
         kind, target, suffix = "legislation-browse", _legislation_browse(root, "category=criteria"), "?category=criteria"
-    elif path == "/fees/unit-price":
+    elif path == "/fees/unit-price" and not query:
+        # Preserve unknown service/period parameters rather than silently dropping scope.
         kind, target, suffix = "search", root / "databases/search/index.html", "?q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
     elif path in {"/start", "/overview", "/guide", "/sources", "/handbook-sources",
                   "/fees/guidance", "/fees"} and not query:
@@ -153,7 +163,14 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
             kind, target = "handbook", root / "handbook" / match[1] / "remuneration.html"
         match = re.fullmatch(r"/services/([a-z0-9-]+)/remuneration/guidance", path)
         if match and not query:
-            kind, target = "information", root / "fees/guidance/index.html"
+            service_id = match[1]
+            if service_id == "dayservice":
+                # This existing page covers dayservice alone; never attribute it to another service.
+                kind, target = "information", root / "fees/guidance/index.html"
+            elif (root / "handbook" / service_id / "remuneration.html").is_file():
+                # Scoped source browser, not a substitute for verified fee guidance.
+                q = f"service={service_id}&category=guidance"
+                kind, target, suffix = "legislation-browse", _legislation_browse(root, q), "?" + q
         match = re.fullmatch(r"/services/([a-z0-9-]+)/rules", path)
         if match and not query:
             q = f"service={match[1]}&category=standards"
@@ -207,11 +224,36 @@ def localize(root: Path) -> dict:
     links = 0
     for source in pages:
         content = source.read_text(encoding="utf-8")
+        original_content = content
+
+        def replace_unit_price_anchor(match):
+            nonlocal links
+            current = "https://" + ORIGIN + "/fees/unit-price"
+            found = destination(root, current)
+            if not found:
+                return match[0]
+            kind, target, suffix = found
+            relative = posixpath.relpath(target.relative_to(root).as_posix(),
+                                       source.parent.relative_to(root).as_posix() or ".")
+            new_href = html.escape(relative + suffix, quote=True)
+            opening = match["open"].replace(
+                'href="' + current + '"', 'href="' + new_href + '"', 1)
+            if opening == match["open"]:
+                raise RuntimeError("Unit-price fallback link could not be rewritten")
+            links += 1
+            counts[kind] += 1
+            return opening + UNIT_PRICE_FALLBACK_LABEL + "</a>"
+
+        # A search fallback must never retain a label claiming to show a price table.
+        content = UNIT_PRICE_LINK.sub(replace_unit_price_anchor, content)
 
         def replace(match):
             nonlocal links
             current = html.unescape(match[2])
             if not current.startswith("https://" + ORIGIN + "/"):
+                return match[0]
+            # Unknown anchor shapes must not be relabelled as price tables.
+            if current == "https://" + ORIGIN + "/fees/unit-price":
                 return match[0]
             found = destination(root, current)
             if not found:
@@ -225,7 +267,7 @@ def localize(root: Path) -> dict:
             return match[1] + new_href + match[3]
 
         updated = ATTR.sub(replace, content)
-        if updated != content:
+        if updated != original_content:
             source.write_text(updated, encoding="utf-8")
             changed += 1
     return {"pages_scanned": len(pages), "pages_changed": changed,

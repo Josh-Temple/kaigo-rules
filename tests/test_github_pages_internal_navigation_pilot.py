@@ -108,9 +108,74 @@ class PrivateNavigationTest(unittest.TestCase):
             self.assertIn('../legislation/index.html?service=dayservice&amp;category=notices', updated)
             self.assertIn('../legislation/index.html?category=criteria', updated)
             self.assertIn('../databases/search/index.html?q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86', updated)
+            self.assertIn("地域区分の関連資料を検索（一単位単価表ではありません）", updated)
+            self.assertNotIn("単価・地域区分</a>", updated)
             self.assertIn('../handbook/dayservice/remuneration.html', updated)
             self.assertIn('guidance/index.html', updated)
             self.assertIn('../legislation/index.html?service=dayrehab&amp;category=standards', updated)
             self.assertIn('../legislation/index.html?service=dayrehab&amp;category=notices', updated)
             self.assertNotIn('kaigo-rules.vercel.app', updated)
 
+
+
+    def test_guidance_links_keep_service_scope(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "fees/guidance").mkdir(parents=True)
+            (root / "fees/guidance/index.html").write_text("通所介護限定の留意事項", encoding="utf-8")
+            (root / "legislation").mkdir(parents=True)
+            (root / "legislation/index.html").write_text("サービス別出典検索", encoding="utf-8")
+            (root / "handbook/dayrehab").mkdir(parents=True)
+            (root / "handbook/dayrehab/remuneration.html").write_text("通所リハの報酬", encoding="utf-8")
+            dayservice = module.destination(
+                root, "https://kaigo-rules.vercel.app/services/dayservice/remuneration/guidance")
+            self.assertIsNotNone(dayservice)
+            self.assertEqual(dayservice[1], root / "fees/guidance/index.html")
+            dayrehab = module.destination(
+                root, "https://kaigo-rules.vercel.app/services/dayrehab/remuneration/guidance")
+            self.assertIsNotNone(dayrehab)
+            self.assertEqual(dayrehab[1], root / "legislation/index.html")
+            self.assertEqual(dayrehab[2], "?service=dayrehab&category=guidance")
+            self.assertNotEqual(dayrehab[1], dayservice[1])
+            self.assertIsNone(module.destination(
+                root, "https://kaigo-rules.vercel.app/services/not-a-published-service/remuneration/guidance"))
+            (root / "legislation/index.html").unlink()
+            self.assertIsNone(module.destination(
+                root, "https://kaigo-rules.vercel.app/services/dayrehab/remuneration/guidance"))
+
+
+    def test_unit_price_fallback_does_not_pretend_to_show_prices(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "databases/search").mkdir(parents=True)
+            (root / "databases/search/index.html").write_text("検索資料", encoding="utf-8")
+            (root / "fees").mkdir(parents=True)
+            source = root / "fees/index.html"
+            source.write_text(
+                '<a href="https://kaigo-rules.vercel.app/fees/unit-price">'
+                '通所介護の一単位単価を見る →</a>'
+                '<a class="x" href="https://kaigo-rules.vercel.app/fees/unit-price">'
+                '<span>単価・地域区分</span></a>'
+                '<a href="https://kaigo-rules.vercel.app/fees/criteria">別告示</a>',
+                encoding="utf-8",
+            )
+            result = module.localize(root)
+            self.assertEqual(result["links_localized"], 2)
+            self.assertEqual(result["pages_changed"], 1)
+            self.assertIsNone(module.destination(
+                root, "https://kaigo-rules.vercel.app/fees/unit-price?service=dayrehab"))
+            self.assertIsNone(module.destination(
+                root, "https://kaigo-rules.vercel.app/fees/unit-price?q=%E6%A8%AA%E6%B5%9C%E5%B8%82"))
+            rendered = source.read_text(encoding="utf-8")
+            self.assertEqual(rendered.count(module.UNIT_PRICE_FALLBACK_LABEL), 2)
+            self.assertNotIn("通所介護の一単位単価を見る", rendered)
+            self.assertNotIn("単価・地域区分</span>", rendered)
+            self.assertNotIn("kaigo-rules.vercel.app/fees/unit-price", rendered)
+            self.assertEqual(module.localize(root)["links_localized"], 0)
+            (root / "databases/search/index.html").unlink()
+            source.write_text(
+                '<a href="https://kaigo-rules.vercel.app/fees/unit-price">'
+                '通所介護の一単位単価を見る →</a>', encoding="utf-8")
+            self.assertEqual(module.localize(root)["links_localized"], 0)
+            self.assertIn("kaigo-rules.vercel.app/fees/unit-price",
+                          source.read_text(encoding="utf-8"))

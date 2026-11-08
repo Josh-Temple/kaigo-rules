@@ -58,6 +58,10 @@ class HandbookSanitizerTest(unittest.TestCase):
         self.assertIn("@media (max-width:600px)", pilot.STYLES)
         self.assertIn("@media print", pilot.STYLES)
         self.assertIn(".dayservice-counselor-comparison{grid-template-columns:1fr 1fr", pilot.STYLES)
+        print_styles = pilot.STYLES.split("@media print{", 1)[1].split("@media (max-width:600px)", 1)[0]
+        self.assertIn(".dayservice-counselor-comparison{grid-template-columns:1fr 1fr;gap:4px}", print_styles)
+        reader_print = (ROOT / "app/reader.css").read_text(encoding="utf-8").split("@media print{", 1)[1]
+        self.assertIn(".dayservice-counselor-comparison{font-size:8pt;grid-template-columns:1fr 1fr;gap:4px}", reader_print)
 
     def test_unknown_controls_or_graphics_fail_closed(self):
         for fragment in ('<button>送信</button>', '<input type="text">', '<svg></svg>',
