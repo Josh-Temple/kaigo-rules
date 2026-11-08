@@ -153,7 +153,14 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
             kind, target = "handbook", root / "handbook" / match[1] / "remuneration.html"
         match = re.fullmatch(r"/services/([a-z0-9-]+)/remuneration/guidance", path)
         if match and not query:
-            kind, target = "information", root / "fees/guidance/index.html"
+            service_id = match[1]
+            if service_id == "dayservice":
+                # This existing page covers dayservice alone; never attribute it to another service.
+                kind, target = "information", root / "fees/guidance/index.html"
+            elif (root / "handbook" / service_id / "remuneration.html").is_file():
+                # Scoped source browser, not a substitute for verified fee guidance.
+                q = f"service={service_id}&category=guidance"
+                kind, target, suffix = "legislation-browse", _legislation_browse(root, q), "?" + q
         match = re.fullmatch(r"/services/([a-z0-9-]+)/rules", path)
         if match and not query:
             q = f"service={match[1]}&category=standards"
