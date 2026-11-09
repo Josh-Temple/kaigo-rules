@@ -138,5 +138,5 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - name: Deploy generated site
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
         id: deploy
