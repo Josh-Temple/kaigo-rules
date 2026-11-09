@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 import scripts.build_github_pages_handbook_pilot as pilot
 import scripts.localize_github_pages_links_pilot as navigation
 import scripts.build_github_pages_legislation_pilot as legislation
+import scripts.build_full_private_pilot as full_pilot
 
 
 class FullCrossAuditTest(unittest.TestCase):
@@ -83,6 +84,51 @@ class FullCrossAuditTest(unittest.TestCase):
             updated = page.read_text(encoding="utf-8")
             self.assertIn(navigation.UNIT_PRICE_FALLBACK_LABEL, updated)
             self.assertNotIn("一単位単価表を見る", updated)
+
+    def test_private_builder_rejects_ci_environment(self):
+        import os
+        old_val = os.environ.get("GITHUB_ACTIONS")
+        try:
+            os.environ["GITHUB_ACTIONS"] = "true"
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.validate_safety_and_dest(None)
+            self.assertIn("CI", str(ctx.exception))
+        finally:
+            if old_val is not None:
+                os.environ["GITHUB_ACTIONS"] = old_val
+            else:
+                os.environ.pop("GITHUB_ACTIONS", None)
+
+    def test_private_builder_rejects_repo_root_output(self):
+        with self.assertRaises(RuntimeError) as ctx:
+            full_pilot.validate_safety_and_dest(ROOT)
+        self.assertIn("inside the repository", str(ctx.exception))
+
+    def test_private_builder_rejects_public_directory_output(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            pub = Path(tmp) / "public"
+            pub.mkdir()
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.validate_safety_and_dest(pub)
+            self.assertIn("public directory candidate", str(ctx.exception))
+
+    def test_private_builder_rejects_dist_directory_output(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            dist = Path(tmp) / "dist"
+            dist.mkdir()
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.validate_safety_and_dest(dist)
+            self.assertIn("public directory candidate", str(ctx.exception))
+
+    def test_private_builder_rejects_symlink_output(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            real_dir = Path(tmp) / "real_dir"
+            real_dir.mkdir()
+            sym_dir = Path(tmp) / "sym_link"
+            sym_dir.symlink_to(real_dir)
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.validate_safety_and_dest(sym_dir)
+            self.assertIn("symbolic link", str(ctx.exception))
 
 
 if __name__ == "__main__":
