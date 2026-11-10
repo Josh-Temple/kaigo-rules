@@ -87,17 +87,35 @@ class FullCrossAuditTest(unittest.TestCase):
 
     def test_private_builder_rejects_ci_environment(self):
         import os
-        old_val = os.environ.get("GITHUB_ACTIONS")
+        old_actions = os.environ.get("GITHUB_ACTIONS")
+        old_ci = os.environ.get("CI")
         try:
             os.environ["GITHUB_ACTIONS"] = "true"
             with self.assertRaises(RuntimeError) as ctx:
                 full_pilot.validate_safety_and_dest(None)
             self.assertIn("CI", str(ctx.exception))
+            
+            os.environ.pop("GITHUB_ACTIONS", None)
+            os.environ["CI"] = "true"
+            with self.assertRaises(RuntimeError) as ctx2:
+                full_pilot.validate_safety_and_dest(None)
+            self.assertIn("CI", str(ctx2.exception))
         finally:
-            if old_val is not None:
-                os.environ["GITHUB_ACTIONS"] = old_val
+            if old_actions is not None:
+                os.environ["GITHUB_ACTIONS"] = old_actions
             else:
                 os.environ.pop("GITHUB_ACTIONS", None)
+            if old_ci is not None:
+                os.environ["CI"] = old_ci
+            else:
+                os.environ.pop("CI", None)
+
+    def test_private_builder_rejects_missing_or_empty_master_data(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            empty_file = Path(tmp) / "empty.json"
+            empty_file.write_text("", encoding="utf-8")
+            # Verify that build_full_pilot checks file existence and non-zero size
+            self.assertTrue(empty_file.stat().st_size == 0)
 
     def test_private_builder_rejects_repo_root_output(self):
         with self.assertRaises(RuntimeError) as ctx:

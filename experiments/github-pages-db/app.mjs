@@ -198,19 +198,22 @@ form.addEventListener("submit", (event) => {
   display().catch(handleError);
 });
 
-window.addEventListener("popstate", () => {
-  const params = new URLSearchParams(location.search);
-  query.value = params.get("q") || "";
-  const reqServ = params.get("service") || "";
-  if (reqServ && !services.some((x) => x.id === reqServ)) {
-    const unknown = element("option", "指定されたサービスは検索対象ではありません");
-    unknown.value = reqServ;
-    service.append(unknown);
-  }
-  service.value = reqServ;
-  category.value = resolveCategory(params.get("category"));
-  display().catch(handleError);
-});
+const hostWindow = typeof window !== "undefined" ? window : (typeof globalThis !== "undefined" && globalThis.window ? globalThis.window : null);
+if (hostWindow && typeof hostWindow.addEventListener === "function") {
+  hostWindow.addEventListener("popstate", () => {
+    const params = new URLSearchParams(location.search);
+    query.value = params.get("q") || "";
+    const reqServ = params.get("service") || "";
+    if (reqServ && !services.some((x) => x.id === reqServ)) {
+      const unknown = element("option", "指定されたサービスは検索対象ではありません");
+      unknown.value = reqServ;
+      service.append(unknown);
+    }
+    service.value = reqServ;
+    category.value = resolveCategory(params.get("category"));
+    display().catch(handleError);
+  });
+}
 
 try {
   services = await json("services.json");

@@ -479,11 +479,26 @@ def run_tests():
                 has_mojibake = False
                 mojibake_reasons = []
                 
+                rendered_images = []
                 if pymupdf:
                     doc = pymupdf.open(str(pdf_file_path))
                     page_count = len(doc)
                     full_text_list = [p.get_text() for p in doc]
                     extracted_text = "\n".join(full_text_list)
+                    
+                    # Render representative pages (first 2 pages) to PNG for visual inspection
+                    for page_idx in range(min(2, page_count)):
+                        p = doc.load_page(page_idx)
+                        pix = p.get_pixmap(dpi=150)
+                        img_name = f"{key}_page_{page_idx}.png"
+                        img_path = PDF_DIR / img_name
+                        pix.save(str(img_path))
+                        rendered_images.append({
+                            "page_index": page_idx,
+                            "width_px": pix.width,
+                            "height_px": pix.height,
+                            "image_name": img_name
+                        })
                     doc.close()
                 elif pypdf:
                     reader = pypdf.PdfReader(str(pdf_file_path))
@@ -511,6 +526,8 @@ def run_tests():
                     "has_checkpoints": has_checkpoints,
                     "has_warning_notes": has_warning,
                     "has_expanded_details_statutes": has_details_text,
+                    "rendered_images_count": len(rendered_images),
+                    "rendered_images": rendered_images,
                     "status": "PASS" if (page_count >= 1 and not has_mojibake and has_heading and has_details_text) else "FAIL"
                 })
                 
