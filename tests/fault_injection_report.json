@@ -1,0 +1,275 @@
+{
+  "timestamp": "2026-11-11T15:15:40Z",
+  "total_duration_seconds": 81.88,
+  "all_passed": true,
+  "reference_pilot": {
+    "total_files": 4497,
+    "total_bytes": 47264422,
+    "git_commit": "1988ca28b4c850cb3f8e161507f6a1dcaeb60712",
+    "git_tree": "880a7a6495dcbd8ebbdfbf31d67c27bf630a21d5"
+  },
+  "d01_summary": {
+    "total": 10,
+    "passed": 10,
+    "all_pass": true
+  },
+  "d02_summary": {
+    "total": 13,
+    "passed": 13,
+    "all_pass": true
+  },
+  "node_summary": {
+    "total": 4,
+    "passed": 4,
+    "all_pass": true
+  },
+  "d01_details": [
+    {
+      "case": "1. 先頭の法令HTMLを改ざん",
+      "passed": true,
+      "detected": true,
+      "restored_clean": true,
+      "expected_message_substring": "mismatch",
+      "actual_error": "File size mismatch for legislation/record/0005202480f7052f845d16fb9734066bdfbb4082478a8ce4d3b0cb9b78e594b3.html: expected 964, got 997",
+      "mutation_info": "Appended sentinel to 0005202480f7052f845d16fb9734066bdfbb4082478a8ce4d3b0cb9b78e594b3.html",
+      "duration_seconds": 0.3251
+    },
+    {
+      "case": "2. 中間の法令HTMLを改ざん",
+      "passed": true,
+      "detected": true,
+      "restored_clean": true,
+      "expected_message_substring": "mismatch",
+      "actual_error": "File size mismatch for legislation/record/81699dfe0ccc8f99200b4eb0c8b20beea4fe0fc9186f250670db73d07db2bba1.html: expected 804, got 836",
+      "mutation_info": "Appended sentinel to 81699dfe0ccc8f99200b4eb0c8b20beea4fe0fc9186f250670db73d07db2bba1.html",
+      "duration_seconds": 0.3585
+    },
+    {
+      "case": "3. 最後の法令HTMLを改ざん",
+      "passed": true,
+      "detected": true,
+      "restored_clean": true,
+      "expected_message_substring": "mismatch",
+      "actual_error": "File size mismatch for legislation/record/ffd8b939fee0adb93c52e3e99efa80a3b84ab37f5c1c9bc84b99a98a18eac6c6.html: expected 772, got 805",
+      "mutation_info": "Appended sentinel to ffd8b939fee0adb93c52e3e99efa80a3b84ab37f5c1c9bc84b99a98a18eac6c6.html",
+      "duration_seconds": 0.3966
+    },
+    {
+      "case": "4. ファイル長を変えずに本文を改ざん",
+      "passed": true,
+      "detected": true,
+      "restored_clean": true,
+      "expected_message_substring": "sha-256 mismatch",
+      "actual_error": "SHA-256 mismatch for legislation/record/0082d7056410d0d9d05c04ca0ff072e472b7a36913be80c43f3116afff4b57fd.html: expected 1a05aaa5c1254fc24dd312b609d1d5c86de4003534d1f6250a9dcfb0e3bdc0f4, got 18e1e3bc957f24501d8467d886d1f32857ddf51970875f0c53c7d0efc1905a3e",
+      "mutation_info": "Flipped 10 bytes in 0082d7056410d0d9d05c04ca0ff072e472b7a36913be80c43f3116afff4b57fd.html with exact byte size 774",
+      "duration_seconds": 0.3219
+    },
+    {
+      "case": "5. 1ファイル削除",
+      "passed": true,
+      "detected": true,
+      "restored_clean": true,
+      "expected_message_substring": "missing on disk",
+      "actual_error": "File listed in manifest is missing on disk: legislation/record/004363b1832637b199c40fa564d37feb2008a55a48248cd828c59cd2e0773022.html",
+      "mutation_info": "Deleted 004363b1832637b199c40fa564d37feb2008a55a48248cd828c59cd2e0773022.html",
+      "duration_seconds": 0.3215
+    },
+    {
+      "case": "6. 追加の不正HTMLを配置",
+      "passed": true,
+      "detected": true,
+      "restored_clean": true,
+      "expected_message_substring": "extraneous unverified file",
+      "actual_error": "Extraneous unverified file found in destination: legislation/record/malicious_extra_record.html",
+      "mutation_info": "Created extra unverified file malicious_extra_record.html",
+      "duration_seconds": 0.5292
+    },
+    {
+      "case": "7. 以前のHEAD相当の生成物を混入",
+      "passed": true,
+      "detected": true,
+      "restored_clean": true,
+      "expected_message_substring": "mismatch",
+      "actual_error": "File size mismatch for styles.css: expected 27391, got 32",
+      "mutation_info": "Replaced styles.css with stale content",
+      "duration_seconds": 0.3974
+    },
+    {
+      "case": "8. 入力法令データのハッシュ検証",
+      "passed": true,
+      "detected": true,
+      "restored_clean": true,
+      "expected_message_substring": "SHA matches",
+      "actual_error": "None (master data SHA-256 bound to manifest)",
+      "mutation_info": "real_sha=d8acccbdd02465d00f249c18b39cae0bc0b3fd1b090dacb9379dd39e850b1afc",
+      "duration_seconds": 0.0149
+    },
+    {
+      "case": "9. 生成マニフェストを改ざん",
+      "passed": true,
+      "detected": true,
+      "restored_clean": true,
+      "expected_message_substring": "manifest status is not complete",
+      "actual_error": "Manifest status is not COMPLETE: INCOMPLETE_TAMPERED",
+      "mutation_info": "Changed manifest status to INCOMPLETE_TAMPERED",
+      "duration_seconds": 0.2874
+    },
+    {
+      "case": "10. 改ざん後再実行での不正文字列完全根絶・正常復元",
+      "passed": true,
+      "detected": true,
+      "restored_clean": true,
+      "expected_message_substring": "D_TAMPER_SENTINEL eradicated",
+      "actual_error": "None (rebuild completely cleared tampered content)",
+      "mutation_info": "Rebuilt 4497 files, verified=True",
+      "duration_seconds": 38.3613
+    }
+  ],
+  "d02_details": [
+    {
+      "stage": "1. 入力読み込み前 (無効な出力先)",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Refusing to output private pilot inside the repository path",
+      "duration_seconds": 0.0148
+    },
+    {
+      "stage": "2. 入力JSON解析中 (破損データ)",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Expecting value: line 1 column 1 (char 0)",
+      "duration_seconds": 0.0396
+    },
+    {
+      "stage": "3. Node.js検出前 (無効なNodeバイナリ)",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Explicitly specified Node.js binary not found: /nonexistent/bin/node",
+      "duration_seconds": 0.0141
+    },
+    {
+      "stage": "4. Node.jsバージョン不適合 (< v20)",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Node.js version v18.19.0 is unsupported. Node.js >= v20.0.0 is required.",
+      "duration_seconds": 0.0136
+    },
+    {
+      "stage": "5. CSS生成処理の失敗",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Injected CSS error",
+      "duration_seconds": 0.1136
+    },
+    {
+      "stage": "6. 法令HTML生成途中のプロセス失敗",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Injected legislation error",
+      "duration_seconds": 0.1191
+    },
+    {
+      "stage": "7. 検索ビルドプロセス失敗 (Node exit 1)",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Search builder failed (exit 1): Node memory exhausted",
+      "duration_seconds": 0.101
+    },
+    {
+      "stage": "8. 検索アセット検証失敗 (必須ファイル欠落)",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Missing required search database asset: qa.html",
+      "duration_seconds": 0.0944
+    },
+    {
+      "stage": "9. 手引HTML生成途中の失敗",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Injected handbook disk error",
+      "duration_seconds": 0.0912
+    },
+    {
+      "stage": "10. リンク局所化処理の失敗",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Injected localization error",
+      "duration_seconds": 0.2395
+    },
+    {
+      "stage": "11. マニフェスト自己検証での不整合検知",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Injected manifest mismatch",
+      "duration_seconds": 0.7762
+    },
+    {
+      "stage": "12. 目標出力先への確定昇格時の失敗とロールバック",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Target destination does not exist (0 partial files).",
+      "actual_error": "Promotion to target destination failed (rolled back): Disk full during atomic promotion",
+      "duration_seconds": 0.8407
+    },
+    {
+      "stage": "13. 既存正常出力が存在する状態での障害発生と既存データ保全",
+      "passed": true,
+      "caught_error": true,
+      "clean_state": true,
+      "details": "Prior valid files and marker preserved intact.",
+      "actual_error": "Failure after start",
+      "duration_seconds": 0.1596
+    }
+  ],
+  "node_details": [
+    {
+      "case": "1. システムPATHからの自動検出",
+      "passed": true,
+      "resolved_path": "/workspace/opt/node-v22.11.0-linux-x64/bin/node",
+      "error": null,
+      "duration_seconds": 0.0236
+    },
+    {
+      "case": "2. NODE_BINARY環境変数による明示指定",
+      "passed": true,
+      "resolved_path": "/workspace/opt/node-v22.11.0-linux-x64/bin/node",
+      "error": null,
+      "duration_seconds": 0.0214
+    },
+    {
+      "case": "3. 存在しないNodeバイナリの即時拒否",
+      "passed": true,
+      "error": "Explicitly specified Node.js binary not found: /nonexistent/bin/node",
+      "duration_seconds": 0.0
+    },
+    {
+      "case": "4. サポート外Nodeバージョン(< v20)の即時拒否",
+      "passed": true,
+      "error": "Node.js version v18.12.0 is unsupported. Node.js >= v20.0.0 is required.",
+      "duration_seconds": 0.0004
+    }
+  ]
+}

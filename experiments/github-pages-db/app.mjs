@@ -6,6 +6,30 @@ const labels = {
   law: "介護保険法", ordinance: "基準省令", unitPrice: "一単位単価・地域区分",
   delegated: "報酬算定基準（別告示）", notice: "基準解釈通知", qa: "国Q&A",
 };
+const categoryAliases = {
+  standards: "ordinance",
+  rules: "ordinance",
+  guidance: "notice",
+  notices: "notice",
+  fees: "delegated",
+  criteria: "delegated",
+  unitprice: "unitPrice",
+  "unit-price": "unitPrice",
+  qa: "qa",
+  law: "law",
+  ordinance: "ordinance",
+  delegated: "delegated",
+  notice: "notice",
+};
+
+function resolveCategory(cat) {
+  if (!cat) return "";
+  const lower = cat.toLowerCase();
+  if (categoryAliases[lower]) return categoryAliases[lower];
+  if (GROUPS.includes(cat)) return cat;
+  return "";
+}
+
 const form = document.querySelector("#search");
 const query = document.querySelector("#query");
 const service = document.querySelector("#service");
@@ -36,20 +60,22 @@ function internalLink(label, href) {
   const destination = new URL(href, "https://kaigo-rules.vercel.app");
   if (destination.origin !== "https://kaigo-rules.vercel.app") throw new Error("不正なリンクを検出しました。");
   const link = element("a", label);
-  const legal = destination.pathname.match(/^\/(law|rules)\/([0-9]+(?:-[0-9]+)*(?::[0-9]+(?:-[0-9]+)*)?)\/?$/);
-  const params = [...destination.searchParams.keys()];
   const selectedService = destination.searchParams.get("service") || "";
   const qa = destination.pathname.match(/^\/qa\/([A-Za-z0-9][A-Za-z0-9._-]{0,120})\/?$/);
-  if (localQaDetails && qa && !destination.hash &&
-      params.every((key) => key === "reader") && params.length <= 1 &&
-      (!destination.searchParams.has("reader") || destination.searchParams.get("reader") === "1")) {
-    link.href = "./qa-details/" + encodeURIComponent(qa[1]) +
-      (destination.searchParams.get("reader") === "1" ? "/reader.html" : "/index.html");
-  } else if (localLegalDetails && legal && !destination.hash &&
-      params.every((key) => key === "service") && params.length <= 1 &&
-      (!selectedService || /^[a-z0-9-]+$/.test(selectedService))) {
-    link.href = "./legal/" + legal[1] + "/" + (selectedService || "all") + "/" +
-      legal[2].replace(":", "__range__") + ".html";
+  
+  if (qa) {
+    link.href = "./qa.html?q=" + encodeURIComponent(qa[1]);
+  } else if (destination.pathname.startsWith("/fees/unit-price")) {
+    link.href = (selectedService && /^[a-z0-9-]+$/.test(selectedService))
+      ? "../../services/" + selectedService + "/index.html"
+      : "../../fees/index.html";
+  } else if (destination.pathname.startsWith("/rules") || destination.pathname.startsWith("/law") ||
+             destination.pathname.startsWith("/notices") || destination.pathname.startsWith("/fees/criteria")) {
+    if (selectedService && /^[a-z0-9-]+$/.test(selectedService)) {
+      link.href = "../../legislation/index.html?service=" + selectedService;
+    } else {
+      link.href = "../../legislation/index.html";
+    }
   } else {
     link.href = destination.href;
   }
@@ -83,9 +109,10 @@ function appendSource(card, url) {
   if (!["https:", "http:"].includes(source.protocol) || source.username || source.password) {
     throw new Error("不正な原典リンクを検出しました。");
   }
-  const original = element("a", "原典を見る");
+  const original = element("a", "原典を見る ↗");
   original.href = source.href;
   original.rel = "noopener noreferrer";
+  original.target = "_blank";
   card.append(original);
 }
 
@@ -101,25 +128,26 @@ async function display() {
   const data = await json(selected ? selected.file : "global.json");
   if (searchNumber !== latestSearch) return;
   const start = performance.now();
-  const found = runSearch(data, q, category.value);
+  const effectiveCategory = resolveCategory(category.value);
+  const found = runSearch(data, q, effectiveCategory);
   const duration = performance.now() - start;
   results.replaceChildren();
   let count = 0;
   for (const group of GROUPS) {
-    if (category.value && category.value !== group) continue;
+    if (effectiveCategory && effectiveCategory !== group) continue;
     const rows = found[group];
     count += rows.length;
     const section = document.createElement("section");
     if (group === "unitPrice") {
-      const services = new Map();
+      const serviceGroups = new Map();
       for (const row of rows) {
-        const matches = services.get(row.serviceId) || [];
+        const matches = serviceGroups.get(row.serviceId) || [];
         matches.push(row);
-        services.set(row.serviceId, matches);
+        serviceGroups.set(row.serviceId, matches);
       }
       section.append(element("h2", labels[group] + "（" + rows.length.toLocaleString("ja-JP") +
-        "件 / " + services.size.toLocaleString("ja-JP") + "サービス）"));
-      appendProgressively(section, [...services.values()], 20, (matches) => {
+        "件 / " + serviceGroups.size.toLocaleString("ja-JP") + "サービス）"));
+      appendProgressively(section, [...serviceGroups.values()], 20, (matches) => {
         const first = matches[0];
         const card = document.createElement("article"); card.className = "result";
         card.append(internalLink(first.serviceLabel, resultHref(group, first, q)));
@@ -163,9 +191,29 @@ form.addEventListener("submit", (event) => {
   if (query.value.trim()) params.set("q", query.value.trim());
   if (service.value) params.set("service", service.value);
   if (category.value) params.set("category", category.value);
-  history.replaceState(null, "", location.pathname + (params.size ? "?" + params : ""));
+  const target = location.pathname + (params.size ? "?" + params.toString() : "");
+  if (target !== location.pathname + location.search) {
+    history.pushState(null, "", target);
+  }
   display().catch(handleError);
 });
+
+const hostWindow = typeof window !== "undefined" ? window : (typeof globalThis !== "undefined" && globalThis.window ? globalThis.window : null);
+if (hostWindow && typeof hostWindow.addEventListener === "function") {
+  hostWindow.addEventListener("popstate", () => {
+    const params = new URLSearchParams(location.search);
+    query.value = params.get("q") || "";
+    const reqServ = params.get("service") || "";
+    if (reqServ && !services.some((x) => x.id === reqServ)) {
+      const unknown = element("option", "指定されたサービスは検索対象ではありません");
+      unknown.value = reqServ;
+      service.append(unknown);
+    }
+    service.value = reqServ;
+    category.value = resolveCategory(params.get("category"));
+    display().catch(handleError);
+  });
+}
 
 try {
   services = await json("services.json");
@@ -181,7 +229,6 @@ try {
     service.append(unknown);
   }
   service.value = requestedService;
-  const requestedCategory = params.get("category") || "";
-  category.value = GROUPS.includes(requestedCategory) ? requestedCategory : "";
+  category.value = resolveCategory(params.get("category"));
   await display();
 } catch (error) { handleError(error); }
