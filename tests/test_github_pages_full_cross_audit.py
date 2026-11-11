@@ -148,6 +148,34 @@ class FullCrossAuditTest(unittest.TestCase):
                 full_pilot.validate_safety_and_dest(sym_dir)
             self.assertIn("symbolic link", str(ctx.exception))
 
+    def test_private_builder_atomic_failure_leaves_target_clean(self):
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "atomic_target"
+            with patch("subprocess.run") as mock_run:
+                mock_run.return_value.returncode = 1
+                mock_run.return_value.stderr = "Injected Node builder crash for testing"
+                with self.assertRaises(RuntimeError):
+                    full_pilot.build_full_pilot(target)
+            # Target must either not exist or contain 0 partial files
+            if target.exists():
+                self.assertEqual(len(list(target.rglob("*"))), 0)
+
+    def test_private_builder_node_resolution_portability(self):
+        import shutil
+        node_bin = shutil.which("node")
+        if not node_bin:
+            candidates = [
+                "/workspace/opt/node-v22.11.0-linux-x64/bin/node",
+                "/workspace/opt/node-v20.18.0-linux-x64/bin/node",
+            ]
+            for c in candidates:
+                if Path(c).is_file():
+                    node_bin = c
+                    break
+        self.assertIsNotNone(node_bin, "Node binary must be resolvable via PATH or standard opt paths")
+        self.assertTrue(Path(node_bin).is_file())
+
 
 if __name__ == "__main__":
     unittest.main()

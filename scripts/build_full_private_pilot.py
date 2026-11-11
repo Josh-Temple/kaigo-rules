@@ -99,14 +99,17 @@ def validate_safety_and_dest(dest_dir: Path | None) -> Path:
         if dest_resolved.name in DISALLOWED_PUBLIC_DIRS or any(p.name in DISALLOWED_PUBLIC_DIRS for p in dest_resolved.parents):
             raise RuntimeError(f"Refusing to output private pilot to public directory candidate: {dest_resolved.name}")
 
-        out = dest_resolved
-        out.mkdir(parents=True, exist_ok=True)
+        return dest_resolved
 
-    return out
+    return None
 
 def build_full_pilot(dest_dir: Path | None = None, csv_audit_path: Path | None = None) -> dict:
     t0 = time.time()
-    out = validate_safety_and_dest(dest_dir)
+    target_dest = validate_safety_and_dest(dest_dir)
+
+    # Atomic staging directory: build everything isolated first
+    staging_dir = Path(tempfile.mkdtemp(prefix="kaigo_pilot_stage_"))
+    out = staging_dir
 
     master_path = ROOT / "data/handbook.generated.json"
     legal_path = ROOT / "data/legal-browser.generated.json"
@@ -140,23 +143,26 @@ def build_full_pilot(dest_dir: Path | None = None, csv_audit_path: Path | None =
         (out / "styles.css").write_text(styles_content, encoding="utf-8")
         (out / "print.js").write_text(pilot.PRINT_JS, encoding="utf-8")
         
-        # 2. Build Legislation pilot (3,812 records) with cache integrity validation
-        leg_records_dir = out / "legislation/record"
-        if leg_records_dir.exists():
-            leg_files = list(leg_records_dir.glob("*.html"))
-            if len(leg_files) == 3812 and all(p.stat().st_size > 0 for p in leg_files[:50]):
-                leg_result = {"records": len(leg_files)}
-            else:
-                shutil.rmtree(out / "legislation", ignore_errors=True)
-                leg_result = legislation.build(out)
-        else:
-            leg_result = legislation.build(out)
+        # 2. Build Legislation pilot (3,812 records) - always build fresh in clean staging
+        leg_result = legislation.build(out)
         
         # 3. Build search database and QA using the official github-pages-db module
         search_dir = out / "databases/search"
         search_dir.mkdir(parents=True, exist_ok=True)
         
-        node_bin = "/workspace/opt/node-v22.11.0-linux-x64/bin/node"
+        # Dynamically resolve node binary from PATH with opt fallbacks for portability
+        node_bin = shutil.which("node")
+        if not node_bin or not Path(node_bin).is_file():
+            candidates = [
+                "/workspace/opt/node-v22.11.0-linux-x64/bin/node",
+                "/workspace/opt/node-v20.18.0-linux-x64/bin/node",
+            ]
+            for c in candidates:
+                if Path(c).is_file():
+                    node_bin = c
+                    break
+        if not node_bin:
+            raise RuntimeError("node binary not found in PATH or standard opt paths")
         build_script = ROOT / "experiments/github-pages-db/build.mjs"
         register_script = ROOT / "experiments/github-pages-db/register.mjs"
         
@@ -384,8 +390,29 @@ def build_full_pilot(dest_dir: Path | None = None, csv_audit_path: Path | None =
         total_bytes = sum(p.stat().st_size for p in files)
         elapsed = time.time() - t0
         
+        # 8. Atomic promotion to target destination
+        if target_dest is not None:
+            dest_resolved = target_dest.resolve(strict=False)
+            dest_resolved.mkdir(parents=True, exist_ok=True)
+            # Clear all prior contents so tampered/stale files never persist
+            for item in list(dest_resolved.iterdir()):
+                if item.is_dir() and not item.is_symlink():
+                    shutil.rmtree(item, ignore_errors=True)
+                else:
+                    item.unlink(missing_ok=True)
+            # Copy verified artifacts from staging to target
+            for item in staging_dir.iterdir():
+                if item.is_dir():
+                    shutil.copytree(item, dest_resolved / item.name)
+                else:
+                    shutil.copy2(item, dest_resolved / item.name)
+            shutil.rmtree(staging_dir, ignore_errors=True)
+            final_dir = str(dest_resolved)
+        else:
+            final_dir = str(staging_dir)
+
         return {
-            "directory": str(out),
+            "directory": final_dir,
             "total_files": len(files),
             "total_bytes": total_bytes,
             "services_count": len(services),
@@ -396,9 +423,9 @@ def build_full_pilot(dest_dir: Path | None = None, csv_audit_path: Path | None =
             "elapsed_seconds": round(elapsed, 2)
         }
     except Exception as e:
-        # Fail closed: clean up on error if created as temp directory
-        if dest_dir is None and out.exists():
-            shutil.rmtree(out, ignore_errors=True)
+        # Atomic failure guarantee: clean up staging directory so no partial artifacts remain
+        if staging_dir.exists():
+            shutil.rmtree(staging_dir, ignore_errors=True)
         raise
 
 if __name__ == "__main__":
