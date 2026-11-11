@@ -138,6 +138,14 @@ class FullCrossAuditTest(unittest.TestCase):
                 full_pilot.validate_safety_and_dest(dist)
             self.assertIn("public directory candidate", str(ctx.exception))
 
+    def test_private_builder_rejects_next_directory_output(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            next_dir = Path(tmp) / ".next"
+            next_dir.mkdir()
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.validate_safety_and_dest(next_dir)
+            self.assertIn("public directory candidate", str(ctx.exception))
+
     def test_private_builder_rejects_symlink_output(self):
         with tempfile.TemporaryDirectory() as tmp:
             real_dir = Path(tmp) / "real_dir"
@@ -153,8 +161,10 @@ class FullCrossAuditTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             target = Path(tmp) / "atomic_target"
             with patch("subprocess.run") as mock_run:
-                mock_run.return_value.returncode = 1
-                mock_run.return_value.stderr = "Injected Node builder crash for testing"
+                mock_run.side_effect = [
+                    type("Proc", (), {"stdout": "v22.11.0\n", "returncode": 0})(),
+                    type("Proc", (), {"stdout": "", "stderr": "Injected Node builder crash for testing", "returncode": 1})()
+                ]
                 with self.assertRaises(RuntimeError):
                     full_pilot.build_full_pilot(target)
             # Target must either not exist or contain 0 partial files
@@ -162,19 +172,59 @@ class FullCrossAuditTest(unittest.TestCase):
                 self.assertEqual(len(list(target.rglob("*"))), 0)
 
     def test_private_builder_node_resolution_portability(self):
-        import shutil
-        node_bin = shutil.which("node")
-        if not node_bin:
-            candidates = [
-                "/workspace/opt/node-v22.11.0-linux-x64/bin/node",
-                "/workspace/opt/node-v20.18.0-linux-x64/bin/node",
-            ]
-            for c in candidates:
-                if Path(c).is_file():
-                    node_bin = c
-                    break
+        node_bin = full_pilot.resolve_node_binary()
         self.assertIsNotNone(node_bin, "Node binary must be resolvable via PATH or standard opt paths")
         self.assertTrue(Path(node_bin).is_file())
+
+    def test_private_builder_node_resolution_rejects_missing_binary(self):
+        with self.assertRaises(RuntimeError) as ctx:
+            full_pilot.resolve_node_binary("/nonexistent/bin/node")
+        self.assertIn("not found", str(ctx.exception))
+
+    def test_private_builder_node_resolution_rejects_unsupported_version(self):
+        from unittest.mock import patch
+        with patch("subprocess.run") as mock_run:
+            mock_run.return_value.stdout = "v18.19.0\n"
+            mock_run.return_value.returncode = 0
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.resolve_node_binary()
+            self.assertIn("unsupported", str(ctx.exception))
+
+    def test_manifest_verification_detects_tampering_synthetic(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp)
+            (p / "doc.html").write_text("hello", encoding="utf-8")
+            h = full_pilot.compute_file_sha256(p / "doc.html")
+            manifest = {
+                "status": "COMPLETE",
+                "files": {
+                    "doc.html": {"sha256": h, "size": 5}
+                }
+            }
+            (p / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+
+            # Clean verification passes
+            res = full_pilot.verify_manifest(p)
+            self.assertTrue(res["ok"])
+
+            # Tampering size is detected
+            (p / "doc.html").write_text("hello world", encoding="utf-8")
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.verify_manifest(p)
+            self.assertIn("size mismatch", str(ctx.exception))
+
+            # Tampering content keeping size is detected
+            (p / "doc.html").write_text("hellx", encoding="utf-8")
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.verify_manifest(p)
+            self.assertIn("SHA-256 mismatch", str(ctx.exception))
+
+            # Extra file is detected
+            (p / "doc.html").write_text("hello", encoding="utf-8")
+            (p / "extra.html").write_text("evil", encoding="utf-8")
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.verify_manifest(p)
+            self.assertIn("Extraneous", str(ctx.exception))
 
 
 if __name__ == "__main__":

@@ -56,6 +56,125 @@ def safe_escape(text: str) -> str:
 def safe_escape_text(text: str) -> str:
     return html.escape(str(text or ""), quote=False)
 
+def resolve_node_binary(explicit_path: str | None = None) -> str:
+    """Safely resolve and validate Node.js binary without shell string concatenation."""
+    if explicit_path:
+        p = Path(explicit_path)
+        if not p.is_file():
+            raise RuntimeError(f"Explicitly specified Node.js binary not found: {explicit_path}")
+        node_bin = str(p.resolve())
+    elif os.environ.get("NODE_BINARY"):
+        p = Path(os.environ["NODE_BINARY"])
+        if not p.is_file():
+            raise RuntimeError(f"NODE_BINARY environment variable points to missing file: {p}")
+        node_bin = str(p.resolve())
+    else:
+        found = shutil.which("node")
+        if found:
+            node_bin = found
+        else:
+            candidates = [
+                "/workspace/opt/node-v22.11.0-linux-x64/bin/node",
+                "/workspace/opt/node-v20.18.0-linux-x64/bin/node",
+                "/usr/local/bin/node",
+                "/usr/bin/node",
+            ]
+            node_bin = None
+            for c in candidates:
+                if Path(c).is_file():
+                    node_bin = c
+                    break
+            if not node_bin:
+                raise RuntimeError("Node.js binary not found in PATH or standard system/opt paths")
+
+    # Verify execution and version without shell strings
+    try:
+        proc = subprocess.run([node_bin, "-v"], capture_output=True, text=True, check=True)
+        version_str = proc.stdout.strip()
+    except Exception as e:
+        raise RuntimeError(f"Node.js binary '{node_bin}' failed to execute: {e}")
+
+    m = re.match(r"^v(\d+)\.", version_str)
+    if m:
+        major = int(m.group(1))
+        if major < 20:
+            raise RuntimeError(f"Node.js version {version_str} is unsupported. Node.js >= v20.0.0 is required.")
+
+    return node_bin
+
+
+def compute_file_sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        while chunk := f.read(65536):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def get_git_info() -> tuple[str, str]:
+    """Retrieve git commit SHA and tree hash if git is available."""
+    try:
+        commit = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=str(ROOT), capture_output=True, text=True, check=True
+        ).stdout.strip()
+        tree = subprocess.run(
+            ["git", "rev-parse", "HEAD^{tree}"],
+            cwd=str(ROOT), capture_output=True, text=True, check=True
+        ).stdout.strip()
+        return commit, tree
+    except Exception:
+        return "UNKNOWN_COMMIT", "UNKNOWN_TREE"
+
+
+def verify_manifest(target_dir: Path) -> dict:
+    """Verify integrity of a generated pilot directory against its manifest."""
+    manifest_path = target_dir / "manifest.json"
+    if not manifest_path.is_file():
+        raise RuntimeError(f"Manifest not found in destination: {manifest_path}")
+
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("status") != "COMPLETE":
+        raise RuntimeError(f"Manifest status is not COMPLETE: {manifest.get('status')}")
+
+    files_spec = manifest.get("files", {})
+    if not files_spec:
+        raise RuntimeError("Manifest does not contain any file specifications")
+
+    # 1. Check all manifest files exist and match hashes and sizes
+    checked_count = 0
+    total_bytes = 0
+    for rel_path, spec in files_spec.items():
+        fp = target_dir / rel_path
+        if not fp.is_file():
+            raise RuntimeError(f"File listed in manifest is missing on disk: {rel_path}")
+        size = fp.stat().st_size
+        if size != spec["size"]:
+            raise RuntimeError(f"File size mismatch for {rel_path}: expected {spec['size']}, got {size}")
+        actual_sha = compute_file_sha256(fp)
+        if actual_sha != spec["sha256"]:
+            raise RuntimeError(f"SHA-256 mismatch for {rel_path}: expected {spec['sha256']}, got {actual_sha}")
+        checked_count += 1
+        total_bytes += size
+
+    # 2. Check no extraneous files exist on disk
+    allowed_set = set(files_spec.keys()) | {"manifest.json"}
+    for p in target_dir.rglob("*"):
+        if p.is_file():
+            rel = str(p.relative_to(target_dir)).replace("\\", "/")
+            if rel not in allowed_set:
+                raise RuntimeError(f"Extraneous unverified file found in destination: {rel}")
+
+    return {
+        "ok": True,
+        "status": "COMPLETE",
+        "verified_files": checked_count,
+        "total_bytes": total_bytes,
+        "git_commit": manifest.get("git_commit"),
+        "git_tree": manifest.get("git_tree"),
+        "generated_at": manifest.get("generated_at"),
+    }
+
 def get_official_url(record: dict, doc: dict) -> str:
     url = record.get("url") or doc.get("url") or ""
     try:
@@ -67,6 +186,11 @@ def get_official_url(record: dict, doc: dict) -> str:
     except Exception:
         pass
     return ""
+
+def get_safe_staging_dir(prefix: str = "kaigo_pilot_stage_") -> Path:
+    """Return a fast temporary staging directory in local tmpfs."""
+    return Path(tempfile.mkdtemp(prefix=prefix))
+
 
 def validate_safety_and_dest(dest_dir: Path | None) -> Path:
     # 1. Reject public CI / GitHub Actions
@@ -103,13 +227,16 @@ def validate_safety_and_dest(dest_dir: Path | None) -> Path:
 
     return None
 
-def build_full_pilot(dest_dir: Path | None = None, csv_audit_path: Path | None = None) -> dict:
+def build_full_pilot(
+    dest_dir: Path | None = None,
+    csv_audit_path: Path | None = None,
+    node_bin_override: str | None = None,
+) -> dict:
     t0 = time.time()
     target_dest = validate_safety_and_dest(dest_dir)
 
-    # Atomic staging directory: build everything isolated first
-    staging_dir = Path(tempfile.mkdtemp(prefix="kaigo_pilot_stage_"))
-    out = staging_dir
+    # 0. Early environment and prerequisite validation
+    node_bin = resolve_node_binary(node_bin_override)
 
     master_path = ROOT / "data/handbook.generated.json"
     legal_path = ROOT / "data/legal-browser.generated.json"
@@ -118,6 +245,10 @@ def build_full_pilot(dest_dir: Path | None = None, csv_audit_path: Path | None =
         raise RuntimeError("Missing handbook or legal master data files")
     if master_path.stat().st_size == 0 or legal_path.stat().st_size == 0:
         raise RuntimeError("Empty master data files")
+
+    # Atomic staging directory: build everything isolated first
+    staging_dir = get_safe_staging_dir(prefix="kaigo_pilot_stage_")
+    out = staging_dir
         
     handbook_data = json.loads(master_path.read_text(encoding="utf-8"))
     legal_data = json.loads(legal_path.read_text(encoding="utf-8"))
@@ -150,19 +281,6 @@ def build_full_pilot(dest_dir: Path | None = None, csv_audit_path: Path | None =
         search_dir = out / "databases/search"
         search_dir.mkdir(parents=True, exist_ok=True)
         
-        # Dynamically resolve node binary from PATH with opt fallbacks for portability
-        node_bin = shutil.which("node")
-        if not node_bin or not Path(node_bin).is_file():
-            candidates = [
-                "/workspace/opt/node-v22.11.0-linux-x64/bin/node",
-                "/workspace/opt/node-v20.18.0-linux-x64/bin/node",
-            ]
-            for c in candidates:
-                if Path(c).is_file():
-                    node_bin = c
-                    break
-        if not node_bin:
-            raise RuntimeError("node binary not found in PATH or standard opt paths")
         build_script = ROOT / "experiments/github-pages-db/build.mjs"
         register_script = ROOT / "experiments/github-pages-db/register.mjs"
         
@@ -385,41 +503,95 @@ def build_full_pilot(dest_dir: Path | None = None, csv_audit_path: Path | None =
         # 6. Run link localization
         nav_report = navigation.localize(out)
         
-        # 7. Calculate manifest
-        files = [p for p in out.rglob("*") if p.is_file()]
-        total_bytes = sum(p.stat().st_size for p in files)
+        # 7. Generate Manifest and self-verify in staging
+        git_commit, git_tree = get_git_info()
+        generated_files = {}
+        for p in sorted(out.rglob("*")):
+            if p.is_file():
+                rel = str(p.relative_to(out)).replace("\\", "/")
+                generated_files[rel] = {
+                    "sha256": compute_file_sha256(p),
+                    "size": p.stat().st_size
+                }
+
+        manifest_data = {
+            "status": "COMPLETE",
+            "git_commit": git_commit,
+            "git_tree": git_tree,
+            "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "builder_node": node_bin,
+            "master_data_hashes": {
+                "handbook.generated.json": compute_file_sha256(master_path),
+                "legal-browser.generated.json": compute_file_sha256(legal_path),
+            },
+            "builder_hashes": {
+                "build_full_private_pilot.py": compute_file_sha256(Path(__file__)),
+                "build_github_pages_legislation_pilot.py": compute_file_sha256(ROOT / "scripts/build_github_pages_legislation_pilot.py"),
+                "localize_github_pages_links_pilot.py": compute_file_sha256(ROOT / "scripts/localize_github_pages_links_pilot.py"),
+                "build_github_pages_handbook_pilot.py": compute_file_sha256(ROOT / "scripts/build_github_pages_handbook_pilot.py"),
+            },
+            "total_files": len(generated_files),
+            "total_bytes": sum(item["size"] for item in generated_files.values()),
+            "services_count": len(services),
+            "chapters_count": len(services) * 15,
+            "legislation_records": leg_result.get("records", 0),
+            "total_links_logged": total_links_logged,
+            "files": generated_files
+        }
+        manifest_path = out / "manifest.json"
+        manifest_path.write_text(json.dumps(manifest_data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+        # Self-verify staging directory against manifest before promotion
+        verify_manifest(out)
+
         elapsed = time.time() - t0
-        
-        # 8. Atomic promotion to target destination
+
+        # 8. Transactional promotion to target destination with rollback safety
         if target_dest is not None:
             dest_resolved = target_dest.resolve(strict=False)
-            dest_resolved.mkdir(parents=True, exist_ok=True)
-            # Clear all prior contents so tampered/stale files never persist
-            for item in list(dest_resolved.iterdir()):
-                if item.is_dir() and not item.is_symlink():
-                    shutil.rmtree(item, ignore_errors=True)
-                else:
-                    item.unlink(missing_ok=True)
-            # Copy verified artifacts from staging to target
-            for item in staging_dir.iterdir():
-                if item.is_dir():
-                    shutil.copytree(item, dest_resolved / item.name)
-                else:
-                    shutil.copy2(item, dest_resolved / item.name)
-            shutil.rmtree(staging_dir, ignore_errors=True)
-            final_dir = str(dest_resolved)
+            dest_backup = None
+            if dest_resolved.exists() and any(dest_resolved.iterdir()):
+                dest_backup = dest_resolved.parent / f".kaigo_bak_{dest_resolved.name}_{int(time.time()*1000)}"
+                os.rename(dest_resolved, dest_backup)
+
+            try:
+                # Promote staging to dest_resolved
+                try:
+                    os.rename(staging_dir, dest_resolved)
+                except OSError:
+                    # Cross-filesystem promotion (e.g. tmpfs to network disk)
+                    shutil.copytree(staging_dir, dest_resolved)
+                    shutil.rmtree(staging_dir, ignore_errors=True)
+
+                # Verify target destination matches manifest on disk
+                verify_manifest(dest_resolved)
+
+                # Promotion succeeded: cleanup backup
+                if dest_backup and dest_backup.exists():
+                    shutil.rmtree(dest_backup, ignore_errors=True)
+                final_dir = str(dest_resolved)
+            except Exception as prom_err:
+                # Promotion failed: restore previous destination from backup
+                if dest_resolved.exists():
+                    shutil.rmtree(dest_resolved, ignore_errors=True)
+                if dest_backup and dest_backup.exists():
+                    os.rename(dest_backup, dest_resolved)
+                raise RuntimeError(f"Promotion to target destination failed (rolled back): {prom_err}") from prom_err
         else:
             final_dir = str(staging_dir)
 
         return {
             "directory": final_dir,
-            "total_files": len(files),
-            "total_bytes": total_bytes,
-            "services_count": len(services),
-            "chapters_count": len(services) * 15,
-            "legislation_records": leg_result.get("records", 0),
+            "total_files": manifest_data["total_files"],
+            "total_bytes": manifest_data["total_bytes"],
+            "services_count": manifest_data["services_count"],
+            "chapters_count": manifest_data["chapters_count"],
+            "legislation_records": manifest_data["legislation_records"],
             "navigation_report": nav_report,
             "total_links_logged": total_links_logged,
+            "git_commit": git_commit,
+            "git_tree": git_tree,
+            "manifest_verified": True,
             "elapsed_seconds": round(elapsed, 2)
         }
     except Exception as e:
@@ -429,7 +601,22 @@ def build_full_pilot(dest_dir: Path | None = None, csv_audit_path: Path | None =
         raise
 
 if __name__ == "__main__":
-    target = Path(sys.argv[1]) if len(sys.argv) > 1 else None
-    audit_csv = Path(sys.argv[2]) if len(sys.argv) > 2 else None
-    res = build_full_pilot(target, audit_csv)
-    print(json.dumps(res, ensure_ascii=False, indent=2))
+    import argparse
+    parser = argparse.ArgumentParser(description="Build full private Kaigo Rules pilot site")
+    parser.add_argument("target", nargs="?", default=None, help="Output destination directory")
+    parser.add_argument("audit_csv", nargs="?", default=None, help="Path to write link audit CSV")
+    parser.add_argument("--node-bin", default=None, help="Explicit path to Node.js binary")
+    parser.add_argument("--verify-only", action="store_true", help="Verify target directory against manifest.json without rebuilding")
+    args = parser.parse_args()
+
+    if args.verify_only:
+        if not args.target:
+            print("Error: --verify-only requires target directory", file=sys.stderr)
+            sys.exit(1)
+        res = verify_manifest(Path(args.target))
+        print(json.dumps(res, ensure_ascii=False, indent=2))
+    else:
+        target_path = Path(args.target) if args.target else None
+        csv_path = Path(args.audit_csv) if args.audit_csv else None
+        res = build_full_pilot(target_path, csv_path, node_bin_override=args.node_bin)
+        print(json.dumps(res, ensure_ascii=False, indent=2))
