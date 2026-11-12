@@ -1,4 +1,6 @@
-name: Daily conditional Vercel production deploy
+name: Daily conditional Vercel production deploy (kaigo-ops only)
+# Kaigo Rules itself is published via GitHub Pages (formal site).
+# This workflow must not trigger a kaigo-rules Vercel deployment.
 
 on:
   schedule:
@@ -6,11 +8,6 @@ on:
     - cron: "17 12 * * *"
   workflow_dispatch:
     inputs:
-      force_rules:
-        description: "Force kaigo-rules deploy even when no relevant changes are detected"
-        required: false
-        type: boolean
-        default: false
       force_ops:
         description: "Force kaigo-ops deploy even when no relevant changes are detected"
         required: false
@@ -41,15 +38,10 @@ jobs:
       - name: Require deploy hook secrets before merge
         shell: bash
         env:
-          RULES_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_RULES }}
           OPS_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_OPS }}
         run: |
           set -euo pipefail
           missing=0
-          if [ -z "$RULES_HOOK" ]; then
-            echo "::error::Missing repository secret VERCEL_DEPLOY_HOOK_KAIGO_RULES"
-            missing=1
-          fi
           if [ -z "$OPS_HOOK" ]; then
             echo "::error::Missing repository secret VERCEL_DEPLOY_HOOK_KAIGO_OPS"
             missing=1
@@ -77,7 +69,6 @@ jobs:
         id: plan
         shell: bash
         env:
-          FORCE_RULES: ${{ github.event.inputs.force_rules || 'false' }}
           FORCE_OPS: ${{ github.event.inputs.force_ops || 'false' }}
         run: |
           set -euo pipefail
@@ -95,13 +86,12 @@ jobs:
             --head "$HEAD_SHA" \
             --rules-base "$RULES_BASE" \
             --ops-base "$OPS_BASE" \
-            --force-rules "$FORCE_RULES" \
             --force-ops "$FORCE_OPS" \
             --github-output "$GITHUB_OUTPUT" \
             --github-step-summary "$GITHUB_STEP_SUMMARY"
 
   deploy:
-    if: github.event_name != 'pull_request' && (needs.plan.outputs.rules_changed == 'true' || needs.plan.outputs.ops_changed == 'true')
+    if: github.event_name != 'pull_request' && needs.plan.outputs.ops_changed == 'true'
     needs: plan
     runs-on: ubuntu-24.04
     permissions:
@@ -111,88 +101,6 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ needs.plan.outputs.head_sha }}
-
-      - name: Trigger kaigo-rules production deploy
-        if: needs.plan.outputs.rules_changed == 'true'
-        env:
-          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_RULES }}
-        run: |
-          set -euo pipefail
-          if [ -z "$DEPLOY_HOOK" ]; then
-            echo "::error::Missing secret VERCEL_DEPLOY_HOOK_KAIGO_RULES"
-            exit 1
-          fi
-          response="$(curl --fail-with-body --silent --show-error -X POST "$DEPLOY_HOOK")"
-          echo "$response" | python -c 'import json,sys; d=json.load(sys.stdin); assert d.get("job",{}).get("id"), d'
-          echo "kaigo-rules deploy hook accepted."
-
-      - name: Verify kaigo-rules production field-validation gate
-        if: needs.plan.outputs.rules_changed == 'true'
-        env:
-          EXPECTED_SHA: ${{ needs.plan.outputs.head_sha }}
-          BASE_URL: https://kaigo-rules.vercel.app
-        run: |
-          python scripts/verify_field_validation_production.py \
-            --base-url "$BASE_URL" \
-            --expected-sha "$EXPECTED_SHA" \
-            --wait-seconds 600 \
-            --interval-seconds 15
-
-      - name: Run machine retrieval baseline
-        if: needs.plan.outputs.rules_changed == 'true'
-        env:
-          EXPECTED_SHA: ${{ needs.plan.outputs.head_sha }}
-          BASE_URL: https://kaigo-rules.vercel.app
-        run: |
-          set -euo pipefail
-          mkdir -p artifacts
-          python scripts/run_machine_retrieval_benchmark.py \
-            --base-url "$BASE_URL" \
-            --expected-sha "$EXPECTED_SHA" \
-            --output artifacts/machine-retrieval-v0.1.json
-          python - <<'PY'
-          import json
-          import os
-          from pathlib import Path
-
-          report = json.loads(
-              Path("artifacts/machine-retrieval-v0.1.json").read_text(encoding="utf-8")
-          )
-          metrics = report["metrics"]
-          misses = [row["id"] for row in report["cases"] if not row["search_hit"]]
-          context_failures = [
-              slug
-              for slug, row in report["context_results"].items()
-              if not row["integrity_ok"]
-          ]
-          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as handle:
-              handle.write("\n## Machine Retrieval Benchmark v0.1\n\n")
-              handle.write(f"- production SHA: `{report['production_version']['commit_sha']}`\n")
-              handle.write(f"- search hit rate: {metrics['search_hit_rate']:.1%}\n")
-              handle.write(f"- top-3 hit rate: {metrics['top3_hit_rate']:.1%}\n")
-              handle.write(f"- context integrity rate: {metrics['context_integrity_rate']:.1%}\n")
-              handle.write(f"- full pass rate: {metrics['full_pass_rate']:.1%}\n")
-              handle.write(f"- search misses: {', '.join(misses) if misses else 'none'}\n")
-              handle.write(
-                  f"- context integrity failures: {', '.join(context_failures) if context_failures else 'none'}\n"
-              )
-              handle.write(
-                  "- scope: machine retrieval only; this is not evidence of human time savings or usability.\n"
-              )
-          PY
-
-      - name: Upload machine retrieval baseline artifact
-        if: needs.plan.outputs.rules_changed == 'true'
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        with:
-          name: machine-retrieval-v0.1-${{ needs.plan.outputs.head_sha }}
-          path: artifacts/machine-retrieval-v0.1.json
-          if-no-files-found: error
-          retention-days: 90
-      - name: Record verified kaigo-rules production version
-        if: needs.plan.outputs.rules_changed == 'true'
-        run: |
-          git push --force origin "HEAD:refs/heads/deploy-state/kaigo-rules"
 
       - name: Check Kaigo Ops verification credentials
         if: needs.plan.outputs.ops_changed == 'true'
