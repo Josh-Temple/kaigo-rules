@@ -31,7 +31,7 @@ WS_TMP = Path("/workspace/.tmp")
 WS_TMP.mkdir(exist_ok=True)
 
 
-def test_d01_tamper_scenarios(test_dir: Path) -> list[dict]:
+def test_d01_tamper_scenarios(test_dir: Path, audit_csv: Path) -> list[dict]:
     """Test 10 tamper/corruption scenarios against manifest verification using revertible mutations."""
     results = []
 
@@ -196,7 +196,7 @@ def test_d01_tamper_scenarios(test_dir: Path) -> list[dict]:
     dayservice_file.write_bytes(dayservice_orig + b"\n<!-- D_TAMPER_SENTINEL -->\n")
 
     # Re-run build_full_pilot to the exact same directory
-    rebuild_res = pilot.build_full_pilot(test_dir)
+    rebuild_res = pilot.build_full_pilot(test_dir, csv_audit_path=audit_csv)
 
     # Verify D_TAMPER_SENTINEL is completely eradicated from all files
     found_sentinel = False
@@ -643,7 +643,7 @@ def test_p0_cross_fs_and_rollback(ref_dir: Path) -> list[dict]:
         "duration_seconds": round(time.time() - t0, 4)
     })
 
-    # 6. Rerun recovery cleans up stale .kaigo_bak_* and .kaigo_stage_*
+    # 6. An unresolved backup must survive a rerun, including if it is the only copy.
     t0 = time.time()
     passed = False
     err = ""
@@ -657,13 +657,14 @@ def test_p0_cross_fs_and_rollback(ref_dir: Path) -> list[dict]:
         (stale_stage / "stale.html").write_text("stale", encoding="utf-8")
         
         try:
-            res = run_mocked_fast_build(target)
-            v = pilot.verify_manifest(target)
-            passed = v["ok"] and not stale_bak.exists() and not stale_stage.exists()
+            run_mocked_fast_build(target)
         except Exception as e:
             err = str(e)
+            passed = ("Unresolved backup" in err and
+                      (stale_bak / "old.html").read_text(encoding="utf-8") == "old" and
+                      (stale_stage / "stale.html").is_file() and not target.exists())
     results.append({
-        "case": "6. 再実行時の前回収障害遺物(.kaigo_bak_ / .kaigo_cross_stage_)自動一掃と正常完了",
+        "case": "6. 未復旧バックアップと別実行のステージを保全し再実行を拒否",
         "passed": passed,
         "error": err,
         "duration_seconds": round(time.time() - t0, 4)
@@ -761,7 +762,7 @@ def test_p0_csv_staging_and_consistency(ref_dir: Path, ref_csv: Path) -> list[di
         "duration_seconds": round(time.time() - t0, 4)
     })
 
-    # 2. Re-extract all links from generated HTML and compare against audit CSV
+    # 2. Check the recorded row count, a sample of target pages, and the CSV hash.
     t0 = time.time()
     passed = False
     err = ""
@@ -771,11 +772,11 @@ def test_p0_csv_staging_and_consistency(ref_dir: Path, ref_csv: Path) -> list[di
             csv_rows = list(reader)
 
         total_csv_links = len(csv_rows)
-        passed = (total_csv_links == 11680) and all(
+        passed = pilot.verify_manifest(ref_dir, audit_csv_path=ref_csv)["ok"] and (total_csv_links == 11680) and all(
             (ref_dir / row["source_page"]).is_file() for row in csv_rows[:100]
         )
     results.append({
-        "case": "2. 実HTMLからのリンク台帳再抽出と監査CSVの全件同一版整合（照合100%一致・11,680件）",
+        "case": "2. CSVハッシュ・行数と先頭100行のページ存在を確認",
         "passed": passed,
         "error": err,
         "duration_seconds": round(time.time() - t0, 4)
@@ -920,12 +921,9 @@ def main():
 
     # Step 1: Build a clean reference pilot for testing
     print("[1/8] Building clean reference pilot for fault injection testing...")
-    ref_dir = Path(tempfile.gettempdir()) / "kaigo_test_pilot_ref"
-    ref_csv = Path(tempfile.gettempdir()) / "kaigo_test_pilot_ref_links.csv"
-    if ref_dir.exists():
-        shutil.rmtree(ref_dir)
-    if ref_csv.exists():
-        ref_csv.unlink()
+    test_root = Path(tempfile.mkdtemp(prefix="kaigo_fault_tests_"))
+    ref_dir = test_root / "reference"
+    ref_csv = test_root / "reference_links.csv"
     
     t_build_start = time.time()
     build_info = pilot.build_full_pilot(ref_dir, csv_audit_path=ref_csv)
@@ -933,7 +931,7 @@ def main():
 
     # Step 2: D-01 Tamper tests
     print("[2/8] Running D-01 tamper detection & eradication tests (10 scenarios)...")
-    d01_results = test_d01_tamper_scenarios(ref_dir)
+    d01_results = test_d01_tamper_scenarios(ref_dir, ref_csv)
     d01_pass = all(r["passed"] for r in d01_results)
     print(f"D-01 Results: {sum(r['passed'] for r in d01_results)}/10 passed (All PASS: {d01_pass})")
 
@@ -1002,7 +1000,7 @@ def main():
         "manifest_details": manifest_results,
     }
 
-    report_path = ROOT / "tests/fault_injection_report.json"
+    report_path = test_root / "fault_injection_report.json"
     report_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Test report saved to {report_path}")
     print(f"OVERALL STATUS: {'ALL TESTS PASSED' if all_pass else 'SOME TESTS FAILED'} (Duration: {total_duration}s)")

@@ -47,6 +47,24 @@ class HTMLAnchorExtractor(HTMLParser):
                 self.links.append((d["href"], d.get("target"), d.get("rel")))
 
 
+def equivalent_query(original_url: str, localized_href: str) -> bool:
+    """Recognize only exact queries and documented, scoped route migrations."""
+    original = urlsplit(original_url)
+    local = urlsplit(localized_href)
+    old = parse_qs(original.query, keep_blank_values=True)
+    new = parse_qs(local.query, keep_blank_values=True)
+    if old == new:
+        return True
+    if original.path in ("/rules", "/notices") and set(old) <= {"service"}:
+        expected = dict(old)
+        expected["category"] = ["standards" if original.path == "/rules" else "notices"]
+        return new == expected
+    match = re.fullmatch(r"/services/([a-z0-9-]+)/remuneration/guidance", original.path)
+    if match and not old and match.group(1) != "dayservice":
+        return new == {"service": [match.group(1)], "category": ["guidance"]}
+    return False
+
+
 def verify_all_links(
     csv_path: Path = Path("/workspace/02_all_links_audit.csv"),
     site_dir: Path = SITE_DIR,
@@ -246,21 +264,15 @@ def verify_all_links(
 
             # 3. Query preservation for browse, search, and QA
             elif target_kind in ("legislation-browse", "qa-search", "search"):
-                parts_orig = urlsplit(orig_url)
-                parts_rel = urlsplit(rel_href)
                 query_preservation_checks += 1
-                if parts_orig.query == parts_rel.query:
+                if equivalent_query(orig_url, rel_href):
                     query_preservation_passed += 1
                 else:
-                    # Check for intentional alias mapping
-                    if "category=" in parts_orig.query and "category=" in parts_rel.query:
-                        query_preservation_passed += 1
-                    else:
-                        csv_issues.append({
-                            "type": "QUERY_MISMATCH",
-                            "original_query": parts_orig.query,
-                            "localized_query": parts_rel.query
-                        })
+                    csv_issues.append({
+                        "type": "QUERY_MISMATCH",
+                        "original_url": orig_url,
+                        "localized_href": rel_href,
+                    })
 
     # ---------------------------------------------------------
     # PART 3: Original Static Generation Pipeline Contrast
