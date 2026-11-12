@@ -87,7 +87,11 @@ jobs:
           current_notice=("制度情報の確認状況は項目ごとに異なり、"
                           "未確認の情報や旧サイトへのリンクも含まれます。")
           required_caution="制度の現行性・適用条件は必ず国の原典と指定権者に確認してください。"
+          obsolete_banner=('<div class="pilot-banner"><strong>Kaigo Rules</strong>'
+            '<p>現在の本番とは別の試作品です。法令の現行性・適用条件・自治体の基準を必ず原典で確認してください。'
+            'この試作品では印刷・対話操作やサイト内リンクの一部が本番と異なる場合があります。</p></div>')
           updated=0
+          removed_obsolete_banners=0
           for page in root.rglob("*.html"):
             if page.is_symlink():
               raise RuntimeError("Unsafe symbolic link in published site")
@@ -95,14 +99,31 @@ jobs:
             if previous_label not in old or previous_notice not in old or required_caution not in old:
               raise RuntimeError("Missing safety banner or expected published page: "+str(page))
             new=old.replace(previous_label,"Kaigo Rules").replace(previous_notice,current_notice)
-            if "試験公開版" in new or "一般公開していません" in new or required_caution not in new:
+            removed_obsolete_banners+=new.count(obsolete_banner)
+            new=new.replace(obsolete_banner,"")
+            new=new.replace(' — 静的移行検証</title>',' — Kaigo Rules</title>')
+            relative=page.relative_to(root).as_posix()
+            if relative=="index.html":
+              new=new.replace('制度DB横断検索を試す','制度DBを横断検索する')
+            elif relative=="databases/search/index.html":
+              new=new.replace('<title>制度DB検索・非公開の移行検証</title>', '<title>制度DB検索 — Kaigo Rules</title>')
+              new=new.replace('<strong>検索の移行検証用・公開不可</strong>', '<strong>検索結果の確認について</strong>')
+              new=new.replace('リンク先は現行サイトです。','')
+            elif relative=="databases/search/qa.html":
+              new=new.replace('<title>国Q&A検索・非公開の移行検証</title>', '<title>国Q&A検索 — Kaigo Rules</title>')
+              new=new.replace('<strong>国Q&A検索の移行検証用・公開不可</strong>', '<strong>国Q&Aの確認について</strong>')
+            if ("試験公開版" in new or "一般公開していません" in new or
+                "現在の本番とは別の試作品です。" in new or
+                "この試作品では印刷・対話操作" in new or required_caution not in new):
               raise RuntimeError("Inconsistent public site branding or caution: "+str(page))
             if new!=old:
               page.write_text(new,encoding="utf-8")
               updated+=1
           if updated!=pre["html_count"]:
             raise RuntimeError("Incomplete production-label update")
-          print("PUBLIC_SITE_BRANDING:",json.dumps({"updated_html_pages":updated,"noindex_retained":True},ensure_ascii=False))
+          if removed_obsolete_banners==0:
+            raise RuntimeError("Expected obsolete pilot banner was not found")
+          print("PUBLIC_SITE_BRANDING:",json.dumps({"updated_html_pages":updated,"obsolete_banners_removed":removed_obsolete_banners,"noindex_retained":True},ensure_ascii=False))
           post=inspect(root)
           for item in ("missing_local_links","root_relative_links","unsafe_or_invalid_links","private_preview_pages"):
               if post["blockers"][item]!=0:
