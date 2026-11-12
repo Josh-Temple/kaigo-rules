@@ -127,43 +127,100 @@ def get_git_info() -> tuple[str, str]:
         return "UNKNOWN_COMMIT", "UNKNOWN_TREE"
 
 
-def verify_manifest(target_dir: Path) -> dict:
-    """Verify integrity of a generated pilot directory against its manifest."""
+def verify_manifest(
+    target_dir: Path,
+    expected_commit: str | None = None,
+    expected_tree: str | None = None,
+    expected_master_hashes: dict | None = None,
+) -> dict:
+    """Verify integrity, path safety, and provenance of a generated pilot directory against its manifest."""
     manifest_path = target_dir / "manifest.json"
     if not manifest_path.is_file():
         raise RuntimeError(f"Manifest not found in destination: {manifest_path}")
 
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except Exception as e:
+        raise RuntimeError(f"Corrupted or unreadable manifest.json: {e}")
+
     if manifest.get("status") != "COMPLETE":
         raise RuntimeError(f"Manifest status is not COMPLETE: {manifest.get('status')}")
 
     files_spec = manifest.get("files", {})
-    if not files_spec:
-        raise RuntimeError("Manifest does not contain any file specifications")
+    if not files_spec or not isinstance(files_spec, dict):
+        raise RuntimeError("Manifest does not contain any valid file specifications")
 
-    # 1. Check all manifest files exist and match hashes and sizes
+    target_resolved = target_dir.resolve()
+
+    # 1. Check all manifest files exist and match hashes, sizes, and path safety
     checked_count = 0
     total_bytes = 0
     for rel_path, spec in files_spec.items():
+        # Path safety validation
+        if not isinstance(rel_path, str):
+            raise RuntimeError(f"Manifest path safety error: non-string path in manifest: {rel_path!r}")
+        if os.path.isabs(rel_path) or "\\" in rel_path or "\0" in rel_path:
+            raise RuntimeError(f"Manifest path safety error: invalid path format: {rel_path}")
+        parts = Path(rel_path).parts
+        if any(p in ("..", ".") for p in parts):
+            raise RuntimeError(f"Manifest path safety error: path traversal detected: {rel_path}")
+
         fp = target_dir / rel_path
-        if not fp.is_file():
+        if fp.is_symlink():
+            raise RuntimeError(f"Manifest security error: symbolic link not allowed in manifest files: {rel_path}")
+
+        try:
+            fp_resolved = fp.resolve(strict=True)
+        except (OSError, FileNotFoundError):
             raise RuntimeError(f"File listed in manifest is missing on disk: {rel_path}")
+
+        if not fp_resolved.is_relative_to(target_resolved):
+            raise RuntimeError(f"Manifest security error: path escapes target directory: {rel_path}")
+
+        if not fp.is_file():
+            raise RuntimeError(f"File listed in manifest is not a regular file: {rel_path}")
+
         size = fp.stat().st_size
-        if size != spec["size"]:
-            raise RuntimeError(f"File size mismatch for {rel_path}: expected {spec['size']}, got {size}")
+        if size != spec.get("size"):
+            raise RuntimeError(f"File size mismatch for {rel_path}: expected {spec.get('size')}, got {size}")
         actual_sha = compute_file_sha256(fp)
-        if actual_sha != spec["sha256"]:
-            raise RuntimeError(f"SHA-256 mismatch for {rel_path}: expected {spec['sha256']}, got {actual_sha}")
+        if actual_sha != spec.get("sha256"):
+            raise RuntimeError(f"SHA-256 mismatch for {rel_path}: expected {spec.get('sha256')}, got {actual_sha}")
         checked_count += 1
         total_bytes += size
 
-    # 2. Check no extraneous files exist on disk
+    # 2. Check no extraneous files or symlinks exist on disk
     allowed_set = set(files_spec.keys()) | {"manifest.json"}
     for p in target_dir.rglob("*"):
+        if p.is_symlink():
+            raise RuntimeError(f"Manifest security error: symbolic link found in target directory: {p}")
         if p.is_file():
             rel = str(p.relative_to(target_dir)).replace("\\", "/")
             if rel not in allowed_set:
                 raise RuntimeError(f"Extraneous unverified file found in destination: {rel}")
+
+    # 3. Check internal counts if recorded
+    if manifest.get("total_files") is not None and manifest.get("total_files") != checked_count:
+        raise RuntimeError(f"Manifest total_files count mismatch: recorded {manifest.get('total_files')}, verified {checked_count}")
+    if manifest.get("total_bytes") is not None and manifest.get("total_bytes") != total_bytes:
+        raise RuntimeError(f"Manifest total_bytes mismatch: recorded {manifest.get('total_bytes')}, verified {total_bytes}")
+
+    # 4. Optional external provenance anchoring
+    if expected_commit is not None:
+        actual_commit = manifest.get("git_commit")
+        if actual_commit != expected_commit:
+            raise RuntimeError(f"Manifest provenance mismatch for git_commit: expected {expected_commit}, got {actual_commit}")
+
+    if expected_tree is not None:
+        actual_tree = manifest.get("git_tree")
+        if actual_tree != expected_tree:
+            raise RuntimeError(f"Manifest provenance mismatch for git_tree: expected {expected_tree}, got {actual_tree}")
+
+    if expected_master_hashes is not None:
+        recorded_master = manifest.get("master_data_hashes", {})
+        for k, v in expected_master_hashes.items():
+            if recorded_master.get(k) != v:
+                raise RuntimeError(f"Manifest provenance mismatch for master data {k}: expected {v}, got {recorded_master.get(k)}")
 
     return {
         "ok": True,
@@ -192,40 +249,96 @@ def get_safe_staging_dir(prefix: str = "kaigo_pilot_stage_") -> Path:
     return Path(tempfile.mkdtemp(prefix=prefix))
 
 
-def validate_safety_and_dest(dest_dir: Path | None) -> Path:
+def is_same_filesystem(path1: Path, path2: Path) -> bool:
+    """Check if two filesystem paths reside on the same device/filesystem."""
+    try:
+        return os.stat(path1).st_dev == os.stat(path2).st_dev
+    except Exception:
+        return False
+
+
+def validate_safety_and_dest(dest_dir: Path | None) -> Path | None:
     # 1. Reject public CI / GitHub Actions
     if os.environ.get("GITHUB_ACTIONS") == "true" or os.environ.get("CI") == "true":
         raise RuntimeError("Refusing to generate private full pilot in public CI/GitHub Actions environment")
 
+    if dest_dir is None:
+        return None
+
+    # Check symbolic links in destination or hierarchy
+    if dest_dir.is_symlink():
+        raise RuntimeError(f"Refusing symbolic link destination: {dest_dir}")
+    
+    cur = dest_dir
+    while cur != cur.parent:
+        if cur.is_symlink():
+            raise RuntimeError(f"Refusing symbolic link in destination hierarchy: {cur}")
+        cur = cur.parent
+
+    dest_resolved = dest_dir.resolve(strict=False)
     root_resolved = ROOT.resolve()
 
-    if dest_dir is None:
-        temp_root = Path(tempfile.gettempdir()).resolve()
-        out = Path(tempfile.mkdtemp(prefix="kaigo-full-private-", dir=temp_root))
-    else:
-        # Check symbolic links in destination or hierarchy
-        if dest_dir.is_symlink():
-            raise RuntimeError(f"Refusing symbolic link destination: {dest_dir}")
-        
-        cur = dest_dir
-        while cur != cur.parent:
-            if cur.is_symlink():
-                raise RuntimeError(f"Refusing symbolic link in destination hierarchy: {cur}")
-            cur = cur.parent
+    # Reject output inside git repository
+    if dest_resolved == root_resolved or root_resolved in dest_resolved.parents:
+        raise RuntimeError("Refusing to output private pilot inside the repository path")
 
-        dest_resolved = dest_dir.resolve(strict=False)
+    # Reject public directory candidates
+    if dest_resolved.name in DISALLOWED_PUBLIC_DIRS or any(p.name in DISALLOWED_PUBLIC_DIRS for p in dest_resolved.parents):
+        raise RuntimeError(f"Refusing to output private pilot to public directory candidate: {dest_resolved.name}")
 
-        # Reject output inside git repository
-        if dest_resolved == root_resolved or root_resolved in dest_resolved.parents:
-            raise RuntimeError("Refusing to output private pilot inside the repository path")
+    return dest_resolved
 
-        # Reject public directory candidates
-        if dest_resolved.name in DISALLOWED_PUBLIC_DIRS or any(p.name in DISALLOWED_PUBLIC_DIRS for p in dest_resolved.parents):
-            raise RuntimeError(f"Refusing to output private pilot to public directory candidate: {dest_resolved.name}")
 
-        return dest_resolved
+def validate_csv_audit_path(csv_path: Path | None) -> Path | None:
+    if csv_path is None:
+        return None
 
-    return None
+    if os.environ.get("GITHUB_ACTIONS") == "true" or os.environ.get("CI") == "true":
+        raise RuntimeError("Refusing to generate private audit CSV in public CI/GitHub Actions environment")
+
+    if csv_path.is_symlink():
+        raise RuntimeError(f"Refusing symbolic link audit CSV path: {csv_path}")
+
+    cur = csv_path
+    while cur != cur.parent:
+        if cur.is_symlink():
+            raise RuntimeError(f"Refusing symbolic link in audit CSV hierarchy: {cur}")
+        cur = cur.parent
+
+    csv_resolved = csv_path.resolve(strict=False)
+    root_resolved = ROOT.resolve()
+
+    # Reject output inside git repository
+    if csv_resolved == root_resolved or root_resolved in csv_resolved.parents:
+        raise RuntimeError("Refusing to output audit CSV inside the repository path")
+
+    # Reject public directory candidates
+    if csv_resolved.name in DISALLOWED_PUBLIC_DIRS or any(p.name in DISALLOWED_PUBLIC_DIRS for p in csv_resolved.parents):
+        raise RuntimeError(f"Refusing to output audit CSV to public directory candidate: {csv_resolved.name}")
+
+    return csv_resolved
+
+
+def cleanup_stale_artifacts(parent_dir: Path, target_name: str) -> None:
+    """Safely clean up any orphaned temporary staging or backup artifacts from previous interrupted runs."""
+    if not parent_dir.exists() or not parent_dir.is_dir():
+        return
+    for item in parent_dir.iterdir():
+        if (
+            item.name.startswith(f".kaigo_bak_{target_name}_")
+            or item.name.startswith(f".kaigo_cross_stage_{target_name}_")
+            or item.name.startswith(f".kaigo_stage_{target_name}_")
+            or item.name.startswith(f".kaigo_csv_stage_{target_name}_")
+            or item.name.startswith(f".kaigo_csv_bak_{target_name}_")
+        ):
+            try:
+                if item.is_dir():
+                    shutil.rmtree(item, ignore_errors=True)
+                elif item.is_file():
+                    item.unlink(missing_ok=True)
+            except Exception:
+                pass
+
 
 def build_full_pilot(
     dest_dir: Path | None = None,
@@ -234,8 +347,9 @@ def build_full_pilot(
 ) -> dict:
     t0 = time.time()
     target_dest = validate_safety_and_dest(dest_dir)
+    target_csv = validate_csv_audit_path(csv_audit_path)
 
-    # 0. Early environment and prerequisite validation
+    # 0. Early environment and prerequisite validation (performed BEFORE creating any staging directories)
     node_bin = resolve_node_binary(node_bin_override)
 
     master_path = ROOT / "data/handbook.generated.json"
@@ -246,12 +360,11 @@ def build_full_pilot(
     if master_path.stat().st_size == 0 or legal_path.stat().st_size == 0:
         raise RuntimeError("Empty master data files")
 
-    # Atomic staging directory: build everything isolated first
-    staging_dir = get_safe_staging_dir(prefix="kaigo_pilot_stage_")
-    out = staging_dir
-        
-    handbook_data = json.loads(master_path.read_text(encoding="utf-8"))
-    legal_data = json.loads(legal_path.read_text(encoding="utf-8"))
+    try:
+        handbook_data = json.loads(master_path.read_text(encoding="utf-8"))
+        legal_data = json.loads(legal_path.read_text(encoding="utf-8"))
+    except Exception as e:
+        raise RuntimeError(f"Corrupted master data JSON: {e}")
     
     services = handbook_data.get("services", [])
     if len(services) != 39:
@@ -268,7 +381,15 @@ def build_full_pilot(
     del legal_data
     gc.collect()
 
+    staging_dir = None
+    promoted_dest = False
+    audit_file = None
+    staged_csv_path = None
+
     try:
+        # Atomic staging directory: build everything isolated first
+        staging_dir = get_safe_staging_dir(prefix="kaigo_pilot_stage_")
+        out = staging_dir
         # 1. Build styles and scripts
         styles_content = pilot.STYLES + "\n" + (ROOT / "app/reader.css").read_text(encoding="utf-8")
         (out / "styles.css").write_text(styles_content, encoding="utf-8")
@@ -323,9 +444,13 @@ def build_full_pilot(
         )
         
         # 5. Build all 39 services x 15 chapters (585 chapters)
-        audit_file = open(csv_audit_path, "w", encoding="utf-8", newline="") if csv_audit_path else None
-        writer = csv.writer(audit_file) if audit_file else None
-        if writer:
+        staged_csv_path = None
+        audit_file = None
+        writer = None
+        if target_csv is not None:
+            staged_csv_path = Path(tempfile.gettempdir()) / f".kaigo_staged_audit_{os.getpid()}_{int(time.time()*1000)}.csv"
+            audit_file = open(staged_csv_path, "w", encoding="utf-8", newline="")
+            writer = csv.writer(audit_file)
             writer.writerow([
                 "source_page", "service_id", "service_label", "chapter_id", "chapter_title",
                 "original_url", "normalized_path", "link_text", "link_category", "query",
@@ -550,35 +675,83 @@ def build_full_pilot(
         if target_dest is not None:
             dest_resolved = target_dest.resolve(strict=False)
             dest_backup = None
-            if dest_resolved.exists() and any(dest_resolved.iterdir()):
-                dest_backup = dest_resolved.parent / f".kaigo_bak_{dest_resolved.name}_{int(time.time()*1000)}"
-                os.rename(dest_resolved, dest_backup)
+            intermediate_stage = None
+
+            # Clean up stale artifacts from previous runs
+            cleanup_stale_artifacts(dest_resolved.parent, dest_resolved.name)
+
+            same_fs = is_same_filesystem(staging_dir, dest_resolved.parent)
 
             try:
-                # Promote staging to dest_resolved
-                try:
+                if same_fs:
+                    # Same filesystem: direct atomic rename
+                    if dest_resolved.exists() and any(dest_resolved.iterdir()):
+                        dest_backup = dest_resolved.parent / f".kaigo_bak_{dest_resolved.name}_{int(time.time()*1000)}"
+                        os.rename(dest_resolved, dest_backup)
+
                     os.rename(staging_dir, dest_resolved)
-                except OSError:
-                    # Cross-filesystem promotion (e.g. tmpfs to network disk)
-                    shutil.copytree(staging_dir, dest_resolved)
-                    shutil.rmtree(staging_dir, ignore_errors=True)
+                    promoted_dest = True
 
-                # Verify target destination matches manifest on disk
-                verify_manifest(dest_resolved)
+                    # Verify target destination matches manifest on disk
+                    verify_manifest(dest_resolved)
 
-                # Promotion succeeded: cleanup backup
-                if dest_backup and dest_backup.exists():
-                    shutil.rmtree(dest_backup, ignore_errors=True)
-                final_dir = str(dest_resolved)
+                    # Promotion succeeded: cleanup backup
+                    if dest_backup and dest_backup.exists():
+                        shutil.rmtree(dest_backup, ignore_errors=True)
+                    final_dir = str(dest_resolved)
+                else:
+                    # Cross-filesystem promotion: stage on target filesystem first
+                    intermediate_stage = dest_resolved.parent / f".kaigo_cross_stage_{dest_resolved.name}_{os.getpid()}_{int(time.time()*1000)}"
+                    if intermediate_stage.exists():
+                        shutil.rmtree(intermediate_stage, ignore_errors=True)
+
+                    shutil.copytree(staging_dir, intermediate_stage)
+
+                    # Verify manifest on intermediate stage before touching destination
+                    verify_manifest(intermediate_stage)
+
+                    # Evacuate existing destination to backup
+                    if dest_resolved.exists() and any(dest_resolved.iterdir()):
+                        dest_backup = dest_resolved.parent / f".kaigo_bak_{dest_resolved.name}_{int(time.time()*1000)}"
+                        os.rename(dest_resolved, dest_backup)
+
+                    # Atomic rename from intermediate stage to dest_resolved on same filesystem
+                    os.rename(intermediate_stage, dest_resolved)
+
+                    # Verify target destination matches manifest on disk
+                    verify_manifest(dest_resolved)
+
+                    # Promotion succeeded: cleanup backup
+                    if dest_backup and dest_backup.exists():
+                        shutil.rmtree(dest_backup, ignore_errors=True)
+                    final_dir = str(dest_resolved)
             except Exception as prom_err:
-                # Promotion failed: restore previous destination from backup
-                if dest_resolved.exists():
-                    shutil.rmtree(dest_resolved, ignore_errors=True)
+                if intermediate_stage and intermediate_stage.exists():
+                    shutil.rmtree(intermediate_stage, ignore_errors=True)
                 if dest_backup and dest_backup.exists():
-                    os.rename(dest_backup, dest_resolved)
+                    if dest_resolved.exists():
+                        shutil.rmtree(dest_resolved, ignore_errors=True)
+                    try:
+                        os.rename(dest_backup, dest_resolved)
+                    except Exception as rb_err:
+                        raise RuntimeError(
+                            f"Promotion to target destination failed ({prom_err}) and rollback failed ({rb_err}). "
+                            f"Original data preserved at {dest_backup}"
+                        ) from prom_err
                 raise RuntimeError(f"Promotion to target destination failed (rolled back): {prom_err}") from prom_err
         else:
             final_dir = str(staging_dir)
+
+        # 9. Atomic CSV promotion if target_csv requested
+        if target_csv is not None and staged_csv_path is not None and staged_csv_path.is_file():
+            target_csv.parent.mkdir(parents=True, exist_ok=True)
+            csv_temp = target_csv.parent / f".kaigo_csv_stage_{target_csv.name}_{os.getpid()}_{int(time.time()*1000)}"
+            shutil.copy2(staged_csv_path, csv_temp)
+            os.replace(csv_temp, target_csv)
+            try:
+                staged_csv_path.unlink(missing_ok=True)
+            except Exception:
+                pass
 
         return {
             "directory": final_dir,
@@ -595,10 +768,23 @@ def build_full_pilot(
             "elapsed_seconds": round(elapsed, 2)
         }
     except Exception as e:
-        # Atomic failure guarantee: clean up staging directory so no partial artifacts remain
-        if staging_dir.exists():
-            shutil.rmtree(staging_dir, ignore_errors=True)
+        # Re-raise to trigger finally cleanup
         raise
+    finally:
+        if audit_file:
+            try:
+                audit_file.close()
+            except Exception:
+                pass
+        if staged_csv_path and staged_csv_path.exists():
+            try:
+                staged_csv_path.unlink(missing_ok=True)
+            except Exception:
+                pass
+        # Atomic failure guarantee: clean up staging directory if not promoted to target_dest
+        if not promoted_dest and staging_dir and staging_dir.exists():
+            if target_dest is not None:
+                shutil.rmtree(staging_dir, ignore_errors=True)
 
 if __name__ == "__main__":
     import argparse
@@ -607,13 +793,19 @@ if __name__ == "__main__":
     parser.add_argument("audit_csv", nargs="?", default=None, help="Path to write link audit CSV")
     parser.add_argument("--node-bin", default=None, help="Explicit path to Node.js binary")
     parser.add_argument("--verify-only", action="store_true", help="Verify target directory against manifest.json without rebuilding")
+    parser.add_argument("--expected-commit", default=None, help="Verify manifest git_commit matches this SHA")
+    parser.add_argument("--expected-tree", default=None, help="Verify manifest git_tree matches this SHA")
     args = parser.parse_args()
 
     if args.verify_only:
         if not args.target:
             print("Error: --verify-only requires target directory", file=sys.stderr)
             sys.exit(1)
-        res = verify_manifest(Path(args.target))
+        res = verify_manifest(
+            Path(args.target),
+            expected_commit=args.expected_commit,
+            expected_tree=args.expected_tree,
+        )
         print(json.dumps(res, ensure_ascii=False, indent=2))
     else:
         target_path = Path(args.target) if args.target else None

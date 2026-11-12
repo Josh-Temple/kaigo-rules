@@ -226,6 +226,147 @@ class FullCrossAuditTest(unittest.TestCase):
                 full_pilot.verify_manifest(p)
             self.assertIn("Extraneous", str(ctx.exception))
 
+    def test_validate_safety_and_dest_none_does_not_leak_temp_dir(self):
+        # validate_safety_and_dest(None) must return None without allocating an abandoned directory in /tmp
+        before_tmp_dirs = set(Path(tempfile.gettempdir()).glob("kaigo-full-private-*"))
+        res = full_pilot.validate_safety_and_dest(None)
+        self.assertIsNone(res)
+        after_tmp_dirs = set(Path(tempfile.gettempdir()).glob("kaigo-full-private-*"))
+        self.assertEqual(before_tmp_dirs, after_tmp_dirs, "No temporary directory should be leaked when dest_dir is None")
+
+    def test_validate_csv_audit_path_safety(self):
+        # Rejects CSV output inside repo root
+        with self.assertRaises(RuntimeError) as ctx:
+            full_pilot.validate_csv_audit_path(ROOT / "leak.csv")
+        self.assertIn("inside the repository", str(ctx.exception))
+
+        # Rejects CSV output inside public directories
+        with tempfile.TemporaryDirectory() as tmp:
+            pub_csv = Path(tmp) / "public/audit.csv"
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.validate_csv_audit_path(pub_csv)
+            self.assertIn("public directory candidate", str(ctx.exception))
+
+            # Allows safe external CSV path
+            safe_csv = Path(tmp) / "safe_audit.csv"
+            res = full_pilot.validate_csv_audit_path(safe_csv)
+            self.assertEqual(res, safe_csv.resolve())
+
+    def test_manifest_verification_rejects_path_traversal(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp)
+            (p / "doc.html").write_text("ok", encoding="utf-8")
+            h = full_pilot.compute_file_sha256(p / "doc.html")
+            manifest = {
+                "status": "COMPLETE",
+                "files": {
+                    "../evil.html": {"sha256": h, "size": 2}
+                }
+            }
+            (p / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.verify_manifest(p)
+            self.assertIn("path traversal", str(ctx.exception))
+
+    def test_manifest_verification_rejects_absolute_path(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp)
+            (p / "doc.html").write_text("ok", encoding="utf-8")
+            h = full_pilot.compute_file_sha256(p / "doc.html")
+            manifest = {
+                "status": "COMPLETE",
+                "files": {
+                    "/etc/passwd": {"sha256": h, "size": 2}
+                }
+            }
+            (p / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.verify_manifest(p)
+            self.assertIn("invalid path format", str(ctx.exception))
+
+    def test_manifest_verification_rejects_symlink(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp)
+            real_file = p / "real.html"
+            real_file.write_text("ok", encoding="utf-8")
+            sym = p / "sym.html"
+            sym.symlink_to(real_file)
+            h = full_pilot.compute_file_sha256(real_file)
+            manifest = {
+                "status": "COMPLETE",
+                "files": {
+                    "sym.html": {"sha256": h, "size": 2}
+                }
+            }
+            (p / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.verify_manifest(p)
+            self.assertIn("symbolic link", str(ctx.exception))
+
+    def test_manifest_verification_checks_expected_provenance(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp)
+            (p / "doc.html").write_text("ok", encoding="utf-8")
+            h = full_pilot.compute_file_sha256(p / "doc.html")
+            manifest = {
+                "status": "COMPLETE",
+                "git_commit": "actual_commit_sha",
+                "git_tree": "actual_tree_sha",
+                "files": {
+                    "doc.html": {"sha256": h, "size": 2}
+                }
+            }
+            (p / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+
+            # Correct expected commit passes
+            res = full_pilot.verify_manifest(p, expected_commit="actual_commit_sha")
+            self.assertTrue(res["ok"])
+
+            # Wrong expected commit fails
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.verify_manifest(p, expected_commit="wrong_commit_sha")
+            self.assertIn("provenance mismatch for git_commit", str(ctx.exception))
+
+    def test_manifest_verification_rejects_tampered_total_counts(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp)
+            (p / "doc.html").write_text("ok", encoding="utf-8")
+            h = full_pilot.compute_file_sha256(p / "doc.html")
+            manifest = {
+                "status": "COMPLETE",
+                "total_files": 999,
+                "total_bytes": 2,
+                "files": {
+                    "doc.html": {"sha256": h, "size": 2}
+                }
+            }
+            (p / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+            with self.assertRaises(RuntimeError) as ctx:
+                full_pilot.verify_manifest(p)
+            self.assertIn("total_files count mismatch", str(ctx.exception))
+
+    def test_staging_cleanup_removes_stale_artifacts(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp)
+            bak_dir = p / ".kaigo_bak_target_12345"
+            bak_dir.mkdir()
+            (bak_dir / "leftover.html").write_text("old", encoding="utf-8")
+            stage_dir = p / ".kaigo_cross_stage_target_9999"
+            stage_dir.mkdir()
+            (stage_dir / "partial.html").write_text("partial", encoding="utf-8")
+            csv_stage = p / ".kaigo_csv_stage_target_1111"
+            csv_stage.write_text("data", encoding="utf-8")
+            safe_user_file = p / "unrelated_user_file.txt"
+            safe_user_file.write_text("keep me", encoding="utf-8")
+
+            full_pilot.cleanup_stale_artifacts(p, "target")
+
+            self.assertFalse(bak_dir.exists())
+            self.assertFalse(stage_dir.exists())
+            self.assertFalse(csv_stage.exists())
+            self.assertTrue(safe_user_file.exists())
+
+
 
 if __name__ == "__main__":
     unittest.main()

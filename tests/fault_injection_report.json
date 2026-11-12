@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-11-11T15:15:40Z",
-  "total_duration_seconds": 81.88,
+  "timestamp": "2026-11-11T23:59:05Z",
+  "total_duration_seconds": 115.6,
   "all_passed": true,
   "reference_pilot": {
     "total_files": 4497,
     "total_bytes": 47264422,
-    "git_commit": "1988ca28b4c850cb3f8e161507f6a1dcaeb60712",
-    "git_tree": "880a7a6495dcbd8ebbdfbf31d67c27bf630a21d5"
+    "git_commit": "395abb3dcbdcb292e6a283fccd4b4895ac9e8f25",
+    "git_tree": "0f43fa93ec6ae95a95e1395e6cd79d20bdf59aab"
   },
   "d01_summary": {
     "total": 10,
@@ -23,6 +23,26 @@
     "passed": 4,
     "all_pass": true
   },
+  "cross_summary": {
+    "total": 6,
+    "passed": 6,
+    "all_pass": true
+  },
+  "cleanup_summary": {
+    "total": 3,
+    "passed": 3,
+    "all_pass": true
+  },
+  "csv_summary": {
+    "total": 2,
+    "passed": 2,
+    "all_pass": true
+  },
+  "manifest_summary": {
+    "total": 5,
+    "passed": 5,
+    "all_pass": true
+  },
   "d01_details": [
     {
       "case": "1. 先頭の法令HTMLを改ざん",
@@ -32,7 +52,7 @@
       "expected_message_substring": "mismatch",
       "actual_error": "File size mismatch for legislation/record/0005202480f7052f845d16fb9734066bdfbb4082478a8ce4d3b0cb9b78e594b3.html: expected 964, got 997",
       "mutation_info": "Appended sentinel to 0005202480f7052f845d16fb9734066bdfbb4082478a8ce4d3b0cb9b78e594b3.html",
-      "duration_seconds": 0.3251
+      "duration_seconds": 0.5341
     },
     {
       "case": "2. 中間の法令HTMLを改ざん",
@@ -42,7 +62,7 @@
       "expected_message_substring": "mismatch",
       "actual_error": "File size mismatch for legislation/record/81699dfe0ccc8f99200b4eb0c8b20beea4fe0fc9186f250670db73d07db2bba1.html: expected 804, got 836",
       "mutation_info": "Appended sentinel to 81699dfe0ccc8f99200b4eb0c8b20beea4fe0fc9186f250670db73d07db2bba1.html",
-      "duration_seconds": 0.3585
+      "duration_seconds": 0.6517
     },
     {
       "case": "3. 最後の法令HTMLを改ざん",
@@ -52,7 +72,7 @@
       "expected_message_substring": "mismatch",
       "actual_error": "File size mismatch for legislation/record/ffd8b939fee0adb93c52e3e99efa80a3b84ab37f5c1c9bc84b99a98a18eac6c6.html: expected 772, got 805",
       "mutation_info": "Appended sentinel to ffd8b939fee0adb93c52e3e99efa80a3b84ab37f5c1c9bc84b99a98a18eac6c6.html",
-      "duration_seconds": 0.3966
+      "duration_seconds": 0.7602
     },
     {
       "case": "4. ファイル長を変えずに本文を改ざん",
@@ -62,7 +82,7 @@
       "expected_message_substring": "sha-256 mismatch",
       "actual_error": "SHA-256 mismatch for legislation/record/0082d7056410d0d9d05c04ca0ff072e472b7a36913be80c43f3116afff4b57fd.html: expected 1a05aaa5c1254fc24dd312b609d1d5c86de4003534d1f6250a9dcfb0e3bdc0f4, got 18e1e3bc957f24501d8467d886d1f32857ddf51970875f0c53c7d0efc1905a3e",
       "mutation_info": "Flipped 10 bytes in 0082d7056410d0d9d05c04ca0ff072e472b7a36913be80c43f3116afff4b57fd.html with exact byte size 774",
-      "duration_seconds": 0.3219
+      "duration_seconds": 0.5358
     },
     {
       "case": "5. 1ファイル削除",
@@ -72,7 +92,7 @@
       "expected_message_substring": "missing on disk",
       "actual_error": "File listed in manifest is missing on disk: legislation/record/004363b1832637b199c40fa564d37feb2008a55a48248cd828c59cd2e0773022.html",
       "mutation_info": "Deleted 004363b1832637b199c40fa564d37feb2008a55a48248cd828c59cd2e0773022.html",
-      "duration_seconds": 0.3215
+      "duration_seconds": 0.5275
     },
     {
       "case": "6. 追加の不正HTMLを配置",
@@ -82,7 +102,7 @@
       "expected_message_substring": "extraneous unverified file",
       "actual_error": "Extraneous unverified file found in destination: legislation/record/malicious_extra_record.html",
       "mutation_info": "Created extra unverified file malicious_extra_record.html",
-      "duration_seconds": 0.5292
+      "duration_seconds": 0.8811
     },
     {
       "case": "7. 以前のHEAD相当の生成物を混入",
@@ -92,7 +112,7 @@
       "expected_message_substring": "mismatch",
       "actual_error": "File size mismatch for styles.css: expected 27391, got 32",
       "mutation_info": "Replaced styles.css with stale content",
-      "duration_seconds": 0.3974
+      "duration_seconds": 0.7751
     },
     {
       "case": "8. 入力法令データのハッシュ検証",
@@ -102,7 +122,7 @@
       "expected_message_substring": "SHA matches",
       "actual_error": "None (master data SHA-256 bound to manifest)",
       "mutation_info": "real_sha=d8acccbdd02465d00f249c18b39cae0bc0b3fd1b090dacb9379dd39e850b1afc",
-      "duration_seconds": 0.0149
+      "duration_seconds": 0.0143
     },
     {
       "case": "9. 生成マニフェストを改ざん",
@@ -112,7 +132,7 @@
       "expected_message_substring": "manifest status is not complete",
       "actual_error": "Manifest status is not COMPLETE: INCOMPLETE_TAMPERED",
       "mutation_info": "Changed manifest status to INCOMPLETE_TAMPERED",
-      "duration_seconds": 0.2874
+      "duration_seconds": 0.4557
     },
     {
       "case": "10. 改ざん後再実行での不正文字列完全根絶・正常復元",
@@ -122,7 +142,7 @@
       "expected_message_substring": "D_TAMPER_SENTINEL eradicated",
       "actual_error": "None (rebuild completely cleared tampered content)",
       "mutation_info": "Rebuilt 4497 files, verified=True",
-      "duration_seconds": 38.3613
+      "duration_seconds": 37.6555
     }
   ],
   "d02_details": [
@@ -133,7 +153,7 @@
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
       "actual_error": "Refusing to output private pilot inside the repository path",
-      "duration_seconds": 0.0148
+      "duration_seconds": 0.01
     },
     {
       "stage": "2. 入力JSON解析中 (破損データ)",
@@ -141,8 +161,8 @@
       "caught_error": true,
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
-      "actual_error": "Expecting value: line 1 column 1 (char 0)",
-      "duration_seconds": 0.0396
+      "actual_error": "Corrupted master data JSON: Expecting value: line 1 column 1 (char 0)",
+      "duration_seconds": 0.041
     },
     {
       "stage": "3. Node.js検出前 (無効なNodeバイナリ)",
@@ -151,7 +171,7 @@
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
       "actual_error": "Explicitly specified Node.js binary not found: /nonexistent/bin/node",
-      "duration_seconds": 0.0141
+      "duration_seconds": 0.0105
     },
     {
       "stage": "4. Node.jsバージョン不適合 (< v20)",
@@ -160,7 +180,7 @@
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
       "actual_error": "Node.js version v18.19.0 is unsupported. Node.js >= v20.0.0 is required.",
-      "duration_seconds": 0.0136
+      "duration_seconds": 0.0105
     },
     {
       "stage": "5. CSS生成処理の失敗",
@@ -168,8 +188,8 @@
       "caught_error": true,
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
-      "actual_error": "Injected CSS error",
-      "duration_seconds": 0.1136
+      "actual_error": "cannot access local variable 'audit_file' where it is not associated with a value",
+      "duration_seconds": 0.1078
     },
     {
       "stage": "6. 法令HTML生成途中のプロセス失敗",
@@ -177,8 +197,8 @@
       "caught_error": true,
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
-      "actual_error": "Injected legislation error",
-      "duration_seconds": 0.1191
+      "actual_error": "cannot access local variable 'audit_file' where it is not associated with a value",
+      "duration_seconds": 0.1161
     },
     {
       "stage": "7. 検索ビルドプロセス失敗 (Node exit 1)",
@@ -186,8 +206,8 @@
       "caught_error": true,
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
-      "actual_error": "Search builder failed (exit 1): Node memory exhausted",
-      "duration_seconds": 0.101
+      "actual_error": "cannot access local variable 'audit_file' where it is not associated with a value",
+      "duration_seconds": 0.1256
     },
     {
       "stage": "8. 検索アセット検証失敗 (必須ファイル欠落)",
@@ -195,8 +215,8 @@
       "caught_error": true,
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
-      "actual_error": "Missing required search database asset: qa.html",
-      "duration_seconds": 0.0944
+      "actual_error": "cannot access local variable 'audit_file' where it is not associated with a value",
+      "duration_seconds": 0.0918
     },
     {
       "stage": "9. 手引HTML生成途中の失敗",
@@ -205,7 +225,7 @@
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
       "actual_error": "Injected handbook disk error",
-      "duration_seconds": 0.0912
+      "duration_seconds": 0.0888
     },
     {
       "stage": "10. リンク局所化処理の失敗",
@@ -214,7 +234,7 @@
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
       "actual_error": "Injected localization error",
-      "duration_seconds": 0.2395
+      "duration_seconds": 0.2319
     },
     {
       "stage": "11. マニフェスト自己検証での不整合検知",
@@ -223,7 +243,7 @@
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
       "actual_error": "Injected manifest mismatch",
-      "duration_seconds": 0.7762
+      "duration_seconds": 0.7552
     },
     {
       "stage": "12. 目標出力先への確定昇格時の失敗とロールバック",
@@ -232,7 +252,7 @@
       "clean_state": true,
       "details": "Target destination does not exist (0 partial files).",
       "actual_error": "Promotion to target destination failed (rolled back): Disk full during atomic promotion",
-      "duration_seconds": 0.8407
+      "duration_seconds": 26.5184
     },
     {
       "stage": "13. 既存正常出力が存在する状態での障害発生と既存データ保全",
@@ -240,8 +260,8 @@
       "caught_error": true,
       "clean_state": true,
       "details": "Prior valid files and marker preserved intact.",
-      "actual_error": "Failure after start",
-      "duration_seconds": 0.1596
+      "actual_error": "cannot access local variable 'audit_file' where it is not associated with a value",
+      "duration_seconds": 0.1436
     }
   ],
   "node_details": [
@@ -250,14 +270,14 @@
       "passed": true,
       "resolved_path": "/workspace/opt/node-v22.11.0-linux-x64/bin/node",
       "error": null,
-      "duration_seconds": 0.0236
+      "duration_seconds": 0.0216
     },
     {
       "case": "2. NODE_BINARY環境変数による明示指定",
       "passed": true,
       "resolved_path": "/workspace/opt/node-v22.11.0-linux-x64/bin/node",
       "error": null,
-      "duration_seconds": 0.0214
+      "duration_seconds": 0.0197
     },
     {
       "case": "3. 存在しないNodeバイナリの即時拒否",
@@ -270,6 +290,110 @@
       "passed": true,
       "error": "Node.js version v18.12.0 is unsupported. Node.js >= v20.0.0 is required.",
       "duration_seconds": 0.0004
+    }
+  ],
+  "cross_details": [
+    {
+      "case": "1. EXDEV異デバイス昇格（中間クロスステージング・原子的置換・マニフェスト合格）",
+      "passed": true,
+      "error": "",
+      "duration_seconds": 1.0908
+    },
+    {
+      "case": "2. コピー途中中断(ENOSPC)時の既存完成品100%保全とロールバック",
+      "passed": true,
+      "error": "Promotion to target destination failed (rolled back): [Errno 28] No space left on device",
+      "duration_seconds": 0.8219
+    },
+    {
+      "case": "3. 退避後昇格失敗時の退避データからの自動ロールバック復元",
+      "passed": true,
+      "error": "Promotion to target destination failed (rolled back): Injected promotion failure after backup evacuation",
+      "duration_seconds": 0.8167
+    },
+    {
+      "case": "4. ロールバック失敗時の二重例外ハンドリングとバックアップ保全（非消去）",
+      "passed": true,
+      "error": "Promotion to target destination failed (Injected catastrophic filesystem rename failure) and rollback failed (Injected catastrophic filesystem rename failure). Original data preserved at /tmp/tmpivi5shhb/.kaigo_bak_rb_fail_target_1794441541600",
+      "duration_seconds": 0.8155
+    },
+    {
+      "case": "5. 初回生成失敗時の完全非汚染（不完全成果物残存0件）",
+      "passed": true,
+      "error": "Localization crash",
+      "duration_seconds": 0.2312
+    },
+    {
+      "case": "6. 再実行時の前回収障害遺物(.kaigo_bak_ / .kaigo_cross_stage_)自動一掃と正常完了",
+      "passed": true,
+      "error": "",
+      "duration_seconds": 0.976
+    }
+  ],
+  "cleanup_details": [
+    {
+      "case": "1. 初期JSON破損エラー時のステージング事前遮断（残存0件）",
+      "passed": true,
+      "error": "Corrupted master data JSON: Expecting value: line 1 column 1 (char 0)",
+      "duration_seconds": 0.0274
+    },
+    {
+      "case": "2. サービス数不正(39件未満)時の事前検証拒否とディレクトリ漏洩防止",
+      "passed": true,
+      "error": "Expected 39 services in master data, found 1",
+      "duration_seconds": 0.0198
+    },
+    {
+      "case": "3. 正常生成完了後の独立ファイル走査（/tmp内ステージング残存0件確認）",
+      "passed": true,
+      "error": "",
+      "duration_seconds": 0.9581
+    }
+  ],
+  "csv_details": [
+    {
+      "case": "1. 途中失敗時の外部指定監査CSVの保全・非切断（旧データ100%保持）",
+      "passed": true,
+      "error": "Injected failure before completion",
+      "duration_seconds": 0.317
+    },
+    {
+      "case": "2. 実HTMLからのリンク台帳再抽出と監査CSVの全件同一版整合（照合100%一致・11,680件）",
+      "passed": true,
+      "error": "",
+      "duration_seconds": 0.0737
+    }
+  ],
+  "manifest_details": [
+    {
+      "case": "1. マニフェスト内の相対パス../パストラバーサル拒否",
+      "passed": true,
+      "error": "Manifest path safety error: path traversal detected: ../traversal.html",
+      "duration_seconds": 0.0004
+    },
+    {
+      "case": "2. マニフェスト内の絶対パス記述即時拒否",
+      "passed": true,
+      "error": "Manifest path safety error: invalid path format: /etc/shadow",
+      "duration_seconds": 0.0002
+    },
+    {
+      "case": "3. 成果物ディレクトリ内のsymlink混入即時拒否",
+      "passed": true,
+      "error": "Manifest security error: symbolic link not allowed in manifest files: sym_doc.html",
+      "duration_seconds": 0.0002
+    },
+    {
+      "case": "4. 外部固定Gitコミットアンカー不一致の検知・拒否",
+      "passed": true,
+      "error": "Manifest provenance mismatch for git_commit: expected 0000000000000000000000000000000000000000, got 395abb3dcbdcb292e6a283fccd4b4895ac9e8f25",
+      "duration_seconds": 0.4423
+    },
+    {
+      "case": "5. 外部固定Gitコミット・Treeアンカー完全一致の検証合格",
+      "passed": true,
+      "error": "",
+      "duration_seconds": 0.4461
     }
   ]
 }
