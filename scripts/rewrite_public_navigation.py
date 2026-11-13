@@ -45,6 +45,12 @@ LEGAL_NOTICE = ("<p>収載資料には人手確認前の部分があります。
 READING_NOTICE = ('<p class="notice">別のサービス名が書かれた条文は、そのまま選択したサービスに'
                   '当てはめず、準用・読替えの規定と原典を確認してください。</p>')
 UNIT_PRICE_NOTICE = 'https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1'
+OFFICIAL_CRITERIA = {
+    'criteria-mhlw-fee-criteria95-current': 'https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1',
+    'criteria-mhlw-fee-facility-criteria96-current': 'https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0&pageNo=1',
+    'criteria-mhlw-fee-notice27-base': 'https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1',
+}
+ORDINANCE37_SOURCE = 'https://laws.e-gov.go.jp/law/411M50000100037'
 
 # These mappings come from the existing delegated-remuneration node identity
 # map. The two notice 27 subitems are not separate published records, so the
@@ -126,11 +132,13 @@ def rewrite_scoped_link(match: re.Match, source: Path, root: Path, counts: dict)
     if url.scheme != 'https' or url.netloc != 'kaigo-rules.vercel.app' or url.fragment:
         return match.group(0)
     if url.path == '/fees/root' and not url.query:
-        target = published_record(root, 'fee.dayservice.root', 'remuneration', 'dayservice', 'remuneration-dayservice')
-        href = local_href(source, root, target) if target else None
-        if href and '<strong>通所介護費</strong><small>6</small>' in match.group(4):
-            counts['fee_root_records'] += 1
-            return match.group(1) + html.escape(href, quote=True) + match.group(3) + match.group(4) + '</a>'
+        href = local_href(source, root, 'fees/index.html')
+        marker = '<strong>通所介護費</strong><small>6</small>'
+        if (href and source.as_posix() == 'databases/search/legal/rules/all/92.html' and
+                match.group(4).count(marker) == 1):
+            counts['fee_root_links'] += 1
+            body = match.group(4).replace(marker, '<strong>通所介護費</strong><small>報酬一覧</small>')
+            return match.group(1) + html.escape(href, quote=True) + match.group(3) + body + '</a>'
         return match.group(0)
     route = re.fullmatch(r'/rules/([0-9]+(?:-[0-9]+)*)', url.path)
     if not route:
@@ -295,6 +303,34 @@ def rewrite_search_scripts(root: Path) -> dict[Path, str]:
     return {app: code, qa: qa_code}
 
 
+def add_official_record_links(root: Path) -> dict[Path, str]:
+    """Add a source link only when the published record's document is known."""
+    updates = {}
+    for identifier, entry in record_index(root).items():
+        if not isinstance(entry, dict):
+            continue
+        document = entry.get('document')
+        if entry.get('category') == 'criteria' and document in OFFICIAL_CRITERIA:
+            url, label = OFFICIAL_CRITERIA[document], '厚生労働省の告示原文を確認'
+        elif (identifier == 'ordinance37.article.119' and entry.get('category') == 'standards'
+              and document == 'ordinance37'):
+            url, label = ORDINANCE37_SOURCE, 'e-Govで省令の原文を確認'
+        else:
+            continue
+        filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        page = root / 'legislation/record' / filename
+        if page.is_symlink() or not page.is_file():
+            raise RuntimeError(f'Missing or unsafe official-source record: {identifier}')
+        content = page.read_text(encoding='utf-8')
+        if url in html.unescape(content):
+            continue
+        if content.count('</article>') != 1:
+            raise RuntimeError(f'Unexpected official-source record layout: {identifier}')
+        source = '<p><a href="' + html.escape(url, quote=True) + '">' + label + '</a></p>'
+        updates[page] = content.replace('</article>', source + '</article>', 1)
+    return updates
+
+
 @lru_cache(maxsize=4)
 def record_index(root: Path) -> dict:
     path = root / "legislation/record-index.json"
@@ -393,9 +429,11 @@ def rewrite(root: Path) -> dict:
         changes[guide] = rewrite_guide(guide.read_text(encoding='utf-8'), root)
     if (root / 'databases/search/app.mjs').exists() or (root / 'databases/search/qa-app.mjs').exists():
         changes.update(rewrite_search_scripts(root))
+    if (root / 'legislation/record-index.json').is_file():
+        changes.update(add_official_record_links(root))
     counts = {"standards": 0, "law": 0, "notices": 0, "notice_records": 0}
     extra_counts = {'criteria_records': 0, 'simple_links': 0, 'unavailable_all_views': 0,
-                    'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_records': 0}
+                    'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_links': 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")

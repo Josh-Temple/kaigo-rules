@@ -37,7 +37,7 @@ class FeeNavigationTest(unittest.TestCase):
         self.assertEqual(rewrite(self.root), {"pages_changed": 3, "search_scripts_changed": 0, "fee_links_changed": 9,
                                               "index_links_changed": {"standards": 0, "law": 0, "notices": 0, "notice_records": 0},
                                               "additional_changes": {"criteria_records": 0, "simple_links": 0, "unavailable_all_views": 0,
-                                                                     "scoped_rule_links": 0, "dayrehab_scope_notes": 0, "fee_root_records": 0}})
+                                                                     "scoped_rule_links": 0, "dayrehab_scope_notes": 0, "fee_root_links": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
         self.assertNotIn(ORIGIN, fees + guidance)
@@ -125,7 +125,7 @@ class FeeNavigationTest(unittest.TestCase):
         for identifier, document in [('notice95.item.24', 'criteria-mhlw-fee-criteria95-current'),
                                      ('notice27.item.1', 'criteria-mhlw-fee-notice27-base')]:
             entries[identifier] = {'document': document, 'category': 'criteria', 'services': ['dayservice']}
-            (folder / (hashlib.sha256(identifier.encode()).hexdigest() + '.html')).write_text('record')
+            (folder / (hashlib.sha256(identifier.encode()).hexdigest() + '.html')).write_text('<article>record</article>')
         (self.root / 'legislation/record-index.json').write_text(json.dumps(entries))
         page = self.root / 'fees/example.html'
         page.write_text(f'<a href="{ORIGIN}/fees/criteria#criteria95.dayservice.24">処遇改善加算</a>'
@@ -138,6 +138,8 @@ class FeeNavigationTest(unittest.TestCase):
         self.assertIn(hashlib.sha256('notice27.item.1'.encode()).hexdigest() + '.html', content)
         self.assertIn('利用定員超過（告示第1号全体）', content)
         self.assertIn(f'{ORIGIN}/fees/criteria#criteria95.dayservice.99', content)
+        self.assertIn('dataId=82ab4584', (folder / (hashlib.sha256('notice95.item.24'.encode()).hexdigest() + '.html')).read_text())
+        self.assertIn('dataId=82aa0261', (folder / (hashlib.sha256('notice27.item.1'.encode()).hexdigest() + '.html')).read_text())
 
     def test_criteria_link_is_not_rewritten_if_scope_or_document_differs(self):
         identifier = 'notice95.item.24'
@@ -238,7 +240,7 @@ class FeeNavigationTest(unittest.TestCase):
         rewrite(self.root)
         self.assertEqual(common.read_text(), original)
 
-    def test_dayrehab_incorporation_note_and_fee_root_use_matching_records(self):
+    def test_dayrehab_note_links_to_the_source_and_fee_root_uses_the_nonempty_list(self):
         entries = {
             'ordinance37.article.119': {'document': 'ordinance37', 'category': 'standards', 'services': ['dayrehab']},
             'fee.dayservice.root': {'document': 'remuneration-dayservice', 'category': 'remuneration', 'services': ['dayservice']},
@@ -247,18 +249,22 @@ class FeeNavigationTest(unittest.TestCase):
         folder = self.root / 'legislation/record'
         folder.mkdir()
         for identifier in entries:
-            (folder / (hashlib.sha256(identifier.encode()).hexdigest() + '.html')).write_text('record')
+            (folder / (hashlib.sha256(identifier.encode()).hexdigest() + '.html')).write_text('<article>record</article>')
         dayrehab = self.root / 'databases/search/legal/rules/dayrehab/118.html'
         dayrehab.parent.mkdir(parents=True)
         dayrehab.write_text('<p class="scope-note">通所リハの準用relation・読み替えを含む詳細表示は'
                             f'<a href="{ORIGIN}/services/dayrehab/rules/118">サービス別ページ</a>でも確認できます。</p>')
-        fee = self.root / 'fees/relationship.html'
+        fee = self.root / 'databases/search/legal/rules/all/92.html'
+        fee.parent.mkdir(parents=True)
         fee.write_text(f'<a href="{ORIGIN}/fees/root"><span><strong>通所介護費</strong><small>6</small></span></a>')
         result = rewrite(self.root)
         self.assertEqual(result['additional_changes']['dayrehab_scope_notes'], 1)
-        self.assertEqual(result['additional_changes']['fee_root_records'], 1)
+        self.assertEqual(result['additional_changes']['fee_root_links'], 1)
         self.assertIn('第119条の本文', dayrehab.read_text())
-        self.assertIn(hashlib.sha256('fee.dayservice.root'.encode()).hexdigest(), fee.read_text())
+        self.assertIn('fees/index.html', fee.read_text())
+        self.assertIn('報酬一覧', fee.read_text())
+        self.assertIn('laws.e-gov.go.jp/law/411M50000100037',
+                      (folder / (hashlib.sha256('ordinance37.article.119'.encode()).hexdigest() + '.html')).read_text())
 
     def test_search_results_use_verified_local_notice_and_official_price_source(self):
         search = self.root / 'databases/search'
