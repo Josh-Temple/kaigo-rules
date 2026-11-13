@@ -23,6 +23,14 @@ jobs:
         with:
           ref: 14ec4a2610e756fead516e176f38172905caa89a
           persist-credentials: false
+      - name: Check out the current publication navigation fix
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: .publication-tools
+          sparse-checkout: scripts/rewrite_public_navigation.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
@@ -52,7 +60,7 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import json,os,subprocess
+          import json,os,subprocess,sys
           from pathlib import Path
           from scripts.audit_github_pages_migration_readiness import inspect
           summary=json.loads((Path(os.environ["RUNNER_TEMP"])/"pages-site-build.log").read_text(encoding="utf-8").splitlines()[-1])
@@ -79,6 +87,9 @@ jobs:
           outcome=subprocess.run(["python","scripts/prepare_github_pages_beta.py",str(root)],
               capture_output=True,text=True,check=True)
           print("SOURCE_SAFETY_PREPARATION:",outcome.stdout.strip())
+          link_fix=subprocess.run([sys.executable,".publication-tools/scripts/rewrite_public_navigation.py",str(root)],
+              capture_output=True,text=True,check=True)
+          print("FEE_NAVIGATION:",link_fix.stdout.strip())
           # The already-public, pinned snapshot is now the operational site.
           # Remove only the public-beta wording. Keep unverified-source warnings,
           # the original content, and noindex pending independent legal review.
