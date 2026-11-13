@@ -7,11 +7,14 @@ rewritten, and the operation refuses to run if the expected pages have changed.
 from __future__ import annotations
 
 import html
+import hashlib
+import json
 import posixpath
 import re
 import sys
+from functools import lru_cache
 from pathlib import Path
-from urllib.parse import parse_qs, urlsplit
+from urllib.parse import parse_qs, unquote, urlsplit
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 QUERY = "q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
@@ -37,10 +40,21 @@ READING_NOTICE = ('<p class="notice">別のサービス名が書かれた条文�
                   '当てはめず、準用・読替えの規定と原典を確認してください。</p>')
 
 
+@lru_cache(maxsize=4)
+def record_index(root: Path) -> dict:
+    path = root / "legislation/record-index.json"
+    if path.is_symlink() or not path.is_file():
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or len(data) > 100000:
+        raise RuntimeError("Invalid legislation record index")
+    return data
+
+
 def rewrite_index_link(match: re.Match, source: Path, root: Path, counts: dict) -> str:
     url = urlsplit(html.unescape(match.group(2)))
     if (url.scheme != "https" or url.netloc != "kaigo-rules.vercel.app" or
-            url.path not in {"/rules", "/law"} or url.fragment):
+            url.path not in {"/rules", "/law", "/notices"}):
         return match.group(0)
     try:
         params = parse_qs(url.query, keep_blank_values=True, strict_parsing=True, max_num_fields=2)
@@ -54,10 +68,28 @@ def rewrite_index_link(match: re.Match, source: Path, root: Path, counts: dict) 
         return match.group(0)
     if "service" in params and not service:
         return match.group(0)
+    if url.fragment:
+        if url.path != "/notices":
+            return match.group(0)
+        identifier = unquote(url.fragment)
+        if not re.fullmatch(r"[A-Za-z0-9._:-]{1,200}", identifier):
+            return match.group(0)
+        entry = record_index(root).get(identifier)
+        if (not isinstance(entry, dict) or entry.get("category") != "notices" or
+                not isinstance(entry.get("services"), list) or
+                (service and service not in entry["services"])):
+            return match.group(0)
+        target = "legislation/record/" + hashlib.sha256(identifier.encode("utf-8")).hexdigest() + ".html"
+        destination = root / target
+        if destination.is_symlink() or not destination.is_file():
+            return match.group(0)
+        relative = posixpath.relpath(target, source.parent.as_posix())
+        counts["notice_records"] += 1
+        return match.group(1) + html.escape(relative, quote=True) + match.group(3)
     target = root / "legislation/index.html"
     if target.is_symlink() or not target.is_file():
         raise RuntimeError("Local legislation index is missing or unsafe")
-    category = "standards" if url.path == "/rules" else "law"
+    category = {"/rules": "standards", "/law": "law", "/notices": "notices"}[url.path]
     query = (("service=" + service + "&") if service else "") + "category=" + category
     relative = posixpath.relpath("legislation/index.html", source.parent.as_posix())
     counts[category] += 1
@@ -99,7 +131,7 @@ def rewrite(root: Path) -> dict:
     if legal_html.count(LEGAL_NOTICE) != 1 or READING_NOTICE in legal_html:
         raise RuntimeError("Unexpected legislation index caution")
     changes[legal_page] = legal_html.replace(LEGAL_NOTICE, LEGAL_NOTICE + READING_NOTICE, 1)
-    counts = {"standards": 0, "law": 0}
+    counts = {"standards": 0, "law": 0, "notices": 0, "notice_records": 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
@@ -118,7 +150,6 @@ def rewrite(root: Path) -> dict:
 
 
 if __name__ == "__main__":
-    import json
     if len(sys.argv) != 2:
         raise SystemExit("Usage: rewrite_public_navigation.py SITE_DIRECTORY")
     print(json.dumps(rewrite(Path(sys.argv[1])), ensure_ascii=False))

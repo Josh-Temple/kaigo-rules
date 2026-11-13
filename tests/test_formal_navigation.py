@@ -1,5 +1,7 @@
 """Verify published fee navigation without inventing a unit-price table."""
 import tempfile
+import hashlib
+import json
 import unittest
 from pathlib import Path
 
@@ -33,7 +35,7 @@ class FeeNavigationTest(unittest.TestCase):
 
     def test_known_links_are_local_and_the_search_is_not_labeled_a_price_table(self):
         self.assertEqual(rewrite(self.root), {"pages_changed": 3, "fee_links_changed": 9,
-                                              "index_links_changed": {"standards": 0, "law": 0}})
+                                              "index_links_changed": {"standards": 0, "law": 0, "notices": 0, "notice_records": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
         self.assertNotIn(ORIGIN, fees + guidance)
@@ -81,19 +83,35 @@ class FeeNavigationTest(unittest.TestCase):
         service = self.root / "services/dayservice/index.html"
         service.parent.mkdir(parents=True)
         service.write_text("service")
+        other_service = self.root / "services/homevisit/index.html"
+        other_service.parent.mkdir(parents=True)
+        other_service.write_text("service")
         page = self.root / "databases/search/details.html"
+        identifier = 'notice.dayservice.operation.policy'
+        (self.root / 'legislation/record').mkdir()
+        record_file = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        (self.root / 'legislation/record' / record_file).write_text('notice')
+        (self.root / 'legislation/record-index.json').write_text(json.dumps({
+            identifier: {'category': 'notices', 'services': ['dayservice']}
+        }))
         page.write_text(
             f'<a href="{ORIGIN}/rules?service=dayservice">基準へ</a>'
             f'<a href="{ORIGIN}/law">法律へ</a>'
+            f'<a href="{ORIGIN}/notices?service=dayservice">通知一覧へ</a>'
+            f'<a href="{ORIGIN}/notices?service=dayservice#{identifier}">通知の該当箇所</a>'
+            f'<a href="{ORIGIN}/notices?service=homevisit#{identifier}">別サービスの通知</a>'
             f'<a href="{ORIGIN}/rules?service=unknown">未知のサービス</a>'
             f'<a href="{ORIGIN}/rules?service=dayservice&amp;extra=1">未知の条件</a>'
             f'<a href="{ORIGIN}/rules?service=dayservice#part">項目指定</a>'
         )
         result = rewrite(self.root)
         updated = page.read_text()
-        self.assertEqual(result["index_links_changed"], {"standards": 1, "law": 1})
+        self.assertEqual(result["index_links_changed"], {"standards": 1, "law": 1, "notices": 1, "notice_records": 1})
         self.assertIn('../../legislation/index.html?service=dayservice&amp;category=standards', updated)
         self.assertIn('../../legislation/index.html?category=law', updated)
+        self.assertIn('../../legislation/index.html?service=dayservice&amp;category=notices', updated)
+        self.assertIn('../../legislation/record/' + record_file, updated)
+        self.assertIn(f'{ORIGIN}/notices?service=homevisit#{identifier}', updated)
         self.assertIn(f'{ORIGIN}/rules?service=unknown', updated)
         self.assertIn(f'{ORIGIN}/rules?service=dayservice&amp;extra=1', updated)
         self.assertIn(f'{ORIGIN}/rules?service=dayservice#part', updated)
