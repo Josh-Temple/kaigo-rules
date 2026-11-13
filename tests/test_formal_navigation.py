@@ -20,7 +20,8 @@ class FeeNavigationTest(unittest.TestCase):
         self.root = Path(self.temp.name)
         for name in ("fees", "fees/guidance", "legislation", "databases/search"):
             (self.root / name).mkdir(parents=True, exist_ok=True)
-        (self.root / "legislation/index.html").write_text("legislation")
+        (self.root / "legislation/index.html").write_text(
+            '<p>収載資料には人手確認前の部分があります。準用・読替え・例外・施行日や自治体ごとの取扱いは公式原典で確認してください。</p>')
         (self.root / "databases/search/index.html").write_text("search")
         self.fees = self.root / "fees/index.html"
         self.guidance = self.root / "fees/guidance/index.html"
@@ -31,7 +32,7 @@ class FeeNavigationTest(unittest.TestCase):
         self.guidance.write_text(COMMON + f'<a href="{ORIGIN}/fees/root">通所介護費</a>')
 
     def test_known_links_are_local_and_the_search_is_not_labeled_a_price_table(self):
-        self.assertEqual(rewrite(self.root), {"pages_changed": 2, "fee_links_changed": 9,
+        self.assertEqual(rewrite(self.root), {"pages_changed": 3, "fee_links_changed": 9,
                                               "index_links_changed": {"standards": 0, "law": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
@@ -43,6 +44,8 @@ class FeeNavigationTest(unittest.TestCase):
         self.assertIn('地域区分の関連資料を検索（一単位単価表ではありません）', fees)
         self.assertIn('制度の現行性は原典で確認してください。', fees)
         self.assertNotIn('通所介護の一単位単価を見る', fees)
+        self.assertIn('別のサービス名が書かれた条文は、そのまま選択したサービスに当てはめず',
+                      (self.root / 'legislation/index.html').read_text())
 
     def test_changed_link_fails_before_either_page_is_modified(self):
         self.guidance.write_text(self.guidance.read_text().replace("通所介護費", "別のラベル"))
@@ -57,6 +60,13 @@ class FeeNavigationTest(unittest.TestCase):
         (self.root / "legislation/index.html").unlink()
         original = self.fees.read_text()
         with self.assertRaisesRegex(RuntimeError, "target missing"):
+            rewrite(self.root)
+        self.assertEqual(self.fees.read_text(), original)
+
+    def test_changed_legal_notice_stops_all_rewrites(self):
+        (self.root / "legislation/index.html").write_text("予期しない法令一覧")
+        original = self.fees.read_text()
+        with self.assertRaisesRegex(RuntimeError, "Unexpected legislation index caution"):
             rewrite(self.root)
         self.assertEqual(self.fees.read_text(), original)
 

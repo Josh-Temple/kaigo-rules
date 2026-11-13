@@ -31,6 +31,10 @@ PAGES = {
 }
 ANCHOR = re.compile(r'(<a\b[^>]*?\bhref=")([^"]+)(")', re.IGNORECASE)
 SERVICE = re.compile(r"[a-z0-9-]+")
+LEGAL_NOTICE = ("<p>収載資料には人手確認前の部分があります。準用・読替え・例外・施行日や"
+                "自治体ごとの取扱いは公式原典で確認してください。</p>")
+READING_NOTICE = ('<p class="notice">別のサービス名が書かれた条文は、そのまま選択したサービスに'
+                  '当てはめず、準用・読替えの規定と原典を確認してください。</p>')
 
 
 def rewrite_index_link(match: re.Match, source: Path, root: Path, counts: dict) -> str:
@@ -88,6 +92,13 @@ def rewrite(root: Path) -> dict:
         if f'href="{ORIGIN}/' in after:
             raise RuntimeError(f"An unrecognized legacy link remains on {source}")
         changes[path] = after
+    legal_page = root / "legislation/index.html"
+    if legal_page.is_symlink() or not legal_page.is_file():
+        raise RuntimeError("Local legislation index is missing or unsafe")
+    legal_html = legal_page.read_text(encoding="utf-8")
+    if legal_html.count(LEGAL_NOTICE) != 1 or READING_NOTICE in legal_html:
+        raise RuntimeError("Unexpected legislation index caution")
+    changes[legal_page] = legal_html.replace(LEGAL_NOTICE, LEGAL_NOTICE + READING_NOTICE, 1)
     counts = {"standards": 0, "law": 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
