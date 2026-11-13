@@ -15,6 +15,8 @@ SAFETY CONSTRAINTS:
 from __future__ import annotations
 
 import csv
+import contextlib
+import fcntl
 import gc
 import hashlib
 import html
@@ -75,7 +77,6 @@ def resolve_node_binary(explicit_path: str | None = None) -> str:
         else:
             candidates = [
                 "/workspace/opt/node-v22.11.0-linux-x64/bin/node",
-                "/workspace/opt/node-v20.18.0-linux-x64/bin/node",
                 "/usr/local/bin/node",
                 "/usr/bin/node",
             ]
@@ -94,11 +95,12 @@ def resolve_node_binary(explicit_path: str | None = None) -> str:
     except Exception as e:
         raise RuntimeError(f"Node.js binary '{node_bin}' failed to execute: {e}")
 
-    m = re.match(r"^v(\d+)\.", version_str)
-    if m:
-        major = int(m.group(1))
-        if major < 20:
-            raise RuntimeError(f"Node.js version {version_str} is unsupported. Node.js >= v20.0.0 is required.")
+    m = re.fullmatch(r"v(\d+)\.(\d+)\.(\d+)(?:[-+][0-9A-Za-z.-]+)?", version_str)
+    if not m:
+        raise RuntimeError(f"Unrecognized Node.js version: {version_str!r}")
+    version = tuple(int(part) for part in m.groups())
+    if version < (22, 6, 0):
+        raise RuntimeError(f"Node.js version {version_str} is unsupported. Node.js >= v22.6.0 is required for --experimental-strip-types.")
 
     return node_bin
 
@@ -132,6 +134,7 @@ def verify_manifest(
     expected_commit: str | None = None,
     expected_tree: str | None = None,
     expected_master_hashes: dict | None = None,
+    audit_csv_path: Path | None = None,
 ) -> dict:
     """Verify integrity, path safety, and provenance of a generated pilot directory against its manifest."""
     manifest_path = target_dir / "manifest.json"
@@ -222,6 +225,15 @@ def verify_manifest(
             if recorded_master.get(k) != v:
                 raise RuntimeError(f"Manifest provenance mismatch for master data {k}: expected {v}, got {recorded_master.get(k)}")
 
+    if audit_csv_path is not None:
+        csv_spec = manifest.get("audit_csv")
+        if not isinstance(csv_spec, dict):
+            raise RuntimeError("Manifest does not identify an audit CSV")
+        if audit_csv_path.is_symlink() or not audit_csv_path.is_file():
+            raise RuntimeError(f"Audit CSV is missing or is a symbolic link: {audit_csv_path}")
+        if audit_csv_path.stat().st_size != csv_spec.get("size") or compute_file_sha256(audit_csv_path) != csv_spec.get("sha256"):
+            raise RuntimeError("Audit CSV does not match the generated site's manifest")
+
     return {
         "ok": True,
         "status": "COMPLETE",
@@ -281,6 +293,10 @@ def validate_safety_and_dest(dest_dir: Path | None) -> Path | None:
     # Reject output inside git repository
     if dest_resolved == root_resolved or root_resolved in dest_resolved.parents:
         raise RuntimeError("Refusing to output private pilot inside the repository path")
+    if dest_resolved in root_resolved.parents or dest_resolved == dest_resolved.parent:
+        raise RuntimeError("Refusing to replace an ancestor of the repository or filesystem root")
+    if dest_resolved.exists() and not dest_resolved.is_dir():
+        raise RuntimeError("Private pilot destination must be a directory")
 
     # Reject public directory candidates
     if dest_resolved.name in DISALLOWED_PUBLIC_DIRS or any(p.name in DISALLOWED_PUBLIC_DIRS for p in dest_resolved.parents):
@@ -311,6 +327,8 @@ def validate_csv_audit_path(csv_path: Path | None) -> Path | None:
     # Reject output inside git repository
     if csv_resolved == root_resolved or root_resolved in csv_resolved.parents:
         raise RuntimeError("Refusing to output audit CSV inside the repository path")
+    if csv_resolved.exists() and not csv_resolved.is_file():
+        raise RuntimeError("Audit CSV destination must be a regular file")
 
     # Reject public directory candidates
     if csv_resolved.name in DISALLOWED_PUBLIC_DIRS or any(p.name in DISALLOWED_PUBLIC_DIRS for p in csv_resolved.parents):
@@ -319,25 +337,149 @@ def validate_csv_audit_path(csv_path: Path | None) -> Path | None:
     return csv_resolved
 
 
-def cleanup_stale_artifacts(parent_dir: Path, target_name: str) -> None:
-    """Safely clean up any orphaned temporary staging or backup artifacts from previous interrupted runs."""
+def cleanup_stale_artifacts(parent_dir: Path, target_name: str, *, csv_output: bool = False) -> None:
+    """Refuse to overwrite unresolved backups; never delete another run's files."""
     if not parent_dir.exists() or not parent_dir.is_dir():
         return
+    prefix = f".kaigo_csv_bak_{target_name}_" if csv_output else f".kaigo_bak_{target_name}_"
     for item in parent_dir.iterdir():
-        if (
-            item.name.startswith(f".kaigo_bak_{target_name}_")
-            or item.name.startswith(f".kaigo_cross_stage_{target_name}_")
-            or item.name.startswith(f".kaigo_stage_{target_name}_")
-            or item.name.startswith(f".kaigo_csv_stage_{target_name}_")
-            or item.name.startswith(f".kaigo_csv_bak_{target_name}_")
-        ):
+        if item.name.startswith(prefix):
+            raise RuntimeError(f"Unresolved backup requires recovery before continuing: {item}")
+
+
+@contextlib.contextmanager
+def output_locks(paths: list[Path]):
+    """Serialize cooperating builders without deleting lock files other runs may hold."""
+    descriptors = []
+    try:
+        for target in sorted(set(paths), key=str):
+            target.parent.mkdir(parents=True, exist_ok=True)
+            name = hashlib.sha256(str(target).encode("utf-8")).hexdigest()
+            lock_path = target.parent / f".kaigo_lock_{name}"
+            flags = os.O_CREAT | os.O_RDWR | getattr(os, "O_NOFOLLOW", 0)
+            fd = os.open(lock_path, flags, 0o600)
+            descriptors.append(fd)
             try:
-                if item.is_dir():
-                    shutil.rmtree(item, ignore_errors=True)
-                elif item.is_file():
-                    item.unlink(missing_ok=True)
-            except Exception:
-                pass
+                fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another builder is using output: {target}") from exc
+        yield
+    finally:
+        for fd in reversed(descriptors):
+            os.close(fd)
+
+
+def validate_output_relationship(dest: Path | None, csv_path: Path | None) -> None:
+    if dest is not None and csv_path is not None:
+        if dest == csv_path or dest in csv_path.parents or csv_path in dest.parents:
+            raise RuntimeError("Audit CSV and site destination must not contain one another")
+
+
+def check_existing_csv_pair(dest: Path | None, csv_path: Path | None) -> None:
+    """Detect a previously interrupted site/CSV promotion without a backup."""
+    if dest is None or not (dest / "manifest.json").is_file():
+        return
+    try:
+        manifest = json.loads((dest / "manifest.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        # A damaged old site can still be replaced; its backup is retained until
+        # the new output passes verification.
+        return
+    spec = manifest.get("audit_csv")
+    if spec is None:
+        return
+    if not isinstance(spec, dict) or csv_path is None or csv_path.is_symlink() or not csv_path.is_file():
+        raise RuntimeError("Existing site has an audit CSV that must be supplied and recovered first")
+    if csv_path.stat().st_size != spec.get("size") or compute_file_sha256(csv_path) != spec.get("sha256"):
+        raise RuntimeError("Existing site and audit CSV do not match; recover them before continuing")
+
+
+def promote_outputs(staging_dir: Path, target_dest: Path | None,
+                    staged_csv: Path | None, target_csv: Path | None) -> tuple[Path, list[str]]:
+    """Promote and verify both outputs, rolling back both on ordinary failures.
+
+    A process kill or machine failure can interrupt the two renames: retained
+    backups require manual recovery, and the manifest binds the CSV to the site.
+    """
+    if (staged_csv is None) != (target_csv is None):
+        raise RuntimeError("Both a staged CSV and its destination are required")
+    validate_output_relationship(target_dest, target_csv)
+    paths = [p for p in (target_dest, target_csv) if p is not None]
+    final_dir = target_dest if target_dest is not None else staging_dir
+    dest_backup = csv_backup = cross_stage = csv_temp = None
+    dest_installed = csv_installed = False
+    warnings = []
+    with output_locks(paths):
+        if target_dest is not None:
+            cleanup_stale_artifacts(target_dest.parent, target_dest.name)
+        if target_csv is not None:
+            cleanup_stale_artifacts(target_csv.parent, target_csv.name, csv_output=True)
+        check_existing_csv_pair(target_dest, target_csv)
+        try:
+            verify_manifest(staging_dir, audit_csv_path=staged_csv)
+            if target_dest is not None:
+                if not is_same_filesystem(staging_dir, target_dest.parent):
+                    cross_stage = Path(tempfile.mkdtemp(prefix=f".kaigo_cross_stage_{target_dest.name}_", dir=target_dest.parent))
+                    shutil.copytree(staging_dir, cross_stage, dirs_exist_ok=True)
+                    verify_manifest(cross_stage, audit_csv_path=staged_csv)
+                if target_dest.exists():
+                    dest_backup = Path(tempfile.mkdtemp(prefix=f".kaigo_bak_{target_dest.name}_", dir=target_dest.parent))
+                    dest_backup.rmdir()
+                    os.rename(target_dest, dest_backup)
+                os.rename(cross_stage or staging_dir, target_dest)
+                dest_installed = True
+                verify_manifest(target_dest, audit_csv_path=staged_csv)
+
+            if target_csv is not None:
+                fd, temp_name = tempfile.mkstemp(prefix=f".kaigo_csv_stage_{target_csv.name}_", dir=target_csv.parent)
+                os.close(fd)
+                csv_temp = Path(temp_name)
+                shutil.copy2(staged_csv, csv_temp)
+                verify_manifest(final_dir, audit_csv_path=csv_temp)
+                if target_csv.exists():
+                    fd, backup_name = tempfile.mkstemp(prefix=f".kaigo_csv_bak_{target_csv.name}_", dir=target_csv.parent)
+                    os.close(fd)
+                    csv_backup = Path(backup_name)
+                    csv_backup.unlink()
+                    os.rename(target_csv, csv_backup)
+                os.replace(csv_temp, target_csv)
+                csv_installed = True
+                verify_manifest(final_dir, audit_csv_path=target_csv)
+        except Exception as exc:
+            rollback_errors = []
+            for installed, backup, target, directory in (
+                (csv_installed, csv_backup, target_csv, False),
+                (dest_installed, dest_backup, target_dest, True),
+            ):
+                try:
+                    if installed and target is not None:
+                        if directory:
+                            shutil.rmtree(target)
+                        else:
+                            target.unlink()
+                    if backup is not None and backup.exists():
+                        os.rename(backup, target)
+                except Exception as rollback_exc:
+                    rollback_errors.append(f"{target}: {rollback_exc}; backup: {backup}")
+            if rollback_errors:
+                raise RuntimeError(f"Promotion failed ({exc}); rollback failed: {'; '.join(rollback_errors)}") from exc
+            raise RuntimeError(f"Promotion failed (rolled back): {exc}") from exc
+        finally:
+            if cross_stage is not None and cross_stage.exists():
+                shutil.rmtree(cross_stage, ignore_errors=True)
+            if csv_temp is not None and csv_temp.exists():
+                csv_temp.unlink(missing_ok=True)
+
+        for backup, directory in ((dest_backup, True), (csv_backup, False)):
+            if backup is not None and backup.exists():
+                try:
+                    if directory:
+                        shutil.rmtree(backup)
+                    else:
+                        backup.unlink()
+                except OSError as exc:
+                    warnings.append(f"Old backup retained at {backup}: {exc}")
+    return final_dir, warnings
 
 
 def build_full_pilot(
@@ -348,6 +490,7 @@ def build_full_pilot(
     t0 = time.time()
     target_dest = validate_safety_and_dest(dest_dir)
     target_csv = validate_csv_audit_path(csv_audit_path)
+    validate_output_relationship(target_dest, target_csv)
 
     # 0. Early environment and prerequisite validation (performed BEFORE creating any staging directories)
     node_bin = resolve_node_binary(node_bin_override)
@@ -382,7 +525,7 @@ def build_full_pilot(
     gc.collect()
 
     staging_dir = None
-    promoted_dest = False
+    keep_staging = False
     audit_file = None
     staged_csv_path = None
 
@@ -448,8 +591,9 @@ def build_full_pilot(
         audit_file = None
         writer = None
         if target_csv is not None:
-            staged_csv_path = Path(tempfile.gettempdir()) / f".kaigo_staged_audit_{os.getpid()}_{int(time.time()*1000)}.csv"
-            audit_file = open(staged_csv_path, "w", encoding="utf-8", newline="")
+            csv_fd, csv_name = tempfile.mkstemp(prefix=".kaigo_staged_audit_", suffix=".csv")
+            staged_csv_path = Path(csv_name)
+            audit_file = os.fdopen(csv_fd, "w", encoding="utf-8", newline="")
             writer = csv.writer(audit_file)
             writer.writerow([
                 "source_page", "service_id", "service_label", "chapter_id", "chapter_title",
@@ -663,98 +807,27 @@ def build_full_pilot(
             "total_links_logged": total_links_logged,
             "files": generated_files
         }
+        if staged_csv_path is not None:
+            manifest_data["audit_csv"] = {
+                "sha256": compute_file_sha256(staged_csv_path),
+                "size": staged_csv_path.stat().st_size,
+            }
         manifest_path = out / "manifest.json"
         manifest_path.write_text(json.dumps(manifest_data, ensure_ascii=False, indent=2), encoding="utf-8")
 
         # Self-verify staging directory against manifest before promotion
-        verify_manifest(out)
+        verify_manifest(out, audit_csv_path=staged_csv_path)
 
         elapsed = time.time() - t0
 
-        # 8. Transactional promotion to target destination with rollback safety
-        if target_dest is not None:
-            dest_resolved = target_dest.resolve(strict=False)
-            dest_backup = None
-            intermediate_stage = None
-
-            # Clean up stale artifacts from previous runs
-            cleanup_stale_artifacts(dest_resolved.parent, dest_resolved.name)
-
-            same_fs = is_same_filesystem(staging_dir, dest_resolved.parent)
-
-            try:
-                if same_fs:
-                    # Same filesystem: direct atomic rename
-                    if dest_resolved.exists() and any(dest_resolved.iterdir()):
-                        dest_backup = dest_resolved.parent / f".kaigo_bak_{dest_resolved.name}_{int(time.time()*1000)}"
-                        os.rename(dest_resolved, dest_backup)
-
-                    os.rename(staging_dir, dest_resolved)
-                    promoted_dest = True
-
-                    # Verify target destination matches manifest on disk
-                    verify_manifest(dest_resolved)
-
-                    # Promotion succeeded: cleanup backup
-                    if dest_backup and dest_backup.exists():
-                        shutil.rmtree(dest_backup, ignore_errors=True)
-                    final_dir = str(dest_resolved)
-                else:
-                    # Cross-filesystem promotion: stage on target filesystem first
-                    intermediate_stage = dest_resolved.parent / f".kaigo_cross_stage_{dest_resolved.name}_{os.getpid()}_{int(time.time()*1000)}"
-                    if intermediate_stage.exists():
-                        shutil.rmtree(intermediate_stage, ignore_errors=True)
-
-                    shutil.copytree(staging_dir, intermediate_stage)
-
-                    # Verify manifest on intermediate stage before touching destination
-                    verify_manifest(intermediate_stage)
-
-                    # Evacuate existing destination to backup
-                    if dest_resolved.exists() and any(dest_resolved.iterdir()):
-                        dest_backup = dest_resolved.parent / f".kaigo_bak_{dest_resolved.name}_{int(time.time()*1000)}"
-                        os.rename(dest_resolved, dest_backup)
-
-                    # Atomic rename from intermediate stage to dest_resolved on same filesystem
-                    os.rename(intermediate_stage, dest_resolved)
-
-                    # Verify target destination matches manifest on disk
-                    verify_manifest(dest_resolved)
-
-                    # Promotion succeeded: cleanup backup
-                    if dest_backup and dest_backup.exists():
-                        shutil.rmtree(dest_backup, ignore_errors=True)
-                    final_dir = str(dest_resolved)
-            except Exception as prom_err:
-                if intermediate_stage and intermediate_stage.exists():
-                    shutil.rmtree(intermediate_stage, ignore_errors=True)
-                if dest_backup and dest_backup.exists():
-                    if dest_resolved.exists():
-                        shutil.rmtree(dest_resolved, ignore_errors=True)
-                    try:
-                        os.rename(dest_backup, dest_resolved)
-                    except Exception as rb_err:
-                        raise RuntimeError(
-                            f"Promotion to target destination failed ({prom_err}) and rollback failed ({rb_err}). "
-                            f"Original data preserved at {dest_backup}"
-                        ) from prom_err
-                raise RuntimeError(f"Promotion to target destination failed (rolled back): {prom_err}") from prom_err
-        else:
-            final_dir = str(staging_dir)
-
-        # 9. Atomic CSV promotion if target_csv requested
-        if target_csv is not None and staged_csv_path is not None and staged_csv_path.is_file():
-            target_csv.parent.mkdir(parents=True, exist_ok=True)
-            csv_temp = target_csv.parent / f".kaigo_csv_stage_{target_csv.name}_{os.getpid()}_{int(time.time()*1000)}"
-            shutil.copy2(staged_csv_path, csv_temp)
-            os.replace(csv_temp, target_csv)
-            try:
-                staged_csv_path.unlink(missing_ok=True)
-            except Exception:
-                pass
+        # Publish the private site and optional CSV as one recoverable operation.
+        final_dir, promotion_warnings = promote_outputs(
+            staging_dir, target_dest, staged_csv_path, target_csv
+        )
+        keep_staging = target_dest is None
 
         return {
-            "directory": final_dir,
+            "directory": str(final_dir),
             "total_files": manifest_data["total_files"],
             "total_bytes": manifest_data["total_bytes"],
             "services_count": manifest_data["services_count"],
@@ -765,6 +838,7 @@ def build_full_pilot(
             "git_commit": git_commit,
             "git_tree": git_tree,
             "manifest_verified": True,
+            "promotion_warnings": promotion_warnings,
             "elapsed_seconds": round(elapsed, 2)
         }
     except Exception as e:
@@ -781,10 +855,9 @@ def build_full_pilot(
                 staged_csv_path.unlink(missing_ok=True)
             except Exception:
                 pass
-        # Atomic failure guarantee: clean up staging directory if not promoted to target_dest
-        if not promoted_dest and staging_dir and staging_dir.exists():
-            if target_dest is not None:
-                shutil.rmtree(staging_dir, ignore_errors=True)
+        # An implicit destination is retained only after a successful build.
+        if not keep_staging and staging_dir and staging_dir.exists():
+            shutil.rmtree(staging_dir, ignore_errors=True)
 
 if __name__ == "__main__":
     import argparse
@@ -805,6 +878,7 @@ if __name__ == "__main__":
             Path(args.target),
             expected_commit=args.expected_commit,
             expected_tree=args.expected_tree,
+            audit_csv_path=Path(args.audit_csv) if args.audit_csv else None,
         )
         print(json.dumps(res, ensure_ascii=False, indent=2))
     else:

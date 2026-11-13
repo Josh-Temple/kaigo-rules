@@ -345,7 +345,7 @@ class FullCrossAuditTest(unittest.TestCase):
                 full_pilot.verify_manifest(p)
             self.assertIn("total_files count mismatch", str(ctx.exception))
 
-    def test_staging_cleanup_removes_stale_artifacts(self):
+    def test_staging_cleanup_preserves_unresolved_backups_and_other_runs(self):
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp)
             bak_dir = p / ".kaigo_bak_target_12345"
@@ -359,11 +359,12 @@ class FullCrossAuditTest(unittest.TestCase):
             safe_user_file = p / "unrelated_user_file.txt"
             safe_user_file.write_text("keep me", encoding="utf-8")
 
-            full_pilot.cleanup_stale_artifacts(p, "target")
+            with self.assertRaisesRegex(RuntimeError, "Unresolved backup"):
+                full_pilot.cleanup_stale_artifacts(p, "target")
 
-            self.assertFalse(bak_dir.exists())
-            self.assertFalse(stage_dir.exists())
-            self.assertFalse(csv_stage.exists())
+            self.assertTrue((bak_dir / "leftover.html").is_file())
+            self.assertTrue(stage_dir.exists())
+            self.assertTrue(csv_stage.exists())
             self.assertTrue(safe_user_file.exists())
 
 
