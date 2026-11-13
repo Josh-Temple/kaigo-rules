@@ -33,11 +33,264 @@ PAGES = {
     ],
 }
 ANCHOR = re.compile(r'(<a\b[^>]*?\bhref=")([^"]+)(")', re.IGNORECASE)
+SIMPLE_ANCHOR = re.compile(r'(<a\b[^>]*?\bhref=")([^"]+)("[^>]*>)([^<]*)</a>', re.IGNORECASE)
+FULL_ANCHOR = re.compile(r'(<a\b[^>]*?\bhref=")([^"]+)("[^>]*>)(.*?)</a>', re.IGNORECASE | re.DOTALL)
+DAYREHAB_SCOPE_NOTE = re.compile(
+    r'<p class="scope-note">通所リハの準用relation・読み替えを含む詳細表示は'
+    r'<a href="https://kaigo-rules\.vercel\.app/services/dayrehab/rules/([0-9]+(?:-[0-9]+)*)">'
+    r'サービス別ページ</a>でも確認できます。</p>')
 SERVICE = re.compile(r"[a-z0-9-]+")
 LEGAL_NOTICE = ("<p>収載資料には人手確認前の部分があります。準用・読替え・例外・施行日や"
                 "自治体ごとの取扱いは公式原典で確認してください。</p>")
 READING_NOTICE = ('<p class="notice">別のサービス名が書かれた条文は、そのまま選択したサービスに'
                   '当てはめず、準用・読替えの規定と原典を確認してください。</p>')
+UNIT_PRICE_NOTICE = 'https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1'
+
+# These mappings come from the existing delegated-remuneration node identity
+# map. The two notice 27 subitems are not separate published records, so the
+# link explicitly says that it opens their parent item.
+CRITERIA_RECORDS = {
+    **{f'criteria95.dayservice.{number}': (f'notice95.item.{number}',
+       'criteria-mhlw-fee-criteria95-current', '')
+       for number in ('14-6', '15', '16', '17', '18-2', '19', '23', '24')},
+    **{f'calc27.dayservice.1.{part}': ('notice27.item.1',
+       'criteria-mhlw-fee-notice27-base', '（告示第1号全体）')
+       for part in ('capacity', 'staffing')},
+}
+
+
+def local_href(source: Path, root: Path, target: str) -> str | None:
+    parts = urlsplit(target)
+    dest = root / parts.path
+    if dest.is_symlink() or not dest.is_file() or not dest.resolve().is_relative_to(root):
+        return None
+    relative = posixpath.relpath(parts.path, source.parent.as_posix())
+    return relative + ('?' + parts.query if parts.query else '')
+
+
+def rewrite_simple_link(match: re.Match, source: Path, root: Path, counts: dict) -> str:
+    url = urlsplit(html.unescape(match.group(2)))
+    label = html.unescape(match.group(4))
+    if url.scheme != 'https' or url.netloc != 'kaigo-rules.vercel.app':
+        return match.group(0)
+    if url.path == '/fees/criteria' and not url.query and url.fragment in CRITERIA_RECORDS:
+        identifier, document, suffix = CRITERIA_RECORDS[url.fragment]
+        entry = record_index(root).get(identifier)
+        if (not isinstance(entry, dict) or entry.get('document') != document or
+                entry.get('category') != 'criteria' or not isinstance(entry.get('services'), list) or
+                'dayservice' not in entry['services']):
+            return match.group(0)
+        target = 'legislation/record/' + hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        href = local_href(source, root, target)
+        if href:
+            counts['criteria_records'] += 1
+            return match.group(1) + html.escape(href, quote=True) + match.group(3) + html.escape(label + suffix) + '</a>'
+        return match.group(0)
+    if not url.query and not url.fragment:
+        simple = {
+            ('/fees/unit-price', '単価・地域区分'): (f'databases/search/index.html?{QUERY}', '地域区分の資料検索'),
+            ('/services/dayrehab/remuneration', '報酬DB'): ('handbook/dayrehab/remuneration.html', '基本報酬の手引'),
+            ('/services/dayrehab/remuneration/guidance', '算定上の留意事項'): ('legislation/index.html?service=dayrehab&category=guidance', '算定上の留意事項の関連資料'),
+            ('/services/dayservice/remuneration/guidance', '算定上の留意事項'): ('fees/guidance/index.html', '算定上の留意事項'),
+            ('/services/dayservice/remuneration', '通所介護の報酬基準'): ('fees/index.html', '通所介護の報酬一覧'),
+            ('/databases', '制度DBをまとめて見る →'): ('databases/search/index.html', '制度DBを検索する →'),
+        }
+        item = simple.get((url.path, label))
+        if item:
+            href = local_href(source, root, item[0])
+            if href:
+                counts['simple_links'] += 1
+                return match.group(1) + html.escape(href, quote=True) + match.group(3) + html.escape(item[1]) + '</a>'
+        # The unscoped old URL defaults to a different ordinance for some
+        # services. Do not expose it as an equivalent "all" view.
+        source_match = re.fullmatch(r'databases/search/legal/rules/([a-z0-9-]+)/([0-9]+(?:-[0-9]+)*)\.html', source.as_posix())
+        if (source_match and source_match.group(1) != 'all' and label == 'すべて' and
+                url.path == '/rules/' + source_match.group(2) and
+                not (root / 'databases/search/legal/rules/all' / (source_match.group(2) + '.html')).is_file()):
+            counts['unavailable_all_views'] += 1
+            return '<span>全サービスでの表示は未対応</span>'
+    return match.group(0)
+
+
+def published_record(root: Path, identifier: str, category: str, service: str, document: str) -> str | None:
+    entry = record_index(root).get(identifier)
+    if (not isinstance(entry, dict) or entry.get('category') != category or
+            entry.get('document') != document or not isinstance(entry.get('services'), list) or
+            service not in entry['services']):
+        return None
+    return 'legislation/record/' + hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+
+
+def rewrite_scoped_link(match: re.Match, source: Path, root: Path, counts: dict) -> str:
+    url = urlsplit(html.unescape(match.group(2)))
+    if url.scheme != 'https' or url.netloc != 'kaigo-rules.vercel.app' or url.fragment:
+        return match.group(0)
+    if url.path == '/fees/root' and not url.query:
+        target = published_record(root, 'fee.dayservice.root', 'remuneration', 'dayservice', 'remuneration-dayservice')
+        href = local_href(source, root, target) if target else None
+        if href and '<strong>通所介護費</strong><small>6</small>' in match.group(4):
+            counts['fee_root_records'] += 1
+            return match.group(1) + html.escape(href, quote=True) + match.group(3) + match.group(4) + '</a>'
+        return match.group(0)
+    route = re.fullmatch(r'/rules/([0-9]+(?:-[0-9]+)*)', url.path)
+    if not route:
+        return match.group(0)
+    try:
+        params = parse_qs(url.query, keep_blank_values=True, strict_parsing=True, max_num_fields=1)
+    except ValueError:
+        return match.group(0)
+    if set(params) != {'service'} or len(params['service']) != 1:
+        return match.group(0)
+    service = params['service'][0]
+    label = {'dayservice': '通所介護', 'dayrehab': '通所リハビリテーション'}.get(service)
+    if not label:
+        return match.group(0)
+    article = route.group(1)
+    if not published_record(root, 'ordinance37.article.' + article, 'standards', service, 'ordinance37'):
+        return match.group(0)
+    target = f'databases/search/legal/rules/all/{article}.html'
+    href = local_href(source, root, target)
+    if not href:
+        return match.group(0)
+    target_html = (root / target).read_text(encoding='utf-8')
+    note = re.search(r'<section class="rule-application-note">(.*?)</section>', target_html, re.DOTALL)
+    if not note or f'{label}・準用' not in note.group(1):
+        return match.group(0)
+    body = match.group(4)
+    if source.as_posix() == target and body == label:
+        counts['scoped_rule_links'] += 1
+        return '<span>' + html.escape(label) + '（共通本文）</span>'
+    status = '<span class="rule-status">第105条で準用</span>'
+    if (source.as_posix() == 'databases/search/legal/rules/dayservice/105.html' and
+            service == 'dayservice' and body.count(status) == 1):
+        counts['scoped_rule_links'] += 1
+        body = body.replace(status, '<span class="rule-status">第105条で準用・共通本文</span>')
+        return match.group(1) + html.escape(href, quote=True) + match.group(3) + body + '</a>'
+    return match.group(0)
+
+
+def rewrite_dayrehab_note(match: re.Match, source: Path, root: Path, counts: dict) -> str:
+    if source.as_posix() != f'databases/search/legal/rules/dayrehab/{match.group(1)}.html':
+        return match.group(0)
+    target = published_record(root, 'ordinance37.article.119', 'standards', 'dayrehab', 'ordinance37')
+    href = local_href(source, root, target) if target else None
+    if not href:
+        return match.group(0)
+    counts['dayrehab_scope_notes'] += 1
+    return ('<p class="scope-note">通所リハに関する準用・読替えは、<a href="' +
+            html.escape(href, quote=True) + '">第119条の本文</a>と原典で確認してください。</p>')
+
+
+def rewrite_guide(content: str, root: Path) -> str:
+    old_intro = '一単位単価の告示と、公開中の地域区分DBを分けて確認します。'
+    old_description = ('公開中の一単位単価DBは通所介護向けです。他サービスは、厚生労働省告示の'
+                       'サービス区分と地域区分を原文で確認してください。')
+    heading = ('<h4>DB内で確認する</h4><div class="entry-links">'
+               f'<a class="entry-row" href="{ORIGIN}/fees/unit-price">')
+    if content.count(old_intro) != 2 or content.count(old_description) != 1 or content.count(heading) != 1:
+        raise RuntimeError('Unexpected guide unit-price description')
+    content = content.replace(old_intro, '一単位単価の告示と、地域区分の関連資料を確認します。')
+    content = content.replace(old_description,
+        '一単位単価の専用表はこのサイトでは公開していません。サービス区分と地域区分は厚生労働省の告示原文で確認してください。')
+    content = content.replace(heading, heading.replace('DB内で確認する', '確認先'), 1)
+    replacements = [
+        ('/databases#remuneration', '報酬基準DBの入口を見る', '公開済みのサービス別報酬基準へ進みます。',
+         'legislation/index.html?category=remuneration', '報酬告示の関連資料を探す', '収載済みの報酬告示を一覧から確認します。'),
+        ('/databases#fee-guidance', '算定上の留意事項の入口を見る', 'サービス別に保持している算定上の留意事項へ進みます。',
+         'legislation/index.html?category=guidance', '算定上の留意事項の関連資料を探す', '収載済みの関連資料を一覧から確認します。'),
+        ('/databases#fee-guidance', '算定上の留意事項の入口を見る', '公開済みの算定上の留意事項DBへ進みます。',
+         'legislation/index.html?category=guidance', '算定上の留意事項の関連資料を探す', '収載済みの関連資料を一覧から確認します。'),
+        ('/fees/unit-price', '一単位単価・地域区分DBを見る', '現在公開中の通所介護向け地域区分・一単位単価DBを確認します。',
+         UNIT_PRICE_NOTICE, '一単位単価の告示を確認する', '厚生労働省の告示でサービスと地域に応じた区分を確認します。'),
+    ]
+    for old_path, old_title, old_detail, target, title, detail in replacements:
+        old = (f'<a class="entry-row" href="{ORIGIN}{old_path}"><span>{old_title}'
+               f'<small>{old_detail}</small></span><small>開く →</small></a>')
+        if content.count(old) != 1:
+            raise RuntimeError(f'Expected guide link changed or duplicated: {old_path}: {old_detail}')
+        href = target if target == UNIT_PRICE_NOTICE else local_href(Path('guide/index.html'), root, target)
+        if not href:
+            raise RuntimeError(f'Missing guide target: {target}')
+        new = (f'<a class="entry-row" href="{html.escape(href, quote=True)}"><span>{title}'
+               f'<small>{detail}</small></span><small>開く →</small></a>')
+        content = content.replace(old, new, 1)
+    return content
+
+
+def rewrite_search_scripts(root: Path) -> dict[Path, str]:
+    """Keep dynamically generated search results on published pages or official sources."""
+    search = root / 'databases/search'
+    app, qa = search / 'app.mjs', search / 'qa-app.mjs'
+    for path in (app, qa, search / 'global.json'):
+        if path.is_symlink() or not path.is_file():
+            raise RuntimeError(f'Missing or unsafe search resource: {path}')
+    notice_links = {}
+    datasets = [search / 'global.json', *sorted(search.glob('service-*.json'))]
+    for dataset in datasets:
+        if dataset.is_symlink():
+            raise RuntimeError('Unsafe search dataset')
+        rows = json.loads(dataset.read_text(encoding='utf-8')).get('notice', [])
+        for row in rows:
+            href = row.get('href', '')
+            parts = urlsplit(href)
+            try:
+                params = parse_qs(parts.query, keep_blank_values=True, strict_parsing=True, max_num_fields=1)
+            except ValueError as error:
+                raise RuntimeError('Invalid notice result link') from error
+            if (parts.scheme or parts.netloc or parts.path != '/notices' or set(params) != {'service'} or
+                    len(params['service']) != 1 or not SERVICE.fullmatch(params['service'][0]) or
+                    not re.fullmatch(r'[A-Za-z0-9._:-]{1,200}', parts.fragment)):
+                raise RuntimeError('Unsupported notice result link')
+            entry = record_index(root).get(parts.fragment)
+            if (not isinstance(entry, dict) or entry.get('category') != 'notices' or
+                    not isinstance(entry.get('services'), list) or params['service'][0] not in entry['services']):
+                raise RuntimeError('Notice result does not match its published scope')
+            target = 'legislation/record/' + hashlib.sha256(parts.fragment.encode()).hexdigest() + '.html'
+            local = local_href(Path('databases/search/index.html'), root, target)
+            if not local:
+                raise RuntimeError('Notice search destination is missing')
+            notice_links[href] = local
+    if not notice_links:
+        raise RuntimeError('Notice search has no verified destinations')
+    code = app.read_text(encoding='utf-8')
+    anchor = 'const localQaDetails = document.querySelector(\'meta[name="kaigo-qa-local-details"]\')?.content === "true";'
+    old_fallback = '  } else {\n    link.href = destination.href;\n  }\n  return link;'
+    if code.count(anchor) != 1 or code.count(old_fallback) != 1 or code.count('https://kaigo-rules.vercel.app') != 2:
+        raise RuntimeError('Unexpected database search implementation')
+    code = code.replace(anchor, anchor + '\nconst localNoticeDetails = ' + json.dumps(notice_links, ensure_ascii=True, sort_keys=True) + ';', 1)
+    code = code.replace('https://kaigo-rules.vercel.app', 'https://local.invalid')
+    fallback = '''  } else if (localNoticeDetails[destination.pathname + destination.search + destination.hash]) {
+    link.href = localNoticeDetails[destination.pathname + destination.search + destination.hash];
+  } else if (destination.pathname === "/fees/unit-price" && !destination.hash &&
+      params.every((key) => key === "service" || key === "q") &&
+      params.filter((key) => key === "service").length === 1 &&
+      params.filter((key) => key === "q").length <= 1 && /^[a-z0-9-]+$/.test(selectedService)) {
+    link.textContent = label + "（厚生労働省の告示）";
+    link.href = "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1";
+    link.rel = "noopener noreferrer";
+  } else {
+    return element("span", label + "（詳細ページ未収載）");
+  }
+  return link;'''
+    code = code.replace(old_fallback, fallback, 1)
+    code = code.replace('// This prototype does not include destination pages. Keep navigation on\n'
+                        '      // the current site, and do not trust a row with an off-origin URL.',
+                        '// Use verified local destinations or an explicitly labelled official source.')
+    qa_code = qa.read_text(encoding='utf-8')
+    old_qa = '''    const link = element("a", item.question);
+    link.href = localDetails
+      ? "./qa-details/" + encodeURIComponent(item.id) + (current.reader ? "/reader.html" : "/index.html")
+      : "https://kaigo-rules.vercel.app/qa/" + encodeURIComponent(item.id) + (current.reader ? "?reader=1" : "");'''
+    new_qa = '''    const link = element(localDetails ? "a" : "span", item.question);
+    if (localDetails) {
+      link.href = "./qa-details/" + encodeURIComponent(item.id) + (current.reader ? "/reader.html" : "/index.html");
+    } else {
+      link.textContent += "（詳細ページ未収載）";
+    }'''
+    if qa_code.count(old_qa) != 1:
+        raise RuntimeError('Unexpected Q&A search implementation')
+    qa_code = qa_code.replace(old_qa, new_qa, 1)
+    return {app: code, qa: qa_code}
 
 
 @lru_cache(maxsize=4)
@@ -131,7 +384,16 @@ def rewrite(root: Path) -> dict:
     if legal_html.count(LEGAL_NOTICE) != 1 or READING_NOTICE in legal_html:
         raise RuntimeError("Unexpected legislation index caution")
     changes[legal_page] = legal_html.replace(LEGAL_NOTICE, LEGAL_NOTICE + READING_NOTICE, 1)
+    guide = root / 'guide/index.html'
+    if guide.exists():
+        if guide.is_symlink() or not guide.is_file():
+            raise RuntimeError('Guide page is unsafe')
+        changes[guide] = rewrite_guide(guide.read_text(encoding='utf-8'), root)
+    if (root / 'databases/search/app.mjs').exists() or (root / 'databases/search/qa-app.mjs').exists():
+        changes.update(rewrite_search_scripts(root))
     counts = {"standards": 0, "law": 0, "notices": 0, "notice_records": 0}
+    extra_counts = {'criteria_records': 0, 'simple_links': 0, 'unavailable_all_views': 0,
+                    'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_records': 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
@@ -139,14 +401,19 @@ def rewrite(root: Path) -> dict:
         if before is None:
             before = path.read_text(encoding="utf-8")
         after = ANCHOR.sub(lambda m: rewrite_index_link(m, path.relative_to(root), root, counts), before)
+        after = SIMPLE_ANCHOR.sub(lambda m: rewrite_simple_link(m, path.relative_to(root), root, extra_counts), after)
+        after = DAYREHAB_SCOPE_NOTE.sub(lambda m: rewrite_dayrehab_note(m, path.relative_to(root), root, extra_counts), after)
+        after = FULL_ANCHOR.sub(lambda m: rewrite_scoped_link(m, path.relative_to(root), root, extra_counts), after)
         if after != before:
             changes[path] = after
     # Validate the entire plan before changing any page. The build pipeline
     # subsequently audits all final local links before deploying the artifact.
     for path, after in changes.items():
         path.write_text(after, encoding="utf-8")
-    return {"pages_changed": len(changes), "fee_links_changed": sum(map(len, PAGES.values())),
-            "index_links_changed": counts}
+    return {"pages_changed": sum(path.suffix == '.html' for path in changes),
+            "search_scripts_changed": sum(path.suffix == '.mjs' for path in changes),
+            "fee_links_changed": sum(map(len, PAGES.values())),
+            "index_links_changed": counts, "additional_changes": extra_counts}
 
 
 if __name__ == "__main__":
