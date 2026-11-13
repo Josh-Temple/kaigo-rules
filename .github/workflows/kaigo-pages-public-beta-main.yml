@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - ".github/workflows/kaigo-pages-public-beta-main.yml"
+      - "scripts/rewrite_public_navigation.py"
 
 permissions:
   contents: read
@@ -28,7 +29,9 @@ jobs:
         with:
           ref: ${{ github.sha }}
           path: .publication-tools
-          sparse-checkout: scripts/rewrite_public_navigation.py
+          sparse-checkout: |
+            scripts/rewrite_public_navigation.py
+            tests/test_formal_navigation.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - uses: actions/setup-node@v4
@@ -38,6 +41,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Verify publication navigation
+        working-directory: .publication-tools
+        run: python -m unittest discover -s tests -p 'test_formal_navigation.py' -v
       - name: Verify static-source and disclaimer safety tests
         run: |
           set -euo pipefail
