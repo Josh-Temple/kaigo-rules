@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace specific legacy fee-page links with existing local destinations.
+"""Replace supported legacy links with existing local destinations.
 
 No fee amounts or legal text are generated here. Unknown links are not silently
 rewritten, and the operation refuses to run if the expected pages have changed.
@@ -8,9 +8,10 @@ from __future__ import annotations
 
 import html
 import posixpath
+import re
 import sys
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 QUERY = "q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
@@ -28,6 +29,35 @@ PAGES = {
         ("/fees/root", "通所介護費", "fees/index.html", "通所介護の報酬一覧"),
     ],
 }
+ANCHOR = re.compile(r'(<a\b[^>]*?\bhref=")([^"]+)(")', re.IGNORECASE)
+SERVICE = re.compile(r"[a-z0-9-]+")
+
+
+def rewrite_index_link(match: re.Match, source: Path, root: Path, counts: dict) -> str:
+    url = urlsplit(html.unescape(match.group(2)))
+    if (url.scheme != "https" or url.netloc != "kaigo-rules.vercel.app" or
+            url.path not in {"/rules", "/law"} or url.fragment):
+        return match.group(0)
+    try:
+        params = parse_qs(url.query, keep_blank_values=True, strict_parsing=True, max_num_fields=2)
+    except ValueError:
+        return match.group(0)
+    if set(params) - {"service"} or any(len(v) != 1 for v in params.values()):
+        return match.group(0)
+    service = params.get("service", [""])[0]
+    if service and (not SERVICE.fullmatch(service) or
+                    not (root / "services" / service / "index.html").is_file()):
+        return match.group(0)
+    if "service" in params and not service:
+        return match.group(0)
+    target = root / "legislation/index.html"
+    if target.is_symlink() or not target.is_file():
+        raise RuntimeError("Local legislation index is missing or unsafe")
+    category = "standards" if url.path == "/rules" else "law"
+    query = (("service=" + service + "&") if service else "") + "category=" + category
+    relative = posixpath.relpath("legislation/index.html", source.parent.as_posix())
+    counts[category] += 1
+    return match.group(1) + html.escape(relative + "?" + query, quote=True) + match.group(3)
 
 
 def rewrite(root: Path) -> dict:
@@ -58,14 +88,26 @@ def rewrite(root: Path) -> dict:
         if f'href="{ORIGIN}/' in after:
             raise RuntimeError(f"An unrecognized legacy link remains on {source}")
         changes[path] = after
-    # Validate both pages and all destinations before changing either one.
+    counts = {"standards": 0, "law": 0}
+    for path in root.rglob("*.html"):
+        if path.is_symlink():
+            raise RuntimeError(f"Symbolic link in site output: {path}")
+        before = changes.get(path)
+        if before is None:
+            before = path.read_text(encoding="utf-8")
+        after = ANCHOR.sub(lambda m: rewrite_index_link(m, path.relative_to(root), root, counts), before)
+        if after != before:
+            changes[path] = after
+    # Validate the entire plan before changing any page. The build pipeline
+    # subsequently audits all final local links before deploying the artifact.
     for path, after in changes.items():
         path.write_text(after, encoding="utf-8")
-    return {"pages_changed": len(changes), "links_changed": sum(map(len, PAGES.values()))}
+    return {"pages_changed": len(changes), "fee_links_changed": sum(map(len, PAGES.values())),
+            "index_links_changed": counts}
 
 
 if __name__ == "__main__":
     import json
     if len(sys.argv) != 2:
-        raise SystemExit("Usage: rewrite_fee_navigation.py SITE_DIRECTORY")
+        raise SystemExit("Usage: rewrite_public_navigation.py SITE_DIRECTORY")
     print(json.dumps(rewrite(Path(sys.argv[1])), ensure_ascii=False))
