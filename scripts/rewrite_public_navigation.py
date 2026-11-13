@@ -224,43 +224,45 @@ def rewrite_search_scripts(root: Path) -> dict[Path, str]:
     for path in (app, qa, search / 'global.json'):
         if path.is_symlink() or not path.is_file():
             raise RuntimeError(f'Missing or unsafe search resource: {path}')
-    notice_links = {}
+    record_links = {}
     datasets = [search / 'global.json', *sorted(search.glob('service-*.json'))]
     for dataset in datasets:
         if dataset.is_symlink():
             raise RuntimeError('Unsafe search dataset')
-        rows = json.loads(dataset.read_text(encoding='utf-8')).get('notice', [])
-        for row in rows:
-            href = row.get('href', '')
-            parts = urlsplit(href)
-            try:
-                params = parse_qs(parts.query, keep_blank_values=True, strict_parsing=True, max_num_fields=1)
-            except ValueError as error:
-                raise RuntimeError('Invalid notice result link') from error
-            if (parts.scheme or parts.netloc or parts.path != '/notices' or set(params) != {'service'} or
-                    len(params['service']) != 1 or not SERVICE.fullmatch(params['service'][0]) or
-                    not re.fullmatch(r'[A-Za-z0-9._:-]{1,200}', parts.fragment)):
-                raise RuntimeError('Unsupported notice result link')
-            entry = record_index(root).get(parts.fragment)
-            if (not isinstance(entry, dict) or entry.get('category') != 'notices' or
-                    not isinstance(entry.get('services'), list) or params['service'][0] not in entry['services']):
-                raise RuntimeError('Notice result does not match its published scope')
-            target = 'legislation/record/' + hashlib.sha256(parts.fragment.encode()).hexdigest() + '.html'
-            local = local_href(Path('databases/search/index.html'), root, target)
-            if not local:
-                raise RuntimeError('Notice search destination is missing')
-            notice_links[href] = local
-    if not notice_links:
-        raise RuntimeError('Notice search has no verified destinations')
+        data = json.loads(dataset.read_text(encoding='utf-8'))
+        for group, route, category in [('notice', '/notices', 'notices'),
+                                        ('delegated', '/fees/criteria', 'criteria')]:
+            for row in data.get(group, []):
+                href = row.get('href', '')
+                parts = urlsplit(href)
+                try:
+                    params = parse_qs(parts.query, keep_blank_values=True, strict_parsing=True, max_num_fields=1)
+                except ValueError as error:
+                    raise RuntimeError('Invalid legal search result link') from error
+                if (parts.scheme or parts.netloc or parts.path != route or set(params) != {'service'} or
+                        len(params['service']) != 1 or not SERVICE.fullmatch(params['service'][0]) or
+                        not re.fullmatch(r'[A-Za-z0-9._:-]{1,200}', parts.fragment)):
+                    raise RuntimeError('Unsupported legal search result link')
+                entry = record_index(root).get(parts.fragment)
+                if (not isinstance(entry, dict) or entry.get('category') != category or
+                        not isinstance(entry.get('services'), list) or params['service'][0] not in entry['services']):
+                    raise RuntimeError('Legal search result does not match its published scope')
+                target = 'legislation/record/' + hashlib.sha256(parts.fragment.encode()).hexdigest() + '.html'
+                local = local_href(Path('databases/search/index.html'), root, target)
+                if not local:
+                    raise RuntimeError('Legal search destination is missing')
+                record_links[href] = local
+    if not record_links:
+        raise RuntimeError('Legal search has no verified record destinations')
     code = app.read_text(encoding='utf-8')
     anchor = 'const localQaDetails = document.querySelector(\'meta[name="kaigo-qa-local-details"]\')?.content === "true";'
     old_fallback = '  } else {\n    link.href = destination.href;\n  }\n  return link;'
     if code.count(anchor) != 1 or code.count(old_fallback) != 1 or code.count('https://kaigo-rules.vercel.app') != 2:
         raise RuntimeError('Unexpected database search implementation')
-    code = code.replace(anchor, anchor + '\nconst localNoticeDetails = ' + json.dumps(notice_links, ensure_ascii=True, sort_keys=True) + ';', 1)
+    code = code.replace(anchor, anchor + '\nconst localRecordDetails = ' + json.dumps(record_links, ensure_ascii=True, sort_keys=True) + ';', 1)
     code = code.replace('https://kaigo-rules.vercel.app', 'https://local.invalid')
-    fallback = '''  } else if (localNoticeDetails[destination.pathname + destination.search + destination.hash]) {
-    link.href = localNoticeDetails[destination.pathname + destination.search + destination.hash];
+    fallback = '''  } else if (localRecordDetails[destination.pathname + destination.search + destination.hash]) {
+    link.href = localRecordDetails[destination.pathname + destination.search + destination.hash];
   } else if (destination.pathname === "/fees/unit-price" && !destination.hash &&
       params.every((key) => key === "service" || key === "q") &&
       params.filter((key) => key === "service").length === 1 &&

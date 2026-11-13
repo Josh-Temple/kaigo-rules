@@ -263,13 +263,17 @@ class FeeNavigationTest(unittest.TestCase):
     def test_search_results_use_verified_local_notice_and_official_price_source(self):
         search = self.root / 'databases/search'
         identifier = 'notice.dayservice.staffing'
-        (self.root / 'legislation/record-index.json').write_text(json.dumps({identifier: {
-            'document': 'notice', 'category': 'notices', 'services': ['dayservice']}}))
+        criterion = 'notice95.item.24'
+        (self.root / 'legislation/record-index.json').write_text(json.dumps({
+            identifier: {'document': 'notice', 'category': 'notices', 'services': ['dayservice']},
+            criterion: {'document': 'criteria', 'category': 'criteria', 'services': ['dayservice']}}))
         folder = self.root / 'legislation/record'
         folder.mkdir()
         (folder / (hashlib.sha256(identifier.encode()).hexdigest() + '.html')).write_text('record')
-        (search / 'global.json').write_text(json.dumps({'notice': [
-            {'href': '/notices?service=dayservice#' + identifier}]}))
+        (folder / (hashlib.sha256(criterion.encode()).hexdigest() + '.html')).write_text('record')
+        (search / 'global.json').write_text(json.dumps({
+            'notice': [{'href': '/notices?service=dayservice#' + identifier}],
+            'delegated': [{'href': '/fees/criteria?service=dayservice#' + criterion}]}))
         (search / 'app.mjs').write_text(
             'const localQaDetails = document.querySelector(\'meta[name="kaigo-qa-local-details"]\')?.content === "true";\n'
             f'{ORIGIN}\n{ORIGIN}\n' + '  } else {\n    link.href = destination.href;\n  }\n  return link;')
@@ -281,6 +285,7 @@ class FeeNavigationTest(unittest.TestCase):
         code = (search / 'app.mjs').read_text()
         self.assertEqual(result['search_scripts_changed'], 2)
         self.assertIn(hashlib.sha256(identifier.encode()).hexdigest() + '.html', code)
+        self.assertIn(hashlib.sha256(criterion.encode()).hexdigest() + '.html', code)
         self.assertIn('厚生労働省の告示', code)
         self.assertIn('詳細ページ未収載', code)
         self.assertNotIn(ORIGIN, code + (search / 'qa-app.mjs').read_text())
