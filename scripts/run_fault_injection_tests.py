@@ -229,7 +229,7 @@ def test_d02_failure_scenarios(test_dir: Path) -> list[dict]:
         ("1. 入力読み込み前 (無効な出力先)", "invalid_dest", "Refusing"),
         ("2. 入力JSON解析中 (破損データ)", "corrupt_json", "master data"),
         ("3. Node.js検出前 (無効なNodeバイナリ)", "missing_node", "not found"),
-        ("4. Node.jsバージョン不適合 (< v20)", "unsupported_node", "unsupported"),
+        ("4. Node.jsバージョン不適合 (< v22.6.0)", "unsupported_node", "unsupported"),
         ("5. CSS生成処理の失敗", "css_failure", "Injected CSS error"),
         ("6. 法令HTML生成途中のプロセス失敗", "leg_failure", "Injected legislation error"),
         ("7. 検索ビルドプロセス失敗 (Node exit 1)", "node_search_failure", "Search builder failed"),
@@ -265,7 +265,7 @@ def test_d02_failure_scenarios(test_dir: Path) -> list[dict]:
                     pilot.build_full_pilot(target_dest, node_bin_override="/nonexistent/bin/node")
                 elif stage_key == "unsupported_node":
                     with patch("subprocess.run") as mock_run:
-                        mock_run.return_value.stdout = "v18.19.0\n"
+                        mock_run.return_value.stdout = "v20.18.0\n"
                         mock_run.return_value.returncode = 0
                         pilot.build_full_pilot(target_dest)
                 elif stage_key == "css_failure":
@@ -476,22 +476,22 @@ def test_node_portability() -> list[dict]:
             "duration_seconds": round(time.time() - t0, 4)
         })
 
-    # 4. Version check rejection (< v20)
+    # 4. Version check rejection (< v22.6.0)
     t0 = time.time()
     try:
         with patch("subprocess.run") as mock_run:
-            mock_run.return_value.stdout = "v18.12.0\n"
+            mock_run.return_value.stdout = "v22.5.1\n"
             mock_run.return_value.returncode = 0
             pilot.resolve_node_binary()
         results.append({
-            "case": "4. サポート外Nodeバージョン(< v20)の即時拒否",
+            "case": "4. サポート外Nodeバージョン(< v22.6.0)の即時拒否",
             "passed": False,
             "error": "Did not raise exception",
             "duration_seconds": round(time.time() - t0, 4)
         })
     except RuntimeError as e:
         results.append({
-            "case": "4. サポート外Nodeバージョン(< v20)の即時拒否",
+            "case": "4. サポート外Nodeバージョン(< v22.6.0)の即時拒否",
             "passed": "unsupported" in str(e).lower(),
             "error": str(e),
             "duration_seconds": round(time.time() - t0, 4)

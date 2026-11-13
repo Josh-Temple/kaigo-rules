@@ -77,7 +77,6 @@ def resolve_node_binary(explicit_path: str | None = None) -> str:
         else:
             candidates = [
                 "/workspace/opt/node-v22.11.0-linux-x64/bin/node",
-                "/workspace/opt/node-v20.18.0-linux-x64/bin/node",
                 "/usr/local/bin/node",
                 "/usr/bin/node",
             ]
@@ -96,11 +95,12 @@ def resolve_node_binary(explicit_path: str | None = None) -> str:
     except Exception as e:
         raise RuntimeError(f"Node.js binary '{node_bin}' failed to execute: {e}")
 
-    m = re.match(r"^v(\d+)\.", version_str)
-    if m:
-        major = int(m.group(1))
-        if major < 20:
-            raise RuntimeError(f"Node.js version {version_str} is unsupported. Node.js >= v20.0.0 is required.")
+    m = re.fullmatch(r"v(\d+)\.(\d+)\.(\d+)(?:[-+][0-9A-Za-z.-]+)?", version_str)
+    if not m:
+        raise RuntimeError(f"Unrecognized Node.js version: {version_str!r}")
+    version = tuple(int(part) for part in m.groups())
+    if version < (22, 6, 0):
+        raise RuntimeError(f"Node.js version {version_str} is unsupported. Node.js >= v22.6.0 is required for --experimental-strip-types.")
 
     return node_bin
 

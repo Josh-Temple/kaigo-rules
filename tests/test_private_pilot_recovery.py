@@ -129,6 +129,14 @@ class PrivatePilotRecoveryTest(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "ancestor"):
             pilot.validate_safety_and_dest(pilot.ROOT.parent)
 
+    def test_unsupported_or_unparseable_node_versions_fail_before_generation(self):
+        for version in ("v20.18.0", "v22.5.1", "not a Node version"):
+            with self.subTest(version=version):
+                with patch.object(pilot.subprocess, "run") as run:
+                    run.return_value.stdout = version
+                    with self.assertRaises(RuntimeError):
+                        pilot.resolve_node_binary()
+
     def test_implicit_destination_is_removed_on_generation_failure(self):
         new_stage = self.root / "generated"
         new_stage.mkdir()
