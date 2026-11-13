@@ -34,7 +34,8 @@ class FeeNavigationTest(unittest.TestCase):
         self.guidance.write_text(COMMON + f'<a href="{ORIGIN}/fees/root">通所介護費</a>')
 
     def test_known_links_are_local_and_the_search_is_not_labeled_a_price_table(self):
-        self.assertEqual(rewrite(self.root), {"pages_changed": 3, "search_scripts_changed": 0, "fee_links_changed": 9,
+        self.assertEqual(rewrite(self.root), {"pages_changed": 3, "search_scripts_changed": 0,
+                                              "missing_record_text_labeled": 0, "fee_links_changed": 9,
                                               "index_links_changed": {"standards": 0, "law": 0, "notices": 0, "notice_records": 0},
                                               "additional_changes": {"criteria_records": 0, "simple_links": 0, "unavailable_all_views": 0,
                                                                      "scoped_rule_links": 0, "dayrehab_scope_notes": 0, "fee_root_links": 0}})
@@ -295,6 +296,36 @@ class FeeNavigationTest(unittest.TestCase):
         self.assertIn('厚生労働省の告示', code)
         self.assertIn('詳細ページ未収載', code)
         self.assertNotIn(ORIGIN, code + (search / 'qa-app.mjs').read_text())
+
+    def test_title_only_record_is_not_presented_as_full_text(self):
+        folder = self.root / 'legislation/record'
+        folder.mkdir()
+        identifier = 'guidance.title-only'
+        filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        (self.root / 'legislation/record-index.json').write_text(json.dumps({identifier: {
+            'document': 'guidance-unknown', 'category': 'guidance', 'services': ['dayservice']}}))
+        (self.root / 'legislation/records.json').write_text(json.dumps({'records': [{
+            'id': identifier, 'file': filename, 'text': '', 'document': 'guidance-unknown', 'category': 'guidance'}]}))
+        listing = self.root / 'legislation/app.mjs'
+        listing.write_text('const excerpt = node("p", row.text.length > 260 ? row.text.slice(0, 260) + "…" : row.text);')
+        page = folder / filename
+        page.write_text('<article><div class="dayservice-original" style="white-space:pre-wrap"></div></article>')
+        result = rewrite(self.root)
+        self.assertEqual(result['missing_record_text_labeled'], 1)
+        self.assertIn('見出しのみを掲載しています。本文は未収載です。', page.read_text())
+        self.assertIn('本文未収載：見出しのみを掲載しています。', listing.read_text())
+
+    def test_unmatched_title_only_record_stops_before_any_write(self):
+        identifier = 'guidance.title-only'
+        filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        (self.root / 'legislation/record-index.json').write_text(json.dumps({identifier: {
+            'document': 'different-document', 'category': 'guidance', 'services': []}}))
+        (self.root / 'legislation/records.json').write_text(json.dumps({'records': [{
+            'id': identifier, 'file': filename, 'text': '', 'document': 'guidance-unknown', 'category': 'guidance'}]}))
+        original = self.fees.read_text()
+        with self.assertRaisesRegex(RuntimeError, 'Unmatched title-only legal record'):
+            rewrite(self.root)
+        self.assertEqual(self.fees.read_text(), original)
 
 
 if __name__ == "__main__":

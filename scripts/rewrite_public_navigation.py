@@ -331,6 +331,57 @@ def add_official_record_links(root: Path) -> dict[Path, str]:
     return updates
 
 
+def mark_missing_record_text(root: Path, changes: dict) -> int:
+    """Make existing title-only records explicit without fabricating content."""
+    source = root / 'legislation/records.json'
+    if not source.exists():
+        return 0
+    if source.is_symlink() or not source.is_file():
+        raise RuntimeError('Unsafe legal records dataset')
+    data = json.loads(source.read_text(encoding='utf-8'))
+    if not isinstance(data, dict) or not isinstance(data.get('records'), list):
+        raise RuntimeError('Invalid legal records dataset')
+    placeholder = '<div class="dayservice-original" style="white-space:pre-wrap"></div>'
+    warning = '<p class="notice">この資料は見出しのみを掲載しています。本文は未収載です。原典を確認してください。</p>'
+    count = 0
+    for row in data['records']:
+        if not isinstance(row, dict) or not isinstance(row.get('text'), str) or not isinstance(row.get('id'), str):
+            raise RuntimeError('Invalid legal record')
+        if row['text'].strip():
+            continue
+        identifier = row['id']
+        name = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        entry = record_index(root).get(identifier)
+        if (row.get('file') != name or not isinstance(entry, dict) or
+                entry.get('document') != row.get('document') or entry.get('category') != row.get('category')):
+            raise RuntimeError(f'Unmatched title-only legal record: {identifier}')
+        page = root / 'legislation/record' / name
+        if page.is_symlink() or not page.is_file():
+            raise RuntimeError(f'Missing title-only legal page: {identifier}')
+        content = changes.get(page)
+        if content is None:
+            content = page.read_text(encoding='utf-8')
+        if content.count(placeholder) != 1:
+            raise RuntimeError(f'Unexpected title-only legal page layout: {identifier}')
+        changes[page] = content.replace(placeholder, warning, 1)
+        count += 1
+    return count
+
+
+def mark_missing_text_in_listing(root: Path) -> tuple[Path, str]:
+    page = root / 'legislation/app.mjs'
+    if page.is_symlink() or not page.is_file():
+        raise RuntimeError('Missing or unsafe legal listing script')
+    code = page.read_text(encoding='utf-8')
+    old = 'const excerpt = node("p", row.text.length > 260 ? row.text.slice(0, 260) + "…" : row.text);'
+    new = ('const excerpt = node("p", row.text.trim() ? '
+           '(row.text.length > 260 ? row.text.slice(0, 260) + "…" : row.text) : '
+           '"本文未収載：見出しのみを掲載しています。");')
+    if code.count(old) != 1:
+        raise RuntimeError('Unexpected legal listing implementation')
+    return page, code.replace(old, new, 1)
+
+
 @lru_cache(maxsize=4)
 def record_index(root: Path) -> dict:
     path = root / "legislation/record-index.json"
@@ -431,6 +482,10 @@ def rewrite(root: Path) -> dict:
         changes.update(rewrite_search_scripts(root))
     if (root / 'legislation/record-index.json').is_file():
         changes.update(add_official_record_links(root))
+    missing_text_count = mark_missing_record_text(root, changes)
+    if (root / 'legislation/app.mjs').exists():
+        script, content = mark_missing_text_in_listing(root)
+        changes[script] = content
     counts = {"standards": 0, "law": 0, "notices": 0, "notice_records": 0}
     extra_counts = {'criteria_records': 0, 'simple_links': 0, 'unavailable_all_views': 0,
                     'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_links': 0}
@@ -452,6 +507,7 @@ def rewrite(root: Path) -> dict:
         path.write_text(after, encoding="utf-8")
     return {"pages_changed": sum(path.suffix == '.html' for path in changes),
             "search_scripts_changed": sum(path.suffix == '.mjs' for path in changes),
+            "missing_record_text_labeled": missing_text_count,
             "fee_links_changed": sum(map(len, PAGES.values())),
             "index_links_changed": counts, "additional_changes": extra_counts}
 
