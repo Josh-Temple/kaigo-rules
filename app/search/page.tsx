@@ -293,7 +293,9 @@ export default async function SearchPage({
                       <div>
                         <p className="meta">{(node.number_path || []).join(" / ")}</p>
                         <h3>{node.title}</h3>
-                        {text ? <p className="meta">{excerpt(text, 120)}</p> : null}
+                        {node.id === "fee.dayservice.treatment-improvement" ? (
+                          <p className="meta">令和8年4月・5月と6月以降で加算区分・率が異なります。収載本文は6月以降の改正後の率を含みますが、全文・算定要件は未照合です。算定月ごとの率表は詳細で確認してください。</p>
+                        ) : text ? <p className="meta">{excerpt(text, 120)}</p> : null}
                       </div>
                       <span className="fee-status">
                         {reviewedFeeIds.has(node.id) ? "人手確認済み" : "機械取込・確認待ち"}
