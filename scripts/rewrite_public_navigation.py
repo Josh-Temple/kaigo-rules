@@ -51,6 +51,53 @@ OFFICIAL_CRITERIA = {
     'criteria-mhlw-fee-notice27-base': 'https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1',
 }
 ORDINANCE37_SOURCE = 'https://laws.e-gov.go.jp/law/411M50000100037'
+# These links are official, but the cited sources are partial or historical.
+# Do not describe a redline or an older text as a current consolidated notice.
+PARTIAL_NOTICE_SOURCES = {
+    'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf':
+        ('notices', '平成27年度の改正資料（新旧対照表・抄）', 'redline'),
+    'https://www.mhlw.go.jp/content/12300000/000869798.pdf':
+        ('notices', '令和3年度の改正資料（新旧対照表・抄）', 'redline'),
+    'https://www.mhlw.go.jp/content/12300000/001227935.pdf':
+        ('notices', '令和6年度の改正資料（新旧対照表・抄）', 'redline'),
+    'https://www.mhlw.go.jp/content/12300000/001227887.pdf':
+        ('guidance', '令和6年度の改正資料（新旧対照表・抄）', 'redline'),
+    'https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1':
+        ('notices', '解釈通知（厚生労働省・後の改正は別途確認）', 'partial'),
+    'https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1':
+        ('notices', '解釈通知（厚生労働省・後の改正は別途確認）', 'partial'),
+    # These official PDFs were inspected as new/old comparison documents.
+    # Their dates are not inferred here when the document itself does not state them.
+    **{url: ('notices', '改正資料（新旧対照表・抄）', 'redline') for url in (
+        'https://www.mhlw.go.jp/content/12300000/001221591.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001221586.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001227942.pdf',
+        'https://www.mhlw.go.jp/content/12404000/000772387.pdf',
+        'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf',
+        'https://www.mhlw.go.jp/content/12404000/001623024.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001227939.pdf',
+        'https://www.mhlw.go.jp/content/12301000/000750727.pdf',
+        'https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf',
+        'https://www.mhlw.go.jp/content/12404000/001623023.pdf',
+        'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199106.pdf',
+        'https://www.mhlw.go.jp/content/12304250/001453049.pdf',
+        'https://www.mhlw.go.jp/content/12404000/001623026.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001227943.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001227945.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001227947.pdf',
+    )},
+    'https://www.mhlw.go.jp/content/12300000/001225905.pdf':
+        ('notices', '解釈通知の改正案（新旧比較・抄）', 'draft'),
+    'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000202201.pdf':
+        ('notices', '平成30年の通知（後の改正は別途確認）', 'partial'),
+}
+MISLINKED_COMMUNITY_NOTICES = {
+    'community-dayservice.notice.015': '指定療養通所介護の基本方針',
+    'community-dayservice.notice.019': '内容及び手続の説明及び同意',
+}
+COMMUNITY_R6_REDLINE = 'https://www.mhlw.go.jp/content/12300000/001227939.pdf'
+COMMUNITY_UNVERIFIED_CLAIM = '厚生労働省の過去の解釈通知全文で見出しと説明を確認。'
+COMMUNITY_WRONG_SOURCE = 'https://www.mhlw.go.jp/content/12300000/001225905.pdf'
 
 # These mappings come from the existing delegated-remuneration node identity
 # map. The two notice 27 subitems are not separate published records, so the
@@ -382,6 +429,150 @@ def mark_missing_text_in_listing(root: Path) -> tuple[Path, str]:
     return page, code.replace(old, new, 1)
 
 
+def label_partial_notice_sources(root: Path, changes: dict) -> int:
+    """Label known partial sources without asserting the age of other sources."""
+    source = root / 'legislation/records.json'
+    if not source.exists():
+        return 0
+    if source.is_symlink() or not source.is_file():
+        raise RuntimeError('Unsafe legal records dataset')
+    data = json.loads(source.read_text(encoding='utf-8'))
+    if not isinstance(data, dict) or not isinstance(data.get('records'), list):
+        raise RuntimeError('Invalid legal records dataset')
+    count = 0
+    for row in data['records']:
+        if not isinstance(row, dict) or row.get('category') not in {'notices', 'guidance'}:
+            continue
+        identifier = row.get('id')
+        if not isinstance(identifier, str):
+            raise RuntimeError('Invalid legal record identifier')
+        name = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        entry = record_index(root).get(identifier)
+        if (row.get('file') != name or not isinstance(entry, dict) or
+                entry.get('document') != row.get('document') or entry.get('category') != row.get('category')):
+            raise RuntimeError(f'Unmatched notice record: {identifier}')
+        page = root / 'legislation/record' / name
+        if page.is_symlink() or not page.is_file():
+            raise RuntimeError(f'Missing notice record page: {identifier}')
+        content = changes.get(page)
+        if content is None:
+            content = page.read_text(encoding='utf-8')
+        matched = 0
+        for url, (category, label, source_type) in PARTIAL_NOTICE_SOURCES.items():
+            if row['category'] != category:
+                continue
+            escaped = html.escape(url, quote=True)
+            old = f'<p><a href="{escaped}" rel="noopener noreferrer">公式原典を確認</a></p>'
+            if old not in content:
+                if f'href="{escaped}"' in content:
+                    raise RuntimeError(f'Unexpected notice source link layout: {identifier}')
+                continue
+            if content.count(old) != 1:
+                raise RuntimeError(f'Duplicate notice source link: {identifier}')
+            if matched:
+                raise RuntimeError(f'Multiple partial notice sources: {identifier}')
+            target_url = url
+            if source_type == 'draft' and identifier in MISLINKED_COMMUNITY_NOTICES:
+                if (row.get('document') != 'notice-summary-community-dayservice' or
+                        row.get('title') != MISLINKED_COMMUNITY_NOTICES[identifier] or
+                        entry.get('services') != ['community-dayservice']):
+                    raise RuntimeError(f'Unmatched community notice: {identifier}')
+                target_url = COMMUNITY_R6_REDLINE
+                label = '令和6年度の改正資料（該当項目は省略）'
+                warning = ('この項目の原典の該当箇所は未確認です。リンク先の改正資料では該当箇所が省略されています。'
+                           '適用を判断する前に正式な通知、後の改正及び指定権者の基準を確認してください。')
+            elif source_type == 'draft':
+                warning = ('リンク先は改正案であり、施行された内容とは限りません。'
+                           '正式な通知と後の改正、適用時点を確認してください。')
+            elif source_type == 'redline':
+                warning = ('改正の新旧対照表は抜粋です。掲載本文とリンク先の版・範囲が異なる場合があります。'
+                           '後の改正と適用時点を確認してください。')
+            else:
+                warning = ('リンク先には後の改正が反映されていない場合があります。掲載本文とリンク先の版・範囲、'
+                           '適用時点を確認してください。')
+            replacement = (f'<p><a href="{html.escape(target_url, quote=True)}" rel="noopener noreferrer">'
+                           f'{html.escape(label)}</a></p>')
+            caution = '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
+            if content.count(caution) != 1:
+                raise RuntimeError(f'Unexpected notice caution layout: {identifier}')
+            # Put the scope warning before the body, and keep the source link at its original location.
+            content = content.replace(old, replacement, 1)
+            content = content.replace(caution, caution + '<p class="notice">' + warning + '</p>', 1)
+            matched += 1
+        if matched:
+            changes[page] = content
+            count += matched
+    return count
+
+
+def fix_community_record_claim(root: Path, changes: dict) -> None:
+    """Remove an unsupported source-verification claim from the affected summary."""
+    source = root / 'legislation/records.json'
+    if not source.is_file():
+        return
+    raw = source.read_text(encoding='utf-8')
+    rows = json.loads(raw)['records']
+    matches = [row for row in rows if row.get('id') == 'community-dayservice.notice.019']
+    if not matches:
+        return
+    if (len(matches) != 1 or not matches[0].get('text', '').startswith(COMMUNITY_UNVERIFIED_CLAIM)
+            or raw.count(COMMUNITY_UNVERIFIED_CLAIM) != 1):
+        raise RuntimeError('Unexpected community notice verification claim')
+    row = matches[0]
+    page = root / 'legislation/record' / row['file']
+    if page not in changes:
+        raise RuntimeError('Community notice source was not corrected')
+    body = '<div class="dayservice-original" style="white-space:pre-wrap">' + COMMUNITY_UNVERIFIED_CLAIM
+    if changes[page].count(body) != 1:
+        raise RuntimeError('Unexpected community notice body')
+    changes[page] = changes[page].replace(body, body.replace(COMMUNITY_UNVERIFIED_CLAIM, ''), 1)
+    changes[source] = raw.replace(COMMUNITY_UNVERIFIED_CLAIM, '', 1)
+
+
+def fix_community_handbook_sources(content: str, path: Path) -> tuple[str, int]:
+    """Replace incorrect handbook citations with the matching record and its warning."""
+    if COMMUNITY_WRONG_SOURCE not in content:
+        return content, 0
+    if path.parts[:2] != ('handbook', 'community-dayservice'):
+        raise RuntimeError(f'Unexpected handbook source location: {path}')
+    count = 0
+    for identifier in MISLINKED_COMMUNITY_NOTICES:
+        filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        old = (f'<a href="{COMMUNITY_WRONG_SOURCE}">公式原典を開く ↗</a>'
+               f'<a href="../../legislation/record/{filename}">この項目へのリンク</a>')
+        n = content.count(old)
+        if n > 1:
+            raise RuntimeError(f'Duplicate handbook source: {identifier}')
+        if n:
+            content = content.replace(old, f'<a href="../../legislation/record/{filename}">'
+                                      '原典の確認状況を見る</a>', 1)
+            if identifier == 'community-dayservice.notice.019':
+                if content.count(COMMUNITY_UNVERIFIED_CLAIM) != 1:
+                    raise RuntimeError('Unexpected handbook verification claim')
+                content = content.replace(COMMUNITY_UNVERIFIED_CLAIM, '', 1)
+            count += n
+    if COMMUNITY_WRONG_SOURCE in content:
+        raise RuntimeError(f'Unmatched handbook source: {path}')
+    return content, count
+
+
+def label_handbook_source_versions(content: str, path: Path) -> tuple[str, int]:
+    """Identify known partial sources at their point of use in the handbook."""
+    count = 0
+    for url, (_, label, _) in PARTIAL_NOTICE_SOURCES.items():
+        if url == COMMUNITY_WRONG_SOURCE:
+            continue
+        href = html.escape(url, quote=True)
+        old = f'<a href="{href}">公式原典を開く ↗</a>'
+        n = content.count(old)
+        if content.count(f'href="{href}"') != n:
+            raise RuntimeError(f'Unexpected handbook source layout: {path}')
+        if n:
+            content = content.replace(old, f'<a href="{href}">{html.escape(label)} ↗</a>')
+            count += n
+    return content, count
+
+
 @lru_cache(maxsize=4)
 def record_index(root: Path) -> dict:
     path = root / "legislation/record-index.json"
@@ -483,12 +674,15 @@ def rewrite(root: Path) -> dict:
     if (root / 'legislation/record-index.json').is_file():
         changes.update(add_official_record_links(root))
     missing_text_count = mark_missing_record_text(root, changes)
+    partial_source_count = label_partial_notice_sources(root, changes)
+    fix_community_record_claim(root, changes)
     if (root / 'legislation/app.mjs').exists():
         script, content = mark_missing_text_in_listing(root)
         changes[script] = content
     counts = {"standards": 0, "law": 0, "notices": 0, "notice_records": 0}
     extra_counts = {'criteria_records': 0, 'simple_links': 0, 'unavailable_all_views': 0,
-                    'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_links': 0}
+                    'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_links': 0,
+                    'community_handbook_sources': 0, 'handbook_source_versions': 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
@@ -499,6 +693,11 @@ def rewrite(root: Path) -> dict:
         after = SIMPLE_ANCHOR.sub(lambda m: rewrite_simple_link(m, path.relative_to(root), root, extra_counts), after)
         after = DAYREHAB_SCOPE_NOTE.sub(lambda m: rewrite_dayrehab_note(m, path.relative_to(root), root, extra_counts), after)
         after = FULL_ANCHOR.sub(lambda m: rewrite_scoped_link(m, path.relative_to(root), root, extra_counts), after)
+        if path.relative_to(root).parts[0] == 'handbook':
+            after, n = fix_community_handbook_sources(after, path.relative_to(root))
+            extra_counts['community_handbook_sources'] += n
+            after, n = label_handbook_source_versions(after, path.relative_to(root))
+            extra_counts['handbook_source_versions'] += n
         if after != before:
             changes[path] = after
     # Validate the entire plan before changing any page. The build pipeline
@@ -508,6 +707,7 @@ def rewrite(root: Path) -> dict:
     return {"pages_changed": sum(path.suffix == '.html' for path in changes),
             "search_scripts_changed": sum(path.suffix == '.mjs' for path in changes),
             "missing_record_text_labeled": missing_text_count,
+            "partial_sources_labeled": partial_source_count,
             "fee_links_changed": sum(map(len, PAGES.values())),
             "index_links_changed": counts, "additional_changes": extra_counts}
 
