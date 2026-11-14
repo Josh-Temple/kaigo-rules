@@ -336,6 +336,8 @@ class FeeNavigationTest(unittest.TestCase):
              'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf'),
             ('guidance.dayrehab', 'guidance-r6', 'guidance', '',
              'https://www.mhlw.go.jp/content/12300000/001227887.pdf'),
+            ('notice.draft', 'notice-draft', 'notices', '本文あり',
+             'https://www.mhlw.go.jp/content/12300000/001225905.pdf'),
             ('notice.unknown', 'unknown-doc', 'notices', '本文あり',
              'https://www.mhlw.go.jp/content/unknown.pdf'),
         ]
@@ -353,16 +355,20 @@ class FeeNavigationTest(unittest.TestCase):
         (self.root / 'legislation/record-index.json').write_text(json.dumps(index))
         (self.root / 'legislation/records.json').write_text(json.dumps({'records': records}))
         result = rewrite(self.root)
-        self.assertEqual(result['partial_sources_labeled'], 2)
+        self.assertEqual(result['partial_sources_labeled'], 3)
         self.assertEqual(result['missing_record_text_labeled'], 1)
         old = (folder / (hashlib.sha256('notice.staffing'.encode()).hexdigest() + '.html')).read_text()
         newer = (folder / (hashlib.sha256('guidance.dayrehab'.encode()).hexdigest() + '.html')).read_text()
+        draft = (folder / (hashlib.sha256('notice.draft'.encode()).hexdigest() + '.html')).read_text()
         unknown = (folder / (hashlib.sha256('notice.unknown'.encode()).hexdigest() + '.html')).read_text()
         self.assertIn('平成27年度の改正資料（新旧対照表・抄）', old)
         self.assertIn('掲載本文とリンク先の版・範囲が異なる場合', old)
         self.assertLess(old.index('掲載本文とリンク先の版・範囲が異なる場合'), old.index('本文あり'))
         self.assertIn('令和6年度の改正資料（新旧対照表・抄）', newer)
         self.assertIn('本文は未収載です。', newer)
+        self.assertIn('解釈通知の改正案（新旧比較・抄）', draft)
+        self.assertIn('施行された内容とは限りません。', draft)
+        self.assertLess(draft.index('施行された内容とは限りません。'), draft.index('本文あり'))
         self.assertIn('公式原典を確認', unknown)
 
     def test_changed_partial_source_layout_stops_before_any_write(self):

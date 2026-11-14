@@ -66,6 +66,30 @@ PARTIAL_NOTICE_SOURCES = {
         ('notices', '解釈通知（厚生労働省・後の改正は別途確認）', 'partial'),
     'https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1':
         ('notices', '解釈通知（厚生労働省・後の改正は別途確認）', 'partial'),
+    # These official PDFs were inspected as new/old comparison documents.
+    # Their dates are not inferred here when the document itself does not state them.
+    **{url: ('notices', '改正資料（新旧対照表・抄）', 'redline') for url in (
+        'https://www.mhlw.go.jp/content/12300000/001221591.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001221586.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001227942.pdf',
+        'https://www.mhlw.go.jp/content/12404000/000772387.pdf',
+        'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf',
+        'https://www.mhlw.go.jp/content/12404000/001623024.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001227939.pdf',
+        'https://www.mhlw.go.jp/content/12301000/000750727.pdf',
+        'https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf',
+        'https://www.mhlw.go.jp/content/12404000/001623023.pdf',
+        'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199106.pdf',
+        'https://www.mhlw.go.jp/content/12304250/001453049.pdf',
+        'https://www.mhlw.go.jp/content/12404000/001623026.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001227943.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001227945.pdf',
+        'https://www.mhlw.go.jp/content/12300000/001227947.pdf',
+    )},
+    'https://www.mhlw.go.jp/content/12300000/001225905.pdf':
+        ('notices', '解釈通知の改正案（新旧比較・抄）', 'draft'),
+    'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000202201.pdf':
+        ('notices', '平成30年の通知（後の改正は別途確認）', 'partial'),
 }
 
 # These mappings come from the existing delegated-remuneration node identity
@@ -440,7 +464,10 @@ def label_partial_notice_sources(root: Path, changes: dict) -> int:
                 raise RuntimeError(f'Duplicate notice source link: {identifier}')
             if matched:
                 raise RuntimeError(f'Multiple partial notice sources: {identifier}')
-            if source_type == 'redline':
+            if source_type == 'draft':
+                warning = ('リンク先は改正案であり、施行された内容とは限りません。'
+                           '正式な通知と後の改正、適用時点を確認してください。')
+            elif source_type == 'redline':
                 warning = ('改正の新旧対照表は抜粋です。掲載本文とリンク先の版・範囲が異なる場合があります。'
                            '後の改正と適用時点を確認してください。')
             else:
