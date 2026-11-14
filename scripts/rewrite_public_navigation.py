@@ -652,6 +652,30 @@ def rewrite_index_link(match: re.Match, source: Path, root: Path, counts: dict) 
     return match.group(1) + html.escape(relative + "?" + query, quote=True) + match.group(3)
 
 
+def clarify_handbook_review_status(content: str) -> tuple[str, int]:
+    """Explain known internal status markers without changing their meaning."""
+    replacements = {
+        '（DRAFT_UNREVIEWED）': '（人による確認前の下書きです）',
+        '現在の確認状態は検証状態（NOT_VERIFIED）、現行性（NOT_ESTABLISHED）、'
+        '人手レビュー（NOT_REVIEWED）として扱い、更新時は差分と確認根拠を残してください。':
+            '現在、資料の内容と現行性は未確認で、人による確認も行われていません。',
+    }
+    count = 0
+
+    def replace_text(match: re.Match) -> str:
+        nonlocal count
+        opening, text, closing = match.groups()
+        for before, after in replacements.items():
+            count += text.count(before)
+            text = text.replace(before, after)
+        return opening + text + closing
+
+    # Limit substitutions to plain paragraph text, not attributes, scripts,
+    # citations or any markup nested inside a paragraph.
+    result = re.sub(r'(<p(?:\s[^>]*)?>)([^<>]*)(</p>)', replace_text, content, flags=re.IGNORECASE)
+    return result, count
+
+
 def rewrite(root: Path) -> dict:
     if root.is_symlink():
         raise RuntimeError("Site root must not be a symbolic link")
@@ -705,7 +729,8 @@ def rewrite(root: Path) -> dict:
     counts = {"standards": 0, "law": 0, "notices": 0, "notice_records": 0}
     extra_counts = {'criteria_records': 0, 'simple_links': 0, 'unavailable_all_views': 0,
                     'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_links': 0,
-                    'community_handbook_sources': 0, 'handbook_source_versions': 0}
+                    'community_handbook_sources': 0, 'handbook_source_versions': 0,
+                    'handbook_review_status': 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
@@ -721,6 +746,8 @@ def rewrite(root: Path) -> dict:
             extra_counts['community_handbook_sources'] += n
             after, n = label_handbook_source_versions(after, path.relative_to(root))
             extra_counts['handbook_source_versions'] += n
+            after, n = clarify_handbook_review_status(after)
+            extra_counts['handbook_review_status'] += n
         if after != before:
             changes[path] = after
     # Validate the entire plan before changing any page. The build pipeline
