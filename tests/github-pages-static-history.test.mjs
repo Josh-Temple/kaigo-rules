@@ -117,3 +117,32 @@ test("static Q&A pagination and reader mode restore on browser Back", async () =
   assert.equal(env.nodes["#qa-page"].textContent, "1 / 3ページ");
   assert.equal(env.nodes["h1"].textContent, "通所介護の関連Q&Aを探す");
 });
+
+test("static database search filters restore on browser Back", async () => {
+  const env = environment(["#search", "#query", "#service", "#category", "#status", "#results",
+    'meta[name="kaigo-legal-local-details"]', 'meta[name="kaigo-qa-local-details"]'],
+    "?q=%E7%9C%8B%E8%AD%B7&service=dayservice&category=standards");
+  env.location.pathname = "/databases/search/index.html";
+  const servicesData = [{ id: "dayservice", label: "通所介護" }];
+  const groups = ["law", "ordinance", "unitPrice", "delegated", "notice", "qa"];
+  const dataset = Object.fromEntries(groups.map((group) => [group, []]));
+  const context = {
+    ...env,
+    URL, URLSearchParams, performance: { now: () => 0 },
+    runSearch: () => dataset, resultHref: (_group, row) => row.href || "",
+    GROUPS: groups, databaseSearchExcerpt: (value) => value,
+    loadJson: async (path) => path.includes("services.json") ? servicesData : dataset,
+  };
+  const original = fs.readFileSync(new URL("../experiments/github-pages-db/app.mjs", import.meta.url), "utf8");
+  const source = original.replace(/^import .*;\n/gm, "");
+  await vm.runInNewContext("(async () => {\n" + source + "\n})()", context);
+  assert.equal(env.nodes["#query"].value, "看護");
+  assert.equal(env.nodes["#service"].value, "dayservice");
+  assert.equal(env.nodes["#category"].value, "ordinance");
+
+  env.location.search = "?q=%E7%94%9F%E6%B4%BB%E7%9B%B8%E8%AB%87%E5%93%A1&service=dayservice&category=guidance";
+  env.window.handlers.popstate();
+  assert.equal(env.nodes["#query"].value, "生活相談員");
+  assert.equal(env.nodes["#category"].value, "notice");
+});
+

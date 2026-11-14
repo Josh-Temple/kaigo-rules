@@ -78,6 +78,9 @@ function StaffingRoles({ service, chapter, full }: {
           このサービス（{service.label || "当サービス"}）の職種別要件は、法令員数・兼務解釈の独立確認を進めています。
           現時点の基準・確認項目は、本章の「人員基準の確認ポイント」「確認すること」および関連する省令・解釈通知をご確認ください。
         </p>
+        <p className="handbook-primary-action">
+          <a href="#handbook-sources-staffing">人員基準の関連条文・解釈通知を確認する ↓</a>
+        </p>
       </section>;
     }
     return null;

@@ -5,7 +5,22 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { stripTypeScriptTypes } from "node:module";
+
+function stripTypeScriptTypesFallback(source) {
+  return source
+    .replace(/export type \w+ = \{[^}]*\};/g, '')
+    .replace(/ as const/g, '')
+    .replace(/: string\[\]/g, '')
+    .replace(/: string/g, '')
+    .replace(/: DatabaseSearchField\[\]/g, '')
+    .replace(/: DatabaseSearchField/g, '')
+    .replace(/: \(record: T\) => DatabaseSearchField\[\]/g, '')
+    .replace(/<T>/g, '')
+    .replace(/: T\[\]/g, '')
+    .replace(/: number/g, '');
+}
+const stripTypeScriptTypes = stripTypeScriptTypesFallback;
+
 import { gzipSync } from "node:zlib";
 import care from "../../data/care-insurance-act-nodes.json" with { type: "json" };
 import ordinance from "../../data/ordinance37-nodes.json" with { type: "json" };

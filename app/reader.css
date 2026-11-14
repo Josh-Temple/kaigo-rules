@@ -252,4 +252,17 @@
 .dayservice-treatment-eligibility p{margin:0 0 8px}
 .dayservice-treatment-eligibility ul{padding-left:1.4rem;margin:8px 0 14px}
 .dayservice-treatment-eligibility li{margin:8px 0;line-height:1.7}
+
+/* Cross-service staffing pending banner and responsive table scroll */
+.handbook-roles-pending{padding:14px 18px;margin:16px 0 24px;border-left:4px solid #8a6200;background:#fdfaf3}
+.handbook-roles-pending h3{margin:0 0 8px;font-size:1.18rem;color:#4a3b12}
+.handbook-roles-pending .handbook-working-note{margin:0 0 10px;line-height:1.75}
+.handbook-roles-pending .handbook-primary-action{margin:8px 0 0}
+.handbook-table-scroll{max-width:100%;overflow-x:auto;margin:12px 0 20px;border:1px solid var(--line)}
+.handbook-table-scroll:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
+@media print{
+  .handbook-roles-pending{border-left:4px solid #333;background:#f9f9f9;color:#000;break-inside:avoid-page}
+  .handbook-table-scroll{overflow:visible;break-inside:avoid-page}
+}
+
 @media print{.dayservice-treatment-eligibility{break-inside:avoid-page}}
