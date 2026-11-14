@@ -5,7 +5,7 @@ import json
 import unittest
 from pathlib import Path
 
-from scripts.rewrite_public_navigation import rewrite
+from scripts.rewrite_public_navigation import clarify_handbook_review_status, rewrite
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 COMMON = (
@@ -40,7 +40,8 @@ class FeeNavigationTest(unittest.TestCase):
                                               "index_links_changed": {"standards": 0, "law": 0, "notices": 0, "notice_records": 0},
                                               "additional_changes": {"criteria_records": 0, "simple_links": 0, "unavailable_all_views": 0,
                                                                      "scoped_rule_links": 0, "dayrehab_scope_notes": 0, "fee_root_links": 0,
-                                                                     "community_handbook_sources": 0, "handbook_source_versions": 0}})
+                                                                     "community_handbook_sources": 0, "handbook_source_versions": 0,
+                                                                     "handbook_review_status": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
         self.assertNotIn(ORIGIN, fees + guidance)
@@ -53,6 +54,19 @@ class FeeNavigationTest(unittest.TestCase):
         self.assertNotIn('通所介護の一単位単価を見る', fees)
         self.assertIn('別のサービス名が書かれた条文は、そのまま選択したサービスに当てはめず',
                       (self.root / 'legislation/index.html').read_text())
+
+    def test_review_status_is_readable_and_remains_unconfirmed(self):
+        status = ('現在の確認状態は検証状態（NOT_VERIFIED）、現行性（NOT_ESTABLISHED）、'
+                  '人手レビュー（NOT_REVIEWED）として扱い、更新時は差分と確認根拠を残してください。')
+        markup = (f'<p>{status}</p><p>個別の適用は未確認（DRAFT_UNREVIEWED）。</p>'
+                  '<a title="（DRAFT_UNREVIEWED）">原典</a>'
+                  '<script>const status="（DRAFT_UNREVIEWED）";</script>')
+        result, count = clarify_handbook_review_status(markup)
+        self.assertEqual(count, 2)
+        self.assertIn('資料の内容と現行性は未確認で、人による確認も行われていません', result)
+        self.assertIn('個別の適用は未確認（人による確認前の下書きです）', result)
+        self.assertIn('<a title="（DRAFT_UNREVIEWED）">原典</a>', result)
+        self.assertIn('<script>const status="（DRAFT_UNREVIEWED）";</script>', result)
 
     def test_changed_link_fails_before_either_page_is_modified(self):
         self.guidance.write_text(self.guidance.read_text().replace("通所介護費", "別のラベル"))
