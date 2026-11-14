@@ -49,6 +49,16 @@ class CommunityDayserviceItemBodyAuditTest(unittest.TestCase):
             with patch.object(validator, "AUDIT", altered):
                 self.assertTrue(any("incorrect historical notice remains" in error for error in validator.validate()))
 
+    def test_municipal_copy_cannot_be_relabelled_as_ministry_original(self):
+        audit = validator.load(validator.AUDIT)
+        source = next(item for item in audit["sources"] if item["id"] == "city-ome-2024-notice-copy")
+        source["authority"] = "MHLW_PRIMARY"
+        with tempfile.TemporaryDirectory() as directory:
+            altered = Path(directory) / "audit.json"
+            altered.write_text(json.dumps(audit, ensure_ascii=False), encoding="utf-8")
+            with patch.object(validator, "AUDIT", altered):
+                self.assertTrue(any("municipal copy must not be presented" in error for error in validator.validate()))
+
     def test_stale_local_source_is_non_blocking(self):
         audit = validator.load(validator.AUDIT)
         sources = {row["id"]: row for row in audit["sources"]}

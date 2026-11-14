@@ -129,6 +129,17 @@ def validate() -> list[str]:
     if local.get("required_for_item_body_verification") is not False:
         errors.append("Yokohama stale source must not be required for item-body verification")
 
+    ome_copy = sources.get("city-ome-2024-notice-copy", {})
+    if (ome_copy.get("authority") != "OFFICIAL_LOCAL_SUPPLEMENTAL" or
+            ome_copy.get("role") != "MUNICIPAL_COPY_OF_NATIONAL_NOTICE_NOT_MINISTRY_ORIGINAL" or
+            ome_copy.get("url") != "https://www.city.ome.tokyo.jp/uploaded/attachment/72683.pdf"):
+        errors.append("municipal copy must not be presented as a Ministry original")
+    wam_copy = sources.get("wam-mhlw-2016-vol524", {})
+    if (wam_copy.get("authority") != "MHLW_DOCUMENT_ON_WAM_PORTAL" or
+            wam_copy.get("role") != "HISTORICAL_2016_AMENDMENT_DOCUMENT_NOT_CURRENT_INTEGRATED_TEXT" or
+            not wam_copy.get("url", "").startswith("https://www2.wam.go.jp/")):
+        errors.append("2016 notice must remain a historical document on the WAM portal")
+
     stale = audit.get("stale_sources", [])
     if not any(
         row.get("source_id") == "yokohama-local-crosscheck"
