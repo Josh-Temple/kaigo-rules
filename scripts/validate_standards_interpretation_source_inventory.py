@@ -108,7 +108,26 @@ def main() -> None:
         str(staging_path.relative_to(ROOT)): blob(staging_path),
         str(VERIFIER.relative_to(ROOT)): blob(VERIFIER),
     }
-    if receipt.get("input_git_blob_shas_at_audit") != expected_blobs:
+    reassessment = receipt.get("reassessment")
+    if service_id == "community-dayservice":
+        # The old retrieval is preserved as history.  Only a subset of those
+        # observations is carried forward; no new fetch is being asserted.
+        history_path = ROOT / "data/verification/history/community-dayservice-20261003/source-inventory.json"
+        if not isinstance(reassessment, dict) or reassessment.get("kind") != "HISTORICAL_SOURCE_INVENTORY_SUBSET_NOT_NEW_FETCH":
+            fail("historical inventory reassessment missing")
+        if reassessment.get("historical_receipt") != str(history_path.relative_to(ROOT)) or reassessment.get("historical_receipt_git_blob_sha") != blob(history_path):
+            fail("historical inventory receipt changed")
+        if reassessment.get("current_input_git_blob_shas") != expected_blobs:
+            fail("reassessed inventory inputs are stale")
+        original = load(history_path)
+        removed = "https://www.mhlw.go.jp/content/12300000/001225905.pdf"
+        if reassessment.get("removed_url") != removed:
+            fail("incorrect source removal is not recorded")
+        if receipt.get("sources") != [row for row in original.get("sources", []) if row.get("url") != removed]:
+            fail("derived source observations differ from historical subset")
+        if receipt.get("audit_run") != original.get("audit_run") or receipt.get("input_git_blob_shas_at_audit") != original.get("input_git_blob_shas_at_audit"):
+            fail("historical retrieval provenance was rewritten")
+    elif receipt.get("input_git_blob_shas_at_audit") != expected_blobs:
         fail("receipt inputs are stale")
 
     run = receipt.get("audit_run", {})
@@ -117,7 +136,7 @@ def main() -> None:
 
     print(
         f"{service_id} standards-interpretation source inventory receipt: "
-        f"PASS ({args.expected_items}; required sources "
+        f"PASS (historical retrieval for {args.expected_items}; required sources "
         f"{coverage.get('required_sources_fetchable')}/{coverage.get('required_sources')})"
     )
 

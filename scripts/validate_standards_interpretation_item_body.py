@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 from collections import Counter
 from pathlib import Path
@@ -161,6 +162,18 @@ def validate_service(service_id: str) -> list[str]:
             errors.append("preventive-support PACKAGE blocker not preserved")
     elif summary.get("package_blocker_state") != "NOT_APPLICABLE":
         errors.append("unexpected package blocker state")
+
+    if service_id == "community-dayservice":
+        # A matching aggregate count is insufficient if one of the affected
+        # rows or its historical evidence was silently re-promoted.
+        path = ROOT / "scripts/validate_community_dayservice_item_body_audit.py"
+        spec = importlib.util.spec_from_file_location("community_item_body_validator", path)
+        if spec is None or spec.loader is None:
+            errors.append("community-dayservice detailed validator unavailable")
+        else:
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            errors.extend(module.validate())
 
     return errors
 

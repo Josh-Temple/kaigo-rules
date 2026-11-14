@@ -22,9 +22,9 @@
     "total_cells": 351,
     "ready_candidates": 95,
     "primary_readiness": {
-      "BLOCKED_CURRENTNESS": 110,
+      "BLOCKED_CURRENTNESS": 109,
       "BLOCKED_INGESTION": 74,
-      "BLOCKED_ITEM_BODY": 64,
+      "BLOCKED_ITEM_BODY": 65,
       "NOT_APPLICABLE": 8,
       "READY_FOR_PUBLICATION_REVIEW": 95
     },
@@ -32,14 +32,14 @@
       "BLOCKED_CURRENTNESS": 248,
       "BLOCKED_HUMAN_REVIEW": 248,
       "BLOCKED_INGESTION": 74,
-      "BLOCKED_ITEM_BODY": 138,
+      "BLOCKED_ITEM_BODY": 139,
       "BLOCKED_RELATION": 248
     },
     "publication_unit_blocking_counts": {
       "BLOCKED_CURRENTNESS": 1736,
       "BLOCKED_HUMAN_REVIEW": 686,
       "BLOCKED_INGESTION": 518,
-      "BLOCKED_ITEM_BODY": 552,
+      "BLOCKED_ITEM_BODY": 556,
       "BLOCKED_RELATION": 686
     },
     "ready_publication_units": {
@@ -76,8 +76,8 @@
         "NOT_APPLICABLE": 2
       },
       "standards_interpretation_notice": {
-        "BLOCKED_CURRENTNESS": 13,
-        "BLOCKED_ITEM_BODY": 26
+        "BLOCKED_CURRENTNESS": 12,
+        "BLOCKED_ITEM_BODY": 27
       },
       "unit_price_regional_classification": {
         "BLOCKED_CURRENTNESS": 18,
@@ -2442,8 +2442,9 @@
       "service_label": "地域密着型通所介護",
       "source_family": "standards_interpretation_notice",
       "source_family_label": "Standards interpretation notice",
-      "readiness": "BLOCKED_CURRENTNESS",
+      "readiness": "BLOCKED_ITEM_BODY",
       "blocking_reasons": [
+        "BLOCKED_ITEM_BODY",
         "BLOCKED_CURRENTNESS",
         "BLOCKED_RELATION",
         "BLOCKED_HUMAN_REVIEW"
@@ -2454,7 +2455,7 @@
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
-        "item_body_verification": "PASS",
+        "item_body_verification": "PARTIAL",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"

@@ -7,7 +7,7 @@
 - Shared corpus available but service scope missing: 0
 - Genuinely missing corpus cells: 0
 - Currentness gaps on ingested cells: 248
-- Item-body verification gaps on ingested cells: 138
+- Item-body verification gaps on ingested cells: 139
 - Relation verification remaining: 58
 - Publication gaps on ingested cells: 330
 - Delegated remuneration applicability mapped: 37
@@ -18,7 +18,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Long-Term Care Insurance Act | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | PASS=39 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Governing standards ordinance | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | PASS=39 | PASS=39 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
-| Standards interpretation notice | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | NOT_ESTABLISHED=26, PASS=13 | BLOCKED=1, NOT_ESTABLISHED=38 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
+| Standards interpretation notice | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | NOT_ESTABLISHED=26, PARTIAL=1, PASS=12 | BLOCKED=1, NOT_ESTABLISHED=38 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Remuneration notification | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=37, NOT_APPLICABLE=2 | NOT_ESTABLISHED=2, PARTIAL=36, PASS=1 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Delegated remuneration criteria | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=37, NOT_APPLICABLE=2 | NOT_ESTABLISHED=2, PASS=37 | NOT_ESTABLISHED=2, PASS=37 | NOT_REVIEWED=39 | BLOCKED=39 | BLOCKED=39 |
 | Fee-calculation guidance | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=2, NOT_APPLICABLE=2, PARTIAL=35 | NOT_APPLICABLE=2, NOT_ESTABLISHED=36, PARTIAL=1 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |

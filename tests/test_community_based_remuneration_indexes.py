@@ -162,10 +162,11 @@ class CommunityBasedRemunerationIndexesTest(unittest.TestCase):
             self.assertEqual(guidance["publication"]["state"], "BLOCKED")
             self.assertEqual(guidance["route_exposure"]["state"], "BLOCKED")
 
-    def test_existing_standards_interpretation_verification_is_not_regressed(self):
+    def test_standards_interpretation_preserves_reassessment_and_currentness(self):
         for service_id in ("community-dayservice", "regular-round", "night-homevisit"):
             standards = self.cell(service_id, "standards_interpretation_notice")
-            self.assertEqual(standards["item_body_verification"]["state"], "PASS")
+            expected = "PARTIAL" if service_id == "community-dayservice" else "PASS"
+            self.assertEqual(standards["item_body_verification"]["state"], expected)
             self.assertEqual(standards["currentness"]["state"], "NOT_ESTABLISHED")
 
 

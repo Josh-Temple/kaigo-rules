@@ -55,7 +55,7 @@ def validate() -> list[str]:
         errors.append("audit service_id mismatch")
     if audit.get("audit_kind") != "INDEPENDENT_STANDARDS_INTERPRETATION_ITEM_BODY_VERIFICATION":
         errors.append("unexpected audit_kind")
-    if audit.get("audit_result") != "PASS_WITH_ITEM_LEVEL_EVIDENCE":
+    if audit.get("audit_result") != "PARTIAL_WITH_GAPS":
         errors.append("unexpected audit_result")
 
     scope = audit.get("scope", {})
@@ -154,8 +154,44 @@ def validate() -> list[str]:
         str(STAGING.relative_to(ROOT)): git_blob_sha(STAGING),
         str(SOURCE_INVENTORY.relative_to(ROOT)): git_blob_sha(SOURCE_INVENTORY),
     }
-    if audit.get("input_git_blob_shas_at_audit") != expected_blobs:
-        errors.append("audit input blob SHAs are stale")
+    reassessment = audit.get("reassessment", {})
+    history_path = ROOT / "data/verification/history/community-dayservice-20261003/item-body.json"
+    if reassessment.get("kind") != "TARGETED_REASSESSMENT_NOT_A_NEW_INDEPENDENT_AUDIT":
+        errors.append("targeted reassessment missing")
+    if reassessment.get("historical_receipt") != str(history_path.relative_to(ROOT)) or reassessment.get("historical_receipt_git_blob_sha") != git_blob_sha(history_path):
+        errors.append("historical item-body receipt changed")
+    if reassessment.get("current_input_git_blob_shas") != expected_blobs:
+        errors.append("reassessment inputs are stale")
+    affected = {"community-dayservice.notice.015", "community-dayservice.notice.019", "community-dayservice.notice.021"}
+    if set(reassessment.get("affected_ids", [])) != affected:
+        errors.append("affected item set changed")
+    historical = load(history_path)
+    old_items = {row.get("id"): row for row in historical.get("items", [])}
+    old_staging_path = history_path.parent / "staging.json"
+    old_scope_path = history_path.parent / "scope.json"
+    old_inventory_path = history_path.parent / "source-inventory.json"
+    historical_inputs = historical.get("input_git_blob_shas_at_audit", {})
+    for current_path, archived_path in ((STAGING, old_staging_path), (SCOPE, old_scope_path), (SOURCE_INVENTORY, old_inventory_path)):
+        if historical_inputs.get(str(current_path.relative_to(ROOT))) != git_blob_sha(archived_path):
+            errors.append(f"historical input bytes differ from the original audit: {archived_path.name}")
+    old_staging = {item.get("id"): item for item in load(old_staging_path).get("items", [])}
+    for item_id, row in audit_by_id.items():
+        if item_id in affected:
+            if row.get("status") != "PARTIAL":
+                errors.append(f"{item_id}: incomplete notice evidence cannot be promoted")
+            if any(ev.get("source_id") == "mhlw-historical-full-notice" for ev in row.get("evidence", [])):
+                errors.append(f"{item_id}: incorrect historical notice still cited")
+        elif row != old_items.get(item_id):
+            errors.append(f"{item_id}: prior item evidence changed without reassessment")
+        if item_id not in affected and staging_by_id.get(item_id) != old_staging.get(item_id):
+            errors.append(f"{item_id}: unchanged item staging differs from historical input")
+    if audit.get("input_git_blob_shas_at_audit") != historical.get("input_git_blob_shas_at_audit"):
+        errors.append("historical audit input provenance was rewritten")
+    if any(source.get("url") == "https://www.mhlw.go.jp/content/12300000/001225905.pdf" for source in sources.values()):
+        errors.append("incorrect historical notice remains in active sources")
+    wrong_url = "https://www.mhlw.go.jp/content/12300000/001225905.pdf"
+    if wrong_url in SCOPE.read_text(encoding="utf-8") or wrong_url in STAGING.read_text(encoding="utf-8"):
+        errors.append("incorrect historical notice remains in scope or staging")
 
     return errors
 
@@ -170,7 +206,7 @@ def main() -> int:
     audit = load(AUDIT)
     counts = audit["counts"]
     print(
-        "community-dayservice item-body audit: PASS "
+        "community-dayservice item-body reassessment: PARTIAL_WITH_GAPS "
         f"({EXPECTED_ITEMS} items; PASS={counts['PASS']} PARTIAL={counts['PARTIAL']} "
         f"GAP={counts['GAP']} FAIL={counts['FAIL']}; currentness not promoted)"
     )

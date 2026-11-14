@@ -2,7 +2,7 @@
   "format_version": 1,
   "service_id": "community-dayservice",
   "audit_kind": "INDEPENDENT_STANDARDS_INTERPRETATION_ITEM_BODY_VERIFICATION",
-  "audit_result": "PASS_WITH_ITEM_LEVEL_EVIDENCE",
+  "audit_result": "PARTIAL_WITH_GAPS",
   "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
   "verified_date": "2026-10-03",
   "scope": {
@@ -30,8 +30,8 @@
     "FAIL": "staging itemの構造またはsummaryが一次資料と矛盾する。"
   },
   "counts": {
-    "PASS": 21,
-    "PARTIAL": 0,
+    "PASS": 18,
+    "PARTIAL": 3,
     "GAP": 0,
     "FAIL": 0
   },
@@ -79,14 +79,6 @@
       "item_body_role": "基準条文の内容を確認する。解釈通知のcurrentnessや略記本文を代替するものではない。"
     },
     {
-      "id": "mhlw-historical-full-notice",
-      "url": "https://www.mhlw.go.jp/content/12300000/001225905.pdf",
-      "authority": "MHLW_PRIMARY",
-      "role": "HISTORICAL_FULL_NOTICE_TEXT",
-      "item_body_role": "療養通所介護の旧全文見出し・本文を確認する。source inventoryではPDF本文抽出が疎であるため、検索可能なMHLW索引結果と他の一次資料で相互確認した。",
-      "extraction_note": "source-inventory receiptではfetch PASSだがpdftotext抽出は503文字。単独のcurrentness evidenceにはしない。"
-    },
-    {
       "id": "mhlw-auxiliary-000763179",
       "url": "https://www.mhlw.go.jp/content/000763179.pdf",
       "authority": "MHLW_PRIMARY",
@@ -101,6 +93,22 @@
       "availability_state": "STALE_URL_404_2026-10-03",
       "required_for_item_body_verification": false,
       "item_body_role": "過去Work Controlの補助クロスチェック。現在404だが履歴から削除しない。MHLW一次資料だけで対象itemの支持を固定できるため、今回のitem-body PASSには必須ではない。"
+    },
+    {
+      "id": "city-ome-2024-notice-copy",
+      "url": "https://www.city.ome.tokyo.jp/uploaded/attachment/72683.pdf",
+      "authority": "OFFICIAL_LOCAL_SUPPLEMENTAL",
+      "role": "MUNICIPAL_COPY_OF_NATIONAL_NOTICE_NOT_MINISTRY_ORIGINAL",
+      "item_body_role": "令和6年3月15日改正までの沿革を表示する、自治体掲載の国通知転記。対象3項目を補助的に照合する。厚生労働省から配布された原本であることや、その後の改正がないことは未確認。",
+      "retrieval_note": "2026-11-14にWeb上の抽出表示を閲覧。直接バイト取得は403で、ファイルのハッシュは取得していない。"
+    },
+    {
+      "id": "wam-mhlw-2016-vol524",
+      "url": "https://www2.wam.go.jp/gyoseiShiryou-files/resources/aaff6e9a-72ef-4fd8-b8ae-207ee20f0076/%E4%BB%8B%E8%AD%B7%E4%BF%9D%E9%99%BA%E6%9C%80%E6%96%B0%E6%83%85%E5%A0%B1Vol.524.pdf",
+      "authority": "MHLW_DOCUMENT_ON_WAM_PORTAL",
+      "role": "HISTORICAL_2016_AMENDMENT_DOCUMENT_NOT_CURRENT_INTEGRATED_TEXT",
+      "item_body_role": "厚生労働省作成の平成28年3月16日改正通知を福祉医療機構が掲載。別紙の療養通所介護部分に対象項目を確認。2018年以降の改正や現行本文の証明にはならない。",
+      "retrieval_note": "2026-11-14にWeb抽出表示を閲覧。実行環境の直接バイト取得は503で、ハッシュは取得していない。"
     }
   ],
   "items": [
@@ -356,23 +364,33 @@
     },
     {
       "id": "community-dayservice.notice.015",
-      "status": "PASS",
+      "status": "PARTIAL",
       "path": "第三/二の二/5/(1)",
       "number": "(1)",
       "heading": "指定療養通所介護の基本方針",
       "evidence": [
         {
-          "source_id": "mhlw-historical-full-notice",
-          "locator": "5 指定療養通所介護の事業／(1) 指定療養通所介護の基本方針",
-          "support": "医療・介護双方の必要性が高い対象者と、主治医・訪問看護事業者との密接な連携を示す旧全文を確認。"
-        },
-        {
           "source_id": "mhlw-current-standard",
           "locator": "第39条",
-          "support": "現行基準で基本方針と主治医・訪問看護事業者との連携を交差確認。"
+          "support": "基本方針と主治医・訪問看護事業者等との連携を省令で確認。解釈通知本文の代替ではない。"
+        },
+        {
+          "source_id": "mhlw-r3",
+          "locator": "二の二／5／(1) （略）",
+          "support": "改正資料で当該通知本文は略記されている。"
+        },
+        {
+          "source_id": "city-ome-2024-notice-copy",
+          "locator": "第三／二の二／5／(1)",
+          "support": "自治体掲載の国通知転記に該当箇所があることを確認。国の配布原本や後続改正の確認には代用しない。"
+        },
+        {
+          "source_id": "wam-mhlw-2016-vol524",
+          "locator": "平成28年改正別紙 新欄 第三／二の二／4／(1)、印字64ページ",
+          "support": "2016年改正時の対象本文を確認。後続の改正履歴、現行性及び原バイトの独立照合は未確認。"
         }
       ],
-      "gap_resolution": "改正比較で略記される本文は、historical noticeとcurrent standardを別roleで保持。現行通知本文への合成はしない。"
+      "gap_resolution": "自治体掲載の転記資料は補助参照。厚生労働省が掲載する通知本文と後続改正は未確認であり、省令を通知本文の代替とはしない。"
     },
     {
       "id": "community-dayservice.notice.016",
@@ -431,23 +449,33 @@
     },
     {
       "id": "community-dayservice.notice.019",
-      "status": "PASS",
+      "status": "PARTIAL",
       "path": "第三/二の二/5/(4)/①",
       "number": "①",
       "heading": "内容及び手続の説明及び同意",
       "evidence": [
         {
-          "source_id": "mhlw-historical-full-notice",
-          "locator": "指定療養通所介護／(4) 運営に関する基準／① 内容及び手続の説明及び同意",
-          "support": "運営規程、勤務体制、緊急時対応医療機関との連絡、苦情処理等の重要事項を文書で説明し同意を得る趣旨を確認。"
-        },
-        {
           "source_id": "mhlw-current-standard",
           "locator": "第40条の5",
-          "support": "現行基準で説明・文書交付・同意の義務と重要事項の範囲を交差確認。"
+          "support": "重要事項の文書交付・説明と利用申込者の同意を省令で確認。解釈通知本文の代替ではない。"
+        },
+        {
+          "source_id": "mhlw-r3",
+          "locator": "二の二／5／(4)／①〜③ （略）",
+          "support": "改正資料では該当する通知本文は略記されている。"
+        },
+        {
+          "source_id": "city-ome-2024-notice-copy",
+          "locator": "第三／二の二／5／(4)／①",
+          "support": "自治体掲載の国通知転記に該当箇所があることを確認。国の配布原本や後続改正の確認には代用しない。"
+        },
+        {
+          "source_id": "wam-mhlw-2016-vol524",
+          "locator": "平成28年改正別紙 新欄 第三／二の二／4／(4)／①、印字66〜67ページ",
+          "support": "2016年改正時の対象本文を確認。後続の改正履歴、現行性及び原バイトの独立照合は未確認。"
         }
       ],
-      "gap_resolution": "historical noticeとcurrent standardを別source roleで扱う。"
+      "gap_resolution": "自治体掲載の転記資料は補助参照。厚生労働省が掲載する通知本文と後続改正は未確認であり、省令を通知本文の代替とはしない。"
     },
     {
       "id": "community-dayservice.notice.020",
@@ -471,28 +499,33 @@
     },
     {
       "id": "community-dayservice.notice.021",
-      "status": "PASS",
+      "status": "PARTIAL",
       "path": "第三/二の二/5/(4)/④",
       "number": "④",
       "heading": "療養通所介護計画の作成",
       "evidence": [
         {
           "source_id": "mhlw-r3",
-          "locator": "二の二／5／(4)／④ 療養通所介護計画の作成",
-          "support": "見出しと改正時点の通知断片を直接確認。"
-        },
-        {
-          "source_id": "mhlw-historical-full-notice",
-          "locator": "指定療養通所介護／(4)／④ 療養通所介護計画の作成",
-          "support": "管理者を含む看護師による作成、訪問看護計画との整合等の旧全文を確認。"
+          "locator": "二の二／5／(4)／④ イ〜ニ（略）、ホ、⑤（略）",
+          "support": "④の見出しとホを確認。イ〜ニおよび⑤は略記されている。"
         },
         {
           "source_id": "mhlw-current-standard",
           "locator": "第40条の9",
-          "support": "居宅サービス計画・訪問看護計画との整合、説明・同意・交付を交差確認。"
+          "support": "療養通所介護計画の作成等を省令で確認。省令と解釈通知は別資料である。"
+        },
+        {
+          "source_id": "city-ome-2024-notice-copy",
+          "locator": "第三／二の二／5／(4)／④ イ〜ホ・⑤",
+          "support": "自治体掲載の国通知転記に該当箇所があることを確認。国の配布原本や後続改正の確認には代用しない。"
+        },
+        {
+          "source_id": "wam-mhlw-2016-vol524",
+          "locator": "平成28年改正別紙 新欄 第三／二の二／4／(4)／④・⑤、印字67〜68ページ",
+          "support": "2016年改正時の対象本文を確認。後続の改正履歴、現行性及び原バイトの独立照合は未確認。"
         }
       ],
-      "gap_resolution": "旧全文、R3改正断片、現行基準をsource role別に保持し、単一の現行統合通知本文にはしていない。"
+      "gap_resolution": "自治体掲載の転記資料は補助参照。厚生労働省が掲載する通知本文と後続改正は未確認であり、省令を通知本文の代替とはしない。"
     }
   ],
   "stale_sources": [
@@ -500,10 +533,23 @@
       "source_id": "yokohama-local-crosscheck",
       "availability_state": "STALE_URL_404_2026-10-03",
       "effect_on_verification": "NON_BLOCKING",
-      "reason": "当該補助sourceを必要としたWork Control履歴は保持するが、今回の21項目はMHLW一次資料のみでitem-body supportを固定できた。"
+      "reason": "過去の補助資料は404の履歴として保持。現行性や通知本文を証明しない。"
     }
   ],
-  "unresolved_gaps": [],
+  "unresolved_gaps": [
+    {
+      "id": "community-dayservice.notice.015",
+      "reason": "自治体掲載の転記資料は確認。厚生労働省が掲載する該当解釈通知本文と後続改正は未確認。"
+    },
+    {
+      "id": "community-dayservice.notice.019",
+      "reason": "自治体掲載の転記資料は確認。厚生労働省が掲載する該当解釈通知本文と後続改正は未確認。"
+    },
+    {
+      "id": "community-dayservice.notice.021",
+      "reason": "自治体掲載の転記資料は確認。厚生労働省が掲載する該当解釈通知本文と後続改正は未確認。"
+    }
+  ],
   "integrator_followup": [
     "このauditをservice configのitem_body_verificationへ反映する場合は、currentness・human review・publication gateを同時に昇格させないこと。",
     "共通validator/package.jsonへ組み込む変更は並列競合を避けるため本branchでは行わない。service-specific validator/testを先に取り込むこと。",
@@ -529,16 +575,16 @@
     "worker_head_sha": "7f468ba792457b4527aa35f964053bf7ebab54a8",
     "audit_receipt": "data/verification/standards-interpretation-item-body/community-dayservice.json",
     "verifier": "scripts/validate_community_dayservice_item_body_audit.py",
-    "verification_status": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+    "verification_status": "PARTIAL_WITH_GAPS",
     "counts": {
-      "PASS": 21,
-      "PARTIAL": 0,
+      "PASS": 18,
+      "PARTIAL": 3,
       "GAP": 0,
       "FAIL": 0
     },
     "expected_staging_items_or_tasks": 21,
-    "non_pass_items": 0,
-    "explicit_unresolved_records": 0,
+    "non_pass_items": 3,
+    "explicit_unresolved_records": 3,
     "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
     "currentness_state": "NOT_ESTABLISHED",
     "human_review_state": "NOT_REVIEWED",
@@ -548,5 +594,29 @@
     "omitted_text_inferred": false,
     "service_scope_expanded": false,
     "package_blocker_state": "NOT_APPLICABLE"
+  },
+  "reassessment": {
+    "date": "2026-11-14",
+    "kind": "TARGETED_REASSESSMENT_NOT_A_NEW_INDEPENDENT_AUDIT",
+    "historical_receipt": "data/verification/history/community-dayservice-20261003/item-body.json",
+    "historical_receipt_git_blob_sha": "df329e4828b4d2d697ca2572a27d74688ba21783",
+    "affected_ids": [
+      "community-dayservice.notice.015",
+      "community-dayservice.notice.019",
+      "community-dayservice.notice.021"
+    ],
+    "unaffected_items_basis": "他の18件は従前の項目別根拠を維持し、新たな独立再監査は行っていない。",
+    "current_input_git_blob_shas": {
+      "data/services/community-dayservice/standards-interpretation-scope.json": "367b506bc413186466869a4fca715e2d522446aa",
+      "data/services/community-dayservice/standards-interpretation-staging.json": "7eb674d87e76abd2b3c2851375c7b7976a5628fa",
+      "data/verification/standards-interpretation-source-inventory/community-dayservice.json": "0b239e628365fce4e1518152090eaa151f73be5d"
+    },
+    "source_observations": [
+      "令和3年度改正資料32〜33ページの④はイ〜ニと⑤が略記。",
+      "第39条、第40条の5、第40条の9は省令であり解釈通知ではない。",
+      "青梅市掲載の通知転記資料には(1)、(4)①、④イ〜ホ・⑤が掲載され、沿革は令和6年3月15日改正までを表示。厚労省原本や後続改正の裏付けには用いない。",
+      "厚生労働省の平成28年3月16日改正通知（福祉医療機構掲載、介護保険最新情報Vol.524）に移行時の(1)、(4)①、④・⑤を確認。後の節番号変更と改正履歴は別途追跡する。"
+    ],
+    "retrieval_note": "2026-11-14に厚生労働省PDF・省令、自治体掲載転記、福祉医療機構掲載の2016年厚生労働省通知のWeb抽出表示を閲覧。バイト単位の新規取得記録ではない。"
   }
 }

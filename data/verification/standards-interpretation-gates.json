@@ -10,10 +10,10 @@
         "receipt": "data/verification/standards-interpretation-source-inventory/community-dayservice.json"
       },
       "item_body": {
-        "state": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+        "state": "PARTIAL_WITH_GAPS",
         "counts": {
-          "PASS": 21,
-          "PARTIAL": 0,
+          "PASS": 18,
+          "PARTIAL": 3,
           "GAP": 0,
           "FAIL": 0
         },

@@ -209,9 +209,9 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
         self.assertEqual(homevisit["publication"]["state"], "BLOCKED")
         self.assertEqual(homevisit["route_exposure"]["state"], "BLOCKED")
 
-    def test_item_body_pass_does_not_promote_currentness(self):
+    def test_item_body_gaps_remain_distinct_from_currentness(self):
         cell = self.cell("community-dayservice", "standards_interpretation_notice")
-        self.assertEqual(cell["item_body_verification"]["state"], "PASS")
+        self.assertEqual(cell["item_body_verification"]["state"], "PARTIAL")
         self.assertEqual(cell["currentness"]["state"], "NOT_ESTABLISHED")
 
     def test_direct_qa_mapping_defines_scope_without_enabling_route(self):

@@ -29,7 +29,6 @@ CURRENTNESS = (
 )
 
 REQUIRED_CATEGORIES = {
-    "HISTORICAL_FULL_NOTICE",
     "AMENDMENT_COMPARISON",
     "FINAL_R6_COMPARISON",
     "OFFICIAL_DISCOVERY_INDEX",
@@ -73,16 +72,16 @@ def validate() -> list[str]:
         errors.append("staging publication was promoted")
 
     layer = service.get("ingestion_layers", {}).get("standards_interpretation", {})
-    if layer.get("item_body_verification") != "PASS_CONTENT_EVIDENCE_MATCH_ONLY":
+    if layer.get("item_body_verification") != "PARTIAL_WITH_GAPS":
         errors.append("item-body verification state drifted")
     if layer.get("item_body_verification_counts") != {
-        "PASS": EXPECTED_ITEMS,
-        "PARTIAL": 0,
+        "PASS": 18,
+        "PARTIAL": 3,
         "GAP": 0,
         "FAIL": 0,
     }:
         errors.append("item-body verification counts drifted")
-    if layer.get("status") != "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING":
+    if layer.get("status") != "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN":
         errors.append("service currentness boundary was promoted")
 
     if inventory.get("audit_result") != "PASS_BOUNDED_SCOPE_ONLY":
@@ -90,9 +89,9 @@ def validate() -> list[str]:
     if inventory.get("safety", {}).get("currentness_promoted") is not False:
         errors.append("source inventory unexpectedly promotes currentness")
 
-    if item_body.get("audit_result") != "PASS_WITH_ITEM_LEVEL_EVIDENCE":
-        errors.append("item-body receipt is not PASS_WITH_ITEM_LEVEL_EVIDENCE")
-    if item_body.get("counts") != {"PASS": 21, "PARTIAL": 0, "GAP": 0, "FAIL": 0}:
+    if item_body.get("audit_result") != "PARTIAL_WITH_GAPS":
+        errors.append("item-body receipt is not PARTIAL_WITH_GAPS")
+    if item_body.get("counts") != {"PASS": 18, "PARTIAL": 3, "GAP": 0, "FAIL": 0}:
         errors.append("item-body receipt counts changed")
     if "currentness" not in item_body.get("scope", {}).get("does_not_verify", []):
         errors.append("item-body receipt no longer excludes currentness")
@@ -100,8 +99,10 @@ def validate() -> list[str]:
         errors.append("item-body receipt unexpectedly promotes currentness")
 
     precondition = receipt.get("item_body_precondition", {})
-    if precondition.get("result") != "PASS_WITH_ITEM_LEVEL_EVIDENCE":
+    if precondition.get("result") != "PARTIAL_WITH_GAPS":
         errors.append("currentness receipt item-body precondition mismatch")
+    if precondition.get("counts") != item_body.get("counts"):
+        errors.append("currentness receipt item-body counts mismatch")
     if precondition.get("proves_currentness") is not False:
         errors.append("item-body precondition must not prove currentness")
 
@@ -119,6 +120,8 @@ def validate() -> list[str]:
             errors.append(f"{row.get('id')}: source must not be classified as integrated current text")
         if not row.get("limitation"):
             errors.append(f"{row.get('id')}: source limitation missing")
+        if row.get("url") == "https://www.mhlw.go.jp/content/12300000/001225905.pdf":
+            errors.append("incorrect notice source remains active")
 
     by_id = {row["id"]: row for row in sources if row.get("id")}
     r6 = by_id.get("mhlw-r6-final-comparison", {})
@@ -146,6 +149,8 @@ def validate() -> list[str]:
         errors.append("post-R6 negative-search limitation missing")
 
     coverage = receipt.get("amendment_coverage", {})
+    if coverage.get("historical_full_notice_evidence_available") is not False:
+        errors.append("historical notice availability overclaimed")
     for key in (
         "all_intervening_amendments_closed",
         "post_r6_amendment_chain_closed",
@@ -172,8 +177,16 @@ def validate() -> list[str]:
     if conclusion.get("pass") is not False:
         errors.append("currentness must not PASS")
 
-    provenance = receipt.get("verification_provenance", {})
-    pinned = provenance.get("repository_inputs", {})
+    reassessment = receipt.get("reassessment", {})
+    history_path = ROOT / "data/verification/history/community-dayservice-20261003/currentness.json"
+    if reassessment.get("kind") != "TARGETED_REASSESSMENT_NOT_A_NEW_CURRENTNESS_AUDIT":
+        errors.append("currentness reassessment missing")
+    if reassessment.get("historical_receipt") != str(history_path.relative_to(ROOT)) or reassessment.get("historical_receipt_git_blob_sha") != git_blob_sha(history_path):
+        errors.append("historical currentness receipt changed")
+    historical = load(history_path)
+    if receipt.get("verification_provenance") != historical.get("verification_provenance"):
+        errors.append("historical currentness provenance was rewritten")
+    pinned = reassessment.get("current_input_git_blob_shas", {})
     current_paths = {
         str(SCOPE.relative_to(ROOT)): SCOPE,
         str(STAGING.relative_to(ROOT)): STAGING,
@@ -188,7 +201,6 @@ def validate() -> list[str]:
     if safety.get("verification_scope") != "CURRENTNESS_ONLY":
         errors.append("currentness-only safety scope missing")
     for key in (
-        "item_body_result_changed",
         "human_review_promoted",
         "publication_promoted",
         "public_route_enabled",
@@ -198,6 +210,8 @@ def validate() -> list[str]:
     ):
         if safety.get(key) is not False:
             errors.append(f"safety flag must remain false: {key}")
+    if safety.get("item_body_result_changed") is not True:
+        errors.append("item-body reassessment not recorded")
 
     gate = service.get("publication_gate", {})
     for key in (
