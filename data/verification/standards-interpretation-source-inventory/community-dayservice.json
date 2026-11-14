@@ -16,11 +16,11 @@
     "expected_staging_items_or_tasks": 21,
     "observed_staging_items_or_tasks": 21,
     "referenced_sources": 8,
-    "manifest_required_sources": 9,
-    "inspected_sources": 10,
-    "sources_fetchable": 9,
-    "required_sources": 9,
-    "required_sources_fetchable": 9,
+    "manifest_required_sources": 8,
+    "inspected_sources": 9,
+    "sources_fetchable": 8,
+    "required_sources": 8,
+    "required_sources_fetchable": 8,
     "supplemental_sources_unavailable": 1,
     "sources_with_service_anchor": 8
   },
@@ -49,16 +49,6 @@
       "sha256": "55269e60bc3e1e2822025055f85422365f7049f3af01fc18551f77c19a15c4f4",
       "extracted_chars": 71590,
       "service_anchor_found": true,
-      "required_for_source_inventory": true
-    },
-    {
-      "url": "https://www.mhlw.go.jp/content/12300000/001225905.pdf",
-      "fetch": "PASS",
-      "content_type": "application/pdf",
-      "bytes": 22608427,
-      "sha256": "9adea2b845ada8c6d71e026c257b20d8aa68e77468d5ceedab3d345d2ca1b9c9",
-      "extracted_chars": 503,
-      "service_anchor_found": false,
       "required_for_source_inventory": true
     },
     {
@@ -135,5 +125,18 @@
     "data/services/community-dayservice/standards-interpretation-staging.json": "edcd22d08d463fbcbaaad8f5fdd316f8c0c0736c",
     "scripts/verify_standards_interpretation_sources_independent.py": "9f65e258e64bd5d719f4e586e06430728aa5e196"
   },
-  "conclusion": "All manifest-required official sources, plus referenced supplemental sources, were independently re-fetched and text-extracted, and the configured service anchor was observed in the bounded source family. This receipt does not prove item-body equality, currentness, human review, omitted-text completeness, or publication readiness."
+  "conclusion": "The remaining required URLs were retrieved in the historical run; this derived subset does not constitute a fresh fetch or establish current availability, notice text, currentness, human review, or publication readiness.",
+  "reassessment": {
+    "date": "2026-11-14",
+    "kind": "HISTORICAL_SOURCE_INVENTORY_SUBSET_NOT_NEW_FETCH",
+    "historical_receipt": "data/verification/history/community-dayservice-20261003/source-inventory.json",
+    "historical_receipt_git_blob_sha": "024d8513c7b37a75c1a7c5ad12bba59ae385e221",
+    "removed_url": "https://www.mhlw.go.jp/content/12300000/001225905.pdf",
+    "current_input_git_blob_shas": {
+      "data/services/community-dayservice/standards-interpretation-scope.json": "367b506bc413186466869a4fca715e2d522446aa",
+      "data/services/community-dayservice/standards-interpretation-staging.json": "7eb674d87e76abd2b3c2851375c7b7976a5628fa",
+      "scripts/verify_standards_interpretation_sources_independent.py": "9f65e258e64bd5d719f4e586e06430728aa5e196"
+    },
+    "limitation": "Earlier fetch results were retained without presenting them as a new retrieval. No source-content or currentness conclusion follows."
+  }
 }

@@ -7,6 +7,7 @@ independence of item-body, currentness, human-review, publication, and routing.
 """
 from __future__ import annotations
 
+import importlib.util
 import json
 from pathlib import Path
 
@@ -150,6 +151,15 @@ def validate() -> list[str]:
         errors.append("preventive-support: residual item-body gaps remain after evidence closure")
     if preventive["package"].get("blocker_task_id") != "KR2-10-E006":
         errors.append("preventive-support: KR2-10-E006 blocker not preserved")
+
+    path = ROOT / "scripts/validate_community_dayservice_currentness.py"
+    spec = importlib.util.spec_from_file_location("community_currentness_validator", path)
+    if spec is None or spec.loader is None:
+        errors.append("community-dayservice currentness validator unavailable")
+    else:
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        errors.extend(module.validate())
 
     return errors
 

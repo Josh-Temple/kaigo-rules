@@ -17,9 +17,9 @@ class CommunityDayserviceCurrentnessTest(unittest.TestCase):
     def test_fail_closed_currentness_contract(self):
         self.assertEqual(validator.validate(), [])
 
-    def test_item_body_pass_does_not_promote_currentness(self):
+    def test_partial_item_body_does_not_promote_currentness(self):
         receipt = validator.load(validator.CURRENTNESS)
-        self.assertEqual(receipt["item_body_precondition"]["counts"]["PASS"], 21)
+        self.assertEqual(receipt["item_body_precondition"]["counts"], {"PASS": 18, "PARTIAL": 3, "GAP": 0, "FAIL": 0})
         self.assertFalse(receipt["item_body_precondition"]["proves_currentness"])
         self.assertEqual(receipt["conclusion"]["currentness_state"], "NOT_ESTABLISHED")
         self.assertEqual(receipt["conclusion"]["decision"], "HOLD")

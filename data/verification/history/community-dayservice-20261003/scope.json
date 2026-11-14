@@ -1,0 +1,117 @@
+{
+  "format_version": 1,
+  "service_id": "community-dayservice",
+  "layer": "standards_interpretation",
+  "source_family": "community_based_services_standards_interpretation",
+  "document_title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について",
+  "source_mode": "OFFICIAL_AMENDMENT_PDF_WITH_OMISSIONS",
+  "source_urls": [
+    "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+    "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+    "https://www.mhlw.go.jp/stf/newpage_38790.html"
+  ],
+  "source_locator": "第三 地域密着型サービス／二の二 地域密着型通所",
+  "work_control": {
+    "structure_index": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR-06-B2_v1.md",
+    "detail_task_range": "KR2-06-B001..KR2-06-B021",
+    "expected_principal_items": 21,
+    "rollup": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR2-06-E002_v1.md"
+  },
+  "content_state": "STAGING_COMPLETE_SOURCE_SPECIFIC_FRAGMENTS",
+  "currentness_state": "NOT_ESTABLISHED",
+  "human_review_state": "NOT_REVIEWED",
+  "omissions_policy": "改正資料上の「略」や未明示見出しを推測補完しない。旧版資料は別sourceとして保持する。",
+  "publication": {
+    "allowed": false,
+    "reason": "Repository本文adapterと独立source検証が未実施"
+  },
+  "source_manifest": [
+    {
+      "id": "r6-final-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+      "role": "FINAL_R6_AMENDMENT_COMPARISON",
+      "status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+      "required_for_source_inventory": true
+    },
+    {
+      "id": "r6-earlier-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+      "role": "EARLIER_R6_AMENDMENT_MATERIAL",
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+      "required_for_source_inventory": true
+    },
+    {
+      "id": "r6-amendment-page",
+      "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "role": "OFFICIAL_DISCOVERY_PAGE",
+      "status": "OFFICIAL_INDEX",
+      "required_for_source_inventory": true
+    },
+    {
+      "id": "work-control-source-4",
+      "url": "https://www.mhlw.go.jp/content/12404000/001623024.pdf",
+      "role": "WORK_CONTROL_PRIMARY_SOURCE_REFERENCE",
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+      "required_for_source_inventory": true
+    },
+    {
+      "id": "work-control-source-5",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+      "role": "WORK_CONTROL_PRIMARY_SOURCE_REFERENCE",
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+      "required_for_source_inventory": true
+    },
+    {
+      "id": "work-control-source-6",
+      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/mittyaku-dei.files/0182_20250225.pdf",
+      "role": "OFFICIAL_LOCAL_CROSSCHECK",
+      "status": "OFFICIAL_LOCAL_EVIDENCE",
+      "required_for_source_inventory": false,
+      "availability_state": "STALE_URL_404_2026-10-03",
+      "note": "Work Controlで使用した公式自治体クロスチェック資料。現在URLは404のため、MHLW一次資料の独立source inventory PASS要件には含めない。"
+    },
+    {
+      "id": "work-control-source-7",
+      "url": "https://www.mhlw.go.jp/content/12301000/000750727.pdf",
+      "role": "WORK_CONTROL_PRIMARY_SOURCE_REFERENCE",
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+      "required_for_source_inventory": true
+    },
+    {
+      "id": "work-control-source-8",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199106.pdf",
+      "role": "WORK_CONTROL_PRIMARY_SOURCE_REFERENCE",
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+      "required_for_source_inventory": true
+    },
+    {
+      "id": "work-control-source-9",
+      "url": "https://www.mhlw.go.jp/content/000763179.pdf",
+      "role": "WORK_CONTROL_PRIMARY_SOURCE_REFERENCE",
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+      "required_for_source_inventory": true
+    },
+    {
+      "id": "work-control-source-10",
+      "url": "https://www.mhlw.go.jp/content/12300000/001225905.pdf",
+      "role": "WORK_CONTROL_PRIMARY_SOURCE_REFERENCE",
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+      "required_for_source_inventory": true
+    }
+  ],
+  "source_assurance": {
+    "final_amendment_evidence_identified": true,
+    "integrated_current_text_established": false,
+    "omitted_text_reconstruction_allowed": false,
+    "publication_allowed": false
+  },
+  "independent_source_inventory": {
+    "check_level": "SOURCE_AVAILABILITY_AND_SERVICE_ANCHOR_ONLY",
+    "service_anchor": "地域密着型通所介護",
+    "require_anchor_in_at_least_one_source": true,
+    "proves_item_body_match": false,
+    "proves_currentness": false,
+    "permits_publication": false,
+    "require_all_required_sources_fetchable": true
+  }
+}

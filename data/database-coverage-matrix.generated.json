@@ -5121,13 +5121,13 @@
           "ingestion": {
             "state": "INGESTED",
             "raw_status": [
-              "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING"
+              "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN"
             ]
           },
           "item_body_verification": {
-            "state": "PASS",
+            "state": "PARTIAL",
             "raw_status": [
-              "PASS_CONTENT_EVIDENCE_MATCH_ONLY"
+              "PARTIAL_WITH_GAPS"
             ],
             "evidence": [
               "data/verification/standards-interpretation-item-body/community-dayservice.json"
@@ -23360,7 +23360,8 @@
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 26,
-          "PASS": 13
+          "PARTIAL": 1,
+          "PASS": 12
         },
         "currentness": {
           "BLOCKED": 1,
@@ -24943,6 +24944,11 @@
       {
         "service_id": "shortstay-life",
         "source_family": "other_national_manuals_forms",
+        "state": "PARTIAL"
+      },
+      {
+        "service_id": "community-dayservice",
+        "source_family": "standards_interpretation_notice",
         "state": "PARTIAL"
       },
       {

@@ -4,7 +4,7 @@
   "role": "Publication Runtime Binding / Progressive Release Worker",
   "source_readiness": {
     "path": "data/publication-readiness.generated.json",
-    "git_blob_sha": "3b7bcad9cea935c14c05aae82cf1de4fc713e64d",
+    "git_blob_sha": "bf041782a5311ac064aae7e08613052553dda566",
     "expected_ready_candidate_count": 95
   },
   "source_currentness": {
@@ -1058,7 +1058,7 @@
       "BLOCKED_CURRENTNESS": 248,
       "BLOCKED_HUMAN_REVIEW": 248,
       "BLOCKED_INGESTION": 74,
-      "BLOCKED_ITEM_BODY": 138,
+      "BLOCKED_ITEM_BODY": 139,
       "BLOCKED_RELATION": 248
     }
   },

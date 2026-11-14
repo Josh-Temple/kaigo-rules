@@ -1,6 +1,9 @@
 import importlib.util
+import json
+import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 VALIDATOR_PATH = ROOT / "scripts/validate_community_dayservice_item_body_audit.py"
@@ -21,11 +24,40 @@ class CommunityDayserviceItemBodyAuditTest(unittest.TestCase):
         audit = validator.load(validator.AUDIT)
         self.assertEqual(
             audit["counts"],
-            {"PASS": 21, "PARTIAL": 0, "GAP": 0, "FAIL": 0},
+            {"PASS": 18, "PARTIAL": 3, "GAP": 0, "FAIL": 0},
         )
         self.assertFalse(audit["safety"]["currentness_promoted"])
         self.assertFalse(audit["safety"]["omitted_text_reconstructed"])
         self.assertFalse(audit["safety"]["integrated_current_text_claimed"])
+
+    def test_an_affected_item_cannot_be_promoted_by_changing_its_status(self):
+        audit = validator.load(validator.AUDIT)
+        row = next(item for item in audit["items"] if item["id"] == "community-dayservice.notice.019")
+        row["status"] = "PASS"
+        with tempfile.TemporaryDirectory() as directory:
+            altered = Path(directory) / "audit.json"
+            altered.write_text(json.dumps(audit, ensure_ascii=False), encoding="utf-8")
+            with patch.object(validator, "AUDIT", altered):
+                self.assertTrue(any("cannot be promoted" in error for error in validator.validate()))
+
+    def test_wrong_notice_source_cannot_be_reintroduced(self):
+        audit = validator.load(validator.AUDIT)
+        audit["sources"].append({"id": "wrong", "url": "https://www.mhlw.go.jp/content/12300000/001225905.pdf"})
+        with tempfile.TemporaryDirectory() as directory:
+            altered = Path(directory) / "audit.json"
+            altered.write_text(json.dumps(audit, ensure_ascii=False), encoding="utf-8")
+            with patch.object(validator, "AUDIT", altered):
+                self.assertTrue(any("incorrect historical notice remains" in error for error in validator.validate()))
+
+    def test_municipal_copy_cannot_be_relabelled_as_ministry_original(self):
+        audit = validator.load(validator.AUDIT)
+        source = next(item for item in audit["sources"] if item["id"] == "city-ome-2024-notice-copy")
+        source["authority"] = "MHLW_PRIMARY"
+        with tempfile.TemporaryDirectory() as directory:
+            altered = Path(directory) / "audit.json"
+            altered.write_text(json.dumps(audit, ensure_ascii=False), encoding="utf-8")
+            with patch.object(validator, "AUDIT", altered):
+                self.assertTrue(any("municipal copy must not be presented" in error for error in validator.validate()))
 
     def test_stale_local_source_is_non_blocking(self):
         audit = validator.load(validator.AUDIT)

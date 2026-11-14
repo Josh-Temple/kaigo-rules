@@ -8,8 +8,8 @@ CASES = {
     "community-dayservice": (
         "community_based_services_standards_interpretation",
         21,
-        "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING",
-        "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+        "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN",
+        "PARTIAL_WITH_GAPS",
     ),
     "regular-round": (
         "community_based_services_standards_interpretation",
