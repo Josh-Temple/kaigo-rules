@@ -95,6 +95,15 @@ MISLINKED_COMMUNITY_NOTICES = {
     'community-dayservice.notice.015': '指定療養通所介護の基本方針',
     'community-dayservice.notice.019': '内容及び手続の説明及び同意',
 }
+COMMUNITY_HISTORICAL_NOTICES = {
+    **MISLINKED_COMMUNITY_NOTICES,
+    'community-dayservice.notice.021': '療養通所介護計画の作成',
+}
+COMMUNITY_HISTORICAL_PDF = (
+    'https://www2.wam.go.jp/gyoseiShiryou-files/resources/'
+    'aaff6e9a-72ef-4fd8-b8ae-207ee20f0076/'
+    '%E4%BB%8B%E8%AD%B7%E4%BF%9D%E9%99%BA%E6%9C%80%E6%96%B0%E6%83%85%E5%A0%B1Vol.524.pdf'
+)
 COMMUNITY_R6_REDLINE = 'https://www.mhlw.go.jp/content/12300000/001227939.pdf'
 COMMUNITY_UNVERIFIED_CLAIM = '厚生労働省の過去の解釈通知全文で見出しと説明を確認。'
 COMMUNITY_WRONG_SOURCE = 'https://www.mhlw.go.jp/content/12300000/001225905.pdf'
@@ -479,8 +488,9 @@ def label_partial_notice_sources(root: Path, changes: dict) -> int:
                     raise RuntimeError(f'Unmatched community notice: {identifier}')
                 target_url = COMMUNITY_R6_REDLINE
                 label = '令和6年度の改正資料（該当項目は省略）'
-                warning = ('この項目の原典の該当箇所は未確認です。リンク先の改正資料では該当箇所が省略されています。'
-                           '適用を判断する前に正式な通知、後の改正及び指定権者の基準を確認してください。')
+                warning = ('令和6年度の改正資料では該当箇所が省略されています。平成28年の通知も参照できますが、'
+                           'その後の改正を反映した現行の通知全文は確認中です。'
+                           '適用を判断する前に最新の通知と指定権者の基準を確認してください。')
             elif source_type == 'draft':
                 warning = ('リンク先は改正案であり、施行された内容とは限りません。'
                            '正式な通知と後の改正、適用時点を確認してください。')
@@ -490,8 +500,21 @@ def label_partial_notice_sources(root: Path, changes: dict) -> int:
             else:
                 warning = ('リンク先には後の改正が反映されていない場合があります。掲載本文とリンク先の版・範囲、'
                            '適用時点を確認してください。')
+            if identifier in COMMUNITY_HISTORICAL_NOTICES:
+                if (row.get('document') != 'notice-summary-community-dayservice' or
+                        row.get('title') != COMMUNITY_HISTORICAL_NOTICES[identifier] or
+                        entry.get('services') != ['community-dayservice']):
+                    raise RuntimeError(f'Unmatched community historical notice: {identifier}')
+                if identifier.endswith('.021'):
+                    warning = ('令和3年度の改正資料では計画作成に関する本文の一部が省略されています。'
+                               '平成28年の通知も参照できますが、その後の改正を反映した現行の通知全文は確認中です。'
+                               '適用を判断する前に最新の通知と指定権者の基準を確認してください。')
             replacement = (f'<p><a href="{html.escape(target_url, quote=True)}" rel="noopener noreferrer">'
                            f'{html.escape(label)}</a></p>')
+            if identifier in COMMUNITY_HISTORICAL_NOTICES:
+                replacement += (f'<p><a href="{html.escape(COMMUNITY_HISTORICAL_PDF, quote=True)}" '
+                                'rel="noopener noreferrer">平成28年の改正通知 '
+                                '（厚生労働省・福祉医療機構掲載、資料内の64〜68ページ）</a></p>')
             caution = '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
             if content.count(caution) != 1:
                 raise RuntimeError(f'Unexpected notice caution layout: {identifier}')

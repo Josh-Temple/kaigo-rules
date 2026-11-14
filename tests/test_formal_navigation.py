@@ -395,6 +395,7 @@ class FeeNavigationTest(unittest.TestCase):
         items = {
             'community-dayservice.notice.015': '指定療養通所介護の基本方針',
             'community-dayservice.notice.019': '内容及び手続の説明及び同意',
+            'community-dayservice.notice.021': '療養通所介護計画の作成',
         }
         records, index = [], {}
         for identifier, title in items.items():
@@ -404,11 +405,12 @@ class FeeNavigationTest(unittest.TestCase):
                             'document': 'notice-summary-community-dayservice', 'category': 'notices'})
             index[identifier] = {'document': 'notice-summary-community-dayservice', 'category': 'notices',
                                  'services': ['community-dayservice']}
+            url = ('https://www.mhlw.go.jp/content/12301000/000750727.pdf'
+                   if identifier.endswith('.021') else 'https://www.mhlw.go.jp/content/12300000/001225905.pdf')
             (folder / name).write_text('<article>'
                 '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
                 '<div class="dayservice-original" style="white-space:pre-wrap">' + claim + '掲載内容</div>'
-                '<p><a href="https://www.mhlw.go.jp/content/12300000/001225905.pdf" '
-                'rel="noopener noreferrer">公式原典を確認</a></p></article>')
+                f'<p><a href="{url}" rel="noopener noreferrer">公式原典を確認</a></p></article>')
         (self.root / 'legislation/record-index.json').write_text(json.dumps(index))
         dataset = self.root / 'legislation/records.json'
         dataset.write_text(json.dumps({'records': records}, ensure_ascii=False))
@@ -419,7 +421,7 @@ class FeeNavigationTest(unittest.TestCase):
             '<a href="https://www.mhlw.go.jp/content/12300000/001225905.pdf">公式原典を開く ↗</a>'
             f'<a href="../../legislation/record/{filename}">この項目へのリンク</a>')
         result = rewrite(self.root)
-        self.assertEqual(result['partial_sources_labeled'], 2)
+        self.assertEqual(result['partial_sources_labeled'], 3)
         self.assertEqual(result['additional_changes']['community_handbook_sources'], 1)
         self.assertNotIn('過去の解釈通知全文で見出しと説明を確認', dataset.read_text())
         self.assertNotIn('001225905.pdf', handbook.read_text())
@@ -427,11 +429,18 @@ class FeeNavigationTest(unittest.TestCase):
         self.assertIn('原典の確認状況を見る', handbook.read_text())
         for identifier in items:
             page = (folder / (hashlib.sha256(identifier.encode()).hexdigest() + '.html')).read_text()
-            self.assertIn('001227939.pdf', page)
+            if not identifier.endswith('.021'):
+                self.assertIn('001227939.pdf', page)
+            else:
+                self.assertIn('000750727.pdf', page)
             self.assertNotIn('001225905.pdf', page)
             self.assertNotIn('過去の解釈通知全文で見出しと説明を確認', page)
-            self.assertIn('該当箇所が省略されています', page)
-            self.assertLess(page.index('該当箇所が省略されています'), page.index('掲載内容'))
+            self.assertIn('省略されています', page)
+            self.assertIn('平成28年の改正通知', page)
+            self.assertIn('福祉医療機構掲載', page)
+            self.assertIn('現行の通知全文は確認中', page)
+            self.assertIn('www2.wam.go.jp', page)
+            self.assertLess(page.index('省略されています'), page.index('掲載内容'))
 
     def test_mislinked_notice_with_different_service_stops_before_any_write(self):
         folder = self.root / 'legislation/record'
