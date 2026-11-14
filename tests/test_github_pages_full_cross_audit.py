@@ -4,10 +4,13 @@ Validates the 14 service staffing pending notice, primary source jump link,
 print CSS rules, and link localization coverage.
 """
 import unittest
+import hashlib
+import os
 from pathlib import Path
 import tempfile
 import json
 import html
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -54,7 +57,13 @@ class FullCrossAuditTest(unittest.TestCase):
     def test_link_destination_handles_legislation_record_and_browse(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            legislation.build(root)
+            folder = root / "legislation" / "record"
+            folder.mkdir(parents=True)
+            identifier = "ordinance37.article.93"
+            (folder / (hashlib.sha256(identifier.encode()).hexdigest() + ".html")).write_text("fixture", encoding="utf-8")
+            (root / "legislation" / "record-index.json").write_text(json.dumps({identifier: {
+                "document": "fixture", "category": "standards", "services": ["dayservice"]}}), encoding="utf-8")
+            (root / "legislation" / "index.html").write_text("fixture", encoding="utf-8")
             
             # Record destination
             dest_rec = navigation.destination(
@@ -117,11 +126,13 @@ class FullCrossAuditTest(unittest.TestCase):
             # Verify that build_full_pilot checks file existence and non-zero size
             self.assertTrue(empty_file.stat().st_size == 0)
 
+    @patch.dict(os.environ, {"CI": "false", "GITHUB_ACTIONS": "false"})
     def test_private_builder_rejects_repo_root_output(self):
         with self.assertRaises(RuntimeError) as ctx:
             full_pilot.validate_safety_and_dest(ROOT)
         self.assertIn("inside the repository", str(ctx.exception))
 
+    @patch.dict(os.environ, {"CI": "false", "GITHUB_ACTIONS": "false"})
     def test_private_builder_rejects_public_directory_output(self):
         with tempfile.TemporaryDirectory() as tmp:
             pub = Path(tmp) / "public"
@@ -130,6 +141,7 @@ class FullCrossAuditTest(unittest.TestCase):
                 full_pilot.validate_safety_and_dest(pub)
             self.assertIn("public directory candidate", str(ctx.exception))
 
+    @patch.dict(os.environ, {"CI": "false", "GITHUB_ACTIONS": "false"})
     def test_private_builder_rejects_dist_directory_output(self):
         with tempfile.TemporaryDirectory() as tmp:
             dist = Path(tmp) / "dist"
@@ -138,6 +150,7 @@ class FullCrossAuditTest(unittest.TestCase):
                 full_pilot.validate_safety_and_dest(dist)
             self.assertIn("public directory candidate", str(ctx.exception))
 
+    @patch.dict(os.environ, {"CI": "false", "GITHUB_ACTIONS": "false"})
     def test_private_builder_rejects_next_directory_output(self):
         with tempfile.TemporaryDirectory() as tmp:
             next_dir = Path(tmp) / ".next"
@@ -146,6 +159,7 @@ class FullCrossAuditTest(unittest.TestCase):
                 full_pilot.validate_safety_and_dest(next_dir)
             self.assertIn("public directory candidate", str(ctx.exception))
 
+    @patch.dict(os.environ, {"CI": "false", "GITHUB_ACTIONS": "false"})
     def test_private_builder_rejects_symlink_output(self):
         with tempfile.TemporaryDirectory() as tmp:
             real_dir = Path(tmp) / "real_dir"
@@ -156,20 +170,20 @@ class FullCrossAuditTest(unittest.TestCase):
                 full_pilot.validate_safety_and_dest(sym_dir)
             self.assertIn("symbolic link", str(ctx.exception))
 
+    @patch.dict(os.environ, {"CI": "false", "GITHUB_ACTIONS": "false"})
     def test_private_builder_atomic_failure_leaves_target_clean(self):
-        from unittest.mock import patch
         with tempfile.TemporaryDirectory() as tmp:
-            target = Path(tmp) / "atomic_target"
-            with patch("subprocess.run") as mock_run:
-                mock_run.side_effect = [
-                    type("Proc", (), {"stdout": "v22.11.0\n", "returncode": 0})(),
-                    type("Proc", (), {"stdout": "", "stderr": "Injected Node builder crash for testing", "returncode": 1})()
-                ]
-                with self.assertRaises(RuntimeError):
+            root = Path(tmp)
+            fake_repo = root / "repo"
+            (fake_repo / "data").mkdir(parents=True)
+            (fake_repo / "data/handbook.generated.json").write_text("{broken", encoding="utf-8")
+            (fake_repo / "data/legal-browser.generated.json").write_text("{}", encoding="utf-8")
+            target = root / "atomic_target"
+            with patch.object(full_pilot, "ROOT", fake_repo), patch.object(full_pilot, "resolve_node_binary", return_value="node"):
+                with self.assertRaises(json.JSONDecodeError):
                     full_pilot.build_full_pilot(target)
-            # Target must either not exist or contain 0 partial files
-            if target.exists():
-                self.assertEqual(len(list(target.rglob("*"))), 0)
+            self.assertFalse(target.exists())
+            self.assertEqual(list(root.glob("kaigo_pilot_stage_*")), [])
 
     def test_private_builder_node_resolution_portability(self):
         node_bin = full_pilot.resolve_node_binary()
@@ -204,26 +218,26 @@ class FullCrossAuditTest(unittest.TestCase):
             (p / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
 
             # Clean verification passes
-            res = full_pilot.verify_manifest(p)
+            res = full_pilot.verify_manifest(p, require_source_binding=False)
             self.assertTrue(res["ok"])
 
             # Tampering size is detected
             (p / "doc.html").write_text("hello world", encoding="utf-8")
             with self.assertRaises(RuntimeError) as ctx:
-                full_pilot.verify_manifest(p)
+                full_pilot.verify_manifest(p, require_source_binding=False)
             self.assertIn("size mismatch", str(ctx.exception))
 
             # Tampering content keeping size is detected
             (p / "doc.html").write_text("hellx", encoding="utf-8")
             with self.assertRaises(RuntimeError) as ctx:
-                full_pilot.verify_manifest(p)
+                full_pilot.verify_manifest(p, require_source_binding=False)
             self.assertIn("SHA-256 mismatch", str(ctx.exception))
 
             # Extra file is detected
             (p / "doc.html").write_text("hello", encoding="utf-8")
             (p / "extra.html").write_text("evil", encoding="utf-8")
             with self.assertRaises(RuntimeError) as ctx:
-                full_pilot.verify_manifest(p)
+                full_pilot.verify_manifest(p, require_source_binding=False)
             self.assertIn("Extraneous", str(ctx.exception))
 
 

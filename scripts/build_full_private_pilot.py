@@ -94,11 +94,12 @@ def resolve_node_binary(explicit_path: str | None = None) -> str:
     except Exception as e:
         raise RuntimeError(f"Node.js binary '{node_bin}' failed to execute: {e}")
 
-    m = re.match(r"^v(\d+)\.", version_str)
-    if m:
-        major = int(m.group(1))
-        if major < 20:
-            raise RuntimeError(f"Node.js version {version_str} is unsupported. Node.js >= v20.0.0 is required.")
+    m = re.fullmatch(r"v(\d+)\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?", version_str)
+    if not m:
+        raise RuntimeError(f"Cannot determine Node.js version from {version_str!r}")
+    major = int(m.group(1))
+    if major < 20:
+        raise RuntimeError(f"Node.js version {version_str} is unsupported. Node.js >= v20.0.0 is required.")
 
     return node_bin
 
@@ -127,25 +128,63 @@ def get_git_info() -> tuple[str, str]:
         return "UNKNOWN_COMMIT", "UNKNOWN_TREE"
 
 
-def verify_manifest(target_dir: Path) -> dict:
-    """Verify integrity of a generated pilot directory against its manifest."""
+def verify_manifest(target_dir: Path, *, expected_manifest_sha256: str | None = None,
+                    require_source_binding: bool = True) -> dict:
+    """Check output and selected source bindings; digest trust depends on the caller's independent record."""
+    if target_dir.is_symlink() or not target_dir.is_dir():
+        raise RuntimeError(f"Invalid or symbolic link destination: {target_dir}")
     manifest_path = target_dir / "manifest.json"
-    if not manifest_path.is_file():
+    if manifest_path.is_symlink() or not manifest_path.is_file():
         raise RuntimeError(f"Manifest not found in destination: {manifest_path}")
+
+    manifest_hash = compute_file_sha256(manifest_path)
+    if expected_manifest_sha256 is not None:
+        if not re.fullmatch(r"[0-9a-f]{64}", expected_manifest_sha256):
+            raise RuntimeError("Expected manifest SHA-256 must be 64 lowercase hexadecimal characters")
+        if manifest_hash != expected_manifest_sha256:
+            raise RuntimeError("Manifest SHA-256 does not match the independently supplied digest")
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("status") != "COMPLETE":
         raise RuntimeError(f"Manifest status is not COMPLETE: {manifest.get('status')}")
 
     files_spec = manifest.get("files", {})
-    if not files_spec:
+    if not isinstance(files_spec, dict) or not files_spec:
         raise RuntimeError("Manifest does not contain any file specifications")
+
+    if require_source_binding:
+        master_files = {
+            "handbook.generated.json": ROOT / "data/handbook.generated.json",
+            "legal-browser.generated.json": ROOT / "data/legal-browser.generated.json",
+        }
+        builders = {name: ROOT / "scripts" / name for name in (
+            "build_full_private_pilot.py", "build_github_pages_legislation_pilot.py",
+            "localize_github_pages_links_pilot.py", "build_github_pages_handbook_pilot.py",
+        )}
+        for field, expected_files in (("master_data_hashes", master_files), ("builder_hashes", builders)):
+            recorded = manifest.get(field)
+            if not isinstance(recorded, dict) or set(recorded) != set(expected_files):
+                raise RuntimeError(f"Manifest {field} is missing or incomplete")
+            for name, path in expected_files.items():
+                if not path.is_file() or recorded[name] != compute_file_sha256(path):
+                    raise RuntimeError(f"Manifest {field} mismatch: {name}")
+        current_commit, current_tree = get_git_info()
+        if (current_commit == "UNKNOWN_COMMIT" or current_tree == "UNKNOWN_TREE" or
+                manifest.get("git_commit") != current_commit or manifest.get("git_tree") != current_tree):
+            raise RuntimeError("Manifest commit or tree does not match the current checkout")
 
     # 1. Check all manifest files exist and match hashes and sizes
     checked_count = 0
     total_bytes = 0
     for rel_path, spec in files_spec.items():
+        if (not isinstance(rel_path, str) or not rel_path or "\\" in rel_path or
+                Path(rel_path).is_absolute() or ".." in Path(rel_path).parts):
+            raise RuntimeError(f"Unsafe path in manifest: {rel_path!r}")
         fp = target_dir / rel_path
+        if not fp.resolve().is_relative_to(target_dir.resolve()) or any(
+            parent.is_symlink() for parent in (fp, *fp.parents) if parent != target_dir.parent
+        ):
+            raise RuntimeError(f"Unsafe or symbolic link in manifest: {rel_path}")
         if not fp.is_file():
             raise RuntimeError(f"File listed in manifest is missing on disk: {rel_path}")
         size = fp.stat().st_size
@@ -160,10 +199,15 @@ def verify_manifest(target_dir: Path) -> dict:
     # 2. Check no extraneous files exist on disk
     allowed_set = set(files_spec.keys()) | {"manifest.json"}
     for p in target_dir.rglob("*"):
+        if p.is_symlink():
+            raise RuntimeError(f"Symbolic link in destination: {p.relative_to(target_dir)}")
         if p.is_file():
             rel = str(p.relative_to(target_dir)).replace("\\", "/")
             if rel not in allowed_set:
                 raise RuntimeError(f"Extraneous unverified file found in destination: {rel}")
+
+    if require_source_binding and (manifest.get("total_files") != checked_count or manifest.get("total_bytes") != total_bytes):
+        raise RuntimeError("Manifest file count or byte total mismatch")
 
     return {
         "ok": True,
@@ -173,6 +217,9 @@ def verify_manifest(target_dir: Path) -> dict:
         "git_commit": manifest.get("git_commit"),
         "git_tree": manifest.get("git_tree"),
         "generated_at": manifest.get("generated_at"),
+        "manifest_sha256": manifest_hash,
+        "manifest_digest_matched": expected_manifest_sha256 is not None,
+        "source_binding_checked": require_source_binding,
     }
 
 def get_official_url(record: dict, doc: dict) -> str:
@@ -187,9 +234,9 @@ def get_official_url(record: dict, doc: dict) -> str:
         pass
     return ""
 
-def get_safe_staging_dir(prefix: str = "kaigo_pilot_stage_") -> Path:
-    """Return a fast temporary staging directory in local tmpfs."""
-    return Path(tempfile.mkdtemp(prefix=prefix))
+def get_safe_staging_dir(prefix: str = "kaigo_pilot_stage_", parent: Path | None = None) -> Path:
+    """Stage beside an explicit destination so the final rename stays on one filesystem."""
+    return Path(tempfile.mkdtemp(prefix=prefix, dir=parent))
 
 
 def validate_safety_and_dest(dest_dir: Path | None) -> Path:
@@ -200,8 +247,7 @@ def validate_safety_and_dest(dest_dir: Path | None) -> Path:
     root_resolved = ROOT.resolve()
 
     if dest_dir is None:
-        temp_root = Path(tempfile.gettempdir()).resolve()
-        out = Path(tempfile.mkdtemp(prefix="kaigo-full-private-", dir=temp_root))
+        return None
     else:
         # Check symbolic links in destination or hierarchy
         if dest_dir.is_symlink():
@@ -234,6 +280,15 @@ def build_full_pilot(
 ) -> dict:
     t0 = time.time()
     target_dest = validate_safety_and_dest(dest_dir)
+    csv_target = None
+    if csv_audit_path is not None:
+        if csv_audit_path.is_symlink():
+            raise RuntimeError("Refusing symbolic link audit CSV destination")
+        csv_target = csv_audit_path.resolve(strict=False)
+        if not csv_target.parent.is_dir() or (csv_target.exists() and not csv_target.is_file()):
+            raise RuntimeError("Invalid audit CSV destination")
+        if target_dest is not None and (csv_target == target_dest or csv_target.is_relative_to(target_dest)):
+            raise RuntimeError("Audit CSV destination cannot be inside the pilot output")
 
     # 0. Early environment and prerequisite validation
     node_bin = resolve_node_binary(node_bin_override)
@@ -247,28 +302,30 @@ def build_full_pilot(
         raise RuntimeError("Empty master data files")
 
     # Atomic staging directory: build everything isolated first
-    staging_dir = get_safe_staging_dir(prefix="kaigo_pilot_stage_")
+    staging_dir = get_safe_staging_dir(prefix="kaigo_pilot_stage_", parent=target_dest.parent if target_dest is not None else None)
     out = staging_dir
-        
-    handbook_data = json.loads(master_path.read_text(encoding="utf-8"))
-    legal_data = json.loads(legal_path.read_text(encoding="utf-8"))
-    
-    services = handbook_data.get("services", [])
-    if len(services) != 39:
-        raise RuntimeError(f"Expected 39 services in master data, found {len(services)}")
-
-    docs_light = {d["id"]: {"title": d.get("title", ""), "number": d.get("number", ""), "url": d.get("url", "")} for d in legal_data.get("documents", [])}
-    records_light = {r["id"]: {
-        "label": r.get("label", ""), "title": r.get("title", ""),
-        "locator": r.get("locator", ""), "url": r.get("url", ""),
-        "doc": r.get("document_id", ""), "state": r.get("state", ""),
-        "excerpt": (r.get("text", "")[:300] + ("…" if len(r.get("text", "")) > 300 else ""))
-    } for r in legal_data.get("records", [])}
-    
-    del legal_data
-    gc.collect()
+    audit_file = None
+    csv_staged = None
 
     try:
+        handbook_data = json.loads(master_path.read_text(encoding="utf-8"))
+        legal_data = json.loads(legal_path.read_text(encoding="utf-8"))
+
+        services = handbook_data.get("services", [])
+        if len(services) != 39:
+            raise RuntimeError(f"Expected 39 services in master data, found {len(services)}")
+
+        docs_light = {d["id"]: {"title": d.get("title", ""), "number": d.get("number", ""), "url": d.get("url", "")} for d in legal_data.get("documents", [])}
+        records_light = {r["id"]: {
+            "label": r.get("label", ""), "title": r.get("title", ""),
+            "locator": r.get("locator", ""), "url": r.get("url", ""),
+            "doc": r.get("document_id", ""), "state": r.get("state", ""),
+            "excerpt": (r.get("text", "")[:300] + ("…" if len(r.get("text", "")) > 300 else ""))
+        } for r in legal_data.get("records", [])}
+
+        del legal_data
+        gc.collect()
+
         # 1. Build styles and scripts
         styles_content = pilot.STYLES + "\n" + (ROOT / "app/reader.css").read_text(encoding="utf-8")
         (out / "styles.css").write_text(styles_content, encoding="utf-8")
@@ -323,7 +380,7 @@ def build_full_pilot(
         )
         
         # 5. Build all 39 services x 15 chapters (585 chapters)
-        audit_file = open(csv_audit_path, "w", encoding="utf-8", newline="") if csv_audit_path else None
+        audit_file = tempfile.TemporaryFile(mode="w+", encoding="utf-8", newline="") if csv_target else None
         writer = csv.writer(audit_file) if audit_file else None
         if writer:
             writer.writerow([
@@ -498,7 +555,7 @@ def build_full_pilot(
         generated_pages.append(root_dest)
         
         if audit_file:
-            audit_file.close()
+            audit_file.flush()
 
         # 6. Run link localization
         nav_report = navigation.localize(out)
@@ -540,9 +597,20 @@ def build_full_pilot(
         }
         manifest_path = out / "manifest.json"
         manifest_path.write_text(json.dumps(manifest_data, ensure_ascii=False, indent=2), encoding="utf-8")
+        manifest_sha256 = compute_file_sha256(manifest_path)
 
         # Self-verify staging directory against manifest before promotion
-        verify_manifest(out)
+        verify_manifest(out, expected_manifest_sha256=manifest_sha256)
+
+        # Prepare the CSV without truncating an existing audit file. It is
+        # replaced only after the site itself has passed verification.
+        if csv_target is not None:
+            fd, csv_name = tempfile.mkstemp(prefix=".kaigo_csv_", dir=csv_target.parent)
+            csv_staged = Path(csv_name)
+            with os.fdopen(fd, "w", encoding="utf-8", newline="") as csv_output:
+                audit_file.seek(0)
+                shutil.copyfileobj(audit_file, csv_output)
+                csv_output.flush()
 
         elapsed = time.time() - t0
 
@@ -556,15 +624,14 @@ def build_full_pilot(
 
             try:
                 # Promote staging to dest_resolved
-                try:
-                    os.rename(staging_dir, dest_resolved)
-                except OSError:
-                    # Cross-filesystem promotion (e.g. tmpfs to network disk)
-                    shutil.copytree(staging_dir, dest_resolved)
-                    shutil.rmtree(staging_dir, ignore_errors=True)
+                os.rename(staging_dir, dest_resolved)
 
                 # Verify target destination matches manifest on disk
-                verify_manifest(dest_resolved)
+                verify_manifest(dest_resolved, expected_manifest_sha256=manifest_sha256)
+
+                if csv_staged is not None:
+                    os.replace(csv_staged, csv_target)
+                    csv_staged = None
 
                 # Promotion succeeded: cleanup backup
                 if dest_backup and dest_backup.exists():
@@ -578,6 +645,9 @@ def build_full_pilot(
                     os.rename(dest_backup, dest_resolved)
                 raise RuntimeError(f"Promotion to target destination failed (rolled back): {prom_err}") from prom_err
         else:
+            if csv_staged is not None:
+                os.replace(csv_staged, csv_target)
+                csv_staged = None
             final_dir = str(staging_dir)
 
         return {
@@ -592,6 +662,7 @@ def build_full_pilot(
             "git_commit": git_commit,
             "git_tree": git_tree,
             "manifest_verified": True,
+            "manifest_sha256": manifest_sha256,
             "elapsed_seconds": round(elapsed, 2)
         }
     except Exception as e:
@@ -599,6 +670,11 @@ def build_full_pilot(
         if staging_dir.exists():
             shutil.rmtree(staging_dir, ignore_errors=True)
         raise
+    finally:
+        if audit_file is not None and not audit_file.closed:
+            audit_file.close()
+        if csv_staged is not None:
+            csv_staged.unlink(missing_ok=True)
 
 if __name__ == "__main__":
     import argparse
@@ -607,15 +683,18 @@ if __name__ == "__main__":
     parser.add_argument("audit_csv", nargs="?", default=None, help="Path to write link audit CSV")
     parser.add_argument("--node-bin", default=None, help="Explicit path to Node.js binary")
     parser.add_argument("--verify-only", action="store_true", help="Verify target directory against manifest.json without rebuilding")
+    parser.add_argument("--expected-manifest-sha256", help="Trusted SHA-256 recorded independently of the output directory")
     args = parser.parse_args()
 
     if args.verify_only:
-        if not args.target:
-            print("Error: --verify-only requires target directory", file=sys.stderr)
+        if not args.target or not args.expected_manifest_sha256:
+            print("Error: --verify-only requires target and independently recorded --expected-manifest-sha256", file=sys.stderr)
             sys.exit(1)
-        res = verify_manifest(Path(args.target))
+        res = verify_manifest(Path(args.target), expected_manifest_sha256=args.expected_manifest_sha256)
         print(json.dumps(res, ensure_ascii=False, indent=2))
     else:
+        if args.expected_manifest_sha256:
+            parser.error("--expected-manifest-sha256 is only valid with --verify-only")
         target_path = Path(args.target) if args.target else None
         csv_path = Path(args.audit_csv) if args.audit_csv else None
         res = build_full_pilot(target_path, csv_path, node_bin_override=args.node_bin)

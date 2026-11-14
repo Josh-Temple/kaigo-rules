@@ -3,7 +3,7 @@
 
 Executes:
 1. D-01 Tamper and integrity verification (10 specific fault scenarios).
-2. D-02 Stage failure injection and rollback/cleanliness verification (13 stages).
+2. D-02 Stage failure injection and rollback/cleanliness verification (14 stages).
 3. Node.js environment portability and validation tests (4 scenarios).
 4. Clean rebuild and manifest self-audit.
 
@@ -12,6 +12,7 @@ Outputs a structured JSON test report and human-readable markdown summary.
 from __future__ import annotations
 
 import hashlib
+import errno
 import json
 import os
 import shutil
@@ -26,8 +27,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_full_private_pilot as pilot
 
-WS_TMP = Path("/workspace/.tmp")
-WS_TMP.mkdir(exist_ok=True)
+WS_TMP = Path(tempfile.gettempdir())
 
 
 def test_d01_tamper_scenarios(test_dir: Path) -> list[dict]:
@@ -55,12 +55,7 @@ def test_d01_tamper_scenarios(test_dir: Path) -> list[dict]:
         except Exception:
             clean_after_restore = False
 
-        passed = detected and clean_after_restore and (
-            expected_substring.lower() in err_msg.lower()
-            or "mismatch" in err_msg.lower()
-            or "extraneous" in err_msg.lower()
-            or "missing" in err_msg.lower()
-        )
+        passed = detected and clean_after_restore and expected_substring.lower() in err_msg.lower()
         results.append({
             "case": name,
             "passed": passed,
@@ -159,21 +154,7 @@ def test_d01_tamper_scenarios(test_dir: Path) -> list[dict]:
         return "Altered master data hash in manifest"
     def restore_8():
         manifest_file.write_bytes(orig_manifest)
-    # Check that real data matches what builder computed
-    t0 = time.time()
-    manifest_data = json.loads(orig_manifest.decode("utf-8"))
-    real_legal_hash = pilot.compute_file_sha256(ROOT / "data/legal-browser.generated.json")
-    hash_matched = manifest_data["master_data_hashes"]["legal-browser.generated.json"] == real_legal_hash
-    results.append({
-        "case": "8. 入力法令データのハッシュ検証",
-        "passed": hash_matched,
-        "detected": True,
-        "restored_clean": True,
-        "expected_message_substring": "SHA matches",
-        "actual_error": "None (master data SHA-256 bound to manifest)",
-        "mutation_info": f"real_sha={real_legal_hash}",
-        "duration_seconds": round(time.time() - t0, 4)
-    })
+    run_mutation_case("8. 入力法令データのハッシュ改ざん", mutate_8, restore_8, "master_data_hashes mismatch")
 
     # 9. 生成マニフェストを改ざん
     def mutate_9():
@@ -221,32 +202,36 @@ def test_d01_tamper_scenarios(test_dir: Path) -> list[dict]:
 
 
 def test_d02_failure_scenarios(test_dir: Path) -> list[dict]:
-    """Test failure injection across 13 distinct build phases."""
+    """Test failure injection across 14 distinct build phases."""
     results = []
 
     stages = [
         ("1. 入力読み込み前 (無効な出力先)", "invalid_dest", "Refusing"),
-        ("2. 入力JSON解析中 (破損データ)", "corrupt_json", "Empty master data files"),
+        ("2. 入力JSON解析中 (破損データ)", "corrupt_json", "Expecting value"),
         ("3. Node.js検出前 (無効なNodeバイナリ)", "missing_node", "not found"),
         ("4. Node.jsバージョン不適合 (< v20)", "unsupported_node", "unsupported"),
         ("5. CSS生成処理の失敗", "css_failure", "Injected CSS error"),
         ("6. 法令HTML生成途中のプロセス失敗", "leg_failure", "Injected legislation error"),
         ("7. 検索ビルドプロセス失敗 (Node exit 1)", "node_search_failure", "Search builder failed"),
         ("8. 検索アセット検証失敗 (必須ファイル欠落)", "search_assets_missing", "Missing required search database asset"),
-        ("9. 手引HTML生成途中の失敗", "handbook_failure", "Injected handbook error"),
+        ("9. 手引HTML生成途中の失敗", "handbook_failure", "Injected handbook disk error"),
         ("10. リンク局所化処理の失敗", "localization_failure", "Injected localization error"),
         ("11. マニフェスト自己検証での不整合検知", "manifest_self_verify_failure", "Injected manifest mismatch"),
         ("12. 目標出力先への確定昇格時の失敗とロールバック", "promotion_failure", "Promotion to target destination failed"),
-        ("13. 既存正常出力が存在する状態での障害発生と既存データ保全", "existing_data_preservation", "Preserved prior output"),
+        ("13. 既存正常出力が存在する状態での障害発生と既存データ保全", "existing_data_preservation", "Failure after start"),
+        ("14. 監査CSV確定失敗時のサイトと既存CSVの復旧", "csv_publication_failure", "Promotion to target destination failed"),
     ]
 
     for stage_name, stage_key, expected_substring in stages:
         t0 = time.time()
         with tempfile.TemporaryDirectory(prefix="d02_case_", dir=str(WS_TMP)) as case_tmp:
             target_dest = Path(case_tmp) / "target_pilot"
+            audit_path = Path(case_tmp) / "existing-audit.csv"
+            if stage_key in {"handbook_failure", "promotion_failure", "csv_publication_failure"}:
+                audit_path.write_text("previous audit\n", encoding="utf-8")
 
-            # For stage 13, populate target_dest with a small verified fixture
-            if stage_key == "existing_data_preservation":
+            # Exercise rollback against existing bytes as well as early failure.
+            if stage_key in {"promotion_failure", "existing_data_preservation", "csv_publication_failure"}:
                 target_dest.mkdir(parents=True, exist_ok=True)
                 (target_dest / "EXISTING_VALID_MARKER.txt").write_text("VALID_DATA_PRESERVED", encoding="utf-8")
                 (target_dest / "index.html").write_text("<html><body>Existing</body></html>", encoding="utf-8")
@@ -314,7 +299,7 @@ def test_d02_failure_scenarios(test_dir: Path) -> list[dict]:
                                         raise IOError("Injected handbook disk error")
                                     return orig_open(file, mode, *args, **kwargs)
                                 with patch("builtins.open", side_effect=fail_on_handbook):
-                                    pilot.build_full_pilot(target_dest)
+                                    pilot.build_full_pilot(target_dest, audit_path)
                 elif stage_key == "localization_failure":
                     with tempfile.TemporaryDirectory() as fake_db_dir:
                         for r in ["index.html", "qa.html", "style.css", "app.mjs", "qa-app.mjs", "search.mjs", "rank-core.mjs", "qa-core.mjs", "load-json.mjs", "services.json", "qa-options.json", "global.json"]:
@@ -339,7 +324,7 @@ def test_d02_failure_scenarios(test_dir: Path) -> list[dict]:
                                 ]
                                 with patch("build_full_private_pilot.verify_manifest", side_effect=RuntimeError("Injected manifest mismatch")):
                                     pilot.build_full_pilot(target_dest)
-                elif stage_key == "promotion_failure":
+                elif stage_key in {"promotion_failure", "csv_publication_failure"}:
                     with tempfile.TemporaryDirectory() as fake_db_dir:
                         for r in ["index.html", "qa.html", "style.css", "app.mjs", "qa-app.mjs", "search.mjs", "rank-core.mjs", "qa-core.mjs", "load-json.mjs", "services.json", "qa-options.json", "global.json"]:
                             (Path(fake_db_dir) / r).write_text("fake", encoding="utf-8")
@@ -352,10 +337,15 @@ def test_d02_failure_scenarios(test_dir: Path) -> list[dict]:
                                 orig_rename = os.rename
                                 def fail_on_staging(src, dst):
                                     if "kaigo_pilot_stage" in str(src):
-                                        raise RuntimeError("Disk full during atomic promotion")
+                                        raise OSError(errno.EXDEV, "Injected cross-device rename failure")
                                     return orig_rename(src, dst)
-                                with patch("os.rename", side_effect=fail_on_staging):
-                                    pilot.build_full_pilot(target_dest)
+                                with patch("build_full_private_pilot.get_git_info", return_value=("test-commit", "test-tree")):
+                                    if stage_key == "promotion_failure":
+                                        with patch("os.rename", side_effect=fail_on_staging):
+                                            pilot.build_full_pilot(target_dest, audit_path)
+                                    else:
+                                        with patch("os.replace", side_effect=OSError("Injected audit CSV publication failure")):
+                                            pilot.build_full_pilot(target_dest, audit_path)
                 elif stage_key == "existing_data_preservation":
                     with patch("build_github_pages_legislation_pilot.build", side_effect=RuntimeError("Failure after start")):
                         pilot.build_full_pilot(target_dest)
@@ -366,12 +356,14 @@ def test_d02_failure_scenarios(test_dir: Path) -> list[dict]:
 
             clean_state = True
             details = ""
-            if stage_key == "existing_data_preservation":
-                if not (target_dest / "EXISTING_VALID_MARKER.txt").is_file():
+            if stage_key in {"promotion_failure", "existing_data_preservation", "csv_publication_failure"}:
+                expected = {"EXISTING_VALID_MARKER.txt": "VALID_DATA_PRESERVED", "index.html": "<html><body>Existing</body></html>"}
+                actual = {p.name: p.read_text(encoding="utf-8") for p in target_dest.iterdir() if p.is_file()} if target_dest.exists() else {}
+                if actual != expected:
                     clean_state = False
-                    details = "Marker file was lost after failure!"
+                    details = "Existing output bytes or file set changed after failure."
                 else:
-                    details = "Prior valid files and marker preserved intact."
+                    details = "Prior files and bytes preserved intact."
             else:
                 if target_dest.exists():
                     files = list(target_dest.rglob("*"))
@@ -383,11 +375,23 @@ def test_d02_failure_scenarios(test_dir: Path) -> list[dict]:
                 else:
                     details = "Target destination does not exist (0 partial files)."
 
-            passed = caught_error and clean_state
+            if list(Path(case_tmp).glob("kaigo_pilot_stage_*")) or list(Path(case_tmp).glob(".kaigo_bak_*")):
+                clean_state = False
+                details += " Temporary staging or backup was left behind."
+            if stage_key in {"handbook_failure", "promotion_failure", "csv_publication_failure"} and (
+                not audit_path.is_file() or audit_path.read_text(encoding="utf-8") != "previous audit\n" or
+                list(Path(case_tmp).glob(".kaigo_csv_*"))
+            ):
+                clean_state = False
+                details += " Previous audit CSV changed or a temporary CSV remained."
+            expected_error_matched = expected_substring.lower() in err_msg.lower()
+            passed = caught_error and clean_state and expected_error_matched
             results.append({
                 "stage": stage_name,
                 "passed": passed,
                 "caught_error": caught_error,
+                "expected_error_matched": expected_error_matched,
+                "expected_error": expected_substring,
                 "clean_state": clean_state,
                 "details": details,
                 "actual_error": err_msg,
@@ -425,12 +429,11 @@ def test_node_portability() -> list[dict]:
     # 2. NODE_BINARY env override
     t0 = time.time()
     try:
-        env_node = "/workspace/opt/node-v22.11.0-linux-x64/bin/node"
-        if Path(env_node).is_file():
-            os.environ["NODE_BINARY"] = env_node
-            resolved = pilot.resolve_node_binary()
+        env_node = shutil.which("node")
+        if env_node and Path(env_node).is_file():
+            with patch.dict(os.environ, {"NODE_BINARY": env_node}):
+                resolved = pilot.resolve_node_binary()
             passed = resolved == str(Path(env_node).resolve())
-            del os.environ["NODE_BINARY"]
             results.append({
                 "case": "2. NODE_BINARY環境変数による明示指定",
                 "passed": passed,
@@ -441,14 +444,12 @@ def test_node_portability() -> list[dict]:
         else:
             results.append({
                 "case": "2. NODE_BINARY環境変数による明示指定",
-                "passed": True,
-                "resolved_path": "Skipped (opt node not present)",
-                "error": None,
+                "passed": False,
+                "resolved_path": None,
+                "error": "Node.js was not available for the environment override test",
                 "duration_seconds": round(time.time() - t0, 4)
             })
     except Exception as e:
-        if "NODE_BINARY" in os.environ:
-            del os.environ["NODE_BINARY"]
         results.append({
             "case": "2. NODE_BINARY環境変数による明示指定",
             "passed": False,
@@ -520,10 +521,10 @@ def main():
     print(f"D-01 Results: {sum(r['passed'] for r in d01_results)}/10 passed (All PASS: {d01_pass})")
 
     # Step 3: D-02 Failure & rollback tests
-    print("[3/4] Running D-02 failure injection & rollback tests (13 stages)...")
+    print("[3/4] Running D-02 failure injection & rollback tests (14 stages)...")
     d02_results = test_d02_failure_scenarios(ref_dir)
     d02_pass = all(r["passed"] for r in d02_results)
-    print(f"D-02 Results: {sum(r['passed'] for r in d02_results)}/13 passed (All PASS: {d02_pass})")
+    print(f"D-02 Results: {sum(r['passed'] for r in d02_results)}/{len(d02_results)} passed (All PASS: {d02_pass})")
 
     # Step 4: Node portability tests
     print("[4/4] Running Node.js portability & validation tests (4 scenarios)...")
