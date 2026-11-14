@@ -388,6 +388,57 @@ class FeeNavigationTest(unittest.TestCase):
             rewrite(self.root)
         self.assertEqual(self.fees.read_text(), original)
 
+    def test_mislinked_community_notices_show_relevant_but_incomplete_source(self):
+        folder = self.root / 'legislation/record'
+        folder.mkdir()
+        items = {
+            'community-dayservice.notice.015': '指定療養通所介護の基本方針',
+            'community-dayservice.notice.019': '内容及び手続の説明及び同意',
+        }
+        records, index = [], {}
+        for identifier, title in items.items():
+            name = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+            records.append({'id': identifier, 'file': name, 'text': '掲載内容', 'title': title,
+                            'document': 'notice-summary-community-dayservice', 'category': 'notices'})
+            index[identifier] = {'document': 'notice-summary-community-dayservice', 'category': 'notices',
+                                 'services': ['community-dayservice']}
+            (folder / name).write_text('<article>'
+                '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
+                '<div class="dayservice-original" style="white-space:pre-wrap">掲載内容</div>'
+                '<p><a href="https://www.mhlw.go.jp/content/12300000/001225905.pdf" '
+                'rel="noopener noreferrer">公式原典を確認</a></p></article>')
+        (self.root / 'legislation/record-index.json').write_text(json.dumps(index))
+        (self.root / 'legislation/records.json').write_text(json.dumps({'records': records}))
+        result = rewrite(self.root)
+        self.assertEqual(result['partial_sources_labeled'], 2)
+        for identifier in items:
+            page = (folder / (hashlib.sha256(identifier.encode()).hexdigest() + '.html')).read_text()
+            self.assertIn('001227939.pdf', page)
+            self.assertNotIn('001225905.pdf', page)
+            self.assertIn('該当箇所が省略されています', page)
+            self.assertLess(page.index('該当箇所が省略されています'), page.index('掲載内容'))
+
+    def test_mislinked_notice_with_different_service_stops_before_any_write(self):
+        folder = self.root / 'legislation/record'
+        folder.mkdir()
+        identifier = 'community-dayservice.notice.015'
+        filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        document = 'notice-summary-community-dayservice'
+        (self.root / 'legislation/record-index.json').write_text(json.dumps({identifier: {
+            'document': document, 'category': 'notices', 'services': ['other-service']}}))
+        (self.root / 'legislation/records.json').write_text(json.dumps({'records': [{
+            'id': identifier, 'file': filename, 'text': '掲載内容',
+            'title': '指定療養通所介護の基本方針', 'document': document, 'category': 'notices'}]}))
+        page = folder / filename
+        page.write_text('<article><p><a href="https://www.mhlw.go.jp/content/12300000/001225905.pdf" '
+                        'rel="noopener noreferrer">公式原典を確認</a></p></article>')
+        original_fees = self.fees.read_text()
+        original_page = page.read_text()
+        with self.assertRaisesRegex(RuntimeError, 'Unmatched community notice'):
+            rewrite(self.root)
+        self.assertEqual(self.fees.read_text(), original_fees)
+        self.assertEqual(page.read_text(), original_page)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -91,6 +91,11 @@ PARTIAL_NOTICE_SOURCES = {
     'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000202201.pdf':
         ('notices', '平成30年の通知（後の改正は別途確認）', 'partial'),
 }
+MISLINKED_COMMUNITY_NOTICES = {
+    'community-dayservice.notice.015': '指定療養通所介護の基本方針',
+    'community-dayservice.notice.019': '内容及び手続の説明及び同意',
+}
+COMMUNITY_R6_REDLINE = 'https://www.mhlw.go.jp/content/12300000/001227939.pdf'
 
 # These mappings come from the existing delegated-remuneration node identity
 # map. The two notice 27 subitems are not separate published records, so the
@@ -464,7 +469,17 @@ def label_partial_notice_sources(root: Path, changes: dict) -> int:
                 raise RuntimeError(f'Duplicate notice source link: {identifier}')
             if matched:
                 raise RuntimeError(f'Multiple partial notice sources: {identifier}')
-            if source_type == 'draft':
+            target_url = url
+            if source_type == 'draft' and identifier in MISLINKED_COMMUNITY_NOTICES:
+                if (row.get('document') != 'notice-summary-community-dayservice' or
+                        row.get('title') != MISLINKED_COMMUNITY_NOTICES[identifier] or
+                        entry.get('services') != ['community-dayservice']):
+                    raise RuntimeError(f'Unmatched community notice: {identifier}')
+                target_url = COMMUNITY_R6_REDLINE
+                label = '令和6年度の改正資料（該当項目は省略）'
+                warning = ('この項目の原典の該当箇所は未確認です。リンク先の改正資料では該当箇所が省略されています。'
+                           '適用を判断する前に正式な通知、後の改正及び指定権者の基準を確認してください。')
+            elif source_type == 'draft':
                 warning = ('リンク先は改正案であり、施行された内容とは限りません。'
                            '正式な通知と後の改正、適用時点を確認してください。')
             elif source_type == 'redline':
@@ -473,7 +488,8 @@ def label_partial_notice_sources(root: Path, changes: dict) -> int:
             else:
                 warning = ('リンク先には後の改正が反映されていない場合があります。掲載本文とリンク先の版・範囲、'
                            '適用時点を確認してください。')
-            replacement = f'<p><a href="{escaped}" rel="noopener noreferrer">{html.escape(label)}</a></p>'
+            replacement = (f'<p><a href="{html.escape(target_url, quote=True)}" rel="noopener noreferrer">'
+                           f'{html.escape(label)}</a></p>')
             caution = '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
             if content.count(caution) != 1:
                 raise RuntimeError(f'Unexpected notice caution layout: {identifier}')
