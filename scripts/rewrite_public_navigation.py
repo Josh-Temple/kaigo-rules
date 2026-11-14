@@ -96,6 +96,8 @@ MISLINKED_COMMUNITY_NOTICES = {
     'community-dayservice.notice.019': '内容及び手続の説明及び同意',
 }
 COMMUNITY_R6_REDLINE = 'https://www.mhlw.go.jp/content/12300000/001227939.pdf'
+COMMUNITY_UNVERIFIED_CLAIM = '厚生労働省の過去の解釈通知全文で見出しと説明を確認。'
+COMMUNITY_WRONG_SOURCE = 'https://www.mhlw.go.jp/content/12300000/001225905.pdf'
 
 # These mappings come from the existing delegated-remuneration node identity
 # map. The two notice 27 subitems are not separate published records, so the
@@ -503,6 +505,74 @@ def label_partial_notice_sources(root: Path, changes: dict) -> int:
     return count
 
 
+def fix_community_record_claim(root: Path, changes: dict) -> None:
+    """Remove an unsupported source-verification claim from the affected summary."""
+    source = root / 'legislation/records.json'
+    if not source.is_file():
+        return
+    raw = source.read_text(encoding='utf-8')
+    rows = json.loads(raw)['records']
+    matches = [row for row in rows if row.get('id') == 'community-dayservice.notice.019']
+    if not matches:
+        return
+    if (len(matches) != 1 or not matches[0].get('text', '').startswith(COMMUNITY_UNVERIFIED_CLAIM)
+            or raw.count(COMMUNITY_UNVERIFIED_CLAIM) != 1):
+        raise RuntimeError('Unexpected community notice verification claim')
+    row = matches[0]
+    page = root / 'legislation/record' / row['file']
+    if page not in changes:
+        raise RuntimeError('Community notice source was not corrected')
+    body = '<div class="dayservice-original" style="white-space:pre-wrap">' + COMMUNITY_UNVERIFIED_CLAIM
+    if changes[page].count(body) != 1:
+        raise RuntimeError('Unexpected community notice body')
+    changes[page] = changes[page].replace(body, body.replace(COMMUNITY_UNVERIFIED_CLAIM, ''), 1)
+    changes[source] = raw.replace(COMMUNITY_UNVERIFIED_CLAIM, '', 1)
+
+
+def fix_community_handbook_sources(content: str, path: Path) -> tuple[str, int]:
+    """Replace incorrect handbook citations with the matching record and its warning."""
+    if COMMUNITY_WRONG_SOURCE not in content:
+        return content, 0
+    if path.parts[:2] != ('handbook', 'community-dayservice'):
+        raise RuntimeError(f'Unexpected handbook source location: {path}')
+    count = 0
+    for identifier in MISLINKED_COMMUNITY_NOTICES:
+        filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        old = (f'<a href="{COMMUNITY_WRONG_SOURCE}">公式原典を開く ↗</a>'
+               f'<a href="../../legislation/record/{filename}">この項目へのリンク</a>')
+        n = content.count(old)
+        if n > 1:
+            raise RuntimeError(f'Duplicate handbook source: {identifier}')
+        if n:
+            content = content.replace(old, f'<a href="../../legislation/record/{filename}">'
+                                      '原典の確認状況を見る</a>', 1)
+            if identifier == 'community-dayservice.notice.019':
+                if content.count(COMMUNITY_UNVERIFIED_CLAIM) != 1:
+                    raise RuntimeError('Unexpected handbook verification claim')
+                content = content.replace(COMMUNITY_UNVERIFIED_CLAIM, '', 1)
+            count += n
+    if COMMUNITY_WRONG_SOURCE in content:
+        raise RuntimeError(f'Unmatched handbook source: {path}')
+    return content, count
+
+
+def label_handbook_source_versions(content: str, path: Path) -> tuple[str, int]:
+    """Identify known partial sources at their point of use in the handbook."""
+    count = 0
+    for url, (_, label, _) in PARTIAL_NOTICE_SOURCES.items():
+        if url == COMMUNITY_WRONG_SOURCE:
+            continue
+        href = html.escape(url, quote=True)
+        old = f'<a href="{href}">公式原典を開く ↗</a>'
+        n = content.count(old)
+        if content.count(f'href="{href}"') != n:
+            raise RuntimeError(f'Unexpected handbook source layout: {path}')
+        if n:
+            content = content.replace(old, f'<a href="{href}">{html.escape(label)} ↗</a>')
+            count += n
+    return content, count
+
+
 @lru_cache(maxsize=4)
 def record_index(root: Path) -> dict:
     path = root / "legislation/record-index.json"
@@ -605,12 +675,14 @@ def rewrite(root: Path) -> dict:
         changes.update(add_official_record_links(root))
     missing_text_count = mark_missing_record_text(root, changes)
     partial_source_count = label_partial_notice_sources(root, changes)
+    fix_community_record_claim(root, changes)
     if (root / 'legislation/app.mjs').exists():
         script, content = mark_missing_text_in_listing(root)
         changes[script] = content
     counts = {"standards": 0, "law": 0, "notices": 0, "notice_records": 0}
     extra_counts = {'criteria_records': 0, 'simple_links': 0, 'unavailable_all_views': 0,
-                    'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_links': 0}
+                    'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_links': 0,
+                    'community_handbook_sources': 0, 'handbook_source_versions': 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
@@ -621,6 +693,11 @@ def rewrite(root: Path) -> dict:
         after = SIMPLE_ANCHOR.sub(lambda m: rewrite_simple_link(m, path.relative_to(root), root, extra_counts), after)
         after = DAYREHAB_SCOPE_NOTE.sub(lambda m: rewrite_dayrehab_note(m, path.relative_to(root), root, extra_counts), after)
         after = FULL_ANCHOR.sub(lambda m: rewrite_scoped_link(m, path.relative_to(root), root, extra_counts), after)
+        if path.relative_to(root).parts[0] == 'handbook':
+            after, n = fix_community_handbook_sources(after, path.relative_to(root))
+            extra_counts['community_handbook_sources'] += n
+            after, n = label_handbook_source_versions(after, path.relative_to(root))
+            extra_counts['handbook_source_versions'] += n
         if after != before:
             changes[path] = after
     # Validate the entire plan before changing any page. The build pipeline

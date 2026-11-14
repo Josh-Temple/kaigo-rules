@@ -39,7 +39,8 @@ class FeeNavigationTest(unittest.TestCase):
                                               "fee_links_changed": 9,
                                               "index_links_changed": {"standards": 0, "law": 0, "notices": 0, "notice_records": 0},
                                               "additional_changes": {"criteria_records": 0, "simple_links": 0, "unavailable_all_views": 0,
-                                                                     "scoped_rule_links": 0, "dayrehab_scope_notes": 0, "fee_root_links": 0}})
+                                                                     "scoped_rule_links": 0, "dayrehab_scope_notes": 0, "fee_root_links": 0,
+                                                                     "community_handbook_sources": 0, "handbook_source_versions": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
         self.assertNotIn(ORIGIN, fees + guidance)
@@ -398,23 +399,37 @@ class FeeNavigationTest(unittest.TestCase):
         records, index = [], {}
         for identifier, title in items.items():
             name = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
-            records.append({'id': identifier, 'file': name, 'text': '掲載内容', 'title': title,
+            claim = '厚生労働省の過去の解釈通知全文で見出しと説明を確認。' if identifier.endswith('.019') else ''
+            records.append({'id': identifier, 'file': name, 'text': claim + '掲載内容', 'title': title,
                             'document': 'notice-summary-community-dayservice', 'category': 'notices'})
             index[identifier] = {'document': 'notice-summary-community-dayservice', 'category': 'notices',
                                  'services': ['community-dayservice']}
             (folder / name).write_text('<article>'
                 '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
-                '<div class="dayservice-original" style="white-space:pre-wrap">掲載内容</div>'
+                '<div class="dayservice-original" style="white-space:pre-wrap">' + claim + '掲載内容</div>'
                 '<p><a href="https://www.mhlw.go.jp/content/12300000/001225905.pdf" '
                 'rel="noopener noreferrer">公式原典を確認</a></p></article>')
         (self.root / 'legislation/record-index.json').write_text(json.dumps(index))
-        (self.root / 'legislation/records.json').write_text(json.dumps({'records': records}))
+        dataset = self.root / 'legislation/records.json'
+        dataset.write_text(json.dumps({'records': records}, ensure_ascii=False))
+        handbook = self.root / 'handbook/community-dayservice/example.html'
+        handbook.parent.mkdir(parents=True)
+        filename = hashlib.sha256('community-dayservice.notice.019'.encode()).hexdigest() + '.html'
+        handbook.write_text('<p>厚生労働省の過去の解釈通知全文で見出しと説明を確認。掲載内容</p>'
+            '<a href="https://www.mhlw.go.jp/content/12300000/001225905.pdf">公式原典を開く ↗</a>'
+            f'<a href="../../legislation/record/{filename}">この項目へのリンク</a>')
         result = rewrite(self.root)
         self.assertEqual(result['partial_sources_labeled'], 2)
+        self.assertEqual(result['additional_changes']['community_handbook_sources'], 1)
+        self.assertNotIn('過去の解釈通知全文で見出しと説明を確認', dataset.read_text())
+        self.assertNotIn('001225905.pdf', handbook.read_text())
+        self.assertNotIn('過去の解釈通知全文で見出しと説明を確認', handbook.read_text())
+        self.assertIn('原典の確認状況を見る', handbook.read_text())
         for identifier in items:
             page = (folder / (hashlib.sha256(identifier.encode()).hexdigest() + '.html')).read_text()
             self.assertIn('001227939.pdf', page)
             self.assertNotIn('001225905.pdf', page)
+            self.assertNotIn('過去の解釈通知全文で見出しと説明を確認', page)
             self.assertIn('該当箇所が省略されています', page)
             self.assertLess(page.index('該当箇所が省略されています'), page.index('掲載内容'))
 
@@ -438,6 +453,36 @@ class FeeNavigationTest(unittest.TestCase):
             rewrite(self.root)
         self.assertEqual(self.fees.read_text(), original_fees)
         self.assertEqual(page.read_text(), original_page)
+
+    def test_unmatched_handbook_source_stops_before_any_write(self):
+        handbook = self.root / 'handbook/community-dayservice/example.html'
+        handbook.parent.mkdir(parents=True)
+        handbook.write_text('<a href="https://www.mhlw.go.jp/content/12300000/001225905.pdf">unexpected</a>')
+        original_fees = self.fees.read_text()
+        with self.assertRaisesRegex(RuntimeError, 'Unmatched handbook source'):
+            rewrite(self.root)
+        self.assertEqual(self.fees.read_text(), original_fees)
+
+    def test_handbook_identifies_partial_source_without_changing_its_url(self):
+        handbook = self.root / 'handbook/dayservice/example.html'
+        handbook.parent.mkdir(parents=True)
+        url = 'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf'
+        handbook.write_text(f'<p>掲載内容</p><a href="{url}">公式原典を開く ↗</a>')
+        result = rewrite(self.root)
+        self.assertEqual(result['additional_changes']['handbook_source_versions'], 1)
+        self.assertIn(f'href="{url}"', handbook.read_text())
+        self.assertIn('平成27年度の改正資料（新旧対照表・抄）', handbook.read_text())
+        self.assertIn('<p>掲載内容</p>', handbook.read_text())
+
+    def test_unknown_handbook_source_layout_stops_before_any_write(self):
+        handbook = self.root / 'handbook/dayservice/example.html'
+        handbook.parent.mkdir(parents=True)
+        handbook.write_text('<a href="https://www.mhlw.go.jp/file/'
+            '06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf">異なる表示</a>')
+        original = self.fees.read_text()
+        with self.assertRaisesRegex(RuntimeError, 'Unexpected handbook source layout'):
+            rewrite(self.root)
+        self.assertEqual(self.fees.read_text(), original)
 
 
 if __name__ == "__main__":
