@@ -347,7 +347,8 @@ class FeeNavigationTest(unittest.TestCase):
             records.append({'id': identifier, 'file': filename, 'text': text,
                             'document': document, 'category': category})
             body = ('<div class="dayservice-original" style="white-space:pre-wrap">' + text + '</div>')
-            (folder / filename).write_text('<article>' + body +
+            caution = '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
+            (folder / filename).write_text('<article>' + caution + body +
                 f'<p><a href="{url}" rel="noopener noreferrer">公式原典を確認</a></p></article>')
         (self.root / 'legislation/record-index.json').write_text(json.dumps(index))
         (self.root / 'legislation/records.json').write_text(json.dumps({'records': records}))
@@ -359,6 +360,7 @@ class FeeNavigationTest(unittest.TestCase):
         unknown = (folder / (hashlib.sha256('notice.unknown'.encode()).hexdigest() + '.html')).read_text()
         self.assertIn('平成27年度の改正資料（新旧対照表・抄）', old)
         self.assertIn('掲載本文とリンク先の版・範囲が異なる場合', old)
+        self.assertLess(old.index('掲載本文とリンク先の版・範囲が異なる場合'), old.index('本文あり'))
         self.assertIn('令和6年度の改正資料（新旧対照表・抄）', newer)
         self.assertIn('本文は未収載です。', newer)
         self.assertIn('公式原典を確認', unknown)

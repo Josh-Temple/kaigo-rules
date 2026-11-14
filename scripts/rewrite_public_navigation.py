@@ -438,6 +438,8 @@ def label_partial_notice_sources(root: Path, changes: dict) -> int:
                 continue
             if content.count(old) != 1:
                 raise RuntimeError(f'Duplicate notice source link: {identifier}')
+            if matched:
+                raise RuntimeError(f'Multiple partial notice sources: {identifier}')
             if source_type == 'redline':
                 warning = ('改正の新旧対照表は抜粋です。掲載本文とリンク先の版・範囲が異なる場合があります。'
                            '後の改正と適用時点を確認してください。')
@@ -445,8 +447,12 @@ def label_partial_notice_sources(root: Path, changes: dict) -> int:
                 warning = ('リンク先には後の改正が反映されていない場合があります。掲載本文とリンク先の版・範囲、'
                            '適用時点を確認してください。')
             replacement = f'<p><a href="{escaped}" rel="noopener noreferrer">{html.escape(label)}</a></p>'
-            # Keep the source link in its original location, with the scope warning next to it.
-            content = content.replace(old, replacement + '<p class="notice">' + warning + '</p>', 1)
+            caution = '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
+            if content.count(caution) != 1:
+                raise RuntimeError(f'Unexpected notice caution layout: {identifier}')
+            # Put the scope warning before the body, and keep the source link at its original location.
+            content = content.replace(old, replacement, 1)
+            content = content.replace(caution, caution + '<p class="notice">' + warning + '</p>', 1)
             matched += 1
         if matched:
             changes[page] = content
