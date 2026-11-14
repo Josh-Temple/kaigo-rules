@@ -35,7 +35,8 @@ class FeeNavigationTest(unittest.TestCase):
 
     def test_known_links_are_local_and_the_search_is_not_labeled_a_price_table(self):
         self.assertEqual(rewrite(self.root), {"pages_changed": 3, "search_scripts_changed": 0,
-                                              "missing_record_text_labeled": 0, "fee_links_changed": 9,
+                                              "missing_record_text_labeled": 0, "partial_sources_labeled": 0,
+                                              "fee_links_changed": 9,
                                               "index_links_changed": {"standards": 0, "law": 0, "notices": 0, "notice_records": 0},
                                               "additional_changes": {"criteria_records": 0, "simple_links": 0, "unavailable_all_views": 0,
                                                                      "scoped_rule_links": 0, "dayrehab_scope_notes": 0, "fee_root_links": 0}})
@@ -324,6 +325,58 @@ class FeeNavigationTest(unittest.TestCase):
             'id': identifier, 'file': filename, 'text': '', 'document': 'guidance-unknown', 'category': 'guidance'}]}))
         original = self.fees.read_text()
         with self.assertRaisesRegex(RuntimeError, 'Unmatched title-only legal record'):
+            rewrite(self.root)
+        self.assertEqual(self.fees.read_text(), original)
+
+    def test_partial_sources_are_labeled_without_changing_other_links(self):
+        folder = self.root / 'legislation/record'
+        folder.mkdir()
+        rows = [
+            ('notice.staffing', 'interpretation-rouki25', 'notices', '本文あり',
+             'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf'),
+            ('guidance.dayrehab', 'guidance-r6', 'guidance', '',
+             'https://www.mhlw.go.jp/content/12300000/001227887.pdf'),
+            ('notice.unknown', 'unknown-doc', 'notices', '本文あり',
+             'https://www.mhlw.go.jp/content/unknown.pdf'),
+        ]
+        index = {}
+        records = []
+        for identifier, document, category, text, url in rows:
+            filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+            index[identifier] = {'document': document, 'category': category, 'services': ['dayservice']}
+            records.append({'id': identifier, 'file': filename, 'text': text,
+                            'document': document, 'category': category})
+            body = ('<div class="dayservice-original" style="white-space:pre-wrap">' + text + '</div>')
+            (folder / filename).write_text('<article>' + body +
+                f'<p><a href="{url}" rel="noopener noreferrer">公式原典を確認</a></p></article>')
+        (self.root / 'legislation/record-index.json').write_text(json.dumps(index))
+        (self.root / 'legislation/records.json').write_text(json.dumps({'records': records}))
+        result = rewrite(self.root)
+        self.assertEqual(result['partial_sources_labeled'], 2)
+        self.assertEqual(result['missing_record_text_labeled'], 1)
+        old = (folder / (hashlib.sha256('notice.staffing'.encode()).hexdigest() + '.html')).read_text()
+        newer = (folder / (hashlib.sha256('guidance.dayrehab'.encode()).hexdigest() + '.html')).read_text()
+        unknown = (folder / (hashlib.sha256('notice.unknown'.encode()).hexdigest() + '.html')).read_text()
+        self.assertIn('平成27年度の改正資料（新旧対照表・抄）', old)
+        self.assertIn('掲載本文とリンク先の版・範囲が異なる場合', old)
+        self.assertIn('令和6年度の改正資料（新旧対照表・抄）', newer)
+        self.assertIn('本文は未収載です。', newer)
+        self.assertIn('公式原典を確認', unknown)
+
+    def test_changed_partial_source_layout_stops_before_any_write(self):
+        folder = self.root / 'legislation/record'
+        folder.mkdir()
+        identifier = 'notice.staffing'
+        filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        (self.root / 'legislation/record-index.json').write_text(json.dumps({identifier: {
+            'document': 'interpretation-rouki25', 'category': 'notices', 'services': ['dayservice']}}))
+        (self.root / 'legislation/records.json').write_text(json.dumps({'records': [{
+            'id': identifier, 'file': filename, 'text': '本文',
+            'document': 'interpretation-rouki25', 'category': 'notices'}]}))
+        (folder / filename).write_text('<article><a href="https://www.mhlw.go.jp/file/'
+            '06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf">異なる表示</a></article>')
+        original = self.fees.read_text()
+        with self.assertRaisesRegex(RuntimeError, 'Unexpected notice source link layout'):
             rewrite(self.root)
         self.assertEqual(self.fees.read_text(), original)
 

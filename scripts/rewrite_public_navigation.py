@@ -51,6 +51,22 @@ OFFICIAL_CRITERIA = {
     'criteria-mhlw-fee-notice27-base': 'https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1',
 }
 ORDINANCE37_SOURCE = 'https://laws.e-gov.go.jp/law/411M50000100037'
+# These links are official, but the cited sources are partial or historical.
+# Do not describe a redline or an older text as a current consolidated notice.
+PARTIAL_NOTICE_SOURCES = {
+    'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf':
+        ('notices', '平成27年度の改正資料（新旧対照表・抄）', 'redline'),
+    'https://www.mhlw.go.jp/content/12300000/000869798.pdf':
+        ('notices', '令和3年度の改正資料（新旧対照表・抄）', 'redline'),
+    'https://www.mhlw.go.jp/content/12300000/001227935.pdf':
+        ('notices', '令和6年度の改正資料（新旧対照表・抄）', 'redline'),
+    'https://www.mhlw.go.jp/content/12300000/001227887.pdf':
+        ('guidance', '令和6年度の改正資料（新旧対照表・抄）', 'redline'),
+    'https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1':
+        ('notices', '解釈通知（厚生労働省・後の改正は別途確認）', 'partial'),
+    'https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1':
+        ('notices', '解釈通知（厚生労働省・後の改正は別途確認）', 'partial'),
+}
 
 # These mappings come from the existing delegated-remuneration node identity
 # map. The two notice 27 subitems are not separate published records, so the
@@ -382,6 +398,62 @@ def mark_missing_text_in_listing(root: Path) -> tuple[Path, str]:
     return page, code.replace(old, new, 1)
 
 
+def label_partial_notice_sources(root: Path, changes: dict) -> int:
+    """Label known partial sources without asserting the age of other sources."""
+    source = root / 'legislation/records.json'
+    if not source.exists():
+        return 0
+    if source.is_symlink() or not source.is_file():
+        raise RuntimeError('Unsafe legal records dataset')
+    data = json.loads(source.read_text(encoding='utf-8'))
+    if not isinstance(data, dict) or not isinstance(data.get('records'), list):
+        raise RuntimeError('Invalid legal records dataset')
+    count = 0
+    for row in data['records']:
+        if not isinstance(row, dict) or row.get('category') not in {'notices', 'guidance'}:
+            continue
+        identifier = row.get('id')
+        if not isinstance(identifier, str):
+            raise RuntimeError('Invalid legal record identifier')
+        name = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        entry = record_index(root).get(identifier)
+        if (row.get('file') != name or not isinstance(entry, dict) or
+                entry.get('document') != row.get('document') or entry.get('category') != row.get('category')):
+            raise RuntimeError(f'Unmatched notice record: {identifier}')
+        page = root / 'legislation/record' / name
+        if page.is_symlink() or not page.is_file():
+            raise RuntimeError(f'Missing notice record page: {identifier}')
+        content = changes.get(page)
+        if content is None:
+            content = page.read_text(encoding='utf-8')
+        matched = 0
+        for url, (category, label, source_type) in PARTIAL_NOTICE_SOURCES.items():
+            if row['category'] != category:
+                continue
+            escaped = html.escape(url, quote=True)
+            old = f'<p><a href="{escaped}" rel="noopener noreferrer">公式原典を確認</a></p>'
+            if old not in content:
+                if f'href="{escaped}"' in content:
+                    raise RuntimeError(f'Unexpected notice source link layout: {identifier}')
+                continue
+            if content.count(old) != 1:
+                raise RuntimeError(f'Duplicate notice source link: {identifier}')
+            if source_type == 'redline':
+                warning = ('改正の新旧対照表は抜粋です。掲載本文とリンク先の版・範囲が異なる場合があります。'
+                           '後の改正と適用時点を確認してください。')
+            else:
+                warning = ('リンク先には後の改正が反映されていない場合があります。掲載本文とリンク先の版・範囲、'
+                           '適用時点を確認してください。')
+            replacement = f'<p><a href="{escaped}" rel="noopener noreferrer">{html.escape(label)}</a></p>'
+            # Keep the source link in its original location, with the scope warning next to it.
+            content = content.replace(old, replacement + '<p class="notice">' + warning + '</p>', 1)
+            matched += 1
+        if matched:
+            changes[page] = content
+            count += matched
+    return count
+
+
 @lru_cache(maxsize=4)
 def record_index(root: Path) -> dict:
     path = root / "legislation/record-index.json"
@@ -483,6 +555,7 @@ def rewrite(root: Path) -> dict:
     if (root / 'legislation/record-index.json').is_file():
         changes.update(add_official_record_links(root))
     missing_text_count = mark_missing_record_text(root, changes)
+    partial_source_count = label_partial_notice_sources(root, changes)
     if (root / 'legislation/app.mjs').exists():
         script, content = mark_missing_text_in_listing(root)
         changes[script] = content
@@ -508,6 +581,7 @@ def rewrite(root: Path) -> dict:
     return {"pages_changed": sum(path.suffix == '.html' for path in changes),
             "search_scripts_changed": sum(path.suffix == '.mjs' for path in changes),
             "missing_record_text_labeled": missing_text_count,
+            "partial_sources_labeled": partial_source_count,
             "fee_links_changed": sum(map(len, PAGES.values())),
             "index_links_changed": counts, "additional_changes": extra_counts}
 
