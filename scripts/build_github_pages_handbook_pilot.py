@@ -48,10 +48,11 @@ figure{max-width:100%;margin:18px 0}figcaption{font-weight:650}.meta,.eyebrow{fo
 .dayservice-counselor-comparison{display:grid;grid-template-columns:3fr 1fr 4fr 1fr;gap:2px;margin-top:10px;font-size:.78rem}
 .dayservice-counselor-comparison span{background:#dce9e0;border:1px solid #9baca2;padding:8px 4px;text-align:center;min-width:0;overflow-wrap:anywhere}
 .dayservice-counselor-comparison strong{display:block}.dayservice-counselor-comparison .dayservice-missing-hour{background:#faf0e8;border-color:#ac725a}
+@media screen and (max-width:760px){.dayservice-counselor-comparison{grid-template-columns:repeat(2,minmax(0,1fr))}}
 input[type=checkbox]{width:1.2rem;height:1.2rem;margin-inline-end:.5rem}button{font:inherit;padding:.6rem;cursor:pointer}
 a:focus-visible,summary:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid #ba7000;outline-offset:2px}
 .pilot-banner{max-width:1050px;margin:0 auto;border-color:#6b756b}
-@media print{body,main{background:#fff}nav,.pilot-banner,button{display:none}details{display:block}}
+@media print{body,main{background:#fff}nav,.pilot-banner,button{display:none}details{display:block}.dayservice-counselor-comparison{grid-template-columns:repeat(2,minmax(0,1fr))}}
 """.strip()
 
 

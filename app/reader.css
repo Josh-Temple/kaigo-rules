@@ -178,6 +178,7 @@
   .handbook-dayservice .handbook-role-navigation ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px}
   .handbook-dayservice .handbook-role-navigation a{min-height:48px}
   .handbook-dayservice .handbook-calculation-example{padding:14px}
+  .dayservice-counselor-comparison{grid-template-columns:repeat(2,minmax(0,1fr))}
   .handbook-dayservice .handbook-supplement,.handbook-dayservice .handbook-source-list{padding-inline:10px}
 }
 @media print{
@@ -218,7 +219,7 @@
   .dayservice-timing-example table{min-width:0;font-size:8pt}
   .dayservice-time-example-scroll th,.dayservice-time-example-scroll td{padding:5pt 3pt}
   .dayservice-timing-example{break-inside:avoid-page}
-  .dayservice-counselor-comparison{font-size:8pt}
+  .dayservice-counselor-comparison{font-size:8pt;grid-template-columns:repeat(2,minmax(0,1fr))}
   .dayservice-qa{background:transparent;padding:10pt;border-color:#777;break-inside:avoid-page}
   .dayservice-excerpt-label,.dayservice-source-caution,.dayservice-read-across,.dayservice-qa-citation,.dayservice-qa-question>strong,.dayservice-qa-answer>strong{break-after:avoid-page}
   .dayservice-source-citation{break-before:avoid-page;break-inside:avoid-page}

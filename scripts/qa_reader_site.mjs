@@ -152,7 +152,19 @@ try {
         }));
         const numbers = role === 'life-counselor' ? text.includes('3時間＋5時間＝8時間') && text.includes('合計8時間') && text.includes('12時〜13時はサービス提供なし') && text.includes('3時間＋4時間＝7時間') && text.includes('1時間足りません') && text.includes('17〜18時') && await example.locator('.dayservice-counselor-comparison .dayservice-missing-hour').count() === 1
           : text.includes('20人全員が5時間利用') && text.includes('10時間') && text.includes('常時1人以上');
-        report.interactions.push({ flow: `${width}px staffing → ${role} calculation on screen`, status: firstStaffingTopic === 'staffing-unit' && fits && numbers ? 'PASS' : 'FAIL' });
+        const timeLabelsUnbroken = role !== 'life-counselor' || await example.evaluate(element => {
+          const cells = [...element.querySelectorAll('.dayservice-counselor-comparison > span')];
+          return cells.length === 4 && cells.every(cell => {
+            const label = [...cell.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+            if (!label) return false;
+            const range = document.createRange();
+            range.selectNodeContents(label);
+            return range.getClientRects().length === 1;
+          });
+        });
+        report.interactions.push({ flow: `${width}px staffing → ${role} calculation on screen`,
+          status: firstStaffingTopic === 'staffing-unit' && fits && numbers && timeLabelsUnbroken ? 'PASS' : 'FAIL',
+          diagnostics: { firstStaffingTopic, fits, numbers, timeLabelsUnbroken } });
         if (role === 'life-counselor') {
           await page.screenshot({ path: path.join(output, `dayservice-counselor-example-${width}.png`) });
           await example.locator('a[href="#staffing-role-life-counselor-interpretation"]').click();
