@@ -7,6 +7,7 @@ renderer patch to the pinned build checkout, then audits the generated site.
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
 import html
 import json
@@ -109,6 +110,7 @@ def audit(source: Path, output: Path) -> dict:
                         if quarantined(requirement):
                             descriptions[(service, chapter, role['id'], requirement['id'])] = requirement['description']
     text_pages = {page: html.unescape(re.sub(r'<[^>]+>', ' ', content)) for page, content in pages.items()}
+    distinctive_lines = set()
     for service, chapter, role, requirement in withheld:
         page = output / 'handbook' / service / (chapter.replace('_', '-') + '.html')
         description = descriptions[(service, chapter, role, requirement)]
@@ -117,6 +119,23 @@ def audit(source: Path, output: Path) -> dict:
             line = re.sub(r'^Research Meshの隔離候補：\s*', '', line).strip()
             if len(line) >= 30 and line in text_pages[page]:
                 raise RuntimeError('Quarantined text present in publication: ' + requirement)
+            if len(line) >= 35:
+                distinctive_lines.add(line)
+    scanned = 0
+    for path in output.rglob('*'):
+        if path.is_symlink():
+            raise RuntimeError('Unsafe symbolic link in publication: ' + str(path))
+        if not path.is_file() or path.suffix not in ('.html', '.json', '.mjs', '.js', '.css', '.txt', '.xml', '.gz'):
+            continue
+        if path.suffix == '.gz':
+            with gzip.open(path, 'rt', encoding='utf-8') as stream:
+                content = stream.read()
+        else:
+            content = path.read_text(encoding='utf-8')
+        content = html.unescape(content)
+        scanned += 1
+        if any(line in content for line in distinctive_lines):
+            raise RuntimeError('Quarantined text found in distribution: ' + str(path.relative_to(output)))
     blocked = Counter((service, chapter, role) for service, chapter, role, _ in withheld)
     fully_withheld = [group for group, count in blocked.items() if totals[group] == count]
     for service, chapter, role in fully_withheld:
@@ -128,7 +147,8 @@ def audit(source: Path, output: Path) -> dict:
                 (overview.is_file() and f'#{target}"' in overview.read_text(encoding='utf-8'))):
             raise RuntimeError('Quarantined role or navigation present in publication: ' + target)
     return {'quarantined_requirements': len(withheld), 'fully_withheld_roles': len(fully_withheld),
-            'handbook_pages_checked': len(pages)}
+            'handbook_pages_checked': len(pages), 'distinctive_lines_checked': len(distinctive_lines),
+            'distribution_files_checked': scanned}
 
 
 def main() -> None:

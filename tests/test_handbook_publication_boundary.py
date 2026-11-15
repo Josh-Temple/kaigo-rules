@@ -54,13 +54,20 @@ class HandbookPublicationBoundaryTest(unittest.TestCase):
         page.write_text('<section id="staffing-role-role-requirement-kept">ok</section>', encoding='utf-8')
         self.assertEqual(boundary.audit(self.root, site),
                          {'quarantined_requirements': 3, 'fully_withheld_roles': 1,
-                          'handbook_pages_checked': 1})
+                          'handbook_pages_checked': 1, 'distinctive_lines_checked': 1,
+                          'distribution_files_checked': 1})
         page.write_text('<section id="staffing-role-role-requirement-mesh-held">blocked</section>', encoding='utf-8')
         with self.assertRaisesRegex(RuntimeError, 'Quarantined requirement present'):
             boundary.audit(self.root, site)
         page.write_text('<p>隔離中の文章として、十分に長い文章をここに記載して出力検査で検出できるようにします。</p>', encoding='utf-8')
         with self.assertRaisesRegex(RuntimeError, 'Quarantined text present'):
             boundary.audit(self.root, site)
+        page.write_text('<p>approved</p>', encoding='utf-8')
+        elsewhere = site / 'search.json'
+        elsewhere.write_text('隔離中の文章として、十分に長い文章をここに記載して出力検査で検出できるようにします。', encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError, 'Quarantined text found in distribution'):
+            boundary.audit(self.root, site)
+        elsewhere.unlink()
         page.write_text('<a href="#staffing-role-only-held">held role</a>', encoding='utf-8')
         with self.assertRaisesRegex(RuntimeError, 'Quarantined role or navigation'):
             boundary.audit(self.root, site)
