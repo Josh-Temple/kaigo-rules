@@ -12,6 +12,8 @@ from pathlib import Path
 PAGE = Path('handbook/community-dayservice/staffing.html')
 # Ministry ordinance No. 34, Articles 20 and 21:
 # https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0
+# Nursing coordination: 2021 redline, section 二の二 1(1)⑥ and 2024
+# Q&A Vol. 1 question 59, linked and dated beside the reader-facing text.
 # These hashes bind the summary to the published 2025-04-01 extract; they do
 # not establish that the extract reflects later amendments or local ordinances.
 SOURCE_HASHES = {
@@ -25,7 +27,7 @@ INSERT_AFTER = ('<p class="handbook-quick-link"><a href="#handbook-sources-staff
 
 OVERVIEW = '''<section class="handbook-role" aria-labelledby="community-staff-roles">
 <h3 id="community-staff-roles">職種別の配置基準</h3>
-<p class="handbook-working-note">ここでは、通常の地域密着型通所介護について、国の基準省令の2025年4月1日施行版をもとに要点を整理しています。後の改正、指定権者の条例・取扱い、資格や兼務の条件は、適用前に原典で確認してください。療養通所介護と共生型には別の規定があります。</p>
+<p class="handbook-working-note">ここでは、通常の地域密着型通所介護について、国の基準省令の2025年4月1日施行版と、発出時期を示した通知・Q&amp;Aをもとに要点を整理しています。後の改正、指定権者の条例・取扱い、資格や兼務の条件は、適用前に原典で確認してください。療養通所介護と共生型には別の規定があります。</p>
 <nav aria-label="職種別の配置基準"><ul>
 <li><a href="#community-staff-consultant">生活相談員</a></li>
 <li><a href="#community-staff-nursing">看護職員</a></li>
@@ -39,6 +41,8 @@ OVERVIEW = '''<section class="handbook-role" aria-labelledby="community-staff-ro
 <p>提供時間と勤務表を日ごとに照合し、資格と兼務の取扱いも確認します。<a href="#community-staff-article20">基準第20条の資料へ</a></p></section>
 <section class="handbook-role"><h4 id="community-staff-nursing">看護職員</h4>
 <p>原則として、提供単位ごとに、専らサービスの提供に当たる看護師または准看護師が1人以上確保されるために必要な人数を置きます。</p>
+<p>国の令和3年度改正資料では、提供時間帯を通じて事業所内で専従する必要はなく、事業所との密接かつ適切な連携が必要とされています。病院・診療所・訪問看護ステーションとの連携による確保も示されています。</p>
+<p>外部と連携する場合の利用者全員の健康状態の確認や、提供時間帯を通じた連絡体制などの条件を確認してください。<a href="https://www.mhlw.go.jp/content/12300000/000869799.pdf">令和3年度の改正資料（新旧対照表・抄）</a> ／ <a href="https://www.mhlw.go.jp/content/12300000/001246407.pdf">令和6年度 国Q&amp;A Vol.1 問59</a>。いずれも後続の改正・訂正がないか確認してください。</p>
 <p>利用定員が10人以下の場合は、看護職員と介護職員の配置に関する特例があります。<a href="#community-staff-exceptions">特例を確認する</a> ／ <a href="#community-staff-article20">基準第20条の資料へ</a></p></section>
 <section class="handbook-role"><h4 id="community-staff-care">介護職員</h4>
 <p>原則として、提供単位ごとに、専らサービスの提供に当たる介護職員の勤務時間の合計を提供単位時間数で割った割合が、利用者15人までは1以上、15人を超える場合は「1＋（15人を超える人数÷5）」以上となるよう、必要な人数を置きます。</p>
