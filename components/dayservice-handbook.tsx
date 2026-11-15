@@ -5,6 +5,7 @@ import { sourceTextParagraphs } from "../lib/handbook/dayservice-reader-editoria
 import { basicFeeTable, dayserviceAppliedText, type FeeTableRow } from "../lib/handbook/dayservice-source-layout";
 import HandbookChecklist from "./handbook-checklist";
 import HandbookPrint from "./handbook-print";
+import DayserviceTreatmentImprovement2026 from "./dayservice-treatment-improvement-2026";
 
 function OriginalText({ text }: { text: string }) {
   return <div className="dayservice-original">{sourceTextParagraphs(text).map((paragraph, index) => paragraph.trim() ? <p key={index} className={/^[\s]*[・※①-⑳一二三四五六七八九十イロハニホヘトア-オ（(]/u.test(paragraph) ? "dayservice-source-item" : undefined}>{paragraph}</p> : null)}</div>;
@@ -137,6 +138,7 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
   const BlockHeading = full ? "h3" : "h4";
   const isFee = topic.basis.some(reference => reference.family === "fee");
   const hasExample = ["staffing-role-life-counselor", "staffing-role-care-worker"].includes(topic.id);
+  const basisExcerpts = topic.basis.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={reference.family !== "fee" || topic.basis.length > 1} showCaution={reference.family !== "fee"} showSourceTitle={index === 0 || reference.family !== topic.basis[index - 1].family} />);
   const sections = [
     ...(topic.basis.length ? [{ id: `${topic.id}-basis`, title: isFee ? "報酬告示" : "基準" }] : []),
     ...(topic.criteria?.length ? [{ id: `${topic.id}-criteria`, title: "大臣基準" }] : []),
@@ -147,6 +149,15 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
   return <section id={topic.id} className={`dayservice-reading-topic${topic.id.startsWith("staffing-role-") ? " handbook-role" : ""}`}>
     {requirementIds?.map(id => <span key={id} id={`${topic.id}-requirement-${id}`} className="dayservice-legacy-anchor" />)}
     <TopicHeading>{topic.title}</TopicHeading>
+    {topic.regulatoryUpdate ? <aside className="dayservice-source-caution dayservice-regulatory-update" role="note" aria-label="改正資料の確認が必要です">
+      <p><strong>改正資料の確認が必要です</strong></p>
+      <p>{topic.regulatoryUpdate.message}</p>
+      <p><OfficialLink url={topic.regulatoryUpdate.officialUrl}>{topic.regulatoryUpdate.officialLabel}</OfficialLink></p>
+      {topic.regulatoryUpdate.relatedDocuments?.length ? <ul>
+        {topic.regulatoryUpdate.relatedDocuments.map(document => <li key={document.url}><OfficialLink url={document.url}>{document.label}</OfficialLink></li>)}
+      </ul> : null}
+    </aside> : null}
+    {topic.id === "fee-treatment-improvement" ? <DayserviceTreatmentImprovement2026 /> : null}
     {topic.readerSummary ? <div className="dayservice-reader-overview">
       <p><strong>必要な基準の要点</strong></p><p>{topic.readerSummary}</p>
       {topic.readerConditions?.length ? <section aria-label="主な条件"><p><strong>主な条件</strong></p><ul>{topic.readerConditions.map(value => <li key={value}>{value}</li>)}</ul></section> : null}
@@ -168,7 +179,14 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
       <p>上記は発出時点の回答の要点です。後続改正との適用関係は未確認です。算定前に最新の国の資料も確認してください。</p>
     </section> : null}
     {sections.length > 1 && (topic.criteria?.length || topic.qa?.length) ? <nav className="dayservice-source-navigation" aria-label={`${topic.title}の資料へ移動`}><ul>{sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav> : null}
-    {topic.basis.length ? <section className="dayservice-source-block" id={`${topic.id}-basis`}><BlockHeading>{isFee ? "報酬告示" : "基準"}</BlockHeading>{topic.basis.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={reference.family !== "fee" || topic.basis.length > 1} showCaution={reference.family !== "fee"} showSourceTitle={index === 0 || reference.family !== topic.basis[index - 1].family} />)}</section> : null}
+    {topic.basis.length ? <section className="dayservice-source-block" id={`${topic.id}-basis`}><BlockHeading>{isFee ? "報酬告示" : "基準"}</BlockHeading>
+      {topic.regulatoryUpdate ? <details className="dayservice-historical-fee-details">
+        <summary>6月以降の率を含む収載本文を見る（全文・要件は未照合）</summary>
+        <p className="dayservice-source-caution">収載本文中の率は6月以降の改正後欄と一致していますが、全文・算定要件は未照合です。4月・5月の算定には使わず、6月以降も国の告示・通知・指定権者の案内を確認してください。</p>
+        {/* Exclude unverified historical figures from Google snippets without suppressing the entire handbook. */}
+        <div data-nosnippet="">{basisExcerpts}</div>
+      </details> : basisExcerpts}
+    </section> : null}
     {topic.criteria?.length ? <section className="dayservice-source-block" id={`${topic.id}-criteria`}><BlockHeading>厚生労働大臣が定める基準・算定方法</BlockHeading>{topic.criteria.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={false} showCaution={index === 0} />)}</section> : null}
     {topic.interpretation?.length ? <section className="dayservice-source-block" id={`${topic.id}-interpretation`}><BlockHeading>国の解釈通知・留意事項</BlockHeading>{topic.interpretation.map((reference, index) => <Excerpt key={`${reference.id}-${reference.part || ""}`} reference={reference} showCaution={index === 0} />)}</section> : null}
     {hasExample ? <section className="dayservice-source-block" id={`${topic.id}-example`}><BlockHeading>勤務時間の計算例</BlockHeading>{topic.id === "staffing-role-life-counselor" ? <LifeCounselorExample /> : <CareWorkerExample />}</section> : null}
@@ -178,7 +196,7 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
     {topic.qaSearchQuery ? <p className="dayservice-qa-search-link">
       <Link href={`/qa?reader=1&service=16&q=${encodeURIComponent(topic.qaSearchQuery)}`}>「{topic.qaSearchQuery}」に関する国Q&Aをさらに探す</Link>
       <span>検索結果には過去の取扱いも含まれます。発出日と後続改正を確認してください。</span>
-      <span className="dayservice-qa-print-url">印刷版から探す場合：kaigo-rules.vercel.app/qa?reader=1 で「{topic.qaSearchQuery}」を検索</span>
+      <span className="dayservice-qa-print-url">印刷版から探す場合：Kaigo Rulesサイト内の「国Q&Aを探す」で「{topic.qaSearchQuery}」を検索</span>
     </p> : null}
     {topic.local ? <aside className="dayservice-local"><p><strong>所在地の指定権者に確認すること</strong></p><p>{topic.local}</p></aside> : null}
     {topic.note ? <p>{topic.note}</p> : null}
