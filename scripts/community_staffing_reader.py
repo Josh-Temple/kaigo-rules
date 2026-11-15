@@ -67,7 +67,7 @@ OVERVIEW = '''<section class="handbook-role" aria-labelledby="community-staff-ro
 <p>兼務する場合も、管理業務に支障がないかを確認します。<a href="#community-staff-article21">基準第21条の資料へ</a></p></section>
 <section class="handbook-role"><h4 id="community-staff-exceptions">定員10人以下などの特例・共通の確認</h4>
 <ul><li><strong>利用定員10人以下：</strong>特例を適用すると、単位ごとに、看護職員または介護職員の専従勤務時間の合計を提供単位時間数で割った数が1以上となる人数とすることができます。別に、看護職員または介護職員を単位ごとに常時1人以上従事させます。</li>
-<li><strong>常勤者：</strong>国の基準省令の収載版では、生活相談員または介護職員のうち1人以上は常勤です。定員10人以下の特例における看護職員の扱いは、指定権者の条例・手引も確認してください。例えば<a href="https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/mittyaku-dei.files/0187_20260527.pdf">横浜市の令和8年度の手引</a>は、定員10人以下で看護職員を配置する場合には看護職員も含めています。</li>
+<li><strong>常勤者：</strong>国の基準省令の収載版では、生活相談員または介護職員のうち1人以上は常勤です。定員10人以下で第2項の特例を適用する場合、第3項の読替えにより、この介護職員には看護職員も含まれます。指定権者の条例・手引も確認してください。<a href="https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/mittyaku-dei.files/0187_20260527.pdf">横浜市の令和8年度の手引</a>も、この場合の看護職員に言及しています。</li>
 <li><strong>第一号通所事業との一体運営：</strong>両方の指定を受け、同じ事業所で一体的に運営する場合には、市町村が定める第一号通所事業の人員基準を満たすことで、基準第20条の人員基準を満たすものとみなすことができる規定があります。指定・運営の実態と市町村の基準を確認します。</li></ul>
 <p>一体運営では利用者数の数え方にも規定があります。定員表、単位別の利用者数、提供時間、勤務実績を突き合わせ、<a href="#community-staff-article20">基準第20条の全文</a>と適用される条例を確認してください。</p></section>
 </section>'''
