@@ -702,6 +702,30 @@ class WelfareFacilityStaffingReaderTest(unittest.TestCase):
                     welfare_facility_staffing_reader.add_welfare_facility_staffing_overview(
                         changed, welfare_facility_staffing_reader.PAGE)
 
+    def test_care_articles_on_operations_page_are_also_guarded(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            staff = root / welfare_facility_staffing_reader.PAGE
+            staff.parent.mkdir(parents=True)
+            staff.write_text('staffing', encoding='utf-8')
+            operations = root / welfare_facility_staffing_reader.OPERATIONS_PAGE
+            def source(number, text):
+                return (f'<details class="handbook-source"><summary><span class="handbook-source-label">'
+                        f'{number}</span><span>（介護）</span></summary>'
+                        '<p class="meta">収載資料の版・施行日：2025-04-01</p>'
+                        f'<p class="handbook-original">{text}</p></details>')
+            care = source('第十三条', 'ordinary') + source('第四十三条', 'unit')
+            hashes = {'第十三条': hashlib.sha256(b'ordinary').hexdigest(),
+                      '第四十三条': hashlib.sha256(b'unit').hexdigest()}
+            with patch.dict(welfare_facility_staffing_reader.CARE_SOURCE_HASHES, hashes):
+                with self.assertRaisesRegex(RuntimeError, 'Missing or unsafe'):
+                    welfare_facility_staffing_reader.validate_welfare_facility_care_sources(root)
+                operations.write_text(care, encoding='utf-8')
+                welfare_facility_staffing_reader.validate_welfare_facility_care_sources(root)
+                operations.write_text(care.replace('>ordinary</p>', '>changed</p>'), encoding='utf-8')
+                with self.assertRaisesRegex(RuntimeError, 'care source changed'):
+                    welfare_facility_staffing_reader.validate_welfare_facility_care_sources(root)
+
 
 if __name__ == "__main__":
     unittest.main()

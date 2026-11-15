@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 
 PAGE = Path('handbook/elderly-welfare-facility/staffing.html')
+OPERATIONS_PAGE = Path('handbook/elderly-welfare-facility/operations.html')
 INSERT_AFTER = ('<p class="handbook-quick-link"><a href="#handbook-sources-staffing">'
                 'この章の関連資料へ移動 ↓</a></p>')
 OLD_NOTE = ('原典候補は平成11年厚生省令第39号の介護老人福祉施設基準（介護老人福祉施設の基準の参照対象一覧）。'
@@ -24,6 +25,34 @@ SOURCE_LABELS = {'第二条': '（従業者の員数）', '第二十一条': '�
                  '第四十七条': '（勤務体制の確保等）'}
 SOURCE_IDS = {'第二条': 'welfare-staff-article2', '第二十一条': 'welfare-staff-article21',
               '第四十七条': 'welfare-staff-article47'}
+CARE_SOURCE_HASHES = {
+    '第十三条': 'e7f6de401a413e0da71a1b4533fedb2d50e6676e136efcd23fe5a8e3acf5727a',
+    '第四十三条': '557c0400b3f50a18a942b2f21c76c328ca9e07fa2fbf439a9b6b1e25fb791c1b',
+}
+
+
+def validate_welfare_facility_care_sources(root: Path) -> None:
+    """The constant-care wording also depends on two operating articles."""
+    if not (root / PAGE).exists():
+        return
+    path = root / OPERATIONS_PAGE
+    if path.is_symlink() or not path.is_file():
+        raise RuntimeError('Missing or unsafe welfare facility care source page')
+    content = path.read_text(encoding='utf-8')
+    for number, expected_hash in CARE_SOURCE_HASHES.items():
+        start = ('<details class="handbook-source"><summary><span class="handbook-source-label">'
+                 + number + '</span><span>（介護）</span></summary>')
+        if content.count(start) != 1:
+            raise RuntimeError(f'Missing or duplicate welfare facility care source: {number}')
+        pos = content.index(start)
+        end = content.find('</details>', pos)
+        if end < 0:
+            raise RuntimeError(f'Unclosed welfare facility care source: {number}')
+        record = content[pos:end]
+        original = re.findall(r'<p class="handbook-original">(.*?)</p>', record, flags=re.DOTALL)
+        if (len(original) != 1 or '収載資料の版・施行日：2025-04-01' not in record or
+                hashlib.sha256(original[0].encode('utf-8')).hexdigest() != expected_hash):
+            raise RuntimeError(f'Welfare facility care source changed; review summary before publication: {number}')
 
 OVERVIEW = '''<section class="handbook-role" aria-labelledby="welfare-staff-roles">
 <h3 id="welfare-staff-roles">職種別の配置基準</h3>
