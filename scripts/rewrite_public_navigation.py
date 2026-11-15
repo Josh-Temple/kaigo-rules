@@ -290,6 +290,19 @@ def rewrite_guide(content: str, root: Path) -> str:
     return content
 
 
+def label_qa_search_scopes(code: str) -> str:
+    """Distinguish Q&A records without collapsing distinct service scopes."""
+    anchor = '      card.append(internalLink(row.title, resultHref(group, row, q)));'
+    if code.count(anchor) != 1:
+        raise RuntimeError('Unexpected database search result rendering')
+    addition = '''
+      if (group === "qa") {
+        const scope = typeof row.scope === "string" ? row.scope.trim() : "";
+        card.append(element("p", (scope ? "対象：" + scope + " / " : "") + "収載済み・現行性未確認"));
+      }'''
+    return code.replace(anchor, anchor + addition, 1)
+
+
 def rewrite_search_scripts(root: Path) -> dict[Path, str]:
     """Keep dynamically generated search results on published pages or official sources."""
     search = root / 'databases/search'
@@ -348,6 +361,7 @@ def rewrite_search_scripts(root: Path) -> dict[Path, str]:
   }
   return link;'''
     code = code.replace(old_fallback, fallback, 1)
+    code = label_qa_search_scopes(code)
     code = code.replace('// This prototype does not include destination pages. Keep navigation on\n'
                         '      // the current site, and do not trust a row with an off-origin URL.',
                         '// Use verified local destinations or an explicitly labelled official source.')
