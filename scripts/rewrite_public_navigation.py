@@ -24,6 +24,7 @@ if __package__:
     from .group_home_staffing_reader import add_group_home_staffing_overview
     from .preventive_group_home_staffing_reader import add_preventive_group_home_staffing_overview
     from .night_homevisit_manager_clarification import clarify_night_homevisit_manager
+    from .care_medical_staffing_reader import add_care_medical_staffing_overview, validate_facility_manager_law_sources
 else:
     from community_staffing_reader import add_community_staffing_overview
     from health_facility_staffing_reader import add_health_facility_staffing_overview
@@ -32,6 +33,7 @@ else:
     from group_home_staffing_reader import add_group_home_staffing_overview
     from preventive_group_home_staffing_reader import add_preventive_group_home_staffing_overview
     from night_homevisit_manager_clarification import clarify_night_homevisit_manager
+    from care_medical_staffing_reader import add_care_medical_staffing_overview, validate_facility_manager_law_sources
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 QUERY = "q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
@@ -748,6 +750,7 @@ def rewrite(root: Path) -> dict:
     if not root.is_dir():
         raise RuntimeError("Site root is not a directory")
     validate_welfare_facility_care_sources(root)
+    validate_facility_manager_law_sources(root)
     changes = {}
     for source, links in PAGES.items():
         path = root / source
@@ -800,7 +803,7 @@ def rewrite(root: Path) -> dict:
                     'health_facility_staffing_overview': 0, 'welfare_facility_staffing_overview': 0,
                     'fee_root_version_labels': 0, 'fee_detail_version_labels': 0,
                     'group_home_staffing_overview': 0, 'preventive_group_home_staffing_overview': 0,
-                    'night_homevisit_manager': 0}
+                    'night_homevisit_manager': 0, 'care_medical_staffing_overview': 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
@@ -834,6 +837,8 @@ def rewrite(root: Path) -> dict:
             extra_counts['preventive_group_home_staffing_overview'] += n
             after, n = clarify_night_homevisit_manager(after, path.relative_to(root))
             extra_counts['night_homevisit_manager'] += n
+            after, n = add_care_medical_staffing_overview(after, path.relative_to(root))
+            extra_counts['care_medical_staffing_overview'] += n
         if after != before:
             changes[path] = after
     # Validate the entire plan before changing any page. The build pipeline
