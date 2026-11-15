@@ -44,7 +44,7 @@ OVERVIEW = '''<section class="handbook-role" aria-labelledby="dementia-day-staff
 <p>事業所ごとに常勤の管理者を置き、原則として管理の職務に専ら従事します。管理上支障がない場合は、当該事業所や他の事業所・施設等の職務に従事できます。</p>
 <p>必要な知識・経験と、厚生労働大臣が定める研修の修了が必要です。研修の種類や経過措置は、適用時点の資料と指定権者に確認してください。<a href="#dementia-day-staff-article43">基準第43条へ</a></p></section>
 <section class="handbook-role"><h4 id="dementia-day-staff-shared">共用型の人員・管理者</h4>
-<p>共用型では、併設する本体の利用者・入居者等と、共用型の利用者を合わせた人数について、本体事業所・施設に適用される人員基準を満たすために必要な人数を確認します。単独型・併設型の配置をそのまま当てはめないでください。<a href="#dementia-day-staff-article45">基準第45条へ</a></p>
+<p>共用型では、居間や食堂などを共用する本体事業所・施設の利用者・入居者等と、共用型の利用者を合わせた人数について、本体事業所・施設に適用される人員基準を満たすために必要な人数を確認します。単独型・併設型の配置をそのまま当てはめないでください。<a href="#dementia-day-staff-article45">基準第45条へ</a></p>
 <p>共用型にも常勤の管理者を置き、原則として管理の職務に専従します。管理に支障がない場合の兼務や、必要な知識・経験と研修修了について確認します。<a href="#dementia-day-staff-article47">基準第47条へ</a></p></section>
 <p>介護予防と同一事業所で一体的に運営し、双方の指定を受けている場合には、介護予防側の基準を満たすことで介護側も満たすとみなせる規定があります。類型ごとの条件と利用者の数え方を原典で確認してください。<a href="#dementia-day-staff-article42">第42条</a> ／ <a href="#dementia-day-staff-article45">第45条</a></p>
 <p><a href="https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&amp;dataType=0&amp;pageNo=2">国の基準省令を開く</a></p>
