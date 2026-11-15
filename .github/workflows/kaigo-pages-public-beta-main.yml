@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/kaigo-pages-public-beta-main.yml"
       - "scripts/rewrite_public_navigation.py"
+      - "scripts/community_staffing_reader.py"
 
 permissions:
   contents: read
@@ -31,6 +32,7 @@ jobs:
           path: .publication-tools
           sparse-checkout: |
             scripts/rewrite_public_navigation.py
+            scripts/community_staffing_reader.py
             tests/test_formal_navigation.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
