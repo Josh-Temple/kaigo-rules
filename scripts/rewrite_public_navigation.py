@@ -307,6 +307,17 @@ def label_qa_search_scopes(code: str) -> str:
     return code.replace(anchor, anchor + addition, 1)
 
 
+def label_unit_price_check_date(code: str) -> str:
+    """A historical display check is not a continuing currentness guarantee."""
+    old = '''        card.append(element("p", "現行性：公開条件を満たした現行資料" +
+          (first.checkedAt ? " / 公式表示確認日：" + first.checkedAt : "")));'''
+    new = '''        card.append(element("p", "公式表示の確認日：" +
+          (first.checkedAt || "未記録") + " / その後の改正・適用は原典で確認してください。"));'''
+    if code.count(old) != 1:
+        raise RuntimeError('Unexpected unit price search status')
+    return code.replace(old, new, 1)
+
+
 def rewrite_search_scripts(root: Path) -> dict[Path, str]:
     """Keep dynamically generated search results on published pages or official sources."""
     search = root / 'databases/search'
@@ -366,6 +377,7 @@ def rewrite_search_scripts(root: Path) -> dict[Path, str]:
   return link;'''
     code = code.replace(old_fallback, fallback, 1)
     code = label_qa_search_scopes(code)
+    code = label_unit_price_check_date(code)
     code = code.replace('// This prototype does not include destination pages. Keep navigation on\n'
                         '      // the current site, and do not trust a row with an off-origin URL.',
                         '// Use verified local destinations or an explicitly labelled official source.')
