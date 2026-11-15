@@ -128,7 +128,13 @@ COMMUNITY_HISTORICAL_PDF = (
     '%E4%BB%8B%E8%AD%B7%E4%BF%9D%E9%99%BA%E6%9C%80%E6%96%B0%E6%83%85%E5%A0%B1Vol.524.pdf'
 )
 COMMUNITY_R6_REDLINE = 'https://www.mhlw.go.jp/content/12300000/001227939.pdf'
+COMMUNITY_R3_REDLINE = 'https://www.mhlw.go.jp/content/12301000/000750727.pdf'
 COMMUNITY_UNVERIFIED_CLAIM = '厚生労働省の過去の解釈通知全文で見出しと説明を確認。'
+COMMUNITY_OLD_019 = (COMMUNITY_UNVERIFIED_CLAIM +
+                     'サービス開始前に運営規程、勤務体制、緊急時対応医療機関との連絡体制、'
+                     '苦情処理等の重要事項を文書で説明し同意を得る趣旨を扱う。')
+COMMUNITY_CORRECTED_019 = ('指定療養通所介護の提供開始前に重要事項を文書で交付・説明し、利用者の同意を得ることなどを扱う。'
+                           '国の基準省令第40条の5を参照。厚生労働省が掲載する解釈通知の該当箇所は未確認。')
 COMMUNITY_WRONG_SOURCE = 'https://www.mhlw.go.jp/content/12300000/001225905.pdf'
 
 # These mappings come from the existing delegated-remuneration node identity
@@ -552,11 +558,13 @@ def label_partial_notice_sources(root: Path, changes: dict) -> int:
             if matched:
                 raise RuntimeError(f'Multiple partial notice sources: {identifier}')
             target_url = url
-            if source_type == 'draft' and identifier in MISLINKED_COMMUNITY_NOTICES:
+            if identifier in MISLINKED_COMMUNITY_NOTICES:
                 if (row.get('document') != 'notice-summary-community-dayservice' or
                         row.get('title') != MISLINKED_COMMUNITY_NOTICES[identifier] or
                         entry.get('services') != ['community-dayservice']):
                     raise RuntimeError(f'Unmatched community notice: {identifier}')
+                if url not in {COMMUNITY_WRONG_SOURCE, COMMUNITY_R6_REDLINE}:
+                    raise RuntimeError(f'Unexpected community notice source: {identifier}')
                 target_url = COMMUNITY_R6_REDLINE
                 label = '令和6年度の改正資料（該当項目は省略）'
                 warning = ('令和6年度の改正資料では該当箇所が省略されています。平成28年の通知も参照できますが、'
@@ -577,6 +585,8 @@ def label_partial_notice_sources(root: Path, changes: dict) -> int:
                         entry.get('services') != ['community-dayservice']):
                     raise RuntimeError(f'Unmatched community historical notice: {identifier}')
                 if identifier.endswith('.021'):
+                    if url != COMMUNITY_R3_REDLINE:
+                        raise RuntimeError(f'Unexpected community notice source: {identifier}')
                     warning = ('令和3年度の改正資料では計画作成に関する本文の一部が省略されています。'
                                '平成28年の通知も参照できますが、その後の改正を反映した現行の通知全文は確認中です。'
                                '適用を判断する前に最新の通知と指定権者の基準を確認してください。')
@@ -596,11 +606,13 @@ def label_partial_notice_sources(root: Path, changes: dict) -> int:
         if matched:
             changes[page] = content
             count += matched
+        elif identifier in COMMUNITY_HISTORICAL_NOTICES:
+            raise RuntimeError(f'Missing community notice source: {identifier}')
     return count
 
 
 def fix_community_record_claim(root: Path, changes: dict) -> None:
-    """Remove an unsupported source-verification claim from the affected summary."""
+    """Use the corrected source summary and retain its unverified status."""
     source = root / 'legislation/records.json'
     if not source.is_file():
         return
@@ -609,42 +621,62 @@ def fix_community_record_claim(root: Path, changes: dict) -> None:
     matches = [row for row in rows if row.get('id') == 'community-dayservice.notice.019']
     if not matches:
         return
-    if (len(matches) != 1 or not matches[0].get('text', '').startswith(COMMUNITY_UNVERIFIED_CLAIM)
-            or raw.count(COMMUNITY_UNVERIFIED_CLAIM) != 1):
+    if len(matches) != 1:
         raise RuntimeError('Unexpected community notice verification claim')
     row = matches[0]
     page = root / 'legislation/record' / row['file']
     if page not in changes:
         raise RuntimeError('Community notice source was not corrected')
-    body = '<div class="dayservice-original" style="white-space:pre-wrap">' + COMMUNITY_UNVERIFIED_CLAIM
+    text = row.get('text', '')
+    if COMMUNITY_UNVERIFIED_CLAIM not in raw:
+        # The source record may already contain the later correction.  Do not
+        # treat an arbitrary missing claim as proof that it was corrected.
+        if not isinstance(text, str):
+            raise RuntimeError('Unexpected community notice verification claim')
+        body = ('<div class="dayservice-original" style="white-space:pre-wrap">'
+                + html.escape(text, quote=False) + '</div>')
+        if text != COMMUNITY_CORRECTED_019 or changes[page].count(body) != 1:
+            raise RuntimeError('Unexpected community notice verification claim')
+        return
+    if (text != COMMUNITY_OLD_019 or raw.count(COMMUNITY_OLD_019) != 1 or
+            raw.count(COMMUNITY_UNVERIFIED_CLAIM) != 1):
+        raise RuntimeError('Unexpected community notice verification claim')
+    body = ('<div class="dayservice-original" style="white-space:pre-wrap">'
+            + html.escape(COMMUNITY_OLD_019, quote=False) + '</div>')
     if changes[page].count(body) != 1:
         raise RuntimeError('Unexpected community notice body')
-    changes[page] = changes[page].replace(body, body.replace(COMMUNITY_UNVERIFIED_CLAIM, ''), 1)
-    changes[source] = raw.replace(COMMUNITY_UNVERIFIED_CLAIM, '', 1)
+    changes[page] = changes[page].replace(body, body.replace(COMMUNITY_OLD_019, COMMUNITY_CORRECTED_019), 1)
+    changes[source] = raw.replace(COMMUNITY_OLD_019, COMMUNITY_CORRECTED_019, 1)
 
 
 def fix_community_handbook_sources(content: str, path: Path) -> tuple[str, int]:
     """Replace incorrect handbook citations with the matching record and its warning."""
-    if COMMUNITY_WRONG_SOURCE not in content:
+    if COMMUNITY_WRONG_SOURCE not in content and COMMUNITY_R6_REDLINE not in content:
         return content, 0
     if path.parts[:2] != ('handbook', 'community-dayservice'):
-        raise RuntimeError(f'Unexpected handbook source location: {path}')
+        if COMMUNITY_WRONG_SOURCE in content:
+            raise RuntimeError(f'Unexpected handbook source location: {path}')
+        return content, 0
     count = 0
     for identifier in MISLINKED_COMMUNITY_NOTICES:
         filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
-        old = (f'<a href="{COMMUNITY_WRONG_SOURCE}">公式原典を開く ↗</a>'
-               f'<a href="../../legislation/record/{filename}">この項目へのリンク</a>')
-        n = content.count(old)
-        if n > 1:
+        pairs = [(url, f'<a href="{url}">公式原典を開く ↗</a>'
+                       f'<a href="../../legislation/record/{filename}">この項目へのリンク</a>')
+                 for url in (COMMUNITY_WRONG_SOURCE, COMMUNITY_R6_REDLINE)]
+        matched = [(url, old) for url, old in pairs if old in content]
+        if len(matched) > 1 or any(content.count(old) != 1 for _, old in matched):
             raise RuntimeError(f'Duplicate handbook source: {identifier}')
-        if n:
+        if matched:
+            url, old = matched[0]
             content = content.replace(old, f'<a href="../../legislation/record/{filename}">'
                                       '原典の確認状況を見る</a>', 1)
-            if identifier == 'community-dayservice.notice.019':
-                if content.count(COMMUNITY_UNVERIFIED_CLAIM) != 1:
+            if identifier == 'community-dayservice.notice.019' and url == COMMUNITY_WRONG_SOURCE:
+                if content.count(COMMUNITY_OLD_019) != 1:
                     raise RuntimeError('Unexpected handbook verification claim')
-                content = content.replace(COMMUNITY_UNVERIFIED_CLAIM, '', 1)
-            count += n
+                content = content.replace(COMMUNITY_OLD_019, COMMUNITY_CORRECTED_019, 1)
+            elif identifier == 'community-dayservice.notice.019' and content.count(COMMUNITY_CORRECTED_019) != 1:
+                raise RuntimeError('Unexpected handbook notice correction')
+            count += 1
     if COMMUNITY_WRONG_SOURCE in content:
         raise RuntimeError(f'Unmatched handbook source: {path}')
     return content, count
@@ -848,6 +880,8 @@ def rewrite(root: Path) -> dict:
             extra_counts['nursing_small_scale_roles'] += n
             after, n = add_care_management_staffing_overview(after, path.relative_to(root))
             extra_counts['care_management_staffing_overview'] += n
+        if COMMUNITY_UNVERIFIED_CLAIM in after:
+            raise RuntimeError(f'Unsupported community verification claim remains: {path.relative_to(root)}')
         if after != before:
             changes[path] = after
     # Validate the entire plan before changing any page. The build pipeline

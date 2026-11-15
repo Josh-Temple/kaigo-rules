@@ -451,6 +451,11 @@ class FeeNavigationTest(unittest.TestCase):
     def test_mislinked_community_notices_show_relevant_but_incomplete_source(self):
         folder = self.root / 'legislation/record'
         folder.mkdir()
+        old_summary = ('厚生労働省の過去の解釈通知全文で見出しと説明を確認。'
+                       'サービス開始前に運営規程、勤務体制、緊急時対応医療機関との連絡体制、'
+                       '苦情処理等の重要事項を文書で説明し同意を得る趣旨を扱う。')
+        corrected_summary = ('指定療養通所介護の提供開始前に重要事項を文書で交付・説明し、利用者の同意を得ることなどを扱う。'
+                             '国の基準省令第40条の5を参照。厚生労働省が掲載する解釈通知の該当箇所は未確認。')
         items = {
             'community-dayservice.notice.015': '指定療養通所介護の基本方針',
             'community-dayservice.notice.019': '内容及び手続の説明及び同意',
@@ -459,8 +464,8 @@ class FeeNavigationTest(unittest.TestCase):
         records, index = [], {}
         for identifier, title in items.items():
             name = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
-            claim = '厚生労働省の過去の解釈通知全文で見出しと説明を確認。' if identifier.endswith('.019') else ''
-            records.append({'id': identifier, 'file': name, 'text': claim + '掲載内容', 'title': title,
+            body = old_summary if identifier.endswith('.019') else '掲載内容'
+            records.append({'id': identifier, 'file': name, 'text': body, 'title': title,
                             'document': 'notice-summary-community-dayservice', 'category': 'notices'})
             index[identifier] = {'document': 'notice-summary-community-dayservice', 'category': 'notices',
                                  'services': ['community-dayservice']}
@@ -468,7 +473,7 @@ class FeeNavigationTest(unittest.TestCase):
                    if identifier.endswith('.021') else 'https://www.mhlw.go.jp/content/12300000/001225905.pdf')
             (folder / name).write_text('<article>'
                 '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
-                '<div class="dayservice-original" style="white-space:pre-wrap">' + claim + '掲載内容</div>'
+                '<div class="dayservice-original" style="white-space:pre-wrap">' + body + '</div>'
                 f'<p><a href="{url}" rel="noopener noreferrer">公式原典を確認</a></p></article>')
         (self.root / 'legislation/record-index.json').write_text(json.dumps(index))
         dataset = self.root / 'legislation/records.json'
@@ -476,15 +481,17 @@ class FeeNavigationTest(unittest.TestCase):
         handbook = self.root / 'handbook/community-dayservice/example.html'
         handbook.parent.mkdir(parents=True)
         filename = hashlib.sha256('community-dayservice.notice.019'.encode()).hexdigest() + '.html'
-        handbook.write_text('<p>厚生労働省の過去の解釈通知全文で見出しと説明を確認。掲載内容</p>'
+        handbook.write_text('<p>' + old_summary + '</p>'
             '<a href="https://www.mhlw.go.jp/content/12300000/001225905.pdf">公式原典を開く ↗</a>'
             f'<a href="../../legislation/record/{filename}">この項目へのリンク</a>')
         result = rewrite(self.root)
         self.assertEqual(result['partial_sources_labeled'], 3)
         self.assertEqual(result['additional_changes']['community_handbook_sources'], 1)
         self.assertNotIn('過去の解釈通知全文で見出しと説明を確認', dataset.read_text())
+        self.assertIn(corrected_summary, dataset.read_text())
         self.assertNotIn('001225905.pdf', handbook.read_text())
         self.assertNotIn('過去の解釈通知全文で見出しと説明を確認', handbook.read_text())
+        self.assertIn(corrected_summary, handbook.read_text())
         self.assertIn('原典の確認状況を見る', handbook.read_text())
         for identifier in items:
             page = (folder / (hashlib.sha256(identifier.encode()).hexdigest() + '.html')).read_text()
@@ -499,7 +506,9 @@ class FeeNavigationTest(unittest.TestCase):
             self.assertIn('福祉医療機構掲載', page)
             self.assertIn('現行の通知全文は確認中', page)
             self.assertIn('www2.wam.go.jp', page)
-            self.assertLess(page.index('省略されています'), page.index('掲載内容'))
+            self.assertLess(page.index('省略されています'), page.index('dayservice-original'))
+            if identifier.endswith('.019'):
+                self.assertIn(corrected_summary, page)
 
     def test_mislinked_notice_with_different_service_stops_before_any_write(self):
         folder = self.root / 'legislation/record'
@@ -518,6 +527,100 @@ class FeeNavigationTest(unittest.TestCase):
         original_fees = self.fees.read_text()
         original_page = page.read_text()
         with self.assertRaisesRegex(RuntimeError, 'Unmatched community notice'):
+            rewrite(self.root)
+        self.assertEqual(self.fees.read_text(), original_fees)
+        self.assertEqual(page.read_text(), original_page)
+
+    def test_corrected_community_notice_keeps_specific_omission_warning(self):
+        folder = self.root / 'legislation/record'
+        folder.mkdir()
+        records, index = [], {}
+        items = {
+            'community-dayservice.notice.015': ('指定療養通所介護の基本方針', '基本方針の要約。'),
+            'community-dayservice.notice.019': (
+                '内容及び手続の説明及び同意',
+                '指定療養通所介護の提供開始前に重要事項を文書で交付・説明し、利用者の同意を得ることなどを扱う。'
+                '国の基準省令第40条の5を参照。厚生労働省が掲載する解釈通知の該当箇所は未確認。'),
+        }
+        for identifier, (title, text) in items.items():
+            filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+            records.append({'id': identifier, 'file': filename, 'text': text, 'title': title,
+                            'document': 'notice-summary-community-dayservice', 'category': 'notices'})
+            index[identifier] = {'document': 'notice-summary-community-dayservice', 'category': 'notices',
+                                 'services': ['community-dayservice']}
+            (folder / filename).write_text('<article>'
+                '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
+                '<div class="dayservice-original" style="white-space:pre-wrap">' + text + '</div>'
+                '<p><a href="https://www.mhlw.go.jp/content/12300000/001227939.pdf" '
+                'rel="noopener noreferrer">公式原典を確認</a></p></article>')
+        (self.root / 'legislation/record-index.json').write_text(json.dumps(index))
+        dataset = self.root / 'legislation/records.json'
+        dataset.write_text(json.dumps({'records': records}, ensure_ascii=False))
+        original = dataset.read_text()
+        handbook = self.root / 'handbook/community-dayservice/operations.html'
+        handbook.parent.mkdir(parents=True)
+        notice = 'community-dayservice.notice.019'
+        filename = hashlib.sha256(notice.encode()).hexdigest() + '.html'
+        handbook.write_text('<p>' + items[notice][1] + '</p>'
+            '<a href="https://www.mhlw.go.jp/content/12300000/001227939.pdf">公式原典を開く ↗</a>'
+            f'<a href="../../legislation/record/{filename}">この項目へのリンク</a>')
+
+        result = rewrite(self.root)
+
+        self.assertEqual(dataset.read_text(), original)
+        self.assertEqual(result['additional_changes']['community_handbook_sources'], 1)
+        self.assertIn(items[notice][1], handbook.read_text())
+        self.assertIn('原典の確認状況を見る', handbook.read_text())
+        self.assertNotIn('001227939.pdf', handbook.read_text())
+        for identifier in items:
+            page = (folder / (hashlib.sha256(identifier.encode()).hexdigest() + '.html')).read_text()
+            self.assertIn('令和6年度の改正資料では該当箇所が省略されています', page)
+            self.assertIn('令和6年度の改正資料（該当項目は省略）', page)
+            self.assertIn('平成28年の改正通知', page)
+            self.assertIn('現行の通知全文は確認中', page)
+            self.assertLess(page.index('該当箇所が省略されています'), page.index('dayservice-original'))
+
+    def test_missing_old_claim_without_corrected_notice_stops_before_writes(self):
+        folder = self.root / 'legislation/record'
+        folder.mkdir()
+        identifier = 'community-dayservice.notice.019'
+        filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        document = 'notice-summary-community-dayservice'
+        (self.root / 'legislation/record-index.json').write_text(json.dumps({identifier: {
+            'document': document, 'category': 'notices', 'services': ['community-dayservice']}}))
+        (self.root / 'legislation/records.json').write_text(json.dumps({'records': [{
+            'id': identifier, 'file': filename, 'text': '不明な変更', 'title': '内容及び手続の説明及び同意',
+            'document': document, 'category': 'notices'}]}, ensure_ascii=False))
+        page = folder / filename
+        page.write_text('<article>'
+            '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
+            '<div class="dayservice-original" style="white-space:pre-wrap">不明な変更</div>'
+            '<p><a href="https://www.mhlw.go.jp/content/12300000/001227939.pdf" '
+            'rel="noopener noreferrer">公式原典を確認</a></p></article>')
+        original_fees, original_page = self.fees.read_text(), page.read_text()
+        with self.assertRaisesRegex(RuntimeError, 'Unexpected community notice verification claim'):
+            rewrite(self.root)
+        self.assertEqual(self.fees.read_text(), original_fees)
+        self.assertEqual(page.read_text(), original_page)
+
+    def test_community_notice_with_other_partial_source_stops_before_writes(self):
+        folder = self.root / 'legislation/record'
+        folder.mkdir()
+        identifier = 'community-dayservice.notice.015'
+        filename = hashlib.sha256(identifier.encode()).hexdigest() + '.html'
+        document = 'notice-summary-community-dayservice'
+        (self.root / 'legislation/record-index.json').write_text(json.dumps({identifier: {
+            'document': document, 'category': 'notices', 'services': ['community-dayservice']}}))
+        (self.root / 'legislation/records.json').write_text(json.dumps({'records': [{
+            'id': identifier, 'file': filename, 'text': '掲載内容', 'title': '指定療養通所介護の基本方針',
+            'document': document, 'category': 'notices'}]}, ensure_ascii=False))
+        page = folder / filename
+        page.write_text('<article>'
+            '<p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
+            '<p><a href="https://www.mhlw.go.jp/content/12301000/000750727.pdf" '
+            'rel="noopener noreferrer">公式原典を確認</a></p></article>')
+        original_fees, original_page = self.fees.read_text(), page.read_text()
+        with self.assertRaisesRegex(RuntimeError, 'Unexpected community notice source'):
             rewrite(self.root)
         self.assertEqual(self.fees.read_text(), original_fees)
         self.assertEqual(page.read_text(), original_page)
