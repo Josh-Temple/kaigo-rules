@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from scripts import community_staffing_reader, health_facility_staffing_reader
+from scripts import community_staffing_reader, health_facility_staffing_reader, welfare_facility_staffing_reader
 from scripts.rewrite_public_navigation import clarify_handbook_review_status, rewrite
 
 ORIGIN = "https://kaigo-rules.vercel.app"
@@ -44,7 +44,8 @@ class FeeNavigationTest(unittest.TestCase):
                                                                      "scoped_rule_links": 0, "dayrehab_scope_notes": 0, "fee_root_links": 0,
                                                                      "community_handbook_sources": 0, "handbook_source_versions": 0,
                                                                      "handbook_review_status": 0, "community_staffing_overview": 0,
-                                                                     "health_facility_staffing_overview": 0}})
+                                                                     "health_facility_staffing_overview": 0,
+                                                                     "welfare_facility_staffing_overview": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
         self.assertNotIn(ORIGIN, fees + guidance)
@@ -642,6 +643,64 @@ class HealthFacilityStaffingReaderTest(unittest.TestCase):
                 with self.assertRaises(RuntimeError):
                     health_facility_staffing_reader.add_health_facility_staffing_overview(
                         changed, health_facility_staffing_reader.PAGE)
+
+
+class WelfareFacilityStaffingReaderTest(unittest.TestCase):
+    def fixture(self):
+        def source(number, label, text):
+            return (f'<details class="handbook-source"><summary><span class="handbook-source-label">'
+                    f'{number}</span><span>{label}</span></summary>'
+                    '<p class="meta">収載資料の版・施行日：2025-04-01</p>'
+                    f'<p class="handbook-original">{text}</p></details>')
+        return ('<article>' + welfare_facility_staffing_reader.INSERT_AFTER +
+                f'<p>{welfare_facility_staffing_reader.OLD_NOTE}</p>' +
+                source('第二条', '（従業者の員数）', 'staff') +
+                source('第二十一条', '（管理者による管理）', 'manager') +
+                source('第四十七条', '（勤務体制の確保等）', 'units') + '</article>')
+
+    def hashes(self):
+        return {key: hashlib.sha256(value.encode()).hexdigest() for key, value in
+                [('第二条', 'staff'), ('第二十一条', 'manager'), ('第四十七条', 'units')]}
+
+    def test_roles_keep_thresholds_separate_from_total_and_exceptions(self):
+        with patch.dict(welfare_facility_staffing_reader.SOURCE_HASHES, self.hashes()):
+            content, count = welfare_facility_staffing_reader.add_welfare_facility_staffing_overview(
+                self.fixture(), welfare_facility_staffing_reader.PAGE)
+        self.assertEqual(count, 1)
+        for text in ('入所者30人以下：1人以上', '30人を超え50人以下：2人以上',
+                     '50人を超え130人以下：3人以上', '130人を超える部分について50人またはその端数ごとに1人',
+                     '看護職員を合わせた34人分以上の<strong>内数</strong>',
+                     'そのうち1人以上は常勤', '入所定員40人以下',
+                     '定員だけで判断せず、連携と処遇の条件を確認',
+                     '常勤の介護職員が常時1人以上介護に従事',
+                     '国の基準省令第13条・第43条', '基準省令上の<strong>標準</strong>'):
+            self.assertIn(text, content)
+        self.assertNotIn(welfare_facility_staffing_reader.OLD_NOTE, content)
+        for text in ('staff', 'manager', 'units'):
+            self.assertIn(f'<p class="handbook-original">{text}</p>', content)
+        for anchor in welfare_facility_staffing_reader.SOURCE_IDS.values():
+            self.assertIn(f'id="{anchor}"', content)
+            self.assertIn(f'href="#{anchor}"', content)
+
+    def test_changed_source_or_version_stops_publication(self):
+        for changed in (self.fixture().replace('>staff</p>', '>changed</p>'),
+                        self.fixture().replace('2025-04-01', '2026-04-01', 1)):
+            with self.subTest(changed=changed[:100]), patch.dict(
+                    welfare_facility_staffing_reader.SOURCE_HASHES, self.hashes()):
+                with self.assertRaisesRegex(RuntimeError, 'source changed'):
+                    welfare_facility_staffing_reader.add_welfare_facility_staffing_overview(
+                        changed, welfare_facility_staffing_reader.PAGE)
+
+    def test_missing_duplicate_or_other_page(self):
+        original = self.fixture()
+        self.assertEqual(welfare_facility_staffing_reader.add_welfare_facility_staffing_overview(
+            original, Path('handbook/dayservice/staffing.html')), (original, 0))
+        for changed in (original.replace('第二十一条', '別の条文'), original + original):
+            with self.subTest(changed=changed[-100:]), patch.dict(
+                    welfare_facility_staffing_reader.SOURCE_HASHES, self.hashes()):
+                with self.assertRaises(RuntimeError):
+                    welfare_facility_staffing_reader.add_welfare_facility_staffing_overview(
+                        changed, welfare_facility_staffing_reader.PAGE)
 
 
 if __name__ == "__main__":
