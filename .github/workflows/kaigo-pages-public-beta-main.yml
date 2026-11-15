@@ -16,6 +16,7 @@ on:
       - "scripts/care_medical_staffing_reader.py"
       - "scripts/nursing_small_scale_roles_clarification.py"
       - "scripts/care_management_staffing_reader.py"
+      - "scripts/prepare_handbook_publication_boundary.py"
 
 permissions:
   contents: read
@@ -51,6 +52,7 @@ jobs:
             scripts/care_medical_staffing_reader.py
             scripts/nursing_small_scale_roles_clarification.py
             scripts/care_management_staffing_reader.py
+            scripts/prepare_handbook_publication_boundary.py
             tests/test_formal_navigation.py
             tests/test_fee_version_labels.py
             tests/test_group_home_staffing_reader.py
@@ -59,6 +61,7 @@ jobs:
             tests/test_care_medical_staffing_reader.py
             tests/test_nursing_small_scale_roles_clarification.py
             tests/test_care_management_staffing_reader.py
+            tests/test_handbook_publication_boundary.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - uses: actions/setup-node@v4
@@ -79,6 +82,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_care_medical_staffing_reader.py' -v
           python -m unittest discover -s tests -p 'test_nursing_small_scale_roles_clarification.py' -v
           python -m unittest discover -s tests -p 'test_care_management_staffing_reader.py' -v
+          python -m unittest discover -s tests -p 'test_handbook_publication_boundary.py' -v
       - name: Verify static-source and disclaimer safety tests
         run: |
           set -euo pipefail
@@ -86,6 +90,7 @@ jobs:
       - name: Verify original application build
         run: |
           set -euo pipefail
+          python .publication-tools/scripts/prepare_handbook_publication_boundary.py apply .
           npm ci
           npm run build
       - name: Build all generated handbook, Q&A and legislation pages
@@ -195,6 +200,9 @@ jobs:
                   raise RuntimeError("Final beta safety check failed: "+item)
           if post["blockers"]["noindex_pages"] != post["html_count"]:
               raise RuntimeError("Beta pages not consistently noindex")
+          boundary=subprocess.run([sys.executable,".publication-tools/scripts/prepare_handbook_publication_boundary.py",
+              "audit",".",str(root)],capture_output=True,text=True,check=True)
+          print("PUBLICATION_BOUNDARY:",boundary.stdout.strip())
           (root/".nojekyll").touch()
           with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as out:
               out.write("path="+str(root)+"\n")
