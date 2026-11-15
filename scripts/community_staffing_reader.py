@@ -20,7 +20,8 @@ SOURCE_HASHES = {
 }
 SOURCE_LABELS = {'第二十条': '（従業者の員数）', '第二十一条': '（管理者）'}
 SOURCE_IDS = {'第二十条': 'community-staff-article20', '第二十一条': 'community-staff-article21'}
-INSERT_BEFORE = '<h3>確認すること</h3>'
+INSERT_AFTER = ('<p class="handbook-quick-link"><a href="#handbook-sources-staffing">'
+                'この章の関連資料へ移動 ↓</a></p>')
 
 OVERVIEW = '''<section class="handbook-role" aria-labelledby="community-staff-roles">
 <h3 id="community-staff-roles">職種別の配置基準</h3>
@@ -59,7 +60,7 @@ OVERVIEW = '''<section class="handbook-role" aria-labelledby="community-staff-ro
 def add_community_staffing_overview(content: str, path: Path) -> tuple[str, int]:
     if path != PAGE:
         return content, 0
-    if content.count(INSERT_BEFORE) != 1 or 'id="community-staff-roles"' in content:
+    if content.count(INSERT_AFTER) != 1 or 'id="community-staff-roles"' in content:
         raise RuntimeError('Unexpected community staffing structure')
 
     for number, expected_hash in SOURCE_HASHES.items():
@@ -80,4 +81,4 @@ def add_community_staffing_overview(content: str, path: Path) -> tuple[str, int]
         replacement = start.replace('<summary>', f'<summary id="{SOURCE_IDS[number]}">', 1)
         content = content.replace(start, replacement, 1)
 
-    return content.replace(INSERT_BEFORE, OVERVIEW + INSERT_BEFORE, 1), 1
+    return content.replace(INSERT_AFTER, INSERT_AFTER + OVERVIEW, 1), 1

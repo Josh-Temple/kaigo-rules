@@ -529,7 +529,8 @@ class CommunityStaffingOverviewTest(unittest.TestCase):
                     f'{number}</span><span>{label}</span></summary>'
                     '<p class="meta">収載資料の版・施行日：2025-04-01</p>'
                     f'<p class="handbook-original">{text}</p></details>')
-        return ('<article><p>未確認の説明を含みます。</p><h3>確認すること</h3>' +
+        return ('<article><p>未確認の説明を含みます。</p>' + community_staffing_reader.INSERT_AFTER +
+                '<h3>確認すること</h3>' +
                 source('第二十条', '（従業者の員数）', staff) +
                 source('第二十一条', '（管理者）', manager) + '</article>')
 
@@ -552,6 +553,7 @@ class CommunityStaffingOverviewTest(unittest.TestCase):
         self.assertIn('id="community-staff-article20"', content)
         self.assertIn('href="#community-staff-article20"', content)
         self.assertIn('id="community-staff-article21"', content)
+        self.assertLess(content.index('職種別の配置基準'), content.index('<h3>確認すること</h3>'))
 
     def test_other_services_are_not_modified(self):
         original = self.fixture()
