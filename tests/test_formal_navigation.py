@@ -4,7 +4,9 @@ import hashlib
 import json
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
+from scripts import community_staffing_reader
 from scripts.rewrite_public_navigation import clarify_handbook_review_status, rewrite
 
 ORIGIN = "https://kaigo-rules.vercel.app"
@@ -41,7 +43,7 @@ class FeeNavigationTest(unittest.TestCase):
                                               "additional_changes": {"criteria_records": 0, "simple_links": 0, "unavailable_all_views": 0,
                                                                      "scoped_rule_links": 0, "dayrehab_scope_notes": 0, "fee_root_links": 0,
                                                                      "community_handbook_sources": 0, "handbook_source_versions": 0,
-                                                                     "handbook_review_status": 0}})
+                                                                     "handbook_review_status": 0, "community_staffing_overview": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
         self.assertNotIn(ORIGIN, fees + guidance)
@@ -506,6 +508,63 @@ class FeeNavigationTest(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, 'Unexpected handbook source layout'):
             rewrite(self.root)
         self.assertEqual(self.fees.read_text(), original)
+
+    def test_community_source_change_stops_all_publication_rewrites(self):
+        handbook = self.root / 'handbook/community-dayservice/staffing.html'
+        handbook.parent.mkdir(parents=True)
+        handbook.write_text(CommunityStaffingOverviewTest.fixture('changed', 'manager'))
+        before_handbook = handbook.read_text()
+        before_fees = self.fees.read_text()
+        with self.assertRaisesRegex(RuntimeError, 'Staffing source changed'):
+            rewrite(self.root)
+        self.assertEqual(handbook.read_text(), before_handbook)
+        self.assertEqual(self.fees.read_text(), before_fees)
+
+
+class CommunityStaffingOverviewTest(unittest.TestCase):
+    @staticmethod
+    def fixture(staff='staff', manager='manager'):
+        def source(number, label, text):
+            return (f'<details class="handbook-source"><summary><span class="handbook-source-label">'
+                    f'{number}</span><span>{label}</span></summary>'
+                    '<p class="meta">収載資料の版・施行日：2025-04-01</p>'
+                    f'<p class="handbook-original">{text}</p></details>')
+        return ('<article><p>未確認の説明を含みます。</p><h3>確認すること</h3>' +
+                source('第二十条', '（従業者の員数）', staff) +
+                source('第二十一条', '（管理者）', manager) + '</article>')
+
+    def test_role_guide_preserves_source_and_exceptions(self):
+        values = {'第二十条': hashlib.sha256(b'staff').hexdigest(),
+                  '第二十一条': hashlib.sha256(b'manager').hexdigest()}
+        with patch.dict(community_staffing_reader.SOURCE_HASHES, values):
+            content, count = community_staffing_reader.add_community_staffing_overview(
+                self.fixture(), community_staffing_reader.PAGE)
+        self.assertEqual(count, 1)
+        for label in ('生活相談員', '看護職員', '介護職員', '機能訓練指導員', '管理者'):
+            self.assertIn(f'>{label}</h4>', content)
+        self.assertIn('2025年4月1日施行版', content)
+        self.assertIn('療養通所介護と共生型には別の規定', content)
+        self.assertIn('定員10人以下の特例', content)
+        self.assertIn('生活相談員・看護職員・介護職員のいずれか1人以上が常勤', content)
+        self.assertIn('同じ事業所で一体的に運営', content)
+        self.assertIn('<p class="handbook-original">staff</p>', content)
+        self.assertIn('<p class="handbook-original">manager</p>', content)
+        self.assertIn('id="community-staff-article20"', content)
+        self.assertIn('href="#community-staff-article20"', content)
+        self.assertIn('id="community-staff-article21"', content)
+
+    def test_other_services_are_not_modified(self):
+        original = self.fixture()
+        self.assertEqual(community_staffing_reader.add_community_staffing_overview(
+            original, Path('handbook/dayservice/staffing.html')), (original, 0))
+
+    def test_changed_version_is_not_used(self):
+        values = {'第二十条': hashlib.sha256(b'staff').hexdigest(),
+                  '第二十一条': hashlib.sha256(b'manager').hexdigest()}
+        changed = self.fixture().replace('2025-04-01', '2026-04-01')
+        with patch.dict(community_staffing_reader.SOURCE_HASHES, values):
+            with self.assertRaisesRegex(RuntimeError, 'Staffing source changed'):
+                community_staffing_reader.add_community_staffing_overview(changed, community_staffing_reader.PAGE)
 
 
 if __name__ == "__main__":
