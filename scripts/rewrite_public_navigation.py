@@ -135,6 +135,10 @@ COMMUNITY_OLD_019 = (COMMUNITY_UNVERIFIED_CLAIM +
                      '苦情処理等の重要事項を文書で説明し同意を得る趣旨を扱う。')
 COMMUNITY_CORRECTED_019 = ('指定療養通所介護の提供開始前に重要事項を文書で交付・説明し、利用者の同意を得ることなどを扱う。'
                            '国の基準省令第40条の5を参照。厚生労働省が掲載する解釈通知の該当箇所は未確認。')
+COMMUNITY_OLD_LOCATOR = ('第三 地域密着型サービス／二の二／5 指定療養通所介護の事業／'
+                         '(4) 運営に関する基準／④〜⑨')
+COMMUNITY_CORRECTED_LOCATOR = ('第三 地域密着型サービス／二の二／5 指定療養通所介護の事業／'
+                               '(4) 運営に関する基準／④、⑥〜⑨（⑤は省略）')
 COMMUNITY_WRONG_SOURCE = 'https://www.mhlw.go.jp/content/12300000/001225905.pdf'
 
 # These mappings come from the existing delegated-remuneration node identity
@@ -682,6 +686,42 @@ def fix_community_handbook_sources(content: str, path: Path) -> tuple[str, int]:
     return content, count
 
 
+def fix_community_locator(root: Path, changes: dict) -> None:
+    """Keep the 2021 notice locator from implying that omitted item ⑤ is present."""
+    source = root / 'legislation/records.json'
+    if not source.is_file():
+        return
+    raw = changes.get(source)
+    if raw is None:
+        raw = source.read_text(encoding='utf-8')
+    rows = json.loads(raw)['records']
+    matches = [row for row in rows if row.get('id') == 'community-dayservice.notice.021']
+    if not matches:
+        return
+    if len(matches) != 1:
+        raise RuntimeError('Unexpected community notice locator')
+    row = matches[0]
+    page = root / 'legislation/record' / row['file']
+    if page not in changes:
+        raise RuntimeError('Community notice source was not corrected')
+    if row.get('locator') == COMMUNITY_CORRECTED_LOCATOR and raw.count(COMMUNITY_CORRECTED_LOCATOR) == 1:
+        return
+    if row.get('locator') != COMMUNITY_OLD_LOCATOR or raw.count(COMMUNITY_OLD_LOCATOR) != 1:
+        raise RuntimeError('Unexpected community notice locator')
+    changes[source] = raw.replace(COMMUNITY_OLD_LOCATOR, COMMUNITY_CORRECTED_LOCATOR, 1)
+
+
+def fix_community_handbook_locator(content: str, path: Path) -> str:
+    if COMMUNITY_OLD_LOCATOR not in content:
+        return content
+    filename = hashlib.sha256('community-dayservice.notice.021'.encode()).hexdigest() + '.html'
+    link = f'<a href="../../legislation/record/{filename}">この項目へのリンク</a>'
+    if (path.parts[:2] != ('handbook', 'community-dayservice') or
+            content.count(COMMUNITY_OLD_LOCATOR) != 1 or content.count(link) != 1):
+        raise RuntimeError(f'Unexpected community handbook locator: {path}')
+    return content.replace(COMMUNITY_OLD_LOCATOR, COMMUNITY_CORRECTED_LOCATOR, 1)
+
+
 def label_handbook_source_versions(content: str, path: Path) -> tuple[str, int]:
     """Identify known partial sources at their point of use in the handbook."""
     count = 0
@@ -828,6 +868,7 @@ def rewrite(root: Path) -> dict:
     missing_text_count = mark_missing_record_text(root, changes)
     partial_source_count = label_partial_notice_sources(root, changes)
     fix_community_record_claim(root, changes)
+    fix_community_locator(root, changes)
     if (root / 'legislation/app.mjs').exists():
         script, content = mark_missing_text_in_listing(root)
         changes[script] = content
@@ -858,6 +899,7 @@ def rewrite(root: Path) -> dict:
         if path.relative_to(root).parts[0] == 'handbook':
             after, n = fix_community_handbook_sources(after, path.relative_to(root))
             extra_counts['community_handbook_sources'] += n
+            after = fix_community_handbook_locator(after, path.relative_to(root))
             after, n = label_handbook_source_versions(after, path.relative_to(root))
             extra_counts['handbook_source_versions'] += n
             after, n = clarify_handbook_review_status(after)
