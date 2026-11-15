@@ -1,4 +1,4 @@
-name: Kaigo Rules GitHub Pages site deployment (pinned snapshot)
+name: Kaigo Rules GitHub Pages site deployment
 on:
   push:
     branches:
@@ -17,6 +17,21 @@ on:
       - "scripts/nursing_small_scale_roles_clarification.py"
       - "scripts/care_management_staffing_reader.py"
       - "scripts/prepare_handbook_publication_boundary.py"
+      - "app/**"
+      - "components/**"
+      - "data/**"
+      - "lib/**"
+      - "experiments/**"
+      - "scripts/build_github_pages_*.py"
+      - "scripts/build_handbook_site.py"
+      - "scripts/localize_github_pages_links_pilot.py"
+      - "scripts/extract_database_search_snapshot.py"
+      - "scripts/extract_qa_search_snapshot.py"
+      - "scripts/qa_reader_site.mjs"
+      - "scripts/prepare_github_pages_beta.py"
+      - "scripts/audit_github_pages_migration_readiness.py"
+      - "package.json"
+      - "package-lock.json"
 
 permissions:
   contents: read
@@ -33,7 +48,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 14ec4a2610e756fead516e176f38172905caa89a
+          ref: ${{ github.sha }}
           persist-credentials: false
       - name: Check out the current publication navigation fix
         uses: actions/checkout@v4
@@ -102,7 +117,7 @@ jobs:
       - name: Audit the exact candidate against measured safe bounds
         id: site
         env:
-          SOURCE_SHA: 14ec4a2610e756fead516e176f38172905caa89a
+          SOURCE_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
           python - <<'PY'
@@ -143,7 +158,7 @@ jobs:
           for label,count in (("fee_root_version_labels",1), ("fee_detail_version_labels",29)):
               if navigation_counts.get(label)!=count:
                   raise RuntimeError("Unexpected fee page version labels: "+label)
-          # The already-public, pinned snapshot is now the operational site.
+          # The verified Pages artifact is the operational site.
           # Remove only the public-beta wording. Keep unverified-source warnings,
           # the original content, and noindex pending independent legal review.
           previous_label="Kaigo Rules 試験公開版"
