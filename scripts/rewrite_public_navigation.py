@@ -20,10 +20,12 @@ if __package__:
     from .community_staffing_reader import add_community_staffing_overview
     from .health_facility_staffing_reader import add_health_facility_staffing_overview
     from .welfare_facility_staffing_reader import add_welfare_facility_staffing_overview, validate_welfare_facility_care_sources
+    from .fee_version_labels import label_fee_version
 else:
     from community_staffing_reader import add_community_staffing_overview
     from health_facility_staffing_reader import add_health_facility_staffing_overview
     from welfare_facility_staffing_reader import add_welfare_facility_staffing_overview, validate_welfare_facility_care_sources
+    from fee_version_labels import label_fee_version
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 QUERY = "q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
@@ -755,7 +757,8 @@ def rewrite(root: Path) -> dict:
                     'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_links': 0,
                     'community_handbook_sources': 0, 'handbook_source_versions': 0,
                     'handbook_review_status': 0, 'community_staffing_overview': 0,
-                    'health_facility_staffing_overview': 0, 'welfare_facility_staffing_overview': 0}
+                    'health_facility_staffing_overview': 0, 'welfare_facility_staffing_overview': 0,
+                    'fee_root_version_labels': 0, 'fee_detail_version_labels': 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
@@ -766,6 +769,10 @@ def rewrite(root: Path) -> dict:
         after = SIMPLE_ANCHOR.sub(lambda m: rewrite_simple_link(m, path.relative_to(root), root, extra_counts), after)
         after = DAYREHAB_SCOPE_NOTE.sub(lambda m: rewrite_dayrehab_note(m, path.relative_to(root), root, extra_counts), after)
         after = FULL_ANCHOR.sub(lambda m: rewrite_scoped_link(m, path.relative_to(root), root, extra_counts), after)
+        if path.relative_to(root).parts[0] == 'fees':
+            after, label_kind = label_fee_version(after, path.relative_to(root))
+            if label_kind:
+                extra_counts[label_kind] += 1
         if path.relative_to(root).parts[0] == 'handbook':
             after, n = fix_community_handbook_sources(after, path.relative_to(root))
             extra_counts['community_handbook_sources'] += n

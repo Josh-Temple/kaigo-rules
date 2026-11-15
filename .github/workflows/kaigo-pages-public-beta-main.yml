@@ -9,6 +9,7 @@ on:
       - "scripts/community_staffing_reader.py"
       - "scripts/health_facility_staffing_reader.py"
       - "scripts/welfare_facility_staffing_reader.py"
+      - "scripts/fee_version_labels.py"
 
 permissions:
   contents: read
@@ -37,7 +38,9 @@ jobs:
             scripts/community_staffing_reader.py
             scripts/health_facility_staffing_reader.py
             scripts/welfare_facility_staffing_reader.py
+            scripts/fee_version_labels.py
             tests/test_formal_navigation.py
+            tests/test_fee_version_labels.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - uses: actions/setup-node@v4
@@ -49,7 +52,7 @@ jobs:
           python-version: "3.12"
       - name: Verify publication navigation
         working-directory: .publication-tools
-        run: python -m unittest discover -s tests -p 'test_formal_navigation.py' -v
+        run: python -m unittest discover -s tests -p 'test_*navigation.py' -v && python -m unittest discover -s tests -p 'test_fee_version_labels.py' -v
       - name: Verify static-source and disclaimer safety tests
         run: |
           set -euo pipefail
@@ -106,6 +109,9 @@ jobs:
           for overview in ("community_staffing_overview", "health_facility_staffing_overview", "welfare_facility_staffing_overview"):
               if navigation_counts.get(overview)!=1:
                   raise RuntimeError("Missing or duplicate staffing overview: "+overview)
+          for label,count in (("fee_root_version_labels",1), ("fee_detail_version_labels",29)):
+              if navigation_counts.get(label)!=count:
+                  raise RuntimeError("Unexpected fee page version labels: "+label)
           # The already-public, pinned snapshot is now the operational site.
           # Remove only the public-beta wording. Keep unverified-source warnings,
           # the original content, and noindex pending independent legal review.
