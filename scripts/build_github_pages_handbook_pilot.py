@@ -42,8 +42,9 @@ th{background:#f0f6f2}caption{text-align:left;font-weight:bold}.handbook-role,.d
 nav ul{display:flex;gap:6px 18px;flex-wrap:wrap;list-style:none;padding-left:0}
 nav li{margin:4px 0}.dayservice-source-block{margin:12px 0 22px}details{margin:10px 0;padding:8px;border:1px solid #d5dfd8;border-radius:6px}
 figure{max-width:100%;margin:18px 0}figcaption{font-weight:650}.meta,.eyebrow{font-size:.88rem;color:#54665b}
-.dayservice-service-timeline{display:grid;grid-template-columns:3fr 1fr 5fr;font-size:.9rem;line-height:1.6;margin-top:14px}
-.dayservice-service-period{display:grid;align-content:center;gap:4px;text-align:center;padding:10px 4px;background:#c7ded1;border:1px solid #597b6e}
+.dayservice-staffing-example{min-width:0;max-width:100%}.dayservice-staffing-example figcaption{overflow-wrap:anywhere;word-break:break-all}
+.dayservice-service-timeline{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr) minmax(0,5fr);font-size:.9rem;line-height:1.6;margin-top:14px}
+.dayservice-service-period{display:grid;min-width:0;overflow-wrap:anywhere;align-content:center;gap:4px;text-align:center;padding:10px 4px;background:#c7ded1;border:1px solid #597b6e}
 .dayservice-service-gap{border-block:1px dashed #8a978f;background:repeating-linear-gradient(135deg,transparent,transparent 5px,#dce4de 5px,#dce4de 7px)}
 .dayservice-counselor-comparison{display:grid;grid-template-columns:3fr 1fr 4fr 1fr;gap:2px;margin-top:10px;font-size:.78rem}
 .dayservice-counselor-comparison span{background:#dce9e0;border:1px solid #9baca2;padding:8px 4px;text-align:center;min-width:0;overflow-wrap:anywhere}

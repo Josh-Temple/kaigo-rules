@@ -149,7 +149,8 @@ try {
         const fitIssues = await example.evaluate(element => [...element.querySelectorAll('figure,table,[role="img"],.dayservice-service-period')].map(child => {
           const rect = child.getBoundingClientRect();
           return {tag: child.tagName, className: child.className, left: rect.left, right: rect.right,
-            viewport: innerWidth, scrollWidth: child.scrollWidth, clientWidth: child.clientWidth};
+            viewport: innerWidth, scrollWidth: child.scrollWidth, clientWidth: child.clientWidth,
+            preview: child.textContent.trim().slice(0, 80)};
         }).filter(item => item.left < 0 || item.right > item.viewport || item.scrollWidth > item.clientWidth + 1));
         const fits = fitIssues.length === 0;
         const numbers = role === 'life-counselor' ? text.includes('3時間＋5時間＝8時間') && text.includes('合計8時間') && text.includes('12時〜13時はサービス提供なし') && text.includes('3時間＋4時間＝7時間') && text.includes('1時間足りません') && text.includes('17〜18時') && await example.locator('.dayservice-counselor-comparison .dayservice-missing-hour').count() === 1
