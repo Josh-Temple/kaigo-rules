@@ -560,6 +560,7 @@ class CommunityStaffingOverviewTest(unittest.TestCase):
         self.assertIn('5時間×1.6＝<strong>延べ8時間</strong>', content)
         self.assertIn('単位ごとに常時1人以上が従事することも別に確認', content)
         self.assertIn('はり師・きゅう師', content)
+        self.assertIn('はり師・きゅう師以外の資格を持つ機能訓練指導員', content)
         self.assertIn('6か月以上', content)
         self.assertIn('基本の人員基準と、個別機能訓練加算', content)
         self.assertIn('<p class="handbook-original">staff</p>', content)
