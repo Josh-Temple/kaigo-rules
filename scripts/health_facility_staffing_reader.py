@@ -55,7 +55,8 @@ OVERVIEW = '''<section class="handbook-role" aria-labelledby="health-staff-roles
 <section class="handbook-role"><h4 id="health-staff-caremanager">介護支援専門員</h4>
 <p>原則として常勤専従の者を1人以上配置し、入所者の処遇に支障がない場合には施設内の他の職務を兼ねることができます。入所者100人またはその端数を増すごとに1人は、基準省令上の<strong>標準</strong>です。<a href="#health-staff-article2">基準第2条へ</a></p></section>
 <section class="handbook-role"><h4 id="health-staff-others">管理者・その他の職員</h4>
-<p>管理者は原則として常勤で施設の職務に専ら従事します。管理上支障がない場合等には、他の事業所・施設の職務を兼ねる取扱いがあります。調理員・事務員等は施設の実情に応じた適当数を置きます。<a href="#health-staff-article23">管理者の基準第23条へ</a> ／ <a href="#health-staff-article2">従業者の員数の基準第2条へ</a></p></section>
+<p>介護保険法第95条では、開設者は原則として都道府県知事の承認を受けた医師に施設を管理させます。医師以外の者も、都道府県知事の承認を受けて管理できる規定があります（法令は2026年11月15日に確認）。<a href="https://www.mhlw.go.jp/web/t_doc?dataId=82998034&amp;dataType=0">介護保険法第95条</a></p>
+<p>施設の基準では、管理者は原則として常勤で施設の職務に専ら従事します。管理上支障がない場合等には、他の事業所・施設の職務を兼ねる取扱いがあります。調理員・事務員等は施設の実情に応じた適当数を置きます。<a href="#health-staff-article23">管理者の基準第23条へ</a> ／ <a href="#health-staff-article2">従業者の員数の基準第2条へ</a></p></section>
 <section class="handbook-role"><h4 id="health-staff-units">ユニット型の勤務体制</h4>
 <p>ユニット型では、別に、昼間はユニットごとに常時1人以上、夜間・深夜は2ユニットごとに1人以上の看護職員または介護職員を配置します。ユニットごとに常勤のユニットリーダーも配置します。<a href="#health-staff-article48">基準第48条へ</a></p></section>
 <p>算定に用いる入所者数は原則として前年度の平均値です。新規許可時や増減床時などは別の取扱いを確認してください。常勤換算、勤務表の作り方と兼務の条件も、施設の実態に応じて確認します。</p>

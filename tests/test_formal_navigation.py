@@ -71,7 +71,8 @@ class FeeNavigationTest(unittest.TestCase):
                                                                      "fee_detail_version_labels": 0,
                                                                      "group_home_staffing_overview": 0,
                                                                      "preventive_group_home_staffing_overview": 0,
-                                                                     "night_homevisit_manager": 0}})
+                                                                     "night_homevisit_manager": 0,
+                                                                     "care_medical_staffing_overview": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
         self.assertNotIn(ORIGIN, fees + guidance)
@@ -652,6 +653,8 @@ class HealthFacilityStaffingReaderTest(unittest.TestCase):
         self.assertIn('100人またはその端数を増すごとに1人は、基準省令上の<strong>標準</strong>', content)
         self.assertIn('昼間はユニットごとに常時1人以上', content)
         self.assertIn('夜間・深夜は2ユニットごとに1人以上', content)
+        self.assertIn('介護保険法第95条', content)
+        self.assertIn('医師以外の者も、都道府県知事の承認', content)
         self.assertNotIn(health_facility_staffing_reader.OLD_NOTE, content)
         for value in ('staff', 'manager', 'units'):
             self.assertIn(f'<p class="handbook-original">{value}</p>', content)
