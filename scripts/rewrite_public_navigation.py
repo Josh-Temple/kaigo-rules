@@ -21,11 +21,13 @@ if __package__:
     from .health_facility_staffing_reader import add_health_facility_staffing_overview
     from .welfare_facility_staffing_reader import add_welfare_facility_staffing_overview, validate_welfare_facility_care_sources
     from .fee_version_labels import label_fee_version
+    from .group_home_staffing_reader import add_group_home_staffing_overview
 else:
     from community_staffing_reader import add_community_staffing_overview
     from health_facility_staffing_reader import add_health_facility_staffing_overview
     from welfare_facility_staffing_reader import add_welfare_facility_staffing_overview, validate_welfare_facility_care_sources
     from fee_version_labels import label_fee_version
+    from group_home_staffing_reader import add_group_home_staffing_overview
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 QUERY = "q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
@@ -305,6 +307,17 @@ def label_qa_search_scopes(code: str) -> str:
     return code.replace(anchor, anchor + addition, 1)
 
 
+def label_unit_price_check_date(code: str) -> str:
+    """A historical display check is not a continuing currentness guarantee."""
+    old = '''        card.append(element("p", "現行性：公開条件を満たした現行資料" +
+          (first.checkedAt ? " / 公式表示確認日：" + first.checkedAt : "")));'''
+    new = '''        card.append(element("p", "公式表示の確認日：" +
+          (first.checkedAt || "未記録") + " / その後の改正・適用は原典で確認してください。"));'''
+    if code.count(old) != 1:
+        raise RuntimeError('Unexpected unit price search status')
+    return code.replace(old, new, 1)
+
+
 def rewrite_search_scripts(root: Path) -> dict[Path, str]:
     """Keep dynamically generated search results on published pages or official sources."""
     search = root / 'databases/search'
@@ -364,6 +377,7 @@ def rewrite_search_scripts(root: Path) -> dict[Path, str]:
   return link;'''
     code = code.replace(old_fallback, fallback, 1)
     code = label_qa_search_scopes(code)
+    code = label_unit_price_check_date(code)
     code = code.replace('// This prototype does not include destination pages. Keep navigation on\n'
                         '      // the current site, and do not trust a row with an off-origin URL.',
                         '// Use verified local destinations or an explicitly labelled official source.')
@@ -758,7 +772,8 @@ def rewrite(root: Path) -> dict:
                     'community_handbook_sources': 0, 'handbook_source_versions': 0,
                     'handbook_review_status': 0, 'community_staffing_overview': 0,
                     'health_facility_staffing_overview': 0, 'welfare_facility_staffing_overview': 0,
-                    'fee_root_version_labels': 0, 'fee_detail_version_labels': 0}
+                    'fee_root_version_labels': 0, 'fee_detail_version_labels': 0,
+                    'group_home_staffing_overview': 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
@@ -786,6 +801,8 @@ def rewrite(root: Path) -> dict:
             extra_counts['health_facility_staffing_overview'] += n
             after, n = add_welfare_facility_staffing_overview(after, path.relative_to(root))
             extra_counts['welfare_facility_staffing_overview'] += n
+            after, n = add_group_home_staffing_overview(after, path.relative_to(root))
+            extra_counts['group_home_staffing_overview'] += n
         if after != before:
             changes[path] = after
     # Validate the entire plan before changing any page. The build pipeline
