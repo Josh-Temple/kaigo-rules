@@ -322,7 +322,7 @@ class FeeNavigationTest(unittest.TestCase):
         self.assertIn(hashlib.sha256(criterion.encode()).hexdigest() + '.html', code)
         self.assertIn('厚生労働省の告示', code)
         self.assertIn('詳細ページ未収載', code)
-        self.assertIn('対象：', code)
+        self.assertIn('資料上の分類：', code)
         self.assertIn('収載済み・現行性未確認', code)
         self.assertNotIn(ORIGIN, code + (search / 'qa-app.mjs').read_text())
 

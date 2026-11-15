@@ -298,7 +298,7 @@ def label_qa_search_scopes(code: str) -> str:
     addition = '''
       if (group === "qa") {
         const scope = typeof row.scope === "string" ? row.scope.trim() : "";
-        card.append(element("p", (scope ? "対象：" + scope + " / " : "") + "収載済み・現行性未確認"));
+        card.append(element("p", (scope ? "資料上の分類：" + scope + " / " : "") + "収載済み・現行性未確認"));
       }'''
     return code.replace(anchor, anchor + addition, 1)
 
