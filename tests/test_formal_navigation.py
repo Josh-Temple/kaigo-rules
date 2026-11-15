@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from scripts import community_staffing_reader, health_facility_staffing_reader, welfare_facility_staffing_reader
+from scripts import community_staffing_reader, health_facility_staffing_reader, welfare_facility_staffing_reader, fee_version_labels
 from scripts.rewrite_public_navigation import clarify_handbook_review_status, label_qa_search_scopes, rewrite
 
 ORIGIN = "https://kaigo-rules.vercel.app"
@@ -51,7 +51,9 @@ class FeeNavigationTest(unittest.TestCase):
                                                                      "community_handbook_sources": 0, "handbook_source_versions": 0,
                                                                      "handbook_review_status": 0, "community_staffing_overview": 0,
                                                                      "health_facility_staffing_overview": 0,
-                                                                     "welfare_facility_staffing_overview": 0}})
+                                                                     "welfare_facility_staffing_overview": 0,
+                                                                     "fee_root_version_labels": 0,
+                                                                     "fee_detail_version_labels": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
         self.assertNotIn(ORIGIN, fees + guidance)
