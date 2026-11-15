@@ -7,6 +7,7 @@ on:
       - ".github/workflows/kaigo-pages-public-beta-main.yml"
       - "scripts/rewrite_public_navigation.py"
       - "scripts/community_staffing_reader.py"
+      - "scripts/health_facility_staffing_reader.py"
 
 permissions:
   contents: read
@@ -33,6 +34,7 @@ jobs:
           sparse-checkout: |
             scripts/rewrite_public_navigation.py
             scripts/community_staffing_reader.py
+            scripts/health_facility_staffing_reader.py
             tests/test_formal_navigation.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
