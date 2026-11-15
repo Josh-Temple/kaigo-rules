@@ -84,7 +84,8 @@ OVERVIEW = '''<section class="handbook-role" aria-labelledby="welfare-staff-role
 <section class="handbook-role"><h4 id="welfare-staff-training">機能訓練指導員</h4>
 <p>1人以上を置き、日常生活に必要な機能の改善や低下防止の訓練を行う能力を有する者とします。施設内の他の職務に従事することができます。資格と兼務の取扱いは通知と指定権者の基準を確認します。<a href="#welfare-staff-article2">基準第2条へ</a></p></section>
 <section class="handbook-role"><h4 id="welfare-staff-caremanager">介護支援専門員</h4>
-<p>常勤で専ら職務に従事する者を1人以上置きます。入所者100人またはその端数を増すごとに1人は、基準省令上の<strong>標準</strong>です。入所者の処遇に支障がない場合、施設内の他の職務を兼ねることができます。<a href="#welfare-staff-article2">基準第2条へ</a></p></section>
+<p>原則として、常勤で専ら職務に従事する者を1人以上置きます。入所者100人またはその端数を増すごとに1人は、基準省令上の<strong>標準</strong>です。入所者の処遇に支障がない場合、施設内の他の職務を兼ねることができます。</p>
+<p>所定の離島・過疎地域に所在し、入所定員が30人の施設で、小規模多機能型居宅介護または看護小規模多機能型居宅介護を併設する場合には、条件付きの特例があります。併設事業所の介護支援専門員により施設の入所者の処遇を適切に行えると認められるときは、施設に介護支援専門員を置かないことができます。所在地・定員・併設と処遇の条件を確認してください。<a href="#welfare-staff-article2">基準第2条第11・13項へ</a></p></section>
 <section class="handbook-role"><h4 id="welfare-staff-manager">管理者</h4>
 <p>常勤で施設の職務に専ら従事する者を置きます。管理上支障がない場合には、他の事業所・施設や当該施設のサテライト型居住施設の職務を兼ねることができます。<a href="#welfare-staff-article21">基準第21条へ</a></p></section>
 <section class="handbook-role"><h4 id="welfare-staff-units">ユニット型の勤務体制</h4>

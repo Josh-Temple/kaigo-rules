@@ -7,7 +7,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from scripts import community_staffing_reader, health_facility_staffing_reader, welfare_facility_staffing_reader
-from scripts.rewrite_public_navigation import clarify_handbook_review_status, rewrite
+from scripts.rewrite_public_navigation import clarify_handbook_review_status, label_qa_search_scopes, rewrite
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 COMMON = (
@@ -34,6 +34,12 @@ class FeeNavigationTest(unittest.TestCase):
             f'<a href="{ORIGIN}/fees/unit-price">通所介護の一単位単価を見る →</a>' +
             '<p>制度の現行性は原典で確認してください。</p>')
         self.guidance.write_text(COMMON + f'<a href="{ORIGIN}/fees/root">通所介護費</a>')
+
+    def test_unknown_or_duplicate_search_renderer_is_rejected(self):
+        marker = '      card.append(internalLink(row.title, resultHref(group, row, q)));'
+        for code in ('unexpected renderer', marker + '\n' + marker):
+            with self.subTest(code=code), self.assertRaisesRegex(RuntimeError, 'search result rendering'):
+                label_qa_search_scopes(code)
 
     def test_known_links_are_local_and_the_search_is_not_labeled_a_price_table(self):
         self.assertEqual(rewrite(self.root), {"pages_changed": 3, "search_scripts_changed": 0,
@@ -303,7 +309,8 @@ class FeeNavigationTest(unittest.TestCase):
             'delegated': [{'href': '/fees/criteria?service=dayservice#' + criterion}]}))
         (search / 'app.mjs').write_text(
             'const localQaDetails = document.querySelector(\'meta[name="kaigo-qa-local-details"]\')?.content === "true";\n'
-            f'{ORIGIN}\n{ORIGIN}\n' + '  } else {\n    link.href = destination.href;\n  }\n  return link;')
+            f'{ORIGIN}\n{ORIGIN}\n' + '  } else {\n    link.href = destination.href;\n  }\n  return link;\n'
+            '      card.append(internalLink(row.title, resultHref(group, row, q)));')
         (search / 'qa-app.mjs').write_text('''    const link = element("a", item.question);
     link.href = localDetails
       ? "./qa-details/" + encodeURIComponent(item.id) + (current.reader ? "/reader.html" : "/index.html")
@@ -315,6 +322,8 @@ class FeeNavigationTest(unittest.TestCase):
         self.assertIn(hashlib.sha256(criterion.encode()).hexdigest() + '.html', code)
         self.assertIn('厚生労働省の告示', code)
         self.assertIn('詳細ページ未収載', code)
+        self.assertIn('資料上の分類：', code)
+        self.assertIn('収載済み・現行性未確認', code)
         self.assertNotIn(ORIGIN, code + (search / 'qa-app.mjs').read_text())
 
     def test_title_only_record_is_not_presented_as_full_text(self):
@@ -673,7 +682,10 @@ class WelfareFacilityStaffingReaderTest(unittest.TestCase):
                      'そのうち1人以上は常勤', '入所定員40人以下',
                      '定員だけで判断せず、連携と処遇の条件を確認',
                      '常勤の介護職員が常時1人以上介護に従事',
-                     '国の基準省令第13条・第43条', '基準省令上の<strong>標準</strong>'):
+                     '国の基準省令第13条・第43条', '基準省令上の<strong>標準</strong>',
+                     '小規模多機能型居宅介護または看護小規模多機能型居宅介護',
+                     '所定の離島・過疎地域に所在し、入所定員が30人の施設',
+                     '施設の入所者の処遇を適切に行えると認められるとき', '施設に介護支援専門員を置かないことができます'):
             self.assertIn(text, content)
         self.assertNotIn(welfare_facility_staffing_reader.OLD_NOTE, content)
         for text in ('staff', 'manager', 'units'):
