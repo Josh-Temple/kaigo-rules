@@ -14,6 +14,7 @@ on:
       - "scripts/preventive_group_home_staffing_reader.py"
       - "scripts/night_homevisit_manager_clarification.py"
       - "scripts/care_medical_staffing_reader.py"
+      - "scripts/nursing_small_scale_roles_clarification.py"
 
 permissions:
   contents: read
@@ -47,12 +48,14 @@ jobs:
             scripts/preventive_group_home_staffing_reader.py
             scripts/night_homevisit_manager_clarification.py
             scripts/care_medical_staffing_reader.py
+            scripts/nursing_small_scale_roles_clarification.py
             tests/test_formal_navigation.py
             tests/test_fee_version_labels.py
             tests/test_group_home_staffing_reader.py
             tests/test_preventive_group_home_staffing_reader.py
             tests/test_night_homevisit_manager_clarification.py
             tests/test_care_medical_staffing_reader.py
+            tests/test_nursing_small_scale_roles_clarification.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - uses: actions/setup-node@v4
@@ -71,6 +74,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_preventive_group_home_staffing_reader.py' -v
           python -m unittest discover -s tests -p 'test_night_homevisit_manager_clarification.py' -v
           python -m unittest discover -s tests -p 'test_care_medical_staffing_reader.py' -v
+          python -m unittest discover -s tests -p 'test_nursing_small_scale_roles_clarification.py' -v
       - name: Verify static-source and disclaimer safety tests
         run: |
           set -euo pipefail
@@ -124,7 +128,7 @@ jobs:
               capture_output=True,text=True,check=True)
           print("FEE_NAVIGATION:",link_fix.stdout.strip())
           navigation_counts=json.loads(link_fix.stdout).get("additional_changes",{})
-          for overview in ("community_staffing_overview", "health_facility_staffing_overview", "welfare_facility_staffing_overview", "group_home_staffing_overview", "preventive_group_home_staffing_overview", "night_homevisit_manager", "care_medical_staffing_overview"):
+          for overview in ("community_staffing_overview", "health_facility_staffing_overview", "welfare_facility_staffing_overview", "group_home_staffing_overview", "preventive_group_home_staffing_overview", "night_homevisit_manager", "care_medical_staffing_overview", "nursing_small_scale_roles"):
               if navigation_counts.get(overview)!=1:
                   raise RuntimeError("Missing or duplicate staffing overview: "+overview)
           for label,count in (("fee_root_version_labels",1), ("fee_detail_version_labels",29)):

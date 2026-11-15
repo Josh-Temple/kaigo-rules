@@ -19,6 +19,10 @@ NEW = ('管理者は、事業所ごとに専らその職務に従事する常勤
        'その相手先と一体的に運営している場合に従事できます。'
        '日中のオペレーションセンターサービスを実施し、指定訪問介護事業者の指定を併せ受けて'
        '一体的に運営するときは、指定訪問介護事業所の職務に従事できます。')
+CHECK_OLD = ('管理者が事業所ごとに常勤かつ専らその職務に従事しているか。'
+             '兼務する場合は管理上支障がなく、一体運営等の要件を満たすか')
+CHECK_NEW = ('管理者は常勤・原則専従か。自事業所内の兼務は管理上の支障がないか。'
+             '他事業所・施設等との兼務は、管理上の支障に加え、指定や一体運営等の条件を満たすか')
 
 
 def clarify_night_homevisit_manager(content: str, path: Path) -> tuple[str, int]:
@@ -26,7 +30,7 @@ def clarify_night_homevisit_manager(content: str, path: Path) -> tuple[str, int]
         return content, 0
     start = ('<details class="handbook-source"><summary><span class="handbook-source-label">'
              '第七条</span><span>（管理者）</span></summary>')
-    if content.count(start) != 1 or content.count(OLD) != 1:
+    if content.count(start) != 1 or content.count(OLD) != 1 or content.count(CHECK_OLD) != 1:
         raise RuntimeError('Unexpected night homevisit manager structure')
     pos = content.index(start)
     end = content.find('</details>', pos)
@@ -37,4 +41,4 @@ def clarify_night_homevisit_manager(content: str, path: Path) -> tuple[str, int]
     if (len(original) != 1 or '収載資料の版・施行日：2025-04-01' not in record or
             hashlib.sha256(original[0].encode('utf-8')).hexdigest() != SOURCE_HASH):
         raise RuntimeError('Night homevisit manager source changed; review before publication')
-    return content.replace(OLD, NEW, 1), 1
+    return content.replace(OLD, NEW, 1).replace(CHECK_OLD, CHECK_NEW, 1), 1

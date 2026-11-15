@@ -8,7 +8,7 @@ from scripts import night_homevisit_manager_clarification as guide
 
 class NightHomevisitManagerTest(unittest.TestCase):
     def fixture(self):
-        return ('<article><p>' + guide.OLD + '</p>'
+        return ('<article><p>' + guide.OLD + '</p><label>' + guide.CHECK_OLD + '</label>'
                 '<details class="handbook-source"><summary><span class="handbook-source-label">'
                 '第七条</span><span>（管理者）</span></summary>'
                 '<p>収載資料の版・施行日：2025-04-01</p>'
@@ -23,6 +23,8 @@ class NightHomevisitManagerTest(unittest.TestCase):
         self.assertIn('他の事業所・施設等の職務については、管理上支障がなく', content)
         self.assertIn('その相手先と一体的に運営している場合', content)
         self.assertIn('日中のオペレーションセンターサービス', content)
+        self.assertIn(guide.CHECK_NEW, content)
+        self.assertNotIn(guide.CHECK_OLD, content)
         self.assertIn('<p class="handbook-original">原文のテスト</p>', content)
         self.assertNotIn(guide.OLD, content)
 
@@ -35,6 +37,12 @@ class NightHomevisitManagerTest(unittest.TestCase):
                     guide.clarify_night_homevisit_manager(content, guide.PAGE)
         self.assertEqual(guide.clarify_night_homevisit_manager(
             self.fixture(), Path('handbook/homevisit/staffing.html')), (self.fixture(), 0))
+
+    def test_missing_or_duplicated_checklist_fails_closed(self):
+        for altered in (self.fixture().replace(guide.CHECK_OLD, ''),
+                        self.fixture() + guide.CHECK_OLD):
+            with self.subTest(altered=altered), self.assertRaisesRegex(RuntimeError, 'structure'):
+                guide.clarify_night_homevisit_manager(altered, guide.PAGE)
 
 
 if __name__ == '__main__':

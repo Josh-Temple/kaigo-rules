@@ -72,7 +72,8 @@ class FeeNavigationTest(unittest.TestCase):
                                                                      "group_home_staffing_overview": 0,
                                                                      "preventive_group_home_staffing_overview": 0,
                                                                      "night_homevisit_manager": 0,
-                                                                     "care_medical_staffing_overview": 0}})
+                                                                     "care_medical_staffing_overview": 0,
+                                                                     "nursing_small_scale_roles": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
         self.assertNotIn(ORIGIN, fees + guidance)
