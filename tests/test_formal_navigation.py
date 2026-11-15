@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from scripts import community_staffing_reader
+from scripts import community_staffing_reader, health_facility_staffing_reader
 from scripts.rewrite_public_navigation import clarify_handbook_review_status, rewrite
 
 ORIGIN = "https://kaigo-rules.vercel.app"
@@ -43,7 +43,8 @@ class FeeNavigationTest(unittest.TestCase):
                                               "additional_changes": {"criteria_records": 0, "simple_links": 0, "unavailable_all_views": 0,
                                                                      "scoped_rule_links": 0, "dayrehab_scope_notes": 0, "fee_root_links": 0,
                                                                      "community_handbook_sources": 0, "handbook_source_versions": 0,
-                                                                     "handbook_review_status": 0, "community_staffing_overview": 0}})
+                                                                     "handbook_review_status": 0, "community_staffing_overview": 0,
+                                                                     "health_facility_staffing_overview": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
         self.assertNotIn(ORIGIN, fees + guidance)
@@ -549,13 +550,17 @@ class CommunityStaffingOverviewTest(unittest.TestCase):
         self.assertIn('病院・診療所・訪問看護ステーションとの連携', content)
         self.assertIn('令和6年度 国Q&amp;A Vol.1 問59', content)
         self.assertIn('後続の改正・訂正がないか確認', content)
-        self.assertIn('生活相談員・看護職員・介護職員のいずれか1人以上が常勤', content)
+        self.assertIn('国の基準省令の収載版では、生活相談員または介護職員のうち1人以上は常勤', content)
+        self.assertIn('第3項の読替えにより、この介護職員には看護職員も含まれます', content)
+        self.assertIn('横浜市の令和8年度の手引', content)
+        self.assertIn('指定権者の条例・手引も確認', content)
         self.assertIn('同じ事業所で一体的に運営', content)
         self.assertIn('利用者それぞれの提供時間の合計÷利用者数', content)
         self.assertIn('（18−15）÷5＋1＝1.6', content)
         self.assertIn('5時間×1.6＝<strong>延べ8時間</strong>', content)
         self.assertIn('単位ごとに常時1人以上が従事することも別に確認', content)
         self.assertIn('はり師・きゅう師', content)
+        self.assertIn('はり師・きゅう師以外の資格を持つ機能訓練指導員', content)
         self.assertIn('6か月以上', content)
         self.assertIn('基本の人員基準と、個別機能訓練加算', content)
         self.assertIn('<p class="handbook-original">staff</p>', content)
@@ -577,6 +582,66 @@ class CommunityStaffingOverviewTest(unittest.TestCase):
         with patch.dict(community_staffing_reader.SOURCE_HASHES, values):
             with self.assertRaisesRegex(RuntimeError, 'Staffing source changed'):
                 community_staffing_reader.add_community_staffing_overview(changed, community_staffing_reader.PAGE)
+
+
+class HealthFacilityStaffingReaderTest(unittest.TestCase):
+    def fixture(self):
+        def source(number, label, text):
+            return (f'<details class="handbook-source"><summary><span class="handbook-source-label">'
+                    f'{number}</span><span>{label}</span></summary>'
+                    '<p class="meta">収載資料の版・施行日：2024-04-01</p>'
+                    f'<p class="handbook-original">{text}</p></details>')
+        return ('<article>' + health_facility_staffing_reader.INSERT_AFTER +
+                f'<p>{health_facility_staffing_reader.OLD_NOTE}</p>' +
+                source('第二条', '（従業者の員数）', 'staff') +
+                source('第二十三条', '（管理者による管理）', 'manager') +
+                source('第四十八条', '（勤務体制の確保等）', 'units') + '</article>')
+
+    def hashes(self):
+        return {key: hashlib.sha256(value.encode()).hexdigest() for key, value in
+                [('第二条', 'staff'), ('第二十三条', 'manager'), ('第四十八条', 'units')]}
+
+    def test_guide_distinguishes_facility_types_and_preserves_sources(self):
+        with patch.dict(health_facility_staffing_reader.SOURCE_HASHES, self.hashes()):
+            content, count = health_facility_staffing_reader.add_health_facility_staffing_overview(
+                self.fixture(), health_facility_staffing_reader.PAGE)
+        self.assertEqual(count, 1)
+        self.assertIn('サテライト型・医療機関併設型の小規模施設', content)
+        self.assertIn('入所者数ではなく<strong>入所定員</strong>', content)
+        self.assertIn('7分の2程度', content)
+        self.assertIn('34人分以上を常勤換算', content)
+        self.assertIn('100人またはその端数を増すごとに1人は、基準省令上の<strong>標準</strong>', content)
+        self.assertIn('昼間はユニットごとに常時1人以上', content)
+        self.assertIn('夜間・深夜は2ユニットごとに1人以上', content)
+        self.assertNotIn(health_facility_staffing_reader.OLD_NOTE, content)
+        for value in ('staff', 'manager', 'units'):
+            self.assertIn(f'<p class="handbook-original">{value}</p>', content)
+        for anchor in health_facility_staffing_reader.SOURCE_IDS.values():
+            self.assertIn(f'id="{anchor}"', content)
+            self.assertIn(f'href="#{anchor}"', content)
+
+    def test_other_services_are_untouched(self):
+        content = self.fixture()
+        self.assertEqual(health_facility_staffing_reader.add_health_facility_staffing_overview(
+            content, Path('handbook/dayservice/staffing.html')), (content, 0))
+
+    def test_changes_to_source_or_version_stop_publication(self):
+        for changed in (self.fixture().replace('>staff</p>', '>changed</p>'),
+                        self.fixture().replace('2024-04-01', '2025-04-01', 1)):
+            with self.subTest(changed=changed[:100]), patch.dict(
+                    health_facility_staffing_reader.SOURCE_HASHES, self.hashes()):
+                with self.assertRaisesRegex(RuntimeError, 'source changed'):
+                    health_facility_staffing_reader.add_health_facility_staffing_overview(
+                        changed, health_facility_staffing_reader.PAGE)
+
+    def test_missing_or_duplicate_source_stops_publication(self):
+        for changed in (self.fixture().replace('第二十三条', '別の条文'),
+                        self.fixture() + self.fixture()):
+            with self.subTest(changed=changed[-100:]), patch.dict(
+                    health_facility_staffing_reader.SOURCE_HASHES, self.hashes()):
+                with self.assertRaises(RuntimeError):
+                    health_facility_staffing_reader.add_health_facility_staffing_overview(
+                        changed, health_facility_staffing_reader.PAGE)
 
 
 if __name__ == "__main__":

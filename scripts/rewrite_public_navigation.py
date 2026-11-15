@@ -18,8 +18,10 @@ from urllib.parse import parse_qs, unquote, urlsplit
 
 if __package__:
     from .community_staffing_reader import add_community_staffing_overview
+    from .health_facility_staffing_reader import add_health_facility_staffing_overview
 else:
     from community_staffing_reader import add_community_staffing_overview
+    from health_facility_staffing_reader import add_health_facility_staffing_overview
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 QUERY = "q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
@@ -735,7 +737,8 @@ def rewrite(root: Path) -> dict:
     extra_counts = {'criteria_records': 0, 'simple_links': 0, 'unavailable_all_views': 0,
                     'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_links': 0,
                     'community_handbook_sources': 0, 'handbook_source_versions': 0,
-                    'handbook_review_status': 0, 'community_staffing_overview': 0}
+                    'handbook_review_status': 0, 'community_staffing_overview': 0,
+                    'health_facility_staffing_overview': 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
@@ -755,6 +758,8 @@ def rewrite(root: Path) -> dict:
             extra_counts['handbook_review_status'] += n
             after, n = add_community_staffing_overview(after, path.relative_to(root))
             extra_counts['community_staffing_overview'] += n
+            after, n = add_health_facility_staffing_overview(after, path.relative_to(root))
+            extra_counts['health_facility_staffing_overview'] += n
         if after != before:
             changes[path] = after
     # Validate the entire plan before changing any page. The build pipeline

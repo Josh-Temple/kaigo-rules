@@ -7,6 +7,7 @@ on:
       - ".github/workflows/kaigo-pages-public-beta-main.yml"
       - "scripts/rewrite_public_navigation.py"
       - "scripts/community_staffing_reader.py"
+      - "scripts/health_facility_staffing_reader.py"
 
 permissions:
   contents: read
@@ -33,6 +34,7 @@ jobs:
           sparse-checkout: |
             scripts/rewrite_public_navigation.py
             scripts/community_staffing_reader.py
+            scripts/health_facility_staffing_reader.py
             tests/test_formal_navigation.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
@@ -98,6 +100,10 @@ jobs:
           link_fix=subprocess.run([sys.executable,".publication-tools/scripts/rewrite_public_navigation.py",str(root)],
               capture_output=True,text=True,check=True)
           print("FEE_NAVIGATION:",link_fix.stdout.strip())
+          navigation_counts=json.loads(link_fix.stdout).get("additional_changes",{})
+          for overview in ("community_staffing_overview", "health_facility_staffing_overview"):
+              if navigation_counts.get(overview)!=1:
+                  raise RuntimeError("Missing or duplicate staffing overview: "+overview)
           # The already-public, pinned snapshot is now the operational site.
           # Remove only the public-beta wording. Keep unverified-source warnings,
           # the original content, and noindex pending independent legal review.
