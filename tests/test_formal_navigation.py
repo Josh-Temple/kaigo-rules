@@ -7,7 +7,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from scripts import community_staffing_reader, health_facility_staffing_reader, welfare_facility_staffing_reader, fee_version_labels
-from scripts.rewrite_public_navigation import clarify_handbook_review_status, label_qa_search_scopes, label_unit_price_check_date, rewrite
+from scripts.rewrite_public_navigation import clarify_handbook_review_status, expand_unit_price_results, label_qa_search_scopes, label_unit_price_check_date, rewrite
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 COMMON = (
@@ -48,6 +48,14 @@ class FeeNavigationTest(unittest.TestCase):
             with self.subTest(code=code), self.assertRaisesRegex(RuntimeError, 'unit price search status'):
                 label_unit_price_check_date(code)
 
+    def test_unknown_or_duplicate_unit_price_renderer_is_rejected(self):
+        marker = ('        card.append(element("p", matches.length + "区分が検索条件に一致 / " +\n'
+                  '          matches.slice(0, 3).map((r) => r.regionClass + "：" + r.unitPrice.toFixed(2) + "円").join("、") +\n'
+                  '          (matches.length > 3 ? " ほか" : "")));')
+        for code in ('unexpected renderer', marker + '\n' + marker):
+            with self.subTest(code=code), self.assertRaisesRegex(RuntimeError, 'unit price search rendering'):
+                expand_unit_price_results(code)
+
     def test_known_links_are_local_and_the_search_is_not_labeled_a_price_table(self):
         self.assertEqual(rewrite(self.root), {"pages_changed": 3, "search_scripts_changed": 0,
                                               "missing_record_text_labeled": 0, "partial_sources_labeled": 0,
@@ -61,7 +69,9 @@ class FeeNavigationTest(unittest.TestCase):
                                                                      "welfare_facility_staffing_overview": 0,
                                                                      "fee_root_version_labels": 0,
                                                                      "fee_detail_version_labels": 0,
-                                                                     "group_home_staffing_overview": 0}})
+                                                                     "group_home_staffing_overview": 0,
+                                                                     "preventive_group_home_staffing_overview": 0,
+                                                                     "night_homevisit_manager": 0}})
         fees = self.fees.read_text()
         guidance = self.guidance.read_text()
         self.assertNotIn(ORIGIN, fees + guidance)
@@ -321,6 +331,9 @@ class FeeNavigationTest(unittest.TestCase):
             'const localQaDetails = document.querySelector(\'meta[name="kaigo-qa-local-details"]\')?.content === "true";\n'
             f'{ORIGIN}\n{ORIGIN}\n' + '  } else {\n    link.href = destination.href;\n  }\n  return link;\n'
             '      card.append(internalLink(row.title, resultHref(group, row, q)));\n'
+            '        card.append(element("p", matches.length + "区分が検索条件に一致 / " +\n'
+            '          matches.slice(0, 3).map((r) => r.regionClass + "：" + r.unitPrice.toFixed(2) + "円").join("、") +\n'
+            '          (matches.length > 3 ? " ほか" : "")));\n'
             '        card.append(element("p", "現行性：公開条件を満たした現行資料" +\n'
             '          (first.checkedAt ? " / 公式表示確認日：" + first.checkedAt : "")));')
         (search / 'qa-app.mjs').write_text('''    const link = element("a", item.question);
@@ -338,6 +351,7 @@ class FeeNavigationTest(unittest.TestCase):
         self.assertIn('収載済み・現行性未確認', code)
         self.assertIn('公式表示の確認日：', code)
         self.assertIn('その後の改正・適用は原典で確認', code)
+        self.assertIn('"残り" + (matches.length - 3) + "区分を表示"', code)
         self.assertNotIn('公開条件を満たした現行資料', code)
         self.assertNotIn(ORIGIN, code + (search / 'qa-app.mjs').read_text())
 

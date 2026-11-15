@@ -22,12 +22,16 @@ if __package__:
     from .welfare_facility_staffing_reader import add_welfare_facility_staffing_overview, validate_welfare_facility_care_sources
     from .fee_version_labels import label_fee_version
     from .group_home_staffing_reader import add_group_home_staffing_overview
+    from .preventive_group_home_staffing_reader import add_preventive_group_home_staffing_overview
+    from .night_homevisit_manager_clarification import clarify_night_homevisit_manager
 else:
     from community_staffing_reader import add_community_staffing_overview
     from health_facility_staffing_reader import add_health_facility_staffing_overview
     from welfare_facility_staffing_reader import add_welfare_facility_staffing_overview, validate_welfare_facility_care_sources
     from fee_version_labels import label_fee_version
     from group_home_staffing_reader import add_group_home_staffing_overview
+    from preventive_group_home_staffing_reader import add_preventive_group_home_staffing_overview
+    from night_homevisit_manager_clarification import clarify_night_homevisit_manager
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 QUERY = "q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
@@ -318,6 +322,27 @@ def label_unit_price_check_date(code: str) -> str:
     return code.replace(old, new, 1)
 
 
+def expand_unit_price_results(code: str) -> str:
+    """Keep all matched regions available without overwhelming the initial view."""
+    anchor = '''        card.append(element("p", matches.length + "区分が検索条件に一致 / " +
+          matches.slice(0, 3).map((r) => r.regionClass + "：" + r.unitPrice.toFixed(2) + "円").join("、") +
+          (matches.length > 3 ? " ほか" : "")));'''
+    addition = '''
+        if (matches.length > 3) {
+          const details = document.createElement("details");
+          details.append(element("summary", "残り" + (matches.length - 3) + "区分を表示"));
+          const list = document.createElement("ul");
+          for (const row of matches.slice(3)) {
+            list.append(element("li", row.regionClass + "：" + row.unitPrice.toFixed(2) + "円"));
+          }
+          details.append(list);
+          card.append(details);
+        }'''
+    if code.count(anchor) != 1:
+        raise RuntimeError('Unexpected unit price search rendering')
+    return code.replace(anchor, anchor + addition, 1)
+
+
 def rewrite_search_scripts(root: Path) -> dict[Path, str]:
     """Keep dynamically generated search results on published pages or official sources."""
     search = root / 'databases/search'
@@ -378,6 +403,7 @@ def rewrite_search_scripts(root: Path) -> dict[Path, str]:
     code = code.replace(old_fallback, fallback, 1)
     code = label_qa_search_scopes(code)
     code = label_unit_price_check_date(code)
+    code = expand_unit_price_results(code)
     code = code.replace('// This prototype does not include destination pages. Keep navigation on\n'
                         '      // the current site, and do not trust a row with an off-origin URL.',
                         '// Use verified local destinations or an explicitly labelled official source.')
@@ -773,7 +799,8 @@ def rewrite(root: Path) -> dict:
                     'handbook_review_status': 0, 'community_staffing_overview': 0,
                     'health_facility_staffing_overview': 0, 'welfare_facility_staffing_overview': 0,
                     'fee_root_version_labels': 0, 'fee_detail_version_labels': 0,
-                    'group_home_staffing_overview': 0}
+                    'group_home_staffing_overview': 0, 'preventive_group_home_staffing_overview': 0,
+                    'night_homevisit_manager': 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
@@ -803,6 +830,10 @@ def rewrite(root: Path) -> dict:
             extra_counts['welfare_facility_staffing_overview'] += n
             after, n = add_group_home_staffing_overview(after, path.relative_to(root))
             extra_counts['group_home_staffing_overview'] += n
+            after, n = add_preventive_group_home_staffing_overview(after, path.relative_to(root))
+            extra_counts['preventive_group_home_staffing_overview'] += n
+            after, n = clarify_night_homevisit_manager(after, path.relative_to(root))
+            extra_counts['night_homevisit_manager'] += n
         if after != before:
             changes[path] = after
     # Validate the entire plan before changing any page. The build pipeline
