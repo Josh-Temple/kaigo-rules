@@ -71,21 +71,28 @@ function appendSource(card, url) {
 async function display() {
   const searchNumber = ++latestSearch;
   const q = query.value.trim();
+  const selectedCategory = category.value;
   if (!q) { results.replaceChildren(); status.textContent = "キーワードを入力してください。"; return; }
   const selected = services.find((x) => x.id === service.value);
   if (service.value && !selected) {
     results.replaceChildren(); status.textContent = "このサービスは現在の検索対象ではありません。"; return;
   }
   status.textContent = "検索しています。";
-  const data = await json(selected ? selected.file : "global.json");
+  let data;
+  try {
+    data = await json(selected ? selected.file : "global.json");
+  } catch (error) {
+    if (searchNumber !== latestSearch) return;
+    throw error;
+  }
   if (searchNumber !== latestSearch) return;
   const start = performance.now();
-  const found = runSearch(data, q, category.value);
+  const found = runSearch(data, q, selectedCategory);
   const duration = performance.now() - start;
   results.replaceChildren();
   let count = 0;
   for (const group of GROUPS) {
-    if (category.value && category.value !== group) continue;
+    if (selectedCategory && selectedCategory !== group) continue;
     const rows = found[group];
     count += rows.length;
     const section = document.createElement("section");
