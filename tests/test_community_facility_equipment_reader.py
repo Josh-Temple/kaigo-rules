@@ -25,6 +25,10 @@ class CommunityFacilityEquipmentReaderTest(unittest.TestCase):
         self.assertIn('2人とする場合は21.3平方メートル以上', result)
         self.assertIn('共同生活室の床面積は、ユニットの入居定員1人当たり2平方メートルを標準', result)
         self.assertIn('施設の設置時期による経過措置', result)
+        self.assertIn('洗面設備は居室のある階ごと', result)
+        self.assertIn('洗面設備と便所は居室ごと、または共同生活室ごと', result)
+        self.assertIn('医務室を設けなくてもよい', result)
+        self.assertIn('浴室・医務室・廊下・非常災害に必要な設備について原則', result)
         for number, (_, anchor, _) in self.sources.items():
             self.assertIn(f'id="{anchor}"', result)
             self.assertIn(f'{number}の条文本文', result)
