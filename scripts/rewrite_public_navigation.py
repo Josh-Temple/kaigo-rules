@@ -29,6 +29,7 @@ if __package__:
     from .care_management_staffing_reader import add_care_management_staffing_overview
     from .dementia_dayservice_staffing_reader import add_dementia_dayservice_staffing_overview
     from .preventive_dementia_dayservice_staffing_reader import add_preventive_dementia_dayservice_staffing_overview
+    from .homebath_staffing_reader import add_homebath_staffing_overview
 else:
     from community_staffing_reader import add_community_staffing_overview
     from health_facility_staffing_reader import add_health_facility_staffing_overview
@@ -42,6 +43,7 @@ else:
     from care_management_staffing_reader import add_care_management_staffing_overview
     from dementia_dayservice_staffing_reader import add_dementia_dayservice_staffing_overview
     from preventive_dementia_dayservice_staffing_reader import add_preventive_dementia_dayservice_staffing_overview
+    from homebath_staffing_reader import add_homebath_staffing_overview
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 QUERY = "q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
@@ -886,7 +888,7 @@ def rewrite(root: Path) -> dict:
                     'group_home_staffing_overview': 0, 'preventive_group_home_staffing_overview': 0,
                     'night_homevisit_manager': 0, 'care_medical_staffing_overview': 0,
                     'nursing_small_scale_roles': 0, 'care_management_staffing_overview': 0,
-                    'dementia_dayservice_staffing_overview': 0, 'preventive_dementia_dayservice_staffing_overview': 0}
+                    'dementia_dayservice_staffing_overview': 0, 'preventive_dementia_dayservice_staffing_overview': 0, 'homebath_staffing_overview': 0}
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
@@ -931,6 +933,8 @@ def rewrite(root: Path) -> dict:
             extra_counts['dementia_dayservice_staffing_overview'] += n
             after, n = add_preventive_dementia_dayservice_staffing_overview(after, path.relative_to(root))
             extra_counts['preventive_dementia_dayservice_staffing_overview'] += n
+            after, n = add_homebath_staffing_overview(after, path.relative_to(root))
+            extra_counts['homebath_staffing_overview'] += n
         if COMMUNITY_UNVERIFIED_CLAIM in after:
             raise RuntimeError(f'Unsupported community verification claim remains: {path.relative_to(root)}')
         if after != before:

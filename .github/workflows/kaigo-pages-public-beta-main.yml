@@ -18,6 +18,7 @@ on:
       - "scripts/care_management_staffing_reader.py"
       - "scripts/dementia_dayservice_staffing_reader.py"
       - "scripts/preventive_dementia_dayservice_staffing_reader.py"
+      - "scripts/homebath_staffing_reader.py"
       - "scripts/prepare_handbook_publication_boundary.py"
       - "app/**"
       - "components/**"
@@ -71,6 +72,7 @@ jobs:
             scripts/care_management_staffing_reader.py
             scripts/dementia_dayservice_staffing_reader.py
             scripts/preventive_dementia_dayservice_staffing_reader.py
+            scripts/homebath_staffing_reader.py
             scripts/prepare_handbook_publication_boundary.py
             tests/test_formal_navigation.py
             tests/test_fee_version_labels.py
@@ -82,6 +84,7 @@ jobs:
             tests/test_care_management_staffing_reader.py
             tests/test_dementia_dayservice_staffing_reader.py
             tests/test_preventive_dementia_dayservice_staffing_reader.py
+            tests/test_homebath_staffing_reader.py
             tests/test_handbook_publication_boundary.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
@@ -105,6 +108,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_care_management_staffing_reader.py' -v
           python -m unittest discover -s tests -p 'test_dementia_dayservice_staffing_reader.py' -v
           python -m unittest discover -s tests -p 'test_preventive_dementia_dayservice_staffing_reader.py' -v
+          python -m unittest discover -s tests -p 'test_homebath_staffing_reader.py' -v
           python -m unittest discover -s tests -p 'test_handbook_publication_boundary.py' -v
       - name: Verify static-source and disclaimer safety tests
         run: |
@@ -163,6 +167,8 @@ jobs:
           for overview in ("community_staffing_overview", "health_facility_staffing_overview", "welfare_facility_staffing_overview", "group_home_staffing_overview", "preventive_group_home_staffing_overview", "night_homevisit_manager", "care_medical_staffing_overview", "nursing_small_scale_roles", "care_management_staffing_overview", "dementia_dayservice_staffing_overview", "preventive_dementia_dayservice_staffing_overview"):
               if navigation_counts.get(overview)!=1:
                   raise RuntimeError("Missing or duplicate staffing overview: "+overview)
+          if navigation_counts.get("homebath_staffing_overview") != 2:
+              raise RuntimeError("Missing or duplicate home-bathing staffing or operations source")
           for label,count in (("fee_root_version_labels",1), ("fee_detail_version_labels",29)):
               if navigation_counts.get(label)!=count:
                   raise RuntimeError("Unexpected fee page version labels: "+label)
