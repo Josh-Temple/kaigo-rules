@@ -26,6 +26,8 @@ class PreventiveDementiaDayserviceStaffingReaderTest(unittest.TestCase):
         self.assertIn('生活相談員、看護職員または介護職員のうち1人以上は常勤', result)
         self.assertIn('本体事業所・施設に適用される人員基準', result)
         self.assertIn('双方の指定を受けている場合', result)
+        self.assertIn('介護側の基準を満たすことで介護予防側も満たす', result)
+        self.assertIn('介護予防に関する国の基準省令の2024年4月1日施行版', result)
         for number, (_, anchor, _) in self.source.items():
             self.assertIn(f'id="{anchor}"', result)
             self.assertIn(f'{number}の条文本文', result)
