@@ -20,6 +20,7 @@ on:
       - "scripts/preventive_dementia_dayservice_staffing_reader.py"
       - "scripts/homebath_staffing_reader.py"
       - "scripts/preventive_homebath_staffing_reader.py"
+      - "scripts/community_facility_equipment_reader.py"
       - "scripts/prepare_handbook_publication_boundary.py"
       - "app/**"
       - "components/**"
@@ -75,6 +76,7 @@ jobs:
             scripts/preventive_dementia_dayservice_staffing_reader.py
             scripts/homebath_staffing_reader.py
             scripts/preventive_homebath_staffing_reader.py
+            scripts/community_facility_equipment_reader.py
             scripts/prepare_handbook_publication_boundary.py
             tests/test_formal_navigation.py
             tests/test_fee_version_labels.py
@@ -88,6 +90,7 @@ jobs:
             tests/test_preventive_dementia_dayservice_staffing_reader.py
             tests/test_homebath_staffing_reader.py
             tests/test_preventive_homebath_staffing_reader.py
+            tests/test_community_facility_equipment_reader.py
             tests/test_handbook_publication_boundary.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
@@ -113,6 +116,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_preventive_dementia_dayservice_staffing_reader.py' -v
           python -m unittest discover -s tests -p 'test_homebath_staffing_reader.py' -v
           python -m unittest discover -s tests -p 'test_preventive_homebath_staffing_reader.py' -v
+          python -m unittest discover -s tests -p 'test_community_facility_equipment_reader.py' -v
           python -m unittest discover -s tests -p 'test_handbook_publication_boundary.py' -v
       - name: Verify static-source and disclaimer safety tests
         run: |
@@ -168,7 +172,7 @@ jobs:
               capture_output=True,text=True,check=True)
           print("FEE_NAVIGATION:",link_fix.stdout.strip())
           navigation_counts=json.loads(link_fix.stdout).get("additional_changes",{})
-          for overview in ("community_staffing_overview", "health_facility_staffing_overview", "welfare_facility_staffing_overview", "group_home_staffing_overview", "preventive_group_home_staffing_overview", "night_homevisit_manager", "care_medical_staffing_overview", "nursing_small_scale_roles", "care_management_staffing_overview", "dementia_dayservice_staffing_overview", "preventive_dementia_dayservice_staffing_overview"):
+          for overview in ("community_staffing_overview", "health_facility_staffing_overview", "welfare_facility_staffing_overview", "group_home_staffing_overview", "preventive_group_home_staffing_overview", "night_homevisit_manager", "care_medical_staffing_overview", "nursing_small_scale_roles", "care_management_staffing_overview", "dementia_dayservice_staffing_overview", "preventive_dementia_dayservice_staffing_overview", "community_facility_equipment_overview"):
               if navigation_counts.get(overview)!=1:
                   raise RuntimeError("Missing or duplicate staffing overview: "+overview)
           if navigation_counts.get("homebath_staffing_overview") != 2:
