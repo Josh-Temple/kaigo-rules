@@ -84,12 +84,12 @@
 .dayservice-fee-table thead th:first-child{z-index:2;background:#edf2ee}
 .dayservice-fee-table tbody tr:nth-child(even) th:first-child{background:#f6f7f4}
 .dayservice-table-help{font-size:.85rem;color:var(--muted);margin:0}
-.dayservice-staffing-example{margin:18px 0}.dayservice-staffing-example figcaption{font-weight:700;margin-bottom:10px}
+.dayservice-staffing-example{margin:18px 0;min-width:0;max-width:100%}.dayservice-staffing-example figcaption{font-weight:700;margin-bottom:10px;overflow-wrap:anywhere;word-break:break-all}
 .dayservice-staffing-example table{width:100%;border-collapse:collapse;font-size:.9rem}
 .dayservice-staffing-example th,.dayservice-staffing-example td{padding:8px 6px;text-align:left;border-bottom:1px solid #c7d3ca}
 .dayservice-time-bar{display:block;background:#c7ded1;border:1px solid #597b6e;padding:4px 8px;text-align:center;white-space:nowrap}
-.dayservice-service-timeline{display:grid;grid-template-columns:3fr 1fr 5fr;font-size:.9rem;line-height:1.6;margin-top:14px}
-.dayservice-service-period{display:grid;align-content:center;gap:4px;text-align:center;padding:10px 4px;background:#c7ded1;border:1px solid #597b6e}
+.dayservice-service-timeline{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr) minmax(0,5fr);font-size:.9rem;line-height:1.6;margin-top:14px}
+.dayservice-service-period{display:grid;min-width:0;overflow-wrap:anywhere;align-content:center;gap:4px;text-align:center;padding:10px 4px;background:#c7ded1;border:1px solid #597b6e}
 .dayservice-service-gap{border-block:1px dashed #8a978f;background:repeating-linear-gradient(135deg,transparent,transparent 5px,#dce4de 5px,#dce4de 7px)}
 .handbook-dayservice .dayservice-example-note{font-size:.88rem;line-height:1.8;margin:12px 0 0}
 .dayservice-example-result{display:grid;gap:18px;margin:22px 0}
@@ -178,6 +178,7 @@
   .handbook-dayservice .handbook-role-navigation ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px}
   .handbook-dayservice .handbook-role-navigation a{min-height:48px}
   .handbook-dayservice .handbook-calculation-example{padding:14px}
+  .dayservice-counselor-comparison{grid-template-columns:repeat(2,minmax(0,1fr))}
   .handbook-dayservice .handbook-supplement,.handbook-dayservice .handbook-source-list{padding-inline:10px}
 }
 @media print{
@@ -218,7 +219,7 @@
   .dayservice-timing-example table{min-width:0;font-size:8pt}
   .dayservice-time-example-scroll th,.dayservice-time-example-scroll td{padding:5pt 3pt}
   .dayservice-timing-example{break-inside:avoid-page}
-  .dayservice-counselor-comparison{font-size:8pt}
+  .dayservice-counselor-comparison{font-size:8pt;grid-template-columns:repeat(2,minmax(0,1fr))}
   .dayservice-qa{background:transparent;padding:10pt;border-color:#777;break-inside:avoid-page}
   .dayservice-excerpt-label,.dayservice-source-caution,.dayservice-read-across,.dayservice-qa-citation,.dayservice-qa-question>strong,.dayservice-qa-answer>strong{break-after:avoid-page}
   .dayservice-source-citation{break-before:avoid-page;break-inside:avoid-page}

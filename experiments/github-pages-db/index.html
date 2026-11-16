@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>制度DB検索・非公開の移行検証</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main>
+  <div class="notice">
+    <strong>検索の移行検証用・公開不可</strong>
+    <p>検索対象には現行性や人手確認が未完了の資料があります。リンク先は現行サイトです。制度の適用は原典で確認してください。</p>
+  </div>
+  <h1>介護制度DBを横断検索</h1>
+  <p>介護保険法、基準省令、通知、国Q&amp;Aなどを検索します。</p>
+  <form id="search">
+    <label for="query">キーワード</label>
+    <input id="query" name="q" placeholder="例：看護職員、業務継続計画" autocomplete="off">
+    <label for="service">サービス</label>
+    <select id="service" name="service"><option value="">全体</option></select>
+    <label for="category">資料種別</label>
+    <select id="category" name="category">
+      <option value="">すべて</option>
+      <option value="law">介護保険法</option>
+      <option value="ordinance">基準省令</option>
+      <option value="unitPrice">一単位単価・地域区分</option>
+      <option value="delegated">報酬算定基準（別告示）</option>
+      <option value="notice">基準解釈通知</option>
+      <option value="qa">国Q&amp;A</option>
+    </select>
+    <button type="submit">検索する</button>
+  </form>
+  <p>複数の語を空白で区切ると、すべての語を含む資料を探します。</p>
+  <p id="status" role="status" aria-live="polite">検索データを準備しています。</p>
+  <div id="results"></div>
+</main>
+<script type="module" src="./app.mjs"></script>
+</body>
+</html>

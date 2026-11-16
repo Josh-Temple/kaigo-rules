@@ -146,13 +146,34 @@ try {
         }, targetId, { timeout: 5000 });
         const example = page.locator(`#${targetId}`);
         const text = await example.innerText();
-        const fits = await example.evaluate(element => [...element.querySelectorAll('figure,table,[role="img"],.dayservice-service-period')].every(child => {
+        const fitIssues = await example.evaluate(element => [...element.querySelectorAll('figure,table,[role="img"],.dayservice-service-period')].map(child => {
           const rect = child.getBoundingClientRect();
-          return rect.left >= 0 && rect.right <= innerWidth && child.scrollWidth <= child.clientWidth + 1;
-        }));
+          return {tag: child.tagName, className: child.className, left: rect.left, right: rect.right,
+            viewport: innerWidth, scrollWidth: child.scrollWidth, clientWidth: child.clientWidth,
+            preview: child.textContent.trim().slice(0, 80),
+            descendants: [...child.querySelectorAll('*')].map(el => {
+              const box = el.getBoundingClientRect();
+              return {tag:el.tagName, className:el.className, left:box.left, right:box.right,
+                width:box.width, scrollWidth:el.scrollWidth, clientWidth:el.clientWidth,
+                preview:el.textContent.trim().slice(0,30)};
+            }).filter(el => el.right > rect.right || el.scrollWidth > el.clientWidth + 1)};
+        }).filter(item => item.left < 0 || item.right > item.viewport || item.scrollWidth > item.clientWidth + 1));
+        const fits = fitIssues.length === 0;
         const numbers = role === 'life-counselor' ? text.includes('3時間＋5時間＝8時間') && text.includes('合計8時間') && text.includes('12時〜13時はサービス提供なし') && text.includes('3時間＋4時間＝7時間') && text.includes('1時間足りません') && text.includes('17〜18時') && await example.locator('.dayservice-counselor-comparison .dayservice-missing-hour').count() === 1
           : text.includes('20人全員が5時間利用') && text.includes('10時間') && text.includes('常時1人以上');
-        report.interactions.push({ flow: `${width}px staffing → ${role} calculation on screen`, status: firstStaffingTopic === 'staffing-unit' && fits && numbers ? 'PASS' : 'FAIL' });
+        const timeLabelsUnbroken = role !== 'life-counselor' || await example.evaluate(element => {
+          const cells = [...element.querySelectorAll('.dayservice-counselor-comparison > span')];
+          return cells.length === 4 && cells.every(cell => {
+            const label = [...cell.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+            if (!label) return false;
+            const range = document.createRange();
+            range.selectNodeContents(label);
+            return range.getClientRects().length === 1;
+          });
+        });
+        report.interactions.push({ flow: `${width}px staffing → ${role} calculation on screen`,
+          status: firstStaffingTopic === 'staffing-unit' && fits && numbers && timeLabelsUnbroken ? 'PASS' : 'FAIL',
+          diagnostics: { firstStaffingTopic, fits, fitIssues, numbers, timeLabelsUnbroken } });
         if (role === 'life-counselor') {
           await page.screenshot({ path: path.join(output, `dayservice-counselor-example-${width}.png`) });
           await example.locator('a[href="#staffing-role-life-counselor-interpretation"]').click();
