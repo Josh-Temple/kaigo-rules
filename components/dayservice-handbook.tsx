@@ -40,7 +40,7 @@ function LifeCounselorExample() {
     <div className="dayservice-example-contrast">
       <p><strong>比較例：勤務時間数が不足する場合</strong></p>
       <figure className="dayservice-staffing-example">
-        <figcaption>生活相談員の勤務帯と不足する時間帯（例）</figcaption>
+        <figcaption>生活相談員の勤務帯と不足時間（例）</figcaption>
         <div className="dayservice-counselor-comparison" role="img" aria-label="生活相談員Aは9時から12時の3時間、12時から13時はサービス提供なし。生活相談員Bは13時から17時の4時間。17時から18時は生活相談員の勤務がなく、合計1時間不足する例。">
           <span>9〜12時<strong>A：3時間</strong></span><span>12〜13時<strong>休止</strong></span>
           <span>13〜17時<strong>B：4時間</strong></span><span className="dayservice-missing-hour">17〜18時<strong>不足</strong></span>
