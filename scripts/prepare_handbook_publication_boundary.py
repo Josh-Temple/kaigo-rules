@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Keep explicitly quarantined handbook requirements out of the public build.
 
-The historical input data is never edited. This applies a narrowly scoped
-renderer patch to the pinned build checkout, then audits the generated site.
+The historical input data is never edited. The renderer enforces the boundary
+in ordinary builds; this script also verifies it and audits generated sites.
 """
 from __future__ import annotations
 
@@ -16,6 +16,7 @@ from collections import Counter
 from pathlib import Path
 
 COMPONENT_HASH = '7e79c66f82de6f5866b57441ca8efb6cd19c1f7f146b5a29703c0d79411c9298'
+FILTERED_COMPONENT_HASH = '69cd86baadb843ecaac6319c2cee464f7bb3ac0764c737baacede3352a062fbe'
 DATA_HASH = '47a0ed8e1837e6f76ee0a6230f7bc0dcb0d5f5a62529bdb346ac3f4dc592a2f4'
 EXPECTED_WITHHELD = 522
 OLD_ROLES = '  const roles = staffing ? chapter.role_sections : chapter.rule_sections;'
@@ -72,7 +73,10 @@ def inventory(source: Path) -> list[tuple[str, str, str, str]]:
 def apply(source: Path) -> int:
     withheld = inventory(source)
     component = source / 'components/service-handbook.tsx'
-    if digest(component) != COMPONENT_HASH:
+    component_hash = digest(component)
+    if component_hash == FILTERED_COMPONENT_HASH:
+        return len(withheld)
+    if component_hash != COMPONENT_HASH:
         raise RuntimeError('Handbook renderer changed; review publication boundary')
     old = component.read_text(encoding='utf-8')
     if old.count(OLD_ROLES) != 1 or old.count(OLD_GUARD) != 1 or old.count(HEADING) != 2:

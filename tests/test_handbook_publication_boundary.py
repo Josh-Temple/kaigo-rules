@@ -44,6 +44,9 @@ class HandbookPublicationBoundaryTest(unittest.TestCase):
         self.assertIn('role.requirements.filter(requirement => !isWithheld(requirement))', component)
         self.assertIn('掲載を控えています', component)
         self.assertEqual(self.data.read_bytes(), original_data)
+        with patch.object(boundary, 'FILTERED_COMPONENT_HASH', hashlib.sha256(self.component.read_bytes()).hexdigest()):
+            self.assertEqual(boundary.apply(self.root), 3)
+        self.component.write_text(component + '\nchanged', encoding='utf-8')
         with self.assertRaisesRegex(RuntimeError, 'renderer changed'):
             boundary.apply(self.root)
 
