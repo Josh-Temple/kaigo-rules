@@ -25,6 +25,8 @@ class BetaPrepTest(unittest.TestCase):
             sample=(root/"0.html").read_text(encoding="utf-8")
             self.assertIn(prep.BETA_LABEL,sample)
             self.assertIn("指定権者",sample)
+            self.assertIn("https://github.com/Josh-Temple/kaigo-rules/issues/new", sample)
+            self.assertIn("個人情報は記載しない", sample)
             self.assertNotIn(prep.FALSE_PRIVATE,sample)
             self.assertIn('name="robots" content="noindex',sample)
 
