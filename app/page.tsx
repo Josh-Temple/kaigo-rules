@@ -36,7 +36,7 @@ export default function HomePage() {
             <span>法令・通知・報酬を条文順で読む</span>
             <small>サービス別に絞り込み →</small>
           </Link>
-          <Link className="entry-row" href="/start">
+          <Link className="entry-row" href="/opening-guide">
             <span>実務の流れから確認する</span>
             <small>開設・運営ガイド →</small>
           </Link>

@@ -21,7 +21,8 @@ const routeContext = (pathname: string) => {
     { prefix: "/databases/search", db: "介護制度DB横断検索", sourceFamily: "" },
     { prefix: "/databases", db: "介護制度DB", sourceFamily: "" },
     { prefix: "/guide", db: "実務ガイド", sourceFamily: "" },
-    { prefix: "/start", db: "実務ガイド", sourceFamily: "" },
+    { prefix: "/opening-guide", db: "実務ガイド", sourceFamily: "" },
+    { prefix: "/start", db: "サイト案内", sourceFamily: "" },
   ];
   return routes.find((item) => pathname.startsWith(item.prefix));
 };
