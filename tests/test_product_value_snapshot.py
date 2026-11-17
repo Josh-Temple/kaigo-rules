@@ -168,8 +168,10 @@ class ProductValueSnapshotTest(unittest.TestCase):
                 "questions_with_evidence_path"
             ],
         )
-        self.assertEqual(surface["major_pages_total"], 13)
-        self.assertEqual(surface["major_pages_with_feedback"], 13)
+        self.assertEqual(surface["major_pages_total"], 14)
+        self.assertEqual(surface["major_pages_with_feedback"], 14)
+        self.assertIn("/opening-guide", surface["guide_task_routes"])
+        self.assertIn("/opening-guide", surface["feedback_routes"])
         self.assertEqual(surface["feedback_coverage_rate"], 1.0)
 
     def test_human_effectiveness_is_not_claimed(self):

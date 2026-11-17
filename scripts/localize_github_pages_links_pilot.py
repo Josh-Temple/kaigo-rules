@@ -117,7 +117,7 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
             kind, target = "legislation-browse", _legislation_browse(root, query)
             if target is not None and query:
                 suffix = "?" + query
-    elif path in {"/start", "/overview", "/guide", "/sources", "/handbook-sources",
+    elif path in {"/start", "/opening-guide", "/overview", "/guide", "/sources", "/handbook-sources",
                   "/fees/guidance", "/fees"} and not query:
         kind, target = "information", root / path.lstrip("/") / "index.html"
     else:

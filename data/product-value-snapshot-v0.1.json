@@ -327,12 +327,12 @@
     "service_navigation_service_entries": 39,
     "guide_task_journeys": 5,
     "guide_task_routes": [
-      "/start",
+      "/opening-guide",
       "/guide"
     ],
     "practical_question_primary_source_journeys": 12,
-    "major_pages_total": 13,
-    "major_pages_with_feedback": 13,
+    "major_pages_total": 14,
+    "major_pages_with_feedback": 14,
     "feedback_coverage_rate": 1.0,
     "feedback_routes": [
       "/",
@@ -346,6 +346,7 @@
       "/fees",
       "/fees/guidance",
       "/start",
+      "/opening-guide",
       "/guide",
       "/feedback"
     ]

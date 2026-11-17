@@ -19,6 +19,7 @@ class PrivateNavigationTest(unittest.TestCase):
                 "index.html": '<html><body id="home"></body></html>',
                 "services/dayservice/index.html": '<html><body><h1 id="national_qa">手引</h1></body></html>',
                 "guide/index.html": '<html><body><h1 id="guide">ガイド</h1></body></html>',
+                "opening-guide/index.html": '<html><body><h1>開設ガイド</h1></body></html>',
                 "fees/guidance/index.html": '<html><body><h1 id="fees">報酬</h1></body></html>',
                 "fees/index.html": '<html><body>一覧</body></html>',
                 "fees/note.1/index.html": '<html><body><h1 id="fee">報酬注</h1></body></html>',
@@ -40,6 +41,7 @@ class PrivateNavigationTest(unittest.TestCase):
                     "https://kaigo-rules.vercel.app/qa/qa.example?reader=1",
                     "https://kaigo-rules.vercel.app/databases/search?q=%E7%9C%8B%E8%AD%B7",
                     "https://kaigo-rules.vercel.app/guide#guide",
+                    "https://kaigo-rules.vercel.app/opening-guide",
                     "https://kaigo-rules.vercel.app/fees/guidance#fees",
                     "https://kaigo-rules.vercel.app/fees/note.1#fee",
                     "https://kaigo-rules.vercel.app/fees",
@@ -51,13 +53,14 @@ class PrivateNavigationTest(unittest.TestCase):
                 ])
             source.write_text(before, encoding="utf-8")
             report = module.localize(out)
-            self.assertEqual(report["links_localized"], 8)
+            self.assertEqual(report["links_localized"], 9)
             updated = source.read_text(encoding="utf-8")
             self.assertIn('../../services/dayservice/index.html#national_qa', updated)
             self.assertIn('../../databases/search/legal/rules/dayservice/93.html#rule', updated)
             self.assertIn('../../databases/search/qa-details/qa.example/reader.html', updated)
             self.assertIn('../../databases/search/index.html?q=%E7%9C%8B%E8%AD%B7', updated)
             self.assertIn('../../guide/index.html#guide', updated)
+            self.assertIn('../../opening-guide/index.html', updated)
             self.assertIn('../../fees/guidance/index.html#fees', updated)
             self.assertIn('../../fees/note.1/index.html#fee', updated)
             self.assertIn('../../fees/index.html', updated)

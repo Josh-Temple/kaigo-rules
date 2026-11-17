@@ -17,7 +17,8 @@ import build_github_pages_handbook_pilot as handbook
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {
-    "start": "利用開始",
+    "start": "はじめての方へ",
+    "opening-guide": "通所介護の開設・運営ガイド",
     "overview": "介護制度の全体像",
     "guide": "介護制度の使い方ガイド",
     # These additional paths are already prerendered by the validated Next.js build.

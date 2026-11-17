@@ -43,6 +43,7 @@ nav ul{display:flex;gap:6px 18px;flex-wrap:wrap;list-style:none;padding-left:0}
 nav li{margin:4px 0}.dayservice-source-block{margin:12px 0 22px}details{margin:10px 0;padding:8px;border:1px solid #d5dfd8;border-radius:6px}
 .home-search{padding:14px 16px;background:#edf5f0;border-radius:8px}.service-groups a{display:inline-block;padding:6px 10px;border:1px solid #b9cec2;border-radius:6px}.service-group ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px}.service-group li{padding:12px;border:1px solid #d5dfd8;border-radius:6px}.service-group li a{display:block}.preventive-label{display:block;font-size:.85rem;color:#54665b;margin-top:8px}
 .chapter-list ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:8px;padding-left:2rem}.chapter-list li{padding:4px}.chapter-list a{display:block;padding:10px;border:1px solid #d5dfd8;border-radius:6px}
+.entry-links{display:grid;gap:10px}.entry-row{display:block;padding:12px 14px;border:1px solid #c6d9cd;border-radius:8px}.entry-row span,.entry-row small{display:block}.entry-row small{color:#425b4d;margin-top:3px}
 figure{max-width:100%;margin:18px 0}figcaption{font-weight:650}.meta,.eyebrow{font-size:.88rem;color:#54665b}
 .dayservice-staffing-example{min-width:0;max-width:100%}.dayservice-staffing-example figcaption{overflow-wrap:anywhere;word-break:break-all}
 .dayservice-service-timeline{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr) minmax(0,5fr);font-size:.9rem;line-height:1.6;margin-top:14px}

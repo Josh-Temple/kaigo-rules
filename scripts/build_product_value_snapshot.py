@@ -55,7 +55,7 @@ PUBLIC_DATABASE_ROUTE_FILES = {
 }
 
 GUIDE_TASK_ROUTE_FILES = {
-    "/start": ROOT / "app/start/page.tsx",
+    "/opening-guide": ROOT / "app/opening-guide/page.tsx",
     "/guide": ROOT / "app/guide/page.tsx",
 }
 
@@ -71,6 +71,7 @@ MAJOR_FEEDBACK_ROUTE_FILES = {
     "/fees": ROOT / "app/fees/page.tsx",
     "/fees/guidance": ROOT / "app/fees/guidance/page.tsx",
     "/start": ROOT / "app/start/page.tsx",
+    "/opening-guide": ROOT / "app/opening-guide/page.tsx",
     "/guide": ROOT / "app/guide/page.tsx",
     "/feedback": ROOT / "app/feedback/page.tsx",
 }
@@ -750,7 +751,7 @@ def build_snapshot() -> dict[str, Any]:
     guide_task_routes = [
         route for route, path in GUIDE_TASK_ROUTE_FILES.items() if path.exists()
     ]
-    guide_task_journeys = 1 if "/start" in guide_task_routes else 0
+    guide_task_journeys = 1 if "/opening-guide" in guide_task_routes else 0
     if "/guide" in guide_task_routes:
         guide_source = (ROOT / "lib/practical-guide.ts").read_text(encoding="utf-8")
         guide_task_journeys += guide_source.count('\n  {\n    id: "')
