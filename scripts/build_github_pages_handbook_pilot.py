@@ -27,7 +27,39 @@ DROP_CONTENT = {"script", "style", "svg", "iframe", "noscript", "template", "can
 ALLOWED_ATTRS = {"class", "id", "aria-label", "aria-current", "aria-hidden", "aria-labelledby",
                  "aria-describedby", "aria-controls", "aria-expanded", "role", "scope",
                  "colspan", "rowspan", "title", "tabindex", "open", "for", "headers"}
-PRINT_JS = 'document.addEventListener("click",function(e){if(e.target.closest("[data-handbook-print]"))window.print()});\n'
+PRINT_JS = r'''document.addEventListener("click",function(e){if(e.target.closest("[data-handbook-print]"))window.print()});
+document.addEventListener("DOMContentLoaded", function () {
+  const boxes = Array.from(document.querySelectorAll('article.handbook-page input[type="checkbox"]'));
+  if (!boxes.length) return;
+  const key = "kaigo-checklist-v1:" + location.pathname;
+  const identifiers = boxes.map((box, i) => i + ":" + (box.closest("label")?.textContent || "").trim());
+  try {
+    const saved = JSON.parse(localStorage.getItem(key) || "{}");
+    boxes.forEach((box, i) => { box.checked = saved[identifiers[i]] === true; });
+    function save() {
+      const state = {};
+      boxes.forEach((box, i) => { if (box.checked) state[identifiers[i]] = true; });
+      localStorage.setItem(key, JSON.stringify(state));
+    }
+    // Test storage before claiming that changes will be saved.
+    localStorage.setItem(key, JSON.stringify(saved));
+    boxes.forEach(box => box.addEventListener("change", () => {
+      try { save(); } catch { note.textContent = "保存できませんでした。印刷またはPDF保存をご利用ください。"; }
+    }));
+    const note = document.createElement("p");
+    note.textContent = "チェック状態はこの端末のブラウザに保存されます。共有端末では使用後に消去してください。";
+    const clear = document.createElement("button");
+    clear.type = "button";
+    clear.textContent = "この章のチェックを消去";
+    clear.addEventListener("click", () => {
+      boxes.forEach(box => { box.checked = false; });
+      try { localStorage.removeItem(key); } catch { note.textContent = "保存状態を消去できませんでした。ブラウザのサイトデータを削除してください。"; }
+    });
+    const old = Array.from(document.querySelectorAll("p")).find(p => p.textContent.trim() === "チェック状態は保存されず、ページを再読み込みすると解除されます。");
+    if (old) old.replaceWith(note, clear); else boxes[0].parentNode.before(note, clear);
+  } catch { /* Existing no-save notice remains accurate when storage is unavailable. */ }
+});
+'''
 STYLES = """
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;margin:0;line-height:1.75;color:#25332d;background:#f6f8f7}
 main{max-width:1050px;margin:0 auto;padding:16px 18px 80px;background:#fff}

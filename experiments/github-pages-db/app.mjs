@@ -98,7 +98,7 @@ async function display() {
       }
       section.append(element("h2", labels[group] + "（" + rows.length.toLocaleString("ja-JP") +
         "件 / " + services.size.toLocaleString("ja-JP") + "サービス）"));
-      for (const matches of [...services.values()].slice(0, 20)) {
+      for (const matches of services.values()) {
         const first = matches[0];
         const card = document.createElement("article"); card.className = "result";
         card.append(internalLink(first.serviceLabel, resultHref(group, first, q)));
@@ -111,12 +111,15 @@ async function display() {
         section.append(card);
       }
       if (!rows.length) section.append(element("p", "現在の公開範囲では一致なし"));
-      if (services.size > 20) section.append(element("p", "上位20サービスを表示しています。"));
       results.append(section);
       continue;
     }
     section.append(element("h2", labels[group] + "（" + rows.length.toLocaleString("ja-JP") + "件）"));
-    for (const row of rows.slice(0, 10)) {
+    let shown = 0;
+    const more = element("button", "さらに表示");
+    more.type = "button";
+    function showMore() {
+    for (const row of rows.slice(shown, shown + 10)) {
       const card = document.createElement("article");
       card.className = "result";
       // This prototype does not include destination pages. Keep navigation on
@@ -126,10 +129,15 @@ async function display() {
       if (excerpt) card.append(element("p", databaseSearchExcerpt(excerpt, q)));
       if (row.statusText) card.append(element("p", row.statusText));
       appendSource(card, row.sourceUrl);
-      section.append(card);
+      section.insertBefore(card, more);
     }
+    shown += 10;
+    more.hidden = shown >= rows.length;
+    }
+    more.addEventListener("click", showMore);
+    section.append(more);
+    showMore();
     if (!rows.length) section.append(element("p", "現在の公開範囲では一致なし"));
-    if (rows.length > 10) section.append(element("p", "上位10件を表示しています。"));
     results.append(section);
   }
   status.textContent = count.toLocaleString("ja-JP") + "件見つかりました。";

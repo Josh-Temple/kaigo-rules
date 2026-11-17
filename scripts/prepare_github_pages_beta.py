@@ -44,6 +44,8 @@ def prepare(root: Path) -> dict:
         content, n=BODY.subn(lambda m: m.group(0)+BANNER,content,count=1)
         if n!=1 or FALSE_PRIVATE in content:
             raise RuntimeError("Cannot visibly identify beta output: "+page.name)
+        report = ('<footer style="padding:1rem"><a href="https://github.com/Josh-Temple/kaigo-rules/issues/new">内容の誤り・更新漏れを報告</a>（該当ページのURLをお知らせください。個人情報は記載しないでください。）</footer>')
+        content = re.sub(r"</body\s*>", lambda m: report + m.group(0), content, count=1, flags=re.I)
         if content!=source:
             page.write_text(content,encoding="utf-8")
             changed+=1
