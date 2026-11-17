@@ -50,7 +50,15 @@ def build(root: Path = ROOT) -> dict:
         routes[service_id] = set(slugs)
     out = Path(tempfile.mkdtemp(prefix="kaigo-handbook-private-", dir=temp_root))
     pages = []
-    root_links = []
+    labels = {s['service_id']: str(s.get('label') or s['service_id']) for s in services}
+    navigation = json.loads((root / 'data/public-service-navigation.json').read_text(encoding='utf-8'))
+    groups = navigation['groups']
+    group_ids = [g['id'] for g in groups]
+    navigation_ids = [sid for group in groups for unit in group['units'] for sid in unit['service_ids']]
+    if (not groups or any(not ID.fullmatch(group_id) for group_id in group_ids)
+            or len(group_ids) != len(set(group_ids)) or len(navigation_ids) != len(set(navigation_ids))
+            or set(navigation_ids) != set(routes)):
+        raise RuntimeError('Service navigation must cover the handbook manifest exactly once')
     try:
         (out / "styles.css").write_text(pilot.STYLES + "\n", encoding="utf-8")
         (out / "print.js").write_text(pilot.PRINT_JS, encoding="utf-8")
@@ -104,14 +112,26 @@ def build(root: Path = ROOT) -> dict:
                 )
             dest = out / "services" / service_id / "index.html"
             dest.parent.mkdir(parents=True, exist_ok=True)
-            body = ('<article class="handbook-page"><h1>' + pilot.escape(service_label) +
+            body = ('<article class="handbook-page"><p><a href="../../index.html">← サービス一覧に戻る</a></p><h1>' + pilot.escape(service_label) +
                     'の手引</h1><p>未確認の説明を含みます。条件と原典を確認してください。</p>'
-                    '<nav aria-label="章の目次"><ol>' + "".join(chapter_links) +
+                    '<p>調べたい章を選んでください。</p><nav class="chapter-list" aria-label="章の目次"><ol>' + "".join(chapter_links) +
                     '</ol></nav></article>')
             dest.write_text(pilot.html_page(service_label, body, "../../styles.css"), encoding="utf-8")
-            root_links.append(f'<li><a href="./services/{service_id}/index.html">{pilot.escape(service_label)}</a></li>')
+        group_nav = ''.join(f'<li><a href="#service-group-{g["id"]}">{pilot.escape(g["label"])}</a></li>' for g in groups)
+        sections = []
+        for group in groups:
+            units = []
+            for unit in group['units']:
+                links = [f'<a href="./services/{sid}/index.html">{pilot.escape(labels[sid])}</a>' for sid in unit['service_ids']]
+                units.append('<li>' + '<span class="preventive-label">介護予防：</span>'.join(links) + '</li>')
+            sections.append(f'<section id="service-group-{group["id"]}" class="service-group"><h2>{pilot.escape(group["label"])}</h2>'
+                            f'<p>{pilot.escape(group["description"])}</p><ul>{"".join(units)}</ul></section>')
         index = ('<article class="handbook-page"><h1>サービス別手引</h1>'
-                 '<nav aria-label="サービス一覧"><ul>' + "".join(root_links) + '</ul></nav></article>')
+                 '<p>調べたいサービスを選ぶと、人員・設備・運営などの章を読めます。</p>'
+                 '<!-- search-links -->'
+                 '<p>サービスの種類から探す（案内上の分類です）</p>'
+                 '<nav class="service-groups" aria-label="サービスの種類"><ul>' + group_nav + '</ul></nav>'
+                 + ''.join(sections) + '</article>')
         (out / "index.html").write_text(pilot.html_page("サービス別手引", index, "./styles.css"), encoding="utf-8")
         files = [p for p in out.rglob("*") if p.is_file()]
         return {"directory": str(out), "services": len(services), "chapters": len(pages),

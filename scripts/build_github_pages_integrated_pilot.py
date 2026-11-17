@@ -217,7 +217,12 @@ def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = 
         '<a href="./fees/guidance/index.html">報酬案内</a></p>'
         if with_information else ""
     )
-    root_page.write_text(text.replace("</article>", '<p><a href="./databases/search/index.html">制度DB横断検索を試す</a> / <a href="./databases/search/qa.html">国Q&Aを探す</a></p>' + information_links + '</article>'), encoding="utf-8")
+    search_links = '<p class="home-search"><a href="./databases/search/index.html">制度DB横断検索を試す</a> / <a href="./databases/search/qa.html">国Q&Aを探す</a></p>'
+    if text.count('<!-- search-links -->') == 1:
+        text = text.replace('<!-- search-links -->', search_links)
+    else:
+        text = text.replace('</article>', search_links + '</article>')
+    root_page.write_text(text.replace('</article>', information_links + '</article>'), encoding="utf-8")
     search_page = target / "index.html"
     text = search_page.read_text(encoding="utf-8")
     if "qa-details" in detail_dirs:

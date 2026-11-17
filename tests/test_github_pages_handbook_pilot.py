@@ -117,10 +117,19 @@ class HandbookSanitizerTest(unittest.TestCase):
             (root / "data/handbook.generated.json").write_text(
                 json.dumps({"services": services}), encoding="utf-8",
             )
+            (root / "data/public-service-navigation.json").write_text(json.dumps({"groups": [
+                {"id": "example", "label": "分類", "description": "説明", "units": [
+                    {"service_ids": ["alpha", "beta"]}]}]}), encoding="utf-8")
             result = all_pilot.build(root)
             try:
                 self.assertEqual((result["services"], result["chapters"], result["files"]), (2, 4, 9))
                 out = Path(result["directory"])
+                index = (out / "index.html").read_text(encoding="utf-8")
+                self.assertIn('href="#service-group-example"', index)
+                self.assertIn('介護予防：', index)
+                service_page = (out / 'services/alpha/index.html').read_text(encoding='utf-8')
+                self.assertIn('href="../../index.html"', service_page)
+                self.assertIn('章の目次', service_page)
                 page = (out / "handbook/beta/chapter-2.html").read_text(encoding="utf-8")
                 self.assertIn('../../handbook/alpha/chapter-1.html#part', page)
                 self.assertIn('../../services/beta/index.html#chapter-1', page)
@@ -130,6 +139,14 @@ class HandbookSanitizerTest(unittest.TestCase):
                 self.assertGreater(check_local_links(self, out), 0)
             finally:
                 shutil.rmtree(result["directory"], ignore_errors=True)
+
+            # A missing or duplicated service must stop publication, rather than
+            # silently making a handbook unreachable from the new index.
+            (root / "data/public-service-navigation.json").write_text(json.dumps({"groups": [
+                {"id": "example", "label": "分類", "description": "説明", "units": [
+                    {"service_ids": ["alpha", "alpha"]}]}]}), encoding="utf-8")
+            with self.assertRaisesRegex(RuntimeError, 'cover the handbook manifest'):
+                all_pilot.build(root)
 
     def test_integration_allows_only_expected_search_files(self):
         with tempfile.TemporaryDirectory() as temp:

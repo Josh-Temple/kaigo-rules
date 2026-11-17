@@ -58,14 +58,25 @@ function StaffingRoles({ service, chapter, full }: {
   service: ServiceHandbookData; chapter: HandbookChapter; full: boolean;
 }) {
   const staffing = chapter.section_id === "staffing";
-  const roles = staffing ? chapter.role_sections : chapter.rule_sections;
+  const candidates = staffing ? chapter.role_sections : chapter.rule_sections;
+  // Research candidates are retained in source data but need acceptance before publication.
+  const isWithheld = (requirement: HandbookRoleSection["requirements"][number]) =>
+    requirement.id.startsWith("mesh-") ||
+    (requirement.description.includes("Research Mesh") && requirement.description.includes("隔離候補"));
+  const withheld = Boolean(candidates?.some(role => role.requirements.some(isWithheld)));
+  const roles = candidates?.map(role => ({
+    ...role, requirements: role.requirements.filter(requirement => !isWithheld(requirement)),
+  })).filter(role => role.requirements.length > 0);
   const groupHeading = staffing ? "職種ごとの人員基準" : "項目ごとの要件と条件";
   const anchor = staffing ? "staffing-role" : `chapter-${chapter.section_id}-rule`;
   const staffingServices = ["homevisit", "dayrehab", "dayservice", "small-scale-multifunctional", "specific-welfare-equipment-sale", "welfare-equipment-rental", "preventive-welfare-equipment-rental", "preventive-support", "homerehab", "preventive-homerehab", "preventive-dayrehab", "preventive-homenursing", "homebath", "homenursing", "regular-round", "shortstay-life", "shortstay-medical", "preventive-homebath", "preventive-shortstay-life", "preventive-shortstay-medical", "specific-facility", "preventive-specific-facility", "community-specific-facility", "community-elderly-facility", "specific-preventive-welfare-equipment-sale"];
   const ruleChapters = ["equipment", "operations", "records", "safeguarding", "incident_and_infection", "business_continuity", "notifications"];
   const allowed = staffing ? staffingServices.includes(service.service_id)
     : service.service_id === "community-elderly-facility" && ruleChapters.includes(chapter.section_id);
-  if (!allowed || !roles?.length) return null;
+  if (!allowed) return null;
+  if (!roles?.length) return withheld
+    ? <p className="handbook-role-warning">一部の説明は原典との照合が済むまで掲載を控えています。関連する条文・資料も確認してください。</p>
+    : null;
   const detailHref = handbookChapterHref(service.service_id, chapter.section_id);
   const chapterPage = full && service.service_id === "dayservice";
   const GroupHeading = chapterPage ? "h2" : "h3";
@@ -77,11 +88,13 @@ function StaffingRoles({ service, chapter, full }: {
   const inlineStaffing = staffing && !full && ["dayservice", "dayrehab", "homevisit"].includes(service.service_id);
   if (!full && !inlineStaffing) return <section className="handbook-role-preview" aria-label={groupHeading}>
     <GroupHeading>{groupHeading}</GroupHeading>
+    {withheld ? <p className="handbook-role-warning">一部の説明は原典との照合が済むまで掲載を控えています。関連する条文・資料も確認してください。</p> : null}
     <p className="handbook-primary-action"><Link href={detailHref}>職種別の配置・勤務・資格を確認する</Link></p>
     <RoleNavigation roles={roles} staffing={staffing} anchor={anchor} detailHref={detailHref} full={false} />
   </section>;
   return <section className="handbook-roles" aria-label={groupHeading}>
     <GroupHeading>{groupHeading}</GroupHeading>
+    {withheld ? <p className="handbook-role-warning">一部の説明は原典との照合が済むまで掲載を控えています。関連する条文・資料も確認してください。</p> : null}
     <p className="meta">未確認の内容を含みます。適用前に最新の原典と指定権者の基準を確認してください。{service.service_id === "dayservice" ? "出典本文の一部を確認した資料でも、要件全体の施行版・適用条件の確認が完了したことを意味しません。" : null}</p>
     <RoleNavigation roles={roles} staffing={staffing} anchor={anchor} detailHref={detailHref} full={true} headingTag={chapterPage ? "h3" : "h4"} />
     {roles.map(role => <section key={role.id} id={`${anchor}-${role.id}`} className="handbook-role">
