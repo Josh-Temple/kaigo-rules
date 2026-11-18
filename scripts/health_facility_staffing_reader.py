@@ -60,7 +60,7 @@ OVERVIEW = '''<section class="handbook-role" aria-labelledby="health-staff-roles
 <section class="handbook-role"><h4 id="health-staff-units">ユニット型の勤務体制</h4>
 <p>ユニット型では、別に、昼間はユニットごとに常時1人以上、夜間・深夜は2ユニットごとに1人以上の看護職員または介護職員を配置します。ユニットごとに常勤のユニットリーダーも配置します。<a href="#health-staff-article48">基準第48条へ</a></p></section>
 <p>算定に用いる入所者数は原則として前年度の平均値です。新規許可時や増減床時などは別の取扱いを確認してください。常勤換算、勤務表の作り方と兼務の条件も、施設の実態に応じて確認します。</p>
-<p><a href="https://www.mhlw.go.jp/web/t_doc?dataId=00ta4388&amp;dataType=1">国の平成12年通知（人員基準の解釈）</a> ／ <a href="https://www.city.yokohama.lg.jp/kenko-iryo-fukushi/fukushi-kaigo/shakaifukushi/20150205154255.files/0112_20250613.pdf">横浜市の令和7年度集団指導資料</a>。通知や資料の後の改正・訂正と、施設を所管する指定権者の取扱いを確認してください。</p>
+<p><a href="https://www.mhlw.go.jp/web/t_doc?dataId=00ta4388&amp;dataType=1">国の平成12年通知（人員基準の解釈）</a>。通知の後の改正・訂正と、施設を所管する指定権者の取扱いを確認してください。</p>
 </section>'''
 
 

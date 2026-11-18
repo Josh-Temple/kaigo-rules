@@ -130,12 +130,12 @@ def build(root: Path = ROOT) -> dict:
             sections.append(f'<section id="service-group-{group["id"]}" class="service-group"><h2>{pilot.escape(group["label"])}</h2>'
                             f'<p>{pilot.escape(group["description"])}</p><ul>{"".join(units)}</ul></section>')
         index = ('<article class="handbook-page"><h1>サービス別手引</h1>'
-                 '<p>調べたいサービスを選ぶと、人員・設備・運営などの章を読めます。</p>'
+                 '<p class="home-intro">全国の自治体・介護事業者向けに、国の基準と関連資料をサービス別に整理しています。</p>'
                  '<!-- search-links -->'
-                 '<div class="service-filter" hidden><label for="service-name">サービス名で絞り込む</label>'
+                 '<h2 class="home-section-heading">サービスを探す</h2><div class="service-filter" hidden><label for="service-name">サービス名で絞り込む</label>'
                  '<input id="service-name" type="search" placeholder="例：通所、訪問、介護予防">'
                  '<p id="service-filter-status" role="status"></p></div>'
-                 '<p>サービスの種類から探す（案内上の分類です）</p>'
+                 '<p>名前が分からない場合は、種類から探せます。</p>'
                  '<nav class="service-groups" aria-label="サービスの種類"><ul>' + group_nav + '</ul></nav>'
                  + ''.join(sections) + '</article>')
         (out / "index.html").write_text(pilot.html_page("サービス別手引", index, "./styles.css"), encoding="utf-8")
