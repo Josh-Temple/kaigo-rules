@@ -216,7 +216,13 @@ def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = 
         '<a href="./fees/guidance/index.html">報酬案内</a></p>'
         if with_information else ""
     )
-    search_links = ('<p><a href="./start/index.html">はじめての方へ：このサイトの使い方</a></p>' if with_information else '') + '<p class="home-search"><a href="./databases/search/index.html">制度DB横断検索を試す</a> / <a href="./databases/search/qa.html">国Q&Aを探す</a></p>'
+    search_links = (
+        '<nav class="home-actions" aria-label="資料の探し方"><ul>'
+        '<li><a href="./databases/search/index.html"><strong>制度DBを横断検索する</strong><span>法令・通知・報酬などを調べる</span></a></li>'
+        '<li><a href="./databases/search/qa.html"><strong>国Q&amp;Aを探す</strong><span>厚生労働省のQ&amp;Aを調べる</span></a></li>'
+        + ('<li><a href="./start/index.html"><strong>はじめての方へ</strong><span>資料の見方と確認手順</span></a></li>' if with_information else '')
+        + '</ul></nav>'
+    )
     if text.count('<!-- search-links -->') == 1:
         text = text.replace('<!-- search-links -->', search_links)
     else:

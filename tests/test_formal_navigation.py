@@ -736,7 +736,7 @@ class CommunityStaffingOverviewTest(unittest.TestCase):
         self.assertIn('後続の改正・訂正がないか確認', content)
         self.assertIn('国の基準省令の収載版では、生活相談員または介護職員のうち1人以上は常勤', content)
         self.assertIn('第3項の読替えにより、この介護職員には看護職員も含まれます', content)
-        self.assertIn('横浜市の令和8年度の手引', content)
+        self.assertNotIn('横浜市の令和8年度の手引', content)
         self.assertIn('指定権者の条例・手引も確認', content)
         self.assertIn('同じ事業所で一体的に運営', content)
         self.assertIn('利用者それぞれの提供時間の合計÷利用者数', content)

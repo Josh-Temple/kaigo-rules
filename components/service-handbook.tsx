@@ -107,6 +107,21 @@ function StaffingRoles({ service, chapter, full }: {
         const copy = requirementCopy(requirement.description);
         const parts = service.service_id === "dayservice" && staffing
           ? splitDayserviceRegionalText(copy, requirement.authority_segments, requirement.evidence) : null;
+        const regionalKinds = new Set(["yokohama_ordinance", "yokohama_regulation", "yokohama_handbook"]);
+        const nationalEvidence = requirement.evidence.filter(evidence => !regionalKinds.has(evidence.kind));
+        const regionalEvidence = requirement.evidence.filter(evidence => regionalKinds.has(evidence.kind) && evidence.kind !== "yokohama_handbook");
+        const evidenceItem = (evidence: HandbookEvidence, index: number) => <li key={index}>
+          <strong>{evidenceNames[evidence.kind]}</strong>
+          <span className="handbook-role-evidence-state">{evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" ? "原文確認済み（限定範囲）" : "出典候補・原文未照合"}</span>
+          <div>{handbookReaderText(readerEvidenceTitle(evidence.title).label)}（{evidence.issuer}）</div>
+          <details className="handbook-evidence-details"><summary>条文・適用版の情報</summary>
+            <p>該当箇所：{handbookReaderText(readerEvidenceLocator(evidence.locator))}</p>
+            <p>版：{handbookReaderText(evidence.version)}</p>
+          </details>
+          <div>対象：{handbookReaderText(evidence.scope)}{evidence.effective_date ? ` ／ 適用日：${evidence.effective_date}` : ""}</div>
+          {evidence.note ? <p>{handbookReaderText(evidence.note)}</p> : null}
+          {evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" && safeHandbookEvidenceUrl(evidence.url) ? <div><a href={safeHandbookEvidenceUrl(evidence.url)!} target="_blank" rel="noopener noreferrer">公式資料を開く ↗</a></div> : null}
+        </li>;
         return <section key={requirement.id} className="handbook-role-requirement" id={`${anchor}-${role.id}-requirement-${requirement.id}`}>
         <RequirementHeading>{readerRequirementTitle(
           requirement.title, requirement.aspect,
@@ -138,18 +153,12 @@ function StaffingRoles({ service, chapter, full }: {
           <ul className="handbook-checkpoints">{requirement.practical_checks.map((point, index) => <li key={index}>{handbookReaderText(point)}</li>)}</ul>
         </> : null}
         <DetailHeading>関連する原典と適用上の注意</DetailHeading>
-        {requirement.evidence.length ? <ul className="handbook-role-evidence">{requirement.evidence.map((evidence, index) => <li key={index}>
-          <strong>{evidenceNames[evidence.kind]}</strong>
-          <span className="handbook-role-evidence-state">{evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" ? "原文確認済み（限定範囲）" : "出典候補・原文未照合"}</span>
-          <div>{handbookReaderText(readerEvidenceTitle(evidence.title).label)}（{evidence.issuer}）</div>
-          <details className="handbook-evidence-details"><summary>条文・適用版の情報</summary>
-            <p>該当箇所：{handbookReaderText(readerEvidenceLocator(evidence.locator))}</p>
-            <p>版：{handbookReaderText(evidence.version)}</p>
-          </details>
-          <div>対象：{handbookReaderText(evidence.scope)}{evidence.effective_date ? ` ／ 適用日：${evidence.effective_date}` : ""}</div>
-          {evidence.note ? <p>{handbookReaderText(evidence.note)}</p> : null}
-          {evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" && safeHandbookEvidenceUrl(evidence.url) ? <div><a href={safeHandbookEvidenceUrl(evidence.url)!} target="_blank" rel="noopener noreferrer">{evidence.kind === "yokohama_handbook" ? "横浜市の手引を開く ↗" : "公式資料を開く ↗"}</a></div> : null}
-        </li>)}</ul> : <p className="handbook-role-warning">個別の出典候補はまだ登録されていません。原典の特定・照合が必要です。</p>}
+        {nationalEvidence.length ? <ul className="handbook-role-evidence">{nationalEvidence.map(evidenceItem)}</ul>
+          : <p className="handbook-role-warning">全国共通の根拠となる資料は、原典の特定・照合が必要です。</p>}
+        {regionalEvidence.length ? <details className="handbook-evidence-details">
+          <summary>地域の条例・規則（適用地域を確認）</summary>
+          <ul className="handbook-role-evidence">{regionalEvidence.map(evidenceItem)}</ul>
+        </details> : null}
         {requirement.evidence.some(e => e.kind === "national_qa" && e.verification_state !== "PRIMARY_TEXT_CHECKED_SCOPED") ? <p className="meta">関連する国Q&Aは候補の段階です。原問との照合が必要です。</p> : null}
       </section>})}
       <p className="handbook-role-return"><a href={`#${anchor}-navigation`}>職種一覧に戻る ↑</a></p>
