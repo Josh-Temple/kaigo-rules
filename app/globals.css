@@ -189,3 +189,10 @@
 .handbook-role-return a:focus-visible,.handbook-role-navigation a:focus-visible,.handbook-toc a:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
 @media(max-width:390px){.handbook-role-nav-group li,.handbook-role-nav-group a{width:100%}.handbook-role-return a{max-width:100%}}
 @media print{.handbook-role-return{display:none}}
+
+/* Never print the unverified raw treatment-improvement fee extract or its empty heading. */
+@media print{.dayservice-historical-fee-section{display:none!important}}
+
+/* Keep long government source URLs readable when a reader prints the fee detail. */
+.fee-print-source-url{display:none}
+@media print{.fee-print-source-url{display:block;overflow-wrap:anywhere;word-break:break-all;font-size:.82rem}}
