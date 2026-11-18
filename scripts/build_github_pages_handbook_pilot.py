@@ -29,6 +29,43 @@ ALLOWED_ATTRS = {"class", "id", "aria-label", "aria-current", "aria-hidden", "ar
                  "colspan", "rowspan", "title", "tabindex", "open", "for", "headers"}
 PRINT_JS = r'''document.addEventListener("click",function(e){if(e.target.closest("[data-handbook-print]"))window.print()});
 document.addEventListener("DOMContentLoaded", function () {
+  const filter = document.querySelector(".service-filter");
+  if (!filter) return;
+  const input = filter.querySelector("input");
+  const status = filter.querySelector("[role=status]");
+  const nav = document.querySelector(".service-groups");
+  const sections = Array.from(document.querySelectorAll(".service-group"));
+  const normalize = text => text.normalize("NFKC").toLowerCase().trim();
+  function update() {
+    const terms = normalize(input.value).split(/\s+/).filter(Boolean);
+    let total = 0;
+    for (const section of sections) {
+      let count = 0;
+      for (const item of section.querySelectorAll("li")) {
+        let matches = 0;
+        for (const option of item.querySelectorAll(".service-option")) {
+          const label = normalize(option.textContent);
+          option.hidden = !terms.every(term => label.includes(term));
+          if (!option.hidden) matches++;
+        }
+        item.hidden = matches === 0;
+        count += matches;
+      }
+      section.hidden = count === 0;
+      const groupLink = nav.querySelector('a[href="#' + section.id + '"]');
+      groupLink.closest("li").hidden = section.hidden;
+      total += count;
+    }
+    nav.hidden = total === 0;
+    status.textContent = terms.length
+      ? (total ? total + "件のサービスが見つかりました。" : "一致するサービスがありません。別の名前で検索してください。")
+      : "";
+  }
+  input.addEventListener("input", update);
+  update();
+  filter.hidden = false;
+});
+document.addEventListener("DOMContentLoaded", function () {
   const boxes = Array.from(document.querySelectorAll('article.handbook-page input[type="checkbox"]'));
   if (!boxes.length) return;
   const key = "kaigo-checklist-v1:" + location.pathname;
@@ -73,7 +110,7 @@ th{background:#f0f6f2}caption{text-align:left;font-weight:bold}.handbook-role,.d
 .dayservice-excerpt{padding:12px;margin:12px 0;border:1px solid #dae4dd;border-radius:8px}
 nav ul{display:flex;gap:6px 18px;flex-wrap:wrap;list-style:none;padding-left:0}
 nav li{margin:4px 0}.dayservice-source-block{margin:12px 0 22px}details{margin:10px 0;padding:8px;border:1px solid #d5dfd8;border-radius:6px}
-.home-search{padding:14px 16px;background:#edf5f0;border-radius:8px}.service-groups a{display:inline-block;padding:6px 10px;border:1px solid #b9cec2;border-radius:6px}.service-group ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px}.service-group li{padding:12px;border:1px solid #d5dfd8;border-radius:6px}.service-group li a{display:block}.preventive-label{display:block;font-size:.85rem;color:#54665b;margin-top:8px}
+.service-filter{margin:1.25rem 0}.service-filter label{display:block;font-weight:700}.service-filter input{box-sizing:border-box;width:min(100%,32rem);min-height:44px;font:inherit;padding:8px 12px;border:1px solid #6e8477;border-radius:6px}.service-filter p{margin:.35rem 0}.service-filter p:empty{display:none}.service-groups [hidden]{display:none}.home-search{padding:14px 16px;background:#edf5f0;border-radius:8px}.service-groups a{display:inline-block;padding:6px 10px;border:1px solid #b9cec2;border-radius:6px}.service-group ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px}.service-group li{padding:12px;border:1px solid #d5dfd8;border-radius:6px}.service-group li a{display:block}.preventive-label{display:block;font-size:.85rem;color:#54665b;margin-top:8px}
 .chapter-list ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:8px;padding-left:2rem}.chapter-list li{padding:4px}.chapter-list a{display:block;padding:10px;border:1px solid #d5dfd8;border-radius:6px}
 .entry-links{display:grid;gap:10px}.entry-row{display:block;padding:12px 14px;border:1px solid #c6d9cd;border-radius:8px}.entry-row span,.entry-row small{display:block}.entry-row small{color:#425b4d;margin-top:3px}
 figure{max-width:100%;margin:18px 0}figcaption{font-weight:650}.meta,.eyebrow{font-size:.88rem;color:#54665b}

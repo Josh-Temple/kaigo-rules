@@ -123,12 +123,18 @@ def build(root: Path = ROOT) -> dict:
             units = []
             for unit in group['units']:
                 links = [f'<a href="./services/{sid}/index.html">{pilot.escape(labels[sid])}</a>' for sid in unit['service_ids']]
-                units.append('<li>' + '<span class="preventive-label">介護予防：</span>'.join(links) + '</li>')
+                units.append('<li>' + ''.join(
+                    f'<div class="service-option">{"<span class=preventive-label>介護予防：</span>" if i else ""}{link}</div>'
+                    for i, link in enumerate(links)
+                ) + '</li>')
             sections.append(f'<section id="service-group-{group["id"]}" class="service-group"><h2>{pilot.escape(group["label"])}</h2>'
                             f'<p>{pilot.escape(group["description"])}</p><ul>{"".join(units)}</ul></section>')
         index = ('<article class="handbook-page"><h1>サービス別手引</h1>'
                  '<p>調べたいサービスを選ぶと、人員・設備・運営などの章を読めます。</p>'
                  '<!-- search-links -->'
+                 '<div class="service-filter" hidden><label for="service-name">サービス名で絞り込む</label>'
+                 '<input id="service-name" type="search" placeholder="例：通所、訪問、介護予防">'
+                 '<p id="service-filter-status" role="status"></p></div>'
                  '<p>サービスの種類から探す（案内上の分類です）</p>'
                  '<nav class="service-groups" aria-label="サービスの種類"><ul>' + group_nav + '</ul></nav>'
                  + ''.join(sections) + '</article>')
