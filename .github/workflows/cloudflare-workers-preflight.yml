@@ -1,0 +1,87 @@
+name: Cloudflare Workers isolated preflight (no deployment)
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/cloudflare-workers-preflight.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kaigo-cloudflare-preflight-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  workers-build:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'work/20261031-cloudflare-workers-preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      CI: 'true'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout isolated candidate
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install existing dependencies
+        run: npm ci
+
+      - name: Preserve original prebuild data verification
+        run: npm run prebuild
+
+      - name: Record baseline and pin input SHA in logs
+        run: |
+          echo "BASE_SHA=$(git rev-parse HEAD)"
+          node -v
+          npm -v
+          python --version
+          git status --short
+
+      - name: Report vinext compatibility
+        run: npx --yes vinext check
+
+      - name: Initialize vinext in temporary CI workspace
+        run: npx --yes vinext init --platform=cloudflare --name kaigo-rules-workers-preflight
+
+      - name: Record resolved tool versions
+        run: npm ls vinext vite @vinext/cloudflare --depth=0 || true
+
+      - name: Build Workers artifact without deploying
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run build:vinext 2>&1 | tee "${{ runner.temp }}/vinext-build.log"
+
+      - name: Report local build sizes
+        if: success()
+        run: |
+          if [ -d dist ]; then
+            du -sh dist
+            find dist -type f | wc -l
+            find dist -type f -printf '%s %p\n' | sort -nr | head -30
+          fi
+
+      - name: Save build logs for diagnosis
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vinext-preflight-build-log
+          path: ${{ runner.temp }}/vinext-build.log
+          if-no-files-found: ignore
+          retention-days: 7
