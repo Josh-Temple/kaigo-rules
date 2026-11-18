@@ -112,13 +112,22 @@ nav ul{display:flex;gap:6px 18px;flex-wrap:wrap;list-style:none;padding-left:0}
 nav li{margin:4px 0}.dayservice-source-block{margin:12px 0 22px}details{margin:10px 0;padding:8px;border:1px solid #d5dfd8;border-radius:6px}
 .service-filter{margin:1.25rem 0}.service-filter label{display:block;font-weight:700}.service-filter input{box-sizing:border-box;width:min(100%,32rem);min-height:44px;font:inherit;padding:8px 12px;border:1px solid #6e8477;border-radius:6px}.service-filter p{margin:.35rem 0}.service-filter p:empty{display:none}.service-groups [hidden]{display:none}
 .home-intro{max-width:42em;color:#40554a}
-.home-actions ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:.65rem;list-style:none;margin:1rem 0 1.5rem;padding:0}
-.home-actions a{display:block;height:100%;padding:.7rem .85rem;border:1px solid #b9cec2;border-radius:8px;background:#f3f8f5}
-.home-actions span{display:block;color:#40554a;font-size:.88rem;text-decoration:none}
+.home-actions ul,.service-group ul{display:block;list-style:none;margin:0;padding:0}
+.home-actions li,.service-group li{margin:0;border-bottom:1px solid #d5dfd8;padding:.6rem 0}
+.home-actions li[hidden],.service-group li[hidden],.service-option[hidden]{display:none}
+.home-actions a,.service-groups a,.service-group a,.chapter-list a,.entry-row{color:#174c92;text-decoration:underline;text-underline-offset:.16em}
+.home-actions a,.service-group a,.chapter-list a{display:inline-block;padding:.25rem 0}
+.home-actions a{font-weight:650}
+.home-actions p,.service-group h3 + p{margin:0;color:#40554a}
 .home-section-heading{border-top:1px solid #d5dfd8;padding-top:1rem}
-.service-groups a{display:inline-block;padding:6px 10px;border:1px solid #b9cec2;border-radius:6px}.service-group ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px}.service-group li{padding:12px;border:1px solid #d5dfd8;border-radius:6px}.service-group li a{display:block}.preventive-label{display:block;font-size:.85rem;color:#54665b;margin-top:8px}
-.chapter-list ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:8px;padding-left:2rem}.chapter-list li{padding:4px}.chapter-list a{display:block;padding:10px;border:1px solid #d5dfd8;border-radius:6px}
-.entry-links{display:grid;gap:10px}.entry-row{display:block;padding:12px 14px;border:1px solid #c6d9cd;border-radius:8px}.entry-row span,.entry-row small{display:block}.entry-row small{color:#425b4d;margin-top:3px}
+.service-groups a{display:inline-block;padding:.3rem 0}
+.service-group{margin-block:1.75rem;scroll-margin-top:1rem}
+.service-group h3{margin:0 0 .25rem}
+.service-option + .service-option{padding-inline-start:1em}
+.preventive-label{font-size:.85rem;color:#54665b;margin-inline-end:.25rem}
+.chapter-list ol{padding-inline-start:2rem}.chapter-list li{padding:.25rem 0;border-bottom:1px solid #d5dfd8}
+.entry-links{display:block}.entry-row{display:block;padding:.65rem 0;border-bottom:1px solid #d5dfd8}
+.entry-row span,.entry-row small{display:block}.entry-row small{color:#40554a;margin-top:3px}
 figure{max-width:100%;margin:18px 0}figcaption{font-weight:650}.meta,.eyebrow{font-size:.88rem;color:#54665b}
 .dayservice-staffing-example{min-width:0;max-width:100%}.dayservice-staffing-example figcaption{overflow-wrap:anywhere;word-break:break-all}
 .dayservice-service-timeline{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr) minmax(0,5fr);font-size:.9rem;line-height:1.6;margin-top:14px}

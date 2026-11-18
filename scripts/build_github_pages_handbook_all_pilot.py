@@ -114,7 +114,7 @@ def build(root: Path = ROOT) -> dict:
             dest.parent.mkdir(parents=True, exist_ok=True)
             body = ('<article class="handbook-page"><p><a href="../../index.html">← サービス一覧に戻る</a></p><h1>' + pilot.escape(service_label) +
                     'の手引</h1><p>未確認の説明を含みます。条件と原典を確認してください。</p>'
-                    '<p>調べたい章を選んでください。</p><nav class="chapter-list" aria-label="章の目次"><ol>' + "".join(chapter_links) +
+                    '<nav class="chapter-list" aria-labelledby="chapter-list-heading"><h2 id="chapter-list-heading">章の目次</h2><ol>' + "".join(chapter_links) +
                     '</ol></nav></article>')
             dest.write_text(pilot.html_page(service_label, body, "../../styles.css"), encoding="utf-8")
         group_nav = ''.join(f'<li><a href="#service-group-{g["id"]}">{pilot.escape(g["label"])}</a></li>' for g in groups)
@@ -127,7 +127,7 @@ def build(root: Path = ROOT) -> dict:
                     f'<div class="service-option">{"<span class=preventive-label>介護予防：</span>" if i else ""}{link}</div>'
                     for i, link in enumerate(links)
                 ) + '</li>')
-            sections.append(f'<section id="service-group-{group["id"]}" class="service-group"><h2>{pilot.escape(group["label"])}</h2>'
+            sections.append(f'<section id="service-group-{group["id"]}" class="service-group"><h3>{pilot.escape(group["label"])}</h3>'
                             f'<p>{pilot.escape(group["description"])}</p><ul>{"".join(units)}</ul></section>')
         index = ('<article class="handbook-page"><h1>サービス別手引</h1>'
                  '<p class="home-intro">全国の自治体・介護事業者向けに、国の基準と関連資料をサービス別に整理しています。</p>'

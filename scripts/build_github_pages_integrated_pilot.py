@@ -217,10 +217,10 @@ def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = 
         if with_information else ""
     )
     search_links = (
-        '<nav class="home-actions" aria-label="資料の探し方"><ul>'
-        '<li><a href="./databases/search/index.html"><strong>制度DBを横断検索する</strong><span>法令・通知・報酬などを調べる</span></a></li>'
-        '<li><a href="./databases/search/qa.html"><strong>国Q&amp;Aを探す</strong><span>厚生労働省のQ&amp;Aを調べる</span></a></li>'
-        + ('<li><a href="./start/index.html"><strong>はじめての方へ</strong><span>資料の見方と確認手順</span></a></li>' if with_information else '')
+        '<nav class="home-actions" aria-labelledby="home-resources"><h2 id="home-resources">制度や資料を調べる</h2><ul>'
+        '<li><a href="./databases/search/index.html">制度DBを横断検索する</a><p>法令・通知・報酬などを調べる</p></li>'
+        '<li><a href="./databases/search/qa.html">国Q&amp;Aを探す</a><p>厚生労働省のQ&amp;Aを調べる</p></li>'
+        + ('<li><a href="./start/index.html">はじめての方へ</a><p>資料の見方と確認手順</p></li>' if with_information else '')
         + '</ul></nav>'
     )
     if text.count('<!-- search-links -->') == 1:
