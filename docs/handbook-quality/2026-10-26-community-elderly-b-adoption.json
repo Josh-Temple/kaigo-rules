@@ -1,0 +1,377 @@
+{
+  "schema": "KAIGO_B_SOURCE_CANDIDATE_PROVENANCE_V1",
+  "source_of_truth": "GitHub repository at fixed B HEAD; no legal currentness certification",
+  "base_main": "5633ff77c3323e9e1dc4893a155f2fb64090ce2d",
+  "official_mesh_control_plane_changed": false,
+  "main_modified": false,
+  "scope": "B-only manual adaptation of isolated candidate ZIP; NOT Mesh official adoption",
+  "source_zip_integrity": "all 5 external sha256, manifest entries, unsafe paths, symlinks verified locally",
+  "source_zip_manifest_entries": {
+    "designation": 57,
+    "deductions": 80,
+    "additions": 40,
+    "remuneration": 39,
+    "applicability": 59
+  },
+  "total_adopted_requirements": 45,
+  "legal_currentness": "NOT_ESTABLISHED",
+  "municipal_applicability": "NOT_ESTABLISHED",
+  "billing_decision": "HOLD_UNVERIFIED",
+  "official_readacross_text": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+  "official_yokohama_designation": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/1shinki/14.html",
+  "validation_note": "Technical shape pass cannot independently establish legal correctness. Existing seven rule-section chapters retained; five new chapters explicit allowlist.",
+  "inputs": [
+    {
+      "zip": "libfile_24dcb1b02f108191bc75253f8b6d23bf",
+      "sha256": "d29d3c0f7e6ad2311b59226337ce6670510b52146ac105e821fa181e6d64bbf6",
+      "review": "libfile_c09b2ff7e1fc8191904e293732357023",
+      "integrate": "libfile_da5403a027c48191804fa7d0cd2379e3",
+      "original": "PASS_SCOPED",
+      "decision": "ADOPT_UNVERIFIED_PROJECTION",
+      "source_entries": 8,
+      "chapter": "designation",
+      "service": "community-elderly-facility",
+      "adopted": [
+        {
+          "requirement_id": "mesh-b-designation-01",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "介護保険法第78条の2／施行規則第131条の8"
+        },
+        {
+          "requirement_id": "mesh-b-designation-02",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "介護保険法第78条の2"
+        },
+        {
+          "requirement_id": "mesh-b-designation-03",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "横浜市新規指定案内／施行規則第131条の8"
+        },
+        {
+          "requirement_id": "mesh-b-designation-04",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "介護保険法施行規則第131条の8／横浜市提出一覧"
+        },
+        {
+          "requirement_id": "mesh-b-designation-05",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "介護保険法第78条の2・第78条の4"
+        },
+        {
+          "requirement_id": "mesh-b-designation-06",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "介護保険法第78条の2"
+        },
+        {
+          "requirement_id": "mesh-b-designation-07",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "介護保険法第78条の2／横浜市新規指定案内"
+        },
+        {
+          "requirement_id": "mesh-b-designation-08",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "介護保険法施行規則第131条の8"
+        }
+      ],
+      "source_not_imported": [],
+      "correction": null
+    },
+    {
+      "zip": "libfile_377ad9e7e1108191ab5ca7cf4afe5682",
+      "sha256": "d21c3e88e985058bdf746078d0a2e1c84c3e2f2c34ccea3484ef78ef993e6e9e",
+      "review": "libfile_f5a61f9f09388191847260e97a984eaa",
+      "integrate": "libfile_3730ab3d2ff48191a5fd0531b66554cd",
+      "original": "PASS_SCOPED",
+      "decision": "ADOPT_UNVERIFIED_PROJECTION",
+      "source_entries": 8,
+      "chapter": "deductions",
+      "service": "community-elderly-facility",
+      "adopted": [
+        {
+          "requirement_id": "mesh-b-night",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "告示126号別表7注1・注2"
+        },
+        {
+          "requirement_id": "mesh-b-unit",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "告示126号別表7注3"
+        },
+        {
+          "requirement_id": "mesh-b-restraint",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "告示126号別表7注4／告示95号六十三"
+        },
+        {
+          "requirement_id": "mesh-b-safety",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "告示126号別表7注5／告示95号六十三の二"
+        },
+        {
+          "requirement_id": "mesh-b-abuse",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "告示126号別表7注6／告示95号六十三の二の二"
+        },
+        {
+          "requirement_id": "mesh-b-bcp",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "告示126号別表7注7／告示95号六十三の二の三"
+        },
+        {
+          "requirement_id": "mesh-b-nutrition",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "告示126号別表7注8／告示95号六十三の三"
+        },
+        {
+          "requirement_id": "mesh-b-capacity",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "告示126号別表7注1・注2"
+        }
+      ],
+      "source_not_imported": [],
+      "correction": null
+    },
+    {
+      "zip": "libfile_04022488f3088191b66c1238ee3e3fb7",
+      "sha256": "d670ff1b56ce3c6f6202b721f3a1a5de6df0eff0acc25f28eeb5d8bc6285458f",
+      "review": "libfile_786a23a17f04819198d03d1991b8ed12",
+      "integrate": "libfile_f95737c2b5b081919e03d27759811c70",
+      "original": "PASS_SCOPED",
+      "decision": "ADOPT_UNVERIFIED_PROJECTION",
+      "source_entries": 19,
+      "chapter": "additions",
+      "service": "community-elderly-facility",
+      "adopted": [
+        {
+          "requirement_id": "mesh-b-a01",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a02",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a03",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a04",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a05",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a06",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a07",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a08",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a09",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a10",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a11",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a12",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a13",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a14",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a15",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a16",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a17",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a18",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        },
+        {
+          "requirement_id": "mesh-b-a19",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "令和8年厚生労働省告示87号／老発0313第6号"
+        }
+      ],
+      "source_not_imported": [],
+      "correction": null
+    },
+    {
+      "zip": "libfile_e247384f5f448191ac0a78bbd66384fb",
+      "sha256": "64d30c685d1f29535e914a3a76210c05220ebc9cd4ea2545918f802b3b6214c8",
+      "review": "libfile_c72ba55077bc8191929dec44a77d8bf6",
+      "integrate": "libfile_171db221334c8191b79a1afa9d9d962b",
+      "original": "PASS_SCOPED",
+      "decision": "ADOPT_UNVERIFIED_PROJECTION",
+      "source_entries": 8,
+      "chapter": "remuneration",
+      "service": "community-elderly-facility",
+      "adopted": [
+        {
+          "requirement_id": "mesh-b-i1",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "平成18年厚生労働省告示第126号 別表7 イ（1）"
+        },
+        {
+          "requirement_id": "mesh-b-i2",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "平成18年厚生労働省告示第126号 別表7 イ（2）"
+        },
+        {
+          "requirement_id": "mesh-b-ro1",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "平成18年厚生労働省告示第126号 別表7 ロ（1）"
+        },
+        {
+          "requirement_id": "mesh-b-ro2",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "平成18年厚生労働省告示第126号 別表7 ロ（2）"
+        },
+        {
+          "requirement_id": "mesh-b-ha1",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "平成18年厚生労働省告示第126号 別表7 ハ（1）"
+        },
+        {
+          "requirement_id": "mesh-b-ha2",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "平成18年厚生労働省告示第126号 別表7 ハ（2）"
+        },
+        {
+          "requirement_id": "mesh-b-ni1",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "平成18年厚生労働省告示第126号 別表7 ニ（1）"
+        },
+        {
+          "requirement_id": "mesh-b-ni2",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "UNCATEGORIZED_PENDING_C_SCHEMA",
+          "source_locator": "平成18年厚生労働省告示第126号 別表7 ニ（2）"
+        }
+      ],
+      "source_not_imported": [],
+      "correction": null
+    },
+    {
+      "zip": "libfile_e6ecd2d1280481918a85ffc0ac017908",
+      "sha256": "05fe2930af084099b2043311f4c35ea475cab645226d112b025e866cbf525e6e",
+      "review": "libfile_75ef6dd5be7c8191bd0e5cc69b7d642f",
+      "integrate": "libfile_5a5e5e1fe44081918aaab695a5657712",
+      "original": "NEEDS_REVISION",
+      "decision": "SCOPED_MANUAL_REPAIR_A5_A6_ONLY",
+      "source_entries": 8,
+      "chapter": "applicability",
+      "service": "community-elderly-facility",
+      "adopted": [
+        {
+          "requirement_id": "mesh-b-a5",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "national_standard",
+          "source_locator": "省令第34号第3条の11第1項・第157条"
+        },
+        {
+          "requirement_id": "mesh-b-a6",
+          "verification_state": "EVIDENCE_GAP",
+          "classification": "national_standard",
+          "source_locator": "省令第34号第3条の11第1項・第169条"
+        }
+      ],
+      "source_not_imported": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A7",
+        "A8"
+      ],
+      "correction": "A6: 第157条と第169条はそれぞれ同一原文から独立に読替える。第157条の読替え結果を第169条が直接変更するという説明を採用しない。"
+    }
+  ]
+}

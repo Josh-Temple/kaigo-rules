@@ -12,6 +12,7 @@ const baseline=read('tests/fixtures/research-mesh-20261025-baseline.json');
 const stable=v=>JSON.stringify(v&&typeof v==='object'?(Array.isArray(v)?v.map(x=>JSON.parse(stable(x))):Object.fromEntries(Object.keys(v).sort().map(k=>[k,JSON.parse(stable(v[k]))]))):v);
 const hash=v=>createHash('sha256').update(stable(v)).digest('hex');
 const targetMap=new Map(ledger.inputs.map(a=>[`${a.service_id}/${a.chapter_id}`,a]));
+const bRuleTargets=new Set(['designation','deductions','additions','remuneration','applicability'].map(id=>`community-elderly-facility/${id}`));
 const reqs=a=>authored.services[a.service_id].chapters[a.chapter_id][a.field].flatMap(g=>g.requirements);
 
 test('20 additive projections retain every field of all 585 main chapters, including old Mesh candidates',()=>{
@@ -21,6 +22,7 @@ test('20 additive projections retain every field of all 585 main chapters, inclu
  for(const [sid,service] of Object.entries(authored.services))for(const [cid,chapter] of Object.entries(service.chapters)){
   const key=`${sid}/${cid}`,target=targetMap.get(key),copy=structuredClone(chapter);
   if(target)delete copy[target.field];
+  if(bRuleTargets.has(key))delete copy.rule_sections;
   assert.equal(hash(copy),baseline.chapters[key],key);count++;
  }
  assert.equal(count,585);
@@ -70,7 +72,7 @@ test('important revision conditions and jurisdiction/source distinctions survive
  }
 });
 
-test('nonstaffing rule schema stays limited to the seven named chapters and rejects false verification, XSS and unsafe links',()=>{
+test('nonstaffing rule schema remains restricted to explicitly allowlisted chapters and rejects false verification, XSS and unsafe links',()=>{
  const a=targetMap.get('community-elderly-facility/equipment');
  const valid=authored.services[a.service_id].chapters[a.chapter_id].rule_sections;
  const validate=(sid,cid,rows,field='rule_sections')=>spawnSync('python',['-B','-c',`import importlib.util,json,sys
@@ -81,7 +83,8 @@ except ValueError:sys.exit(2)
 `],{input:JSON.stringify([sid,cid,rows,field]),encoding:'utf8'}).status;
  assert.equal(validate(a.service_id,a.chapter_id,valid),0);
  assert.equal(validate('homevisit','equipment',valid),2);
- assert.equal(validate(a.service_id,'designation',valid),2);
+ assert.equal(validate(a.service_id,'designation',authored.services[a.service_id].chapters.designation.rule_sections),0);
+ assert.equal(validate(a.service_id,'national_qa',valid),2);
  assert.equal(validate(a.service_id,a.chapter_id,valid,'role_sections'),2);
  for(const mutate of [r=>r[0].requirements[0].verification_state='PRIMARY_TEXT_CHECKED_SCOPED',r=>r[0].requirements[0].description='<img src=x onerror=alert(1)>',r=>r[0].requirements[0].evidence[0].url='javascript:alert(1)',r=>r[0].requirements[0].evidence[0].url='https://www.mhlw.go.jp.evil.test/a']){
   const copy=structuredClone(valid);mutate(copy);assert.equal(validate(a.service_id,a.chapter_id,copy),2);
