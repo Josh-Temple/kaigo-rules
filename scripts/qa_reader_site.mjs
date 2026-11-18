@@ -185,14 +185,14 @@ try {
           report.interactions.push({ flow: `${width}px counselor calculation → source caution on screen`, status: 'PASS' });
         }
       }
-      // Reader-first content added in PR #583: check the actual rendered chapter, not only the data table.
+      // Reader-first content added in PR #583: check the actual rendered chapter, including the in-page role links.
       await page.goto(origin + '/handbook/dayservice/staffing');
-      const staffingRows = page.locator('.dayservice-staffing-overview tbody tr');
+      const staffingItems = page.locator('.dayservice-staffing-overview > ul > li');
       report.interactions.push({
         flow: `${width}px staffing → five role summaries with in-page legal details`,
-        status: await staffingRows.count() === 5 &&
-          await staffingRows.filter({ hasText: '生活相談員' }).count() === 1 &&
-          await page.locator('.dayservice-staffing-overview tbody a[href="#staffing-role-manager"]').count() === 1 ? 'PASS' : 'FAIL',
+        status: await staffingItems.count() === 5 &&
+          await staffingItems.filter({ hasText: '生活相談員' }).count() === 1 &&
+          await page.locator('.dayservice-staffing-overview > ul a[href="#staffing-role-manager"]').count() === 1 ? 'PASS' : 'FAIL',
       });
       for (const role of ['nurse', 'care-worker']) {
         const item = page.locator(`#staffing-role-${role}`);

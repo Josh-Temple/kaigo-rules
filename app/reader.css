@@ -87,7 +87,6 @@
 .dayservice-staffing-example{margin:18px 0;min-width:0;max-width:100%}.dayservice-staffing-example figcaption{font-weight:700;margin-bottom:10px;overflow-wrap:anywhere;word-break:break-all}
 .dayservice-staffing-example table{width:100%;border-collapse:collapse;font-size:.9rem}
 .dayservice-staffing-example th,.dayservice-staffing-example td{padding:8px 6px;text-align:left;border-bottom:1px solid #c7d3ca}
-.dayservice-time-bar{display:block;background:#c7ded1;border:1px solid #597b6e;padding:4px 8px;text-align:center;white-space:nowrap}
 .dayservice-service-timeline{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr) minmax(0,5fr);font-size:.9rem;line-height:1.6;margin-top:14px}
 .dayservice-service-period{display:grid;min-width:0;overflow-wrap:anywhere;align-content:center;gap:4px;text-align:center;padding:10px 4px;background:#c7ded1;border:1px solid #597b6e}
 .dayservice-service-gap{border-block:1px dashed #8a978f;background:repeating-linear-gradient(135deg,transparent,transparent 5px,#dce4de 5px,#dce4de 7px)}
@@ -102,10 +101,9 @@
 .dayservice-staffing-overview{margin:24px 0 32px}
 .dayservice-staffing-overview h3{margin:0 0 12px;font-size:1.2rem}
 .dayservice-staffing-overview>p{margin:0 0 12px;line-height:1.8}
-.dayservice-staffing-overview table{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.75}
-.dayservice-staffing-overview th,.dayservice-staffing-overview td{padding:10px 12px;text-align:left;vertical-align:top;border:1px solid #c7d3ca;overflow-wrap:anywhere}
-.dayservice-staffing-overview thead{background:#edf2ee}
-.dayservice-staffing-overview tbody th{width:26%;font-weight:700;background:#f6f7f4}
+.dayservice-staffing-overview ul{padding-inline-start:1.5em}
+.dayservice-staffing-overview li{margin-block:.6rem}
+.dayservice-staffing-overview li p{margin:0}
 .dayservice-staffing-overview a{display:inline-block;padding:4px 0;min-height:32px}
 .dayservice-priority-additions{padding:14px 18px;margin:16px 0 24px;border-left:3px solid #597b6e;background:#f6f7f4}
 .dayservice-priority-additions p{margin:0 0 10px}
@@ -208,9 +206,6 @@
   .dayservice-fee-table caption span{position:static;max-width:none}
   .dayservice-original-details:not([open]){display:none}.dayservice-staffing-example{break-inside:avoid-page}
   .dayservice-staffing-overview,.dayservice-priority-additions{break-inside:auto;background:transparent}
-  .dayservice-staffing-overview tr{break-inside:avoid-page}
-  .dayservice-staffing-overview th,.dayservice-staffing-overview td{padding:6pt 7pt}
-  .dayservice-staffing-overview tbody th{background:transparent}
   .dayservice-reader-questions,.dayservice-reader-overview{background:transparent}
   .dayservice-qa-search-link{display:grid;break-inside:avoid-page}
   .dayservice-qa-search-link a,.dayservice-qa-search-link span:not(.dayservice-qa-print-url){display:none}

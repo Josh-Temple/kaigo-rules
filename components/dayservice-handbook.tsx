@@ -59,12 +59,12 @@ function CareWorkerExample() {
     <p><strong>計算例（補足）：1単位・20人全員が5時間利用</strong></p>
     <p>平均提供時間数：（20人×5時間）÷20人＝5時間</p>
     <p>必要な勤務延時間数：｛1＋（20－15）÷5｝×5時間＝10時間</p>
-    <figure className="dayservice-staffing-example"><figcaption>9時から14時まで提供する場合の配置例</figcaption>
-      <table><thead><tr><th scope="col">職員</th><th scope="col">勤務時間帯</th><th scope="col">時間数</th></tr></thead>
-        <tbody>{["介護職員A", "介護職員B"].map(name => <tr key={name}><th scope="row">{name}</th><td><span className="dayservice-time-bar">9時〜14時</span></td><td>5時間</td></tr>)}</tbody>
-        <tfoot><tr><th scope="row" colSpan={2}>勤務延時間数の合計</th><td>10時間</td></tr></tfoot>
-      </table>
-    </figure>
+    <p><strong>9時から14時まで提供する場合の配置例</strong></p>
+    <ul>
+      <li>介護職員A：9時〜14時（5時間）</li>
+      <li>介護職員B：9時〜14時（5時間）</li>
+    </ul>
+    <p>勤務延時間数の合計：<strong>10時間</strong></p>
     <p>時間数の合計に加え、提供単位ごとに介護職員を常時1人以上従事させます。他の単位との兼務は、利用者の処遇に支障がない場合の取扱いです。</p>
   </aside>;
 }
@@ -87,11 +87,11 @@ function TrainingOverlapExample() {
 function ExtensionTimingExample() {
   return <figure className="dayservice-timing-example">
     <figcaption>延長加算の時間帯例（報酬告示注6による時間の考え方）</figcaption>
-    <div className="dayservice-time-example-scroll" role="region" tabIndex={0} aria-label="通所介護と前後の世話の時間帯例">
-      <table><thead><tr><th scope="col">時間</th><th scope="col">9〜17時30分</th><th scope="col">17時30分〜18時30分</th></tr></thead>
-      <tbody><tr><th scope="row">提供内容</th><td>通所介護：8時間30分</td><td>引き続き日常生活上の世話：1時間</td></tr>
-      <tr><th scope="row">合計</th><td colSpan={2}><strong>9時間30分</strong>（時間条件の例）</td></tr></tbody></table>
-    </div>
+    <ol>
+      <li><strong>9時〜17時30分：</strong>通所介護（8時間30分）</li>
+      <li><strong>17時30分〜18時30分：</strong>引き続き日常生活上の世話（1時間）</li>
+    </ol>
+    <p>合計：<strong>9時間30分</strong>（時間条件の例）</p>
     <p className="dayservice-example-note">届出、実際の提供内容、利用者ごとの条件、宿泊サービスとの関係などは別途確認が必要です。この図だけでは算定可否を決められません。</p>
   </figure>;
 }
@@ -221,16 +221,15 @@ function SourceGuide() {
 }
 
 function StaffingRoleOverview() {
-  return <section className="dayservice-staffing-overview" aria-label="職種別の配置基準の早見表">
+  return <section className="dayservice-staffing-overview" aria-label="職種別の配置基準の概要">
     <h3>職種別の配置基準を早見する</h3>
     <p>職種を選ぶと、国の基準、条件・例外、勤務時間の計算例、関連Q&Aをまとめて確認できます。以下は概要です。原文・地域の条例も確認してください。</p>
-    <table>
-      <thead><tr><th scope="col">職種</th><th scope="col">まず確認すること</th></tr></thead>
-      <tbody>{dayserviceStaffingTopics.map(topic => <tr key={topic.id}>
-        <th scope="row"><a href={`#${topic.id}`}>{topic.title}</a></th>
-        <td>{topic.readerSummary || "国の人員基準と、勤務体制・兼務の条件を確認してください。"}</td>
-      </tr>)}</tbody>
-    </table>
+    <ul>
+      {dayserviceStaffingTopics.map(topic => <li key={topic.id}>
+        <strong><a href={`#${topic.id}`}>{topic.title}</a></strong>
+        <p>{topic.readerSummary || "国の人員基準と、勤務体制・兼務の条件を確認してください。"}</p>
+      </li>)}
+    </ul>
   </section>;
 }
 
