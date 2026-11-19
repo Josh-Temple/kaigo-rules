@@ -7,3 +7,7 @@ node_modules
 # Rebuilt from canonical corpora before dev/build
 /data/handbook.generated.json
 /data/legal-browser.generated.json
+
+# Python bytecode
+__pycache__/
+*.py[cod]

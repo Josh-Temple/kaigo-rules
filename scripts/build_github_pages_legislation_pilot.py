@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 import shutil
 import hashlib
 import sys
@@ -63,12 +64,21 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
             raise RuntimeError("Duplicate legal document ID")
         document_map[item["id"]] = item["title"]
         document_category[item["id"]] = item.get("category", "")
+    handbook_path = ROOT / "data" / "handbook.generated.json"
+    service_map = {}
+    if handbook_path.is_file():
+        handbook = json.loads(handbook_path.read_text(encoding="utf-8"))
+        for service in handbook.get("services", []):
+            sid, label = service.get("service_id"), service.get("label")
+            if isinstance(sid, str) and isinstance(label, str):
+                service_map[sid] = label
     dest = out / "legislation" / "record"
     if dest.exists():
         raise RuntimeError("Static legislation already generated")
     dest.mkdir(parents=True)
     manifest = {}
     browse_rows = []
+    used_titles = set()
     for row in records:
         if not isinstance(row, dict) or not ALLOWED_FIELDS.issubset(row):
             raise RuntimeError("Missing public legal record fields")
@@ -84,6 +94,7 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
         if record_id in manifest:
             raise RuntimeError("Duplicate legal record")
         manifest[record_id] = {"document": row["document_id"], "category": document_category[row["document_id"]], "services": row["service_ids"]}
+        historical_notice = document_category[row["document_id"]] == "notices" and "旧版" in row["state"]
         browse_rows.append({
             "id": record_id, "file": filename(record_id),
             "label": row["label"], "title": row["title"], "text": row["text"],
@@ -91,6 +102,7 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
             "document_title": document_map[row["document_id"]],
             "category": document_category[row["document_id"]],
             "services": row["service_ids"],
+            "historical_notice": historical_notice,
         })
         target = dest / filename(record_id)
         if target.exists():
@@ -101,28 +113,42 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
         label = html.escape(row["label"], quote=True)
         title = html.escape(row["title"], quote=True)
         doc_name = html.escape(document_map[row["document_id"]], quote=True)
+        service_title = ""
+        if len(row["service_ids"]) == 1:
+            service_id = row["service_ids"][0]
+            service_title = html.escape(service_map.get(service_id, service_id), quote=True)
+        locator = html.escape(row["locator"], quote=True)
+        short_label = not label or bool(re.fullmatch(r"[ivx]+|\(\d+\)", label))
+        parts = (doc_name, service_title, label, title, locator if short_label else "")
+        title_base = "：".join(dict.fromkeys(part for part in parts if part))
+        page_title = title_base
+        occurrence = 2
+        while page_title in used_titles:
+            page_title = f"{title_base}（資料項目{occurrence}）"
+            occurrence += 1
+        used_titles.add(page_title)
         text = html.escape(row["text"], quote=False)
+        original_body = '<div class="dayservice-original" style="white-space:pre-wrap">' + text + '</div>'
+        if historical_notice:
+            original_body = (
+                '<p><strong>旧版・現行の判断には使用しない</strong></p>'
+                '<p>実務判断には現行の省令と通知を確認してください。</p>'
+                '<details><summary>旧版の本文を開く（歴史資料）</summary>'
+                + original_body + '</details>'
+            )
         page = (
             '<!doctype html><html lang="ja"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'
             '<meta name="robots" content="noindex,nofollow,noarchive">'
-            '<title>' + label + ' — 静的移行検証</title>'
+            '<title>' + page_title + ' — 静的移行検証</title>'
             '<link rel="stylesheet" href="../../databases/search/style.css">'
             '</head><body><main><article class="handbook-page">'
             '<h1>' + label + '</h1><h2>' + title + '</h2>'
             '<p>' + doc_name + '</p><p>制度の改正・適用範囲・自治体ごとの扱いは、必ず原典と指定権者に確認してください。</p>'
-            '<div class="dayservice-original" style="white-space:pre-wrap">' + text + '</div>' +
+            + original_body +
             source_link + '</article></main></body></html>'
         )
         target.write_text(page, encoding="utf-8")
-    handbook_path = ROOT / "data" / "handbook.generated.json"
-    service_map = {}
-    if handbook_path.is_file():
-        handbook = json.loads(handbook_path.read_text(encoding="utf-8"))
-        for service in handbook.get("services", []):
-            sid, label = service.get("service_id"), service.get("label")
-            if isinstance(sid, str) and isinstance(label, str):
-                service_map[sid] = label
     ids = sorted({service for row in browse_rows for service in row["services"]})
     services = [{"id": sid, "label": service_map.get(sid, sid)} for sid in ids]
     browse = {"docs": [{"id": k, "title": v, "category": document_category[k]}

@@ -53,6 +53,8 @@ class StaticLegislationTest(unittest.TestCase):
             page = out / "legislation/record" / (hashlib.sha256("legal.article.12".encode()).hexdigest() + ".html")
             text = page.read_text(encoding="utf-8")
             self.assertIn("原文\n&lt;確認対象&gt;", text)
+            self.assertIn("<title>指定介護基準：第12条：人員", text)
+            self.assertNotIn("旧版の本文を開く", text)
             self.assertIn("https://www.mhlw.go.jp/test.pdf", text)
             self.assertNotIn("PRIVATE_INTERNAL_PATH", text)
             self.assertNotIn("PENDING", text)
@@ -61,6 +63,24 @@ class StaticLegislationTest(unittest.TestCase):
             self.assertIsNone(nav.destination(out, "https://kaigo-rules.vercel.app/legislation?record=legal.article.12&category=notices"))
             self.assertIsNone(nav.destination(out, "https://kaigo-rules.vercel.app/legislation?record=legal.article.12&q=ignore"))
             self.assertIsNone(nav.destination(out, "https://kaigo-rules.vercel.app/legislation?record=legal.article.12&record=x"))
+
+    def test_historical_notice_is_closed_but_keeps_the_source_text(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            out = root / "out"
+            out.mkdir()
+            corpus = self.dataset(root)
+            data = json.loads(corpus.read_text(encoding="utf-8"))
+            data["documents"][0]["category"] = "notices"
+            data["records"][0]["state"] = "旧版資料・現行性未確認"
+            corpus.write_text(json.dumps(data), encoding="utf-8")
+            legislation.build(out, corpus)
+            page = next((out / "legislation/record").glob("*.html")).read_text(encoding="utf-8")
+            records = json.loads((out / "legislation/records.json").read_text(encoding="utf-8"))["records"]
+            self.assertTrue(records[0]["historical_notice"])
+            self.assertIn("旧版・現行の判断には使用しない", page)
+            self.assertIn("<details><summary>旧版の本文を開く（歴史資料）</summary>", page)
+            self.assertIn("原文\n&lt;確認対象&gt;</div></details>", page)
 
     def test_canonical_ids_with_colons_and_japanese_use_hashed_paths(self):
         with tempfile.TemporaryDirectory() as temp:
