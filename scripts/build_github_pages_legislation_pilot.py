@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 import shutil
 import hashlib
 import sys
@@ -77,6 +78,7 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
     dest.mkdir(parents=True)
     manifest = {}
     browse_rows = []
+    used_titles = set()
     for row in records:
         if not isinstance(row, dict) or not ALLOWED_FIELDS.issubset(row):
             raise RuntimeError("Missing public legal record fields")
@@ -115,7 +117,16 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
         if len(row["service_ids"]) == 1:
             service_id = row["service_ids"][0]
             service_title = html.escape(service_map.get(service_id, service_id), quote=True)
-        page_title = "：".join(dict.fromkeys(part for part in (doc_name, service_title, label, title) if part))
+        locator = html.escape(row["locator"], quote=True)
+        short_label = not label or bool(re.fullmatch(r"[ivx]+|\(\d+\)", label))
+        parts = (doc_name, service_title, label, title, locator if short_label else "")
+        title_base = "：".join(dict.fromkeys(part for part in parts if part))
+        page_title = title_base
+        occurrence = 2
+        while page_title in used_titles:
+            page_title = f"{title_base}（資料項目{occurrence}）"
+            occurrence += 1
+        used_titles.add(page_title)
         text = html.escape(row["text"], quote=False)
         original_body = '<div class="dayservice-original" style="white-space:pre-wrap">' + text + '</div>'
         if historical_notice:
