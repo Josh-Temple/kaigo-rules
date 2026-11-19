@@ -30,7 +30,7 @@ GitHub Pagesが現在の主たる公開先です。未確認の制度情報も�
 
 「全体DB」は全サービスの収集・現行性確認・人手確認が完了したことを意味しません。共有できる公開コーパスを共通入口から参照できるようにし、サービス固有の確認状態は分離して表示します。
 
-## Initial MVP scope
+## 初期版の記録（通所介護）
 
 - 対象サービス: 通所介護
 - 対象範囲: 全国共通事項
@@ -38,10 +38,8 @@ GitHub Pagesが現在の主たる公開先です。未確認の制度情報も�
 - 一次資料確認済み: 12/12
 - 開設準備ガイド: v0.1
 - 国Q&A構造化: schema + 初期実データ
-- AI/Jev: 使用しない
-- DB: 使用しない
-- 正本: GitHub
-- 現在の公開先: GitHub Pages（旧Vercel公開とは別運用）
+
+現在の公開範囲は上の「Current public structure」を参照してください。
 
 
 ## Current verification status
@@ -74,7 +72,7 @@ GitHub Pagesが現在の主たる公開先です。未確認の制度情報も�
 ## Data validation
 
 `npm run validate:data` で、質問・条文・通知・Q&A・出典のID参照整合を確認します。
-Vercel build の前にも自動実行し、参照切れがある場合は fail closed でビルドを止めます。
+ビルド前にも検証し、参照切れがある場合はビルドを止めます。
 
 ## Data
 

@@ -12,7 +12,7 @@ export default function SourcesPage() {
       <p className="eyebrow">出典</p>
       <h1>根拠資料を確認する</h1>
       <p className="lead">
-        当サイトが参照している公的資料の一覧です。資料名を選ぶと、発行元のページが開きます。
+        当サイトが参照している公的資料の一覧です。リンク付きの資料名を選ぶと、発行元のページが開きます。
         掲載されていても、現在有効な全文や、個々の事業所への適用を確認できているとは限りません。
       </p>
       <p><Link href="/services">サービス別の手引に戻る →</Link></p>
@@ -28,7 +28,10 @@ export default function SourcesPage() {
         {sources.map((source) => (
           <article className="question" key={source.id}>
             <span className="meta">{source.layer}</span>
-            {safeHandbookEvidenceUrl(source.url) ? <a href={safeHandbookEvidenceUrl(source.url)!} target="_blank" rel="noopener noreferrer">{source.title}</a> : <span>{source.title}（原典URLは確認中）</span>}
+            {source.id === "mhlw-care-business-financial-db-manual-v1-20" ? <>
+              <span>{source.title}（当時のPDFは取得できません）</span>
+              <a href="https://www.mhlw.go.jp/content/12300000/001761990.pdf" target="_blank" rel="noopener noreferrer">厚生労働省が公開する介護事業所向けマニュアルを確認</a>
+            </> : safeHandbookEvidenceUrl(source.url) ? <a href={safeHandbookEvidenceUrl(source.url)!} target="_blank" rel="noopener noreferrer">{source.title}</a> : <span>{source.title}（原典URLは確認中）</span>}
             <span className="status">{source.publisher}</span>
           </article>
         ))}
