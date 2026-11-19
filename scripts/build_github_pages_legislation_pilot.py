@@ -92,6 +92,7 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
         if record_id in manifest:
             raise RuntimeError("Duplicate legal record")
         manifest[record_id] = {"document": row["document_id"], "category": document_category[row["document_id"]], "services": row["service_ids"]}
+        historical_notice = document_category[row["document_id"]] == "notices" and "旧版" in row["state"]
         browse_rows.append({
             "id": record_id, "file": filename(record_id),
             "label": row["label"], "title": row["title"], "text": row["text"],
@@ -99,6 +100,7 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
             "document_title": document_map[row["document_id"]],
             "category": document_category[row["document_id"]],
             "services": row["service_ids"],
+            "historical_notice": historical_notice,
         })
         target = dest / filename(record_id)
         if target.exists():
@@ -115,8 +117,6 @@ def build(out: Path, corpus: Path = ROOT / "data/legal-browser.generated.json") 
             service_title = html.escape(service_map.get(service_id, service_id), quote=True)
         page_title = "：".join(dict.fromkeys(part for part in (doc_name, service_title, label, title) if part))
         text = html.escape(row["text"], quote=False)
-        document_category_name = document_category[row["document_id"]]
-        historical_notice = document_category_name == "notices" and "旧版" in row["state"]
         original_body = '<div class="dayservice-original" style="white-space:pre-wrap">' + text + '</div>'
         if historical_notice:
             original_body = (

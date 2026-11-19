@@ -84,9 +84,13 @@ function render() {
     const description = node("p", row.document_title + " / " + (row.title || row.locator));
     description.className = "source";
     entry.append(description);
-    const excerpt = node("p", row.text.length > 260 ? row.text.slice(0, 260) + "…" : row.text);
-    excerpt.className = "excerpt";
-    entry.append(excerpt);
+    if (row.historical_notice) {
+      entry.append(node("p", "旧版・現行の判断には使用しない。本文は詳細ページで確認できます。"));
+    } else if (row.text) {
+      const excerpt = node("p", row.text.length > 260 ? row.text.slice(0, 260) + "…" : row.text);
+      excerpt.className = "excerpt";
+      entry.append(excerpt);
+    }
     results.append(entry);
   }
   pagination.replaceChildren();

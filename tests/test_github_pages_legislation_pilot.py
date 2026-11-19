@@ -76,6 +76,8 @@ class StaticLegislationTest(unittest.TestCase):
             corpus.write_text(json.dumps(data), encoding="utf-8")
             legislation.build(out, corpus)
             page = next((out / "legislation/record").glob("*.html")).read_text(encoding="utf-8")
+            records = json.loads((out / "legislation/records.json").read_text(encoding="utf-8"))["records"]
+            self.assertTrue(records[0]["historical_notice"])
             self.assertIn("旧版・現行の判断には使用しない", page)
             self.assertIn("<details><summary>旧版の本文を開く（歴史資料）</summary>", page)
             self.assertIn("原文\n&lt;確認対象&gt;</div></details>", page)
