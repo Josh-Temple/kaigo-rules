@@ -3,10 +3,11 @@ import { legalDocument, legalHref, type LegalRecord } from "../lib/working-handb
 import { safeHandbookEvidenceUrl } from "../lib/handbook/reader-content";
 import { handbookReaderText } from "../lib/handbook/public-copy";
 
-export default function LegalRecordView({ record, serviceId, expanded = false }: {
+export default function LegalRecordView({ record, serviceId, expanded = false, inlineText = true }: {
   record: LegalRecord;
   serviceId?: string;
   expanded?: boolean;
+  inlineText?: boolean;
 }) {
   const document = legalDocument(record.document_id);
   const references = serviceId ? record.service_references[serviceId] || [] : [];
@@ -31,16 +32,16 @@ export default function LegalRecordView({ record, serviceId, expanded = false }:
             <ul className="handbook-reference-ids">{paragraphReferences.map(label => <li key={label}>{label}</li>)}</ul>
           </details>
         ) : null}
-        {record.text ? historicalNotice
+        {inlineText && (record.text ? historicalNotice
           ? <details><summary>旧版の本文を開く（歴史資料）</summary>
               <p>旧版の人員・資格等の記載は現在の基準と異なる場合があります。実務判断には現行の省令と通知を確認してください。</p>
               <p className="handbook-original">{record.text}</p>
             </details>
-          : <p className="handbook-original">{record.text}</p> : <p className="handbook-empty">見出しと所在を収載しています。本文は原典で確認でき、今後この欄へ追加できます。</p>}
+          : <p className="handbook-original">{record.text}</p> : <p className="handbook-empty">見出しと所在を収載しています。本文は原典で確認でき、今後この欄へ追加できます。</p>)}
         {record.locator ? <p className="meta">原典の掲載箇所：{handbookReaderText(record.locator)}</p> : null}
         <div className="handbook-inline-links">
           {officialUrl ? <a href={officialUrl} target="_blank" rel="noopener noreferrer">公式原典を開く ↗</a> : null}
-          <Link href={legalHref({ record: record.id, service: serviceId })}>この項目へのリンク</Link>
+          <Link href={legalHref({ record: record.id, service: serviceId })}>{inlineText ? "この項目へのリンク" : historicalNotice ? "旧版の資料詳細を開く" : "資料詳細を開く"}</Link>
         </div>
       </div>
     </details>

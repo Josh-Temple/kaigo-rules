@@ -130,7 +130,7 @@ function StaffingRoles({ service, chapter, full }: {
         )}</RequirementHeading>
         {requirement.verification_state === "EVIDENCE_GAP" ? <p className="handbook-role-warning">{parts?.classified === false
           ? "未確認：原典との照合が必要です。国・自治体の根拠区分も確認中のため、全国共通の基準として扱わないでください。"
-          : "未確認：この要件の根拠と適用条件は、原典との照合が必要です。"}</p> : null}
+          : "未確認：根拠・適用条件"}</p> : null}
         {parts ? parts.segments.map((segment, index) => <section key={index} className={segment.authority === "unclassified" ? "handbook-unclassified-content" : segment.authority.startsWith("municipal_") ? "handbook-regional-note" : "handbook-authority-note"}>
           {segment.authority === "unclassified" && requirement.verification_state === "EVIDENCE_GAP" ? null : <DetailHeading>{segment.authority === "unclassified"
             ? "国・自治体の根拠区分を確認中（全国共通の基準として扱わないでください）"
@@ -177,6 +177,8 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
   const records = chapterRecords(chapter);
   const hasReadAcross = records.some(record => record.service_references[service.service_id]?.some(reference => reference.basis.includes("準用")));
   const shown = full ? records : records.slice(0, 3);
+  const linkToSourceText = full && service.service_id === "shortstay-medical"
+    && ["remuneration", "sources_and_history"].includes(chapter.section_id);
   const detailHref = handbookChapterHref(service.service_id, chapter.section_id);
   const dayservice = service.service_id === "dayservice";
   const TopicHeading = full && dayservice ? "h2" : "h3";
@@ -187,7 +189,7 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
       ? <TopicHeading>{dayserviceChapterParagraphHeading(chapter.section_id, index)}</TopicHeading> : null}
     <HandbookProse text={handbookReaderText(service.service_id === "dayservice" ? dayserviceReadableText(chapter.section_id, paragraph) : paragraph)} readable={dayservice} />
   </div>);
-  const sourceItems = shown.length ? shown.map(record => <LegalRecordView key={record.id} record={record} serviceId={service.service_id} />)
+  const sourceItems = shown.length ? shown.map(record => <LegalRecordView key={record.id} record={record} serviceId={service.service_id} inlineText={!linkToSourceText} />)
     : <p className="handbook-empty">この章への個別資料の対応付けは確認中です。関連する資料全体からも探せます。</p>;
   return (
     <section className={`section handbook-chapter${dayservice ? " handbook-dayservice" : ""}`} id={chapter.section_id}>
@@ -229,6 +231,7 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
         <TopicHeading id={`handbook-sources-${chapter.section_id}`}>{dayservice ? "根拠を確認する" : <>関連する条文・資料 <small>（{records.length}件）</small></>}</TopicHeading>
         {dayservice ? <p className="meta">この章に関連する資料の候補です。適用関係は原典で確認してください。{hasReadAcross ? "準用する条文は読替え前の原文を表示します。準用元が訪問介護などの場合は、そのサービス名のまま表示されます。" : null}</p>
           : full ? <p className="meta">この章に関連する資料の候補です。適用関係は原典で確認してください。準用する条文は、読替え前の原文を表示します。</p> : null}
+        {linkToSourceText ? <p>本文は、各資料の「資料詳細を開く」から確認できます。</p> : null}
         {dayservice && shown.length ? <details className="handbook-source-list">
           <summary>{full ? `関連資料${records.length}件を開く` : `関連資料の見出しを開く（${shown.length}件）`}</summary>
           {sourceItems}

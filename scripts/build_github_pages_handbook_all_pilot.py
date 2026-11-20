@@ -104,7 +104,11 @@ def build(root: Path = ROOT) -> dict:
                     raise RuntimeError("Handbook content or sanitization mismatch")
                 dest = out / "handbook" / service_id / (slug + ".html")
                 dest.parent.mkdir(parents=True, exist_ok=True)
-                dest.write_text(pilot.html_page(f"{service_label}：{title}", article, "../../styles.css"), encoding="utf-8")
+                description = f"{service_label}の{title}に関する手引。確認事項と関連する資料を掲載しています。"
+                dest.write_text(
+                    pilot.html_page(f"{service_label}：{title}", article, "../../styles.css", description=description),
+                    encoding="utf-8",
+                )
                 pages.append({"service": service_id, "chapter": slug, "links": parser.link_count})
                 chapter_links.append(
                     f'<li id="{pilot.escape(chapter["section_id"])}"><a href="../../handbook/{service_id}/{slug}.html">'

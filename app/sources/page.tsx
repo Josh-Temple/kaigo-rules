@@ -27,7 +27,7 @@ export default function SourcesPage() {
       <section className="section">
         <h2>掲載版と改正資料</h2>
         <ul>
-          <li><a href="https://laws.e-gov.go.jp/law/411M50000100037">指定居宅サービス等の基準（e-Gov法令検索）</a>。当サイトの収載版は2025年4月1日施行版です。判断に使う時点の版と改正履歴を原典で確認してください。</li>
+          <li><a href="https://laws.e-gov.go.jp/law/411M50000100037">指定居宅サービス等の基準（e-Gov法令検索）</a>。収載版は2025年4月1日施行版です。2026年11月20日に、e-Govの法令本文と改正履歴が収載時のデータと一致することを確認しました。判断に使う時点の版は原典で確認してください。</li>
           <li><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html">令和8年度介護報酬改定（厚生労働省）</a>。処遇改善加算の変更は、改正告示と実施上の留意事項で確認できます。</li>
           <li><a href="https://www.city.nago.okinawa.jp/kurashi/2022052400025/file_contents/vol524.pdf">介護保険最新情報 Vol.524（PDF、名護市掲載）</a>。地域密着型通所介護の施行に伴う2016年の厚生労働省通知です。改正経過の確認に使えます。</li>
         </ul>
