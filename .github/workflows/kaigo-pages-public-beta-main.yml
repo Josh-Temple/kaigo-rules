@@ -28,6 +28,8 @@ on:
       - "lib/**"
       - "experiments/**"
       - "scripts/build_github_pages_*.py"
+      - "scripts/inject_cloudflare_web_analytics.py"
+      - "tests/test_github_pages_web_analytics.py"
       - "scripts/build_handbook_site.py"
       - "scripts/localize_github_pages_links_pilot.py"
       - "scripts/extract_database_search_snapshot.py"
@@ -121,7 +123,7 @@ jobs:
       - name: Verify static-source and disclaimer safety tests
         run: |
           set -euo pipefail
-          python -m unittest tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py
+          python -m unittest tests/test_github_pages_beta.py tests/test_github_pages_legislation_pilot.py tests/test_github_pages_migration_readiness.py tests/test_github_pages_web_analytics.py
       - name: Verify original application build
         run: |
           set -euo pipefail
@@ -254,6 +256,14 @@ jobs:
           },ensure_ascii=False))
           PY
       - uses: actions/configure-pages@v5
+      - name: Attach and verify Cloudflare Web Analytics on generated HTML
+        env:
+          # This is a public browser site tag, not an API credential.
+          CLOUDFLARE_WEB_ANALYTICS_SITE_TOKEN: "b0ce75d6709d4f369cdbcdeb8dbe5d2b"
+        run: |
+          set -euo pipefail
+          python scripts/inject_cloudflare_web_analytics.py "${{ steps.site.outputs.path }}" --token "$CLOUDFLARE_WEB_ANALYTICS_SITE_TOKEN"
+          python scripts/inject_cloudflare_web_analytics.py "${{ steps.site.outputs.path }}" --token "$CLOUDFLARE_WEB_ANALYTICS_SITE_TOKEN" --check
       - name: Upload verified public site (noindex remains)
         uses: actions/upload-pages-artifact@v4
         with:
