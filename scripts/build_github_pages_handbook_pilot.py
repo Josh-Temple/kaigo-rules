@@ -270,11 +270,12 @@ class ArticleSanitizer(HTMLParser):
             self.chunks.append(html.escape(data, quote=False))
 
 
-def html_page(title: str, body: str, css_path: str) -> str:
+def html_page(title: str, body: str, css_path: str, *, description: str = "") -> str:
+    description_tag = f'<meta name="description" content="{escape(description)}">' if description else ""
     return (f'<!doctype html><html lang="ja"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<meta name="robots" content="noindex,nofollow,noarchive">'
-            f'<title>{escape(title)} — 静的移行検証</title>'
+            f'{description_tag}<title>{escape(title)} — 静的移行検証</title>'
             f'<link rel="stylesheet" href="{css_path}">'
             f'<script defer src="{css_path.replace("styles.css", "print.js")}"></script></head><body>'
             '<div class="pilot-banner"><strong>静的移行の検証版（一般公開していません）</strong>'
