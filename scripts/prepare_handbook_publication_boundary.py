@@ -16,7 +16,7 @@ from collections import Counter
 from pathlib import Path
 
 COMPONENT_HASH = '7e79c66f82de6f5866b57441ca8efb6cd19c1f7f146b5a29703c0d79411c9298'
-FILTERED_COMPONENT_HASH = '351a189b9012097124c4271a6a8816a19e5b7a1747506b8558c92771603c7d91'
+FILTERED_COMPONENT_HASH = 'e8c49210809de8e743df8c72c328a9ee3e481148dd2dc0bae39b95e67f8a4bf3'
 DATA_HASH = '47a0ed8e1837e6f76ee0a6230f7bc0dcb0d5f5a62529bdb346ac3f4dc592a2f4'
 EXPECTED_WITHHELD = 522
 OLD_ROLES = '  const roles = staffing ? chapter.role_sections : chapter.rule_sections;'
