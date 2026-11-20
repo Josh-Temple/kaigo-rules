@@ -14,7 +14,8 @@ test("all service chapters use the same optional web checklist, without JSON as 
   assert.match(handbook, /handbookReaderText\(service\.service_id === "dayservice" \? dayserviceReadableText\(chapter\.section_id, item\) : item\)/u);
   assert.match(checklist, /type="checkbox"/u);
   assert.match(checklist, /<label>/u);
-  assert.match(checklist, /チェック状態は保存されず/u);
+  assert.match(checklist, /チェック状態の記録には、印刷またはPDF保存/u);
+  assert.match(checklist, /handbook-checklist-storage-note/u);
   assert.match(checklist, /法令への適合を証明するものではありません/u);
   assert.doesNotMatch(checklist, /localStorage|sessionStorage|fetch\(|\.json/u);
   assert.match(checklist, /items\.map\(\(point, index\)/u);

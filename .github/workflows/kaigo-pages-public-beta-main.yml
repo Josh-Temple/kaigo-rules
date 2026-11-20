@@ -188,7 +188,7 @@ jobs:
           previous_label="Kaigo Rules 試験公開版"
           previous_notice="試験公開版です。未確認の法令情報や旧サイトへのリンクが含まれます。"
           current_notice=("制度情報の確認状況は項目ごとに異なり、"
-                          "未確認の情報や旧サイトへのリンクも含まれます。")
+                          "未確認の情報を含みます。")
           required_caution="制度の現行性・適用条件は必ず国の原典と指定権者に確認してください。"
           obsolete_banner=('<div class="pilot-banner"><strong>Kaigo Rules</strong>'
             '<p>現在の本番とは別の試作品です。法令の現行性・適用条件・自治体の基準を必ず原典で確認してください。'

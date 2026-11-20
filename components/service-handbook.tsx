@@ -178,9 +178,6 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
   const hasReadAcross = records.some(record => record.service_references[service.service_id]?.some(reference => reference.basis.includes("準用")));
   const shown = full ? records : records.slice(0, 3);
   const detailHref = handbookChapterHref(service.service_id, chapter.section_id);
-  const chapterIndex = service.chapters.findIndex(item => item.section_id === chapter.section_id);
-  const precedingChapter = chapterIndex > 0 ? service.chapters[chapterIndex - 1] : null;
-  const followingChapter = chapterIndex >= 0 ? service.chapters[chapterIndex + 1] : null;
   const dayservice = service.service_id === "dayservice";
   const TopicHeading = full && dayservice ? "h2" : "h3";
   const staffingSupplement = dayservice && chapter.section_id === "staffing"
@@ -237,10 +234,6 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
           {sourceItems}
         </details> : sourceItems}
       </>}
-      {full ? <nav className="handbook-chapter-sequence" aria-label="前後の章">
-        {precedingChapter ? <Link href={handbookChapterHref(service.service_id, precedingChapter.section_id)}>前の章：{precedingChapter.title}</Link> : null}
-        {followingChapter ? <Link href={handbookChapterHref(service.service_id, followingChapter.section_id)}>次の章：{followingChapter.title}</Link> : null}
-      </nav> : null}
       <div className="handbook-inline-links">
         {!full ? <Link href={detailHref}>この章を詳しく読む{records.length > shown.length ? `（関連資料${records.length}件）` : ""} →</Link> : null}
         {full ? <Link href={`/services/${service.service_id}#${chapter.section_id}`}>手引のこの章へ戻る ↑</Link> : null}

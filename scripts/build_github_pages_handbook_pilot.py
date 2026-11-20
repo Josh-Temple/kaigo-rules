@@ -92,9 +92,9 @@ document.addEventListener("DOMContentLoaded", function () {
       boxes.forEach(box => { box.checked = false; });
       try { localStorage.removeItem(key); } catch { note.textContent = "保存状態を消去できませんでした。ブラウザのサイトデータを削除してください。"; }
     });
-    const old = Array.from(document.querySelectorAll("p")).find(p => p.textContent.trim() === "チェック状態は保存されず、ページを再読み込みすると解除されます。");
+    const old = document.querySelector("article.handbook-page .handbook-checklist-storage-note");
     if (old) old.replaceWith(note, clear); else boxes[0].parentNode.before(note, clear);
-  } catch { /* Existing no-save notice remains accurate when storage is unavailable. */ }
+  } catch { /* Keep the print and PDF instructions when browser storage is unavailable. */ }
 });
 '''
 STYLES = """

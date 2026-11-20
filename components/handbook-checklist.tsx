@@ -23,8 +23,10 @@ export default function HandbookChecklist({ items, chapterTitle, printable = fal
       </p>
       <p className={styles.notice}>
         チェック済みでも法令への適合を証明するものではありません。
-        チェック状態は保存されず、ページを再読み込みすると解除されます。
-      </p></> : null}
+      </p>
+      {items.length > 0 ? <p className={`${styles.notice} handbook-checklist-storage-note`}>
+        チェック状態の記録には、印刷またはPDF保存をご利用ください。
+      </p> : null}</> : null}
       {items.length > 0 ? (
         <ul className={styles.items} aria-label={`${chapterTitle}の確認用チェック欄`}>
           {items.map((point, index) => (
