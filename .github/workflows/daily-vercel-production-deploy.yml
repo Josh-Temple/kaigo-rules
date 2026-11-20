@@ -1,11 +1,8 @@
-name: Daily conditional Vercel production deploy (kaigo-ops only)
+name: Manual conditional Vercel production deploy (kaigo-ops only)
 # Kaigo Rules itself is published via GitHub Pages (formal site).
 # This workflow must not trigger a kaigo-rules Vercel deployment.
 
 on:
-  schedule:
-    # 21:17 JST. Avoid the top of the hour because GitHub documents higher schedule-event load and possible delays there.
-    - cron: "17 12 * * *"
   workflow_dispatch:
     inputs:
       force_ops:
