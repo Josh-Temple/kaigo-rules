@@ -27,7 +27,7 @@ export default async function ChapterPage({ params }: { params: Promise<{ servic
   return <article className="answer-page wide-page handbook-page">
     <nav className="handbook-breadcrumb" aria-label="現在位置"><Link href="/services">サービス別手引</Link><span aria-hidden="true"> / </span><Link href={`/services/${service.service_id}`}>{service.label}</Link><span aria-hidden="true"> / </span><span aria-current="page">{chapter.title}</span></nav>
     <h1>{chapter.title}</h1>
-    <p className="handbook-working-note">未確認の説明を含みます。条件・例外と確認状況を読み、判断前に国の原典と指定権者の案内を確認してください。条例・規則や届出様式は、事業所を所管する指定権者の案内をご確認ください。</p>
+    <p className="handbook-working-note">未確認の説明を含みます。条件・例外と確認状況を読み、判断前に国の原典を確認してください。条例・規則や届出様式は、事業所を所管する指定権者の案内で確認できます。</p>
     <HandbookNavigation service={service} current={chapter.section_id} />
     <HandbookChapterContent service={service} chapter={chapter} full />
     <nav className={service.service_id === "dayservice" ? "handbook-inline-links handbook-chapter-sequence" : "handbook-inline-links"} aria-label="前後の章">

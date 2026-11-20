@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const component = fs.readFileSync('components/service-handbook.tsx', 'utf8');
+const chapterPage = fs.readFileSync('app/handbook/[serviceId]/[chapter]/page.tsx', 'utf8');
 const css = fs.readFileSync('app/globals.css', 'utf8');
 const data = JSON.parse(fs.readFileSync('data/handbook-content.json', 'utf8'));
 
@@ -23,8 +24,10 @@ test('all services have an obvious staffing jump, full detail, return and chapte
   assert.match(component, /href="#staffing"/);
   assert.match(component, /人員基準を確認する/);
   assert.match(component, /職種別の配置・勤務・資格を確認する/);
-  assert.match(component, /前の章：/);
-  assert.match(component, /次の章：/);
+  assert.equal((chapterPage.match(/aria-label="前後の章"/g) || []).length, 1);
+  assert.match(chapterPage, /previous\.section_id/);
+  assert.match(chapterPage, /next\.section_id/);
+  assert.doesNotMatch(component, /aria-label="前後の章"/);
   assert.match(component, /の手引に戻る/);
   assert.match(css, /handbook-primary-action a:focus-visible/);
   assert.match(css, /min-height:48px/);
