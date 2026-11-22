@@ -77,11 +77,20 @@ export async function GET(
     );
   }
 
-  return NextResponse.json({
+  const response = NextResponse.json({
     service: {
       id: serviceId,
       label: cells[0].label,
     },
     sources,
   });
+  // This endpoint publishes immutable, non-personalized data from the build.
+  // Cache successful responses at Vercel's edge to avoid repeated Function CPU.
+  // Error responses above remain uncached.
+  response.headers.set("Cache-Control", "public, max-age=0");
+  response.headers.set(
+    "Vercel-CDN-Cache-Control",
+    "public, s-maxage=3600, stale-while-revalidate=86400",
+  );
+  return response;
 }
