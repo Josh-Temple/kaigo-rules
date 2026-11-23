@@ -70,6 +70,7 @@ export default function FeesPage() {
 
       <section className="section">
         <h2>現在の取得元</h2>
+        <p>厚生労働省の現行統合HTMLから通所介護費を区画ごとに取り込み、人手確認できる形にしています。</p>
         <dl className="rule-meta">
           <div><dt>現行告示</dt><dd>指定居宅サービスに要する費用の額の算定に関する基準</dd></div>
           <div><dt>最新反映</dt><dd>{textMeta.current_amendment || meta.current_amendment?.amendment_law_num || "—"}</dd></div>
