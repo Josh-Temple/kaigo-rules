@@ -222,7 +222,7 @@ function SourceGuide() {
 
 function StaffingRoleOverview({ full, id }: { full: boolean; id: string }) {
   const Heading = full ? "h2" : "h3";
-  return <section id={id} className="dayservice-staffing-overview" aria-label="職種別の配置基準の概要">
+  return <section id={id} className="dayservice-staffing-overview staffing-reading-guide" aria-label="職種別の配置基準の概要">
     <Heading>職種別の配置基準を早見する</Heading>
     <p>職種を選ぶと、国の基準、条件・例外、勤務時間の計算例、関連Q&Aをまとめて確認できます。以下は概要です。原文・地域の条例も確認してください。</p>
     <ul>

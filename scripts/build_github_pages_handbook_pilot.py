@@ -162,7 +162,7 @@ figure{max-width:100%;margin:18px 0}figcaption{font-weight:650}.meta,.eyebrow{fo
 input[type=checkbox]{width:1.2rem;height:1.2rem;margin-inline-end:.5rem}button{font:inherit;padding:.6rem;cursor:pointer}
 a:focus-visible,summary:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid #ba7000;outline-offset:2px}
 .pilot-banner{max-width:1050px;margin:0 auto;border-color:#6b756b}
-@media print{body,main{background:#fff}nav,.pilot-banner,button{display:none}details{display:block}.dayservice-counselor-comparison{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media print{.dayservice-treatment-period-tables>div,.dayservice-treatment-eligibility li{break-inside:avoid}.dayservice-treatment-period-tables table{display:table;overflow:visible}h2,h3,caption{break-after:avoid}body,main{background:#fff}nav,.pilot-banner,button{display:none}details{display:block}.dayservice-counselor-comparison{grid-template-columns:repeat(2,minmax(0,1fr))}}
 """.strip()
 
 
