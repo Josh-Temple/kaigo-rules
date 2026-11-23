@@ -90,10 +90,15 @@ async function display() {
   const found = runSearch(data, q, selectedCategory);
   const duration = performance.now() - start;
   results.replaceChildren();
+  const emptyGroups = [];
   let count = 0;
   for (const group of GROUPS) {
     if (selectedCategory && selectedCategory !== group) continue;
     const rows = found[group];
+    if (!rows.length) {
+      emptyGroups.push(labels[group]);
+      continue;
+    }
     count += rows.length;
     const section = document.createElement("section");
     if (group === "unitPrice") {
@@ -117,7 +122,6 @@ async function display() {
         appendSource(card, first.sourceUrl);
         section.append(card);
       }
-      if (!rows.length) section.append(element("p", "現在の公開範囲では一致なし"));
       results.append(section);
       continue;
     }
@@ -144,8 +148,14 @@ async function display() {
     more.addEventListener("click", showMore);
     section.append(more);
     showMore();
-    if (!rows.length) section.append(element("p", "現在の公開範囲では一致なし"));
     results.append(section);
+  }
+  if (emptyGroups.length) {
+    const details = document.createElement("details");
+    details.append(element("summary", "一致しなかった資料種別（" + emptyGroups.length + "）"));
+    details.append(element("p", emptyGroups.join("、")));
+    results.append(details);
+    if (!count) results.prepend(element("p", "語を短くするか、サービス・資料種別を広げて検索してください。"));
   }
   status.textContent = count.toLocaleString("ja-JP") + "件見つかりました。";
   status.dataset.searchMs = String(duration);

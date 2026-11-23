@@ -212,8 +212,8 @@ def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = 
         '<a href="./guide/index.html">使い方ガイド</a> / '
         '<a href="./sources/index.html">公式資料と出典</a> / '
         '<a href="./handbook-sources/index.html">手引の出典</a> / '
-        '<a href="./fees/index.html">報酬DB</a> / '
-        '<a href="./fees/guidance/index.html">報酬案内</a></p>'
+        '<a href="./fees/index.html">通所介護の報酬DB</a> / '
+        '<a href="./fees/guidance/index.html">通所介護の報酬案内</a></p>'
         if with_information else ""
     )
     search_links = (

@@ -36,6 +36,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const nav = document.querySelector(".service-groups");
   const sections = Array.from(document.querySelectorAll(".service-group"));
   const normalize = text => text.normalize("NFKC").toLowerCase().trim();
+  const clear = filter.querySelector("button");
+  const aliases = {
+    "通所介護": "デイサービス",
+    "地域密着型通所介護": "地域密着型デイサービス",
+    "認知症対応型通所介護": "認知症デイサービス",
+    "介護予防認知症対応型通所介護": "介護予防認知症デイサービス",
+    "介護老人福祉施設": "特養 特別養護老人ホーム",
+    "地域密着型介護老人福祉施設入所者生活介護": "地域密着型特養 地域密着型特別養護老人ホーム",
+    "看護小規模多機能型居宅介護": "看多機",
+    "介護老人保健施設": "老健",
+    "通所リハビリテーション": "デイケア 通所リハ",
+    "介護予防通所リハビリテーション": "介護予防デイケア 介護予防通所リハ",
+    "認知症対応型共同生活介護": "グループホーム",
+    "介護予防認知症対応型共同生活介護": "介護予防グループホーム"
+  };
   function update() {
     const terms = normalize(input.value).split(/\s+/).filter(Boolean);
     let total = 0;
@@ -44,7 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
       for (const item of section.querySelectorAll("li")) {
         let matches = 0;
         for (const option of item.querySelectorAll(".service-option")) {
-          const label = normalize(option.textContent);
+          const name = option.querySelector("a").textContent.trim();
+          const label = normalize(option.textContent + " " + (aliases[name] || ""));
           option.hidden = !terms.every(term => label.includes(term));
           if (!option.hidden) matches++;
         }
@@ -57,10 +73,16 @@ document.addEventListener("DOMContentLoaded", function () {
       total += count;
     }
     nav.hidden = total === 0;
+    clear.hidden = !input.value;
     status.textContent = terms.length
-      ? (total ? total + "件のサービスが見つかりました。" : "一致するサービスがありません。別の名前で検索してください。")
+      ? (total ? total + "件のサービスが見つかりました。" : "一致するサービスがありません。別の名前で検索するか、絞り込みを解除して種類から探してください。")
       : "";
   }
+  clear.addEventListener("click", () => {
+    input.value = "";
+    update();
+    input.focus();
+  });
   input.addEventListener("input", update);
   update();
   filter.hidden = false;

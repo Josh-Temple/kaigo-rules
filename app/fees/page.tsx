@@ -24,7 +24,7 @@ const sources = sourcesData as Array<any>;
 const labels: Record<string,string> = {
   CURRENT_STRUCTURE_NEEDS_HUMAN_CHECK:"現行構造・人手確認待ち",
   CURRENT_AFTER_TEXT_NEEDS_HUMAN_CHECK:"令和8年改正後文・人手確認待ち",
-  OUT_OF_CORE_SCOPE:"コア範囲外",
+  OUT_OF_CORE_SCOPE:"通所介護本体の対象外",
   VERIFIED_CURRENT:"現行確認済み",
   UNKNOWN:"未確認"
 };
@@ -37,13 +37,17 @@ export default function FeesPage() {
   const reviewedIds=new Set((review.reviewed_nodes || []).map((item:any)=>item.fee_id));
   return (
     <article className="answer-page rules-page">
-      <p className="eyebrow">REMUNERATION DATABASE</p>
+
       <h1>通所介護の報酬DB</h1>
       <p className="lead">
-        介護報酬は、基準省令とは別に、報酬告示・算定方法告示・留意事項通知を分けて構造化します。
-        厚生労働省の現行統合HTMLから通所介護費を区画ごとに取り込み、人手確認できる形にしています。
+        通所介護の基本報酬・加算・減算の項目と、算定条件の根拠資料を確認できます。
       </p>
 
+      <nav aria-label="通所介護の報酬を調べる"><ul>
+        <li><Link href="/handbook/dayservice/remuneration">基本報酬を調べる</Link></li>
+        <li><Link href="/handbook/dayservice/additions">加算を調べる</Link></li>
+        <li><Link href="/handbook/dayservice/deductions">減算を調べる</Link></li>
+      </ul></nav>
       <ServiceContextLinks serviceId="dayservice" />
       <div className="notice">
         <strong>公式現行本文は取り込み済みですが、人手確認は別工程です。</strong><br/>
@@ -59,9 +63,9 @@ export default function FeesPage() {
 
       <section className="rules-stats fee-stats">
         <div><strong>{meta.counts.nodes}</strong><span>収載項目</span></div>
-        <div><strong>{textMeta.record_count || texts.length}</strong><span>本文取込</span></div>
+        <div><strong>{textMeta.record_count || texts.length}</strong><span>本文を収載した項目</span></div>
         <div><strong>{(review.reviewed_nodes || []).length}</strong><span>人手確認済み</span></div>
-        <div><strong>{meta.counts.out_of_core_scope}</strong><span>コア範囲外</span></div>
+        <div><strong>{meta.counts.out_of_core_scope}</strong><span>通所介護本体の対象外</span></div>
       </section>
 
       <section className="section">
@@ -70,12 +74,12 @@ export default function FeesPage() {
           <div><dt>現行告示</dt><dd>指定居宅サービスに要する費用の額の算定に関する基準</dd></div>
           <div><dt>最新反映</dt><dd>{textMeta.current_amendment || meta.current_amendment?.amendment_law_num || "—"}</dd></div>
           <div><dt>施行日</dt><dd>{textMeta.current_amendment_effective_from || meta.current_amendment?.effective_from || "—"}</dd></div>
-          <div><dt>本文取込</dt><dd>{texts.length}区画 / 確認済み {reviewedIds.size}区画</dd></div>
+          <div><dt>本文を収載した項目</dt><dd>{texts.length}区画 / 確認済み {reviewedIds.size}区画</dd></div>
         </dl>
       </section>
 
       <section className="section">
-        <h2>資料チェーン</h2>
+        <h2>算定条件の根拠資料</h2>
         <div className="source-chain">
           {chain.map(entry=>{
             const source=sources.find(s=>s.id===entry.source_id);
@@ -123,7 +127,7 @@ export default function FeesPage() {
         <h2>スコープ上の扱い</h2>
         <p>
           注7「共生型通所介護の減算」と、それを前提とする注8「生活相談員配置等加算」は、
-          指定通所介護本体と混同しないよう「コア範囲外」として保持しています。
+          指定通所介護本体と混同しないよう「通所介護本体の対象外」として保持しています。
         </p>
       </section>
     </article>

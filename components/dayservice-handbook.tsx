@@ -106,7 +106,7 @@ function Excerpt({ reference, showCaution = true, showSourceTitle = true, showLa
   const table = reference.family === "fee" ? basicFeeTable(excerpt.text) : null;
   const applied = excerpt.readAcross ? dayserviceAppliedText(excerpt.id, excerpt.text) : null;
   return <div className="dayservice-excerpt" data-source-id={excerpt.id}>
-    <p className="dayservice-excerpt-label">{showLabel && !table ? <strong>{excerpt.label}</strong> : null}<span>{excerpt.locator}</span></p>
+    <p className="dayservice-excerpt-label">{showLabel && !table ? <strong>{excerpt.label}</strong> : null}{!showLabel || table || excerpt.label !== excerpt.locator ? <span>{excerpt.locator}</span> : null}</p>
     {showCaution && excerpt.caution ? <p className="handbook-role-warning dayservice-source-caution">{excerpt.caution}</p> : null}
     {applied ? <>
       <p className="dayservice-read-across">第105条の準用・読替えに沿い、サービス名等を通所介護に置き換えた表示です。<Link href="/rules/105?service=dayservice">準用の規定を確認</Link></p>
@@ -220,9 +220,10 @@ function SourceGuide() {
   </dl>;
 }
 
-function StaffingRoleOverview() {
-  return <section className="dayservice-staffing-overview" aria-label="職種別の配置基準の概要">
-    <h3>職種別の配置基準を早見する</h3>
+function StaffingRoleOverview({ full, id }: { full: boolean; id: string }) {
+  const Heading = full ? "h2" : "h3";
+  return <section id={id} className="dayservice-staffing-overview" aria-label="職種別の配置基準の概要">
+    <Heading>職種別の配置基準を早見する</Heading>
     <p>職種を選ぶと、国の基準、条件・例外、勤務時間の計算例、関連Q&Aをまとめて確認できます。以下は概要です。原文・地域の条例も確認してください。</p>
     <ul>
       {dayserviceStaffingTopics.map(topic => <li key={topic.id}>
@@ -245,7 +246,7 @@ export default function DayserviceHandbookChapter({ chapter, full }: { service: 
     <p className="dayservice-chapter-intro">{dayserviceChapterIntros[chapter.section_id]}</p>
     {full ? <p className="handbook-return-link"><Link href={`/services/dayservice#${chapter.section_id}`}>通所介護の手引に戻る</Link></p> : null}
     {isStaffing ? <div className="staffing-reading-guide"><p>国の基準、解釈通知の掲載資料、国Q&Aの順に読めます。解釈通知等には現行性を確認中の本文が含まれます。各資料の注意を併せて確認してください。</p></div> : null}
-    {isStaffing ? <StaffingRoleOverview /> : null}
+    {isStaffing ? <StaffingRoleOverview full={full} id={navigationId} /> : null}
     {chapter.section_id === "additions" ? <aside className="dayservice-priority-additions" aria-label="まず確認したい加算">
       <p><strong>まず確認したい加算</strong></p>
       <ul>
@@ -255,8 +256,8 @@ export default function DayserviceHandbookChapter({ chapter, full }: { service: 
       <p>この2項目は説明と図解を充実させています。算定前に告示・大臣基準・留意事項と、後続改正の有無を確認してください。</p>
     </aside> : null}
     {full && ["remuneration", "additions", "deductions"].includes(chapter.section_id) ? <p className="handbook-role-warning">掲載する報酬本文の適用版・改正附則と、参照される大臣基準・留意事項の照合は未完了です。この章だけでは算定可否を確定できません。</p> : null}
-    {groups.length ? <nav className={isStaffing ? "handbook-role-navigation dayservice-topic-navigation" : "dayservice-topic-navigation"} id={navigationId} aria-label={isStaffing ? "職種・適用区分から探す" : "この章の項目"}>
-      {groups.map(group => <div key={group.title}><p><strong>{group.title}</strong></p><ul>{group.topics.map(topic => <li key={topic.id}>{expanded ? <a href={`#${topic.id}`}>{topic.title}</a> : <Link href={`${href}#${topic.id}`}>{topic.title}</Link>}</li>)}</ul></div>)}
+    {groups.length ? <nav className={isStaffing ? "handbook-role-navigation dayservice-topic-navigation" : "dayservice-topic-navigation"} id={isStaffing ? undefined : navigationId} aria-label={isStaffing ? "職種・適用区分から探す" : "この章の項目"}>
+      {groups.filter(group => !isStaffing || group.topics !== dayserviceStaffingTopics).map(group => <div key={group.title}><p><strong>{group.title}</strong></p><ul>{group.topics.map(topic => <li key={topic.id}>{expanded ? <a href={`#${topic.id}`}>{topic.title}</a> : <Link href={`${href}#${topic.id}`}>{topic.title}</Link>}</li>)}</ul></div>)}
       {isStaffing ? <div><p><strong>勤務時間の計算例から読む</strong></p><ul><li><a href="#staffing-role-life-counselor-example">生活相談員の計算例</a></li><li><a href="#staffing-role-care-worker-example">介護職員の計算例</a></li></ul></div> : null}
     </nav> : null}
     {expanded ? groups.flatMap(group => group.topics).map(topic => <ReadingTopic key={topic.id} topic={topic} full={full} navigationId={navigationId} requirementIds={chapter.role_sections?.find(role => topic.id === `staffing-role-${role.id}`)?.requirements.map(item => item.id)} />) : null}

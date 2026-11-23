@@ -68,9 +68,9 @@ function render() {
       ? "./qa-details/" + encodeURIComponent(item.id) + (current.reader ? "/reader.html" : "/index.html")
       : "https://kaigo-rules.vercel.app/qa/" + encodeURIComponent(item.id) + (current.reader ? "?reader=1" : "");
     title.append(link); card.append(title);
-    card.append(element("p", item.answer));
     card.append(element("p", [item.issued_source, item.number].filter(Boolean).join(" / ")));
     card.append(element("p", "収載済み・現行性未確認"));
+    card.append(element("p", item.answer));
     results.append(card);
   }
 }
