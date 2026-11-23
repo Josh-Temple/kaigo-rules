@@ -5,9 +5,14 @@ export default function DayserviceTreatmentImprovement2026({ headingLevel = 3 }:
   return <section className="dayservice-treatment-periods" aria-label="令和8年度の通所介護・処遇改善加算の適用月">
     <Heading>令和8年度の加算率：算定する月を確認</Heading>
     <p>通所介護の介護職員等処遇改善加算は、<strong>4月・5月</strong>と<strong>6月以降</strong>で区分・率が異なります。下記は国の通知の率表から通所介護の行だけを抜き出した参考表示です。</p>
+    <nav aria-label="サービス提供月を選ぶ"><ul>
+      <li><a href="#treatment-april-may">令和8年4月・5月</a></li>
+      <li><a href="#treatment-june">令和8年6月以降</a></li>
+    </ul></nav>
+    <p>令和8年11月23日に厚生労働省通知の別紙1（18ページ）と通所介護の加算率10件を照合しました。個々の事業所の届出や算定要件、後続の訂正との照合は含みません。</p>
     <div className="dayservice-treatment-period-tables">
       {[dayserviceTreatment2026.may, dayserviceTreatment2026.june].map(period =>
-        <div key={period.sourceTable}>
+        <div key={period.sourceTable} id={period === dayserviceTreatment2026.may ? "treatment-april-may" : "treatment-june"}>
           <table>
             <caption>{period.label}（{period.sourceTable}）</caption>
             <thead><tr><th scope="col">加算区分</th><th scope="col">加算率</th></tr></thead>
@@ -15,10 +20,12 @@ export default function DayserviceTreatmentImprovement2026({ headingLevel = 3 }:
               <tr key={row.category}><th scope="row">{row.category}</th><td>{percentOf(row.perThousand)}</td></tr>
             )}</tbody>
           </table>
+          <p><a href={dayserviceTreatment2026.ratesUrl}>{period.sourceTable}の通所介護の行を確認する（厚生労働省PDF・18ページ）</a></p>
+          <p><a href="#treatment-conditions">区分の要件・届出を確認する</a></p>
         </div>
       )}
     </div>
-    <div className="dayservice-treatment-eligibility" role="note" aria-label="加算区分と算定要件の確認事項">
+    <div id="treatment-conditions" className="dayservice-treatment-eligibility" role="note" aria-label="加算区分と算定要件の確認事項">
       <p><strong>区分を選ぶ前の確認事項</strong></p>
       <ul>
         <li>加算は、原則として処遇改善加算自体を除いた<strong>1か月の総単位数</strong>に、サービス種類・区分に応じた率を乗じて算定します。日ごとの単位数に率を掛けて判定する説明ではありません。</li>

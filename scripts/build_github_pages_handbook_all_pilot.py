@@ -116,8 +116,15 @@ def build(root: Path = ROOT) -> dict:
                 )
             dest = out / "services" / service_id / "index.html"
             dest.parent.mkdir(parents=True, exist_ok=True)
+            tasks = (("staffing", "職員の配置・兼務を確認する"), ("additions", "加算を調べる"),
+                     ("deductions", "減算を調べる"), ("notifications", "変更・届出を確認する"))
+            task_links = "".join(
+                f'<li><a href="../../handbook/{service_id}/{slug}.html">{label}</a></li>'
+                for slug, label in tasks if slug in routes[service_id]
+            )
             body = ('<article class="handbook-page"><p><a href="../../index.html">← サービス一覧に戻る</a></p><h1>' + pilot.escape(service_label) +
                     'の手引</h1><p>未確認の説明を含みます。条件と原典を確認してください。</p>'
+                    '<nav aria-label="業務から探す"><h2>業務から探す</h2><ul>' + task_links + '</ul></nav>'
                     '<nav class="chapter-list" aria-labelledby="chapter-list-heading"><h2 id="chapter-list-heading">章の目次</h2><ol>' + "".join(chapter_links) +
                     '</ol></nav></article>')
             dest.write_text(pilot.html_page(service_label, body, "../../styles.css"), encoding="utf-8")

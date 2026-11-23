@@ -243,10 +243,8 @@ export default function DayserviceHandbookChapter({ chapter, full }: { service: 
   return <section className="section handbook-chapter handbook-dayservice dayservice-national-reader" id={chapter.section_id}>
     <p className="eyebrow">第{String(chapter.number).padStart(2, "0")}章</p>
     {!full ? <h2><Link href={href}>{chapter.title}</Link></h2> : null}
-    <p className="dayservice-chapter-intro">{dayserviceChapterIntros[chapter.section_id]}</p>
-    {full ? <p className="handbook-return-link"><Link href={`/services/dayservice#${chapter.section_id}`}>通所介護の手引に戻る</Link></p> : null}
-    {isStaffing ? <div className="staffing-reading-guide"><p>国の基準、解釈通知の掲載資料、国Q&Aの順に読めます。解釈通知等には現行性を確認中の本文が含まれます。各資料の注意を併せて確認してください。</p></div> : null}
-    {isStaffing ? <StaffingRoleOverview full={full} id={navigationId} /> : null}
+    {isStaffing ? <StaffingRoleOverview full={full} id={navigationId} /> : <p className="dayservice-chapter-intro">{dayserviceChapterIntros[chapter.section_id]}</p>}
+    {full && !isStaffing ? <p className="handbook-return-link"><Link href={`/services/dayservice#${chapter.section_id}`}>通所介護の手引に戻る</Link></p> : null}
     {chapter.section_id === "additions" ? <aside className="dayservice-priority-additions" aria-label="まず確認したい加算">
       <p><strong>まず確認したい加算</strong></p>
       <ul>
