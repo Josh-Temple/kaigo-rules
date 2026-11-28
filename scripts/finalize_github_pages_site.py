@@ -18,6 +18,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.audit_github_pages_migration_readiness import inspect
+from scripts.handbook_reader_enhancements import READER_ENHANCEMENTS
 
 PREVIOUS_LABEL = "Kaigo Rules 試験公開版"
 PREVIOUS_NOTICE = "試験公開版です。未確認の法令情報や旧サイトへのリンクが含まれます。"
@@ -27,29 +28,6 @@ OBSOLETE_BANNER = (
     '<div class="pilot-banner"><strong>Kaigo Rules</strong>'
     "<p>現在の本番とは別の試作品です。法令の現行性・適用条件・自治体の基準を必ず原典で確認してください。"
     "この試作品では印刷・対話操作やサイト内リンクの一部が本番と異なる場合があります。</p></div>"
-)
-
-EXPECTED_SINGLE_STAFFING_OVERVIEWS = (
-    "community_staffing_overview",
-    "health_facility_staffing_overview",
-    "welfare_facility_staffing_overview",
-    "group_home_staffing_overview",
-    "preventive_group_home_staffing_overview",
-    "night_homevisit_manager",
-    "care_medical_staffing_overview",
-    "nursing_small_scale_roles",
-    "care_management_staffing_overview",
-    "dementia_dayservice_staffing_overview",
-    "preventive_dementia_dayservice_staffing_overview",
-    "community_facility_equipment_overview",
-)
-
-EXPECTED_DOUBLE_STAFFING_OVERVIEWS = (
-    ("homebath_staffing_overview", "Missing or duplicate home-bathing staffing or operations source"),
-    (
-        "preventive_homebath_staffing_overview",
-        "Missing or duplicate preventive home-bathing staffing or operations source",
-    ),
 )
 
 EXPECTED_FEE_VERSION_LABELS = (
@@ -172,12 +150,9 @@ def finalize_site(build_log: Path, source_sha: str, github_output: Path | None =
     print("FEE_NAVIGATION:", link_fix.stdout.strip())
     navigation_counts = json.loads(link_fix.stdout).get("additional_changes", {})
 
-    for overview in EXPECTED_SINGLE_STAFFING_OVERVIEWS:
-        if navigation_counts.get(overview) != 1:
-            raise RuntimeError("Missing or duplicate staffing overview: " + overview)
-    for key, error_message in EXPECTED_DOUBLE_STAFFING_OVERVIEWS:
-        if navigation_counts.get(key) != 2:
-            raise RuntimeError(error_message)
+    for enhancement in READER_ENHANCEMENTS:
+        if navigation_counts.get(enhancement.key) != enhancement.expected_count:
+            raise RuntimeError(enhancement.failure_message())
     for label, count in EXPECTED_FEE_VERSION_LABELS:
         if navigation_counts.get(label) != count:
             raise RuntimeError("Unexpected fee page version labels: " + label)

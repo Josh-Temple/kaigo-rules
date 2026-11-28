@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { canonicalUrl } from "../lib/site-metadata";
 
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = { alternates: { canonical: canonicalUrl("/") } };
 
 import Link from "next/link";
 import QuestionSearch from "../components/question-search";

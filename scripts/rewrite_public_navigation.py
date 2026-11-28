@@ -17,37 +17,11 @@ from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 
 if __package__:
-    from .community_staffing_reader import add_community_staffing_overview
-    from .health_facility_staffing_reader import add_health_facility_staffing_overview
-    from .welfare_facility_staffing_reader import add_welfare_facility_staffing_overview, validate_welfare_facility_care_sources
     from .fee_version_labels import label_fee_version
-    from .group_home_staffing_reader import add_group_home_staffing_overview
-    from .preventive_group_home_staffing_reader import add_preventive_group_home_staffing_overview
-    from .night_homevisit_manager_clarification import clarify_night_homevisit_manager
-    from .care_medical_staffing_reader import add_care_medical_staffing_overview, validate_facility_manager_law_sources
-    from .nursing_small_scale_roles_clarification import clarify_nursing_small_scale_roles
-    from .care_management_staffing_reader import add_care_management_staffing_overview
-    from .dementia_dayservice_staffing_reader import add_dementia_dayservice_staffing_overview
-    from .preventive_dementia_dayservice_staffing_reader import add_preventive_dementia_dayservice_staffing_overview
-    from .homebath_staffing_reader import add_homebath_staffing_overview
-    from .preventive_homebath_staffing_reader import add_preventive_homebath_staffing_overview
-    from .community_facility_equipment_reader import add_community_facility_equipment_overview
+    from .handbook_reader_enhancements import READER_ENHANCEMENTS, SOURCE_VALIDATORS
 else:
-    from community_staffing_reader import add_community_staffing_overview
-    from health_facility_staffing_reader import add_health_facility_staffing_overview
-    from welfare_facility_staffing_reader import add_welfare_facility_staffing_overview, validate_welfare_facility_care_sources
     from fee_version_labels import label_fee_version
-    from group_home_staffing_reader import add_group_home_staffing_overview
-    from preventive_group_home_staffing_reader import add_preventive_group_home_staffing_overview
-    from night_homevisit_manager_clarification import clarify_night_homevisit_manager
-    from care_medical_staffing_reader import add_care_medical_staffing_overview, validate_facility_manager_law_sources
-    from nursing_small_scale_roles_clarification import clarify_nursing_small_scale_roles
-    from care_management_staffing_reader import add_care_management_staffing_overview
-    from dementia_dayservice_staffing_reader import add_dementia_dayservice_staffing_overview
-    from preventive_dementia_dayservice_staffing_reader import add_preventive_dementia_dayservice_staffing_overview
-    from homebath_staffing_reader import add_homebath_staffing_overview
-    from preventive_homebath_staffing_reader import add_preventive_homebath_staffing_overview
-    from community_facility_equipment_reader import add_community_facility_equipment_overview
+    from handbook_reader_enhancements import READER_ENHANCEMENTS, SOURCE_VALIDATORS
 
 ORIGIN = "https://kaigo-rules.vercel.app"
 QUERY = "q=%E5%9C%B0%E5%9F%9F%E5%8C%BA%E5%88%86"
@@ -835,8 +809,8 @@ def rewrite(root: Path) -> dict:
     root = root.resolve(strict=True)
     if not root.is_dir():
         raise RuntimeError("Site root is not a directory")
-    validate_welfare_facility_care_sources(root)
-    validate_facility_manager_law_sources(root)
+    for validator in SOURCE_VALIDATORS:
+        validator(root)
     changes = {}
     for source, links in PAGES.items():
         path = root / source
@@ -883,66 +857,40 @@ def rewrite(root: Path) -> dict:
         script, content = mark_missing_text_in_listing(root)
         changes[script] = content
     counts = {"standards": 0, "law": 0, "notices": 0, "notice_records": 0}
-    extra_counts = {'criteria_records': 0, 'simple_links': 0, 'unavailable_all_views': 0,
-                    'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_links': 0,
-                    'community_handbook_sources': 0, 'handbook_source_versions': 0,
-                    'handbook_review_status': 0, 'community_staffing_overview': 0,
-                    'health_facility_staffing_overview': 0, 'welfare_facility_staffing_overview': 0,
-                    'fee_root_version_labels': 0, 'fee_detail_version_labels': 0,
-                    'group_home_staffing_overview': 0, 'preventive_group_home_staffing_overview': 0,
-                    'night_homevisit_manager': 0, 'care_medical_staffing_overview': 0,
-                    'nursing_small_scale_roles': 0, 'care_management_staffing_overview': 0,
-                    'dementia_dayservice_staffing_overview': 0, 'preventive_dementia_dayservice_staffing_overview': 0, 'homebath_staffing_overview': 0, 'preventive_homebath_staffing_overview': 0, 'community_facility_equipment_overview': 0}
+    extra_counts = {
+        'criteria_records': 0, 'simple_links': 0, 'unavailable_all_views': 0,
+        'scoped_rule_links': 0, 'dayrehab_scope_notes': 0, 'fee_root_links': 0,
+        'community_handbook_sources': 0, 'handbook_source_versions': 0,
+        'handbook_review_status': 0,
+        'fee_root_version_labels': 0, 'fee_detail_version_labels': 0,
+        **{enhancement.key: 0 for enhancement in READER_ENHANCEMENTS},
+    }
     for path in root.rglob("*.html"):
         if path.is_symlink():
             raise RuntimeError(f"Symbolic link in site output: {path}")
         before = changes.get(path)
         if before is None:
             before = path.read_text(encoding="utf-8")
-        after = ANCHOR.sub(lambda m: rewrite_index_link(m, path.relative_to(root), root, counts), before)
-        after = SIMPLE_ANCHOR.sub(lambda m: rewrite_simple_link(m, path.relative_to(root), root, extra_counts), after)
-        after = DAYREHAB_SCOPE_NOTE.sub(lambda m: rewrite_dayrehab_note(m, path.relative_to(root), root, extra_counts), after)
-        after = FULL_ANCHOR.sub(lambda m: rewrite_scoped_link(m, path.relative_to(root), root, extra_counts), after)
-        if path.relative_to(root).parts[0] == 'fees':
-            after, label_kind = label_fee_version(after, path.relative_to(root))
+        relative_path = path.relative_to(root)
+        after = ANCHOR.sub(lambda m: rewrite_index_link(m, relative_path, root, counts), before)
+        after = SIMPLE_ANCHOR.sub(lambda m: rewrite_simple_link(m, relative_path, root, extra_counts), after)
+        after = DAYREHAB_SCOPE_NOTE.sub(lambda m: rewrite_dayrehab_note(m, relative_path, root, extra_counts), after)
+        after = FULL_ANCHOR.sub(lambda m: rewrite_scoped_link(m, relative_path, root, extra_counts), after)
+        if relative_path.parts[0] == 'fees':
+            after, label_kind = label_fee_version(after, relative_path)
             if label_kind:
                 extra_counts[label_kind] += 1
-        if path.relative_to(root).parts[0] == 'handbook':
-            after, n = fix_community_handbook_sources(after, path.relative_to(root))
+        if relative_path.parts[0] == 'handbook':
+            after, n = fix_community_handbook_sources(after, relative_path)
             extra_counts['community_handbook_sources'] += n
-            after = fix_community_handbook_locator(after, path.relative_to(root))
-            after, n = label_handbook_source_versions(after, path.relative_to(root))
+            after = fix_community_handbook_locator(after, relative_path)
+            after, n = label_handbook_source_versions(after, relative_path)
             extra_counts['handbook_source_versions'] += n
             after, n = clarify_handbook_review_status(after)
             extra_counts['handbook_review_status'] += n
-            after, n = add_community_staffing_overview(after, path.relative_to(root))
-            extra_counts['community_staffing_overview'] += n
-            after, n = add_health_facility_staffing_overview(after, path.relative_to(root))
-            extra_counts['health_facility_staffing_overview'] += n
-            after, n = add_welfare_facility_staffing_overview(after, path.relative_to(root))
-            extra_counts['welfare_facility_staffing_overview'] += n
-            after, n = add_group_home_staffing_overview(after, path.relative_to(root))
-            extra_counts['group_home_staffing_overview'] += n
-            after, n = add_preventive_group_home_staffing_overview(after, path.relative_to(root))
-            extra_counts['preventive_group_home_staffing_overview'] += n
-            after, n = clarify_night_homevisit_manager(after, path.relative_to(root))
-            extra_counts['night_homevisit_manager'] += n
-            after, n = add_care_medical_staffing_overview(after, path.relative_to(root))
-            extra_counts['care_medical_staffing_overview'] += n
-            after, n = clarify_nursing_small_scale_roles(after, path.relative_to(root))
-            extra_counts['nursing_small_scale_roles'] += n
-            after, n = add_care_management_staffing_overview(after, path.relative_to(root))
-            extra_counts['care_management_staffing_overview'] += n
-            after, n = add_dementia_dayservice_staffing_overview(after, path.relative_to(root))
-            extra_counts['dementia_dayservice_staffing_overview'] += n
-            after, n = add_preventive_dementia_dayservice_staffing_overview(after, path.relative_to(root))
-            extra_counts['preventive_dementia_dayservice_staffing_overview'] += n
-            after, n = add_homebath_staffing_overview(after, path.relative_to(root))
-            extra_counts['homebath_staffing_overview'] += n
-            after, n = add_preventive_homebath_staffing_overview(after, path.relative_to(root))
-            extra_counts['preventive_homebath_staffing_overview'] += n
-            after, n = add_community_facility_equipment_overview(after, path.relative_to(root))
-            extra_counts['community_facility_equipment_overview'] += n
+            for enhancement in READER_ENHANCEMENTS:
+                after, n = enhancement.transform(after, relative_path)
+                extra_counts[enhancement.key] += n
         if COMMUNITY_UNVERIFIED_CLAIM in after:
             raise RuntimeError(f'Unsupported community verification claim remains: {path.relative_to(root)}')
         if after != before:
