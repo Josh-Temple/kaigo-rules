@@ -1,6 +1,7 @@
 """Run the repository data checks in their established order."""
 from __future__ import annotations
 
+import argparse
 import shlex
 import subprocess
 from pathlib import Path
@@ -105,17 +106,43 @@ CHECKS = (
 )
 
 
-def main() -> int:
-    for number, command in enumerate(CHECKS, 1):
+FAST_CHECKS = (
+    ('python', 'scripts/build_careact_service_indexes.py', '--check'),
+    ('python', 'scripts/build_service_catalog.py', '--check'),
+    ('node', 'scripts/validate-data.mjs'),
+    ('python', 'scripts/build_verification_registry.py', '--check'),
+    ('python', 'scripts/build_bounded_publication_allowlist.py', '--check'),
+    ('python', 'scripts/validate_bounded_publication_allowlist.py'),
+    ('python', 'scripts/validate_service_manifest.py'),
+    ('npm', 'run', 'test:service-scope'),
+    ('npm', 'run', 'test:database-search'),
+)
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--mode",
+        choices=("full", "fast"),
+        default="full",
+        help="Run all 95 checks ('full', default) or core schema/runtime checks ('fast').",
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    checks = FAST_CHECKS if args.mode == "fast" else CHECKS
+    for number, command in enumerate(checks, 1):
         label = shlex.join(command)
-        print(f"[{number}/{len(CHECKS)}] {label}", flush=True)
+        print(f"[{number}/{len(checks)}] {label}", flush=True)
         try:
             result = subprocess.run(command, cwd=ROOT, check=False)
         except OSError as error:
             print(f"Could not run {label}: {error}", flush=True)
             return 1
         if result.returncode:
-            print(f"Failed [{number}/{len(CHECKS)}]: {label} (exit {result.returncode})", flush=True)
+            print(f"Failed [{number}/{len(checks)}]: {label} (exit {result.returncode})", flush=True)
             return result.returncode
     return 0
 

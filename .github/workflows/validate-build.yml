@@ -47,6 +47,8 @@ jobs:
         run: |
           node --experimental-strip-types --test tests/public-seo.test.mjs
           python -m unittest discover -s tests -p 'test_public_canonical.py'
+      - name: Typecheck TypeScript
+        run: npm run typecheck
       - name: Validate and build
         run: npm run build
       - name: Compile production gate verifier
@@ -76,18 +78,18 @@ jobs:
 
           # Verify generated discovery endpoints on the built Next.js server.
           robots_body="$(curl --fail --silent --show-error http://127.0.0.1:3000/robots.txt)"
-          grep -F 'Sitemap: https://kaigo-rules.vercel.app/sitemap.xml' <<< "$robots_body" >/dev/null || {
+          grep -F 'Sitemap: https://josh-temple.github.io/kaigo-rules/sitemap.xml' <<< "$robots_body" >/dev/null || {
             echo "robots.txt is missing the canonical sitemap URL"
             exit 1
           }
           sitemap_body="$(curl --fail --silent --show-error http://127.0.0.1:3000/sitemap.xml)"
-          grep -F '<loc>https://kaigo-rules.vercel.app/databases</loc>' <<< "$sitemap_body" >/dev/null || {
+          grep -F '<loc>https://josh-temple.github.io/kaigo-rules/databases</loc>' <<< "$sitemap_body" >/dev/null || {
             echo "sitemap.xml does not expose the public database entry"
             exit 1
           }
           for route in "/" "/databases" "/services" "/law" "/rules" "/notices" "/qa"; do
             html="$(curl --fail --silent --show-error "http://127.0.0.1:3000$route")"
-            canonical="https://kaigo-rules.vercel.app$route"
+            canonical="https://josh-temple.github.io/kaigo-rules$route"
             python scripts/verify_canonical_markup.py "$canonical" <<< "$html" || {
               echo "Missing or incorrect canonical URL for $route"
               exit 1

@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/kaigo-pages-public-beta-main.yml"
       - "scripts/rewrite_public_navigation.py"
+      - "scripts/handbook_reader_enhancements.py"
       - "scripts/community_staffing_reader.py"
       - "scripts/health_facility_staffing_reader.py"
       - "scripts/welfare_facility_staffing_reader.py"

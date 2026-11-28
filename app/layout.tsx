@@ -28,7 +28,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <ServiceNavigation />
         </header>
         <main>{children}</main>
-        <Analytics />
+        {process.env.VERCEL === "1" ? <Analytics /> : null}
         <footer className="site-footer">
           <p>
             厚生労働省・e-Gov等の公開資料をもとに整理しています。公式な解釈や個別案件への判断を示すものではありません。

@@ -1,14 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
-import { SITE_ORIGIN, INDEXABLE_ROUTES, pageMetadata } from "../lib/site-metadata.ts";
+import { SITE_ORIGIN, INDEXABLE_ROUTES, canonicalUrl, pageMetadata } from "../lib/site-metadata.ts";
 
 const source = (path) => readFileSync(new URL("../" + path, import.meta.url), "utf8");
 const fileExists = (path) => existsSync(new URL("../" + path, import.meta.url));
 
 test("canonical URL and noindex metadata follow the public origin", () => {
-  assert.equal(SITE_ORIGIN, "https://kaigo-rules.vercel.app");
-  assert.equal(pageMetadata("法令", "説明", "/law").alternates.canonical, "/law");
+  assert.equal(SITE_ORIGIN, "https://josh-temple.github.io/kaigo-rules");
+  assert.equal(canonicalUrl("/"), "https://josh-temple.github.io/kaigo-rules/");
+  assert.equal(pageMetadata("法令", "説明", "/law").alternates.canonical, "https://josh-temple.github.io/kaigo-rules/law");
   assert.deepEqual(pageMetadata("検索", "説明", "/search", false).robots, { index: false, follow: true });
   assert.throws(() => pageMetadata("x", "y", "/qa?q=test"), /Canonical/);
   assert.throws(() => pageMetadata("x", "y", "https://elsewhere.example"), /Canonical/);
@@ -52,7 +53,7 @@ test("robots exposes sitemap without blocking pages that use noindex", () => {
   assert.match(sitemap, /new Set<string>\(INDEXABLE_ROUTES\)/);
   assert.doesNotMatch(sitemap, /serviceHandbooks/);
   assert.match(sitemap, /return \[\.\.\.paths\]\.map/);
-  assert.match(sitemap, /new URL\(path, SITE_ORIGIN\)/);
+  assert.match(sitemap, /canonicalUrl\(path\)/);
   assert.doesNotMatch(sitemap, /lastModified/);
   assert.match(source("app/layout.tsx"), /metadataBase:\s*new URL\(SITE_ORIGIN\)/);
 });
