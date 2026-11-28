@@ -13,7 +13,7 @@ export default function QuestionSearch({ initialLimit }: { initialLimit?: number
       ? rankQuestionMatches(questions, query)
       : questions;
     return !normalized && initialLimit ? matched.slice(0, initialLimit) : matched;
-  }, [initialLimit, normalized]);
+  }, [initialLimit, normalized, query]);
 
   return (
     <>

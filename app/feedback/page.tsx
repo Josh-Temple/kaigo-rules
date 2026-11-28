@@ -23,12 +23,12 @@ export default function FeedbackPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState(categories[0]);
   const [details, setDetails] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const from = safeParam(params, "from", 500);
-    if (from.startsWith("/")) setSourcePath(from);
+    if (from.startsWith("/") && !from.startsWith("//")) setSourcePath(from);
     setService(safeParam(params, "service", 120));
     setDatabase(safeParam(params, "db", 120));
     setSourceFamily(safeParam(params, "source_family", 120));
@@ -74,8 +74,16 @@ export default function FeedbackPage() {
   }
 
   async function handleCopy() {
-    await navigator.clipboard.writeText(buildPayload());
-    setCopied(true);
+    try {
+      if (!navigator.clipboard?.writeText) {
+        setCopyState("failed");
+        return;
+      }
+      await navigator.clipboard.writeText(buildPayload());
+      setCopyState("copied");
+    } catch {
+      setCopyState("failed");
+    }
   }
 
   const hasContext = Boolean(service || database || sourceFamily || searchQuery);
@@ -147,7 +155,7 @@ export default function FeedbackPage() {
             value={details}
             onChange={(event) => {
               setDetails(event.target.value);
-              setCopied(false);
+              setCopyState("idle");
             }}
             rows={8}
             required
@@ -157,7 +165,12 @@ export default function FeedbackPage() {
 
         <button type="submit">GitHubで報告する</button>
         <button type="button" onClick={handleCopy}>内容をコピー</button>
-        {copied ? <p className="meta">コピーしました。</p> : null}
+        {copyState === "copied" ? <p className="meta" role="status">コピーしました。</p> : null}
+        {copyState === "failed" ? (
+          <p className="meta" role="alert">
+            クリップボードへコピーできませんでした。ブラウザの権限設定を確認するか、入力内容を手動でコピーしてください。
+          </p>
+        ) : null}
       </form>
 
       <p className="feedback-note">

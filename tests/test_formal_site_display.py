@@ -1,13 +1,11 @@
 """Test the Pages deployment's public-facing text transformation."""
-import json
 import tempfile
-import textwrap
 import unittest
 from pathlib import Path
 
+from scripts.finalize_github_pages_site import apply_public_site_branding
 
-ROOT = Path(__file__).resolve().parents[1]
-WORKFLOW = ROOT / ".github/workflows/kaigo-pages-public-beta-main.yml"
+
 NOTICE = ("試験公開版です。未確認の法令情報や旧サイトへのリンクが含まれます。"
           "制度の現行性・適用条件は必ず国の原典と指定権者に確認してください。")
 PILOT = ('<div class="pilot-banner"><strong>Kaigo Rules 試験公開版</strong>'
@@ -21,11 +19,7 @@ def page(title, body):
 
 
 def run_transformation(root, count):
-    workflow = WORKFLOW.read_text(encoding="utf-8")
-    start = workflow.index("          previous_label=")
-    end = workflow.index("          post=inspect(root)", start)
-    code = textwrap.dedent(workflow[start:end])
-    exec(code, {"root": root, "pre": {"html_count": count}, "json": json})
+    apply_public_site_branding(root, count)
 
 
 class FormalSiteDisplayTest(unittest.TestCase):

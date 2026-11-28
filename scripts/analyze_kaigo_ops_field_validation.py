@@ -391,7 +391,7 @@ def markdown_report(report: dict[str, Any]) -> str:
     lines = [
         "# Kaigo Ops Field Validation v0.1 — descriptive summary",
         "",
-        f"- production SHA: \`{report['production_sha']}\`",
+        f"- production SHA: `{report['production_sha']}`",
         f"- attempts: {report['attempt_count']}",
         "- interpretation: descriptive only; no automated success verdict",
         "",
